@@ -1,0 +1,12 @@
+*~
+*.pyc
+
+*.pkl
+*.pdf
+*.png
+
+build
+doc/_build
+doc/auto_examples
+doc/auto_book_figures
+book_figures/*/*.pkl

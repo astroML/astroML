@@ -1,0 +1,16 @@
+fig_SDSS_imaging.py
+fig_sdss_spectrum.py
+fig_SDSS_specgals.py
+fig_dr7_quasar.py
+fig_SDSS_sspp.py
+fig_sdss_S82standards.py
+fig_LINEAR_sample.py
+fig_moving_objects.py
+fig_S82_scatter_contour.py
+fig_S82_hess.py
+fig_SSPP_metallicity.py
+fig_moving_objects_multicolor.py
+fig_projections.py
+fig_projections.py
+fig_healpix_pixels.py
+fig_wmap_healpix.py

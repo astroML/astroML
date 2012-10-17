@@ -1,0 +1,52 @@
+=================
+AstroML todo list
+=================
+
+examples: make book title correct!  194 times...
+
+Core Package
+------------
+XD code:https://twitter.com/
+- include mixing matrix (in original paper)
+- submit to scikit-learn?
+
+Bayesian Blocks code:
+- other priors
+- other fitness functions
+
+KDE:
+- build-in cross-validation
+- KDE with errors
+
+Web Page
+--------
+- add index of CIDU plots to web page
+- chapter/figures order in index
+- modify gen_rst to use thumbnails on index page, full size on code page.
+- Think about suggested exercises with our code and data
+
+Lomb-scargle:
+ - optimize with extirpolation
+ - write documentation
+ - write tests
+
+Extreme Deconvolution:
+ - regularization (look at how GMM does this)
+ - optimize linear algebra
+ - allow for automatic treatment of diagonal variance
+ - allow for covariance_type argument as in GMM
+ - better documentation
+ - tests
+ - submit to scikit-learn?
+
+Utilities:
+ - look through code examples; find often-used subroutines
+
+Misc:
+ - clean up MCMC log(sigma) priors (use @pymc.deterministic)
+
+Website:
+ - Link to code and instructions for installation
+ - List and link to dependencies
+ - Show thumbnails on figure index
+ 
