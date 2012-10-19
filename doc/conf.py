@@ -23,12 +23,12 @@ import sys, os
 # override default gen_rst
 sys.path.insert(0, os.path.abspath('sphinxext'))
 try:
-    import gen_rst_new
+    import gen_rst
 except:
     pass
 
 try:
-    import gen_figure_rst_new
+    import gen_figure_rst
 except:
     pass
 
@@ -45,8 +45,7 @@ except:
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['gen_rst_new', 'gen_figure_rst_new', 
-              'gen_paper_rst', #'gen_rst', 'gen_figure_rst',
+extensions = ['gen_rst', 'gen_figure_rst', 'gen_paper_rst',
               'sphinx.ext.autodoc', 'sphinx.ext.doctest',
               'sphinx.ext.pngmath', 'sphinx.ext.viewcode',
               'sphinx.ext.autosummary']

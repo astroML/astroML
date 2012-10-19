@@ -1,4 +1,6 @@
-
+============================================
+AstroML: Machine Learning code for Astronomy
+============================================
 ..
    Here we are building a banner: a javascript selects randomly 4 images in
    the list.  Code adapted from scikit-learn documentation
@@ -130,10 +132,6 @@
         </SCRIPT>
 
     |center-div| |banner1| |banner2| |banner3| |banner4| |banner5| |banner6| |banner7| |banner8| |banner9| |banner10| |end-div|
-
-
-AstroML: Machine Learning code for Astronomy
-============================================
 
 AstroML is a Python module for machine learning and data mining
 built on numpy, scipy, scikit-learn, and matplotlib,

@@ -256,6 +256,7 @@ class ExampleBuilder:
     def __init__(self, source_dir, target_dir,
                  image_dir='images', thumb_dir='images',
                  stdout_dir='.', script_dir='.', rst_dir='.',
+                 sphinx_tag_base='example',
                  template_example=None,
                  template_index=None,
                  contents_file=None,
@@ -270,6 +271,8 @@ class ExampleBuilder:
         self.stdout_dir = stdout_dir
         self.script_dir = script_dir
         self.rst_dir = rst_dir
+
+        self.sphinx_tag_base = sphinx_tag_base
 
         self.contents_file = contents_file
         self.dir_info_file = dir_info_file
@@ -389,7 +392,7 @@ class ExampleBuilder:
         tag = os.path.normpath(example_path).replace('/', '_')
         if tag in ('', '.'):
             tag = 'root'
-        return 'example_' + tag
+        return '_'.join([self.sphinx_tag_base, tag])
 
     #============================================================
     # RST generation scripts

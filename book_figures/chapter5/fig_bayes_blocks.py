@@ -14,7 +14,7 @@ import numpy as np
 import pylab as pl
 from scipy import stats
 
-from astroML.density_estimation import knuth_nbins, histogram_bayesian_blocks
+from astroML.plotting import hist
 
 #------------------------------------------------------------
 # Generate our data: a mix of several Cauchy distributions
@@ -43,23 +43,16 @@ subplots = (211, 212)
 for N, subplot in zip(N_values, subplots):
     ax = fig.add_subplot(subplot)
     xN = x[:N]
-
-    # Compute number of bins via Knuth's rule
-    nbins_K = knuth_nbins(xN)
-
-    # Compute bins via Bayesian Blocks
-    counts, bins_B = histogram_bayesian_blocks(xN)
-
     t = np.linspace(-10, 30, 1000)
 
     # plot the results
     ax.plot(xN, -0.005 * np.ones(len(xN)), '|k', lw=1.5)
-    ax.hist(xN, nbins_K, normed=True,
-            histtype='stepfilled', alpha=0.3,
-            label='Knuth Histogram')
-    ax.hist(xN, bins_B, normed=True,
-            histtype='step', lw=1.5, color='k',
-            label="Bayesian Blocks")
+    hist(xN, bins='knuth', ax=ax, normed=True,
+         histtype='stepfilled', alpha=0.3,
+         label='Knuth Histogram')
+    hist(xN, bins='blocks', ax=ax, normed=True,
+         histtype='step', lw=1.5, color='k',
+         label="Bayesian Blocks")
     ax.plot(t, true_pdf(t), '-', color='black',
             label="Generating Distribution")
 

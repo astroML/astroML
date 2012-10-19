@@ -18,7 +18,8 @@ def main(app):
     EB = ExampleBuilder(source_dir, target_dir,
                         execute_files=plot_gallery,
                         contents_file='contents.txt',
-                        dir_info_file='README.rst')
+                        dir_info_file='README.rst',
+                        sphinx_tag_base='paper_fig')
     EB.run()
                             
 

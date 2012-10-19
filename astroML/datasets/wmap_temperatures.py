@@ -52,7 +52,7 @@ def fetch_wmap_temperatures(masked=False, data_home=None,
     data = hp.read_map(data_file)
 
     if masked:
-        if not os.path.exists(data_file):
+        if not os.path.exists(mask_file):
             if not download_if_missing:
                 raise IOError('mask data not present on disk. '
                               'set download_if_missing=True to download')

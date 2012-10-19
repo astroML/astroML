@@ -13,35 +13,19 @@ the Freedman-Diaconis rule, and Knuth's rule.
 import numpy as np
 import pylab as pl
 from scipy import stats
-from astroML.density_estimation import \
-    scotts_bin_width, freedman_bin_width, knuth_nbins
+from astroML.plotting import hist
 
 
-def plot_labeled_histogram(style, data,
+def plot_labeled_histogram(style, data, name,
                            x, pdf_true, ax=None,
                            hide_x=False,
                            hide_y=False):
-    if style == 'scott':
-        name = 'Scott\'s Rule'
-        dx = scotts_bin_width(data)
-        Nbins = int((data.max() - data.min()) / dx)
-    elif style == 'freedman':
-        name = 'Freedman-Diaconis'
-        dx = freedman_bin_width(data)
-        Nbins = int((data.max() - data.min()) / dx)
-    elif style == 'knuth':
-        name = 'Knuth\'s Rule'
-        Nbins, dx = knuth_nbins(data, True)
-    else:
-        raise ValueError
-
-    print '%s: %i bins' % (name, Nbins)
-
     if ax is not None:
         ax = pl.axes(ax)
 
-    pl.hist(data, Nbins, color='k', histtype='step', normed=True)
-    pl.text(0.99, 0.95, '%s:\n%i bins' % (name, Nbins),
+    counts, bins, patches = hist(data, bins=style, ax=ax,
+                                 color='k', histtype='step', normed=True)
+    ax.text(0.99, 0.95, '%s:\n%i bins' % (name, len(counts)),
             transform=ax.transAxes,
             ha='right', va='top', fontsize=12)
 
@@ -87,11 +71,11 @@ fig.subplots_adjust(hspace=0, left=0.05, right=0.95, wspace=0.05)
 ax = [fig.add_subplot(3, 2, i + 1) for i in range(6)]
 
 # first column: Gaussian distribution
-plot_labeled_histogram('scott', data_G, x, pdf_G,
+plot_labeled_histogram('scotts', data_G, 'Scott\'s Rule', x, pdf_G,
                        ax=ax[0], hide_x=True, hide_y=True)
-plot_labeled_histogram('freedman', data_G, x, pdf_G,
+plot_labeled_histogram('freedman', data_G, 'Freedman-Diaconis', x, pdf_G,
                        ax=ax[2], hide_x=True, hide_y=True)
-plot_labeled_histogram('knuth', data_G, x, pdf_G,
+plot_labeled_histogram('knuth', data_G, 'Knuth\'s Rule', x, pdf_G,
                        ax=ax[4], hide_x=False, hide_y=True)
 
 ax[0].set_title('Gaussian distribution')
@@ -99,11 +83,11 @@ ax[2].set_ylabel('P(x)')
 ax[4].set_xlabel('x')
 
 # second column: non-gaussian distribution
-plot_labeled_histogram('scott', data_NG, x, pdf_NG,
+plot_labeled_histogram('scotts', data_NG, 'Scott\'s Rule', x, pdf_NG,
                        ax=ax[1], hide_x=True, hide_y=True)
-plot_labeled_histogram('freedman', data_NG, x, pdf_NG,
+plot_labeled_histogram('freedman', data_NG, 'Freedman-Diaconis', x, pdf_NG,
                        ax=ax[3], hide_x=True, hide_y=True)
-plot_labeled_histogram('knuth', data_NG, x, pdf_NG,
+plot_labeled_histogram('knuth', data_NG, 'Knuth\'s Rule', x, pdf_NG,
                        ax=ax[5], hide_x=False, hide_y=True)
 
 ax[1].set_title('non-Gaussian distribution')
