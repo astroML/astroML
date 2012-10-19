@@ -170,6 +170,9 @@ This policy exists for two reasons:
     requiring the headache of complicated installation steps.
  2. it serves a didactic purpose: python-only implementations are often easier
     to read and understand than equivalent implementations in C or cython.
+ 3. it enforces the good coding practice of avoiding premature optimization.
+    First make sure the code works (i.e. write it in simple python).  Then
+    create an optimized version in the addons.
 
 If this policy proves especially burdensome in the future, it may be revisited.
 

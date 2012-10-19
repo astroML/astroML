@@ -1,9 +1,10 @@
 """
 Generate examples based on the files in Machine_Learning_Code/book_figures/
 
-We'll look in every directory that starts with 'chapter' and has a file
-called 'contents.txt'.  Within these directories, we'll look for every
-file that has the form 'example*.py'
+We'll first use the 'contents.txt' file to find what subdirectories should
+be used, and in what order.
+Within these directories, we'll again use the file 'contents.txt' to
+execute the figure code in the correct order.
 
 We need to generate the following:
 
@@ -45,8 +46,9 @@ import token, tokenize
 import matplotlib
 matplotlib.use('Agg') #don't display plots
 
-import matplotlib.pyplot as pl
 from matplotlib import image
+
+from exfile import ExecFile
 
 # HACK: for some reason, importing scipy here fixes some errors.
 # if scipy is imported in the execfile statements below and not here,
@@ -266,112 +268,6 @@ def read_contents(contents_file):
     return L
 
 
-class ExecFile(object):
-    """Execute the file and store the output, docstring, and
-    sequence of matplotlib figures
-    """
-    def __init__(self, filename, execute=True):
-        self.filename = filename
-        self.extract_docstring()
-        self.figlist = []
-        self.output = ''
-        if execute:
-            self.execute_file()
-
-    def save_figures(self, fmt):
-        from matplotlib import colors
-        for fig in self.figlist:
-            figfile = fmt % fig.number
-            print "saving", figfile
-            
-            # if black background, save with black background as well.
-            if colors.colorConverter.to_rgb(fig.get_facecolor()) == (0, 0, 0):
-                fig.savefig(figfile,
-                            facecolor='k',
-                            edgecolor='none')
-            else:
-                fig.savefig(figfile)
-
-    def write(self, s):
-        self.output += s
-
-    def flush(self):
-        pass
-
-    def extract_docstring(self):
-        """ Extract a module-level docstring
-        """
-        lines = open(self.filename).readlines()
-        start_row = 0
-        if lines[0].startswith('#!'):
-            lines.pop(0)
-            start_row = 1
-
-        docstring = ''
-        first_par = ''
-        tokens = tokenize.generate_tokens(lines.__iter__().next)
-        for tok_type, tok_content, _, (erow, _), _ in tokens:
-            tok_type = token.tok_name[tok_type]
-            if tok_type in ('NEWLINE', 'COMMENT', 'NL', 'INDENT', 'DEDENT'):
-                continue
-            elif tok_type == 'STRING':
-                docstring = eval(tok_content)
-                # If the docstring is formatted with several paragraphs, extract
-                # the first one:
-                paragraphs = '\n'.join(line.rstrip()
-                                       for line in docstring.split('\n')).split('\n\n')
-                if len(paragraphs) > 0:
-                    first_par = paragraphs[0]
-            break
-
-        self.docstring = docstring
-        self.short_desc = first_par
-        self.end_line = erow + 1 + start_row
-
-
-    def execute_file(self):
-        """Execute the file, catching standard output
-        and matplotlib figures
-        """
-        dirname, fname = os.path.split(self.filename)
-        print 'plotting %s' % fname
-        
-        # close any currently open figures
-        pl.close('all')
-
-        # change to file directory for execution
-        cwd = os.getcwd()
-        stdout = sys.stdout
-
-        try:
-            if dirname:
-                os.chdir(dirname)
-
-            # set stdout to self in order to catch output (with write method)
-            sys.stdout = self
-
-            # execute the file
-            execfile(os.path.basename(self.filename), {'pl' : pl,
-                                                       'plt' : pl,
-                                                       'pylab' : pl})
-
-            fig_mgr_list = matplotlib._pylab_helpers.Gcf.get_all_fig_managers()
-            self.figlist = [manager.canvas.figure for manager in fig_mgr_list]
-            
-            self.figlist = sorted(self.figlist,
-                                  key = lambda fig: fig.number)
-
-        except:
-            print 80*'_'
-            print '%s is not compiling:' % fname
-            traceback.print_exc()
-            print 80*'_'
-        finally:
-            # change back to original directory, and reset sys.stdout
-            sys.stdout = stdout
-            os.chdir(cwd)
-
-
 def generate_figures_rst(app):
     """ Generate the list of examples, contents, and output
 
@@ -391,7 +287,7 @@ def generate_figures_rst(app):
     # create directories if needed
     if not os.path.exists(root_dir):
         os.makedirs(root_dir)
-    if not os.path.exists(code_dir):
+    if ncot os.path.exists(code_dir):
         os.makedirs(code_dir)
 
     root_index = file(os.path.join(root_dir, 'index.rst'), 'w')
@@ -401,9 +297,7 @@ def generate_figures_rst(app):
                     "   :numbered:\n"
                     "   :maxdepth: 2\n")
     
-    chapter_list = sorted([chp for chp in os.listdir(code_dir)
-                           if (os.path.isdir(os.path.join(code_dir,chp))
-                               and chp.startswith('chapter'))])
+    chapter_list = open(os.path.join(code_dir, 'contents.txt')).read().split()
 
     for chapter in chapter_list:
         generate_chapter_rst(chapter, root_index, code_dir,

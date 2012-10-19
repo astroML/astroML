@@ -1,6 +1,6 @@
 """
 Search Algorithm Scaling
-----------------------
+------------------------
 
 This example times and plots the scaling of sorting algorithms.
 """

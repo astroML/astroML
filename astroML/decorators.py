@@ -46,8 +46,11 @@ def pickle_results(filename=None, verbose=True):
         def new_f(*args, **kwargs):
             try:
                 D = cPickle.load(open(filename, 'r'))
+                cache_exists = True
             except:
                 D = {}
+                cache_exists = False
+                
 
             # simple comparison doesn't work in the case of numpy arrays
             Dargs = D.get('args')
@@ -79,6 +82,10 @@ def pickle_results(filename=None, verbose=True):
                 if verbose:
                     print ("@pickle_results: computing results "
                            "and saving to '%s'" % filename)
+                    if cache_exists:
+                        print "  warning: cache file '%s' exists" % filename
+                        print "    - args match:   %s" % args_match
+                        print "    - kwargs match: %s" % kwargs_match
                 retval = f(*args, **kwargs)
                 cPickle.dump(dict(funcname=f.__name__, retval=retval,
                                   args=args, kwargs=kwargs),

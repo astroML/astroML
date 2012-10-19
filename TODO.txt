@@ -2,7 +2,12 @@
 AstroML todo list
 =================
 
-examples: make book title correct!  194 times...
+plot_figures: make book title correct!  194 times...
+
+examples: cleanup
+- datasets
+- tools shown in CIDU
+- plotting/histograms
 
 Core Package
 ------------

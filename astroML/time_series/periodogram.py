@@ -7,7 +7,7 @@ except ImportError:
     import warnings
     warnings.warn("Using slow version of lomb_scargle. Install astroML_addons "
                   "to use an optimized version")
-    from astroML._periodogram import lomb_scargle
+    from astroML.time_series._periodogram import lomb_scargle
 
 
 def lomb_scargle_bootstrap(t, y, dy, omega,

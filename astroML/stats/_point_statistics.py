@@ -1,4 +1,5 @@
 import numpy as np
+from scipy import stats
 
 #from scipy.special import erfinv
 #sigmaG_factor = 1. / (2 * np.sqrt(2) * erfinv(0.5))
