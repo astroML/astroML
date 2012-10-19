@@ -58,7 +58,7 @@ To run unit tests, you will also need nose >= 0.10
 
 Add-on Dependencies
 -------------------
-The fast code in ``astroML_performance`` requires a working C/C++ compiler.
+The fast code in ``astroML_addons`` requires a working C/C++ compiler.
 
 Optional Dependencies
 ---------------------

@@ -37,6 +37,7 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm -rf auto_examples/
 	-rm -rf auto_book_figures/
+	-rm -rf auto_paper_figures/
 	-rm -rf doc/generated/*
 	-rm -rf modules/generated/*
 

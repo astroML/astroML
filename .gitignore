@@ -9,4 +9,5 @@ build
 doc/_build
 doc/auto_examples
 doc/auto_book_figures
+doc/auto_paper_figures
 book_figures/*/*.pkl

@@ -2,8 +2,8 @@
 # License: BSD-style
 # example script from http://astroML.github.com
 """
-Xtreme Deconvolution example
-----------------------------
+Extreme Deconvolution example
+-----------------------------
 This demonstrates extreme deconvolution on a toy dataset.
 """
 import os

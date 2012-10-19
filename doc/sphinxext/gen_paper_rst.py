@@ -2,8 +2,8 @@ import os
 from example_builder import ExampleBuilder
 
 def main(app):
-    target_dir = os.path.join(app.builder.srcdir, 'auto_book_figures')
-    source_dir = os.path.abspath(app.builder.srcdir +  '/../' + 'book_figures')
+    target_dir = os.path.join(app.builder.srcdir, 'auto_paper_figures')
+    source_dir = os.path.abspath(app.builder.srcdir +  '/../' + 'paper_figures')
 
     try:
         plot_gallery = eval(app.builder.config.plot_gallery)

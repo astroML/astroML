@@ -1,6 +1,6 @@
 """
-Xtreme Deconvolution example
-----------------------------
+Extreme Deconvolution example
+-----------------------------
 This demonstrates extreme deconvolution on a toy dataset.
 """
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>

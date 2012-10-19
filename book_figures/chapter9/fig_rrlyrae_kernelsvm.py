@@ -1,6 +1,6 @@
 """
 Kernel SVM Classification of photometry
---------------------------------
+---------------------------------------
 Kernel SVM photometric classification of rr-lyrae stars.  This uses averaged
 photometry from the rr-lyrae catalog and stripe 82 standards catalogs.
 """

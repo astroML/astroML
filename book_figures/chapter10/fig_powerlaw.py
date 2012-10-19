@@ -5,7 +5,8 @@ This shows how to generate power-law light-curves using the Timmer & Koenig
 method.
 
 .. references:
-[1] Timmer, J. & Koenig, M. On Generating Power Law Noise. A&A 300:707
+
+   [1] Timmer, J. & Koenig, M. On Generating Power Law Noise. A&A 300:707
 """
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD

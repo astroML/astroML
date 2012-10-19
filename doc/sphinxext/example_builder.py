@@ -25,20 +25,10 @@ DEFAULT_RST_TEMPLATE = """
 
 %(image_list)s
 
-**Python source code:** 
+**Python source code:** :download:`[download source: %(fname)s] <%(fname)s>`
 
 .. literalinclude:: %(fname)s
     :lines: %(end_line)s-
-
-.. raw:: html
-
-    <div align="right">
-
-[:download:`%(fname)s <%(fname)s>`]
-
-.. raw:: html
-
-    </div>
 
 """
 
@@ -319,6 +309,9 @@ class ExampleBuilder:
         contents_file = os.path.join(contents_dir, self.contents_file)
 
         if not os.path.exists(contents_file):
+            import warning
+            warnings.warn("Contents file not found in %s. "
+                          "Skipping directory" % path)
             return []
 
         if check_for_missing:
@@ -423,6 +416,9 @@ class ExampleBuilder:
         return imlist
 
     def figure_contents(self, path, filelist):
+        toctree =  ("\n\n"
+                    ".. toctree::\n"
+                    "   :hidden:\n\n")
         contents = "\n\n"
 
         for f in filelist:
@@ -430,17 +426,15 @@ class ExampleBuilder:
             rel_thumb = os.path.relpath(self.thumb_filename(f) % 1, path)
             rel_html = os.path.relpath(self.html_filename(f), path)
 
-            contents += (".. toctree::\n"
-                         "   :hidden:\n\n"
-                         "   ./%s\n\n"
-                         ".. figure:: ./%s\n"
+            toctree += "   ./%s\n\n" % os.path.splitext(rel_html)[0]
+
+            contents += (".. figure:: ./%s\n"
                          "    :target: ./%s\n"
                          "\n"
-                         "    :ref:`%s`\n\n" % (os.path.splitext(rel_html)[0],
-                                                rel_thumb,
+                         "    :ref:`%s`\n\n" % (rel_thumb,
                                                 rel_html,
                                                 self.sphinx_tag(f)))
-        return contents
+        return toctree + contents
 
     def subdir_contents(self, path, subdirs):
         subdirs = [os.path.join(path, subdir) for subdir in subdirs]

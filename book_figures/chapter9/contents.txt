@@ -1,5 +1,4 @@
 fig_bayes_DB.py
-#fig_bayes_DB_2d.py
 fig_simple_naivebayes.py
 fig_rrlyrae_naivebayes.py
 fig_rrlyrae_lda.py
@@ -18,7 +17,10 @@ fig_photoz_forest.py
 fig_photoz_boosting.py
 fig_ROC_curve.py
 fig_star_quasar_ROC.py
+
 #fig_gauss_kernel.py
 #fig_neural_network.py
 #fig_photoz_basic.py
 #fig_photoz_bagging.py
+#fig_bayes_DB_2d.py
+

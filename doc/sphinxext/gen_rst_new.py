@@ -17,7 +17,7 @@ def main(app):
 
     EB = ExampleBuilder(source_dir, target_dir,
                         execute_files=plot_gallery,
-                        dir_info_file='README.txt')
+                        dir_info_file='README.rst')
     EB.run()
                             
 
