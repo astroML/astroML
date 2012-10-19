@@ -13,7 +13,7 @@ import pylab as pl
 
 from astroML.datasets import fetch_imaging_sample, fetch_sdss_S82standards
 from astroML.crossmatch import crossmatch
-from astroML.density_estimation import knuth_nbins
+from astroML.plotting import hist
 
 # get imaging data
 image_data = fetch_imaging_sample()
@@ -36,8 +36,8 @@ dist_match = dist[match]
 dist_match *= 3600
 
 ax = pl.axes()
-ax.hist(dist_match, knuth_nbins(dist_match),
-        histtype='stepfilled', ec='k', fc='#AAAAAA')
+hist(dist_match, bins='knuth', ax=ax,
+     histtype='stepfilled', ec='k', fc='#AAAAAA')
 ax.set_xlabel('radius of match (arcsec)')
 ax.set_ylabel('N(r, r+dr)')
 ax.text(0.95, 0.95,

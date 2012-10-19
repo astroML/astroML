@@ -13,7 +13,8 @@ using :class:`astroML.density_estimation.EmpiricalDistribution`
 import numpy as np
 import pylab as pl
 from scipy import stats, interpolate
-from astroML.density_estimation import knuth_nbins, EmpiricalDistribution
+from astroML.plotting import hist
+from astroML.density_estimation import EmpiricalDistribution
 
 #------------------------------------------------------------
 # Create a distribution and clone it
@@ -58,7 +59,8 @@ indices = np.linspace(0, Ndata - 1, 20).astype(int)
 
 # plot a histogram of the input
 ax = fig.add_subplot(221)
-ax.hist(x, knuth_nbins(x), histtype='stepfilled', ec='k', fc='#AAAAAA')
+hist(x, bins='knuth', ax=ax,
+     histtype='stepfilled', ec='k', fc='#AAAAAA')
 ax.set_ylim(0, 300)
 ax.set_title('Input data distribution')
 ax.set_xlabel('x')
@@ -88,11 +90,13 @@ ax.set_ylabel('x')
 
 # plot the resulting cloned distribution
 ax = fig.add_subplot(224)
-ax.hist(x, knuth_nbins(x), histtype='stepfilled', normed=True,
-        ec='#AAAAAA', fc='#DDDDDD',
-        label='input data')
-ax.hist(x_cloned, knuth_nbins(x_cloned), histtype='step', normed=True,
-        color='k', label='cloned data')
+hist(x, bins='knuth', ax=ax,
+     histtype='stepfilled', normed=True,
+     ec='#AAAAAA', fc='#DDDDDD',
+     label='input data')
+hist(x_cloned, bins='knuth', ax=ax,
+     histtype='step', normed=True,
+     color='k', label='cloned data')
 ax.set_title('Cloned Distribution')
 ax.set_xlabel('x')
 ax.set_ylabel('p(x)dx')

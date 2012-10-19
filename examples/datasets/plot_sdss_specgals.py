@@ -56,12 +56,11 @@ pl.ylabel('rPetrosian')
 
 #------------------------------------------------------------
 # plot a histogram of the redshift
-
-from astroML.density_estimation import knuth_nbins
+from astroML.plotting import hist
 
 pl.figure()
-pl.hist(data['z'], knuth_nbins(data['z']),
-        histtype='stepfilled', ec='k', fc='#F5CCB0')
+hist(data['z'], bins='knuth',
+     histtype='stepfilled', ec='k', fc='#F5CCB0')
 pl.xlim(0, 0.4)
 pl.xlabel('z (redshift)')
 pl.ylabel('dN/dz(z)')

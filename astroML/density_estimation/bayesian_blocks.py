@@ -87,6 +87,10 @@ def histogram_bayesian_blocks(t, fitness=nonbinned_fitness, p0=0.0):
         array containing counts in each of the N bins
     bins : ndarray
         array containing the (N+1) bin edges
+
+    See Also
+    --------
+    astroML.plotting.hist
     """
     t = np.array(t)
     assert t.ndim == 1
@@ -144,33 +148,3 @@ def histogram_bayesian_blocks(t, fitness=nonbinned_fitness, p0=0.0):
     bins = edges[change_points]
 
     return counts, bins
-
-if __name__ == '__main__':
-    import pylab as pl
-    np.random.seed(0)
-
-    width = 1
-
-    x = width * np.random.random(2000)
-    x[0::20] *= 0.05
-    x[0::20] += 0.25 * width
-
-    x[1::20] *= 0.05
-    x[1::20] += 0.50 * width
-
-    x[2::20] *= 0.05
-    x[2::20] += 0.75 * width
-
-    ax = pl.subplot(211)
-    ax.hist(x, bins=50, normed=True, alpha=0.5)
-
-    ax = pl.subplot(212, sharex=ax)
-    counts, bins = histogram_bayesian_blocks(x, p0=0.01)
-    ax.hist(x, bins=bins, normed=True, alpha=0.5)
-
-    ax.set_xlim(-0.1 * width, 1.1 * width)
-    ax.set_ylim(0, 2.2)
-
-    ax.xaxis.set_major_locator(pl.MultipleLocator(0.1))
-    ax.xaxis.set_minor_locator(pl.MultipleLocator(0.05))
-    pl.show()

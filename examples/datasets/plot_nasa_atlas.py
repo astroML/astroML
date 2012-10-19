@@ -54,12 +54,11 @@ pl.ylabel('r')
 
 #------------------------------------------------------------
 # plot a histogram of the redshift
-
-from astroML.density_estimation import knuth_nbins
+from astroML.plotting import hist
 
 pl.figure()
-pl.hist(data['Z'], knuth_nbins(data['Z']),
-        histtype='stepfilled', ec='k', fc='#F5CCB0')
+hist(data['Z'], bins='knuth',
+     histtype='stepfilled', ec='k', fc='#F5CCB0')
 pl.xlabel('z')
 pl.ylabel('N(z)')
 

@@ -15,8 +15,6 @@ import numpy as np
 import pylab as pl
 from scipy.stats import norm
 
-from astroML.density_estimation import knuth_nbins
-
 #------------------------------------------------------------
 # Generate the uniform samples
 N = [2, 3, 10]

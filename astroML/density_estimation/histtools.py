@@ -5,18 +5,22 @@ import numpy as np
 from scipy.special import gammaln
 from scipy import optimize
 
-def scotts_bin_width(data):
+def scotts_bin_width(data, return_bins=False):
     r"""Return the optimal histogram bin width using Scott's rule:
 
     Parameters
     ----------
     data : array-like, ndim=1
         observed (one-dimensional) data
+    return_bins : bool (optional)
+        if True, then return the bin edges
 
     Returns
     -------
     width : float
         optimal bin width using Scott's rule
+    bins : ndarray
+        bin edges: returned if `return_bins` is True
 
     Notes
     -----
@@ -30,8 +34,9 @@ def scotts_bin_width(data):
 
     See Also
     --------
-    knuth_nbins
+    knuth_bin_width
     freedman_bin_width
+    astroML.plotting.hist
     """
     data = np.asarray(data)
     if data.ndim != 1:
@@ -40,20 +45,33 @@ def scotts_bin_width(data):
     n = data.size
     sigma = np.std(data)
 
-    return 3.5 * sigma * 1. / (n ** (1./ 3))
+    dx = 3.5 * sigma * 1. / (n ** (1./ 3))
 
-def freedman_bin_width(data):
+    if return_bins:
+        Nbins = np.ceil((data.max() - data.min()) * 1. / dx)
+        Nbins = max(1, Nbins)
+        bins = data.min() + dx * np.arange(Nbins + 1)
+        return dx, bins
+    else:
+        return dx
+
+
+def freedman_bin_width(data, return_bins=False):
     r"""Return the optimal histogram bin width using the Freedman-Diaconis rule 
 
     Parameters
     ----------
     data : array-like, ndim=1
         observed (one-dimensional) data
+    return_bins : bool (optional)
+        if True, then return the bin edges
 
     Returns
     -------
     width : float
         optimal bin width using Scott's rule
+    bins : ndarray
+        bin edges: returned if `return_bins` is True
 
     Notes
     -----
@@ -67,8 +85,9 @@ def freedman_bin_width(data):
 
     See Also
     --------
-    knuth_nbins
+    knuth_bin_width
     scotts_bin_width
+    astroML.plotting.hist
     """
     data = np.asarray(data)
     if data.ndim != 1:
@@ -82,11 +101,19 @@ def freedman_bin_width(data):
     i25 = indices[n/4 - 1]
     i75 = indices[(3 * n) / 4 - 1]
     
-    return 2 * (data[i75] - data[i25]) * 1. / (n ** (1./ 3))
+    dx = 2 * (data[i75] - data[i25]) * 1. / (n ** (1./ 3))
+
+    if return_bins:
+        Nbins = np.ceil((data.max() - data.min()) * 1. / dx)
+        Nbins = max(1, Nbins)
+        bins = data.min() + dx * np.arange(Nbins + 1)
+        return dx, bins
+    else:
+        return dx
 
 
 class KnuthF:
-    r"""Class which implements the function minimized by knuth_nbins
+    r"""Class which implements the function minimized by knuth_bin_width
 
     Parameters
     ----------
@@ -108,7 +135,8 @@ class KnuthF:
 
     See Also
     --------
-    knuth_nbins
+    knuth_bin_width
+    astroML.plotting.hist
     """
     def __init__(self, data):
         self.data = np.array(data, copy=True)
@@ -116,6 +144,10 @@ class KnuthF:
             raise ValueError("data should be 1-dimensional")
         self.data.sort()
         self.n = self.data.size
+
+    def bins(self, M):
+        """Return the bin edges given a width dx"""
+        return np.linspace(self.data[0], self.data[-1], int(M) + 1)
 
     def __call__(self, M):
         return self.eval(M)
@@ -125,45 +157,46 @@ class KnuthF:
 
         Parameters
         ----------
-        M : integer
-            number of bins
+        dx : float
+            Width of bins
 
         Returns
         -------
         F : float
-            evaluation of the Knuth function
+            evaluation of the negative Knuth likelihood function:
+            smaller values indicate a better fit.
         """
         M = int(M)
-        if M <= 0:
-            return -np.inf
-
-        nk, edges = np.histogram(self.data, int(M))
+        bins = self.bins(M)
+        nk, bins = np.histogram(self.data, bins)
     
-        return (self.n * np.log(M)
-                + gammaln(0.5 * M)
-                - M * gammaln(0.5)
-                - gammaln(self.n + 0.5 * M)
-                + np.sum(gammaln(nk + 0.5)))
+        return -(self.n * np.log(M)
+                 + gammaln(0.5 * M)
+                 - M * gammaln(0.5)
+                 - gammaln(self.n + 0.5 * M)
+                 + np.sum(gammaln(nk + 0.5)))
     
 
-def knuth_nbins(data, return_width=False):
+def knuth_bin_width(data, return_bins=False):
     r"""Return the optimal histogram bin width using Knuth's rule [1]_
 
     Parameters
     ----------
     data : array-like, ndim=1
         observed (one-dimensional) data
+    return_bins : bool (optional)
+        if True, then return the bin edges
 
     Returns
     -------
-    N : integer
-        optimal number of bins
-    width : float
-        optimal bin width.  Only returned if return_width == True
+    dx : float
+        optimal bin width. Bins are measured starting at the first data point.
+    bins : ndarray
+        bin edges: returned if `return_bins` is True
 
     Notes
     -----
-    The optimal bin width is the value M which maximizes the function
+    The optimal number of bins is the value M which maximizes the function
 
     .. math::
         F(M|x,I) = n\log(M) + \log\Gamma(\frac{M}{2})
@@ -186,18 +219,13 @@ def knuth_nbins(data, return_width=False):
     scotts_bin_width
     """
     knuthF = KnuthF(data)
+    dx0, bins0 = freedman_bin_width(data, True)
+    M0 = len(bins0) - 1
+    M = optimize.fmin(knuthF, len(bins0))[0]
+    bins = knuthF.bins(M)
+    dx = bins[1] - bins[0]
 
-    dmin = knuthF.data[0]
-    dmax = knuthF.data[-1]
-
-    F = lambda M: -knuthF(M)
-
-    width = freedman_bin_width(data)
-    M0 = int((dmax - dmin) / width)
-
-    M = int(optimize.fmin(F, M0)[0])
-
-    if return_width:
-        return M, (dmax - dmin) * 1. / M
+    if return_bins:
+        return dx, bins
     else:
-        return M
+        return dx
