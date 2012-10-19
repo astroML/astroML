@@ -5,6 +5,7 @@ import numpy as np
 from scipy.special import gammaln
 from scipy import optimize
 
+
 def scotts_bin_width(data, return_bins=False):
     r"""Return the optimal histogram bin width using Scott's rule:
 
@@ -229,3 +230,70 @@ def knuth_bin_width(data, return_bins=False):
         return dx, bins
     else:
         return dx
+
+
+def histogram(a, bins=10, range=None, **kwargs):
+    """Enhanced histogram
+
+    This is a histogram function that enables the use of more sophisticated
+    algorithms for determining bins.  Aside from the `bins` argument allowing
+    a string specified how bins are computed, the parameters are the same
+    as numpy.histogram().
+
+    Parameters
+    ----------
+    a : array_like
+        array of data to be histogrammed
+
+    bins : int or list or str (optional)
+        If bins is a string, then it must be one of:
+        'blocks' : use bayesian blocks for dynamic bin widths
+        'knuth' : use Knuth's rule to determine bins
+        'scotts' : use Scott's rule to determine bins
+        'freedman' : use the Freedman-diaconis rule to determine bins
+
+    range : tuple or None (optional)
+        the minimum and maximum range for the histogram.  If not specified,
+        it will be (x.min(), x.max())
+
+    other keyword arguments are described in numpy.hist().
+
+    Returns
+    -------
+    hist : array
+        The values of the histogram. See `normed` and `weights` for a
+        description of the possible semantics.
+    bin_edges : array of dtype float
+        Return the bin edges ``(length(hist)+1)``.
+
+    See Also
+    --------
+    numpy.histogram
+    astroML.plotting.hist
+    """
+    # TODO: use an event-based Bayesian Blocks fitness function to allow for
+    #       data with repeated values (see ValueError below)
+    a = np.asarray(a)
+
+    # if range is specified, we need to truncate the data for
+    # the bin-finding routines
+    if (range is not None and
+             (bins in ['blocks', 'knuth', 'scotts', 'freedman'])):
+        a = a[(a >= range[0]) & (a <= range[1])]
+
+    if bins == 'blocks':
+        unique = np.unique(a)
+        if unique.size < a.size:
+            raise ValueError("bins='blocks' does not yet support data "
+                             "with repeated values")
+        counts, bins = histogram_bayesian_blocks(a)
+    elif bins == 'knuth':
+        da, bins = knuth_bin_width(a, True)
+    elif bins == 'scotts':
+        da, bins = scotts_bin_width(a, True)
+    elif bins == 'freedman':
+        da, bins = freedman_bin_width(a, True)
+    elif isinstance(bins, str):
+        raise ValueError("unrecognized bin code: '%s'" % bins)
+
+    return np.histogram(a, bins, range, **kwargs)

@@ -131,9 +131,9 @@ def hist_with_fit(data, xfit, yfit, bins=None, c=None, fade=0.5, normed=True,
     else:
         histtype = 'step'
 
-    hist = ax.hist(data, bins, histtype=histtype,
-                   lw=0, fc=c_fade, alpha=0.5, normed=normed,
-                   label=label)
+    hist = hist(data, bins, ax=ax, histtype=histtype,
+                lw=0, fc=c_fade, alpha=0.5, normed=normed,
+                label=label)
     plot = ax.plot(xfit, yfit, c=c)
 
     return hist, plot
