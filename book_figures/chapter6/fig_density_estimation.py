@@ -11,8 +11,8 @@ import numpy as np
 import pylab as pl
 from scipy import stats
 
-from astroML.density_estimation import \
-    KDE, KNeighborsDensity, histogram_bayesian_blocks
+from astroML.density_estimation import KDE, KNeighborsDensity
+from astroML.plotting import hist
 
 #------------------------------------------------------------
 # Generate our data: a mix of several Cauchy distributions
@@ -45,9 +45,6 @@ for N, k, subplot in zip(N_values, k_values, subplots):
     xN = x[:N]
     t = np.linspace(-10, 30, 1000)
 
-    # Compute bins via Bayesian Blocks
-    counts, bins_B = histogram_bayesian_blocks(xN)
-
     # Compute density with KDE
     kde = KDE('gaussian', h=0.1).fit(xN[:, None])
     dens_kde = kde.eval(t[:, None]) / N
@@ -60,9 +57,9 @@ for N, k, subplot in zip(N_values, k_values, subplots):
     ax.plot(t, true_pdf(t), ':', color='black', zorder=3,
             label="Generating Distribution")
     ax.plot(xN, -0.005 * np.ones(len(xN)), '|k', lw=1.5)
-    ax.hist(xN, bins_B, normed=True, zorder=1,
-            histtype='stepfilled', lw=1.5, color='k', alpha=0.2,
-            label="Bayesian Blocks")
+    hist(xN, bins='blocks', ax=ax, normed=True, zorder=1,
+         histtype='stepfilled', lw=1.5, color='k', alpha=0.2,
+         label="Bayesian Blocks")
     ax.plot(t, dens_nbrs, '-', lw=2, color='gray', zorder=2,
             label="Nearest Neighbors (k=%i)" % k)
     ax.plot(t, dens_kde, '-', color='black', zorder=3,

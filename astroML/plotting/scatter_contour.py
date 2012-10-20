@@ -55,13 +55,13 @@ def scatter_contour(x, y,
 
     i_min = np.argmin(levels)
 
-    # plot a zero-width line: this gives us the outer polygon to
+    # draw a zero-width line: this gives us the outer polygon to
     # reduce the number of points we draw
     # somewhat hackish... we could probably get the same info from
-    # the filled contour.
-    C = ax.contour(H.T, levels[i_min:i_min + 1],
-                   linewidths=0, extent=extent)
-    outer_poly = C.allsegs[0][0]
+    # the filled contour below.
+    outline = ax.contour(H.T, levels[i_min:i_min + 1],
+                         linewidths=0, extent=extent)
+    outer_poly = outline.allsegs[0][0]
 
     ax.contourf(H.T, levels, extent=extent, **contour_args)
     X = np.hstack([x[:, None], y[:, None]])

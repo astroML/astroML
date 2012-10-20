@@ -2,6 +2,7 @@
 Tools for working with distributions
 """
 import numpy as np
+from astroML.density_estimation import bayesian_blocks
 from scipy.special import gammaln
 from scipy import optimize
 
@@ -286,7 +287,7 @@ def histogram(a, bins=10, range=None, **kwargs):
         if unique.size < a.size:
             raise ValueError("bins='blocks' does not yet support data "
                              "with repeated values")
-        counts, bins = histogram_bayesian_blocks(a)
+        bins = bayesian_blocks(a)
     elif bins == 'knuth':
         da, bins = knuth_bin_width(a, True)
     elif bins == 'scotts':

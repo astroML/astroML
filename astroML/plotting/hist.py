@@ -4,7 +4,7 @@ from astroML.plotting.colortools import get_faded, colorWheel
 
 from astroML.density_estimation import\
     scotts_bin_width, freedman_bin_width,\
-    knuth_bin_width, histogram_bayesian_blocks
+    knuth_bin_width, bayesian_blocks
 
 def hist(x, bins=10, range=None, *args, **kwargs):
     """Enhanced histogram
@@ -59,7 +59,7 @@ def hist(x, bins=10, range=None, *args, **kwargs):
         if unique.size < x.size:
             raise ValueError("bins='blocks' does not yet support data "
                              "with repeated values")
-        counts, bins = histogram_bayesian_blocks(x)
+        bins = bayesian_blocks(x)
     elif bins == 'knuth':
         dx, bins = knuth_bin_width(x, True)
     elif bins == 'scotts':
