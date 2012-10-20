@@ -2,6 +2,17 @@
 Installation of astroML
 =======================
 
+The astroML project is split into two components.  The core ``astroML``
+library is
+written in python only, and is designed to be very easy to install for
+any users, even those who don't have a working C or fortran compiler.
+A companion library, ``astroML_addons``, can be optionally installed for
+increased performance on certain algorithms.  Every algorithm
+in ``astroML_addons`` exists in the core ``astroML`` implementation, but the
+``astroML_addons`` library contains faster and more efficient implementations.
+Furthermore, if ``astroML_addons`` is installed on your system, the core
+``astroML`` library will import and use the faster routines by default.
+
 
 
 Important Links

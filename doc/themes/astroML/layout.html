@@ -57,7 +57,7 @@ $(document).ready(function(){
 	$(".toggle_container").hide();
 
 	$(".toggle_trigger").click(function(){
-		$(this).toggleClass("active").next(".toggle_container").slideToggle("slow");
+		$(this).toggleClass("active").next(".toggle_container").slideToggle("fast");
                 return false; <!-- Prevent the link from being followed -->
 	});
 
@@ -139,9 +139,8 @@ $(document).ready(function(){
         {% else %}
         <h3>Headline</h3>
 
-	<p> <font color="FF0000"> This website is currently in draft form
-	    for the purpose of review; please do not
-	    distribute the username and password.</font></p>
+	<p>astroML 0.1 has been released!  Get the source on
+	   <a href="http://github.com/astroML/astroML">Github</a></p>
 
         {% endif %}
 

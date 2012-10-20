@@ -25,6 +25,10 @@ DEFAULT_RST_TEMPLATE = """
 
 %(image_list)s
 
+**Code output:**
+
+.. literalinclude:: %(stdout)s
+
 **Python source code:** :download:`[download source: %(fname)s] <%(fname)s>`
 
 .. literalinclude:: %(fname)s
@@ -558,6 +562,7 @@ class ExampleBuilder:
                        for f in figure_list]
 
         fname = os.path.split(path)[1]
+        stdout = os.path.split(stdout_file)[1]
         docstring = EF.docstring
         if docstring == '':
             docstring = '\n'.join([fname, '-' * len(fname), ''])
@@ -566,6 +571,7 @@ class ExampleBuilder:
         rst_file.write(self.template_example %
                        dict(sphinx_tag=self.sphinx_tag(path),
                             docstring=docstring,
+                            stdout=stdout,
                             fname=fname,
                             image_list=self.image_list(figure_list),
                             end_line=EF.end_line))

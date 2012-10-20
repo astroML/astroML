@@ -1,6 +1,55 @@
 import os
 from example_builder import ExampleBuilder
 
+RST_TEMPLATE = """
+
+.. _%(sphinx_tag)s:
+
+%(docstring)s
+
+%(image_list)s
+
+.. raw:: html
+    
+    <div class="toggle_trigger"><a href="#">
+
+**Code output:**
+
+.. raw:: html
+
+    </a></div>
+    <div class="toggle_container">
+
+.. literalinclude:: %(stdout)s
+
+.. raw:: html
+
+    </div>
+    <div class="toggle_trigger"><a href="#">
+
+**Python source code:**
+
+.. raw:: html
+
+    </a></div>
+    <div class="toggle_container">
+
+.. literalinclude:: %(fname)s
+    :lines: %(end_line)s-
+
+.. raw:: html
+
+    </div>
+    <div align="right">
+
+:download:`[download source: %(fname)s] <%(fname)s>`
+
+.. raw:: html
+    
+    </div>
+
+"""
+
 def main(app):
     target_dir = os.path.join(app.builder.srcdir, 'auto_examples')
     source_dir = os.path.abspath(app.builder.srcdir +  '/../' + 'examples')
@@ -18,7 +67,8 @@ def main(app):
     EB = ExampleBuilder(source_dir, target_dir,
                         execute_files=plot_gallery,
                         dir_info_file='README.rst',
-                        sphinx_tag_base='example')
+                        sphinx_tag_base='example',
+                        template_example=RST_TEMPLATE)
     EB.run()
                             
 
