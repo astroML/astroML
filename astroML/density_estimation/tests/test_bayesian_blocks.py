@@ -4,7 +4,6 @@ from astroML.density_estimation import bayesian_blocks
 
 
 def test_single_change_point():
-    # make sure the correct change point is found for a simple distribution
     np.random.seed(0)
     x = np.concatenate([np.random.random(100),
                         1 + np.random.random(200)])
@@ -28,7 +27,7 @@ def test_duplicate_events():
     assert_allclose(bins1, bins2)
 
 
-def test_measures_fitness():
+def test_measures_fitness_homoscedastic():
     np.random.seed(0)
     t = np.linspace(0, 1, 11)
     x = np.exp(-0.5 * (t - 0.5) ** 2 / 0.01 ** 2)
@@ -38,3 +37,28 @@ def test_measures_fitness():
     bins = bayesian_blocks(t, x, sigma, fitness='measures')
 
     assert_allclose(bins, [0, 0.45, 0.55, 1])
+
+
+def test_measures_fitness_heteroscedastic():
+    np.random.seed(1)
+    t = np.linspace(0, 1, 11)
+    x = np.exp(-0.5 * (t - 0.5) ** 2 / 0.01 ** 2)
+    sigma = 0.02 + 0.02 * np.random.random(len(x))
+    x = np.random.normal(x, sigma)
+
+    bins = bayesian_blocks(t, x, sigma, fitness='measures')
+
+    assert_allclose(bins, [0, 0.45, 0.55, 1])
+
+
+def test_regular_events():
+    np.random.seed(0)
+    dt = 0.01
+    steps = np.concatenate([np.unique(np.random.randint(0, 500, 100)),
+                            np.unique(np.random.randint(500, 1000, 200))])
+    t = dt * steps
+
+    bins = bayesian_blocks(t, fitness='regular_events', dt=dt)
+
+    assert_(len(bins) == 3)
+    assert_allclose(bins[1], 5, rtol=0.05)
