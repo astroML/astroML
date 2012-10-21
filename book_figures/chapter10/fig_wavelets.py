@@ -12,8 +12,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_LIGO_bigdog
-from astroML.fourier import FT_continuous, IFT_continuous
-from astroML.wavelets import sinegauss
+from astroML.fourier import FT_continuous, IFT_continuous, sinegauss
 
 #------------------------------------------------------------
 # Set up the wavelets

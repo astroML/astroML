@@ -11,8 +11,7 @@ Compute the time/frequency power spectral density of the chirp signal
 import numpy as np
 from matplotlib import pyplot as plt
 
-from astroML.fourier import FT_continuous, IFT_continuous
-from astroML.wavelets import wavelet_PSD
+from astroML.fourier import FT_continuous, IFT_continuous, wavelet_PSD
 
 
 #------------------------------------------------------------

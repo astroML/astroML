@@ -77,17 +77,10 @@ Filters: :mod:`astroML.filters`
    :members:
    :inherited-members:
 
-Fourier Series: :mod:`astroML.filters`
-======================================
+Fourier and Wavelet Transforms: :mod:`astroML.fourier`
+======================================================
 
 .. automodule:: astroML.fourier
-   :members:
-   :inherited-members:
-
-Wavelets: :mod:`astroML.wavelets`
-=================================
-
-.. automodule:: astroML.wavelets
    :members:
    :inherited-members:
 

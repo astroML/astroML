@@ -13,8 +13,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy import fftpack
 
-from astroML.wavelets import sinegauss, sinegauss_FT
-from astroML.fourier import FT_continuous
+from astroML.fourier import FT_continuous, sinegauss, sinegauss_FT
 
 #------------------------------------------------------------
 # Choose parameters for the wavelet

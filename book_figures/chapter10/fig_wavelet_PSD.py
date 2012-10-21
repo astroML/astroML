@@ -13,8 +13,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_LIGO_bigdog
-from astroML.fourier import FT_continuous, IFT_continuous
-from astroML.wavelets import sinegauss, sinegauss_FT, wavelet_PSD
+from astroML.fourier import\
+    FT_continuous, IFT_continuous, sinegauss, sinegauss_FT, wavelet_PSD
 
 #------------------------------------------------------------
 # Sample the function: localized noise
