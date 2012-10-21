@@ -1,10 +1,10 @@
 import numpy as np
-import matplotlib.pyplot as pl
+from matplotlib import pyplot as plt
 from matplotlib import ticker
 
-def densityplot(x, y, bins=None, cmap=pl.cm.jet, ax=None, **kwargs):
+def densityplot(x, y, bins=None, cmap=plt.cm.jet, ax=None, **kwargs):
     if ax is None:
-        ax = pl.gca()
+        ax = plt.gca()
 
     H, xbins, ybins = np.histogram2d(x, y, bins)
     ax.imshow(H.T, origin='lower',
@@ -13,7 +13,7 @@ def densityplot(x, y, bins=None, cmap=pl.cm.jet, ax=None, **kwargs):
 
 def contourhist(x, y, bins=None, ax=None, colors=None):
     if ax is None:
-        ax = pl.gca()
+        ax = plt.gca()
 
     H, xbins, ybins = np.histogram2d(x, y, bins)
 
@@ -31,7 +31,7 @@ def multiscatter(data, labels=None,
     Make a multiple-panel scatter-plot
     """
     if fig is None:
-        fig = pl.figure(figsize=(10,10))
+        fig = plt.figure(figsize=(10,10))
 
     n_samples, n_features = data.shape
 
@@ -75,7 +75,7 @@ def multidensity(data, labels=None, bins=None,
     Make a multiple-panel scatter-plot
     """
     if fig is None:
-        fig = pl.figure(figsize=(10,10))
+        fig = plt.figure(figsize=(10,10))
 
     n_samples, n_features = data.shape
 
@@ -126,7 +126,7 @@ def multicontour(data, labels=None, bins=None,
     Make a multiple-panel scatter-plot
     """
     if fig is None:
-        fig = pl.figure(figsize=(10,10))
+        fig = plt.figure(figsize=(10,10))
 
     n_samples, n_features = data.shape
 

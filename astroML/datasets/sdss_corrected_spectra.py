@@ -4,7 +4,6 @@ import numpy as np
 from . import get_data_home
 
 DATA_URL = 'http://www.astro.washington.edu/users/vanderplas/spec4000.npz'
-
 ARCHIVE_FILE = 'spec4000.npz'
 
 def reconstruct_spectra(data):

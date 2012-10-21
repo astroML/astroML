@@ -1,4 +1,4 @@
-import pylab as pl
+from matplotlib import pyplot as plt
 import numpy as np
 
 from .likelihood import convert_to_stdev
@@ -8,7 +8,7 @@ def plot_mcmc_contours(x, y, ax=None,
                        levels=[0.683, 0.955],
                        bins=20, **contour_args):
     if ax is None:
-        ax = pl.gca()
+        ax = plt.gca()
 
     H, xbins, ybins = np.histogram2d(x, y, bins=bins)
 
@@ -25,7 +25,7 @@ def plot_mcmc(traces, labels=None, limits=None, true_values=None,
               levels=[0.683, 0.955], bins=20,
               bounds=[0.08, 0.08, 0.95, 0.95], **kwargs):
     if fig is None:
-        fig = pl.figure(figsize=(8, 8))
+        fig = plt.figure(figsize=(8, 8))
 
     if limits is None:
         limits = [(t.min(), t.max()) for t in traces]
@@ -53,7 +53,7 @@ def plot_mcmc(traces, labels=None, limits=None, true_values=None,
                                dx, dy])
             
             if scatter:
-                pl.scatter(traces[i], traces[j], **kwargs)
+                plt.scatter(traces[i], traces[j], **kwargs)
 
             if contour:
                 H, xbins, ybins = np.histogram2d(traces[i], traces[j],
@@ -69,12 +69,12 @@ def plot_mcmc(traces, labels=None, limits=None, true_values=None,
             if i == 0:
                 ax.set_ylabel(labels[j])
             else:
-                ax.yaxis.set_major_formatter(pl.NullFormatter())
+                ax.yaxis.set_major_formatter(plt.NullFormatter())
 
             if j == num_traces - 1:
                 ax.set_xlabel(labels[i])
             else:
-                ax.xaxis.set_major_formatter(pl.NullFormatter())
+                ax.xaxis.set_major_formatter(plt.NullFormatter())
 
             if true_values is not None:
                 ax.plot(limits[i], [true_values[j], true_values[j]], ':k', lw=1)

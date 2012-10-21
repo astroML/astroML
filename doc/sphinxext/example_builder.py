@@ -15,7 +15,7 @@ import matplotlib
 matplotlib.use('Agg') #don't display plots
 
 from matplotlib import image
-import pylab as plt
+from matplotlib import pyplot as plt
 
 DEFAULT_RST_TEMPLATE = """
 

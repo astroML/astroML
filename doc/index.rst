@@ -102,6 +102,16 @@ This project was started in 2012 by Jake VanderPlas to accompany the book
 Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray,
 to be published in early 2013.
 
+.. include:: includes/big_toc_css.rst
+
+User Guide
+==========
+
+.. toctree::
+   :maxdepth: 2
+
+   user_guide/index
+
 Example Plot Galleries
 ======================
 
@@ -112,22 +122,13 @@ Example Plot Galleries
    auto_book_figures/index
    auto_paper_figures/index
 
-Information
+Development
 ===========
 
 .. toctree::
    :maxdepth: 2
 
-   installation
-   development
-
-Appendix
-========
-
-.. toctree::
-   :maxdepth: 2
-
-   contents
+   development/index
 
 Indices and tables
 ==================
@@ -135,7 +136,3 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-
-Authors
-=======
-Jake Vanderplas <vanderplas@astro.washington.edu> http://jakevdp.github.com

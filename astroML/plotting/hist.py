@@ -1,5 +1,5 @@
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.plotting.colortools import get_faded, colorWheel
 
 from astroML.density_estimation import\
@@ -46,7 +46,7 @@ def hist(x, bins=10, range=None, *args, **kwargs):
         ax = kwargs['ax']
         del kwargs['ax']
     else:
-        ax = pl.gca()
+        ax = plt.gca()
 
     # if range is specified, we need to truncate the data for
     # the bin-finding routines
@@ -124,7 +124,7 @@ def hist_with_fit(data, xfit, yfit, bins=None, c=None, fade=0.5, normed=True,
     c_fade = get_faded(c, fade)
 
     if ax is None:
-        ax = pl.gca()
+        ax = plt.gca()
 
     if filled:
         histtype = 'stepfilled'

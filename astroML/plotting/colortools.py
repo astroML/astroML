@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as pl
+from matplotlib import pyplot as plt
 from matplotlib.colors import colorConverter, LinearSegmentedColormap
 
 def get_faded(c, fade=0.5):
@@ -14,7 +14,7 @@ class ColorWheel_gen:
 
     def next(self, fade=0, ax=None):
         if ax is None:
-            ax = pl.gca()
+            ax = plt.gca()
 
         if ax in self.ax_dict:
             i = (self.ax_dict[ax] + 1) % len(self.colorwheel)
@@ -25,7 +25,7 @@ class ColorWheel_gen:
 
     def current(self, fade=0, ax=None):
         if ax is None:
-            ax = pl.gca()
+            ax = plt.gca()
 
         if ax in self.ax_dict:
             i = (self.ax_dict[ax] + 1) % len(self.colorwheel)
@@ -62,8 +62,8 @@ class Colormap2D:
     of colors.
     """
     def __init__(self, cmap1=RdBu, cmap2=GnRd):
-        self.cmap1 = pl.cm.get_cmap(cmap1)
-        self.cmap2 = pl.cm.get_cmap(cmap2)
+        self.cmap1 = plt.cm.get_cmap(cmap1)
+        self.cmap2 = plt.cm.get_cmap(cmap2)
 
     def __call__(self, X):
         """

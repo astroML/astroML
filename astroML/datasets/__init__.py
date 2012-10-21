@@ -7,7 +7,6 @@ TODO
 """
 
 from .tools import get_data_home
-from .sdss_colors import fetch_sdss_colors_train, fetch_sdss_colors_test
 from .spectrum import fetch_spectrum
 from .sdss_S82standards import fetch_sdss_S82standards
 from .dr7_quasar import fetch_dr7_quasar

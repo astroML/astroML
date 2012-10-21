@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as pl
+from matplotlib import pyplot as plt
 from matplotlib import ticker
 
 def multiimshow(data, extents, labels,
@@ -18,7 +18,7 @@ def multiimshow(data, extents, labels,
         extents[i] gives the extent of feature i
     """
     if fig is None:
-        fig = pl.figure(figsize=(10,10))
+        fig = plt.figure(figsize=(10,10))
 
     n_features = data.ndim
     

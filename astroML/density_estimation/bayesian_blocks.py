@@ -6,8 +6,9 @@ Dynamic programming algorithm for finding the optimal adaptive-width histogram.
 
 Based on Scargle et al 2012 [1]_
 
-.. references::
-   [1] http://adsabs.harvard.edu/abs/2012arXiv1207.5578S
+References
+----------
+.. [1] http://adsabs.harvard.edu/abs/2012arXiv1207.5578S
 """
 import numpy as np
 # TODO: implement other fitness functions from appendix B of Scargle 2012

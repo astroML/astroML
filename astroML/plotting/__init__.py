@@ -1,3 +1,4 @@
+from matplotlib import pyplot as plt
 from hist import hist_with_fit, hist
 from multiscatter import multiscatter, multidensity, multicontour
 from multiimshow import multiimshow
@@ -26,7 +27,7 @@ def plot_tissot_ellipse(longitude, latitude, radius, ax=None, **kwargs):
     from matplotlib.patches import Ellipse
 
     if ax is None:
-        ax = pl.gca()
+        ax = plt.gca()
 
     for long, lat, rad in np.broadcast(longitude, latitude, radius):
         el = Ellipse((long, lat), radius/np.cos(lat), radius, **kwargs)

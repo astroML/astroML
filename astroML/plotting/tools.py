@@ -1,7 +1,7 @@
 import os
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import interpolate
 
 from matplotlib import image
@@ -22,11 +22,11 @@ def devectorize_axes(ax, dpi=None):
     axlim = ax.axis()
 
     # save png covering axis
-    pl.savefig('tmp.png', 
-               format='png',
-               dpi=dpi,
-               bbox_inches=Bbox([extents[:2],
-                                 extents[2:]]))
+    plt.savefig('tmp.png', 
+                format='png',
+                dpi=dpi,
+                bbox_inches=Bbox([extents[:2],
+                                  extents[2:]]))
     im = image.imread('tmp.png')
     os.remove('tmp.png')
 
@@ -86,7 +86,7 @@ def discretize_cmap(cmap, N):
 
 def draw_ellipse(mu, C, scales=[1, 2, 3], ax=None, **kwargs):
     if ax is None:
-        ax = pl.gca()
+        ax = plt.gca()
 
     # find principal components and rotation angle of ellipse
     sigma_x2 = C[0, 0]

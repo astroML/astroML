@@ -26,7 +26,7 @@ RST_TEMPLATE = """
 .. raw:: html
 
     </div>
-    <div class="toggle_trigger"><a href="#">
+    <div class="toggle_trigger" id="start_open"><a href="#">
 
 **Python source code:**
 

@@ -1,5 +1,5 @@
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 def scatter_contour(x, y,
                     levels=10,
@@ -35,7 +35,7 @@ def scatter_contour(x, y,
         axes will be used
     """
     if ax is None:
-        ax = pl.gca()
+        ax = plt.gca()
 
     H, xbins, ybins = np.histogram2d(x, y, **histogram2d_args)
     
