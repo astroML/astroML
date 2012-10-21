@@ -13,7 +13,7 @@ standards catalogs.
 import numpy as np
 from matplotlib import pyplot as plt
 
-from astroML.gmm_bayes import GMMBayes
+from astroML.classification import GMMBayes
 from astroML.decorators import pickle_results
 from astroML.datasets import fetch_rrlyrae_combined
 from astroML.utils import split_samples

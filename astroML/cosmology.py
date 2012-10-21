@@ -31,7 +31,8 @@ class Cosmology:
 
     def _hinv(self, z):
         """
-        dimensionless Hubble constant, used for integration routines
+        dimensionless Hubble constant at redshift z
+        This is used in integration routines
         Defined as in equation 14 from Hogg 1999, and modified
         for non-constant w parameterized linearly with z ( w = w0 + w1*z )
         """
@@ -43,7 +44,7 @@ class Cosmology:
 
     def Dc(self, z):
         """
-        Line of sight comoving distance
+        Line of sight comoving distance at redshift z
         Remains constant with epoch if objects are in the Hubble flow
         """
         if z==0:
@@ -55,7 +56,7 @@ class Cosmology:
 
     def Dm(self, z):
         """
-        Transverse comoving distance
+        Transverse comoving distance at redshift z
         At same redshift but separated by angle dtheta;
         Dm * dtheta is transverse comoving distance
         """
@@ -69,9 +70,9 @@ class Cosmology:
             return self.Dh * np.sinh(sOk * self.Dc(z) / self.Dh ) / sOk
 
     def Dl(self, z):
-        """Luminosity distance (Mpc)"""
+        """Luminosity distance (Mpc) at redshift z"""
         return (1. + z) * self.Dm(z)
 
     def mu(self, z):
-        """Distance Modulus"""
+        """Distance Modulus at redshift z"""
         return 5. * np.log10(self.Dl(z) * 1E6) - 5.

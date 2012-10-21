@@ -1,5 +1,8 @@
 """
-2-point correlation functions
+Correlation Function Routines
+-----------------------------
+This module contains tools to compute 2-point correlation functions using
+the ball-tree from Scikit-learn.
 """
 import numpy as np
 from sklearn.neighbors import BallTree

@@ -59,6 +59,55 @@ Statistical Functions: :mod:`astroML.stats`
 Dimensionality Reduction: :mod:`astroML.dimensionality`
 =======================================================
 
-.. automodule:: astroML.PCA
+.. automodule:: astroML.dimensionality
+   :members:
+   :inherited-members:
+
+Correlation Functions: :mod:`astroML.correlation`
+=================================================
+
+.. automodule:: astroML.correlation
+   :members:
+   :inherited-members:
+
+Filters: :mod:`astroML.filters`
+===============================
+
+.. automodule:: astroML.filters
+   :members:
+   :inherited-members:
+
+Fourier Series: :mod:`astroML.filters`
+======================================
+
+.. automodule:: astroML.fourier
+   :members:
+   :inherited-members:
+
+Wavelets: :mod:`astroML.wavelets`
+=================================
+
+.. automodule:: astroML.wavelets
+   :members:
+   :inherited-members:
+
+Luminosity Functions: :mod:`astroML.lumfunc`
+============================================
+
+.. automodule:: astroML.lumfunc
+   :members:
+   :inherited-members:
+
+Classification: :mod:`astroML.classification`
+=============================================
+
+.. automodule:: astroML.classification
+   :members:
+   :inherited-members:
+
+Resampling: :mod:`astroML.resample`
+===================================
+
+.. automodule:: astroML.resample
    :members:
    :inherited-members:

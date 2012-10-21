@@ -18,7 +18,7 @@ from sklearn.qda import QDA
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
-from astroML.gmm_bayes import GMMBayes
+from astroML.classification import GMMBayes
 
 from sklearn.metrics import precision_recall_curve, roc_curve
 

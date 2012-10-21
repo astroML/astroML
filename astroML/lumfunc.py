@@ -1,5 +1,6 @@
 """
-Luminosity Function Codes
+Luminosity Function Tools
+=========================
 """
 
 import numpy as np
@@ -208,7 +209,7 @@ def bootstrap_Cminus(x, y, xmax, ymax, xbins, ybins,
 # XXX: I can't quite recall what this does...
 #      It was something I used to check the code as I wrote it.
 #      We'll keep it here for now.
-def check_LB_independence(x, y, f_ymax):
+def _check_LB_independence(x, y, f_ymax):
     """
     Parameters
     ----------
