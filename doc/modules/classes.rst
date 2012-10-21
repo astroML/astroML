@@ -11,7 +11,7 @@ can also be found in the :ref:`code examples <example_root>`, the
 
 .. automodule:: astroML
 
-:mod:`sklearn.plotting`: Plotting Functions
+Plotting Functions: :mod:`astroML.plotting`
 ===========================================
 
 .. automodule:: astroML.plotting
@@ -19,45 +19,45 @@ can also be found in the :ref:`code examples <example_root>`, the
    :inherited-members:
  
 
-Density Estimation
-==================
+Density Estimation & Histograms: :mod:`astroML.density_estimation`
+==================================================================
 
 .. automodule:: astroML.density_estimation
    :members:
    :inherited-members:
 
-Linear Fitting
-==============
+Linear Regression & Fitting: :mod:`astroML.linear_model`
+========================================================
 
 .. automodule:: astroML.linear_model
    :members:
    :inherited-members:
 
 
-Loading of Datasets
-===================
+Loading of Datasets: :mod:`astroML.datasets`
+============================================
 
 .. automodule:: astroML.datasets
    :members:
    :inherited-members:
 
 
-Time Series Analysis
-====================
+Time Series Analysis: :mod:`astroML.time_series`
+================================================
 
 .. automodule:: astroML.time_series
    :members:
    :inherited-members:
    
-Statistical Functions
-=====================
+Statistical Functions: :mod:`astroML.stats`
+===========================================
 
 .. automodule:: astroML.stats
    :members:
    :inherited-members:
    
-Principal Component Analysis
-============================
+Dimensionality Reduction: :mod:`astroML.dimensionality`
+=======================================================
 
 .. automodule:: astroML.PCA
    :members:

@@ -542,14 +542,12 @@ class ExampleBuilder:
             open(stdout_file, 'w').write(EF.output)
 
             # save all figures & thumbnails
-            figure_list = EF.save_figures(image_file, thumb_file, 0.2, 150)
-            #figure_list = []
-            #for fig in EF.figlist:
-            #    fig.savefig(image_file % fig.number)
-            #    create_thumbnail(image_file % fig.number,
-            #                     thumb_file % fig.number,
-            #                     0.2, 150)
-            #    figure_list.append(image_file % fig.number)
+            figure_list = EF.save_figures(image_file, thumb_file)
+            
+            # if no figures are created, we need to make a
+            # blank thumb file
+            if len(figure_list) == 0:
+                shutil.copy('images/blank_image.png', thumb_file % 1)
 
         else:
             figure_list = list(glob.glob(image_file % '[1-9]'))

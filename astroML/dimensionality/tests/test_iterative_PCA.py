@@ -1,6 +1,6 @@
 import numpy as np
 from numpy.testing import assert_array_almost_equal
-from astroML.PCA import iterative_pca
+from astroML.dimensionality import iterative_pca
 
 def test_iterative_PCA(n_samples=50, n_features=40):
     np.random.seed(0)
