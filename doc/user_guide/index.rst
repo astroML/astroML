@@ -10,6 +10,8 @@
 
 .. _user_guide:
 
+.. include:: ../includes/big_toc_css.rst
+
 .. toctree::
    :numbered:
 

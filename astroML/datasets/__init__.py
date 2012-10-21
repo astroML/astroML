@@ -1,13 +1,9 @@
 """
 Astronomy Datasets
 ------------------
-
-List of functions:
-TODO
 """
 
 from .tools import get_data_home
-from .spectrum import fetch_spectrum
 from .sdss_S82standards import fetch_sdss_S82standards
 from .dr7_quasar import fetch_dr7_quasar
 from .moving_objects import fetch_moving_objects

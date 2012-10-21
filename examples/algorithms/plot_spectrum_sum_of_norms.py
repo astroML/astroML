@@ -4,17 +4,17 @@ Linear Sum of Gaussians
 
 Fitting a spectrum with a linear sum of gaussians.
 """
-# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
-# License: BSD
-#   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
-#   For more information, see http://astroML.github.com
 from matplotlib import pyplot as plt
-from astroML.datasets import fetch_spectrum
+from astroML.datasets import fetch_vega_spectrum
 from astroML.sum_of_norms import sum_of_norms, norm
 
 # Fetch the data
-x, y = fetch_spectrum()
+x, y = fetch_vega_spectrum()
+
+# truncate the spectrum
+mask = (x >= 2000) & (x < 10000)
+x = x[mask]
+y = y[mask]
 
 for n_gaussians in (10, 50, 100):
     # compute the best-fit linear combination
