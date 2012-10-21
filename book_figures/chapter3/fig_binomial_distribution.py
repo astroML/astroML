@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import binom
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -45,15 +45,15 @@ for (n, b, ls) in zip(n_values, b_values, linestyles):
     # create a binomial distribution
     dist = binom(n, b)
 
-    pl.plot(x, dist.pmf(x), ls=ls, c='black',
+    plt.plot(x, dist.pmf(x), ls=ls, c='black',
             label=r'$b=%.1f,\ n=%i$' % (b, n), linestyle='steps')
 
-pl.xlim(0, 40)
-pl.ylim(0, 0.3)
+plt.xlim(0, 40)
+plt.ylim(0, 0.3)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|b, n)$', fontsize=14)
-pl.title('Binomial Distribution')
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|b, n)$', fontsize=14)
+plt.title('Binomial Distribution')
 
-pl.legend()
-pl.show()
+plt.legend()
+plt.show()

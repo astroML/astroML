@@ -10,7 +10,7 @@ import os
 import cPickle
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
 
 from astroML.decorators import pickle_results
@@ -60,7 +60,7 @@ sample = clf.sample(N)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(left=0.1, right=0.95,
                     bottom=0.1, top=0.95,
                     wspace=0.02, hspace=0.02)
@@ -89,20 +89,20 @@ for i in range(4):
     ax[i].set_xlim(-1, 13)
     ax[i].set_ylim(-6, 16)
 
-    ax[i].xaxis.set_major_locator(pl.MultipleLocator(4))
-    ax[i].yaxis.set_major_locator(pl.MultipleLocator(5))
+    ax[i].xaxis.set_major_locator(plt.MultipleLocator(4))
+    ax[i].yaxis.set_major_locator(plt.MultipleLocator(5))
 
     ax[i].text(0.05, 0.95, titles[i],
                ha='left', va='top', transform=ax[i].transAxes)
 
     if i in (0, 1):
-        ax[i].xaxis.set_major_formatter(pl.NullFormatter())
+        ax[i].xaxis.set_major_formatter(plt.NullFormatter())
     else:
         ax[i].set_xlabel('x')
 
     if i in (1, 3):
-        ax[i].yaxis.set_major_formatter(pl.NullFormatter())
+        ax[i].yaxis.set_major_formatter(plt.NullFormatter())
     else:
         ax[i].set_ylabel('y')
 
-pl.show()
+plt.show()

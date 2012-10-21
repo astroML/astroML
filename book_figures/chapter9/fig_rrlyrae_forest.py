@@ -10,7 +10,7 @@ photometry from the rr-lyrae catalog and stripe 82 standards catalogs.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.ensemble import RandomForestClassifier
 
@@ -133,14 +133,14 @@ print "contamination", contamination
 
 #----------------------------------------------------------------------
 # plot the results
-pl.figure(figsize=(8, 4))
-pl.subplots_adjust(bottom=0.15, top=0.95, hspace=0.0,
+plt.figure(figsize=(8, 4))
+plt.subplots_adjust(bottom=0.15, top=0.95, hspace=0.0,
                    left=0.1, right=0.95, wspace=0.2)
 
-ax = pl.subplot(121)
-pl.scatter(X[-N_plot:, 0], X[-N_plot:, 1], c=y[-N_plot:],
-           s=4, lw=0, cmap=pl.cm.binary, zorder=2)
-pl.clim(-0.5, 1)
+ax = plt.subplot(121)
+plt.scatter(X[-N_plot:, 0], X[-N_plot:, 1], c=y[-N_plot:],
+           s=4, lw=0, cmap=plt.cm.binary, zorder=2)
+plt.clim(-0.5, 1)
 
 clf = classifiers[1][1]
 xlim = (0.7, 1.35)
@@ -156,44 +156,44 @@ Z = Z.reshape(xx.shape)
 #from scipy.ndimage import gaussian_filter
 #Z = gaussian_filter(Z, 2)
 
-pl.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
+plt.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
 
-pl.xlim(xlim)
-pl.ylim(ylim)
+plt.xlim(xlim)
+plt.ylim(ylim)
 
-pl.xlabel('u-g')
-pl.ylabel('g-r')
+plt.xlabel('u-g')
+plt.ylabel('g-r')
 
-pl.text(0.02, 0.02, "depth = %i" % depths[1],
+plt.text(0.02, 0.02, "depth = %i" % depths[1],
         transform=ax.transAxes)
 
-ax = pl.subplot(222)
-pl.plot(Ncolors, completeness[0], 'o-k', label="depth=%i" % depths[0])
-pl.plot(Ncolors, completeness[1], '^--k', label="depth=%i" % depths[1])
+ax = plt.subplot(222)
+plt.plot(Ncolors, completeness[0], 'o-k', label="depth=%i" % depths[0])
+plt.plot(Ncolors, completeness[1], '^--k', label="depth=%i" % depths[1])
 
-ax.xaxis.set_major_locator(pl.MultipleLocator(1))
-ax.yaxis.set_major_locator(pl.MultipleLocator(0.2))
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_locator(plt.MultipleLocator(1))
+ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 
-pl.ylabel('completeness')
-pl.xlim(0.5, 4.5)
-pl.ylim(-0.1, 1.1)
-pl.grid(True)
+plt.ylabel('completeness')
+plt.xlim(0.5, 4.5)
+plt.ylim(-0.1, 1.1)
+plt.grid(True)
 
-ax = pl.subplot(224)
-pl.plot(Ncolors, contamination[0], 'o-k', label="depth=%i" % depths[0])
-pl.plot(Ncolors, contamination[1], '^--k', label="depth=%i" % depths[1])
-pl.legend(prop=dict(size=12),
+ax = plt.subplot(224)
+plt.plot(Ncolors, contamination[0], 'o-k', label="depth=%i" % depths[0])
+plt.plot(Ncolors, contamination[1], '^--k', label="depth=%i" % depths[1])
+plt.legend(prop=dict(size=12),
           loc='lower right',
           bbox_to_anchor=(1.0, 0.79))
 
-ax.xaxis.set_major_locator(pl.MultipleLocator(1))
-ax.yaxis.set_major_locator(pl.MultipleLocator(0.2))
-ax.xaxis.set_major_formatter(pl.FormatStrFormatter('%i'))
-pl.xlabel('N colors')
-pl.ylabel('contamination')
-pl.xlim(0.5, 4.5)
-pl.ylim(-0.1, 1.1)
-pl.grid(True)
+ax.xaxis.set_major_locator(plt.MultipleLocator(1))
+ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))
+ax.xaxis.set_major_formatter(plt.FormatStrFormatter('%i'))
+plt.xlabel('N colors')
+plt.ylabel('contamination')
+plt.xlim(0.5, 4.5)
+plt.ylim(-0.1, 1.1)
+plt.grid(True)
 
-pl.show()
+plt.show()

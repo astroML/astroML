@@ -8,7 +8,7 @@ Matched Filter Burst Search
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 # Hack to fix import issue in older versions of pymc
 import scipy
@@ -91,7 +91,7 @@ true = [b0_true, A_true, T_true, alpha_true]
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(bottom=0.1, top=0.95,
                     left=0.1, right=0.95,
                     hspace=0.05, wspace=0.05)
@@ -111,4 +111,4 @@ ax.set_xlim(0, 100)
 ax.set_xlabel('$t$')
 ax.set_ylabel('$h_{obs}$')
 
-pl.show()
+plt.show()

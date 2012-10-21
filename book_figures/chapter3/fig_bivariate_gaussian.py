@@ -10,7 +10,7 @@ gaussian distribution.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
 from astroML.stats.random import bivariate_normal
 
@@ -39,12 +39,12 @@ sigma_xy = cov[0, 1]
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(6, 6))
+fig = plt.figure(figsize=(6, 6))
 ax = fig.add_subplot(111)
 
 # plot a 2D histogram/hess diagram of the points
 H, bins = np.histogramdd(x, bins=2 * [np.linspace(-5, 5, 51)])
-ax.imshow(H, origin='lower', cmap=pl.cm.binary, interpolation='nearest',
+ax.imshow(H, origin='lower', cmap=plt.cm.binary, interpolation='nearest',
           extent=[bins[0][0], bins[0][-1], bins[1][0], bins[1][-1]])
 
 # draw 1, 2, 3-sigma ellipses over the distribution
@@ -65,4 +65,4 @@ ax.text(0.25, 0.98, (r"$\sigma_x = %.2f$" % sigma_x + "\n" +
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 
-pl.show()
+plt.show()

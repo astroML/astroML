@@ -5,23 +5,23 @@ Gaussian Kernel Expansion Diagram
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
-pl.figure(facecolor='w')
-ax = pl.axes([0, 0, 1, 1], frameon=False, xticks=[], yticks=[])
-#ax = pl.axes()
+plt.figure(facecolor='w')
+ax = plt.axes([0, 0, 1, 1], frameon=False, xticks=[], yticks=[])
+#ax = plt.axes()
 
-ax.add_patch(pl.Rectangle((-0.5, -0.25), 0.8, 0.4,
+ax.add_patch(plt.Rectangle((-0.5, -0.25), 0.8, 0.4,
                           fc='none', ec='k', lw=2))
-ax.add_patch(pl.Rectangle((-1.75, 0.1), 0.8, 0.4,
+ax.add_patch(plt.Rectangle((-1.75, 0.1), 0.8, 0.4,
                           fc='none', ec='k', lw=2, linestyle='dashed'))
-ax.add_patch(pl.Rectangle((0.8, -0.55), 0.8, 0.4,
+ax.add_patch(plt.Rectangle((0.8, -0.55), 0.8, 0.4,
                           fc='none', ec='k', lw=2, linestyle='dashed'))
-ax.add_patch(pl.Rectangle((-1.3, -0.95), 0.8, 0.4,
+ax.add_patch(plt.Rectangle((-1.3, -0.95), 0.8, 0.4,
                           fc='none', ec='k', lw=2, linestyle='dashed'))
 
 red_pts = np.array([[-0.163, 0.093],
@@ -40,26 +40,26 @@ blue_pts = np.array([[-1.51, 0.17],
 x0 = -0.5 + 0.4
 y0 = -0.25 + 0.2
 
-pl.scatter(red_pts[:, 0], red_pts[:, 1], c='r')
-pl.scatter(blue_pts[:, 0], blue_pts[:, 1], c='b')
-pl.scatter([x0], [y0], c='gray')
+plt.scatter(red_pts[:, 0], red_pts[:, 1], c='r')
+plt.scatter(blue_pts[:, 0], blue_pts[:, 1], c='b')
+plt.scatter([x0], [y0], c='gray')
 
 for pt in blue_pts:
-    pl.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='->',
+    plt.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='->',
                                                    linestyle='dashed'))
 
 for i, pt in enumerate(red_pts):
-    pl.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='<-'))
-    pl.text(pt[0] + 0.03, pt[1] + 0.03, '$r_{j%i}$' % (i + 1),
+    plt.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='<-'))
+    plt.text(pt[0] + 0.03, pt[1] + 0.03, '$r_{j%i}$' % (i + 1),
             bbox=dict(boxstyle='round', ec='k', fc='w', alpha=0.7))
 
-pl.annotate("R.c", (x0, y0), (0.2, 0.2), arrowprops=dict(arrowstyle='-',
+plt.annotate("R.c", (x0, y0), (0.2, 0.2), arrowprops=dict(arrowstyle='-',
                                                          color='gray'),
             bbox=dict(boxstyle='round', ec='k', fc='w'))
 
 
 
 
-pl.xlim(-1.9, 1.9)
-pl.ylim(-1.2, 0.8)
-pl.show()
+plt.xlim(-1.9, 1.9)
+plt.ylim(-1.2, 0.8)
+plt.show()

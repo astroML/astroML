@@ -12,7 +12,7 @@ The function :func:`fetch_sdss_galaxy_colors` used below actually queries
 the SDSS CASjobs server for the colors of the 50,000 galaxies.
 """
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.neighbors import KNeighborsRegressor
 
@@ -54,22 +54,22 @@ axis_lim = np.array([-0.1, 2.5])
 rms = np.sqrt(np.mean((ztest - zpred) ** 2))
 print "RMS error = %.2g" % rms
 
-ax = pl.axes()
-pl.scatter(ztest, zpred, c='k', lw=0, s=4)
-pl.plot(axis_lim, axis_lim, '--k')
-pl.plot(axis_lim, axis_lim + rms, ':k')
-pl.plot(axis_lim, axis_lim - rms, ':k')
-pl.xlim(axis_lim)
-pl.ylim(axis_lim)
+ax = plt.axes()
+plt.scatter(ztest, zpred, c='k', lw=0, s=4)
+plt.plot(axis_lim, axis_lim, '--k')
+plt.plot(axis_lim, axis_lim + rms, ':k')
+plt.plot(axis_lim, axis_lim - rms, ':k')
+plt.xlim(axis_lim)
+plt.ylim(axis_lim)
 
-pl.text(0.99, 0.02, "RMS error = %.2g" % rms,
+plt.text(0.99, 0.02, "RMS error = %.2g" % rms,
         ha='right', va='bottom', transform=ax.transAxes,
         bbox=dict(ec='w', fc='w'), fontsize=16)
 
-pl.title('Photo-z: Nearest Neigbor Regression')
-pl.xlabel(r'$\mathrm{z_{spec}}$', fontsize=14)
-pl.ylabel(r'$\mathrm{z_{phot}}$', fontsize=14)
-pl.show()
+plt.title('Photo-z: Nearest Neigbor Regression')
+plt.xlabel(r'$\mathrm{z_{spec}}$', fontsize=14)
+plt.ylabel(r'$\mathrm{z_{phot}}$', fontsize=14)
+plt.show()
 
 
 

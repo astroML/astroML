@@ -9,14 +9,14 @@ This figure demonstrates Fourier decomposition of a Gaussian
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy.stats import norm
 
 x = np.linspace(-50, 50, 10000)
 y = norm.pdf(x, 0, 1)
 
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0)
 
 kvals = [20, 30, 50]
@@ -43,14 +43,14 @@ for (k, subplot) in zip(kvals, subplots):
     if subplot == subplots[-1]:
         ax.set_xlabel('phase')
     else:
-        ax.xaxis.set_major_formatter(pl.NullFormatter())
+        ax.xaxis.set_major_formatter(plt.NullFormatter())
 
     if subplot == subplots[1]:
         ax.set_ylabel('amplitude')
-    ax.yaxis.set_major_formatter(pl.NullFormatter())
+    ax.yaxis.set_major_formatter(plt.NullFormatter())
 
     ax.set_xlim(-5, 5)
     ax.set_ylim(-0.05, 0.5)
 
 
-pl.show()
+plt.show()

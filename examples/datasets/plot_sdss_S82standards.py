@@ -6,7 +6,7 @@ standard stars, both alone and with the cross-matched 2MASS colors.
 """
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_sdss_S82standards
 
@@ -31,9 +31,9 @@ bins = [np.linspace(0.0, 3.5, 100),
         np.linspace(-0.2, 1.8, 100),
         np.linspace(-0.2, 1.0, 100)]
 
-fig = pl.figure(figsize=(10, 10))
+fig = plt.figure(figsize=(10, 10))
 multidensity(colors, labels, bins=bins, fig=fig)
-pl.suptitle('SDSS magnitudes')
+plt.suptitle('SDSS magnitudes')
 
 #------------------------------------------------------------
 # Plot datacross-matched with 2MASS
@@ -59,7 +59,7 @@ bins = [np.linspace(0.0, 3.5, 100),
         np.linspace(0.0, 1.0, 100),
         np.linspace(-0.4, 0.8, 100)]
 
-fig = pl.figure(figsize=(10, 10))
+fig = plt.figure(figsize=(10, 10))
 multidensity(colors, labels, bins=bins, fig=fig)
 fig.suptitle('SDSS+2MASS magnitudes')
-pl.show()
+plt.show()

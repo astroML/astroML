@@ -9,7 +9,7 @@ As explained in Wall & Jenkins, as well as Wall 1997, A&A 122:371
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.fourier import PSD_continuous
 from astroML.datasets import fetch_sdss_spectrum
@@ -53,7 +53,7 @@ f, spec_PSD = PSD_continuous(loglam, spec)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0.25)
 
 # Top panel: plot noisy and smoothed spectrum
@@ -76,4 +76,4 @@ ax.set_xlabel(r'$f$')
 ax.set_ylabel('$PSD(f)$')
 ax.set_xlim(0, 2000)
 
-pl.show()
+plt.show()

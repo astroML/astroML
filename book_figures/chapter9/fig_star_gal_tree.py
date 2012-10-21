@@ -12,7 +12,7 @@ stars or galaxies.
 #   For more information, see http://astroML.github.com
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.tree import DecisionTreeClassifier
 
@@ -31,12 +31,12 @@ def draw_connections(x_positions, y_positions, children, i, linestyle='-k'):
     for c,y in zip(children, y_positions):
         if c == -1:
             continue
-        pl.plot(x_positions[i-1:i+1], [y, y], linestyle, lw=1)
+        plt.plot(x_positions[i-1:i+1], [y, y], linestyle, lw=1)
 
     for j in range(0, 2 ** i, 2):
         if children[j] == -1 or children[j + 1] == -1:
             continue
-        pl.plot(2*[x_positions[i - 1]], y_positions[j:j+2], linestyle, lw=1)
+        plt.plot(2*[x_positions[i - 1]], y_positions[j:j+2], linestyle, lw=1)
         
 
 def visualize_tree(T, data, classes, labels=None, levels=5,
@@ -60,7 +60,7 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
         mask = (node_list != -1)
 
         # plot the positions of the nodes
-        pl.plot(x_positions[i] * np.ones(2 ** i)[mask],
+        plt.plot(x_positions[i] * np.ones(2 ** i)[mask],
                 y_positions[mask], 'ok')
 
         data_masks = new_data_masks
@@ -99,7 +99,7 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
             else:
                 fontsize=10
 
-            pl.text(x_positions[i], y_positions[j], text,
+            plt.text(x_positions[i], y_positions[j], text,
                     ha='center', va='center',
                     fontsize=fontsize,
                     bbox=dict(boxstyle='round', ec='k', fc='w'))
@@ -118,8 +118,8 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
     # set suitable axes limits
     dx = 0.1 * (xmax - xmin)
     dy = 0.02 * (xmax - xmin)
-    pl.xlim(xmin - dx, xmax + 2 * dx)
-    pl.ylim(ymin - dy, ymax + dy)
+    plt.xlim(xmin - dx, xmax + 2 * dx)
+    plt.ylim(ymin - dy, ymax + dy)
 
 data = fetch_imaging_sample()
 
@@ -160,20 +160,20 @@ print "positive = galaxy, negative = star"
 print "false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp))
 print "false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn))
 
-pl.figure(figsize=(8, 10), facecolor='w')
-pl.axes([0, 0, 1, 1], xticks=[], yticks=[], frameon=False)
+plt.figure(figsize=(8, 10), facecolor='w')
+plt.axes([0, 0, 1, 1], xticks=[], yticks=[], frameon=False)
 visualize_tree(clf, mag_train, label_train,
                labels=([r'$\rm %s\_mod$' % f for f in 'ugriz'] +
                        [r'$\rm %s\_psf$' % f for f in 'ugriz']))
 
-pl.text(0.1, 0.95, (" Numbers are\n"
+plt.text(0.1, 0.95, (" Numbers are\n"
                     " star count / galaxy count\n"
                     " in each node"),
         ha='center', va='center',
         fontsize=12,
         bbox=dict(boxstyle='round', ec='k', fc='w'))
 
-pl.text(-0.08, 0.01, ("Training Set Size:\n"
+plt.text(-0.08, 0.01, ("Training Set Size:\n"
                       "  %i objects\n\n"
                       "Cross-Validation, with\n"
                       "  %i galaxies (positive)\n"
@@ -216,4 +216,4 @@ print "positive = galaxy, negative = star"
 print "false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp))
 print "false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn))
 
-pl.show()
+plt.show()

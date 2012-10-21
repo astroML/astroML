@@ -15,7 +15,7 @@ The example is simulated measurements of the luminosity of a star.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy import stats
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Generate Dataset
@@ -30,7 +30,7 @@ L_obs = np.random.normal(L0, dL, N)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.05,
                     bottom=0.1, top=0.95, hspace=0.05)
 
@@ -73,7 +73,7 @@ for i in range(4):
     ax.set_ylim(8.6, 11.4)
 
     # set ticks and labels
-    ax.yaxis.set_major_locator(pl.MultipleLocator(1))
+    ax.yaxis.set_major_locator(plt.MultipleLocator(1))
 
     if i > 1:
         ax.set_xlabel('observations')
@@ -81,6 +81,6 @@ for i in range(4):
     if i % 2 == 0:
         ax.set_ylabel('Luminosity')
     else:
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
 
-pl.show()
+plt.show()

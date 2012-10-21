@@ -9,7 +9,7 @@ This example uses Gaussian Process Regression to fit cosmological distance data
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.gaussian_process import GaussianProcess
 
@@ -44,7 +44,7 @@ print gp.theta_
 # Plot the gaussian process
 #  gaussian process allows computation of the error at each point
 #  so we will show this as a shaded region
-fig = pl.figure(figsize=(6, 6))
+fig = plt.figure(figsize=(6, 6))
 fig.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
 ax = fig.add_subplot(111)
 
@@ -60,4 +60,4 @@ ax.set_ylabel(r'$\mu$')
 ax.set_xlim(0, 2)
 ax.set_ylim(36, 48)
 
-pl.show()
+plt.show()

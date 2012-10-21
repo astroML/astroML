@@ -10,7 +10,7 @@ two sets of points
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # create some toy data
@@ -20,7 +20,7 @@ cluster_2 = np.random.normal([-1, -0.5], 0.5, size=(10, 2))
 
 #------------------------------------------------------------
 # plot the data and boundary
-fig = pl.figure()
+fig = plt.figure()
 ax = fig.add_subplot(111, xticks=[], yticks=[])
 ax.scatter(cluster_1[:, 0], cluster_1[:, 1], c='k', s=50)
 ax.scatter(cluster_2[:, 0], cluster_2[:, 1], c='w', s=50)
@@ -29,4 +29,4 @@ ax.plot([0, 1], [1.5, -1.5], '-k', lw=2)
 ax.set_xlim(-2, 2.5)
 ax.set_ylim(-2, 2)
 
-pl.show()
+plt.show()

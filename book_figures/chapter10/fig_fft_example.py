@@ -10,7 +10,7 @@ a fast fourier transform.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy.fftpack import fft
 from scipy.stats import norm
@@ -27,7 +27,7 @@ hj *= norm(0, 10).pdf(tj)
 
 #------------------------------------------------------------
 # plot the results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0.25)
 ax1 = fig.add_subplot(211)
 ax2 = fig.add_subplot(212)
@@ -58,7 +58,7 @@ ax1.set_ylim(-0.1, 0.3001)
 ax1.set_xlabel('$t$')
 ax1.set_ylabel('$h(t)$')
 
-ax1.yaxis.set_major_locator(pl.MultipleLocator(0.1))
+ax1.yaxis.set_major_locator(plt.MultipleLocator(0.1))
 
 ax2.set_xlim(0, 0.8)
 ax2.set_ylim(-0.101, 0.801)
@@ -66,4 +66,4 @@ ax2.set_ylim(-0.101, 0.801)
 ax2.set_xlabel('$f$')
 ax2.set_ylabel('$PSD(f)$')
 
-pl.show()
+plt.show()

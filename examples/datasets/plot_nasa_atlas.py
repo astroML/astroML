@@ -5,7 +5,7 @@ NASA Sloan Atlas
 This shows some visualizations of the data from the NASA SDSS Atlas
 """
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_nasa_atlas
 
@@ -22,12 +22,12 @@ RA -= 180
 RA *= np.pi / 180
 DEC *= np.pi / 180
 
-ax = pl.axes(projection='mollweide')
-pl.scatter(RA, DEC, s=1, lw=0, c=data['Z'], cmap=pl.cm.copper)
-pl.grid(True)
+ax = plt.axes(projection='mollweide')
+plt.scatter(RA, DEC, s=1, lw=0, c=data['Z'], cmap=plt.cm.copper)
+plt.grid(True)
 
-pl.title('NASA Atlas Galaxy Locations')
-cb = pl.colorbar(cax = pl.axes([0.05, 0.1, 0.9, 0.05]),
+plt.title('NASA Atlas Galaxy Locations')
+cb = plt.colorbar(cax = plt.axes([0.05, 0.1, 0.9, 0.05]),
                  orientation='horizontal',
                  ticks=np.linspace(0, 0.05, 6))
 cb.set_label('redshift')
@@ -41,25 +41,25 @@ absmag = data['ABSMAG']
 u = absmag[:, 2]
 r = absmag[:, 4]
 
-pl.figure()
-ax = pl.axes()
-pl.scatter(u - r, r, s=1, lw=0, c=data['Z'], cmap=pl.cm.copper)
-pl.colorbar(ticks=np.linspace(0, 0.05, 6)).set_label('redshift')
+plt.figure()
+ax = plt.axes()
+plt.scatter(u - r, r, s=1, lw=0, c=data['Z'], cmap=plt.cm.copper)
+plt.colorbar(ticks=np.linspace(0, 0.05, 6)).set_label('redshift')
 
-pl.xlim(0, 3.5)
-pl.ylim(-10, -24)
+plt.xlim(0, 3.5)
+plt.ylim(-10, -24)
 
-pl.xlabel('u-r')
-pl.ylabel('r')
+plt.xlabel('u-r')
+plt.ylabel('r')
 
 #------------------------------------------------------------
 # plot a histogram of the redshift
 from astroML.plotting import hist
 
-pl.figure()
+plt.figure()
 hist(data['Z'], bins='knuth',
      histtype='stepfilled', ec='k', fc='#F5CCB0')
-pl.xlabel('z')
-pl.ylabel('N(z)')
+plt.xlabel('z')
+plt.ylabel('N(z)')
 
-pl.show()
+plt.show()

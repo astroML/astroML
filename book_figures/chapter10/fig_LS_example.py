@@ -8,7 +8,7 @@ Example of Lomb-Scargle Algorithm
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.time_series import\
     lomb_scargle, lomb_scargle_BIC, lomb_scargle_bootstrap
 
@@ -37,7 +37,7 @@ sig1, sig5 = np.percentile(D, [99, 95])
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(left=0.1, right=0.9, hspace=0.25)
 
 # First panel: the data
@@ -67,9 +67,9 @@ ax2 = ax1.twinx()
 ax2.set_ylim(tuple(lomb_scargle_BIC(ax1.get_ylim(), y_obs, dy)))
 ax2.set_ylabel(r'$\Delta BIC$')
 
-ax1.xaxis.set_major_formatter(pl.FormatStrFormatter('%.1f'))
-ax1.xaxis.set_minor_formatter(pl.FormatStrFormatter('%.1f'))
-ax1.xaxis.set_major_locator(pl.LogLocator(10))
-ax1.xaxis.set_major_formatter(pl.FormatStrFormatter('%.3g'))
+ax1.xaxis.set_major_formatter(plt.FormatStrFormatter('%.1f'))
+ax1.xaxis.set_minor_formatter(plt.FormatStrFormatter('%.1f'))
+ax1.xaxis.set_major_locator(plt.LogLocator(10))
+ax1.xaxis.set_major_formatter(plt.FormatStrFormatter('%.3g'))
 
-pl.show()
+plt.show()

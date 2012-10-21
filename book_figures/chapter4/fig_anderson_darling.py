@@ -16,7 +16,7 @@ compare them to gaussian using the following statistical measures:
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy import stats
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.stats import mean_sigma, median_sigmaG
 
@@ -37,7 +37,7 @@ xlims = [(-4, 4), (-4, 10)]
 
 #------------------------------------------------------------
 # Compute the statistics and plot the results
-fig = pl.figure(figsize=(6, 8))
+fig = plt.figure(figsize=(6, 8))
 fig.subplots_adjust(left=0.15, right=0.95,
                     bottom=0.1, top=0.95,
                     hspace=0.1)
@@ -89,4 +89,4 @@ for i in range(2):
 
     ax.set_ylabel('p(x)')
 
-pl.show()
+plt.show()

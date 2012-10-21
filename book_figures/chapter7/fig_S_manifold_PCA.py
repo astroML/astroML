@@ -10,7 +10,7 @@ and compares the projections of PCA, LLE, and IsoMap.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 import matplotlib
 from matplotlib import ticker
 
@@ -44,7 +44,7 @@ Y_iso = iso.fit_transform(X)
 
 #------------------------------------------------------------
 # plot the 3D dataset
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.05, right=0.95,
                    bottom=0.05, top=0.9)
 try:
@@ -53,7 +53,7 @@ try:
     ax1 = fig.add_subplot(221, projection='3d',
                           xticks=[], yticks=[], zticks=[])
     ax1.scatter(X[:, 0], X[:, 1], X[:, 2], c=color,
-               cmap=pl.cm.jet, s=9, lw=1)
+               cmap=plt.cm.jet, s=9, lw=1)
     ax1.view_init(11, -73)
 
 except:
@@ -76,7 +76,7 @@ except:
     lw = 1 - lw
 
     ax1.scatter(X_proj[:, 0], X_proj[:, 1], c=color,
-                cmap=pl.cm.jet, s=9, lw=lw, zorder=10)
+                cmap=plt.cm.jet, s=9, lw=lw, zorder=10)
 
     # draw the shaded axes
     ax1.fill([-0.7, -0.3, -0.3, -0.7, -0.7],
@@ -97,9 +97,9 @@ Yvals = [Y_pca, Y_lle, Y_iso]
 
 for (Y, title, subplot) in zip(Yvals, titles, subplots):
     ax = fig.add_subplot(subplot)
-    ax.scatter(Y[:, 0], Y[:, 1], c=color, cmap=pl.cm.jet, s=9, lw=0)
+    ax.scatter(Y[:, 0], Y[:, 1], c=color, cmap=plt.cm.jet, s=9, lw=0)
     ax.set_title(title)
     ax.set_xticks([])
     ax.set_yticks([])
 
-pl.show()
+plt.show()

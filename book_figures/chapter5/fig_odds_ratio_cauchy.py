@@ -8,7 +8,7 @@ Odds Ratio for Cauchy vs Gaussian
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import cauchy, norm
 from scipy import integrate
 
@@ -102,15 +102,15 @@ for i, N in enumerate(Nrange):
 
 #------------------------------------------------------------
 # plot the results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0.1)
 
 ax1 = fig.add_subplot(211, yscale='log')
 ax1.plot(Nrange, Odds, '-k')
 ax1.set_ylabel(r'$O_{CG}$ for $N$ points')
 ax1.set_xlim(0, 100)
-ax1.xaxis.set_major_formatter(pl.NullFormatter())
-ax1.yaxis.set_major_locator(pl.LogLocator(base=10000.0))
+ax1.xaxis.set_major_formatter(plt.NullFormatter())
+ax1.yaxis.set_major_locator(plt.LogLocator(base=10000.0))
 
 ax2 = fig.add_subplot(212)
 ax2.scatter(np.arange(1, len(xi) + 1), xi, lw=0, s=16, c='k')
@@ -118,4 +118,4 @@ ax2.set_xlim(0, 100)
 ax2.set_xlabel('Sample Size $N$')
 ax2.set_ylabel('Sample Value')
 
-pl.show()
+plt.show()

@@ -9,12 +9,12 @@ Diagramatic Description of n-point Correlations
 #   For more information, see http://astroML.github.com
 import itertools
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Rectangle
 
 #------------------------------------------------------------
 # Set up plot
-fig = pl.figure(figsize=(8, 4.5), facecolor='w')
+fig = plt.figure(figsize=(8, 4.5), facecolor='w')
 
 rect_locs = [(0.5, 3.3), (1.5, 1.8),
              (3.0, 3.8), (4.2, 2.8), (3.1, 1.9),
@@ -54,4 +54,4 @@ ax.text(6.5, 1.8, '$\mathbf{r_{34}}$', fontsize=16)
 
 ax.set_xlim(0, 8)
 ax.set_ylim(0.5, 5)
-pl.show()
+plt.show()

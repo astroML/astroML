@@ -13,7 +13,7 @@ estimators of the mean and standard deviation.
 #   For more information, see http://astroML.github.com
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import norm, anderson
 from astroML.stats import mean_sigma, median_sigmaG
 
@@ -42,7 +42,7 @@ med_sample, sigG_sample = median_sigmaG(x)
 
 #------------------------------------------------------------
 # Plot the results
-ax = pl.axes()
+ax = plt.axes()
 
 # histogram of data
 ax.hist(x, 100, histtype='stepfilled', alpha=0.2,
@@ -61,4 +61,4 @@ ax.set_xlim(-8, 8)
 ax.set_xlabel('x')
 ax.set_ylabel('p(x)')
 
-pl.show()
+plt.show()

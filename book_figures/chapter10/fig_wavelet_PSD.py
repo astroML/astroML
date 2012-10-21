@@ -10,7 +10,7 @@ can be obtained using the built-in function matplotlib.mlab.specgram.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_LIGO_bigdog
 from astroML.fourier import FT_continuous, IFT_continuous
@@ -38,7 +38,7 @@ wPSD = wavelet_PSD(t, h, f0, Q=1.0)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(hspace=0.05, left=0.12, right=0.95, bottom=0.08, top=0.95)
 
 # First panel: the signal
@@ -50,7 +50,7 @@ ax.text(0.02, 0.95, ("Input Signal:\n"
 
 ax.set_xlim(-4, 4)
 ax.set_ylim(-2.9, 2.9)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_ylabel('$h(t)$')
 
 # Second panel: an example wavelet
@@ -72,11 +72,11 @@ ax.legend(loc=1, prop=dict(size=14))
 ax.set_xlim(-4, 4)
 ax.set_ylim(-1.4, 1.4)
 ax.set_ylabel('$w(t; f_0, t_0, Q)$')
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 # Third panel: the spectrogram
-ax = pl.subplot(313)
-ax.imshow(wPSD, origin='lower', aspect='auto', cmap=pl.cm.jet,
+ax = plt.subplot(313)
+ax.imshow(wPSD, origin='lower', aspect='auto', cmap=plt.cm.jet,
           extent=[t[0], t[-1], f0[0], f0[-1]])
 
 ax.text(0.02, 0.95, ("Wavelet PSD"), color='w',
@@ -88,4 +88,4 @@ ax.set_ylim(0.5, 7.5)
 ax.set_xlabel('$t$')
 ax.set_ylabel('$f_0$')
 
-pl.show()
+plt.show()

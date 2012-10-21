@@ -8,7 +8,7 @@ Matched Filter Burst Search
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 # Hack to fix import issue in older versions of pymc
 import scipy
@@ -121,7 +121,7 @@ true = [T_true, A_true, omega_true, beta_true]
 
 #------------------------------------------------------------
 # Plot results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 
 # This function plots multiple panels with the traces
 axes_list = plot_mcmc(traces, labels=labels, limits=limits,
@@ -131,7 +131,7 @@ axes_list = plot_mcmc(traces, labels=labels, limits=limits,
 
 for ax in axes_list:
     for axis in [ax.xaxis, ax.yaxis]:
-        axis.set_major_locator(pl.MaxNLocator(5))
+        axis.set_major_locator(plt.MaxNLocator(5))
 
 ax = fig.add_axes([0.5, 0.7, 0.45, 0.25])
 ax.scatter(t, y_obs, s=9, lw=0, c='k')
@@ -140,4 +140,4 @@ ax.set_xlim(0, 100)
 ax.set_xlabel('$t$')
 ax.set_ylabel('$h_{obs}$')
 
-pl.show()
+plt.show()

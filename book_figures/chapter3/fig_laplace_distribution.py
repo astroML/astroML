@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import laplace
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -44,15 +44,15 @@ x = np.linspace(-10, 10, 1000)
 for delta, ls in zip(delta_values, linestyles):
     dist = laplace(mu, delta)
 
-    pl.plot(x, dist.pdf(x), ls=ls, c='black',
+    plt.plot(x, dist.pdf(x), ls=ls, c='black',
             label=r'$\mu=%i,\ \Delta=%.1f$' % (mu, delta), lw=2)
 
-pl.xlim(-7, 7)
-pl.ylim(0, 1.1)
+plt.xlim(-7, 7)
+plt.ylim(0, 1.1)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|\mu,\Delta)$', fontsize=14)
-pl.title('Laplace Distribution')
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|\mu,\Delta)$', fontsize=14)
+plt.title('Laplace Distribution')
 
-pl.legend()
-pl.show()
+plt.legend()
+plt.show()

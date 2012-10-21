@@ -12,7 +12,7 @@ with a linear background.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import truncnorm, uniform
 from astroML.plotting.likelihood import convert_to_stdev
 
@@ -60,28 +60,28 @@ logL -= logL.max()
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(6, 9))
+fig = plt.figure(figsize=(6, 9))
 fig.subplots_adjust(left=0.17, top=0.95)
 
 ax = fig.add_subplot(211)
-pl.imshow(logL, origin='lower', aspect='auto',
+plt.imshow(logL, origin='lower', aspect='auto',
           extent=(sigma[0], sigma[-1], A[0], A[-1]),
-          cmap=pl.cm.binary)
-pl.colorbar()
-pl.clim(-5, 0)
+          cmap=plt.cm.binary)
+plt.colorbar()
+plt.clim(-5, 0)
 ax.set_xlabel(r'$\sigma$')
 ax.set_ylabel(r'$A$')
 
 ax.text(0.5, 0.9, r'$L(\sigma,A)\ (\rm{Gauss + bkgd},\ n=200)$',
         fontsize=16, bbox=dict(ec='k', fc='w', alpha=0.9),
-        ha='center', va='center', transform=pl.gca().transAxes)
+        ha='center', va='center', transform=plt.gca().transAxes)
 
 ax.contour(sigma, A, convert_to_stdev(logL),
            levels=(0.683, 0.955, 0.997),
            colors='k', linewidths=2)
 
-ax2 = pl.subplot(212)
-ax2.yaxis.set_major_locator(pl.MultipleLocator(0.1))
+ax2 = plt.subplot(212)
+ax2.yaxis.set_major_locator(plt.MultipleLocator(0.1))
 ax2.plot(x, fracA * dist1.pdf(x) + (1. - fracA) * dist2.pdf(x), '-k')
 ax2.hist(xi, 30, normed=True, histtype='stepfilled', fc='black', alpha=0.5)
 
@@ -90,4 +90,4 @@ ax2.set_xlim(-2, 12)
 
 ax2.set_xlabel('x')
 ax2.set_ylabel('p(x)')
-pl.show()
+plt.show()

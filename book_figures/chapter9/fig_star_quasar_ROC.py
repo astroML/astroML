@@ -10,7 +10,7 @@ and quasars, and plot the ROC curve for these objects.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.utils import split_samples
 
@@ -94,13 +94,13 @@ names, probs = compute_results((GaussianNB, {}),
 
 #------------------------------------------------------------
 # Plot results
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.1, right=0.95, bottom=0.15, top=0.9, wspace=0.25)
 
 # First axis shows the data
 ax1 = fig.add_subplot(121)
 im = ax1.scatter(X_test[:, 0], X_test[:, 1], c=y_test, s=4, lw=0,
-                 cmap=pl.cm.binary)
+                 cmap=plt.cm.binary)
 im.set_clim(-0.5, 1)
 ax1.set_xlim(-0.5, 3.0)
 ax1.set_ylim(-0.3, 1.4)
@@ -130,6 +130,6 @@ ax2.set_xlabel('false positive rate')
 ax2.set_ylabel('true positive rate')
 ax2.set_xlim(0, 0.15)
 ax2.set_ylim(0.6, 1.01)
-ax2.xaxis.set_major_locator(pl.MaxNLocator(5))
+ax2.xaxis.set_major_locator(plt.MaxNLocator(5))
 
-pl.show()
+plt.show()

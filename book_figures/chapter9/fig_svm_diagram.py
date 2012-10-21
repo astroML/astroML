@@ -9,7 +9,7 @@ This shows a diagram of how support vector machines perform classification
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from sklearn import svm
 
 #------------------------------------------------------------
@@ -50,10 +50,10 @@ db2 = X[i2, 1] - (m * X[i2, 0] + b)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 ax = fig.add_subplot(111, aspect='equal')
 
-ax.scatter(X[:, 0], X[:, 1], c=y, s=50, cmap=pl.cm.binary)
+ax.scatter(X[:, 0], X[:, 1], c=y, s=50, cmap=plt.cm.binary)
 ax.plot(xx, yy, '-k')
 ax.plot(xx, yy + db1, '--k')
 ax.plot(xx, yy + db2, '--k')
@@ -64,4 +64,4 @@ ax.set_xlim(-3, 4)
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 
-pl.show()
+plt.show()

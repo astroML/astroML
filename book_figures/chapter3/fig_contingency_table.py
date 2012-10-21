@@ -2,9 +2,9 @@
 A 2x2 Contingency Table
 -----------------------
 """
-import pylab as pl
+from matplotlib import pyplot as plt
 
-fig = pl.figure(figsize=(3, 3), facecolor='w')
+fig = plt.figure(figsize=(3, 3), facecolor='w')
 ax = fig.add_axes((0, 0, 1, 1), xticks=[], yticks=[], frameon=False)
 
 for i in [-1, 0, 1]:
@@ -31,4 +31,4 @@ ax.text(0.5, -0.5, '$1 - \epsilon_{fN}$', **kwds)
 ax.set_xlim(-1.5, 1.2)
 ax.set_ylim(-1.2, 1.5)
 
-pl.show()
+plt.show()

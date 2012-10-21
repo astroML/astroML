@@ -10,7 +10,7 @@ linear regression problem with (asymmetric) errors in the data.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.plotting.likelihood import convert_to_stdev
 
 #------------------------------------------------------------
@@ -44,7 +44,7 @@ bmax = b_range[j[0]]
 
 #------------------------------------------------------------
 # Plot the first figure: the points and errorbars
-fig1 = pl.figure()
+fig1 = plt.figure()
 ax1 = fig1.add_subplot(111)
 
 # Draw the true and best-fit lines
@@ -69,7 +69,7 @@ ax1.set_ylim(-2, 2)
 
 #------------------------------------------------------------
 # Plot the second figure: likelihoods for each point
-fig2 = pl.figure(figsize=(8, 8))
+fig2 = plt.figure(figsize=(8, 8))
 fig2.subplots_adjust(hspace=0.05, wspace=0.05)
 
 # plot likelihood contours
@@ -78,7 +78,7 @@ for i in range(4):
     for j in range(min(i + 1, 3)):
         ax.contourf(a_range, b_range, sigma[j].T,
                     levels=(0, 0.683, 0.955, 0.997),
-                    cmap=pl.cm.binary, alpha=0.5)
+                    cmap=plt.cm.binary, alpha=0.5)
 
 # plot the excluded area from the fourth point
 axpb = a_range[:, None] * x4 + b_range[None, :]
@@ -112,13 +112,13 @@ for i in range(4):
     ax.set_ylim(-0.999, 1)
 
     if i in (1, 3):
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
     if i in (0, 1):
-        ax.xaxis.set_major_formatter(pl.NullFormatter())
+        ax.xaxis.set_major_formatter(plt.NullFormatter())
     if i in (0, 2):
         ax.set_ylabel(r'$\theta_2$', fontsize=16)
     if i in (2, 3):
         ax.set_xlabel(r'$\theta_1$', fontsize=16)
 
 
-pl.show()
+plt.show()

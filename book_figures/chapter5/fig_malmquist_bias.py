@@ -13,7 +13,7 @@ values.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.stats.random import trunc_exp
 
 #------------------------------------------------------------
@@ -42,7 +42,7 @@ rand = rand[:cut.sum()]
 
 #------------------------------------------------------------
 # plot the results
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
                     bottom=0.15, top=0.9)
 
@@ -58,7 +58,7 @@ ax.hist(h_obs, bins, histtype='stepfilled',
         label='observed distribution')
 ax.legend(loc=2, prop=dict(size=12))
 
-ax.add_patch(pl.Rectangle((hmin, 0), hmax - hmin, 1.2,
+ax.add_patch(plt.Rectangle((hmin, 0), hmax - hmin, 1.2,
                           fc='gray', ec='k', linestyle='dashed',
                           alpha=0.3))
 ax.text(5, 0.07, 'sampled region', rotation=45, ha='center', va='center',
@@ -66,7 +66,7 @@ ax.text(5, 0.07, 'sampled region', rotation=45, ha='center', va='center',
 
 ax.set_xlim(hmin - 1.3, hmax + 1.3)
 ax.set_ylim(0, 0.14001)
-ax.xaxis.set_major_locator(pl.MultipleLocator(1))
+ax.xaxis.set_major_locator(plt.MultipleLocator(1))
 ax.set_xlabel(r'$x_{\rm obs}$')
 ax.set_ylabel(r'$p(x_{\rm obs})$')
 
@@ -84,4 +84,4 @@ ax.set_xlim(-4, 4)
 ax.set_ylim(0, 0.65)
 ax.set_xlabel(r'$x_{\rm obs} - x_{\rm true}$')
 ax.set_ylabel(r'$p(x_{\rm obs} - x_{\rm true})$')
-pl.show()
+plt.show()

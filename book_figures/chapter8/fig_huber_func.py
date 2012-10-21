@@ -9,7 +9,7 @@ This plots the form of the huber loss function :math:`\Phi(t)`.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 
 #------------------------------------------------------------
@@ -21,7 +21,7 @@ def Phi(t, c):
 
 #------------------------------------------------------------
 # Plot for several values of c
-fig = pl.figure()
+fig = plt.figure()
 ax = fig.add_subplot(111)
 
 x = np.linspace(-10, 10, 100)
@@ -42,4 +42,4 @@ for c in (1, 2, 3, 5, 1000):
 ax.set_xlabel('$t$')
 ax.set_ylabel(r'$\Phi(t)$')
 
-pl.show()
+plt.show()

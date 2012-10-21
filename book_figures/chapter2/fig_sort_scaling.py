@@ -10,7 +10,7 @@ This example times and plots the scaling of sort algorithms
 #   For more information, see http://astroML.github.com
 from time import time
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Compute the execution times as a function of array size
@@ -39,7 +39,7 @@ for i in range(len(N_list)):
 
 #------------------------------------------------------------
 # Plot the results
-ax = pl.axes(xscale='log', yscale='log')
+ax = plt.axes(xscale='log', yscale='log')
 ax.grid()
 
 # plot the observed times
@@ -66,8 +66,8 @@ ax.plot(scale, scaling_N, ':k')
 ax.set_title("Scaling of Sort Algorithms")
 ax.set_xlabel('Length of Array')
 ax.set_ylabel('Relative sort time')
-pl.legend(loc='upper left')
+plt.legend(loc='upper left')
 
 ax.set_xlim(scale[0], scale[-1])
 
-pl.show()
+plt.show()

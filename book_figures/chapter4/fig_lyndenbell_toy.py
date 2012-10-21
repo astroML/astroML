@@ -11,7 +11,7 @@ data using Lynden-Bell's C- method
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import stats
 
 from astroML.lumfunc import bootstrap_Cminus
@@ -61,7 +61,7 @@ y_mid = 0.5 * (y_fit[1:] + y_fit[:-1])
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(10, 4))
+fig = plt.figure(figsize=(10, 4))
 fig.subplots_adjust(bottom=0.15, top=0.95,
                     left=0.07, right=0.95, wspace=0.2)
 
@@ -82,9 +82,9 @@ ax.set_ylabel('normalized distribution')
 # Second subplot is the "observed" 2D distribution
 ax = fig.add_subplot(122)
 H, xb, yb = np.histogram2d(x, y, bins=np.linspace(0, 1, 41))
-pl.imshow(H.T, origin='lower', interpolation='nearest',
-          extent=[0, 1, 0, 1], cmap=pl.cm.binary)
-cb = pl.colorbar()
+plt.imshow(H.T, origin='lower', interpolation='nearest',
+          extent=[0, 1, 0, 1], cmap=plt.cm.binary)
+cb = plt.colorbar()
 
 x_limit = np.linspace(-0.1, 1.1, 1000)
 y_limit = max_func(x_limit)
@@ -100,4 +100,4 @@ cb.set_label('counts per pixel')
 ax.text(0.96, 0.96, '%i points' % len(x), ha='right', va='top',
         transform=ax.transAxes)
 
-pl.show()
+plt.show()

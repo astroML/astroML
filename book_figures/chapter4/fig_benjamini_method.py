@@ -12,7 +12,7 @@ selecting the cutoff for best type I/type II error results.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import norm
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Set up the background and foreground distributions
@@ -34,9 +34,9 @@ p_sorted = np.sort(p)
 
 #------------------------------------------------------------
 # plot the results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(bottom=0.15)
-ax = pl.axes(xscale='log', yscale='log')
+ax = plt.axes(xscale='log', yscale='log')
 
 # only plot every 1000th; plotting all 1E6 takes too long
 ax.plot(p_sorted[::1000], np.linspace(0, 1, 1000), '-k')
@@ -54,7 +54,7 @@ for (i, epsilon) in enumerate([0.1, 0.01, 0.001, 0.0001]):
             ha='center', va='bottom',
             fontsize=16, rotation=70)
 
-ax.xaxis.set_major_locator(pl.LogLocator(base=100))
+ax.xaxis.set_major_locator(plt.LogLocator(base=100))
 
 ax.set_xlim(1E-12, 1)
 ax.set_ylim(1E-3, 1)
@@ -62,4 +62,4 @@ ax.set_ylim(1E-3, 1)
 ax.set_xlabel('$p = 1 - H_B(i)$')
 ax.set_ylabel('normalized $C(p)$')
 
-pl.show()
+plt.show()

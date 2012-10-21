@@ -9,7 +9,7 @@ Compute the time/frequency power spectral density of the chirp signal
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.fourier import FT_continuous, IFT_continuous
 from astroML.wavelets import wavelet_PSD
@@ -38,7 +38,7 @@ wPSD = wavelet_PSD(t, h, f0, Q=1.0)
 
 #------------------------------------------------------------
 # Plot the  results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0.05, left=0.1, right=0.95, bottom=0.1, top=0.95)
 
 # Top: plot the data
@@ -52,14 +52,14 @@ ax.text(0.02, 0.95, "Input Signal: chirp",
 
 ax.set_xlim(0, 100)
 ax.set_ylim(-2.9, 2.9)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_ylabel('$h(t)$')
 
 # Bottom: plot the 2D PSD
 ax = fig.add_subplot(212)
 ax.imshow(wPSD, origin='lower', aspect='auto',
           extent=[t[0] + 50, t[-1] + 50, f0[0], f0[-1]],
-          cmap=pl.cm.binary)
+          cmap=plt.cm.binary)
 
 ax.text(0.02, 0.95, ("Wavelet PSD"), color='w',
         ha='left', va='top', transform=ax.transAxes)
@@ -69,4 +69,4 @@ ax.set_ylim(0.04, 0.6001)
 ax.set_xlabel('$t$')
 ax.set_ylabel('$f_0$')
 
-pl.show()
+plt.show()

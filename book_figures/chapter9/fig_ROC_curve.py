@@ -10,7 +10,7 @@ classification methods used in this chapter.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.naive_bayes import GaussianNB
 from sklearn.lda import LDA
@@ -67,15 +67,15 @@ names, probs = compute_models((GaussianNB, {}),
 
 #------------------------------------------------------------
 # Plot ROC curves and completeness/efficiency
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.1, right=0.95, bottom=0.15, top=0.9, wspace=0.25)
 
 
 # ax2 will show roc curves
-ax1 = pl.subplot(121)
+ax1 = plt.subplot(121)
 
 # ax1 will show completeness/efficiency
-ax2 = pl.subplot(122)
+ax2 = plt.subplot(122)
 
 labels = dict(GaussianNB='GNB',
               LDA='LDA',
@@ -106,7 +106,7 @@ for name, y_prob in zip(names, probs):
 
 ax1.set_xlim(0, 0.04)
 ax1.set_ylim(0, 1.02)
-ax1.xaxis.set_major_locator(pl.MaxNLocator(5))
+ax1.xaxis.set_major_locator(plt.MaxNLocator(5))
 ax1.set_xlabel('false positive rate')
 ax1.set_ylabel('true positive rate')
 ax1.legend(loc=4, prop=dict(size=12))
@@ -116,4 +116,4 @@ ax2.set_ylabel('completeness')
 ax2.set_xlim(0, 1.0)
 ax2.set_ylim(0.2, 1.02)
 
-pl.show()
+plt.show()

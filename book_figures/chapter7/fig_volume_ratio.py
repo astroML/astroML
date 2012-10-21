@@ -13,7 +13,7 @@ approaches infinity.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.special import gamma, gammaln
 
 dims = np.arange(0, 51)
@@ -27,15 +27,15 @@ log_V_cube = dims * np.log(2)
 # compute the log of f_k to avoid overflow errors
 log_f_k = log_V_sphere - log_V_cube
 
-pl.semilogy(dims, np.exp(log_V_cube), '-k',
+plt.semilogy(dims, np.exp(log_V_cube), '-k',
             label='side-2 hypercube')
-pl.semilogy(dims, np.exp(log_V_sphere), '--k',
+plt.semilogy(dims, np.exp(log_V_sphere), '--k',
             label='inscribed unit hypersphere')
 
-pl.xlim(0, 50)
-pl.ylim(1E-13, 1E15)
+plt.xlim(0, 50)
+plt.ylim(1E-13, 1E15)
 
-pl.xlabel('Number of Dimensions')
-pl.ylabel('Hyper-Volume')
-pl.legend(loc=3)
-pl.show()
+plt.xlabel('Number of Dimensions')
+plt.ylabel('Hyper-Volume')
+plt.legend(loc=3)
+plt.show()

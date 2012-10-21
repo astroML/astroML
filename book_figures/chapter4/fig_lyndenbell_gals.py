@@ -14,7 +14,7 @@ We work with x=Magnitude, y=redshift.
 #   For more information, see http://astroML.github.com
 import os
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy import interpolate, stats
 
@@ -103,7 +103,7 @@ def compute_luminosity_function(z, m, M, m_max, archive_file):
 
 #------------------------------------------------------------
 # Perform the computation and plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.12, right=0.95, wspace=0.3,
                     bottom=0.07, top=0.95, hspace=0.2)
 
@@ -122,7 +122,7 @@ for i in range(2):
     H, xbins, ybins = np.histogram2d(z, M, bins=(np.linspace(0.08, 0.12, 31),
                                                  np.linspace(-23, -20, 41)))
     ax.imshow(H.T, origin='lower', aspect='auto',
-              interpolation='nearest', cmap=pl.cm.binary,
+              interpolation='nearest', cmap=plt.cm.binary,
               extent=(xbins[0], xbins[-1], ybins[0], ybins[-1]))
 
     # plot the cutoff curve
@@ -164,17 +164,17 @@ for i in range(2):
 #------------------------------------------------------------
 # set labels and limits
 ax2.legend(loc=1, prop=dict(size=14))
-ax2.xaxis.set_major_locator(pl.MultipleLocator(0.01))
+ax2.xaxis.set_major_locator(plt.MultipleLocator(0.01))
 ax2.set_xlabel(r'$z$')
 ax2.set_ylabel(r'$\rho(z) / [z / 0.08]^2$')
 ax2.set_xlim(0.075, 0.125)
 ax2.set_ylim(10, 25)
 
 ax3.legend(loc=3, prop=dict(size=14))
-ax3.xaxis.set_major_locator(pl.MultipleLocator(1.0))
+ax3.xaxis.set_major_locator(plt.MultipleLocator(1.0))
 ax3.set_xlabel(r'$M$')
 ax3.set_ylabel(r'$\Phi(M)$')
 ax3.set_xlim(-20, -23.5)
 ax3.set_ylim(1E-5, 2)
 
-pl.show()
+plt.show()

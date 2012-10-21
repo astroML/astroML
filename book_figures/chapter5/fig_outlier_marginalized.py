@@ -12,7 +12,7 @@ formalism.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import norm
 
 
@@ -73,7 +73,7 @@ p2a /= p2a.sum() * (g1[1] - g1[0])
 
 #------------------------------------------------------------
 # Plot the results
-ax = pl.axes()
+ax = plt.axes()
 
 l1, = ax.plot(g1, p1, '-k', lw=3)
 l2, = ax.plot(g1, p1a, '--k', lw=3)
@@ -98,4 +98,4 @@ ax.set_ylabel('$p(g_1)$')
 ax.set_xlim(0, 1)
 ax.set_ylim(0, 1.8)
 
-pl.show()
+plt.show()

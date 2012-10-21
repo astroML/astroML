@@ -9,7 +9,7 @@ This figure shows some examples of wavelets used in the wavelet transforms.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_LIGO_bigdog
 from astroML.fourier import FT_continuous, IFT_continuous
@@ -27,7 +27,7 @@ W = sinegauss(t, t0, f0[:, None], Q[:, None])
 
 #------------------------------------------------------------
 # Plot the wavelets
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0.05, wspace=0.05)
 
 # in each panel, plot and label a different wavelet
@@ -42,16 +42,16 @@ for i in range(4):
     ax.set_ylim(-1.2, 1.2)
     ax.set_xlim(-0.35, 0.35)
 
-    ax.xaxis.set_major_locator(pl.MultipleLocator(0.2))
+    ax.xaxis.set_major_locator(plt.MultipleLocator(0.2))
 
     if i in (0, 1):
-        ax.xaxis.set_major_formatter(pl.NullFormatter())
+        ax.xaxis.set_major_formatter(plt.NullFormatter())
     else:
         ax.set_xlabel('$t$')
 
     if i in (1, 3):
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
     else:
         ax.set_ylabel('$w(t)$')
 
-pl.show()
+plt.show()

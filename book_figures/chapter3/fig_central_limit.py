@@ -12,7 +12,7 @@ the result is nearly indistinguishable from Gaussian
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import norm
 
 #------------------------------------------------------------
@@ -24,7 +24,7 @@ x = np.random.random((max(N), 1E6))
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(hspace=0.05)
 
 for i in range(len(N)):
@@ -34,7 +34,7 @@ for i in range(len(N)):
     x_i = x[:N[i], :].mean(0)
 
     # histogram the data
-    pl.hist(x_i, bins=np.linspace(0, 1, 101),
+    plt.hist(x_i, bins=np.linspace(0, 1, 101),
             histtype='stepfilled', alpha=0.5, normed=True)
 
     # plot the expected gaussian pdf
@@ -47,18 +47,18 @@ for i in range(len(N)):
     ax.set_xlim(-0.1, 1.1)
     ax.set_ylim(0.001, None)
 
-    ax.xaxis.set_major_locator(pl.MultipleLocator(0.2))
-    ax.yaxis.set_major_locator(pl.MaxNLocator(5))
+    ax.xaxis.set_major_locator(plt.MultipleLocator(0.2))
+    ax.yaxis.set_major_locator(plt.MaxNLocator(5))
 
     ax.text(0.99, 0.95, r"$N = %i$" % N[i], fontsize=16,
             ha='right', va='top', transform=ax.transAxes)
 
     if i == len(N) - 1:
-        ax.xaxis.set_major_formatter(pl.FormatStrFormatter('%.4f'))
+        ax.xaxis.set_major_formatter(plt.FormatStrFormatter('%.4f'))
         ax.set_xlabel(r'$x$')
     else:
-        ax.xaxis.set_major_formatter(pl.NullFormatter())
+        ax.xaxis.set_major_formatter(plt.NullFormatter())
 
     ax.set_ylabel('$p(x)$')
 
-pl.show()
+plt.show()

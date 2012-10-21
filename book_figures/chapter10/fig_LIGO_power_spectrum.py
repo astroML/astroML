@@ -10,7 +10,7 @@ Welch's method (i.e. overlapping window functions that reduce noise).
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import fftpack
 from matplotlib import mlab
 
@@ -69,7 +69,7 @@ PSDW2 = PSDW2[cutoff]
 
 #------------------------------------------------------------
 # Plot the data
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(bottom=0.1, top=0.9, hspace=0.3)
 
 # top panel: time series
@@ -92,7 +92,7 @@ ax.set_ylabel(r'$PSD(f)$')
 
 ax.set_xlim(40, 2060)
 ax.set_ylim(1E-46, 1E-36)
-ax.yaxis.set_major_locator(pl.LogLocator(base=100))
+ax.yaxis.set_major_locator(plt.LogLocator(base=100))
 
 # bottom panel: hanning window
 ax = fig.add_subplot(313)
@@ -106,6 +106,6 @@ ax.set_ylabel(r'$PSD(f)$')
 
 ax.set_xlim(40, 2060)
 ax.set_ylim(1E-46, 1E-36)
-ax.yaxis.set_major_locator(pl.LogLocator(base=100))
+ax.yaxis.set_major_locator(plt.LogLocator(base=100))
 
-pl.show()
+plt.show()

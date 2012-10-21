@@ -8,7 +8,7 @@ Cosmology Regression Example
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import lognorm
 
 from astroML.cosmology import Cosmology
@@ -46,7 +46,7 @@ n_constraints = [2, 5, len(basis_mu) + 1, 1]
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.1, right=0.95,
                     bottom=0.1, top=0.95,
                     hspace=0.05, wspace=0.05)
@@ -80,11 +80,11 @@ for i in range(4):
     if i in (0, 2):
         ax.set_ylabel(r'$\mu$')
     else:
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
 
     if i in (2, 3):
         ax.set_xlabel(r'$z$')
     else:
-        ax.xaxis.set_major_formatter(pl.NullFormatter())
+        ax.xaxis.set_major_formatter(plt.NullFormatter())
 
-pl.show()
+plt.show()

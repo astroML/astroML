@@ -8,7 +8,7 @@ Phased LINEAR Light Curve
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.decorators import pickle_results
 from astroML.time_series import search_frequencies, lomb_scargle, MultiTermFit
@@ -39,7 +39,7 @@ results = compute_best_frequencies(ids, n_eval=10000, n_retry=5)
 
 #------------------------------------------------------------
 # Plot the phased light-curves
-fig = pl.figure(figsize=(8, 10))
+fig = plt.figure(figsize=(8, 10))
 fig.subplots_adjust(hspace=0.1)
 
 for i in range(6):
@@ -61,8 +61,8 @@ for i in range(6):
     ax.plot(phase_fit, y_fit, '-b', lw=2)
 
     ax.set_xlim(0, 1)
-    ax.set_ylim(pl.ylim()[::-1])
-    ax.yaxis.set_major_locator(pl.MaxNLocator(4))
+    ax.set_ylim(plt.ylim()[::-1])
+    ax.yaxis.set_major_locator(plt.MaxNLocator(4))
 
     ax.text(0.02, 0.02, "ID = %i" % ids[i], ha='left', va='bottom',
             transform=ax.transAxes, fontsize=14)
@@ -74,11 +74,11 @@ for i in range(6):
     ax.set_ylim(ylim[0], ylim[0] + 1.1 * (ylim[1] - ylim[0]))
 
     if i < 4:
-        ax.xaxis.set_major_formatter(pl.NullFormatter())
+        ax.xaxis.set_major_formatter(plt.NullFormatter())
     if i % 2 == 0:
         ax.set_ylabel('mag')
 
     if i in (4, 5):
         ax.set_xlabel('phase')
 
-pl.show()
+plt.show()

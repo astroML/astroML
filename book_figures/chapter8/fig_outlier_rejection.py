@@ -10,7 +10,7 @@ This follows the formalism in Hogg et al 2010,
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.datasets import fetch_hogg2010test
 from astroML.plotting.likelihood import convert_to_stdev
 from astroML.plotting.mcmc import plot_mcmc_contours
@@ -177,7 +177,7 @@ M2 = dict(y_outlier=y_outlier, beta_M2=beta_M2, model_M2=model_M2,
 
 #------------------------------------------------------------
 # plot the data
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
                     bottom=0.1, top=0.95, hspace=0.2)
 
@@ -228,14 +228,14 @@ for i, M in enumerate(models):
                    facecolors='none', edgecolors='red')
 
     # plot the likelihood contours
-    ax = pl.subplot(222 + i)
+    ax = plt.subplot(222 + i)
     plot_mcmc_contours(trace[:, 1], trace[:, 0], ax=ax,
                        colors='black', bins=bins[i])
     ax.set_xlabel('intercept')
     ax.set_ylabel('slope')
     ax.grid()
-    ax.xaxis.set_major_locator(pl.MultipleLocator(40))
-    ax.yaxis.set_major_locator(pl.MultipleLocator(0.2))
+    ax.xaxis.set_major_locator(plt.MultipleLocator(40))
+    ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))
 
     ax.text(0.98, 0.98, labels[i], ha='right', va='top', fontsize=14,
             bbox=dict(fc='w', ec='none', alpha=0.5),
@@ -246,4 +246,4 @@ for i, M in enumerate(models):
 ax1.set_xlim(0, 350)
 ax1.set_ylim(100, 700)
 
-pl.show()
+plt.show()

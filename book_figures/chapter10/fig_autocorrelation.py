@@ -9,7 +9,7 @@ Compute and plot the auto-correlation function for simulated Quasar data
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.time_series import lomb_scargle, generate_damped_RW
 from astroML.time_series import ACF_scargle, ACF_EK
@@ -54,7 +54,7 @@ t_EK = 0.5 * (bins[1:] + bins[:-1])
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 
 # plot the input data
 ax = fig.add_subplot(211)
@@ -79,4 +79,4 @@ ax.set_ylim(-1.0, 1.1)
 ax.set_xlabel('t (days)')
 ax.set_ylabel('ACF(t)')
 
-pl.show()
+plt.show()

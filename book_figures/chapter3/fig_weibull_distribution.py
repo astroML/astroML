@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import dweibull
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -44,15 +44,15 @@ x = np.linspace(-10, 10, 1000)
 # plot the distributions
 for (k, lam, ls) in zip(k_values, lam_values, linestyles):
     dist = dweibull(k, mu, lam)
-    pl.plot(x, dist.pdf(x), ls=ls, c='black',
+    plt.plot(x, dist.pdf(x), ls=ls, c='black',
             label=r'$k=%.1f,\ \lambda=%i$' % (k, lam))
 
-pl.xlim(0, 5)
-pl.ylim(0, 1.0)
+plt.xlim(0, 5)
+plt.ylim(0, 1.0)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|k,\lambda)$', fontsize=14)
-pl.title('Weibull Distribution')
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|k,\lambda)$', fontsize=14)
+plt.title('Weibull Distribution')
 
-pl.legend()
-pl.show()
+plt.legend()
+plt.show()

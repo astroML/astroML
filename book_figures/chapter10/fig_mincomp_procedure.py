@@ -10,7 +10,7 @@ The entire algorithm is implemented in astroML.filters.min_component_filter
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy import fftpack
 
@@ -76,7 +76,7 @@ spec_filt += spec_fit
 
 #----------------------------------------------------------------------
 # plot results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0.25)
 
 ax = fig.add_subplot(211)
@@ -103,4 +103,4 @@ ax.set_ylim(0, 1.1)
 ax.set_xlabel('$f$')
 ax.set_ylabel('scaled $PSD(f)$')
 
-pl.show()
+plt.show()

@@ -10,7 +10,7 @@ Parameters Pipeline data
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
 from scipy.stats import norm
 
@@ -41,15 +41,15 @@ clf.fit(scaler.fit_transform(X))
 
 #------------------------------------------------------------
 # Visualize the results
-fig = pl.figure(figsize=(6, 6))
+fig = plt.figure(figsize=(6, 6))
 ax = fig.add_subplot()
 
 # plot density
-ax = pl.axes()
+ax = plt.axes()
 ax.imshow(H.T, origin='lower', interpolation='nearest', aspect='auto',
           extent=[FeH_bins[0], FeH_bins[-1],
                   alphFe_bins[0], alphFe_bins[-1]],
-          cmap=pl.cm.binary)
+          cmap=plt.cm.binary)
 
 # plot cluster centers
 cluster_centers = scaler.inverse_transform(clf.cluster_centers_)
@@ -74,11 +74,11 @@ for i in range(n_clusters):
     ax.contour(FeH_centers, alphFe_centers, Hcp, [-0.5, 0.5],
                linewidths=2, colors='k')
 
-ax.xaxis.set_major_locator(pl.MultipleLocator(0.3))
+ax.xaxis.set_major_locator(plt.MultipleLocator(0.3))
 ax.set_xlim(-1.101, 0.101)
 ax.set_ylim(alphFe_bins[0], alphFe_bins[-1])
 
 ax.set_xlabel(r'$\rm [Fe/H]$')
 ax.set_ylabel(r'$\rm [\alpha/Fe]$')
 
-pl.show()
+plt.show()

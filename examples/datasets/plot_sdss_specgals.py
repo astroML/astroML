@@ -5,7 +5,7 @@ This figure shows photometric colors of the SDSS spectroscopic galaxy
 sample.
 """
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_sdss_specgals
 
@@ -22,15 +22,15 @@ RA -= 180
 RA *= np.pi / 180
 DEC *= np.pi / 180
 
-ax = pl.axes(projection='mollweide')
+ax = plt.axes(projection='mollweide')
 
-ax = pl.axes()
-pl.grid(True)
-pl.scatter(RA, DEC, s=1, lw=0, c=data['z'], cmap=pl.cm.copper,
+ax = plt.axes()
+plt.grid(True)
+plt.scatter(RA, DEC, s=1, lw=0, c=data['z'], cmap=plt.cm.copper,
            vmin=0, vmax=0.4)
 
-pl.title('SDSS DR8 Spectroscopic Galaxies')
-cb = pl.colorbar(cax = pl.axes([0.05, 0.1, 0.9, 0.05]),
+plt.title('SDSS DR8 Spectroscopic Galaxies')
+cb = plt.colorbar(cax = plt.axes([0.05, 0.1, 0.9, 0.05]),
                  orientation='horizontal',
                  ticks=np.linspace(0, 0.4, 9))
 cb.set_label('redshift')
@@ -42,27 +42,27 @@ u = data['modelMag_u']
 r = data['modelMag_r']
 rPetro = data['petroMag_r']
 
-pl.figure()
-ax = pl.axes()
-pl.scatter(u - r, rPetro, s=1, lw=0, c=data['z'], cmap=pl.cm.copper,
+plt.figure()
+ax = plt.axes()
+plt.scatter(u - r, rPetro, s=1, lw=0, c=data['z'], cmap=plt.cm.copper,
            vmin=0, vmax=0.4)
-pl.colorbar(ticks=np.linspace(0, 0.4, 9)).set_label('redshift')
+plt.colorbar(ticks=np.linspace(0, 0.4, 9)).set_label('redshift')
 
-pl.xlim(0.5, 5.5)
-pl.ylim(18, 12.5)
+plt.xlim(0.5, 5.5)
+plt.ylim(18, 12.5)
 
-pl.xlabel('u-r')
-pl.ylabel('rPetrosian')
+plt.xlabel('u-r')
+plt.ylabel('rPetrosian')
 
 #------------------------------------------------------------
 # plot a histogram of the redshift
 from astroML.plotting import hist
 
-pl.figure()
+plt.figure()
 hist(data['z'], bins='knuth',
      histtype='stepfilled', ec='k', fc='#F5CCB0')
-pl.xlim(0, 0.4)
-pl.xlabel('z (redshift)')
-pl.ylabel('dN/dz(z)')
+plt.xlim(0, 0.4)
+plt.xlabel('z (redshift)')
+plt.ylabel('dN/dz(z)')
 
-pl.show()
+plt.show()

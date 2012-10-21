@@ -12,7 +12,7 @@ breaks down.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import stats, interpolate
 from astroML.stats.random import linear
 from astroML.plotting.likelihood import convert_to_stdev
@@ -55,7 +55,7 @@ data = lin_dist.rvs(N)
 
 #------------------------------------------------------------
 # Compute and plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.3,
                     bottom=0.1, top=0.95, hspace=0.2)
 
@@ -84,7 +84,7 @@ for num, nbins in enumerate([5, 40]):
 
     # plot scatter and lines
     ax = fig.add_subplot(2, 2, 1 + 2 * num)
-    pl.scatter(xi, yi, s=25, c='gray', lw=0)
+    plt.scatter(xi, yi, s=25, c='gray', lw=0)
 
     x = np.linspace(xmin - 1, xmax + 1, 1000)
     for (ai, bi, s) in [(a_true, b_true, '-k'),
@@ -130,6 +130,6 @@ for num, nbins in enumerate([5, 40]):
     ax.set_xlim(0, 0.04)
     ax.set_ylim(0, 0.15)
 
-    ax.xaxis.set_major_locator(pl.MultipleLocator(0.02))
+    ax.xaxis.set_major_locator(plt.MultipleLocator(0.02))
 
-pl.show()
+plt.show()

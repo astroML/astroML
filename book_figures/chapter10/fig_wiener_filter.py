@@ -10,7 +10,7 @@ Savitzky-Golay filter.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy import optimize, fftpack
 from astroML.filters import savitzky_golay, wiener_filter
@@ -46,7 +46,7 @@ Df = 1. / N / (t[1] - t[0])
 f = fftpack.ifftshift(Df * (np.arange(N) - N / 2))
 HN = fftpack.fft(hN)
 
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(wspace=0.05, hspace=0.25,
                     bottom=0.1, top=0.95,
                     left=0.12, right=0.95)
@@ -61,12 +61,12 @@ ax.text(0.98, 0.95, "Input Signal", ha='right', va='top', fontsize=12,
 ax.set_xlim(0, 90)
 ax.set_ylim(-0.5, 1.5)
 
-ax.xaxis.set_major_locator(pl.MultipleLocator(20))
+ax.xaxis.set_major_locator(plt.MultipleLocator(20))
 ax.set_xlabel(r'$\lambda$')
 ax.set_ylabel('flux')
 
 # Second plot: filtered signal
-ax = pl.subplot(222)
+ax = plt.subplot(222)
 ax.plot(t, np.zeros_like(t), ':k', lw=1)
 ax.plot(t, h_smooth, '-k', lw=2, label='Wiener')
 ax.plot(t, h_sg, '-', c='gray', lw=1, label='Savitzky-Golay')
@@ -79,8 +79,8 @@ ax.legend(loc='upper right', bbox_to_anchor=(0.98, 0.9),
 ax.set_xlim(0, 90)
 ax.set_ylim(-0.5, 1.5)
 
-ax.yaxis.set_major_formatter(pl.NullFormatter())
-ax.xaxis.set_major_locator(pl.MultipleLocator(20))
+ax.yaxis.set_major_formatter(plt.NullFormatter())
+ax.xaxis.set_major_locator(plt.MultipleLocator(20))
 ax.set_xlabel(r'$\lambda$')
 
 # Third plot: Input PSD
@@ -89,14 +89,14 @@ ax.scatter(f[:N / 2], PSD[:N / 2], s=9, c='k', lw=0)
 ax.plot(f[:N / 2], P_S[:N / 2], '-k')
 ax.plot(f[:N / 2], P_N[:N / 2], '-k')
 
-pl.text(0.98, 0.95, "Input PSD", ha='right', va='top', fontsize=12,
+plt.text(0.98, 0.95, "Input PSD", ha='right', va='top', fontsize=12,
         transform=ax.transAxes)
 
 ax.set_ylim(-100, 3500)
 ax.set_xlim(0, 0.9)
 
-ax.yaxis.set_major_locator(pl.MultipleLocator(1000))
-ax.xaxis.set_major_locator(pl.MultipleLocator(0.2))
+ax.yaxis.set_major_locator(plt.MultipleLocator(1000))
+ax.xaxis.set_major_locator(plt.MultipleLocator(0.2))
 ax.set_xlabel('$f$')
 ax.set_ylabel('$PSD(f)$')
 
@@ -105,15 +105,15 @@ ax = fig.add_subplot(224)
 filtered_PSD = (Phi * abs(HN)) ** 2
 ax.scatter(f[:N / 2], filtered_PSD[:N / 2], s=9, c='k', lw=0)
 
-pl.text(0.98, 0.95, "Filtered PSD", ha='right', va='top', fontsize=12,
+plt.text(0.98, 0.95, "Filtered PSD", ha='right', va='top', fontsize=12,
         transform=ax.transAxes)
 
 ax.set_ylim(-100, 3500)
 ax.set_xlim(0, 0.9)
 
-ax.yaxis.set_major_locator(pl.MultipleLocator(1000))
-ax.yaxis.set_major_formatter(pl.NullFormatter())
-ax.xaxis.set_major_locator(pl.MultipleLocator(0.2))
+ax.yaxis.set_major_locator(plt.MultipleLocator(1000))
+ax.yaxis.set_major_formatter(plt.NullFormatter())
+ax.xaxis.set_major_locator(plt.MultipleLocator(0.2))
 ax.set_xlabel('$f$')
 
-pl.show()
+plt.show()

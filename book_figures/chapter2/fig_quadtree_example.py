@@ -11,7 +11,7 @@ parameter space, and plots a visualization of the result.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 
 # We'll create a QuadTree class which will recursively subdivide the
@@ -74,7 +74,7 @@ class QuadTree:
     def draw_rectangle(self, ax, depth):
         """Recursively plot a visualization of the quad tree region"""
         if depth is None or depth == 0:
-            rect = pl.Rectangle(self.mins, *self.sizes, zorder=2,
+            rect = plt.Rectangle(self.mins, *self.sizes, zorder=2,
                                 ec='#000000', fc='none')
             ax.add_patch(rect)
         if depth is None or depth > 0:
@@ -106,7 +106,7 @@ QT = QuadTree(X, mins, maxs, depth=3)
 
 #------------------------------------------------------------
 # Plot four different levels of the quad tree
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(wspace=0.1, hspace=0.15,
                     left=0.1, right=0.9,
                     bottom=0.05, top=0.9)
@@ -127,4 +127,4 @@ for level in range(1, 5):
 
 # suptitle() adds a title to the entire figure
 fig.suptitle('Quad-Tree Example', fontsize=18)
-pl.show()
+plt.show()

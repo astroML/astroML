@@ -8,7 +8,7 @@ This example shows a 1D version of Gaussian Mixture Models
 #   The figure produced by this code is published in the textbook
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
-import pylab as pl
+from matplotlib import pyplot as plt
 import numpy as np
 from sklearn.mixture import GMM
 
@@ -52,7 +52,7 @@ BIC = [m.bic(X) for m in models]
 #   2) AIC and BIC vs number of components
 #   3) probability that a point came from each component
 
-fig = pl.figure(figsize=(10, 3.3))
+fig = plt.figure(figsize=(10, 3.3))
 fig.subplots_adjust(left=0.1, right=0.97,
                     bottom=0.17, top=0.9, wspace=0.35)
 
@@ -102,4 +102,4 @@ ax.text(-5, 0.3, 'class 1', rotation='vertical')
 ax.text(0, 0.5, 'class 2', rotation='vertical')
 ax.text(3, 0.3, 'class 3', rotation='vertical')
 
-pl.show()
+plt.show()

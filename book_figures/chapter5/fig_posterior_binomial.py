@@ -13,7 +13,7 @@ approximation to this posterior.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import norm, binom
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Plot posterior as a function of b
@@ -37,7 +37,7 @@ cuml_p_g /= cuml_p_g[-1]
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(10, 5))
+fig = plt.figure(figsize=(10, 5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.2, bottom=0.12)
 
 ax = fig.add_subplot(121)
@@ -56,4 +56,4 @@ ax.set_xlabel('$b$')
 ax.set_ylabel('$p(<b|x,I)$')
 ax.set_ylim(1E-6, 2)
 
-pl.show()
+plt.show()

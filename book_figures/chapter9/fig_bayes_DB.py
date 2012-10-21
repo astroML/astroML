@@ -9,7 +9,7 @@ This figure plots a schematic of a decision boundary for classification
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import norm
 
 #------------------------------------------------------------
@@ -21,7 +21,7 @@ x_bound = x[np.where(pdf1 < pdf2)][0]
 
 #------------------------------------------------------------
 # Plot the pdfs and decision boundary
-fig = pl.figure()
+fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(x, pdf1, '-k', lw=1)
 ax.fill_between(x, pdf1, color='gray', alpha=0.5)
@@ -46,4 +46,4 @@ ax.set_ylim(0, 0.5)
 ax.set_xlabel('x')
 ax.set_ylabel('p(x)')
 
-pl.show()
+plt.show()

@@ -11,7 +11,7 @@ only points greater than the mean value are observed.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.time_series import \
     lomb_scargle, lomb_scargle_BIC, lomb_scargle_bootstrap
@@ -44,7 +44,7 @@ sig1, sig5 = np.percentile(D, [99, 95])
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 
 # First panel: input data
 ax = fig.add_subplot(211)
@@ -74,4 +74,4 @@ ax2.set_ylabel(r'$\Delta BIC$')
 ax.set_xlabel('$\omega$')
 ax.set_ylabel('$P_{LS}(\omega)$')
 ax.set_ylim(0, 1.1)
-pl.show()
+plt.show()

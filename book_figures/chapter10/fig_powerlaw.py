@@ -14,7 +14,7 @@ References
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.time_series import generate_power_law
 from astroML.fourier import PSD_continuous
 
@@ -25,7 +25,7 @@ factor = 100
 t = dt * np.arange(N)
 random_state = np.random.RandomState(1)
 
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(wspace=0.05)
 
 for i, beta in enumerate([1.0, 2.0]):
@@ -56,10 +56,10 @@ for i, beta in enumerate([1.0, 2.0]):
     ax2.set_xlabel(r'$f$')
 
     if i == 1:
-        ax1.yaxis.set_major_formatter(pl.NullFormatter())
-        ax2.yaxis.set_major_formatter(pl.NullFormatter())
+        ax1.yaxis.set_major_formatter(plt.NullFormatter())
+        ax2.yaxis.set_major_formatter(plt.NullFormatter())
     else:
         ax1.set_ylabel(r'${\rm counts}$')
         ax2.set_ylabel(r'$PSD(f)$')
 
-pl.show()
+plt.show()

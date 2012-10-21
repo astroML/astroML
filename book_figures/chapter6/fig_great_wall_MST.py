@@ -8,7 +8,7 @@ Euclidean Minimum Spanning Tree
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy import sparse
 from sklearn.neighbors import kneighbors_graph
@@ -104,21 +104,21 @@ Ttrunc_x, Ttrunc_y = get_graph_segments(T_trunc)
 
 #----------------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(7, 8))
+fig = plt.figure(figsize=(7, 8))
 fig.subplots_adjust(hspace=0, left=0.1, right=0.95, bottom=0.1, top=0.9)
 
 ax = fig.add_subplot(311, aspect='equal')
 ax.scatter(X[:, 1], X[:, 0], s=1, lw=0, c='k')
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_ylabel('x (Mpc)')
 
 ax = fig.add_subplot(312, aspect='equal')
 ax.plot(T_y, T_x, c='k', lw=1)
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_xlabel('y (Mpc)')
 ax.set_ylabel('x (Mpc)')
 
@@ -126,13 +126,13 @@ ax = fig.add_subplot(313, aspect='equal')
 ax.plot(Ttrunc_y, Ttrunc_x, c='k', lw=1)
 #ax.scatter(X[clusters, 1], X[clusters, 0], c=labels[clusters], lw=0)
 
-ax.imshow(density.T, origin='lower', cmap=pl.cm.binary,
+ax.imshow(density.T, origin='lower', cmap=plt.cm.binary,
           extent=[ymin, ymax, xmin, xmax])
 
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_xlabel('y (Mpc)')
 ax.set_ylabel('x (Mpc)')
 
-pl.show()
+plt.show()

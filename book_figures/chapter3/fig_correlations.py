@@ -11,7 +11,7 @@ estimators for a bivariate gaussian distribution
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy import stats
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.stats.random import bivariate_normal
 from astroML.decorators import pickle_results
@@ -69,7 +69,7 @@ results = compute_results(N, Nbootstraps)
 
 #------------------------------------------------------------
 # Plot the results in a three-panel plot
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(bottom=0.07, top=0.95, hspace=0.25)
 
 histargs = (dict(alpha=0.5, label='No Outliers'),
@@ -101,4 +101,4 @@ for i in range(3):
     ax.set_xlabel(xlabels[i])
     ax.set_ylabel('N(%s)' % xlabels[i])
 
-pl.show()
+plt.show()

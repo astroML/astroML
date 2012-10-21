@@ -11,7 +11,7 @@ very large, the non-binned and binned cases lead to similar results.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.stats.random import linear
 
 
@@ -74,7 +74,7 @@ for i, n in enumerate(nbins):
 
 #------------------------------------------------------------
 # Plot the results
-ax = pl.axes()
+ax = plt.axes()
 
 ax.plot(a, L_c, '-k', label='continuous')
 for L, ls, n in zip(L_p, ['-', '--'], nbins):
@@ -83,7 +83,7 @@ for L, ls, n in zip(L_p, ['-', '--'], nbins):
 
 # plot a vertical line: in newer matplotlib, use ax.vlines([a_true])
 ylim = (0, 200)
-pl.plot([a_true, a_true], ylim, ':k', lw=1)
+plt.plot([a_true, a_true], ylim, ':k', lw=1)
 
 ax.set_xlim(0, 0.02)
 ax.set_ylim(ylim)
@@ -93,4 +93,4 @@ ax.set_ylabel('$p(a)$')
 
 ax.legend(loc=2, prop=dict(size=14))
 
-pl.show()
+plt.show()

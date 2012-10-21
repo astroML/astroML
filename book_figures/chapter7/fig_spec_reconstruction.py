@@ -9,7 +9,7 @@ This shows the reconstruction of a spectrum from eigenspectra.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.decomposition import PCA
 
@@ -49,7 +49,7 @@ coeff = np.dot(evecs, spec - spec_mean)
 
 #------------------------------------------------------------
 # Plot the sequence of reconstructions
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(hspace=0)
 
 for i, n in enumerate([0, 4, 8, 20]):
@@ -58,7 +58,7 @@ for i, n in enumerate([0, 4, 8, 20]):
     ax.plot(wavelengths, spec_mean + np.dot(coeff[:n], evecs[:n]), '-k')
 
     if i < 3:
-        ax.xaxis.set_major_formatter(pl.NullFormatter())
+        ax.xaxis.set_major_formatter(plt.NullFormatter())
 
     ax.set_ylim(-2, 21)
     ax.set_ylabel('flux')
@@ -75,4 +75,4 @@ for i, n in enumerate([0, 4, 8, 20]):
     ax.text(0.01, 0.95, text, ha='left', va='top', transform=ax.transAxes)
 
 fig.axes[-1].set_xlabel(r'${\rm wavelength\ (\AA)}$')
-pl.show()
+plt.show()

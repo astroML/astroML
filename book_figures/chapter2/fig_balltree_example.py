@@ -11,7 +11,7 @@ parameter space, and plots a visualization of the result.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Circle
 
 
@@ -78,7 +78,7 @@ BT = BallTree(X)
 
 #------------------------------------------------------------
 # Plot four different levels of the Ball tree
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(wspace=0.1, hspace=0.15,
                     left=0.1, right=0.9,
                     bottom=0.05, top=0.9)
@@ -94,4 +94,4 @@ for level in range(1, 5):
 
 # suptitle() adds a title to the entire figure
 fig.suptitle('Ball Tree Example', fontsize=18)
-pl.show()
+plt.show()

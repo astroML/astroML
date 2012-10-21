@@ -5,13 +5,13 @@ Ball Dual-tree Diagram
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.05, right=0.95,
                     bottom=0.05, top=0.95)
 
@@ -28,8 +28,8 @@ ax.plot([-0.5, 0.5], [0.5, 0.5], 'kx', ms=8)
 ax.scatter(Qx[0], Qx[1], c='r', s=30)
 ax.scatter(Rx[0], Rx[1], c='b', s=30)
 
-ax.add_patch(pl.Circle((-0.5, 0.5), 0.3, fc='none', lw=2))
-ax.add_patch(pl.Circle((0.5, 0.5), 0.35, fc='none', lw=2))
+ax.add_patch(plt.Circle((-0.5, 0.5), 0.3, fc='none', lw=2))
+ax.add_patch(plt.Circle((0.5, 0.5), 0.35, fc='none', lw=2))
 
 ax.arrow(-0.5, 0.5, -0.16, 0.26, width=0.01, lw=0, color='gray',
          length_includes_head=True, zorder=1)
@@ -54,4 +54,4 @@ ax.text(0, 0.02, r'$D^u(Q, R) = |\vec{\mu}_Q - \vec{\mu}_R| + r_Q + r_R$',
 ax.set_xlim(-1, 1)
 ax.set_ylim(-0.1, 1)
 
-pl.show()
+plt.show()

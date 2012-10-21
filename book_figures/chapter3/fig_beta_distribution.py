@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import beta
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -42,15 +42,15 @@ x = np.linspace(0, 1, 1002)[1:-1]
 for a, b, ls in zip(alpha_values, beta_values, linestyles):
     dist = beta(a, b)
 
-    pl.plot(x, dist.pdf(x), ls=ls, c='black',
+    plt.plot(x, dist.pdf(x), ls=ls, c='black',
             label=r'$\alpha=%.1f,\ \beta=%.1f$' % (a, b))
 
-pl.xlim(0, 1)
-pl.ylim(0, 3)
+plt.xlim(0, 1)
+plt.ylim(0, 3)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|\alpha,\beta)$', fontsize=14)
-pl.title('Beta Distribution')
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|\alpha,\beta)$', fontsize=14)
+plt.title('Beta Distribution')
 
-pl.legend(loc=0)
-pl.show()
+plt.legend(loc=0)
+plt.show()

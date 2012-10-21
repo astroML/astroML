@@ -12,7 +12,7 @@ unbinned data (b is determined by normalization).
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.stats.random import linear
 
 
@@ -42,7 +42,7 @@ px = lin_dist.pdf(x)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.11, right=0.95, wspace=0.26,
                     bottom=0.15, top=0.9)
 
@@ -58,7 +58,7 @@ ax1.set_ylabel('$p(x)$')
 
 # right panel: construct and plot the likelihood
 ax2 = fig.add_subplot(122)
-ax2.xaxis.set_major_locator(pl.MultipleLocator(0.01))
+ax2.xaxis.set_major_locator(plt.MultipleLocator(0.01))
 
 a = np.linspace(-0.01, 0.02, 1000)
 Npts = (500, 100, 20)
@@ -80,4 +80,4 @@ ylim = ax2.get_ylim()
 ax2.plot([a_true, a_true], ylim, ':k', lw=1)
 ax2.set_ylim(ylim)
 
-pl.show()
+plt.show()

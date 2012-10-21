@@ -10,7 +10,7 @@ photometry from the rr-lyrae catalog and stripe 82 standards catalogs.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib import colors
 
 from sklearn.qda import QDA
@@ -68,18 +68,18 @@ Z = Z[:, 1].reshape(xx.shape)
 
 #----------------------------------------------------------------------
 # plot the results
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(bottom=0.15, top=0.95, hspace=0.0,
                     left=0.1, right=0.95, wspace=0.2)
 
 # left plot: data and decision boundary
 ax = fig.add_subplot(121)
 im = ax.scatter(X[-N_plot:, 1], X[-N_plot:, 0], c=y[-N_plot:],
-                s=4, lw=0, cmap=pl.cm.binary, zorder=2)
+                s=4, lw=0, cmap=plt.cm.binary, zorder=2)
 im.set_clim(-0.5, 1)
 
 im = ax.imshow(Z, origin='lower', aspect='auto',
-               cmap=pl.cm.binary, zorder=1,
+               cmap=plt.cm.binary, zorder=1,
                extent=xlim + ylim)
 im.set_clim(0, 1.5)
 
@@ -95,9 +95,9 @@ ax.set_ylabel('g-r')
 ax = fig.add_subplot(222)
 ax.plot(Ncolors, completeness, 'o-k', c='k', label='unweighted')
 
-ax.xaxis.set_major_locator(pl.MultipleLocator(1))
-ax.yaxis.set_major_locator(pl.MultipleLocator(0.2))
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_locator(plt.MultipleLocator(1))
+ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 ax.set_ylabel('completeness')
 ax.set_xlim(0.5, 4.5)
@@ -108,9 +108,9 @@ ax.grid(True)
 ax = fig.add_subplot(224)
 ax.plot(Ncolors, contamination, 'o-k', c='k', label='unweighted')
 
-ax.xaxis.set_major_locator(pl.MultipleLocator(1))
-ax.yaxis.set_major_locator(pl.MultipleLocator(0.2))
-ax.xaxis.set_major_formatter(pl.FormatStrFormatter('%i'))
+ax.xaxis.set_major_locator(plt.MultipleLocator(1))
+ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))
+ax.xaxis.set_major_formatter(plt.FormatStrFormatter('%i'))
 
 ax.set_xlabel('N colors')
 ax.set_ylabel('contamination')
@@ -119,4 +119,4 @@ ax.set_xlim(0.5, 4.5)
 ax.set_ylim(-0.1, 1.1)
 ax.grid(True)
 
-pl.show()
+plt.show()

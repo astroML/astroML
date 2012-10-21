@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import cauchy
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -44,15 +44,15 @@ x = np.linspace(-10, 10, 1000)
 for gamma, ls in zip(gamma_values, linestyles):
     dist = cauchy(mu, gamma)
 
-    pl.plot(x, dist.pdf(x), ls=ls, color='black',
+    plt.plot(x, dist.pdf(x), ls=ls, color='black',
             label=r'$\mu=%i,\ \gamma=%.1f$' % (mu, gamma))
 
-pl.xlim(-5, 5)
-pl.ylim(0, 0.8)
+plt.xlim(-5, 5)
+plt.ylim(0, 0.8)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|\mu,\gamma)$', fontsize=14)
-pl.title('Cauchy Distribution')
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|\mu,\gamma)$', fontsize=14)
+plt.title('Cauchy Distribution')
 
-pl.legend()
-pl.show()
+plt.legend()
+plt.show()

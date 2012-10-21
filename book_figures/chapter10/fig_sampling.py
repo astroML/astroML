@@ -11,7 +11,7 @@ light curves, and show the observed power and the window function power
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.time_series import lomb_scargle
 
@@ -45,7 +45,7 @@ omega /= 2 * np.pi
 
 #------------------------------------------------------------
 # Prepare the figures
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(bottom=0.15, hspace=0.35, wspace=0.2,
                     left=0.1, right=0.95)
 
@@ -81,4 +81,4 @@ ax.set_ylim(-0.1, 1.1)
 ax.set_xlabel('$f$')
 ax.set_ylabel('$P_{LS}(f)$')
 
-pl.show()
+plt.show()

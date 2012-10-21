@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import f as fisher_f
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -43,15 +43,15 @@ x = np.linspace(0, 5, 1001)[1:]
 for (d1, d2, ls) in zip(d1_values, d2_values, linestyles):
     dist = fisher_f(d1, d2, mu)
 
-    pl.plot(x, dist.pdf(x), ls=ls, c='black',
+    plt.plot(x, dist.pdf(x), ls=ls, c='black',
             label=r'$d_1=%i,\ d_2=%i$' % (d1, d2))
 
-pl.xlim(0, 4)
-pl.ylim(0.0, 1.2)
+plt.xlim(0, 4)
+plt.ylim(0.0, 1.2)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|d_1, d_2)$', fontsize=14)
-pl.title("Fisher's Distribution")
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|d_1, d_2)$', fontsize=14)
+plt.title("Fisher's Distribution")
 
-pl.legend()
-pl.show()
+plt.legend()
+plt.show()

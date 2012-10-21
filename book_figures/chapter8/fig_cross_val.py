@@ -9,7 +9,7 @@ This figure plots diagrams used in the cross-validation discussion
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib import ticker
 from matplotlib.patches import FancyArrow
 
@@ -36,7 +36,7 @@ x_fit = np.linspace(0, 3, 1000)
 
 #------------------------------------------------------------
 # First figure: plot points with a linear fit
-fig = pl.figure()
+fig = plt.figure()
 ax = fig.add_subplot(111)
 
 ax.scatter(x, y, marker='x', c='k', s=50)
@@ -44,7 +44,7 @@ ax.scatter(x, y, marker='x', c='k', s=50)
 p = np.polyfit(x, y, 1)
 y_fit = np.polyval(p, x_fit)
 
-ax.text(0.05, 0.95, "d = 1", transform=pl.gca().transAxes,
+ax.text(0.05, 0.95, "d = 1", transform=plt.gca().transAxes,
         ha='left', va='top',
         bbox=dict(ec='k', fc='w', pad=10))
 
@@ -54,7 +54,7 @@ ax.set_ylabel('y')
 
 #------------------------------------------------------------
 # Second figure: plot fit for several orders of polynomial
-fig = pl.figure(figsize=(10, 4))
+fig = plt.figure(figsize=(10, 4))
 fig.subplots_adjust(wspace=0.03, bottom=0.15,
                     top=0.95, left=0.07, right=0.97)
 
@@ -69,7 +69,7 @@ for i, d in enumerate([2, 3, 19]):
     ax.set_ylim(-0.1, 2.1)
     ax.set_xlim(-0.2, 3.2)
     if i in (1, 2):
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
     else:
         ax.set_ylabel('y')
     ax.set_xlabel('x')
@@ -83,7 +83,7 @@ d = np.arange(0, 21)
 training_err = np.zeros(d.shape)
 crossval_err = np.zeros(d.shape)
 
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 for i in range(len(d)):
     p = np.polyfit(x, y, d[i])
     training_err[i] = np.sqrt(np.sum((np.polyval(p, x) - y) ** 2)
@@ -129,7 +129,7 @@ y_cv = func(x_cv)
 
 Nrange = np.arange(10, 101, 2)
 
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.15, top=0.95)
 
 for subplot, d in zip([211, 212], [2, 3]):
@@ -156,4 +156,4 @@ for subplot, d in zip([211, 212], [2, 3]):
     ax.set_xlabel('Number of training points')
     ax.set_ylabel('rms error')
 
-pl.show()
+plt.show()

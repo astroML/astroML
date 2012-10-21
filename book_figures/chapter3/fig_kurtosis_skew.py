@@ -11,9 +11,9 @@ This figure visualizes the kurtosis and skew of several distributions
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy import stats
-import pylab as pl
+from matplotlib import pyplot as plt
 
-fig = pl.figure(figsize=(8, 10))
+fig = plt.figure(figsize=(8, 10))
 fig.subplots_adjust(right=0.95, hspace=0.05)
 
 # First show distributions with different skeq
@@ -32,7 +32,7 @@ l3, = ax.plot(x[499:], stats.lognorm(1.2).pdf(x[499:]), '-.k',
 ax.set_xlim(-5, 5)
 ax.set_ylim(0, 0.7001)
 ax.set_ylabel('$p(x)$', fontsize=16)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 # trick to show multiple legends
 leg1 = ax.legend([l1], [l1.get_label()], loc=1)
@@ -62,4 +62,4 @@ leg1 = ax.legend((l1, l2), (l1.get_label(), l2.get_label()), loc=2)
 leg2 = ax.legend((l3, l4), (l3.get_label(), l4.get_label()), loc=1)
 ax.add_artist(leg1)
 
-pl.show()
+plt.show()

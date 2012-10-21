@@ -5,10 +5,10 @@ LIGO wavelet transform
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_LIGO_bigdog
 from astroML.fourier import FT_continuous, IFT_continuous
@@ -56,12 +56,12 @@ print HW.shape
 t = t[::100]
 HW = HW[:, ::100]
 
-pl.imshow(abs(HW), origin='lower', aspect='auto',
+plt.imshow(abs(HW), origin='lower', aspect='auto',
           extent=[t[0], t[-1], np.log2(f0[0]), np.log2(f0[-1])])
-pl.colorbar()
-pl.gca().yaxis.set_major_locator(pl.MultipleLocator(1))
-pl.gca().yaxis.set_major_formatter(pl.FuncFormatter(lambda x, *args:
+plt.colorbar()
+plt.gca().yaxis.set_major_locator(plt.MultipleLocator(1))
+plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, *args:
                                                         "%i" % (2 ** x)))
-pl.show()
+plt.show()
 
 

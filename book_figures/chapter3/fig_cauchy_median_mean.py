@@ -11,7 +11,7 @@ the Cauchy distribution.  Median-based statistics should be used instead.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import optimize
 from scipy.stats import cauchy, norm
 
@@ -86,7 +86,7 @@ mean_iter = [robust_mean_iterated(xi[:N]) for N in Nrange]
 
 #------------------------------------------------------------
 # Plot the results as a function of number of points
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0.05)
 
 # first plot the mean
@@ -101,7 +101,7 @@ ax.set_xlim(0, 100)
 ax.set_ylim(-7, 7)
 ax.legend(loc=4, ncol=2)
 ax.set_ylabel('Value')
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 # now plot the median
 ax = fig.add_subplot(212)
@@ -112,4 +112,4 @@ ax.set_ylim(-75, 75)
 ax.set_xlabel('Sample Size')
 ax.set_ylabel('Value')
 
-pl.show()
+plt.show()

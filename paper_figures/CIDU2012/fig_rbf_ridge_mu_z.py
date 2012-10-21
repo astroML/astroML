@@ -7,7 +7,7 @@ Regularized Regression Example
 This performs regularized regression on a gaussian basis function model.
 """
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import lognorm
 
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
@@ -39,7 +39,7 @@ X = gaussian_basis(z_sample[:, np.newaxis], centers, widths)
 
 #------------------------------------------------------------
 # Set up the figure to plot the results
-fig = pl.figure(figsize=(12, 7))
+fig = plt.figure(figsize=(12, 7))
 fig.subplots_adjust(left=0.07, right=0.95,
                     bottom=0.08, top=0.95,
                     hspace=0.1, wspace=0.15)
@@ -56,13 +56,13 @@ for i in range(3):
 
     # plot fit
     ax = fig.add_subplot(231 + i)
-    ax.xaxis.set_major_formatter(pl.NullFormatter())
+    ax.xaxis.set_major_formatter(plt.NullFormatter())
 
     # plot curves for regularized fits
     if i == 0:
         ax.set_ylabel('$\mu$')
     else:
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
         curves = 37 + w * gaussian_basis(z[:, np.newaxis], centers, widths)
         curves = curves[:, abs(w) > 0.01]
         ax.plot(z, curves,
@@ -78,8 +78,8 @@ for i in range(3):
             transform=ax.transAxes)
 
     # plot weights
-    ax = pl.subplot(234 + i)
-    ax.xaxis.set_major_locator(pl.MultipleLocator(0.5))
+    ax = plt.subplot(234 + i)
+    ax.xaxis.set_major_locator(plt.MultipleLocator(0.5))
     ax.set_xlabel('z')
     if i == 0:
         ax.set_ylabel(r'$\theta$')
@@ -99,4 +99,4 @@ for i in range(3):
             ha='left', va='top',
             transform=ax.transAxes)
 
-pl.show()
+plt.show()

@@ -12,7 +12,7 @@ mean of a gaussian distribution, calculated in two different ways.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import norm
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.resample import bootstrap
 from astroML.stats import sigmaG
@@ -42,7 +42,7 @@ pdf2 = norm(1, sigma2).pdf(x)
 
 #------------------------------------------------------------
 # Plot the results
-ax = pl.axes()
+ax = plt.axes()
 
 ax.hist(mu1_bootstrap, bins=50, normed=True, histtype='step',
         color='blue', lw=2, ls='dashed', label=r'$\sigma\ {\rm (std. dev.)}$')
@@ -57,4 +57,4 @@ ax.set_ylabel(r'$p(\sigma|x,I)$', fontsize=18)
 
 ax.legend()
 
-pl.show()
+plt.show()

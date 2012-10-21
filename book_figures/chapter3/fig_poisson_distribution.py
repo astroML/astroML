@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import poisson
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -52,15 +52,15 @@ for mu, ls in zip(mu_values, linestyles):
     dist = poisson(mu)
     x = np.arange(200)
 
-    pl.plot(x, dist.pmf(x), ls=ls, color='black',
+    plt.plot(x, dist.pmf(x), ls=ls, color='black',
             label=r'$\mu=%i$' % mu, linestyle='steps')
 
-pl.xlim(0, 30)
-pl.ylim(0, 0.4)
+plt.xlim(0, 30)
+plt.ylim(0, 0.4)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|\mu)$', fontsize=14)
-pl.title('Poisson Distribution')
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|\mu)$', fontsize=14)
+plt.title('Poisson Distribution')
 
-pl.legend()
-pl.show()
+plt.legend()
+plt.show()

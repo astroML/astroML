@@ -6,14 +6,14 @@ Download and plot the five SDSS filter bands along with a Vega spectrum.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_filter, fetch_vega_spectrum
 
 #------------------------------------------------------------
 # Set up figure and axes
-fig = pl.figure()
+fig = plt.figure()
 ax = fig.add_subplot(111)
 
 #----------------------------------------------------------------------
@@ -38,4 +38,4 @@ ax.set_title('SDSS Filters and Reference Spectrum')
 ax.set_xlabel('Wavelength (Angstroms)')
 ax.set_ylabel('normalized flux / filter transmission')
 
-pl.show()
+plt.show()

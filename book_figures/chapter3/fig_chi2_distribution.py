@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import chi2
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -42,15 +42,15 @@ x = np.linspace(-1, 20, 1000)
 for k, ls in zip(k_values, linestyles):
     dist = chi2(k, mu)
 
-    pl.plot(x, dist.pdf(x), ls=ls, c='black',
+    plt.plot(x, dist.pdf(x), ls=ls, c='black',
             label=r'$k=%i$' % k)
 
-pl.xlim(0, 10)
-pl.ylim(0, 0.6)
+plt.xlim(0, 10)
+plt.ylim(0, 0.6)
 
-pl.xlabel('$Q$', fontsize=14)
-pl.ylabel(r'$P(Q|k)$', fontsize=14)
-pl.title(r'$\chi^2\ \mathrm{Distribution}$', fontsize=14)
+plt.xlabel('$Q$', fontsize=14)
+plt.ylabel(r'$P(Q|k)$', fontsize=14)
+plt.title(r'$\chi^2\ \mathrm{Distribution}$', fontsize=14)
 
-pl.legend()
-pl.show()
+plt.legend()
+plt.show()

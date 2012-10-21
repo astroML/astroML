@@ -7,7 +7,7 @@ quasar sample.
 """
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.plotting import multidensity
 from astroML.datasets import fetch_dr7_quasar
@@ -31,6 +31,6 @@ bins = [np.linspace(-0.4, 1.0, 100),
         np.linspace(0, 2.2, 100)]
 
 multidensity(colors, labels, bins=bins)
-pl.suptitle('SDSS DR7 Quasar Colors', fontsize=18)
+plt.suptitle('SDSS DR7 Quasar Colors', fontsize=18)
 
-pl.show()
+plt.show()

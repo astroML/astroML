@@ -10,7 +10,7 @@ Visualization of the relationship between joint and conditional probabilities.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.ticker import NullFormatter, NullLocator, MultipleLocator
 
 
@@ -41,16 +41,16 @@ H /= np.sum(H)
 
 #------------------------------------------------------------
 # plot the result
-fig = pl.figure(figsize=(10, 5))
+fig = plt.figure(figsize=(10, 5))
 
 # define axes
-ax_Pxy = pl.axes((0.17, 0.3, 0.3, 0.6))
-ax_Px = pl.axes((0.17, 0.1, 0.3, 0.2))
-ax_Py = pl.axes((0.07, 0.3, 0.1, 0.6))
-ax_cb = pl.axes((0.48, 0.3, 0.01, 0.6))
-ax_Px_y = [pl.axes((0.63, 0.64, 0.34, 0.26)),
-           pl.axes((0.63, 0.37, 0.34, 0.26)),
-           pl.axes((0.63, 0.1, 0.34, 0.26))]
+ax_Pxy = plt.axes((0.17, 0.3, 0.3, 0.6))
+ax_Px = plt.axes((0.17, 0.1, 0.3, 0.2))
+ax_Py = plt.axes((0.07, 0.3, 0.1, 0.6))
+ax_cb = plt.axes((0.48, 0.3, 0.01, 0.6))
+ax_Px_y = [plt.axes((0.63, 0.64, 0.34, 0.26)),
+           plt.axes((0.63, 0.37, 0.34, 0.26)),
+           plt.axes((0.63, 0.1, 0.34, 0.26))]
 
 # set axis label formatters
 ax_Px_y[0].xaxis.set_major_formatter(NullFormatter())
@@ -63,14 +63,14 @@ ax_Px.yaxis.set_major_formatter(NullFormatter())
 ax_Py.xaxis.set_major_formatter(NullFormatter())
 
 # draw the joint probability
-pl.axes(ax_Pxy)
+plt.axes(ax_Pxy)
 H *= 1000
-pl.imshow(H, interpolation='nearest', origin='lower', aspect='auto',
-          extent=[0, 2, 0, 2], cmap=pl.cm.binary)
+plt.imshow(H, interpolation='nearest', origin='lower', aspect='auto',
+          extent=[0, 2, 0, 2], cmap=plt.cm.binary)
 
-cb = pl.colorbar(cax=ax_cb)
+cb = plt.colorbar(cax=ax_cb)
 cb.set_label('P(x, y)')
-pl.text(0, 1, r'$\times 10^{-3}$',
+plt.text(0, 1, r'$\times 10^{-3}$',
         fontsize=14,
         transform=ax_cb.transAxes)
 
@@ -115,4 +115,4 @@ ax_Px_y[2].set_xlabel('x')
 ax_Pxy.set_title('Joint Probability')
 ax_Px_y[0].set_title('Conditional Probability')
 
-pl.show()
+plt.show()

@@ -14,7 +14,7 @@ transparent, we'll do it by hand using linear algebra.
 import itertools
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics.pairwise import euclidean_distances
@@ -41,26 +41,26 @@ z_test = z[1::100]
 
 def plot_results(z, z_fit, plotlabel=None,
                  xlabel=True, ylabel=True):
-    pl.scatter(z, z_fit, s=1, lw=0, c='k')
-    pl.plot([-0.1, 0.4], [-0.1, 0.4], ':k')
-    pl.xlim(-0.05, 0.4001)
-    pl.ylim(-0.05, 0.4001)
-    pl.gca().xaxis.set_major_locator(pl.MultipleLocator(0.1))
-    pl.gca().yaxis.set_major_locator(pl.MultipleLocator(0.1))
+    plt.scatter(z, z_fit, s=1, lw=0, c='k')
+    plt.plot([-0.1, 0.4], [-0.1, 0.4], ':k')
+    plt.xlim(-0.05, 0.4001)
+    plt.ylim(-0.05, 0.4001)
+    plt.gca().xaxis.set_major_locator(plt.MultipleLocator(0.1))
+    plt.gca().yaxis.set_major_locator(plt.MultipleLocator(0.1))
 
     if plotlabel:
-        pl.text(0.03, 0.97, plotlabel,
+        plt.text(0.03, 0.97, plotlabel,
                 ha='left', va='top', transform=ax.transAxes)
 
     if xlabel:
-        pl.xlabel(r'$\rm z_{true}$', fontsize=16)
+        plt.xlabel(r'$\rm z_{true}$', fontsize=16)
     else:
-        pl.gca().xaxis.set_major_formatter(pl.NullFormatter())
+        plt.gca().xaxis.set_major_formatter(plt.NullFormatter())
         
     if ylabel:
-        pl.ylabel(r'$\rm z_{fit}$', fontsize=16)
+        plt.ylabel(r'$\rm z_{fit}$', fontsize=16)
     else:
-        pl.gca().yaxis.set_major_formatter(pl.NullFormatter())
+        plt.gca().yaxis.set_major_formatter(plt.NullFormatter())
 
 
 def combinations_with_replacement(iterable, r):
@@ -119,15 +119,15 @@ def gaussian_RBF_features(X, centers, widths):
                            - centers) / widths) ** 2).sum(-1)
     
 
-pl.figure(figsize=(8, 8))
-pl.subplots_adjust(hspace=0.05, wspace=0.05,
+plt.figure(figsize=(8, 8))
+plt.subplots_adjust(hspace=0.05, wspace=0.05,
                    left=0.1, right=0.95,
                    bottom=0.1, top=0.95)
 
 #----------------------------------------------------------------------
 # first do a simple linear regression between the r-band and redshift,
 # ignoring uncertainties
-ax = pl.subplot(221)
+ax = plt.subplot(221)
 X_train = mag_train[:, [0, 3]]
 X_test = mag_test[:, [0, 3]]
 z_fit = LinearRegression().fit(X_train, z_train).predict(X_test)
@@ -137,14 +137,14 @@ plot_results(z_test, z_fit,
 
 #----------------------------------------------------------------------
 # next do a linear regression with all bands
-ax = pl.subplot(222)
+ax = plt.subplot(222)
 z_fit = LinearRegression().fit(mag_train, z_train).predict(mag_test)
 plot_results(z_test, z_fit, plotlabel="Linear Regression:\n ugriz bands",
              xlabel=False, ylabel=False)
 
 #----------------------------------------------------------------------
 # next do a 3rd-order polynomial regression with all bands
-ax = pl.subplot(223)
+ax = plt.subplot(223)
 X_train = poly_features(mag_train, 3)
 X_test = poly_features(mag_test, 3)
 z_fit = LinearRegression().fit(X_train, z_train).predict(X_test)
@@ -152,7 +152,7 @@ plot_results(z_test, z_fit, plotlabel="3rd order Polynomial\nRegression")
 
 #----------------------------------------------------------------------
 # next do a radial basis function regression with all bands
-ax = pl.subplot(224)
+ax = plt.subplot(224)
 
 # remove bias term
 mag = mag[:, 1:]
@@ -169,4 +169,4 @@ z_fit = LinearRegression().fit(X_train, z_train).predict(X_test)
 plot_results(z_test, z_fit, plotlabel="Gaussian Basis Function\nRegression",
              ylabel=False)
 
-pl.show()
+plt.show()

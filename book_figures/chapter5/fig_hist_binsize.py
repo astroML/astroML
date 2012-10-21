@@ -11,7 +11,7 @@ the Freedman-Diaconis rule, and Knuth's rule.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import stats
 from astroML.plotting import hist
 
@@ -21,7 +21,7 @@ def plot_labeled_histogram(style, data, name,
                            hide_x=False,
                            hide_y=False):
     if ax is not None:
-        ax = pl.axes(ax)
+        ax = plt.axes(ax)
 
     counts, bins, patches = hist(data, bins=style, ax=ax,
                                  color='k', histtype='step', normed=True)
@@ -32,9 +32,9 @@ def plot_labeled_histogram(style, data, name,
     ax.fill(x, pdf_true, '-', color='#CCCCCC', zorder=0)
 
     if hide_x:
-        ax.xaxis.set_major_formatter(pl.NullFormatter())
+        ax.xaxis.set_major_formatter(plt.NullFormatter())
     if hide_y:
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
 
     ax.set_xlim(-5, 5)
 
@@ -66,7 +66,7 @@ pdf_NG = sum(w * d.pdf(x)
 
 #------------------------------------------------------------
 # Plot results
-fig = pl.figure(figsize=(10, 5))
+fig = plt.figure(figsize=(10, 5))
 fig.subplots_adjust(hspace=0, left=0.05, right=0.95, wspace=0.05)
 ax = [fig.add_subplot(3, 2, i + 1) for i in range(6)]
 
@@ -93,4 +93,4 @@ plot_labeled_histogram('knuth', data_NG, 'Knuth\'s Rule', x, pdf_NG,
 ax[1].set_title('non-Gaussian distribution')
 ax[5].set_xlabel('x')
 
-pl.show()
+plt.show()

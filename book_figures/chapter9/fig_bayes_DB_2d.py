@@ -9,7 +9,7 @@ Plot a schematic of a two-dimensional decision boundary
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
 
 #------------------------------------------------------------
@@ -25,14 +25,14 @@ x_boundary = (0.5 + 0.4 * (y_boundary - 0.9) ** 2)
 
 #------------------------------------------------------------
 # Set up plot
-fig = pl.figure(figsize=(6, 6), facecolor='w')
+fig = plt.figure(figsize=(6, 6), facecolor='w')
 ax = fig.add_axes([0, 0, 1, 1], frameon=False, xticks=[], yticks=[])
 
 # draw axes
-pl.annotate(r'$x_1$', (-0.08, -0.02), (1.05, -0.02),
+plt.annotate(r'$x_1$', (-0.08, -0.02), (1.05, -0.02),
             ha='center', va='center', fontsize=16,
             arrowprops=dict(arrowstyle='<-', color='k', lw=1.5))
-pl.annotate(r'$x_2$', (-0.02, -0.08), (-0.02, 1.05),
+plt.annotate(r'$x_2$', (-0.02, -0.08), (-0.02, 1.05),
             ha='center', va='center', fontsize=16,
             arrowprops=dict(arrowstyle='<-', color='k', lw=1.5))
 
@@ -53,4 +53,4 @@ ax.text(0.53, 0.28, "decision boundary", rotation=-70, fontsize=16,
 ax.set_xlim(-0.1, 1.1)
 ax.set_ylim(-0.1, 1.1)
 
-pl.show()
+plt.show()

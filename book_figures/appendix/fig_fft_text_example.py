@@ -7,10 +7,10 @@ using the discrete FFT
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import fftpack
 
 from astroML.wavelets import sinegauss, sinegauss_FT
@@ -37,7 +37,7 @@ rms_err = np.sqrt(np.mean(abs(H - sinegauss_FT(f, t0, f0, Q)) ** 2))
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0.25)
 
 # plot the wavelet
@@ -63,4 +63,4 @@ ax.set_ylim(-1.9, 1.9)
 ax.set_xlabel('$f$')
 ax.set_ylabel('$H(f)$')
 
-pl.show()
+plt.show()

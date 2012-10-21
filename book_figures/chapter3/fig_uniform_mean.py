@@ -19,7 +19,7 @@ error.  Notice the difference in scale between the y-axes of the two plots.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import uniform
 
 #------------------------------------------------------------
@@ -45,7 +45,7 @@ root_N_scaling = W / np.sqrt(N * 12)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0)
 
 # upper plot: mean statistic
@@ -60,7 +60,7 @@ for nsig in (1, 2, 3):
 ax.set_xlim(N[0], N[-1])
 ax.set_ylim(-0.199, 0.199)
 ax.set_ylabel(r'$\bar{\mu}$', fontsize=16)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 ax.text(0.99, 0.95,
         r'$\bar\mu = \mathrm{mean}(x)$',
@@ -94,4 +94,4 @@ ax.text(0.99, 0.02,
         ha='right', va='bottom', transform=ax.transAxes,
         fontsize=16)
 
-pl.show()
+plt.show()

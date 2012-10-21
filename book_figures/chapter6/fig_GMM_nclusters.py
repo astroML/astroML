@@ -10,7 +10,7 @@ a Gaussian mixture model with several sizes of data.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import norm
 from sklearn.mixture import GMM
 from astroML.utils import convert_2D_cov
@@ -38,7 +38,7 @@ gmm_input.weights_ /= gmm_input.weights_.sum()
 
 #------------------------------------------------------------
 # Compute and plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.1, right=0.9, bottom=0.1, top=0.9,
                     hspace=0, wspace=0)
 ax_list = [fig.add_subplot(s) for s in [221, 223, 224]]
@@ -88,8 +88,8 @@ for Npts, ax, ls in zip([100, 1000, 10000], ax_list, linestyles):
     ax.set_ylim(-5, 105)
 
 
-ax_list[0].xaxis.set_major_formatter(pl.NullFormatter())
-ax_list[2].yaxis.set_major_formatter(pl.NullFormatter())
+ax_list[0].xaxis.set_major_formatter(plt.NullFormatter())
+ax_list[2].yaxis.set_major_formatter(plt.NullFormatter())
 
 for i in (0, 1):
     ax_list[i].set_ylabel('y')
@@ -103,6 +103,6 @@ ax_list[-1].set_xlabel('number of clusters')
 ax_list[-1].set_ylabel('BIC / N')
 ax_list[-1].set_ylim(16, 18)
 
-pl.show()
+plt.show()
 
 

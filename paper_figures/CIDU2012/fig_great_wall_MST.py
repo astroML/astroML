@@ -6,7 +6,7 @@ Euclidean Minimum Spanning Tree
 -------------------------------
 """
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy.interpolate import interp1d
 from sklearn.neighbors import kneighbors_graph
@@ -51,14 +51,14 @@ y_coords = np.vstack([A[1], B[1]])
 
 #----------------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0, left=0.1, right=0.95, bottom=0.1, top=0.9)
 
 ax = fig.add_subplot(211, aspect='equal')
 ax.scatter(X[:, 1], X[:, 0], s=1, lw=0, c='k')
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_ylabel('x (Mpc)')
 
 ax = fig.add_subplot(212, aspect='equal')
@@ -68,4 +68,4 @@ ax.set_ylim(xmin, xmax)
 ax.set_xlabel('y (Mpc)')
 ax.set_ylabel('x (Mpc)')
 
-pl.show()
+plt.show()

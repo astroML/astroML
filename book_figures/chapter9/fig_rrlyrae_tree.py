@@ -10,7 +10,7 @@ and plots a visualization of the first several levels of the tree.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.tree import DecisionTreeClassifier
 from astroML.datasets import fetch_rrlyrae_combined
@@ -47,7 +47,7 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
     # to visualize the tree, we essentially need to re-build it: it doesn't
     # store the list of points at each node.
     if ax is None:
-        ax = pl.gca()
+        ax = plt.gca()
 
     # get tree aspects
     try:
@@ -173,7 +173,7 @@ print "false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn))
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 10), facecolor='w')
+fig = plt.figure(figsize=(8, 10), facecolor='w')
 ax = fig.add_axes([0, 0, 1, 1], xticks=[], yticks=[], frameon=False)
 visualize_tree(clf, X_train, y_train,
                labels=(['$u-g$', '$g-r$', '$r-i$', '$i-z$']))
@@ -221,4 +221,4 @@ print "positive = RR Lyrae, negative = non-variables"
 print "false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp))
 print "false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn))
 
-pl.show()
+plt.show()

@@ -11,7 +11,7 @@ This plot shows the posterior distributions for :math:`\mu` and
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.stats import mean_sigma
 from astroML.resample import bootstrap
 
@@ -99,12 +99,12 @@ sig_hist = sig_hist / sig_dbin / sig_hist.sum()
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(wspace=0.35, right=0.95,
                     hspace=0.2, top=0.95)
 
 # plot posteriors for mu
-ax1 = pl.subplot(221, yscale='log')
+ax1 = plt.subplot(221, yscale='log')
 ax1.plot(mu, pmu, '-b')
 ax1.plot(mu, pmu2, ':m')
 ax1.plot(mu, pmu_norm, '--r')
@@ -114,7 +114,7 @@ ax1.scatter(mu_bins[1:] - 0.5 * mu_dbin, mu_hist,
 ax1.set_xlabel(r'$\mu$')
 ax1.set_ylabel(r'$p(\mu|x,I)$')
 
-ax2 = pl.subplot(223, sharex=ax1)
+ax2 = plt.subplot(223, sharex=ax1)
 ax2.plot(mu, pmu.cumsum() * dmu, '-b')
 ax2.plot(mu, pmu_norm.cumsum() * dmu, '--r')
 ax2.scatter(mu_bins[1:] - 0.5 * mu_dbin, mu_hist.cumsum() * mu_dbin,
@@ -125,7 +125,7 @@ ax2.set_xlabel(r'$\mu$')
 ax2.set_ylabel(r'$P(<\mu|x,I)$')
 
 # plot posteriors for sigma
-ax3 = pl.subplot(222, sharey=ax1)
+ax3 = plt.subplot(222, sharey=ax1)
 ax3.plot(sig, psig, '-b')
 ax3.plot(sig, psig2, ':m')
 ax3.plot(sig, psig_norm, '--r')
@@ -136,7 +136,7 @@ ax3.set_ylim(1E-4, 2)
 ax3.set_xlabel(r'$\sigma$')
 ax3.set_ylabel(r'$p(\sigma|x,I)$')
 
-ax4 = pl.subplot(224, sharex=ax3, sharey=ax2)
+ax4 = plt.subplot(224, sharex=ax3, sharey=ax2)
 ax4.plot(sig, psig.cumsum() * dsig, '-b')
 ax4.plot(sig, psig_norm.cumsum() * dsig, '--r')
 ax4.scatter(sig_bins[1:] - 0.5 * sig_dbin, sig_hist.cumsum() * sig_dbin,
@@ -147,4 +147,4 @@ ax4.set_xlim(0, 5)
 ax4.set_xlabel(r'$\sigma$')
 ax4.set_ylabel(r'$P(<\sigma|x,I)$')
 
-pl.show()
+plt.show()

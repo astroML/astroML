@@ -8,7 +8,7 @@ BIC for LINEAR light curve
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.time_series import multiterm_periodogram, lomb_scargle_BIC
 from astroML.datasets import fetch_LINEAR_sample
@@ -37,7 +37,7 @@ for i, omega in enumerate([omega1, omega2]):
 
 #----------------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 
 ax = [fig.add_axes((0.15, 0.53, 0.8, 0.37)),
       fig.add_axes((0.15, 0.1, 0.8, 0.37))]
@@ -62,13 +62,13 @@ for i in range(2):
 
     # plot inset
     ax_inset[i].plot(terms, BIC_max[i], '-k')
-    ax_inset[i].xaxis.set_major_locator(pl.MultipleLocator(5))
-    ax_inset[i].xaxis.set_major_formatter(pl.NullFormatter())
-    ax_inset[i].yaxis.set_major_locator(pl.MultipleLocator(25))
-    ax_inset[i].yaxis.set_major_formatter(pl.FormatStrFormatter('%i'))
+    ax_inset[i].xaxis.set_major_locator(plt.MultipleLocator(5))
+    ax_inset[i].xaxis.set_major_formatter(plt.NullFormatter())
+    ax_inset[i].yaxis.set_major_locator(plt.MultipleLocator(25))
+    ax_inset[i].yaxis.set_major_formatter(plt.FormatStrFormatter('%i'))
     ax_inset[i].set_xlim(7, 19.75)
     ax_inset[i].set_ylim(ylims[i])
     ax_inset[i].set_title('zooomed view')
     ax_inset[i].grid(color='gray')
 
-pl.show()
+plt.show()

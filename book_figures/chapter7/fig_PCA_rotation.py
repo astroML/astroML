@@ -10,7 +10,7 @@ ellipse.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
 
 #------------------------------------------------------------
@@ -31,8 +31,8 @@ X = np.dot(R, X)
 
 #------------------------------------------------------------
 # Plot the diagram
-fig = pl.figure(figsize=(8, 8), facecolor='w')
-ax = pl.axes((0, 0, 1, 1), xticks=[], yticks=[], frameon=False)
+fig = plt.figure(figsize=(8, 8), facecolor='w')
+ax = plt.axes((0, 0, 1, 1), xticks=[], yticks=[], frameon=False)
 
 # draw axes
 ax.annotate(r'$x$', (-r, 0), (r, 0),
@@ -69,4 +69,4 @@ for sigma in (1, 2, 3):
 ax.set_xlim(-1, 1)
 ax.set_ylim(-1, 1)
 
-pl.show()
+plt.show()

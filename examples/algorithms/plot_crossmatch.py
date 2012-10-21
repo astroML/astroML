@@ -9,7 +9,7 @@ import os, sys
 from time import time
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_imaging_sample, fetch_sdss_S82standards
 from astroML.crossmatch import crossmatch
@@ -35,7 +35,7 @@ match = ~np.isinf(dist)
 dist_match = dist[match]
 dist_match *= 3600
 
-ax = pl.axes()
+ax = plt.axes()
 hist(dist_match, bins='knuth', ax=ax,
      histtype='stepfilled', ec='k', fc='#AAAAAA')
 ax.set_xlabel('radius of match (arcsec)')
@@ -46,4 +46,4 @@ ax.text(0.95, 0.95,
         ha='right', va='top', transform=ax.transAxes)
 ax.set_xlim(0, 0.2)
 
-pl.show()
+plt.show()

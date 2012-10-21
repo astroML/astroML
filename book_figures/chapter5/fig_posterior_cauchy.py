@@ -11,7 +11,7 @@ This plot shows the posterior distributions for :math:`\mu` and
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import cauchy
 from astroML.stats import median_sigmaG
 from astroML.resample import bootstrap, jackknife
@@ -70,7 +70,7 @@ mu_bootstrap, gamma_bootstrap = bootstrap(xi, 20000, estimate_mu_gamma,
 
 #------------------------------------------------------------
 # Plot results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(wspace=0.35, right=0.95,
                     hspace=0.2, top=0.95)
 
@@ -110,4 +110,4 @@ ax4.set_ylabel(r'$p(<\gamma|x,I)$')
 ax4.set_ylim(-0.05, 1.1)
 ax4.set_xlim(0, 4)
 
-pl.show()
+plt.show()

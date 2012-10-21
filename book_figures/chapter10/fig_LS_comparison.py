@@ -11,7 +11,7 @@ along with the multi-term results.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.time_series import\
     lomb_scargle, search_frequencies, multiterm_periodogram
@@ -29,28 +29,28 @@ t, y, dy = data[id].T
 #exit()
 
 omega = np.linspace(period, period + 0.1, 1000)
-ax = pl.subplot(211)
+ax = plt.subplot(211)
 for n_terms in [1, 2, 3]:
     P1 = multiterm_periodogram(t, y, dy, omega, n_terms=n_terms)
-    pl.plot(omega, P1, lw=1, label='m = %i' % n_terms)
-pl.legend(loc=2)
-pl.xlim(period, period + 0.1)
-pl.ylim(0, 1.0)
-pl.ylabel('$1 - \chi^2(\omega) / \chi^2_{ref}$')
+    plt.plot(omega, P1, lw=1, label='m = %i' % n_terms)
+plt.legend(loc=2)
+plt.xlim(period, period + 0.1)
+plt.ylim(0, 1.0)
+plt.ylabel('$1 - \chi^2(\omega) / \chi^2_{ref}$')
 
-pl.subplot(212, sharex=ax)
+plt.subplot(212, sharex=ax)
 for generalized in [True, False]:
     if generalized:
         label='generalized LS'
     else:
         label='standard LS'
     P2 = lomb_scargle(t, y, dy, omega, generalized=generalized)
-    pl.plot(omega, P2, lw=1, label=label)
-pl.legend(loc=2)
-pl.xlim(period, period + 0.1)
-pl.ylim(0, 1.0)
+    plt.plot(omega, P2, lw=1, label=label)
+plt.legend(loc=2)
+plt.xlim(period, period + 0.1)
+plt.ylim(0, 1.0)
 
-pl.xlabel('frequency $\omega$')
-pl.ylabel('$P_{LS}(\omega)$')
+plt.xlabel('frequency $\omega$')
+plt.ylabel('$P_{LS}(\omega)$')
 
-pl.show()
+plt.show()

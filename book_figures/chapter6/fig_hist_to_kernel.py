@@ -13,7 +13,7 @@ Kernel Density Estimation (KDE).
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import stats
 
 #------------------------------------------------------------
@@ -25,7 +25,7 @@ x = np.concatenate([np.random.normal(-0.5, 0.3, size=14),
 
 #------------------------------------------------------------
 # First figure: silly histogram binning
-fig1 = pl.figure(figsize=(6, 3.5))
+fig1 = plt.figure(figsize=(6, 3.5))
 fig1.subplots_adjust(left=0.12, right=0.95, wspace=0.05,
                      bottom=0.15, top=0.9, hspace=0.05)
 
@@ -45,7 +45,7 @@ ax.set_xlabel('x')
 ax.set_ylabel('P(x)')
 
 ax = fig1.add_subplot(122)
-ax.yaxis.set_major_formatter(pl.NullFormatter())
+ax.yaxis.set_major_formatter(plt.NullFormatter())
 ax.hist(x, bins=bins + 0.25, normed=True,
         histtype='stepfilled', fc='k', alpha=0.3)
 ax.plot(XLIM, [0, 0], '-k', lw=1)
@@ -56,12 +56,12 @@ ax.set_xlabel('x')
 
 #------------------------------------------------------------
 # First figure: transition to KDE
-fig2 = pl.figure(figsize=(6, 6))
+fig2 = plt.figure(figsize=(6, 6))
 fig2.subplots_adjust(left=0.12, right=0.95, wspace=0.05,
                      bottom=0.1, top=0.95, hspace=0.05)
 
 ax = fig2.add_subplot(221)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 binwidth = bins[1] - bins[0]
 x_plot = np.linspace(-4, 4, 1000)
 y_plot = (abs(x_plot - x[:, None]) <= 0.5 * binwidth).astype(float)
@@ -74,8 +74,8 @@ ax.set_ylim(YLIM)
 ax.set_ylabel('P(x)')
 
 ax = fig2.add_subplot(222)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
-ax.yaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
+ax.yaxis.set_major_formatter(plt.NullFormatter())
 binwidth = bins[1] - bins[0]
 x_plot = np.linspace(-4, 4, 1000)
 y_plot = binwidth * stats.norm.pdf(x_plot, x[:, None], 0.1)
@@ -100,7 +100,7 @@ ax.set_ylabel('P(x)')
 ax.set_xlabel('x')
 
 ax = fig2.add_subplot(224)
-ax.yaxis.set_major_formatter(pl.NullFormatter())
+ax.yaxis.set_major_formatter(plt.NullFormatter())
 binwidth = bins[1] - bins[0]
 x_plot = np.linspace(-4, 4, 1000)
 y_plot = binwidth * stats.norm.pdf(x_plot, x[:, None], 0.2)
@@ -112,4 +112,4 @@ ax.set_xlim(XLIM)
 ax.set_ylim(YLIM)
 ax.set_xlabel('x')
 
-pl.show()
+plt.show()

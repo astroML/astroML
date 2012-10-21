@@ -5,17 +5,17 @@ Neural Network Diagram
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
-fig = pl.figure(facecolor='w')
+fig = plt.figure(facecolor='w')
 ax = fig.add_axes([0, 0, 1, 1],
                   xticks=[], yticks=[])
-pl.box(False)
-circ = pl.Circle((1, 1), 2)
+plt.box(False)
+circ = plt.Circle((1, 1), 2)
 
 radius = 0.3
 
@@ -37,7 +37,7 @@ def draw_connecting_arrow(ax, circ1, rad1, circ2, rad2):
 
 # function to draw circles
 def draw_circle(ax, center, radius):
-    circ = pl.Circle(center, radius, fc='none', lw=2)
+    circ = plt.Circle(center, radius, fc='none', lw=2)
     ax.add_patch(circ)
 
 x1 = -2
@@ -71,11 +71,11 @@ for y2 in np.linspace(-2, 2, 5):
     
 #------------------------------------------------------------
 # Add text labels
-pl.text(x1, 2.7, "Input\nLayer", ha='center', va='top', fontsize=16)
-pl.text(x2, 2.7, "Hidden Layer", ha='center', va='top', fontsize=16)
-pl.text(x3, 2.7, "Output\nLayer", ha='center', va='top', fontsize=16)
+plt.text(x1, 2.7, "Input\nLayer", ha='center', va='top', fontsize=16)
+plt.text(x2, 2.7, "Hidden Layer", ha='center', va='top', fontsize=16)
+plt.text(x3, 2.7, "Output\nLayer", ha='center', va='top', fontsize=16)
 
 ax.set_aspect('equal')
-pl.xlim(-4, 4)
-pl.ylim(-3, 3)
-pl.show()
+plt.xlim(-4, 4)
+plt.ylim(-3, 3)
+plt.show()

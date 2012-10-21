@@ -13,7 +13,7 @@ statistics perform in estimating the distribution parameters.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy import stats
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
 from astroML.stats import fit_bivariate_normal
 from astroML.stats.random import bivariate_normal
@@ -41,7 +41,7 @@ X = bivariate_normal(mu, sigma1, sigma2, alpha, N)
 
 #------------------------------------------------------------
 # Create the figure showing the fits
-fig = pl.figure(figsize=(10, 5))
+fig = plt.figure(figsize=(10, 5))
 fig.subplots_adjust(left=0.07, right=0.95, wspace=0.05,
                     bottom=0.1, top=0.95)
 
@@ -103,6 +103,6 @@ for i, f in enumerate([0.05, 0.15]):
     if i == 0:
         ax.set_ylabel('y')
     else:
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
 
-pl.show()
+plt.show()

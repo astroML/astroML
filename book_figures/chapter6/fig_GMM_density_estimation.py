@@ -8,7 +8,7 @@ Comparison of 1D Density Estimators
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import stats
 
 from astroML.density_estimation import KDE
@@ -35,7 +35,7 @@ x = x[x < 30]
 
 #------------------------------------------------------------
 # plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust()
 N_values = (500, 5000)
 subplots = (211, 212)
@@ -83,4 +83,4 @@ for N, k, subplot in zip(N_values, k_values, subplots):
     ax.set_xlim(0, 20)
     ax.set_ylim(-0.01, 0.4001)
 
-pl.show()
+plt.show()

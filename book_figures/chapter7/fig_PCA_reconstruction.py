@@ -10,7 +10,7 @@ regions, and the reconstruction & interpolation using PCA
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib import ticker
 
 from astroML.datasets import fetch_sdss_corrected_spectra
@@ -34,7 +34,7 @@ lam = lam[i_plot]
 specnums = [20, 8, 9]
 subplots = [311, 312, 313]
 
-fig = pl.figure(figsize=(8, 10))
+fig = plt.figure(figsize=(8, 10))
 fig.subplots_adjust(hspace=0)
 
 for subplot, i in zip(subplots, specnums):
@@ -65,7 +65,7 @@ for subplot, i in zip(subplots, specnums):
     # plot shaded background in masked region
     ylim = ax.get_ylim()
     mask_shade = ylim[0] + mask[i][i_plot].astype(float) * ylim[1]
-    pl.fill(np.concatenate([lam[:1], lam, lam[-1:]]),
+    plt.fill(np.concatenate([lam[:1], lam, lam[-1:]]),
             np.concatenate([[ylim[0]], mask_shade, [ylim[0]]]),
             lw=0, fc='k', alpha=0.2)
 
@@ -79,4 +79,4 @@ for subplot, i in zip(subplots, specnums):
     ax.set_xlabel('$\lambda\ (\AA)$')
     ax.set_ylabel('normalized flux')
 
-pl.show()
+plt.show()

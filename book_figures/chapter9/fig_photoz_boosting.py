@@ -8,7 +8,7 @@ Photometric Redshifts by Random Forests
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.ensemble import GradientBoostingRegressor
 from astroML.datasets import fetch_sdss_specgals
@@ -63,7 +63,7 @@ best_N = N_boosts[i_best]
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(wspace=0.25,
                     left=0.1, right=0.95,
                     bottom=0.15, top=0.9)
@@ -78,7 +78,7 @@ ax.set_xlabel('number of boosts')
 ax.set_ylabel('rms error')
 ax.set_xlim(0, 510)
 ax.set_ylim(0.009,  0.032)
-ax.yaxis.set_major_locator(pl.MultipleLocator(0.01))
+ax.yaxis.set_major_locator(plt.MultipleLocator(0.01))
 
 ax.text(0.03, 0.03, "Tree depth: 3",
         ha='left', va='bottom', transform=ax.transAxes)
@@ -95,7 +95,7 @@ ax.set_ylabel(r'$\rm z_{fit}$', fontsize=16)
 
 ax.set_xlim(-0.02, 0.4001)
 ax.set_ylim(-0.02, 0.4001)
-ax.xaxis.set_major_locator(pl.MultipleLocator(0.1))
-ax.yaxis.set_major_locator(pl.MultipleLocator(0.1))
+ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))
+ax.yaxis.set_major_locator(plt.MultipleLocator(0.1))
 
-pl.show()
+plt.show()

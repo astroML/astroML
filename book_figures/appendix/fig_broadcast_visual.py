@@ -6,15 +6,15 @@ This figure visualizes numpy broadcasting rules for three cases
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Draw a figure and axis with no boundary
-fig = pl.figure(figsize=(8, 6), facecolor='w')
-ax = pl.axes([0, 0, 1, 1], xticks=[], yticks=[], frameon=False)
+fig = plt.figure(figsize=(8, 6), facecolor='w')
+ax = plt.axes([0, 0, 1, 1], xticks=[], yticks=[], frameon=False)
 
 
 def draw_cube(ax, xy, size, depth=0.4,
@@ -68,7 +68,7 @@ def draw_cube(ax, xy, size, depth=0.4,
     if label:
         if label_kwargs is None:
             label_kwargs = {}
-        pl.text(x + 0.5 * size, y + 0.5 * size, label,
+        plt.text(x + 0.5 * size, y + 0.5 * size, label,
                 ha='center', va='center', **label_kwargs)
 
 solid = dict(c='black', ls='-', lw=1,
@@ -91,9 +91,9 @@ draw_cube(ax, (12, 10), 1, depth, [1, 2, 3, 4, 5, 6, 9], '5', **solid)
 draw_cube(ax, (13, 10), 1, depth, [1, 2, 3, 6, 9], '6', **solid)
 draw_cube(ax, (14, 10), 1, depth, [1, 2, 3, 6, 7, 9, 10], '7', **solid)
 
-pl.text(5, 10.5, '+', size=18, ha='center', va='center')
-pl.text(10.5, 10.5, '=', size=18, ha='center', va='center')
-pl.text(1, 11.5, r'${\tt np.arange(3) + 5}$', size=18,
+plt.text(5, 10.5, '+', size=18, ha='center', va='center')
+plt.text(10.5, 10.5, '=', size=18, ha='center', va='center')
+plt.text(1, 11.5, r'${\tt np.arange(3) + 5}$', size=18,
         ha='left', va='bottom')
 
 #------------------------------------------------------------
@@ -138,9 +138,9 @@ draw_cube(ax, (12, 5.5), 1, depth, [2, 3, 4], '1', **solid)
 draw_cube(ax, (13, 5.5), 1, depth, [2, 3], '2', **solid)
 draw_cube(ax, (14, 5.5), 1, depth, [2, 3, 7, 10], '3', **solid)
 
-pl.text(5, 7.0, '+', size=18, ha='center', va='center')
-pl.text(10.5, 7.0, '=', size=18, ha='center', va='center')
-pl.text(1, 9.0, r'${\tt np.ones((3,\, 3)) + np.arange(3)}$',
+plt.text(5, 7.0, '+', size=18, ha='center', va='center')
+plt.text(10.5, 7.0, '=', size=18, ha='center', va='center')
+plt.text(1, 9.0, r'${\tt np.ones((3,\, 3)) + np.arange(3)}$',
         size=18, ha='left', va='bottom')
 
 #------------------------------------------------------------
@@ -185,11 +185,11 @@ draw_cube(ax, (12, 1), 1, depth, [2, 3, 4], '2', **solid)
 draw_cube(ax, (13, 1), 1, depth, [2, 3], '3', **solid)
 draw_cube(ax, (14, 1), 1, depth, [2, 3, 7, 10], '4', **solid)
 
-pl.text(5, 2.5, '+', size=18, ha='center', va='center')
-pl.text(10.5, 2.5, '=', size=18, ha='center', va='center')
-pl.text(1, 4.5, r'${\tt np.arange(3).reshape((3,\, 1)) + np.arange(3)}$',
+plt.text(5, 2.5, '+', size=18, ha='center', va='center')
+plt.text(10.5, 2.5, '=', size=18, ha='center', va='center')
+plt.text(1, 4.5, r'${\tt np.arange(3).reshape((3,\, 1)) + np.arange(3)}$',
         size=18, ha='left', va='bottom')
 
 ax.set_xlim(0, 16)
 ax.set_ylim(0.5, 12.5)
-pl.show()
+plt.show()

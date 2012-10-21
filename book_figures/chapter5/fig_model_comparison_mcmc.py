@@ -12,7 +12,7 @@ widths.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy.special import gamma
 from scipy.stats import norm
@@ -199,7 +199,7 @@ BF2, dBF2 = estimate_bayes_factor(trace2, logp2, r=0.05)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(10, 10))
+fig = plt.figure(figsize=(10, 10))
 
 labels = [r'$\mu_1$',
           r'$\mu_2$',
@@ -242,6 +242,6 @@ ax_list = plot_mcmc(trace2, limits=limits, labels=labels,
                     colors='k', linewidths=2)
 for ax in ax_list:
     for axis in [ax.xaxis, ax.yaxis]:
-        axis.set_major_locator(pl.MaxNLocator(4))
+        axis.set_major_locator(plt.MaxNLocator(4))
 
-pl.show()
+plt.show()

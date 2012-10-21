@@ -9,12 +9,12 @@ This diagram shows a schematic of the Lynden-Bell C- method.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Rectangle
 
 #------------------------------------------------------------
 # Draw the schematic
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.05, right=0.95, wspace=0.1)
 ax1 = fig.add_subplot(121, xticks=[], yticks=[])
 ax2 = fig.add_subplot(122, xticks=[], yticks=[])
@@ -60,4 +60,4 @@ for ax in (ax1, ax2):
     ax.set_xlabel('x')
     ax.set_ylabel('y')
 
-pl.show()
+plt.show()

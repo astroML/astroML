@@ -10,7 +10,7 @@ Kernel Density Estimation.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy import optimize, fftpack, interpolate
 from astroML.fourier import IFT_continuous
@@ -52,7 +52,7 @@ h_smooth = np.dot(F, hN) / np.sum(F, 1)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 3.5))
+fig = plt.figure(figsize=(8, 3.5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
                     bottom=0.15, top=0.9)
 
@@ -80,4 +80,4 @@ ax.set_ylim(-0.5, 1.5)
 ax.set_xlabel('$\lambda$')
 ax.set_ylabel('flux')
 
-pl.show()
+plt.show()

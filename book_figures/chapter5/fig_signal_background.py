@@ -8,7 +8,7 @@ Finding a signal in a background
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import stats
 
 # Hack to fix import issue in older versions of pymc
@@ -72,14 +72,14 @@ S.sample(iter=25000, burn=5000)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 ax_list = plot_mcmc([S.trace(s)[:] for s in ['A', 'x0', 'sigma']],
                     limits=[(0.05, 0.65), (5.75, 6.65), (0.05, 0.85)],
                     labels=['$A$', '$\mu$', r'$\sigma$'],
                     true_values=[A_true, x0_true, sigma_true],
                     fig=fig, colors='k', linewidths=2)
 
-ax = pl.axes([0.6, 0.6, 0.35, 0.35])
+ax = plt.axes([0.6, 0.6, 0.35, 0.35])
 x_pdf = np.linspace(0, 10, 100)
 y_pdf = A_true * signal.pdf(x_pdf) + (1 - A_true) * background.pdf(x_pdf)
 
@@ -91,4 +91,4 @@ ax.set_ylim(0, 0.5)
 ax.set_xlabel('$x$')
 ax.set_ylabel('$y_{obs}$')
 
-pl.show()
+plt.show()

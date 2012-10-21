@@ -8,7 +8,7 @@ Plot a Diagram explaining a Convolution
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy.signal import fftconvolve
 
@@ -47,7 +47,7 @@ yw_final = np.fft.ifft(yw_fft)
 
 #------------------------------------------------------------
 # Set up the plots
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(hspace=0.05, wspace=0.05)
 
 #----------------------------------------
@@ -59,7 +59,7 @@ ax.fill(x, w, color='gray', alpha=0.5,
 ax.fill(x, w[::-1], color='gray', alpha=0.5)
 
 ax.legend(prop=dict(size=14))
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 ax.set_ylabel('$D$')
 
@@ -105,8 +105,8 @@ ax.text(0.95, 0.95, r'$\mathcal{F}(D)$',
 ax.set_xlim(-100, 100)
 ax.set_ylim(-5, 85)
 
-ax.xaxis.set_major_formatter(pl.NullFormatter())
-ax.yaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
+ax.yaxis.set_major_formatter(plt.NullFormatter())
 
 ax = fig.add_subplot(424)
 ax.plot(k, abs(np.fft.fftshift(w_fft)), '-k')
@@ -117,8 +117,8 @@ ax.text(0.95, 0.95,  r'$\mathcal{F}(W)$', ha='right', va='top',
 ax.set_xlim(-100, 100)
 ax.set_ylim(-5, 85)
 
-ax.xaxis.set_major_formatter(pl.NullFormatter())
-ax.yaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
+ax.yaxis.set_major_formatter(plt.NullFormatter())
 
 #----------------------------------------
 # plot the product of Fourier transforms
@@ -135,7 +135,7 @@ ax.set_ylim(-100, 3500)
 
 ax.set_xlabel('$k$')
 
-ax.yaxis.set_major_formatter(pl.NullFormatter())
+ax.yaxis.set_major_formatter(plt.NullFormatter())
 
 #------------------------------------------------------------
 # Plot flow arrows
@@ -158,4 +158,4 @@ ax.annotate('', [0.46, 0.45], [0.56, 0.45],
             arrowprops=arrowprops,
             transform=ax.transAxes)
 
-pl.show()
+plt.show()

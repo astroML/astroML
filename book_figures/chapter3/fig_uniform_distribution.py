@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import uniform
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -45,15 +45,15 @@ for W, ls in zip(W_values, linestyles):
     left = mu - 0.5 * W
     dist = uniform(left, W)
 
-    pl.plot(x, dist.pdf(x), ls=ls, c='black',
+    plt.plot(x, dist.pdf(x), ls=ls, c='black',
             label=r'$\mu=%i,\ W=%i$' % (mu, W))
 
-pl.xlim(-2, 2)
-pl.ylim(0, 1.5)
+plt.xlim(-2, 2)
+plt.ylim(0, 1.5)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|\mu, W)$', fontsize=14)
-pl.title('Uniform Distribution')
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|\mu, W)$', fontsize=14)
+plt.title('Uniform Distribution')
 
-pl.legend()
-pl.show()
+plt.legend()
+plt.show()

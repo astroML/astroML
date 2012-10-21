@@ -8,7 +8,7 @@ Plot 15 random SDSS spectra from the sample
 """
 import os
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.decomposition import RandomizedPCA
 from astroML.datasets import sdss_corrected_spectra
@@ -29,7 +29,7 @@ spec_sample = spectra[ind]
 
 #----------------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(10, 8))
+fig = plt.figure(figsize=(10, 8))
 
 fig.subplots_adjust(left=0.05, right=0.95, wspace=0.05,
                     bottom=0.1, top=0.95, hspace=0.05)
@@ -39,16 +39,16 @@ for i in range(ncols):
         ax = fig.add_subplot(nrows, ncols, ncols * j + 1 + i)
         ax.plot(lam, spec_sample[ncols * j + i], '-k', lw=1)
 
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
-        ax.xaxis.set_major_locator(pl.MultipleLocator(1000))
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
+        ax.xaxis.set_major_locator(plt.MultipleLocator(1000))
         if j < nrows - 1:
-            ax.xaxis.set_major_formatter(pl.NullFormatter())
+            ax.xaxis.set_major_formatter(plt.NullFormatter())
         else:
-            pl.xlabel(r'wavelength $(\AA)$')
+            plt.xlabel(r'wavelength $(\AA)$')
 
         ax.set_xlim(3000, 7999)
         ylim = ax.get_ylim()
         dy = 0.05 * (ylim[1] - ylim[0])
         ax.set_ylim(ylim[0] - dy, ylim[1] + dy)
 
-pl.show()
+plt.show()

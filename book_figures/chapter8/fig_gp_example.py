@@ -10,7 +10,7 @@ that help describe what it does.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from sklearn.gaussian_process import GaussianProcess
 
 
@@ -73,7 +73,7 @@ print "best-fit theta =", gp3.theta_[0, 0]
 
 #------------------------------------------------------------
 # Plot the diagrams
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 
 
 # first: plot a selection of unconstrained functions
@@ -110,4 +110,4 @@ ax.set_xlabel('x')
 for ax in fig.axes:
     ax.set_xlim(0, 10)
 
-pl.show()
+plt.show()

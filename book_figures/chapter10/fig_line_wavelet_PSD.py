@@ -10,7 +10,7 @@ can be obtained using the built-in function matplotlib.mlab.specgram.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_LIGO_bigdog
 from astroML.fourier import FT_continuous, IFT_continuous
@@ -57,7 +57,7 @@ t, HW = IFT_continuous(f, H * W)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(hspace=0.05, left=0.12, right=0.95, bottom=0.08, top=0.95)
 
 # First panel: the signal
@@ -70,7 +70,7 @@ ax.text(0.02, 0.95, ("Input Signal:\n"
 
 ax.set_xlim(-40, 40)
 ax.set_ylim(-1.2, 2.2)
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_ylabel('$h(t)$')
 
 # Second panel: the wavelet
@@ -92,11 +92,11 @@ ax.text(0.98, 0.05,
 ax.set_xlim(-40, 40)
 ax.set_ylim(-1.4, 1.4)
 ax.set_ylabel('$w(t; f_0, t_0, Q)$')
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 # Third panel: the spectrogram
 ax = fig.add_subplot(313)
-ax.imshow(abs(HW) ** 2, origin='lower', aspect='auto', cmap=pl.cm.binary,
+ax.imshow(abs(HW) ** 2, origin='lower', aspect='auto', cmap=plt.cm.binary,
           extent=[t[0], t[-1], np.log2(f0)[0], np.log2(f0)[-1]])
 ax.set_xlim(-40, 40)
 
@@ -107,7 +107,7 @@ ax.set_ylim(np.log2(f0)[0], np.log2(f0)[-1])
 ax.set_xlabel('$t$')
 ax.set_ylabel('$f_0$')
 
-ax.yaxis.set_major_locator(pl.MultipleLocator(1))
-ax.yaxis.set_major_formatter(pl.FuncFormatter(lambda x, *args:
+ax.yaxis.set_major_locator(plt.MultipleLocator(1))
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, *args:
                                                   "1/%i" % (2 ** -x)))
-pl.show()
+plt.show()

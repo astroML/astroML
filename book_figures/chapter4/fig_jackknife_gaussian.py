@@ -13,7 +13,7 @@ The jackknife fails for the median, as with all rank-based statistics.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import norm
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # sample values from a normal distribution
@@ -49,7 +49,7 @@ print mu2, sigma_mu2
 print "mu_1 mean: %.2f +- %.2f" % (mu1, sigma_mu1)
 print "mu_2 mean: %.2f +- %.2f" % (mu2, sigma_mu2)
 
-fig = pl.figure(figsize=(6, 10))
+fig = plt.figure(figsize=(6, 10))
 fig.subplots_adjust(left=0.17, right=0.9, bottom=0.1, top=0.95)
 
 ax = fig.add_subplot(211)
@@ -61,7 +61,7 @@ ax.hist(mu2_raw, np.linspace(0.996, 1.008, 100),
         histtype='stepfilled', fc='gray', normed=False)
 ax.legend(loc='upper left')
 
-ax.xaxis.set_major_locator(pl.MultipleLocator(0.004))
+ax.xaxis.set_major_locator(plt.MultipleLocator(0.004))
 ax.set_xlabel(r'$\sigma^*$', fontsize=18)
 ax.set_ylabel(r'$N(\sigma^*)$', fontsize=18)
 ax.set_xlim(0.998, 1.008)
@@ -76,10 +76,10 @@ ax.plot(x, pdf1_theory.pdf(x), color='gray', zorder=1)
 ax.plot(x, pdf2_jackknife.pdf(x),
         color='red', lw=2, label=r'$\sigma_G\ {\rm (quartile)}$', zorder=2)
 ax.plot(x, pdf2_theory.pdf(x), color='gray', zorder=1)
-pl.legend(loc='upper left')
+plt.legend(loc='upper left')
 
 ax.set_xlabel(r'$\sigma$', fontsize=18)
 ax.set_ylabel(r'$p(\sigma|x,I)$', fontsize=18)
 ax.set_ylim(0, 24)
 
-pl.show()
+plt.show()

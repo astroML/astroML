@@ -19,7 +19,7 @@ on models via the odds ratio.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy import integrate
-import pylab as pl
+from matplotlib import pyplot as plt
 
 
 @np.vectorize
@@ -37,7 +37,7 @@ def odds_ratio(n, k, bstar):
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(10, 5))
+fig = plt.figure(figsize=(10, 5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.05, bottom=0.12)
 
 subplots = [121, 122]
@@ -60,13 +60,13 @@ for subplot, n in zip(subplots, n_array):
         ax.legend(loc=2)
     else:
         ax.set_xlim(0.01, n)
-        ax.yaxis.set_major_formatter(pl.NullFormatter())
+        ax.yaxis.set_major_formatter(plt.NullFormatter())
 
     ax.set_xlabel('k')
     ax.set_title('n = %i' % n)
     ax.set_ylim(1E-1, 1E4)
-    ax.xaxis.set_major_locator(pl.MultipleLocator(n / 5))
+    ax.xaxis.set_major_locator(plt.MultipleLocator(n / 5))
     ax.grid()
 
 
-pl.show()
+plt.show()

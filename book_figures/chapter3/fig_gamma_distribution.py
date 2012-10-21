@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import gamma
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # plot the distributions
@@ -43,15 +43,15 @@ x = np.linspace(1E-6, 10, 1000)
 # plot the distributions
 for k, t, ls in zip(k_values, theta_values, linestyles):
     dist = gamma(k, 0, t)
-    pl.plot(x, dist.pdf(x), ls=ls, c='black',
+    plt.plot(x, dist.pdf(x), ls=ls, c='black',
             label=r'$k=%.1f,\ \theta=%.1f$' % (k, t))
 
-pl.xlim(0, 10)
-pl.ylim(0, 0.5)
+plt.xlim(0, 10)
+plt.ylim(0, 0.5)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|\alpha,\beta)$', fontsize=14)
-pl.title('Gamma Distribution')
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|\alpha,\beta)$', fontsize=14)
+plt.title('Gamma Distribution')
 
-pl.legend(loc=0)
-pl.show()
+plt.legend(loc=0)
+plt.show()

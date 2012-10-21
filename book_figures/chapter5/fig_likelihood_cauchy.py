@@ -11,7 +11,7 @@ error :math:`\gamma` when the posterior is assumed to be a Cauchy distribution.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import cauchy
 from astroML.plotting.likelihood import convert_to_stdev
 from astroML.stats import median_sigmaG
@@ -56,22 +56,22 @@ print "gamma from quartiles:", sigG / 1.483  # Equation 3.54
 
 #------------------------------------------------------------
 # Plot the results
-pl.imshow(logL, origin='lower', cmap=pl.cm.binary,
+plt.imshow(logL, origin='lower', cmap=plt.cm.binary,
           extent=(mu[0], mu[-1], gamma[0], gamma[-1]),
           aspect='auto')
-pl.colorbar()
-pl.clim(-5, 0)
+plt.colorbar()
+plt.clim(-5, 0)
 
-pl.contour(mu, gamma, convert_to_stdev(logL),
+plt.contour(mu, gamma, convert_to_stdev(logL),
            levels=(0.683, 0.955, 0.997),
            colors='k', linewidths=2)
 
-pl.text(0.5, 0.9,
+plt.text(0.5, 0.9,
         r'$L(\mu,\gamma)\ \mathrm{for\ \bar{x}=0,\ \gamma=2,\ n=10}$',
         fontsize=18, bbox=dict(ec='k', fc='w', alpha=0.9),
-        ha='center', va='center', transform=pl.gca().transAxes)
+        ha='center', va='center', transform=plt.gca().transAxes)
 
-pl.xlabel(r'$\mu$')
-pl.ylabel(r'$\gamma$')
+plt.xlabel(r'$\mu$')
+plt.ylabel(r'$\gamma$')
 
-pl.show()
+plt.show()

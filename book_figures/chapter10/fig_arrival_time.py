@@ -10,7 +10,7 @@ This plot shows the results of an MCMC model to periodic arrival time data
 #   For more information, see http://astroML.github.com
 
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 # Hack to fix import issue in older versions of pymc
 import scipy
@@ -102,7 +102,7 @@ true = [r0_true, a_true, phi_true, omega_true]
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(bottom=0.1, top=0.95,
                     left=0.12, right=0.95,
                     hspace=0.05, wspace=0.05)
@@ -115,7 +115,7 @@ plot_mcmc(traces, labels=labels, limits=limits, true_values=true, fig=fig,
 ax = fig.add_axes([0.5, 0.75, 0.45, 0.2])
 ax.fill_between(t, 0, rate_func(t, r0_true, a_true, omega_true, phi_true),
                 facecolor='gray', edgecolor='black')
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_xlim(t[0], t[-1])
 ax.set_ylim(0, 20)
 ax.set_ylabel('$r(t)$')
@@ -128,4 +128,4 @@ ax.scatter(t_obs, np.random.random(len(t_obs)),
 ax.set_xlim(t[0], t[-1])
 ax.set_ylim(-0.3, 1.3)
 ax.set_xlabel('$t$')
-pl.show()
+plt.show()

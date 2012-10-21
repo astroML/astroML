@@ -9,7 +9,7 @@ Plot the PCA eigenvalues from 4000 SDSS spectra.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML import datasets
 
 #------------------------------------------------------------
@@ -34,14 +34,14 @@ evals_cs /= evals_cs[-1]
 
 #------------------------------------------------------------
 # plot the eigenvalues
-fig = pl.figure()
+fig = plt.figure()
 fig.subplots_adjust(hspace=0.05, bottom=0.12)
 
 ax = fig.add_subplot(211, xscale='log', yscale='log')
 ax.grid()
 ax.plot(evals, c='k')
 ax.set_ylabel('Normalized Eigenvalues')
-ax.xaxis.set_major_formatter(pl.NullFormatter())
+ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_ylim(5E-4, 100)
 
 ax = fig.add_subplot(212, xscale='log')
@@ -51,4 +51,4 @@ ax.set_xlabel('Eigenvalue Number')
 ax.set_ylabel('Cumulative Eigenvalues')
 ax.set_ylim(0.65, 1.00)
 
-pl.show()
+plt.show()

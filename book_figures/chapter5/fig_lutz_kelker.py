@@ -10,7 +10,7 @@ and Lutz-Kelker Biases.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.stats import median_sigmaG
 
 
@@ -66,7 +66,7 @@ med4 = [np.median(deltaM4[relErr < e]) for e in pErrGrid]
 
 #----------------------------------------------------------------------
 # plot results
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
                     bottom=0.15, top=0.95)
 
@@ -80,9 +80,9 @@ ax.set_xlabel(r'$m_{\rm obs}$')
 ax.set_ylabel('bias/scatter (mag)')
 
 ax.set_ylim(-0.04, 0.21)
-ax.xaxis.set_major_locator(pl.MultipleLocator(1.0))
-ax.yaxis.set_major_locator(pl.MultipleLocator(0.1))
-ax.yaxis.set_minor_locator(pl.MultipleLocator(0.01))
+ax.xaxis.set_major_locator(plt.MultipleLocator(1.0))
+ax.yaxis.set_major_locator(plt.MultipleLocator(0.1))
+ax.yaxis.set_minor_locator(plt.MultipleLocator(0.01))
 
 for l in ax.yaxis.get_minorticklines():
     l.set_markersize(3)
@@ -93,8 +93,8 @@ ax.plot(pErrGrid, med4, '--k', label='p=4')
 ax.legend(loc=2, prop=dict(size=14))
 ax.set_xlabel(r'$\sigma_\pi / \pi$')
 ax.set_ylabel('absolute magnitude bias')
-ax.xaxis.set_major_locator(pl.MultipleLocator(0.1))
+ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))
 ax.set_xlim(0.02, 0.301)
 ax.set_ylim(0, 0.701)
 
-pl.show()
+plt.show()

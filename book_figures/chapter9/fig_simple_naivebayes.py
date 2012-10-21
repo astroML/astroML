@@ -10,7 +10,7 @@ simulated data
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib import colors
 
 from sklearn.naive_bayes import GaussianNB
@@ -44,9 +44,9 @@ Z = Z[:, 1].reshape(xx.shape)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.scatter(X[:, 0], X[:, 1], c=y, cmap=pl.cm.binary, zorder=2)
+ax.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.binary, zorder=2)
 
 ax.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
 
@@ -56,4 +56,4 @@ ax.set_ylim(ylim)
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 
-pl.show()
+plt.show()

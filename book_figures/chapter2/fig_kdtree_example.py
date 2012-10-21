@@ -11,7 +11,7 @@ parameter space, and plots a visualization of the result.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 
 # We'll create a KDTree class which will recursively subdivide the
@@ -64,7 +64,7 @@ class KDTree:
     def draw_rectangle(self, ax, depth=None):
         """Recursively plot a visualization of the KD tree region"""
         if depth == 0:
-            rect = pl.Rectangle(self.mins, *self.sizes, ec='k', fc='none')
+            rect = plt.Rectangle(self.mins, *self.sizes, ec='k', fc='none')
             ax.add_patch(rect)
 
         if self.child1 is not None:
@@ -90,7 +90,7 @@ KDT = KDTree(X, [-1.1, -0.1], [1.1, 1.1])
 
 #------------------------------------------------------------
 # Plot four different levels of the KD tree
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(wspace=0.1, hspace=0.15,
                     left=0.1, right=0.9,
                     bottom=0.05, top=0.9)
@@ -106,4 +106,4 @@ for level in range(1, 5):
 
 # suptitle() adds a title to the entire figure
 fig.suptitle('KD Tree Example', fontsize=18)
-pl.show()
+plt.show()

@@ -12,7 +12,7 @@ parameters of a Cauchy distribution
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import cauchy
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.plotting.likelihood import convert_to_stdev
 
 # this fixes a problem when using older versions of pymc with newer
@@ -93,12 +93,12 @@ hist_gamma, bins_gamma = np.histogram(trace_gamma, bins=gamma_bins,
 
 #----------------------------------------------------------------------
 # plot the results
-fig = pl.figure(figsize=(6, 6))
+fig = plt.figure(figsize=(6, 6))
 
 # first axis: likelihood contours
 ax1 = fig.add_axes((0.4, 0.4, 0.55, 0.55))
-ax1.xaxis.set_major_formatter(pl.NullFormatter())
-ax1.yaxis.set_major_formatter(pl.NullFormatter())
+ax1.xaxis.set_major_formatter(plt.NullFormatter())
+ax1.yaxis.set_major_formatter(plt.NullFormatter())
 
 ax1.contour(mu, gamma, convert_to_stdev(logL),
             levels=(0.683, 0.955, 0.997),
@@ -112,7 +112,7 @@ ax1.contour(0.5 * (mu_bins[:-1] + mu_bins[1:]),
 
 # second axis: marginalized over mu
 ax2 = fig.add_axes((0.1, 0.4, 0.29, 0.55))
-ax2.xaxis.set_major_formatter(pl.NullFormatter())
+ax2.xaxis.set_major_formatter(plt.NullFormatter())
 ax2.plot(hist_gamma, 0.5 * (bins_gamma[1:] + bins_gamma[:-1]
                             - bins_gamma[1] + bins_gamma[0]),
         '-k', drawstyle='steps')
@@ -122,11 +122,11 @@ ax2.set_ylim(0, 5)
 
 # third axis: marginalized over gamma
 ax3 = fig.add_axes((0.4, 0.1, 0.55, 0.29))
-ax3.yaxis.set_major_formatter(pl.NullFormatter())
+ax3.yaxis.set_major_formatter(plt.NullFormatter())
 ax3.plot(0.5 * (bins_mu[1:] + bins_mu[:-1]), hist_mu,
         '-k', drawstyle='steps-mid')
 ax3.plot(mu, p_mu, '--b')
 ax3.set_xlabel(r'$\mu$')
-pl.xlim(-5, 5)
+plt.xlim(-5, 5)
 
-pl.show()
+plt.show()

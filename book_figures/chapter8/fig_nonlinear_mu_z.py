@@ -8,7 +8,7 @@ Nonlinear cosmology fit to mu vs z
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import generate_mu_z
 from astroML.cosmology import Cosmology
@@ -52,7 +52,7 @@ res -= np.max(res)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
                     bottom=0.15, top=0.9)
 
@@ -95,4 +95,4 @@ ax.set_ylim(0.4, 1.1)
 ax.set_xlabel(r'$\Omega_M$', fontsize=16)
 ax.set_ylabel(r'$\Omega_\Lambda$', fontsize=16)
 
-pl.show()
+plt.show()

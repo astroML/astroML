@@ -8,7 +8,7 @@ Matched Filter Burst Search
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 # Hack to fix import issue in older versions of pymc
 import scipy
@@ -98,21 +98,21 @@ true = [b0_true, A_true, omega_true, beta_true]
 
 #----------------------------------------------------------------------
 # Find the Maximum a posteriori values
-fig = pl.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(bottom=0.1, top=0.95,
                     left=0.12, right=0.95,
                     hspace=0.05, wspace=0.05)
 
-ax = pl.axes([0.5, 0.7, 0.45, 0.25])
+ax = plt.axes([0.5, 0.7, 0.45, 0.25])
 t_fit = np.linspace(0, 100, 1001)
 y_fit = chirp(t_fit, *fit_vals)
-pl.scatter(t, y_obs, s=9, lw=0, c='k')
-pl.plot(t_fit, y_fit, '-k')
-pl.xlim(0, 100)
-pl.xlabel('$t$')
-pl.ylabel('$h_{obs}$')
+plt.scatter(t, y_obs, s=9, lw=0, c='k')
+plt.plot(t_fit, y_fit, '-k')
+plt.xlim(0, 100)
+plt.xlabel('$t$')
+plt.ylabel('$h_{obs}$')
 
 # This function plots multiple panels with the traces
 plot_mcmc(traces, labels=labels, limits=limits, true_values=true, fig=fig,
           bins=30, colors='k', linewidths=2)
-pl.show()
+plt.show()

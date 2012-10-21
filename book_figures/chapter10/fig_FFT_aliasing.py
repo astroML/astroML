@@ -10,7 +10,7 @@ data and window function in both temporal space and frequency space.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 
 def gaussian(x, a=1.0):
@@ -44,7 +44,7 @@ for dt in (0.9, 1.5):
     f_sample = df * (np.arange(N) - N / 2)
 
     # Plot the results
-    fig = pl.figure(figsize=(8, 4))
+    fig = plt.figure(figsize=(8, 4))
     fig.subplots_adjust(left=0.06, right=0.95, wspace=0.12,
                         bottom=0.1, top=0.85, hspace=0.05)
 
@@ -62,8 +62,8 @@ for dt in (0.9, 1.5):
     ax.set_ylabel('$h(t)$')
     ax.set_xlim(-5, 5)
     ax.set_ylim(0, 1.4)
-    ax.xaxis.set_major_formatter(pl.NullFormatter())
-    ax.yaxis.set_major_formatter(pl.NullFormatter())
+    ax.xaxis.set_major_formatter(plt.NullFormatter())
+    ax.yaxis.set_major_formatter(plt.NullFormatter())
     ax.set_title('Time Domain: Multiplication', size=12)
 
     # second plot: frequency space
@@ -79,8 +79,8 @@ for dt in (0.9, 1.5):
     ax.set_ylabel('$H(f)$')
     ax.set_xlim(-1.5, 1.5)
     ax.set_ylim(0, 3.8)
-    ax.xaxis.set_major_formatter(pl.NullFormatter())
-    ax.yaxis.set_major_formatter(pl.NullFormatter())
+    ax.xaxis.set_major_formatter(plt.NullFormatter())
+    ax.yaxis.set_major_formatter(plt.NullFormatter())
     ax.set_title('Frequency Domain: Convolution', size=12)
 
     # third plot: windowed function
@@ -97,8 +97,8 @@ for dt in (0.9, 1.5):
     ax.set_ylabel('$h(t)$')
     ax.set_xlim(-5, 5)
     ax.set_ylim(0, 1.4)
-    ax.xaxis.set_major_formatter(pl.NullFormatter())
-    ax.yaxis.set_major_formatter(pl.NullFormatter())
+    ax.xaxis.set_major_formatter(plt.NullFormatter())
+    ax.yaxis.set_major_formatter(plt.NullFormatter())
 
     # fourth plot: convolved PSD
     ax = fig.add_subplot(224)
@@ -112,12 +112,12 @@ for dt in (0.9, 1.5):
     ax.set_ylabel('$H(f)$')
     ax.set_xlim(-1.5, 1.5)
     ax.set_ylim(0, 3.8)
-    ax.xaxis.set_major_formatter(pl.NullFormatter())
-    ax.yaxis.set_major_formatter(pl.NullFormatter())
+    ax.xaxis.set_major_formatter(plt.NullFormatter())
+    ax.yaxis.set_major_formatter(plt.NullFormatter())
 
     if dt > 1:
         fig.suptitle(r"Under-sampled data: $\Delta t > t_c$")
     else:
         fig.suptitle(r"Well-sampled data: $\Delta t < t_c$")
 
-pl.show()
+plt.show()

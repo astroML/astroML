@@ -30,7 +30,7 @@ for more details.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import t as student_t
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
@@ -47,14 +47,14 @@ for k, ls in zip(k_values, linestyles):
     else:
         label = r'$\mathrm{t}(k=%.1f)$' % k
 
-    pl.plot(x, dist.pdf(x), ls=ls, c='black', label=label)
+    plt.plot(x, dist.pdf(x), ls=ls, c='black', label=label)
 
-pl.xlim(-5, 5)
-pl.ylim(0.0, 0.5)
+plt.xlim(-5, 5)
+plt.ylim(0.0, 0.5)
 
-pl.xlabel('$x$', fontsize=14)
-pl.ylabel(r'$P(x|k)$', fontsize=14)
-pl.title("Student's-T Distribution")
+plt.xlabel('$x$', fontsize=14)
+plt.ylabel(r'$P(x|k)$', fontsize=14)
+plt.title("Student's-T Distribution")
 
-pl.legend()
-pl.show()
+plt.legend()
+plt.show()

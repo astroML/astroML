@@ -3,7 +3,7 @@ Generalized vs Standard Lomb-Scargle
 ------------------------------------
 """
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.time_series import lomb_scargle
 
@@ -29,7 +29,7 @@ P_G, z = lomb_scargle(t, y, dy, omega, generalized=True, significance=sig)
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 
 # First panel: input data
 ax = fig.add_subplot(211)
@@ -55,4 +55,4 @@ for zi, pi in zip(z, sig):
 ax.set_xlabel('$\omega$')
 ax.set_ylabel('$P_{LS}(\omega)$')
 ax.set_ylim(0, 1.1)
-pl.show()
+plt.show()

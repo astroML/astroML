@@ -10,7 +10,7 @@ value decomposition.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Rectangle
 
 
@@ -30,7 +30,7 @@ def labeled_rect(ax, center, width, height, text,
                             center[0] + 0.5 * width,
                             N + 2)[1:-1]
         for x in xlocs:
-            pl.plot([x, x],
+            plt.plot([x, x],
                     [center[1] - 0.5 * height,
                      center[1] + 0.5 * height], '-k')
 
@@ -39,12 +39,12 @@ def labeled_rect(ax, center, width, height, text,
                             center[1] + 0.5 * height,
                             N + 2)[1:-1]
         for y in ylocs:
-            pl.plot([center[0] - 0.5 * width,
+            plt.plot([center[0] - 0.5 * width,
                      center[0] + 0.5 * width],
                     [y, y], '-k')
 
     elif stripe == 'diag':
-        pl.plot([center[0] - 0.5 * width, center[0] + 0.5 * width],
+        plt.plot([center[0] - 0.5 * width, center[0] + 0.5 * width],
                 [center[1] + 0.5 * height, center[1] - 0.5 * height],
                 '-k')
     else:
@@ -52,7 +52,7 @@ def labeled_rect(ax, center, width, height, text,
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0, bottom=0,
                     right=1, top=1)
 ax = fig.add_subplot(111, xticks=[], yticks=[], frameon=False)
@@ -73,4 +73,4 @@ ax.text(0.7, 0.3, '$=$', fontsize=20, ha='center', va='center')
 ax.set_xlim(0, 2)
 ax.set_ylim(0, 1)
 
-pl.show()
+plt.show()

@@ -13,7 +13,7 @@ points have heteroscedatic gaussian errors.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.stats import median_sigmaG
 
 
@@ -87,7 +87,7 @@ mu_boot, sigma_boot = approximate_mu_sigma(xi_boot, ei_boot, 0)
 
 #--------------------------------------------------
 # Plot data
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.24,
                    bottom=0.15, top=0.9)
 
@@ -132,4 +132,4 @@ ax.legend(loc=1, prop=dict(size=12))
 ax.set_xlim(0, 5.0)
 ax.set_ylim(0, 1.0)
 
-pl.show()
+plt.show()

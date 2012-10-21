@@ -9,12 +9,12 @@ This displays a schematic diagram of ridge regression
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse, Circle
 
 #------------------------------------------------------------
 # Set up figure
-fig = pl.figure(figsize=(8, 8), facecolor='w')
+fig = plt.figure(figsize=(8, 8), facecolor='w')
 ax = fig.add_axes([0, 0, 1, 1], frameon=False, xticks=[], yticks=[])
 
 # plot the axes
@@ -51,4 +51,4 @@ ax.text(1.9, -0.3, r'$r$', fontsize=20, ha='center', va='top')
 ax.set_xlim(-2, 9)
 ax.set_ylim(-2, 9)
 
-pl.show()
+plt.show()

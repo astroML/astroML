@@ -10,7 +10,7 @@ in the following figure.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy.stats import norm
 from astroML.density_estimation import GaussianMixture1D
 
@@ -36,7 +36,7 @@ sample_std = np.std(x_sample, ddof=1)
 
 #------------------------------------------------------------
 # Plot the sampled data
-ax = pl.axes()
+ax = plt.axes()
 
 ax.hist(x_sample, 20, histtype='stepfilled', normed=True, fc='#CCCCCC')
 x = np.linspace(-2, 4, 1000)
@@ -58,4 +58,4 @@ ax.text(0.95, 0.80, ('$\mu_1 = 0;\ \sigma_1=0.3$\n'
                      '$\mu_2=1;\ \sigma_2=1,0$\n'
                      '$\mathrm{ratio}=1.5$'),
         transform=ax.transAxes, ha='right', va='top', fontsize=16)
-pl.show()
+plt.show()

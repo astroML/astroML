@@ -11,7 +11,7 @@ using :class:`astroML.density_estimation.EmpiricalDistribution`
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from scipy import stats, interpolate
 from astroML.plotting import hist
 from astroML.density_estimation import EmpiricalDistribution
@@ -51,7 +51,7 @@ x_sample = interpolate.splev(Px_cuml_sample, tck)
 
 #------------------------------------------------------------
 # Plot the cloned distribution and the procedure for obtaining it
-fig = pl.figure(figsize=(10, 10))
+fig = plt.figure(figsize=(10, 10))
 fig.subplots_adjust(hspace=0.25, left=0.1, right=0.95,
                    bottom=0.08, top=0.92)
 
@@ -103,4 +103,4 @@ ax.set_ylabel('p(x)dx')
 ax.text(0.75, 0.95, "KS test:\nD = %.2f\np = %.2f" % (D, p),
         ha='left', va='top', transform=ax.transAxes)
 
-pl.show()
+plt.show()

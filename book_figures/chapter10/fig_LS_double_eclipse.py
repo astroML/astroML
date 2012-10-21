@@ -8,7 +8,7 @@ Phased LINEAR Light Curve
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.time_series import multiterm_periodogram, MultiTermFit
 from astroML.datasets import fetch_LINEAR_sample
@@ -61,7 +61,7 @@ for f in factors:
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(12, 6))
+fig = plt.figure(figsize=(12, 6))
 fig.subplots_adjust(left=0.07, right=0.95, wspace=0.18,
                     bottom=0.1, top=0.95, hspace=0.12)
 
@@ -78,8 +78,8 @@ for i, f in enumerate(factors):
 
     ax1.axis('tight')
     ax1.set_ylim(-0.05, 1.001)
-    ax1.xaxis.set_major_locator(pl.MultipleLocator(0.01))
-    ax1.xaxis.set_major_formatter(pl.FormatStrFormatter('%.2f'))
+    ax1.xaxis.set_major_locator(plt.MultipleLocator(0.01))
+    ax1.xaxis.set_major_formatter(plt.FormatStrFormatter('%.2f'))
 
     # second column: plot the phased data & fit
     ax2 = fig.add_subplot(222 + 2 * i)
@@ -93,8 +93,8 @@ for i, f in enumerate(factors):
 
     ax2.grid(color='gray')
     ax2.set_xlim(0, 1)
-    ax2.set_ylim(pl.ylim()[::-1])
-    ax2.yaxis.set_major_locator(pl.MultipleLocator(0.4))
+    ax2.set_ylim(plt.ylim()[::-1])
+    ax2.yaxis.set_major_locator(plt.MultipleLocator(0.4))
 
     # label both axes
     ax1.set_ylabel(r'$P_{LS}(\omega)$')
@@ -103,4 +103,4 @@ for i, f in enumerate(factors):
         ax1.set_xlabel(r'$\omega$')
         ax2.set_xlabel('phase')
 
-pl.show()
+plt.show()

@@ -14,7 +14,7 @@ heteroscedastic errors.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from scipy import optimize
 from astroML.datasets import fetch_hogg2010test
@@ -54,7 +54,7 @@ print beta_huber
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(6, 6))
+fig = plt.figure(figsize=(6, 6))
 ax = fig.add_subplot(111)
 
 x_fit = np.linspace(0, 350, 10)
@@ -70,4 +70,4 @@ ax.set_ylim(100, 700)
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 
-pl.show()
+plt.show()

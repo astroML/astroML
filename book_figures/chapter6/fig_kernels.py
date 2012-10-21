@@ -9,7 +9,7 @@ Plot three One-dimensional kernels: the Gaussian, Exponential, and Top-Hat
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Compute Kernels.
@@ -25,7 +25,7 @@ tophat[abs(x) > 1] = 0
 
 #------------------------------------------------------------
 # Plot the kernels
-fig = pl.figure()
+fig = plt.figure()
 ax = fig.add_subplot(111)
 
 ax.plot(x, gauss, '-', c='black', lw=3, label='Gaussian')
@@ -39,4 +39,4 @@ ax.set_ylabel('$K(u)$')
 
 ax.set_xlim(-5, 5)
 ax.set_ylim(0, 0.6001)
-pl.show()
+plt.show()

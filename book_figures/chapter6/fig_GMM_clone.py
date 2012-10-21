@@ -10,7 +10,7 @@ Gaussian Mixture Models.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from sklearn.mixture import GMM
 
@@ -38,7 +38,7 @@ dens = np.exp(gmm.score(Xgrid)).reshape((50, 50))
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 3))
+fig = plt.figure(figsize=(8, 3))
 fig.subplots_adjust(left=0.08, right=0.95, wspace=0.05,
                     bottom=0.12, top=0.9)
 
@@ -52,21 +52,21 @@ ax.set_ylabel('y')
 # next plot the gmm fit
 ax = fig.add_subplot(132, aspect='equal')
 ax.imshow(dens.T, origin='lower', extent=[xmin, xmax, xmin, xmax],
-          cmap=pl.cm.binary)
+          cmap=plt.cm.binary)
 
 ax.set_title("Density Model")
-ax.yaxis.set_major_formatter(pl.NullFormatter())
+ax.yaxis.set_major_formatter(plt.NullFormatter())
 
 # next plot the cloned distribution
 ax = fig.add_subplot(133, aspect='equal')
 ax.plot(X_new[:, 0], X_new[:, 1], '.k', ms=2)
 
 ax.set_title("Cloned Distribution")
-ax.yaxis.set_major_formatter(pl.NullFormatter())
+ax.yaxis.set_major_formatter(plt.NullFormatter())
 
 for ax in fig.axes:
     ax.set_xlim(xmin, xmax)
     ax.set_ylim(xmin, xmax)
     ax.set_xlabel('x')
 
-pl.show()
+plt.show()

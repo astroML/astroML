@@ -14,7 +14,7 @@ at the expense of contamination (misclassified background sources).
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy.stats import norm
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Generate and draw the curves
@@ -22,7 +22,7 @@ x = np.linspace(50, 200, 1000)
 p1 = 0.9 * norm(100, 10).pdf(x)
 p2 = 0.1 * norm(150, 12).pdf(x)
 
-ax = pl.axes()
+ax = plt.axes()
 ax.fill(x, p1, ec='k', fc='#AAAAAA', alpha=0.5)
 ax.fill(x, p2, '-k', fc='#AAAAAA', alpha=0.5)
 
@@ -38,4 +38,4 @@ ax.set_ylim(0, 0.04)
 
 ax.set_xlabel('x')
 ax.set_ylabel('p(x)')
-pl.show()
+plt.show()

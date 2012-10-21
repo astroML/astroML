@@ -11,7 +11,7 @@ This figure shows the transformation of a distribution
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy import stats
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Set up the data
@@ -30,7 +30,7 @@ Py = Px / y
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25, bottom=0.15, top=0.9)
 
 ax = fig.add_subplot(121)
@@ -38,7 +38,7 @@ ax.hist(x_sample, 20, histtype='stepfilled', fc='#CCCCCC', normed=True)
 ax.plot(x, Px, '-k')
 ax.set_xlim(-0.2, 1.2)
 ax.set_ylim(0, 1.4001)
-ax.xaxis.set_major_locator(pl.MaxNLocator(6))
+ax.xaxis.set_major_locator(plt.MaxNLocator(6))
 ax.text(0.95, 0.95, r'$p_x(x) = {\rm Uniform}(x)$',
         va='top', ha='right',
         transform=ax.transAxes)
@@ -50,11 +50,11 @@ ax = fig.add_subplot(122)
 ax.hist(y_sample, 20, histtype='stepfilled', fc='#CCCCCC', normed=True)
 ax.plot(y, Py, '-k')
 ax.set_xlim(0.8, 2.9)
-ax.xaxis.set_major_locator(pl.MaxNLocator(6))
+ax.xaxis.set_major_locator(plt.MaxNLocator(6))
 ax.text(0.95, 0.95, '$y=\exp(x)$\n$p_y(y)=p_x(\ln y) / y$',
         va='top', ha='right',
         transform=ax.transAxes)
 ax.set_xlabel('$y$')
 ax.set_ylabel('$p_y(y)$')
 
-pl.show()
+plt.show()

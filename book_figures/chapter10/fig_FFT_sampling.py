@@ -10,7 +10,7 @@ data and window function in both temporal space and frequency space.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Generate the data
@@ -57,7 +57,7 @@ PSD_obs /= 500
 
 #------------------------------------------------------------
 # Prepare the figures
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(bottom=0.15, hspace=0.35, wspace=0.2,
                     left=0.1, right=0.95)
 
@@ -99,4 +99,4 @@ ax.set_ylabel('$P(f)$')
 ax.set_xlim(0, 1.0)
 ax.set_ylim(-0.1, 1.1)
 
-pl.show()
+plt.show()

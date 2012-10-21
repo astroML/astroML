@@ -12,7 +12,7 @@ points have heteroscedatic gaussian errors.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 # Hack to fix import issue in older versions of pymc
 import scipy
@@ -87,7 +87,7 @@ S.sample(iter=25000, burn=2000)
 trace_mu = S.trace('mu')[:]
 trace_sigma = S.trace('sigma')[:]
 
-fig = pl.figure()
+fig = plt.figure()
 ax, = plot_mcmc([trace_mu, trace_sigma], fig=fig,
                 limits=[(-3, 5), (0, 5)],
                 labels=(r'$\mu$', r'$\sigma$'),
@@ -105,7 +105,7 @@ logL -= logL.max()
 
 im = ax.contourf(mu, sigma, convert_to_stdev(logL),
                  levels=(0, 0.683, 0.955, 0.997),
-                 cmap=pl.cm.binary_r, alpha=0.5)
+                 cmap=plt.cm.binary_r, alpha=0.5)
 im.set_clim(0, 1.1)
 
 ax.set_xlabel(r'$\mu$')
@@ -115,4 +115,4 @@ ax.set_ylim(0, 5)
 
 ax.set_aspect(1. / ax.get_data_ratio())
 
-pl.show()
+plt.show()

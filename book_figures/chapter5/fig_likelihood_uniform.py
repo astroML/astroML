@@ -11,7 +11,7 @@ width :math:`W` when the posterior is assumed to be uniform.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 
 def uniform_logL(x, W, mu):
@@ -48,21 +48,21 @@ p_W /= p_W.sum()
 
 #------------------------------------------------------------
 # Plot the results
-fig = pl.figure()
+fig = plt.figure()
 
 # 2D likelihood plot
 ax = fig.add_axes([0.35, 0.35, 0.45, 0.6], xticks=[], yticks=[])
 logL[logL < -10] = -10  # truncate for clean plotting
-pl.imshow(logL, origin='lower',
+plt.imshow(logL, origin='lower',
           extent=(mu[0], mu[-1], W[0], W[-1]),
-          cmap=pl.cm.binary,
+          cmap=plt.cm.binary,
           aspect='auto')
 
 # colorbar
-cax = pl.axes([0.82, 0.35, 0.02, 0.6])
-cb = pl.colorbar(cax=cax)
+cax = plt.axes([0.82, 0.35, 0.02, 0.6])
+cb = plt.colorbar(cax=cax)
 cb.set_label(r'$L(\mu, W)$')
-pl.clim(-7, 0)
+plt.clim(-7, 0)
 
 ax.text(0.5, 0.9, r'$L(\mu,W)\ \mathrm{uniform,\ n=100}$',
         fontsize=18,  bbox=dict(ec='k', fc='w', alpha=0.9),
@@ -85,4 +85,4 @@ ax2.set_ylim(9.7, 10.7)
 
 print "data extent:", min(x), max(x)
 
-pl.show()
+plt.show()

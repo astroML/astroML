@@ -10,7 +10,7 @@ in the Sloan Digital Sky Survey.
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.decorators import pickle_results
 from astroML.datasets import fetch_sdss_specgals
@@ -78,7 +78,7 @@ bootstraps = [r_bootstraps, b_bootstraps]
 labels = ['$u-r > 2.22$\n$N=%i$' % len(data_red),
           '$u-r < 2.22$\n$N=%i$' % len(data_blue)]
 
-fig = pl.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(bottom=0.15, top=0.9,
                     left=0.1, right=0.95)
 
@@ -99,4 +99,4 @@ for i in range(2):
         ax.set_ylabel(r'$\hat{w}(\theta)$')
 
 
-pl.show()
+plt.show()
