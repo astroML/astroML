@@ -7,12 +7,11 @@ and quasars, and plot the ROC curve for these objects.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
 import pylab as pl
 
-from astroML.datasets import fetch_sdss_colors_train
 from astroML.utils import split_samples
 
 from sklearn.metrics import roc_curve

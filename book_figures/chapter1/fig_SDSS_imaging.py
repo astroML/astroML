@@ -7,10 +7,10 @@ catalog, and plot colors and magnitudes of the stars and galaxies.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.datasets import fetch_imaging_sample
 
 
@@ -38,22 +38,22 @@ def plot_stars_and_galaxies(stars, galaxies):
     print galaxies.shape
     print galaxies['gRaw'].shape
 
-    ax1 = pl.subplot(221)
+    ax1 = plt.subplot(221)
     ax1.plot(galaxies['gRaw'] - galaxies['rRaw'],
              galaxies['rRaw'],
              **plot_kwargs)
 
-    ax2 = pl.subplot(223, sharex=ax1)
+    ax2 = plt.subplot(223, sharex=ax1)
     ax2.plot(galaxies['gRaw'] - galaxies['rRaw'],
              galaxies['rRaw'] - galaxies['iRaw'],
              **plot_kwargs)
 
-    ax3 = pl.subplot(222, sharey=ax1)
+    ax3 = plt.subplot(222, sharey=ax1)
     ax3.plot(stars['gRaw'] - stars['rRaw'],
              stars['rRaw'],
              **plot_kwargs)
 
-    ax4 = pl.subplot(224, sharex=ax3, sharey=ax2)
+    ax4 = plt.subplot(224, sharex=ax3, sharey=ax2)
     ax4.plot(stars['gRaw'] - stars['rRaw'],
              stars['rRaw'] - stars['iRaw'],
              **plot_kwargs)
@@ -74,11 +74,11 @@ def plot_stars_and_galaxies(stars, galaxies):
 
     # adjust tick spacings on all axes
     for ax in (ax1, ax2, ax3, ax4):
-        ax.xaxis.set_major_locator(pl.MultipleLocator(1))
-        ax.yaxis.set_major_locator(pl.MultipleLocator(1))
+        ax.xaxis.set_major_locator(plt.MultipleLocator(1))
+        ax.yaxis.set_major_locator(plt.MultipleLocator(1))
 
 #------------------------------------------------------------
 # Generate and show the plot
 stars, galaxies = get_stars_and_galaxies()
 plot_stars_and_galaxies(stars, galaxies)
-pl.show()
+plt.show()

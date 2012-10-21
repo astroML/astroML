@@ -7,9 +7,9 @@ plot the relationship between redshift and color.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.datasets import fetch_dr7_quasar
 
 #------------------------------------------------------------
@@ -25,7 +25,7 @@ z = data['redshift']
 
 #------------------------------------------------------------
 # Plot the quasar data
-ax = pl.axes()
+ax = plt.axes()
 ax.plot(z, r - i, marker='.', markersize=4, linestyle='none', color='black')
 
 ax.set_xlim(0, 5)
@@ -34,4 +34,4 @@ ax.set_ylim(-0.5, 1.0)
 ax.set_xlabel('redshift')
 ax.set_ylabel('r-i color')
 
-pl.show()
+plt.show()

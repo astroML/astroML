@@ -7,9 +7,9 @@ standard stars
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_S82standards
 
 #------------------------------------------------------------
@@ -26,11 +26,11 @@ i = data['mmu_i']
 
 #------------------------------------------------------------
 # Plot the g-r vs r-i colors
-ax = pl.axes()
+ax = plt.axes()
 ax.plot(g - r, r - i, marker='.', markersize=2,
         color='black', linestyle='none')
 
 ax.set_xlabel('g - r')
 ax.set_ylabel('r - i')
 
-pl.show()
+plt.show()

@@ -7,14 +7,14 @@ The implementation follows Hogg et al 2010 (arXiv:1008.4686)
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
 from scipy import optimize
 import pylab as pl
 from matplotlib.patches import Ellipse
 
-from astroML.TLS import TLS_logL
+from astroML.linear_model import TLS_logL
 from astroML.plotting.likelihood import convert_to_stdev
 from astroML.datasets import fetch_hogg2010test
 

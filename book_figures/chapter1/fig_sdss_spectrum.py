@@ -7,9 +7,9 @@ using the plate, MJD, and fiber numbers.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_spectrum
 
 #------------------------------------------------------------
@@ -22,10 +22,10 @@ spec = fetch_sdss_spectrum(plate, mjd, fiber)
 
 #------------------------------------------------------------
 # Plot the resulting spectrum
-ax = pl.axes()
+ax = plt.axes()
 ax.plot(spec.wavelength(), spec.spectrum, '-k', lw=1)
 ax.set_xlabel(r'$\lambda (\AA)$')
 ax.set_ylabel('Flux')
 ax.set_title('Plate = %(plate)i, MJD = %(mjd)i, Fiber = %(fiber)i' % locals())
 
-pl.show()
+plt.show()

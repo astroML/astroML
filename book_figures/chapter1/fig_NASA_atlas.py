@@ -5,10 +5,10 @@ NASA Atlas dataset example
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_nasa_atlas
 from astroML.plotting.tools import devectorize_axes
@@ -22,16 +22,16 @@ RA -= 180
 RA *= np.pi / 180
 DEC *= np.pi / 180
 
-ax = pl.axes(projection='mollweide')
-pl.scatter(RA, DEC, s=1, lw=0, c=data['Z'], cmap=pl.cm.copper)
-pl.grid(True)
+ax = plt.axes(projection='mollweide')
+plt.scatter(RA, DEC, s=1, lw=0, c=data['Z'], cmap=plt.cm.copper)
+plt.grid(True)
 # devectorize: otherwise the resulting pdf figure becomes very large
 #devectorize_axes(ax, dpi=400)
 
-pl.title('NASA Atlas Galaxy Locations')
-cb = pl.colorbar(cax=pl.axes([0.05, 0.1, 0.9, 0.05]),
+plt.title('NASA Atlas Galaxy Locations')
+cb = plt.colorbar(cax=plt.axes([0.05, 0.1, 0.9, 0.05]),
                  orientation='horizontal',
                  ticks=np.linspace(0, 0.05, 6))
 cb.set_label('redshift')
 
-pl.show()
+plt.show()

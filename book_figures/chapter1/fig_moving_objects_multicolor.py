@@ -9,10 +9,10 @@ Parker et al 2008.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
 import numpy as np
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.datasets import fetch_moving_objects
 from astroML.plotting.tools import devectorize_axes
 
@@ -20,7 +20,7 @@ from astroML.plotting.tools import devectorize_axes
 def black_bg_subplot(*args, **kwargs):
     """Create a subplot with black background"""
     kwargs['axisbg'] = 'k'
-    ax = pl.subplot(*args, **kwargs)
+    ax = plt.subplot(*args, **kwargs)
 
     # set ticks and labels to white
     for spine in ax.spines.values():
@@ -74,7 +74,7 @@ color = compute_color(mag_a, mag_i, mag_z)
 
 #------------------------------------------------------------
 # set up the plot
-fig = pl.figure(figsize=(10.5, 5), facecolor='k')
+fig = plt.figure(figsize=(10.5, 5), facecolor='k')
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.2,
                     bottom=0.1, top=0.9)
 
@@ -110,7 +110,7 @@ ax.set_ylabel('sin(i)', color='w')
 
 # label the plot
 text_kwargs = dict(color='w', fontsize=14,
-                   transform=pl.gca().transAxes,
+                   transform=plt.gca().transAxes,
                    ha='center', va='bottom')
 
 ax.text(0.25, 1.01, 'Inner', **text_kwargs)
@@ -122,4 +122,4 @@ ax.text(0.83, 1.01, 'Outer', **text_kwargs)
 #            facecolor='black',
 #            edgecolor='none')
 
-pl.show()
+plt.show()

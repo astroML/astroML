@@ -7,9 +7,9 @@ Stripe 82 and to plot some measures of the orbital dynamics.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning for Astronomy" (2013)
+#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
-import pylab as pl
+from matplotlib import pyplot as plt
 from astroML.datasets import fetch_moving_objects
 
 #------------------------------------------------------------
@@ -24,10 +24,10 @@ sini = data['sin_iprime']
 
 #------------------------------------------------------------
 # Plot the results
-ax = pl.axes()
+ax = plt.axes()
 ax.plot(a, sini, '.', markersize=2, color='black')
 
 ax.set_xlabel('Semi-major Axis (AU)')
 ax.set_ylabel('Sine of Inclination Angle')
 
-pl.show()
+plt.show()
