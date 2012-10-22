@@ -90,14 +90,22 @@ AstroML: Machine Learning code for Astronomy
     |center-div| |banner1| |banner2| |banner3| |banner4| |banner5| |banner6| |banner7| |banner8| |banner9| |banner10| |end-div|
 
 AstroML is a Python module for machine learning and data mining built on
-numpy, scipy, scikit-learn, and matplotlib,
-and distributed under the 3-Clause BSD license.
+`numpy <http://numpy.scipy.org>`_,
+`scipy <http://scipy.org>`_,
+`scikit-learn <http://scikit-learn.org>`_,
+and `matplotlib <http://matplotlib.org>`_,
+and distributed under the 3-clause BSD license.
 It contains a growing library of statistical and machine learning
 routines for analyzing astronomical data in python, loaders for several open
 astronomical datasets, and a large suite of examples of analyzing and
 visualizing astronomical datasets.
 
-This project was started in 2012 by Jake VanderPlas to accompany the book
+The goal of astroML is to provide a community repository for fast Python
+implementations of common tools and routines used for statistical
+data analysis in astronomy and astrophysics, to provide a uniform and
+easy-to-use interface to freely available astronomical datasets.
+We hope this package will be useful to researchers and students of
+astronomy.  The project was started in 2012 to accompany the book
 **Statistics, Data Mining, and Machine Learning in Astronomy** by
 Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray,
 to be published in early 2013.
