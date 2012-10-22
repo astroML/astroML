@@ -1,6 +1,6 @@
-============================================
-AstroML: Machine Learning code for Astronomy
-============================================
+=======================================================
+AstroML: Machine Learning and Data Mining for Astronomy
+=======================================================
 ..
    Here we are building a banner: a javascript selects randomly 4 images in
    the list.  Code adapted from scikit-learn documentation
@@ -137,10 +137,4 @@ Development
    :maxdepth: 2
 
    development/index
-
-Indices and tables
-==================
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 

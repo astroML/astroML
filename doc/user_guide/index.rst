@@ -26,3 +26,4 @@
    classification
    time_series
    ../modules/classes
+   resources

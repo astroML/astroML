@@ -1,5 +1,5 @@
-Source Code: Github
-===================
+Obtaining the Source Code
+=========================
 This package is designed to be a repository for well-written astronomy code,
 and submissions of new routines are encouraged.  After installing the
 version-control system `git <http://git-scm.com/>`_, you can check out

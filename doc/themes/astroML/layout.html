@@ -75,7 +75,7 @@ $(document).ready(function(){
             <li><a href="{{pathto(master_doc)}}">Home</a></li>
 	    <li><a href="{{pathto('user_guide/index')}}">User Guide</a></li>
             <li><a href="{{pathto('book_figures/index')}}">Book Figures</a></li>
-            <li><a href="{{pathto('examples/index')}}">General Examples</a></li>
+            <li><a href="{{pathto('examples/index')}}">Examples Plots</a></li>
        </ul>
 
 <!-- Google custom search.  Javascript that enables this is in the header above -->
@@ -154,21 +154,32 @@ $(document).ready(function(){
         {% else %}
         <h3>Headline</h3>
 
-	<p>astroML 0.1 has been released!  Get the source on
-	   <a href="http://github.com/astroML/astroML">Github</a></p>
+	<p>October 2012: astroML 0.1 has been released!  Get the source on
+	   <a href="http://github.com/astroML/astroML">Github</a></p>.
 
         {% endif %}
+
+	{% if pagename != 'index' %}
 
         <h3>{{ _('This page') }}</h3>
          {{ toc }}
 
+        {% endif %}
+
+	<h3>Help & Issues</h3>
+	<p>For help see the
+	  <a href="https://groups.google.com/forum/#!forum/astroml-general">astroML-general mailing list</a> or the
+	  <a href="http://github.com/astroML/astroML/issues">GitHub Issue Tracker</a>.</p>
+
         {% if pagename == 'index' %}
+	<!--
         <h3>Funding</h3>
         <p>Funding provided
 	  by <a href="http://www.astro.washington.edu">
 	    University of Washington</a> and ...</p>
 
         <p><a href="{{pathto('about')}}">Read more ...</a></p>
+	-->
         {% endif %}
 
         </div>
