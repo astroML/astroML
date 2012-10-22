@@ -7,44 +7,44 @@ AstroML: Machine Learning code for Astronomy
 
 .. only:: html
 
-    .. |banner1| image:: book_figures/images/chapter1/fig_moving_objects_multicolor_1.png
-       :height: 130
-       :target: book_figures/chapter1/fig_moving_objects_multicolor.html
+    .. |banner1| image:: examples/images/datasets/plot_moving_objects_2.png
+       :height: 150
+       :target: examples/datasets/plot_moving_objects.html
 
-    .. |banner2| image:: book_figures/images/chapter1/fig_wmap_healpix_1.png
-       :height: 130
-       :target: book_figures/chapter1/fig_wmap_healpix.html
+    .. |banner2| image:: examples/images/datasets/plot_wmap_power_spectra_1.png
+       :height: 150
+       :target: examples/datasets/plot_wmap_power_spectra.html
 
     .. |banner3| image:: book_figures/images/chapter3/fig_uniform_mean_1.png
-       :height: 130
+       :height: 150
        :target: book_figures/chapter3/fig_uniform_mean.html
 
     .. |banner4| image:: book_figures/images/chapter4/fig_lyndenbell_gals_1.png
-       :height: 130
+       :height: 150
        :target: book_figures/chapter4/fig_lyndenbell_gals.html
 
     .. |banner5| image:: book_figures/images/chapter6/fig_great_wall_MST_1.png
-       :height: 130
+       :height: 150
        :target: book_figures/chapter6/fig_great_wall_MST.html
 
     .. |banner6| image:: book_figures/images/chapter7/fig_spec_LLE_1.png
-       :height: 130
+       :height: 150
        :target: book_figures/chapter7/fig_spec_LLE.html
 
-    .. |banner7| image:: book_figures/images/chapter8/fig_nonlinear_mu_z_1.png
-       :height: 130
-       :target: book_figures/chapter8/fig_nonlinear_mu_z.html
+    .. |banner7| image:: examples/images/datasets/plot_nasa_atlas_1.png
+       :height: 150
+       :target: examples/datasets/plot_nasa_atlas.html
 
     .. |banner8| image:: book_figures/images/chapter10/fig_wavelet_PSD_1.png
-       :height: 130
+       :height: 150
        :target: book_figures/chapter10/fig_wavelet_PSD.html
 
     .. |banner9| image:: book_figures/images/chapter10/fig_LINEAR_clustering_1.png
-       :height: 130
+       :height: 150
        :target: book_figures/chapter10/fig_LINEAR_clustering.html
 
     .. |banner10| image:: book_figures/images/appendix/fig_sdss_filters_1.png
-       :height: 130
+       :height: 150
        :target: book_figures/appendix/fig_sdss_filters.html
 
     .. |center-div| raw:: html

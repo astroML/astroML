@@ -14,9 +14,10 @@
 
 .. toctree::
    :numbered:
+   :maxdepth: 2
 
+   introduction
    installation
-   textbook
    datasets
    density_estimation
    clustering

@@ -56,7 +56,7 @@ and `z`.  A visualization of the range of these filters is shown below:
 SDSS Spectra
 ~~~~~~~~~~~~
 The SDSS spectroscopic data is available in a database, indexed by three
-numbers: the plate, date, and fiber number.  The :ref:`fetch_sdss_spectrum`
+numbers: the plate, date, and fiber number.  The :func:`fetch_sdss_spectrum`
 takes a plate, mjd, and fiber, and downloads the spectrum to disk.  The
 spectral data can be visualized as follows:
 
@@ -135,6 +135,32 @@ are shown in the following visualization:
    :align: center
    :scale: 80
 
+One well-known feature of the SDSS spectroscopic sample is the "great wall",
+a filament of galaxies located several hundred megaparsecs away.  The
+great wall data is among the spectroscopic sample: to enable easily working
+with it, astroML contains the function :func:`fetch_great_wall`.  The data
+can be seen below:
+
+.. image:: ../examples/images/datasets/plot_great_wall_1.png
+   :target: ../examples/datasets/plot_great_wall.html
+   :align: center
+   :scale: 80
+
+.. _datasets_dr7_quasar:
+
+SDSS DR7 Quasar Catalog
+~~~~~~~~~~~~~~~~~~~~~~~
+The SDSS has obtained the spectra of over 100,000 distant quasars.  The quasar
+catalog is described on the
+`SDSS website <http://www.sdss.org/dr7/products/value_added/qsocat_dr7.html>`_,
+and can be downloaded using the function :func:`fetch_dr7_quasar`.  Some of
+this quasar data is used in the visualization below:
+
+.. image:: ../examples/images/datasets/plot_dr7_quasar_1.png
+   :target: ../examples/datasets/plot_dr7_quasar.html
+   :align: center
+   :scale: 80
+
 .. _datasets_sdss_imaging:
 
 SDSS Imaging Sample
@@ -169,8 +195,12 @@ visualized below:
    :align: center
    :scale: 100
 
-Many more attributes are available; see the :func:`fetch_sdss_sspp`
-documentation for details.
+The left panel shows the density of point on the temperature / log(g) plot.
+These parameters correlate with the familiar HR diagram based on photometric
+colors.  The right panel shows the average metallicity in each pixel, and the
+contours indicate the density of points.
+Many more attributes are available in the SSPP data set; see the
+:func:`fetch_sdss_sspp` documentation for details.
 
 .. _datasets_stripe82_time:
 
@@ -209,7 +239,7 @@ following visualization:
 
 .. centered:: |MOC1| |MOC2|
 
-.. _datasets_stripe82_standard:
+.. _datasets_S82_standards:
 
 Stripe 82: Standard Stars
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -217,7 +247,7 @@ Along with time-domain data, the repeated observations in Stripe 82 enabled
 stacked photometry of sources to minimize the statistical error in their
 measured fluxes.  The Stripe 82 standard stars are a set of stars in this
 region which are below a specified variability criterion.  The multiple
-exposures were combined to yield a highly precise catalog of stars.  THis
+exposures were combined to yield a highly precise catalog of stars.  This
 data can be obtained using the :func:`fetch_sdss_S82standards` function.
 Some of the data in this catalog is visualized below:
 
@@ -225,3 +255,134 @@ Some of the data in this catalog is visualized below:
    :target: ../examples/datasets/plot_sdss_S82standards.html
    :align: center
    :scale: 80
+
+
+Combined Surveys
+----------------
+
+.. _datasets_sloan_atlas:
+
+Nasa Sloan Atlas
+~~~~~~~~~~~~~~~~
+The `NASA Sloan atlas <http://www.nsatlas.org/>`_ is a cross-matched catalog of
+observations and parameters for nearby galaxies, compiled from SDSS, GALEX,
+2MASS, annd WISE.  The full dataset is ~500MB; an astroML dataset loader for
+~50MB of this data is available in :func:`fetch_nasa_atlas`.  The footprint
+of the available data can be seen below:
+
+.. image:: ../examples/images/datasets/plot_nasa_atlas_1.png
+   :target: ../examples/datasets/plot_nasa_atlas.html
+   :align: center
+   :scale: 80
+
+.. _datasets_S82_2mass:
+
+Stripe 82 Standards + 2MASS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Above, we introduced the stripe 82 standard star catalog.  There is also
+a version of this catalog which is cross-matched with the 2 Micron All Sky
+Survey (2MASS) data.  This can be obtained using the
+:func:`fetch_sdss_S82standards` function, with the keyword
+``crossmatch_2mass=True``.  Some of the combined data are shown below:
+
+.. image:: ../examples/images/datasets/plot_sdss_S82standards_2.png
+   :target: ../examples/datasets/plot_sdss_S82standards.html
+   :align: center
+   :scale: 80
+
+
+Time Domain Data
+----------------
+
+RR Lyrae Templates
+~~~~~~~~~~~~~~~~~~
+RR Lyrae light curve templates can be useful when analyzing time-series data.
+The function :func:`fetch_rrlyrae_templates` fetches the templates used in
+[1]_.  The following is a figure from the textbook that reconstructs one of
+these templates using a Fourier series:
+
+.. image:: ../book_figures/images/chapter10/fig_rrlyrae_reconstruct_1.png
+   :target: ../book_figures/chapter10/fig_rrlyrae_reconstruct.html
+   :align: center
+   :scale: 80
+
+The dashed line is the RR Lyrae template; the grey lines show the reconstruction
+with 1, 3, and 8 Fourier modes.
+
+.. [1] Sesar et al 2010, ApJ 708:717
+
+LINEAR Light Curves
+~~~~~~~~~~~~~~~~~~~
+The `Lincoln Near Earth Asteroid Research <http://www.ll.mit.edu/mission/space/linear/>`_
+(LINEAR) project, in existance since 1998, is designed to discover
+and track near-earth asteroids.  Its archive contains several million images of
+the sky, and its combination of sensitivity and sky coverage has made it a
+valuable resource to study time-domain astronomy, including variable stars.
+astroML has two functions relating to the LINEAR sample: 
+:func:`fetch_LINEAR_sample` fetches light curves for over 7000 variable stars.
+:func:`fetch_LINEAR_geneva` contains well-calibrated periods for a majority
+of these.  Phased light curves for six of the LINEAR objects can be seen in
+the following figure.  Here, the periods were found using a Lomb-Scargle
+periodogram.
+
+.. image:: ../book_figures/images/chapter10/fig_LINEAR_LS_1.png
+   :target: ../book_figures/chapter10/fig_LINEAR_LS.html
+   :align: center
+   :scale: 80
+
+See chapter 10 of the :ref:`text <text_book>`
+for a discussion of the mismatched period seen in the upper left object.
+
+LIGO data
+~~~~~~~~~
+The `Laser Interferometer Gravitaional-Wave Observatory <http://www.ligo.caltech.edu/>`_ (LIGO) is an effort to use laser interferometry to measure the
+expansion and contraction of space predicted to be the result of gravitational
+waves passing by earth.  It is an example of a regularly sampled time series
+with a very complicated noise frequency structure: this structure must be
+understood to a high degree.  astroML contains two loaders for LIGO-related
+datasets.  :func:`fetch_LIGO_large` fetches a large sample of LIGO data,
+useful for characterizing the background noise of the survey.
+:func:`fetch_LIGO_bigdog` contains the data associated with the 
+`Big Dog Event <http://www.ligo.org/news/blind-injection.php>`_, a
+blind-injection test designed to measure the response of the instrument and
+the survey team to a potential signal.  The figure below shows an example of
+using a Hanning filter to obtain the noise spectrum from the LIGO data:
+
+.. image:: ../examples/images/datasets/plot_LIGO_spectrum_1.png
+   :target: ../examples/datasets/plot_LIGO_spectrum.html
+   :align: center
+   :scale: 80
+
+.. _datasets_wmap:
+
+WMAP temperature map
+--------------------
+The `WMAP <http://map.gsfc.nasa.gov/>`_ project used a satellite to observed
+the details of the fluctuations in the cosmic microwave background, and during
+the last decade has led to unprecedented and ever-improving constraints on
+fundamental constants of the universe.  astroML contains a loader of the
+WMAP data, using the routine :func:`fetch_wmap_temperatures`.  Using the
+`healpy <https://github.com/healpy/healpy>`_ package, we can visualize the
+raw WMAP data:
+
+.. |WMAP1| image:: ../examples/images/datasets/plot_wmap_power_spectra_1.png
+   :target: ../examples/datasets/plot_wmap_power_spectra.html
+   :scale: 50
+
+.. |WMAP2| image:: ../examples/images/datasets/plot_wmap_power_spectra_2.png
+   :target: ../examples/datasets/plot_wmap_power_spectra.html
+   :scale: 50
+
+.. centered:: |WMAP1| |WMAP2|
+
+healpy also has some routines for computing fast spherical harmonic transforms.
+A rigorous treatment involves correcting for the mask pattern seen in the 
+right image.  Neglecting this correction, a simple power spectral analysis
+can be performed using the tools in healpy:
+
+
+.. image:: ../examples/images/datasets/plot_wmap_power_spectra_3.png
+   :target: ../examples/datasets/plot_wmap_power_spectra.html
+   :align: center
+   :scale: 80
+
