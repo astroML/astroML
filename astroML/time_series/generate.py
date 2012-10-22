@@ -26,7 +26,7 @@ def generate_power_law(N, dt, beta, generate_complex=False, random_state=None):
 
     References
     ----------
-    [1] Timmer, J. & Koenig, M. On Generating Power Law Noise. A&A 300:707
+    .. [1] Timmer, J. & Koenig, M. On Generating Power Law Noise. A&A 300:707
     """
     random_state = check_random_state(random_state)
     dt = float(dt)

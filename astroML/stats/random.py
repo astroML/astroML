@@ -70,7 +70,7 @@ def bivariate_normal(mu=[0, 0], sigma_1=1, sigma_2=1, alpha=0,
 class trunc_exp_gen(rv_continuous):
     """A truncated positive exponential continuous random variable.
 
-    The probability distribution is
+    The probability distribution is::
 
        p(x) ~ exp(k * x)   between a and b
             = 0            otherwise
@@ -102,7 +102,7 @@ trunc_exp = trunc_exp_gen(name="trunc_exp", shapes='a, b, k')
 class linear_gen(rv_continuous):
     """A truncated positive exponential continuous random variable.
 
-    The probability distribution is
+    The probability distribution is::
 
        p(x) ~ c * x + d   between a and b
             = 0             otherwise

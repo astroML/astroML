@@ -48,9 +48,9 @@ def lomb_scargle(t, y, dy, omega, generalized=True,
 
     References
     ----------
-    [1] M. Zechmeister and M. Kurster, A&A 496, 577-584 (2009)
-    [2] W. Press et al, Numerical Recipies in C (2002)
-    [3] Scargle, J.D. 1982, ApJ 263:835-853
+    .. [1] M. Zechmeister and M. Kurster, A&A 496, 577-584 (2009)
+    .. [2] W. Press et al, Numerical Recipies in C (2002)
+    .. [3] Scargle, J.D. 1982, ApJ 263:835-853
     """
     t = np.asarray(t)
     y = np.asarray(y)

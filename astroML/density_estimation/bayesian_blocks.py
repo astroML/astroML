@@ -183,6 +183,7 @@ def bayesian_blocks(t, x=None, sigma=None,
             The prior can be specified using `gamma`, which gives the slope
             of the prior on the number of bins.  If `gamma` is not specified,
             then a simulation-derived prior will be used.
+
         Alternatively, the fitness can be a user-specified object of
         type derived from the FitnessFunc class.
 
@@ -220,14 +221,15 @@ def bayesian_blocks(t, x=None, sigma=None,
     >>> x_obs = np.random.normal(x, sigma)
     >>> bins = bayesian_blocks(t, fitness='measures')
 
+    References
+    ----------
+    .. [1] Scargle, J `et al.` (2012)
+           http://adsabs.harvard.edu/abs/2012arXiv1207.5578S
+
     See Also
     --------
     astroML.plotting.hist : histogram plotting function which can make use
                             of bayesian blocks.
-
-    .. references::
-       [1] Scargle, J `et al.` (2012)
-           http://adsabs.harvard.edu/abs/2012arXiv1207.5578S
     """
     # validate array input
     t = np.asarray(t, dtype=float)

@@ -120,10 +120,14 @@ def wiener_filter(t, h, signal='gaussian', noise='flat',
 
     Notes
     -----
-    The Wiener filter operates by fitting a functional form to the PSD:
+    The Wiener filter operates by fitting a functional form to the PSD::
+
        PSD = P_S + P_N
-    The resulting frequency-space filter is given by
+
+    The resulting frequency-space filter is given by::
+
        Phi = P_S / (P_S + P_N)
+
     This entire operation is equivalent to a kernel smoothing by a
     kernel whose Fourier transform is Phi.
 
