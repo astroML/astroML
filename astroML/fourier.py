@@ -1,10 +1,3 @@
-"""
-Fourier Tools
--------------
-This module contains tools for working with Fourier series, including
-for estimating continuous Fourier transforms with the FFT, and for
-computing wavelet-transforms.
-"""
 import numpy as np
 
 try:
@@ -21,7 +14,9 @@ def FT_continuous(t, h, axis=-1, method=1):
     the continuous fourier transform of a sampled function, using
     the convention
 
-    H(f) = integral[ h(t) exp(-2 pi i f t) dt]
+    .. math::
+
+       H(f) = \int h(t) exp(-2 \pi i f t) dt
 
     It returns f and H, which approximate H(f).
     
@@ -82,9 +77,11 @@ def IFT_continuous(f, H, axis=-1, method=1):
     the continuous fourier transform of a sampled function, using
     the convention
 
-    H(f) = integral[ h(t) exp(-2 pi i f t) dt]
+    .. math::
 
-    h(t) = integral[ H(f) exp(2 pi i f t) dt]
+       H(f) = integral[ h(t) exp(-2 pi i f t) dt]
+
+       h(t) = integral[ H(f) exp(2 pi i f t) dt]
 
     It returns t and h, which approximate h(t).
     
@@ -140,11 +137,15 @@ def PSD_continuous(t, h, axis=-1, method=1):
     the continuous fourier transform of a sampled function, using
     the convention
 
-    H(f) = integral[ h(t) exp(-2 pi i f t) dt]
+    .. math::
+
+        H(f) = \int h(t) \exp(-2 \pi i f t) dt
 
     It returns f and PSD, which approximate PSD(f) where
 
-    PSD(f) = |H(f)|^2 + |H(-f)|^2
+    .. math::
+
+        PSD(f) = |H(f)|^2 + |H(-f)|^2
     
     Parameters
     ----------
@@ -208,7 +209,10 @@ def sinegauss_FT(f, t0, f0, Q):
     """Fourier transform of the sine-gaussian wavelet.
 
     This uses the convention
-    H(f) = integral[ h(t) exp(-2pi i f t) dt]
+
+    .. math::
+
+       H(f) = integral[ h(t) exp(-2pi i f t) dt]
     """
     a = (f0 * 1. / Q) ** 2
     return (np.sqrt(np.pi / a)
@@ -219,7 +223,9 @@ def sinegauss_FT(f, t0, f0, Q):
 def sinegauss_PSD(f, t0, f0, Q):
     """Compute the PSD of the sine-gaussian function at frequency f
 
-    PSD(f) = |H(f)|^2 + |H(-f)|^2
+    .. math::
+       
+       PSD(f) = |H(f)|^2 + |H(-f)|^2
     """
     a = (f0 * 1. / Q) ** 2
     Pf = np.pi / a * np.exp(-2 * np.pi ** 2 * (f - f0) ** 2 / a)

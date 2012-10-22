@@ -12,7 +12,6 @@ can be obtained using the built-in function matplotlib.mlab.specgram.
 import numpy as np
 from matplotlib import pyplot as plt
 
-from astroML.datasets import fetch_LIGO_bigdog
 from astroML.fourier import\
     FT_continuous, IFT_continuous, sinegauss, sinegauss_FT, wavelet_PSD
 

@@ -30,8 +30,6 @@ def hist(x, bins=10, range=None, *args, **kwargs):
         the minimum and maximum range for the histogram.  If not specified,
         it will be (x.min(), x.max())
 
-    Additional Parameters
-    ---------------------
     ax : Axes instance (optional)
         specify the Axes on which to draw the histogram.  If not specified,
         then the current active axes will be used.

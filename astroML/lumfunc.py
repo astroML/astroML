@@ -1,8 +1,3 @@
-"""
-Luminosity Function Tools
-=========================
-"""
-
 import numpy as np
 
 
@@ -204,45 +199,3 @@ def bootstrap_Cminus(x, y, xmax, ymax, xbins, ybins,
 
     return (x_dist.mean(0), x_dist.std(0, ddof=1),
             y_dist.mean(0), y_dist.std(0, ddof=1))
-
-
-# XXX: I can't quite recall what this does...
-#      It was something I used to check the code as I wrote it.
-#      We'll keep it here for now.
-def _check_LB_independence(x, y, f_ymax):
-    """
-    Parameters
-    ----------
-    x : array_like
-        x values
-    y : array_like
-        y_values
-    f_ymax :function
-        function which takes a value x and returns ymax(x)
-    """
-    x = np.array(x, copy=True)
-    y = np.array(y, copy=True)
-
-    i_sort = np.argsort(y)
-    x = x[i_sort]
-    y = y[i_sort]
-    i_max = np.searchsorted(y, f_ymax(x))
-
-    Ntot = len(x)
-
-    R = np.zeros(Ntot)
-    N = np.zeros(Ntot)
-
-    for i in range(Ntot):
-        if (i % 5000) == 0:
-            print i, '/', Ntot
-        flag = x[:i_max[i]] >= x[i]
-        R[i] = np.sum(flag[:i])
-        N[i] = R[i] + np.sum(flag[i:])
-
-    E = 0.5 * N
-    V = (1. / 12) * N * N
-
-    tau = np.sum(R - E) / np.sqrt(np.sum(V))
-
-    return tau

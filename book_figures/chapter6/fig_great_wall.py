@@ -14,7 +14,6 @@ from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
 from scipy.spatial import cKDTree
-from scipy.stats import gaussian_kde
 
 from astroML.datasets import fetch_great_wall
 from astroML.density_estimation import KDE, KNeighborsDensity

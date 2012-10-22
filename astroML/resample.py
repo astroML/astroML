@@ -1,6 +1,3 @@
-"""
-Tools for Jackknife and Bootstrap resampling
-"""
 import numpy as np
 from astroML.utils import check_random_state
 
@@ -159,42 +156,3 @@ def jackknife(data, user_statistic, kwargs=None,
         return results[0]
     else:
         return results
-
-
-def jackknife_old(data, user_statistic, kwargs=None, return_raw_distribution=False):
-    # we don't set kwargs={} by default in the argument list, because using
-    # a mutable type as a default argument can lead to strange results
-    if kwargs is None:
-        kwargs = {}
-
-    data = np.asarray(data)
-    n_samples = data.size
-
-    if data.ndim != 1:
-        raise ValueError("bootstrap expects 1-dimensional data")
-
-    # generate sets of indices where a single datapoint is left-out
-    ind = np.arange(n_samples, dtype=int)
-    ind = np.vstack([np.hstack((ind[:i], ind[i + 1:])) for i in ind])
-    data_jackknife = data[ind]
-    
-    # compute the statistic for the whole dataset
-    stat_data = user_statistic(data[np.newaxis], **kwargs)[0]
-
-    # compute the statistic of each jackknife resampling
-    stat_jackknife = user_statistic(data_jackknife, **kwargs)
-    if (stat_jackknife.ndim != 1) or (len(stat_jackknife) != n_samples):
-        raise ValueError('stat should return an array '
-                         'of length n_samples')
-
-    # compute the jackknife correction formula
-    delta_stat = (n_samples - 1) * (stat_data - stat_jackknife.mean())
-    stat_corrected = stat_data + delta_stat
-    sigma_stat = np.sqrt(1. / n_samples / (n_samples + 1)
-                         * np.sum((n_samples * stat_data - stat_corrected
-                                   - (n_samples - 1) * stat_jackknife) ** 2))
-
-    if return_raw_distribution:
-        return stat_corrected, sigma_stat, stat_jackknife
-    else:
-        return stat_corrected, sigma_stat

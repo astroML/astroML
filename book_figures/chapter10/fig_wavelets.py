@@ -11,7 +11,6 @@ This figure shows some examples of wavelets used in the wavelet transforms.
 import numpy as np
 from matplotlib import pyplot as plt
 
-from astroML.datasets import fetch_LIGO_bigdog
 from astroML.fourier import FT_continuous, IFT_continuous, sinegauss
 
 #------------------------------------------------------------
