@@ -50,6 +50,8 @@ ax2.hist(t, bins=200, histtype='stepfilled', alpha=0.2, normed=True)
 ax2.set_xlabel('t')
 ax2.set_ylabel('P(t)')
 
+#------------------------------------------------------------
+# Second & Third figure: Knuth bins & Bayesian Blocks
 for bins in ['knuth', 'blocks']:
     fig = plt.figure()
     ax = fig.add_subplot(111)
