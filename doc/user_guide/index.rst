@@ -18,4 +18,10 @@
    installation
    textbook
    datasets
+   density_estimation
+   clustering
+   dimensionality
+   regression
+   classification
+   time_series
    ../modules/classes
