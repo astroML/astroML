@@ -1,4 +1,4 @@
-.. _astroML_regression
+.. _astroML_regression:
 
 Supervised Learning: Regression
 ===============================

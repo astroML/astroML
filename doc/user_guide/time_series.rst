@@ -1,4 +1,4 @@
-.. _astroML_time_series
+.. _astroML_time_series:
 
 Time Series Analysis
 ====================

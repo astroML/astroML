@@ -1,4 +1,4 @@
-.. _astroML_classification
+.. _astroML_classification:
 
 Supervised Learning: Classification
 ===================================

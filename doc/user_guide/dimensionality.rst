@@ -1,4 +1,4 @@
-.. _astroML_dimensionality
+.. _astroML_dimensionality:
 
 Unsupervised Learning: Dimensionality Reduction
 ===============================================
