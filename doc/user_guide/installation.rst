@@ -1,3 +1,5 @@
+.. _astroML_installation:
+
 Installation of astroML
 =======================
 
@@ -26,7 +28,8 @@ This package uses distutils, which is the default way of installing python
 modules.  The first step is to obtain the source code: we recommend
 downloading it from the
 `github repository <http://github.com/astroML/astroML>`_ shown above.
-Additionally, you must make sure the dependencies are filled: lacking some
+Additionally, you must make sure the :ref:`dependencies <astroML_dependencies>`
+are filled: lacking some
 of these dependencies will not affect installation, but will affect the
 ability to execute the code and examples
 
@@ -77,6 +80,7 @@ After installation, unit tests can be run using the
 by typing ``nosetests astroML``, or by typing ``make test`` in the source
 directory.  The latter will also run doc tests on the user guide.
 
+.. _astroML_dependencies:
 
 Dependencies
 ------------

@@ -7,45 +7,45 @@ AstroML: Machine Learning code for Astronomy
 
 .. only:: html
 
-    .. |banner1| image:: auto_book_figures/images/chapter1/fig_moving_objects_multicolor_1.png
+    .. |banner1| image:: book_figures/images/chapter1/fig_moving_objects_multicolor_1.png
        :height: 130
-       :target: auto_book_figures/chapter1/fig_moving_objects_multicolor.html
+       :target: book_figures/chapter1/fig_moving_objects_multicolor.html
 
-    .. |banner2| image:: auto_book_figures/images/chapter1/fig_wmap_healpix_1.png
+    .. |banner2| image:: book_figures/images/chapter1/fig_wmap_healpix_1.png
        :height: 130
-       :target: auto_book_figures/chapter1/fig_wmap_healpix.html
+       :target: book_figures/chapter1/fig_wmap_healpix.html
 
-    .. |banner3| image:: auto_book_figures/images/chapter3/fig_uniform_mean_1.png
+    .. |banner3| image:: book_figures/images/chapter3/fig_uniform_mean_1.png
        :height: 130
-       :target: auto_book_figures/chapter3/fig_uniform_mean.html
+       :target: book_figures/chapter3/fig_uniform_mean.html
 
-    .. |banner4| image:: auto_book_figures/images/chapter4/fig_lyndenbell_gals_1.png
+    .. |banner4| image:: book_figures/images/chapter4/fig_lyndenbell_gals_1.png
        :height: 130
-       :target: auto_book_figures/chapter4/fig_lyndenbell_gals.html
+       :target: book_figures/chapter4/fig_lyndenbell_gals.html
 
-    .. |banner5| image:: auto_book_figures/images/chapter6/fig_great_wall_MST_1.png
+    .. |banner5| image:: book_figures/images/chapter6/fig_great_wall_MST_1.png
        :height: 130
-       :target: auto_book_figures/chapter6/fig_great_wall_MST.html
+       :target: book_figures/chapter6/fig_great_wall_MST.html
 
-    .. |banner6| image:: auto_book_figures/images/chapter7/fig_spec_LLE_1.png
+    .. |banner6| image:: book_figures/images/chapter7/fig_spec_LLE_1.png
        :height: 130
-       :target: auto_book_figures/chapter7/fig_spec_LLE.html
+       :target: book_figures/chapter7/fig_spec_LLE.html
 
-    .. |banner7| image:: auto_book_figures/images/chapter8/fig_nonlinear_mu_z_1.png
+    .. |banner7| image:: book_figures/images/chapter8/fig_nonlinear_mu_z_1.png
        :height: 130
-       :target: auto_book_figures/chapter8/fig_nonlinear_mu_z.html
+       :target: book_figures/chapter8/fig_nonlinear_mu_z.html
 
-    .. |banner8| image:: auto_book_figures/images/chapter10/fig_wavelet_PSD_1.png
+    .. |banner8| image:: book_figures/images/chapter10/fig_wavelet_PSD_1.png
        :height: 130
-       :target: auto_book_figures/chapter10/fig_wavelet_PSD.html
+       :target: book_figures/chapter10/fig_wavelet_PSD.html
 
-    .. |banner9| image:: auto_book_figures/images/chapter10/fig_LINEAR_clustering_1.png
+    .. |banner9| image:: book_figures/images/chapter10/fig_LINEAR_clustering_1.png
        :height: 130
-       :target: auto_book_figures/chapter10/fig_LINEAR_clustering.html
+       :target: book_figures/chapter10/fig_LINEAR_clustering.html
 
-    .. |banner10| image:: auto_book_figures/images/appendix/fig_sdss_filters_1.png
+    .. |banner10| image:: book_figures/images/appendix/fig_sdss_filters_1.png
        :height: 130
-       :target: auto_book_figures/appendix/fig_sdss_filters.html
+       :target: book_figures/appendix/fig_sdss_filters.html
 
     .. |center-div| raw:: html
 
@@ -118,9 +118,9 @@ Example Plot Galleries
 .. toctree::
    :maxdepth: 2
 
-   auto_examples/index
-   auto_book_figures/index
-   auto_paper_figures/index
+   examples/index
+   book_figures/index
+   paper_figures/index
 
 Development
 ===========

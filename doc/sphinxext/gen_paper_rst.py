@@ -52,7 +52,7 @@ RST_TEMPLATE = """
 """
 
 def main(app):
-    target_dir = os.path.join(app.builder.srcdir, 'auto_paper_figures')
+    target_dir = os.path.join(app.builder.srcdir, 'paper_figures')
     source_dir = os.path.abspath(app.builder.srcdir +  '/../' + 'paper_figures')
 
     try:

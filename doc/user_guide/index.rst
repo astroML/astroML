@@ -16,4 +16,5 @@
    :numbered:
 
    installation
+   textbook
    ../modules/classes

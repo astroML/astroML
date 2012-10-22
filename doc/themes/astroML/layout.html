@@ -11,6 +11,48 @@
 {% extends "basic/layout.html" %}
 
 {% block extrahead %}
+<!-- Following code is for Google custom search bar -->
+<script>
+  (function() {
+    var cx = '011400076584591653333:hjd_fbqk1u0';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<!-- Following code is for toggle/glide features -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$(".toggle_container").hide();
+
+	$(".toggle_trigger").click(function(){
+		$(this).toggleClass("active").next(".toggle_container").slideToggle("fast");
+                return false; <!-- Prevent the link from being followed -->
+	});
+
+        $(".toggle_trigger#start_open").toggleClass("active").next().show();
+
+});
+</script>
+
+<!-- Following code is for Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35748160-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 {% endblock %}
 
 {%- if pagename == 'index' %}
@@ -31,41 +73,14 @@
           <div class="navbar">
           <ul>
             <li><a href="{{pathto(master_doc)}}">Home</a></li>
-            <li><a href="{{pathto('auto_examples/index')}}">Code Examples</a></li>
-            <li><a href="{{pathto('auto_book_figures/index')}}">Book Figures</a></li>
+            <li><a href="{{pathto('examples/index')}}">Code Examples</a></li>
+            <li><a href="{{pathto('book_figures/index')}}">Book Figures</a></li>
+            <li><a href="{{pathto('paper_figures/index')}}">Paper Figures</a></li>
        </ul>
 
+<!-- Google custom search.  Javascript that enables this is in the header above -->
 <div class="search_form">
-
-<div id="cse" style="width: 100%;"></div>
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  google.load('search', '1', {language : 'en'});
-  google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
-    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-    var options = new google.search.DrawOptions();
-    options.setAutoComplete(true);
-    customSearchControl.draw('cse', options);
-  }, true);
-</script>
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	$(".toggle_container").hide();
-
-	$(".toggle_trigger").click(function(){
-		$(this).toggleClass("active").next(".toggle_container").slideToggle("fast");
-                return false; <!-- Prevent the link from being followed -->
-	});
-
-        $(".toggle_trigger#start_open").toggleClass("active").next().show();
-
-});
-</script>
-
+  <gcse:search></gcse:search>
 </div>
 
           </div> <!-- end navbar -->

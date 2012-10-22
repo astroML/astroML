@@ -22,7 +22,6 @@ from astroML.plotting import scatter_contour
 n_neighbors = 1
 
 data = fetch_sdss_galaxy_colors()
-data = data
 
 N = len(data)
 
