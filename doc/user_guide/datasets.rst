@@ -298,8 +298,8 @@ RR Lyrae Templates
 ~~~~~~~~~~~~~~~~~~
 RR Lyrae light curve templates can be useful when analyzing time-series data.
 The function :func:`fetch_rrlyrae_templates` fetches the templates used in
-[1]_.  The following is a figure from the textbook that reconstructs one of
-these templates using a Fourier series:
+[1]_.  The following is a figure from the :ref:`textbook <textbook>`
+that reconstructs one of these templates using a Fourier series:
 
 .. image:: ../book_figures/images/chapter10/fig_rrlyrae_reconstruct_1.png
    :target: ../book_figures/chapter10/fig_rrlyrae_reconstruct.html
@@ -330,7 +330,7 @@ periodogram.
    :align: center
    :scale: 80
 
-See chapter 10 of the :ref:`text <text_book>`
+See chapter 10 of the :ref:`text <textbook>`
 for a discussion of the mismatched period seen in the upper left object.
 
 LIGO data

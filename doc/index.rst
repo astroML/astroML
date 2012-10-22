@@ -23,9 +23,9 @@ AstroML: Machine Learning code for Astronomy
        :height: 150
        :target: book_figures/chapter4/fig_lyndenbell_gals.html
 
-    .. |banner5| image:: book_figures/images/chapter6/fig_great_wall_MST_1.png
+    .. |banner5| image:: examples/images/datasets/plot_moving_objects_1.png
        :height: 150
-       :target: book_figures/chapter6/fig_great_wall_MST.html
+       :target: examples/datasets/plot_moving_objects.html
 
     .. |banner6| image:: book_figures/images/chapter7/fig_spec_LLE_1.png
        :height: 150
@@ -35,9 +35,9 @@ AstroML: Machine Learning code for Astronomy
        :height: 150
        :target: examples/datasets/plot_nasa_atlas.html
 
-    .. |banner8| image:: book_figures/images/chapter10/fig_wavelet_PSD_1.png
+    .. |banner8| image:: examples/images/datasets/plot_sdss_line_ratios_1.png
        :height: 150
-       :target: book_figures/chapter10/fig_wavelet_PSD.html
+       :target: examples/datasets/plot_sdss_line_ratios.html
 
     .. |banner9| image:: book_figures/images/chapter10/fig_LINEAR_clustering_1.png
        :height: 150
