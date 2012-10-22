@@ -327,3 +327,22 @@ Resampling: :mod:`astroML.resample`
 
    resample.bootstrap
    resample.jackknife
+
+..automodule:: astroML_addons
+
+Addon Functions :mod:`astroML_addons`
+=====================================
+These functions should not be called directly: when they are installed, they
+are used automatically by :mod:`astroML`.
+
+.. automodule:: astroML_addons.periodogram
+   :no-members:
+   :no-inherited-members:
+
+.. currentmodule:: astroML_addons
+
+.. autosummary::
+   :toctree: generated/
+   :template: function.rst
+
+   periodogram.lomb_scargle

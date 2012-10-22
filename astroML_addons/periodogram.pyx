@@ -46,6 +46,25 @@ def lomb_scargle(t, y, dy, omega, generalized=True,
     z : array_like
         if significance is specified, this gives the levels corresponding
         to the desired significance (using the Scargle 1982 formalism)
+
+    Notes
+    -----
+    The algorithm is based on reference [1]_.  The result for generalized=False
+    is given by equation 4 of this work, while the result for generalized=True
+    is given by equation 20.
+
+    Note that the normalization used in this reference is different from that
+    used in other places in the literature (e.g. [2]_).  For a discussion of
+    normalization and false-alarm probability, see [1]_.
+
+    To recover the normalization used in Scargle [3]_, the results should
+    be multiplied by (N - 1) / 2 where N is the number of data points.
+
+    References
+    ----------
+    [1] M. Zechmeister and M. Kurster, A&A 496, 577-584 (2009)
+    [2] W. Press et al, Numerical Recipies in C (2002)
+    [3] Scargle, J.D. 1982, ApJ 263:835-853
     """
     t = np.asarray(t, dtype=DTYPE, order='C')
     y = np.asarray(y, dtype=DTYPE, order='C')
