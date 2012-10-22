@@ -393,7 +393,8 @@ class ExampleBuilder:
         return example_path
 
     def sphinx_tag(self, example_path):
-        tag = os.path.normpath(example_path).replace('/', '_')
+        tag = os.path.splitext(os.path.normpath(example_path))[0]
+        tag = tag.replace('/', '_')
         if tag in ('', '.'):
             tag = 'root'
         return '_'.join([self.sphinx_tag_base, tag])

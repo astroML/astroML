@@ -3,8 +3,11 @@ SDSS Stripe 82 Moving Object Catalog
 ------------------------------------
 
 This plot demonstrates how to fetch data from the SDSS Moving object catalog,
-and plot using a multicolor plot similar to that used in figures 3-4 of
-Parker et al 2008.
+and plot using a multicolor plot similar to that used in figures 3-4 of [1]_
+
+References
+~~~~~~~~~~
+.. [1] Parker `et al.` 2008 http://adsabs.harvard.edu/abs/2008Icar..198..138P
 """
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
