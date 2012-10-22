@@ -15,6 +15,9 @@ References
 .. [3] Kewley, L. J. `et al.` (2001)
        http://adsabs.harvard.edu/abs/2001ApJ...556..121K
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 

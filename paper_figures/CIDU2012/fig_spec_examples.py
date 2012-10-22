@@ -1,11 +1,11 @@
-# Author: Jake VanderPlas
-# License: BSD-style
-# example script from http://astroML.github.com
 """
 SDSS spectra Examples
 ---------------------
 Plot 15 random SDSS spectra from the sample
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import os
 import numpy as np
 from matplotlib import pyplot as plt

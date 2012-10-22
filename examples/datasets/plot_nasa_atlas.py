@@ -4,6 +4,9 @@ NASA Sloan Atlas
 
 This shows some visualizations of the data from the NASA SDSS Atlas
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 

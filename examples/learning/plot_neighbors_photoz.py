@@ -11,6 +11,9 @@ problem.
 The function :func:`fetch_sdss_galaxy_colors` used below actually queries
 the SDSS CASjobs server for the colors of the 50,000 galaxies.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 

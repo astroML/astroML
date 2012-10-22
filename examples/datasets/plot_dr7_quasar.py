@@ -5,7 +5,9 @@ SDSS Data Release 7 Quasar catalog
 This demonstrates how to fetch and visualize the colors from the SDSS DR7
 quasar sample.
 """
-
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 

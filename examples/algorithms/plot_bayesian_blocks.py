@@ -18,6 +18,9 @@ References
        http://adsabs.harvard.edu/abs/2012arXiv1207.5578S
 .. [2] http://jakevdp.github.com/blog/2012/09/12/dynamic-programming-in-python/
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from scipy import stats
 from matplotlib import pyplot as plt

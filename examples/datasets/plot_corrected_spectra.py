@@ -5,6 +5,9 @@ The script examples/datasets/compute_sdss_pca.py uses an iterative PCA
 technique to reconstruct masked regions of SDSS spectra.  Several of the
 resulting spectra are shown below.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 import matplotlib.pyplot as plt
 

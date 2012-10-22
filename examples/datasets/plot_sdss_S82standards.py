@@ -4,7 +4,9 @@ SDSS Standard Star catalog
 This demonstrates how to fetch and plot the colors of the SDSS Stripe 82
 standard stars, both alone and with the cross-matched 2MASS colors.
 """
-
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 

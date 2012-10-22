@@ -1,11 +1,11 @@
-# Author: Jake VanderPlas
-# License: BSD-style
-# example script from http://astroML.github.com
 """
 Regularized Regression Example
 ------------------------------
 This performs regularized regression on a gaussian basis function model.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import lognorm

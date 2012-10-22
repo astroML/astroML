@@ -1,11 +1,11 @@
-# Author: Jake VanderPlas
-# License: BSD-style
-# example script from http://astroML.github.com
 """
 Extreme Deconvolution example
 -----------------------------
 This demonstrates extreme deconvolution on a toy dataset.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import os
 import cPickle
 

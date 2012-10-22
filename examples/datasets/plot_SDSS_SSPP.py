@@ -7,6 +7,9 @@ panel shows the density of the points on the plot.  The right panel shows
 the average metallicity in each pixel, with contours reflecting the density
 shown in the left plot.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 

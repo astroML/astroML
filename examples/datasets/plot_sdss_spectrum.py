@@ -6,6 +6,9 @@ using the plate, MJD, and fiber numbers.  The code below sends a query to
 the SDSS server for the given plate, fiber, and mjd, downloads the spectrum,
 and plots the result.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_spectrum
 

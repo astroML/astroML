@@ -4,6 +4,9 @@ Linear Sum of Gaussians
 
 Fitting a spectrum with a linear sum of gaussians.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_vega_spectrum
 from astroML.sum_of_norms import sum_of_norms, norm

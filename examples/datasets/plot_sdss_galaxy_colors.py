@@ -6,6 +6,9 @@ the SDSS CASjobs server for the colors of the 50,000 galaxies.  Below we
 extract the :math:`u - g` and :math:`g - r` colors for 5000 stars, and
 scatter-plot the results
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 

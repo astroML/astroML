@@ -4,7 +4,9 @@ Catalog cross-matching
 This plots the cross-matched samples between the SDSS imaging data and
 the SDSS Stripe 82 standard stars.
 """
-
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import os, sys
 from time import time
 

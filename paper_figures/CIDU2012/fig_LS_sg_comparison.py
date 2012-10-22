@@ -2,6 +2,9 @@
 Generalized vs Standard Lomb-Scargle
 ------------------------------------
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 

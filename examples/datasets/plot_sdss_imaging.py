@@ -6,9 +6,7 @@ catalog, and plot colors and magnitudes of the stars and galaxies.
 """
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
-#   The figure produced by this code is published in the textbook
-#   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
-#   For more information, see http://astroML.github.com
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_imaging_sample

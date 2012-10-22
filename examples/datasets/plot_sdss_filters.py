@@ -5,6 +5,9 @@ Download and plot the five SDSS filter bands along with a Vega spectrum.
 This data is available on the SDSS website (filters) and on the STSci
 website (Vega).
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_filter, fetch_vega_spectrum
 

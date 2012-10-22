@@ -7,6 +7,9 @@ This is the code used to create the files fetched by the routine
 downloads a large amount of data (~700MB for 4000 spectra) and takes
 a long time to run (~30 minutes for 4000 spectra).
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import sys
 import numpy as np
 from astroML.datasets import fetch_sdss_spectrum

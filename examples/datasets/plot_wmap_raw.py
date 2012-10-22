@@ -6,6 +6,9 @@ functionality to download and plot the raw WMAP 7-year data.  The
 visualization requires the `healpy <https://github.com/healpy/healpy>`_
 package to be installed.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 

@@ -9,6 +9,9 @@ power spectrum, used by the LIGO team to characterize the noise
 of the detector.  The particular data used here is the injected
 `Big Dog <http://www.ligo.org/news/blind-injection.php>`_ event.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy import fftpack

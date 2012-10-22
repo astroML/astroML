@@ -5,6 +5,9 @@ This example downloads and plots the colors of RR Lyrae stars along with those
 of the non-variable stars.  Several of the classification examples in the
 book figures use this dataset.
 """
+# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# License: BSD
+#   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
 
