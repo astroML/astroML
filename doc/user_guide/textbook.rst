@@ -1,7 +1,7 @@
 .. _textbook:
 
-Printed Reference
-=================
+Textbook Information
+====================
 
 The astroML package is used to create all of the examples and figures in the
 book **Statistics, Data Mining, and Machine Learning in Astronomy**,

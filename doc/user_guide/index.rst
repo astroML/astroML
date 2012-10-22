@@ -17,4 +17,5 @@
 
    installation
    textbook
+   datasets
    ../modules/classes
