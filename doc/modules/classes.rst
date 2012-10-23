@@ -29,6 +29,14 @@ Functions
    plotting.hist
    plotting.scatter_contour
 
+Classes
+-------
+.. autosummary::
+   :toctree: generated/
+   :template: class.rst
+
+   plotting.MultiAxes
+
 Density Estimation & Histograms: :mod:`astroML.density_estimation`
 ==================================================================
 

@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_sdss_S82standards
 
-from astroML.plotting import multidensity
+from astroML.plotting import MultiAxes
 
 
 #------------------------------------------------------------
@@ -34,7 +34,11 @@ bins = [np.linspace(0.0, 3.5, 100),
         np.linspace(-0.2, 1.0, 100)]
 
 fig = plt.figure(figsize=(10, 10))
-multidensity(colors, labels, bins=bins, fig=fig)
+ax = MultiAxes(4, hspace=0.05, wspace=0.05, fig=fig)
+
+ax.density(colors, bins=bins)
+ax.set_labels(labels)
+ax.set_locators(plt.MaxNLocator(5))
 plt.suptitle('SDSS magnitudes')
 
 #------------------------------------------------------------
@@ -62,6 +66,11 @@ bins = [np.linspace(0.0, 3.5, 100),
         np.linspace(-0.4, 0.8, 100)]
 
 fig = plt.figure(figsize=(10, 10))
-multidensity(colors, labels, bins=bins, fig=fig)
+ax = MultiAxes(7, hspace=0.05, wspace=0.05, fig=fig)
+
+ax.density(colors, bins=bins)
+ax.set_labels(labels)
+ax.set_locators(plt.MaxNLocator(5))
+
 fig.suptitle('SDSS+2MASS magnitudes')
 plt.show()
