@@ -99,7 +99,7 @@ def fetch_dr7_quasar(data_home=None, download_if_missing=True):
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        print ("downloading cross-matched SDSS/2MASS dataset from %s to %s"
+        print ("downloading DR7 quasar dataset from %s to %s"
                % (DATA_URL, data_home))
 
         zipped_buf = download_with_progress_bar(DATA_URL, return_buffer=True)

@@ -6,6 +6,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import rcParams
 
+
 class MultiAxes:
     """Visualize Multiple-dimensional data
 
@@ -54,7 +55,7 @@ class MultiAxes:
 
         self.ndim = ndim
         self.inner_labels = inner_labels
-        
+
         self._update('left', left)
         self._update('bottom', bottom)
         self._update('right', right)
@@ -89,7 +90,7 @@ class MultiAxes:
         ndim = self.ndim
 
         panel_width = ((self.right - self.left)
-                       / (ndim - 1 + self.wspace * (ndim - 2))) 
+                       / (ndim - 1 + self.wspace * (ndim - 2)))
         panel_height = ((self.top - self.bottom)
                         / (ndim - 1 + self.hspace * (ndim - 2)))
 
@@ -121,8 +122,7 @@ class MultiAxes:
                     ax = axes[i, j]
                     if ax is not None:
                         ax.yaxis.set_major_formatter(plt.NullFormatter())
-                    
-                
+
         return np.asarray(axes, dtype=object)
 
     def set_limits(self, limits):
@@ -234,7 +234,7 @@ class MultiAxes:
                 if ax is None:
                     continue
                 ax.plot(data[:, i], data[:, j], *args, **kwargs)
-    
+
     def scatter(self, data, *args, **kwargs):
         """Scatter plot data
 

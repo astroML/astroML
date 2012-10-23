@@ -105,8 +105,9 @@ def generate_damped_RW(t_rest, tau=300., z=2.0,
 
     References
     ----------
-    [1] Kelly, B., Bechtold, J. & Siemiginowska, A. Are the Variations in
-    Quasar Optical Flux Driven by Thermal Fluctuations? ApJ 698:895 (2009)
+    .. [1] Kelly, B., Bechtold, J. & Siemiginowska, A. (2009)
+           Are the Variations in Quasar Optical Flux Driven by Thermal
+           Fluctuations? ApJ 698:895 (2009)
     """
     #  Xmean = b * tau
     #  SFinf = sigma * sqrt(tau / 2)
