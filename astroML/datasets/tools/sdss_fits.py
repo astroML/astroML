@@ -45,7 +45,7 @@ spec_cln_dict = ['SPEC_UNKNOWN',
                  'SPEC_HIZ_QSO',  # high redshift QSO, z>2.3
                  'SPEC_SKY',
                  'STAR_LATE',  # Type M or later (molecular bands dominate)
-                 'GAL_EM']  #emission line galaxy
+                 'GAL_EM']  # emission line galaxy
 
 
 class SDSSfits(object):
@@ -68,7 +68,7 @@ class SDSSfits(object):
     def __init__(self, source=None):
         if source is None:
             pass
-        elif type(source) == type('string'):
+        elif isinstance(source, str):
             if source.startswith('http://'):
                 self._load_fits_url(source)
             else:
@@ -89,7 +89,7 @@ class SDSSfits(object):
 
     def _initialize(self, hdulist):
         data = hdulist[0].data
-        
+
         self.name = hdulist[0].header['NAME']
         self.spec_cln = hdulist[0].header['SPEC_CLN']
         self.coeff0 = hdulist[0].header['COEFF0']
@@ -107,7 +107,7 @@ class SDSSfits(object):
 
     def get_line_ew(self, wavelength):
         i = np.where(abs(self.hdulist[2].data['restWave'] - wavelength) < 1)
-        return self.hdulist[2].data['ew'][i]        
+        return self.hdulist[2].data['ew'][i]
 
     def __del__(self):
         if hasattr(self, 'hdulist'):
@@ -130,7 +130,7 @@ class SDSSfits(object):
 
     def __len__(self):
         return len(self.spectrum)
-        
+
     def log_w_min(self, i=None):
         """
         if i is specified, return log_w_min of bin i
@@ -157,7 +157,7 @@ class SDSSfits(object):
 
     def coeff0_restframe(self):
         return self.coeff0 - np.log10(1 + self.z)
-        
+
     def wavelength(self, restframe=False):
         """
         return the wavelength of the spectrum in angstroms
@@ -213,7 +213,7 @@ class SDSSfits(object):
 
         # Perform the interpolation.  We'll interpolate the cumulative sum
         #  so that the total flux of the spectrum is conserved.
-        
+
         # interpolate spectrum
         spec_cuml_old = self.spectrum.cumsum()
         tck = interpolate.splrep(log_w_old, np.hstack(([0], spec_cuml_old)))
@@ -231,18 +231,20 @@ class SDSSfits(object):
         err_cuml_new[log_w_new <= log_w_old[0]] = 0
         snew.error = np.diff(err_cuml_new)
         snew.error *= self.coeff1 / snew.coeff1
-        
+
         return snew
 
     def _get_line_strength(self, line):
         lam = LINES.get(line)
         if lam is None:
             lam1 = LINES.get(line + 'a')
-            ind1 = np.where(abs(self.hdulist[2].data['restWave'] - lam1) < 1)[0]
-            
+            ind1 = np.where(abs(self.hdulist[2].data['restWave']
+                                - lam1) < 1)[0]
+
             lam2 = LINES.get(line + 'b')
-            ind2 = np.where(abs(self.hdulist[2].data['restWave'] - lam2) < 1)[0]
-            
+            ind2 = np.where(abs(self.hdulist[2].data['restWave']
+                                - lam2) < 1)[0]
+
             if len(ind1) == 0:
                 s1 = h1 = 0
                 nsig1 = 0
@@ -274,7 +276,6 @@ class SDSSfits(object):
                 strength = s * h
 
         return strength, nsig
-            
 
     def lineratio_index(self, indicator='NII'):
         """Return the line ratio index for the given galaxy.
@@ -292,7 +293,7 @@ class SDSSfits(object):
         cln: integer
             The classification of the spectrum based on SDSS pipeline and
             the line ratios.
-            
+
             0 : unknown (SPEC_CLN = 0)
             1 : star (SPEC_CLN = 1)
             2 : absorption galaxy (H-alpha seen in absorption)
@@ -309,8 +310,8 @@ class SDSSfits(object):
             The line ratios used to compute this
         """
         assert indicator in ['NII', 'OI', 'SII']
-        
-        if self.spec_cln  < 2:
+
+        if self.spec_cln < 2:
             return self.spec_cln, (0, 0)
         elif self.spec_cln > 2:
             return self.spec_cln + 3, (0, 0)
@@ -348,8 +349,6 @@ class SDSSfits(object):
                 return 5, (I_Ha, log_OIII_Hb)
             else:
                 return 4, (I_Ha, log_OIII_Hb)
-            
-        
 
 
 #----------------------------------------------------------------------
@@ -357,8 +356,10 @@ class SDSSfits(object):
 def log_OIII_Hb_NII(log_NII_Ha, eps=0):
     return 1.19 + eps + 0.61 / (log_NII_Ha - eps - 0.47)
 
+
 def log_OIII_Hb_OI(log_OI_Ha, eps=0):
     return 1.33 + eps + 0.73 / (log_OI_Ha - eps + 0.59)
- 
+
+
 def log_OIII_Hb_SII(log_SII_Ha, eps=0):
     return 1.30 + eps + 0.72 / (log_SII_Ha - eps - 0.32)

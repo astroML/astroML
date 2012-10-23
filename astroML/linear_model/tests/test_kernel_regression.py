@@ -1,7 +1,7 @@
 import numpy as np
 from numpy.testing import assert_allclose
-
 from astroML.linear_model import NadarayaWatson
+
 
 def test_NW_simple():
     X = np.arange(11.)

@@ -9,6 +9,7 @@ from .tools import download_with_progress_bar
 DATA_URL = ("http://www.astro.washington.edu/users/"
             "ivezic/DMbook/data/RRLyrae.fit")
 
+
 def fetch_rrlyrae_mags(data_home=None, download_if_missing=True):
     """Loader for RR-Lyrae data
 
@@ -50,7 +51,7 @@ def fetch_rrlyrae_mags(data_home=None, download_if_missing=True):
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
         os.makedirs(data_home)
-    
+
     archive_file = os.path.join(data_home, os.path.basename(DATA_URL))
 
     if not os.path.exists(archive_file):

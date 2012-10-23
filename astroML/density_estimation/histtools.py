@@ -47,7 +47,7 @@ def scotts_bin_width(data, return_bins=False):
     n = data.size
     sigma = np.std(data)
 
-    dx = 3.5 * sigma * 1. / (n ** (1./ 3))
+    dx = 3.5 * sigma * 1. / (n ** (1. / 3))
 
     if return_bins:
         Nbins = np.ceil((data.max() - data.min()) * 1. / dx)
@@ -59,7 +59,7 @@ def scotts_bin_width(data, return_bins=False):
 
 
 def freedman_bin_width(data, return_bins=False):
-    r"""Return the optimal histogram bin width using the Freedman-Diaconis rule 
+    r"""Return the optimal histogram bin width using the Freedman-Diaconis rule
 
     Parameters
     ----------
@@ -100,10 +100,10 @@ def freedman_bin_width(data, return_bins=False):
         raise ValueError("data should have more than three entries")
 
     indices = np.argsort(data)
-    i25 = indices[n/4 - 1]
+    i25 = indices[n / 4 - 1]
     i75 = indices[(3 * n) / 4 - 1]
-    
-    dx = 2 * (data[i75] - data[i25]) * 1. / (n ** (1./ 3))
+
+    dx = 2 * (data[i75] - data[i25]) * 1. / (n ** (1. / 3))
 
     if return_bins:
         Nbins = np.ceil((data.max() - data.min()) * 1. / dx)
@@ -171,13 +171,13 @@ class KnuthF:
         M = int(M)
         bins = self.bins(M)
         nk, bins = np.histogram(self.data, bins)
-    
+
         return -(self.n * np.log(M)
                  + gammaln(0.5 * M)
                  - M * gammaln(0.5)
                  - gammaln(self.n + 0.5 * M)
                  + np.sum(gammaln(nk + 0.5)))
-    
+
 
 def knuth_bin_width(data, return_bins=False):
     r"""Return the optimal histogram bin width using Knuth's rule [1]_
@@ -272,21 +272,15 @@ def histogram(a, bins=10, range=None, **kwargs):
     numpy.histogram
     astroML.plotting.hist
     """
-    # TODO: use an event-based Bayesian Blocks fitness function to allow for
-    #       data with repeated values (see ValueError below)
     a = np.asarray(a)
 
     # if range is specified, we need to truncate the data for
     # the bin-finding routines
-    if (range is not None and
-             (bins in ['blocks', 'knuth', 'scotts', 'freedman'])):
+    if (range is not None and (bins in ['blocks', 'knuth',
+                                        'scotts', 'freedman'])):
         a = a[(a >= range[0]) & (a <= range[1])]
 
     if bins == 'blocks':
-        unique = np.unique(a)
-        if unique.size < a.size:
-            raise ValueError("bins='blocks' does not yet support data "
-                             "with repeated values")
         bins = bayesian_blocks(a)
     elif bins == 'knuth':
         da, bins = knuth_bin_width(a, True)

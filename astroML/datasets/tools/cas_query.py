@@ -34,7 +34,6 @@ TARGET_ROSAT_E            = int('0x08000000', 16)
 TARGET_STAR_PN            = int('0x10000000', 16)
 TARGET_QSO_REJECT         = int('0x20000000', 16)
 
-
 DEFAULT_TARGET = TARGET_GALAXY  # main galaxy sample
 
 
@@ -62,7 +61,7 @@ def query_plate_mjd_fiber(n_spectra,
     Primtarget flag values can be found at
     http://cas.sdss.org/dr7/en/help/browser/enum.asp?n=PrimTarget
     """
-    query_text = '\n'.join((\
+    query_text = '\n'.join((
             "SELECT TOP %(n_spectra)i ",
             "    plate, mjd, fiberid ",
             "FROM specObj ",
@@ -81,5 +80,5 @@ def query_plate_mjd_fiber(n_spectra,
             raise ValueError('\n'.join(output))
 
     ntot = i + 1
-    
+
     return res[:ntot].T

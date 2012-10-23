@@ -7,6 +7,7 @@ from .sql_query import sql_query
 from .cas_query import *
 from .sdss_fits import sdss_fits_url, sdss_fits_filename, SDSSfits
 
+
 def get_data_home(data_home=None):
     """Get the home data directory.
 

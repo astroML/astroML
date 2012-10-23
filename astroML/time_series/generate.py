@@ -1,6 +1,7 @@
 import numpy as np
 from ..utils import check_random_state
 
+
 def generate_power_law(N, dt, beta, generate_complex=False, random_state=None):
     """Generate a power-law light curve
 
@@ -22,7 +23,7 @@ def generate_power_law(N, dt, beta, generate_complex=False, random_state=None):
     Returns
     -------
     x : ndarray
-        the length-N 
+        the length-N
 
     References
     ----------
@@ -35,7 +36,6 @@ def generate_power_law(N, dt, beta, generate_complex=False, random_state=None):
     Npos = int(N / 2)
     Nneg = int((N - 1) / 2)
     domega = (2 * np.pi / dt / N)
-
 
     if generate_complex:
         omega = domega * np.fft.ifftshift(np.arange(N) - int(N / 2))
@@ -92,20 +92,16 @@ def generate_damped_RW(t_rest, tau=300., z=2.0,
     -----
     The differential equation is (with t = time/tau):
 
-        dX = -X(t) * dt + sigma * sqrt(tau) * e(t) * sqrt(dt) + b * tau * dt 
-    
-    where:
+        dX = -X(t) * dt + sigma * sqrt(tau) * e(t) * sqrt(dt) + b * tau * dt
 
-        e(t) is white noise with zero mean and unit variance 
-    
-    and 
-        
+    where e(t) is white noise with zero mean and unit variance, and
+
         Xmean = b * tau
         SFinf = sigma * sqrt(tau / 2)
 
     so
-    
-        dX(t) = -X(t) * dt + sqrt(2) * SFint * e(t) * sqrt(dt) + Xmean * dt 
+
+        dX(t) = -X(t) * dt + sqrt(2) * SFint * e(t) * sqrt(dt) + Xmean * dt
 
     References
     ----------
@@ -124,11 +120,11 @@ def generate_damped_RW(t_rest, tau=300., z=2.0,
     N = len(t_rest)
 
     t_obs = t_rest * (1. + z) / tau
-    
+
     x = np.zeros(N)
     x[0] = random_state.normal(xmean, SFinf)
     E = random_state.normal(0, 1, N)
-    
+
     for i in range(1, N):
         dt = t_obs[i] - t_obs[i - 1]
         x[i] = (x[i - 1]

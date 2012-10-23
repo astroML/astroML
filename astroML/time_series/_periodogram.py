@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def lomb_scargle(t, y, dy, omega, generalized=True,
                  subtract_mean=True, significance=None):
     """
@@ -109,7 +110,7 @@ def lomb_scargle(t, y, dy, omega, generalized=True,
 
     Y = np.dot(w.T, y)
     YY = np.dot(w.T, y * y) - Y * Y
-    
+
     wy = w * y
 
     YCtau = np.dot(wy.T, cos_omega_t_tau)

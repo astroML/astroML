@@ -4,17 +4,20 @@ from cStringIO import StringIO
 
 
 def bytes_to_string(nbytes):
-    if nbytes < 1024: return '%ib' % nbytes
-    
-    nbytes /= 1024.
-    if nbytes < 1024: return '%.1fkb' % nbytes
+    if nbytes < 1024:
+        return '%ib' % nbytes
 
     nbytes /= 1024.
-    if nbytes < 1024: return '%.2fMb' % nbytes
+    if nbytes < 1024:
+        return '%.1fkb' % nbytes
+
+    nbytes /= 1024.
+    if nbytes < 1024:
+        return '%.2fMb' % nbytes
 
     nbytes /= 1024.
     return '%.1fGb' % nbytes
-    
+
 
 def download_with_progress_bar(data_url, return_buffer=False):
     """Download a file, showing progress
@@ -32,7 +35,7 @@ def download_with_progress_bar(data_url, return_buffer=False):
         content of the file
     """
     num_units = 40
-    
+
     fhandle = urllib2.urlopen(data_url)
     total_size = int(fhandle.info().getheader('Content-Length').strip())
     chunk_size = total_size / num_units

@@ -5,6 +5,7 @@ from scipy import stats
 #sigmaG_factor = 1. / (2 * np.sqrt(2) * erfinv(0.5))
 sigmaG_factor = 0.74130110925280102
 
+
 def mean_sigma(a, axis=None, dtype=None, ddof=0, keepdims=False):
     """Compute mean and standard deviation for an array
 
@@ -230,7 +231,7 @@ def fit_bivariate_normal(x, y, robust=False):
         med_v, sigmaG_v = median_sigmaG(v)
 
         r_xy = ((sigmaG_u ** 2 - sigmaG_v ** 2) /
-                 (sigmaG_u ** 2 + sigmaG_v ** 2))
+                (sigmaG_u ** 2 + sigmaG_v ** 2))
 
         # rename estimators
         mu_x, mu_y = med_x, med_y
@@ -259,4 +260,3 @@ def fit_bivariate_normal(x, y, robust=False):
                                 + sigma_xy ** 4)))
 
     return [mu_x, mu_y], sigma1, sigma2, alpha
-

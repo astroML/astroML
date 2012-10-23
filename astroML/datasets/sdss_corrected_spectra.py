@@ -6,6 +6,7 @@ from . import get_data_home
 DATA_URL = 'http://www.astro.washington.edu/users/vanderplas/spec4000.npz'
 ARCHIVE_FILE = 'spec4000.npz'
 
+
 def reconstruct_spectra(data):
     """Compute the reconstructed spectra.
 
@@ -58,7 +59,7 @@ def compute_wavelengths(data):
 
     return 10 ** (data['coeff0']
                   + data['coeff1'] * np.arange(data['spectra'].shape[1]))
-    
+
 
 def fetch_sdss_corrected_spectra(data_home=None,
                                  download_if_missing=True):
@@ -87,7 +88,7 @@ def fetch_sdss_corrected_spectra(data_home=None,
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
         os.makedirs(data_home)
-    
+
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 
     if not os.path.exists(archive_file):
@@ -108,4 +109,3 @@ def fetch_sdss_corrected_spectra(data_home=None,
         data = np.load(archive_file)
 
     return data
-    

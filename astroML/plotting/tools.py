@@ -9,6 +9,7 @@ from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.transforms import Bbox
 from matplotlib.patches import Ellipse
 
+
 def devectorize_axes(ax, dpi=None):
     """Convert axes contents to a png.
 
@@ -22,11 +23,10 @@ def devectorize_axes(ax, dpi=None):
     axlim = ax.axis()
 
     # save png covering axis
-    plt.savefig('tmp.png', 
+    plt.savefig('tmp.png',
                 format='png',
                 dpi=dpi,
-                bbox_inches=Bbox([extents[:2],
-                                  extents[2:]]))
+                bbox_inches=Bbox([extents[:2], extents[2:]]))
     im = image.imread('tmp.png')
     os.remove('tmp.png')
 
@@ -44,12 +44,12 @@ def devectorize_axes(ax, dpi=None):
 
 def discretize_cmap(cmap, N):
     """Return a discrete colormap from the continuous colormap cmap.
-    
+
     Parameters
     ----------
-        cmap: colormap instance, eg. cm.jet. 
+        cmap: colormap instance, eg. cm.jet.
         N: Number of colors.
-    
+
     Returns
     -------
         cmap_d: discretized colormap
@@ -62,26 +62,26 @@ def discretize_cmap(cmap, N):
 
     cdict = cmap._segmentdata.copy()
     # N colors
-    colors_i = np.linspace(0,1.,N)
+    colors_i = np.linspace(0, 1., N)
     # N+1 indices
-    indices = np.linspace(0,1.,N+1)
-    for key in ('red','green','blue'):
+    indices = np.linspace(0, 1., N + 1)
+    for key in ('red', 'green', 'blue'):
         # Find the N colors
         D = np.array(cdict[key])
-        I = interpolate.interp1d(D[:,0], D[:,1])
+        I = interpolate.interp1d(D[:, 0], D[:, 1])
         colors = I(colors_i)
         # Place these colors at the correct indices.
-        A = np.zeros((N+1,3), float)
-        A[:,0] = indices
-        A[1:,1] = colors
-        A[:-1,2] = colors
+        A = np.zeros((N + 1, 3), float)
+        A[:, 0] = indices
+        A[1:, 1] = colors
+        A[:-1, 2] = colors
         # Create a tuple for the dictionary.
         L = []
         for l in A:
             L.append(tuple(l))
         cdict[key] = tuple(L)
     # Return colormap object.
-    return LinearSegmentedColormap('colormap',cdict,1024)
+    return LinearSegmentedColormap('colormap', cdict, 1024)
 
 
 def draw_ellipse(mu, C, scales=[1, 2, 3], ax=None, **kwargs):

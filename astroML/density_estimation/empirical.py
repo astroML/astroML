@@ -42,7 +42,7 @@ class FunctionDistribution:
 
     def rvs(self, shape):
         """Draw random variables from the distribution
-        
+
         Parameters
         ----------
         shape : integer or tuple
@@ -56,8 +56,6 @@ class FunctionDistribution:
         # generate uniform variables between 0 and 1
         y = self.random_state.random_sample(shape)
         return interpolate.splev(y, self._tck)
-        
-        
 
 
 class EmpiricalDistribution:
@@ -97,7 +95,7 @@ class EmpiricalDistribution:
 
     def rvs(self, shape):
         """Draw random variables from the distribution
-        
+
         Parameters
         ----------
         shape : integer or tuple

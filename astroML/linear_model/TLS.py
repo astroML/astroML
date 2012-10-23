@@ -1,9 +1,10 @@
 import numpy as np
 from scipy import optimize
 
+
 def TLS_logL(v, X, dX):
     """Compute the total least squares log-likelihood
-    
+
     This uses Hogg et al eq. 29-32
 
     Parameters
@@ -19,7 +20,7 @@ def TLS_logL(v, X, dX):
         dX[i] = [sigma_x1, sigma_x2 ... sigma_xD]
         For full covariance, the shape = (N, D, D) and the entries are
         dX[i] = Cov(X[i], X[i]), the full error covariance.
-        
+
     Returns
     -------
     logL : float
@@ -40,7 +41,7 @@ def TLS_logL(v, X, dX):
 
     # eq. 30
     Delta = np.dot(X, v_hat) - v_norm
-    
+
     # eq. 31
     if dX.ndim == 2:
         # diagonal covariance
@@ -49,5 +50,5 @@ def TLS_logL(v, X, dX):
         # full covariance
         Sig2 = np.dot(np.dot(v_hat, dX), v_hat)
 
-    return (#-0.5 * np.sum(np.log(2 * np.pi * Sig2))
+    return (-0.5 * np.sum(np.log(2 * np.pi * Sig2))
             - np.sum(0.5 * Delta ** 2 / Sig2))

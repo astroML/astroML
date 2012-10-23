@@ -7,17 +7,21 @@ import numpy as np
 from . import get_data_home
 from tools import download_with_progress_bar
 
-TARGETLIST_URL = "http://www.astro.washington.edu/users/ivezic/linear/allDataFinal/allLINEARfinal_targets.dat"
-DATA_URL = "http://www.astro.washington.edu/users/ivezic/linear/allDataFinal/allLINEARfinal_dat.tar.gz"
-GENEVA_URL = "http://www.astro.washington.edu/users/ivezic/DMbook/data/LINEARattributes.dat"
+TARGETLIST_URL = ("http://www.astro.washington.edu/users/ivezic/"
+                  "linear/allDataFinal/allLINEARfinal_targets.dat")
+DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
+            "linear/allDataFinal/allLINEARfinal_dat.tar.gz")
+GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
+              "DMbook/data/LINEARattributes.dat")
 GENEVA_ARCHIVE = 'LINEARattributes.npy'
 
-ARCHIVE_DTYPE = [(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK', 
+ARCHIVE_DTYPE = [(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
                                      'JK', 'logP', 'amp', 'skew')]
 
 target_names = ['objectID', 'raLIN', 'decLIN', 'raSDSS', 'decSDSS', 'r',
                 'ug', 'gr', 'ri', 'iz', 'JK', '<mL>', 'std', 'rms',
                 'Lchi2', 'LP1', 'phi1', 'S', 'prior']
+
 
 class LINEARdata:
     """A container class for the linear dataset.
@@ -57,7 +61,7 @@ class LINEARdata:
         ----------
         id: integer
             LINEAR id of the desired object
-        
+
         Returns
         -------
         lightcurve: ndarray
@@ -128,7 +132,7 @@ def fetch_LINEAR_sample(data_home=None, download_if_missing=True):
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
         os.makedirs(data_home)
-        
+
     targetlist_file = os.path.join(data_home, os.path.basename(TARGETLIST_URL))
     data_file = os.path.join(data_home, os.path.basename(DATA_URL))
 
@@ -139,7 +143,7 @@ def fetch_LINEAR_sample(data_home=None, download_if_missing=True):
 
         targets = download_with_progress_bar(TARGETLIST_URL)
         open(targetlist_file, 'w').write(targets)
-        
+
     if not os.path.exists(data_file):
         if not download_if_missing:
             raise IOError('data not present on disk. '
@@ -175,9 +179,9 @@ def fetch_LINEAR_geneva(data_home=None, download_if_missing=True):
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
         os.makedirs(data_home)
-        
+
     archive_file = os.path.join(data_home, GENEVA_ARCHIVE)
-        
+
     if not os.path.exists(archive_file):
         if not download_if_missing:
             raise IOError('data not present on disk. '

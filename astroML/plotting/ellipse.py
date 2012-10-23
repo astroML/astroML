@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 
+
 def plot_tissot_ellipse(longitude, latitude, radius, ax=None, **kwargs):
     """Plot Tissot Ellipse/Tissot Indicatrix
 
@@ -25,6 +26,5 @@ def plot_tissot_ellipse(longitude, latitude, radius, ax=None, **kwargs):
         ax = plt.gca()
 
     for long, lat, rad in np.broadcast(longitude, latitude, radius):
-        el = Ellipse((long, lat), radius/np.cos(lat), radius, **kwargs)
+        el = Ellipse((long, lat), radius / np.cos(lat), radius, **kwargs)
         ax.add_patch(el)
-    

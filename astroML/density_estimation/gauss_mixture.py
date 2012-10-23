@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.mixture import GMM
 
+
 class GaussianMixture1D:
     """
     Simple class to work with 1D mixtures of Gaussians
@@ -16,7 +17,7 @@ class GaussianMixture1D:
     """
     def __init__(self, means=0, sigmas=1, weights=1):
         data = np.array([t for t in np.broadcast(means, sigmas, weights)])
-        
+
         self._gmm = GMM(data.shape[0])
         self._gmm.fit = None  # disable fit method for safety
 
@@ -37,5 +38,3 @@ class GaussianMixture1D:
         """Compute probability distribution of each component"""
         logprob, responsibilities = self._gmm.eval(x)
         return responsibilities * np.exp(logprob[:, np.newaxis])
-        
-        

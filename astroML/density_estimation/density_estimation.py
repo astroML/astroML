@@ -16,6 +16,7 @@ from sklearn.neighbors import BallTree
 #       - tree-based evaluation
 #       - KDE with errors (chp 6.1.2)
 
+
 def n_volume(r, n):
     """compute the n-volume of a sphere of radius r in n dimensions"""
     return np.pi ** (0.5 * n) / special.gamma(0.5 * n + 1) * (r ** n)
@@ -38,7 +39,7 @@ class KDE:
         if metric is 'gaussian' or 'tophat', h gives the width of the kernel.
         Otherwise, h is not referenced.
 
-    **kwargs : 
+    **kwargs :
         other keywords will be passed to the sklearn.metrics.pairwise_kernels
         function.
 
@@ -57,7 +58,7 @@ class KDE:
                             ~ 0 otherwise
 
     All are properly normalized, so that their integral over all space is 1.
-    
+
     See Also
     --------
     - sklearn.mixture.gmm : gaussian mixture models
@@ -114,7 +115,7 @@ class KDE:
             D = pairwise_kernels(X, self.X_, metric='rbf', gamma=gamma)
             D /= np.sqrt(2 * np.pi * self.h ** (2 * X.shape[1]))
             dens = D.sum(1)
-            
+
         elif self.metric == 'tophat':
             # use Ball Tree to efficiently count neighbors
             bt = BallTree(self.X_)
@@ -134,7 +135,7 @@ class KDE:
             dens[D > self.h] = 0
             dens = dens.sum(1)
             dens /= 2. * n_volume(self.h, X.shape[1]) / (X.shape[1] + 2)
-            
+
         else:
             D = pairwise_kernels(X, self.X_, metric=self.metric, **self.kwargs)
             dens = D.sum(1)
@@ -155,7 +156,7 @@ class KNeighborsDensity:
     Notes
     -----
     The two methods are as follows:
-    
+
     - simple:
         The density at a point x is estimated by n(x) ~ k / r_k^n
     - bayesian:
@@ -171,7 +172,7 @@ class KNeighborsDensity:
 
         self.n_neighbors = n_neighbors
         self.method = method
-        
+
     def fit(self, X):
         """Train the K-neighbors density estimator
 
@@ -215,17 +216,17 @@ class KNeighborsDensity:
             raise ValueError('dimensions of X do not match training dimension')
 
         dist, ind = self.bt_.query(X, self.n_neighbors, return_distance=True)
-        
+
         k = float(self.n_neighbors)
         ndim = X.shape[1]
-        
+
         if self.method == 'simple':
             return k / n_volume(dist[:, -1], ndim)
 
         elif self.method == 'bayesian':
-            # XXX this is wrong in more than 1 dimension!
-            return k * (k + 1) * 0.5 / n_volume(1, ndim) / (dist ** ndim).sum(1)
-            
+            # XXX this may be wrong in more than 1 dimension!
+            return (k * (k + 1) * 0.5 / n_volume(1, ndim)
+                    / (dist ** ndim).sum(1))
         else:
             raise ValueError("Unrecognized method '%s'" % self.method)
 

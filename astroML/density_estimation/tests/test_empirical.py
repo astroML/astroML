@@ -32,4 +32,3 @@ def test_function_distribution(N=1000, rseed=0):
     stdX = X.std()
 
     assert_allclose([meanX, stdX], [0, 1], atol=3 / np.sqrt(N))
-                      

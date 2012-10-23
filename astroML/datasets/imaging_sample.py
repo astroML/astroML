@@ -76,14 +76,19 @@ def fetch_imaging_sample(data_home=None, download_if_missing=True):
         INTO mydb.SDSSimagingSample
         FROM PhotoTag p
         WHERE
-          p.ra > 0.0 and p.ra < 10.0 and p.dec > -1 and p.dec < 1 --- 10x2 sq.deg.
-          and (p.type = 3 OR p.type = 6) and   --- resolved and unresolved sources
-          (p.flags & '4295229440') = 0 and --- '4295229440' is magic code for no 
-                                     --- DEBLENDED_AS_MOVING or SATURATED objects
-          p.mode = 1 and  --- PRIMARY objects only, which implies 
-                          --- !BRIGHT && (!BLENDED || NODEBLEND || nchild == 0)]
-          p.modelMag_r < 22.5  --- adopted faint limit (same as about SDSS limit)
-        --- the end of query  
+            --- 10x2 sq.deg.
+          p.ra > 0.0 and p.ra < 10.0 and p.dec > -1 and p.dec < 1
+            --- resolved and unresolved sources
+          and (p.type = 3 OR p.type = 6) and
+            --- '4295229440' is magic code for no
+            --- DEBLENDED_AS_MOVING or SATURATED objects
+          (p.flags & '4295229440') = 0 and
+            --- PRIMARY objects only, which implies
+            --- !BRIGHT && (!BLENDED || NODEBLEND || nchild == 0)]
+          p.mode = 1 and
+            --- adopted faint limit (same as about SDSS limit)
+          p.modelMag_r < 22.5
+        --- the end of query
     """
     # pyfits is an optional dependency: don't import globally
     import pyfits
@@ -91,7 +96,7 @@ def fetch_imaging_sample(data_home=None, download_if_missing=True):
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
         os.makedirs(data_home)
-    
+
     archive_file = os.path.join(data_home, os.path.basename(DATA_URL))
 
     if not os.path.exists(archive_file):

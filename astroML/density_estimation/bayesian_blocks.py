@@ -13,6 +13,7 @@ References
 import numpy as np
 # TODO: implement other fitness functions from appendix B of Scargle 2012
 
+
 class FitnessFunc:
     """Base class for fitness functions
 
@@ -78,7 +79,7 @@ class Events(FitnessFunc):
         if self.gamma is not None:
             return self.gamma_prior(N, Ntot)
         else:
-            # eq. 21 from Scargle 2012      
+            # eq. 21 from Scargle 2012
             return 4 - 73.53 * self.p0 * (N ** -0.478)
 
 
@@ -99,10 +100,10 @@ class RegularEvents(FitnessFunc):
     def __init__(self, dt, p0=0.05, gamma=None):
         self.dt = dt
         self.p0 = p0
-        self.gamma=gamma
+        self.gamma = gamma
 
     def validate_input(self, t, x, sigma):
-        unique_x = np.unique(x)            
+        unique_x = np.unique(x)
         if list(unique_x) not in ([0], [1], [0, 1]):
             raise ValueError("Regular events must have only 0 and 1 in x")
 
@@ -134,7 +135,7 @@ class PointMeasures(FitnessFunc):
         if gamma is not specified, then a prior based on simulations
         will be used (see sec 3.2 of Scargle 2012)
     """
-    def __init__(self, p0 = None, gamma=None):
+    def __init__(self, p0=None, gamma=None):
         self.p0 = p0
         self.gamma = gamma
 
@@ -287,7 +288,6 @@ def bayesian_blocks(t, x=None, sigma=None,
         if len(unq_t) != len(t):
             raise ValueError("Repeated values in t not supported when "
                              "x is specified")
-        
         t = unq_t
         x = x[unq_ind]
 
@@ -327,7 +327,7 @@ def bayesian_blocks(t, x=None, sigma=None,
     for R in range(N):
         # Compute fit_vec : fitness of putative last block (end at R)
         kwds = {}
-        
+
         # T_k: width/duration of each block
         if 'T_k' in fitfunc.args:
             kwds['T_k'] = block_length[:R + 1] - block_length[R + 1]
@@ -357,11 +357,11 @@ def bayesian_blocks(t, x=None, sigma=None,
         i_max = np.argmax(A_R)
         last[R] = i_max
         best[R] = A_R[i_max]
-    
+
     #-----------------------------------------------------------------
     # Now find changepoints by iteratively peeling off the last block
     #-----------------------------------------------------------------
-    change_points =  np.zeros(N, dtype=int)
+    change_points = np.zeros(N, dtype=int)
     i_cp = N
     ind = N
     while True:

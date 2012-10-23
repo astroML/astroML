@@ -5,6 +5,7 @@ from sklearn.linear_model import LinearRegression as skLinearRegression
 from astroML.linear_model import \
     LinearRegression, PolynomialRegression, BasisFunctionRegression
 
+
 def test_LinearRegression_simple():
     """
     Test a simple linear regression
@@ -17,7 +18,8 @@ def test_LinearRegression_simple():
     y_true = clf.predict(x)
 
     assert_allclose(y, y_true, atol=1E-10)
-    
+
+
 def test_LinearRegression_err():
     """
     Test that errors are correctly accounted for
@@ -37,6 +39,7 @@ def test_LinearRegression_err():
     assert_allclose(clf1.coef_[1:], clf2.coef_)
     assert_allclose(clf1.coef_[0], clf2.intercept_ * dy)
 
+
 def test_LinearRegression_fit_intercept():
     np.random.seed(0)
     X = np.random.random((10, 1))
@@ -44,8 +47,9 @@ def test_LinearRegression_fit_intercept():
 
     clf1 = LinearRegression(fit_intercept=False).fit(X, y)
     clf2 = skLinearRegression(fit_intercept=False).fit(X, y)
-    
+
     assert_allclose(clf1.coef_, clf2.coef_)
+
 
 def test_PolynomialRegression_simple():
     x = np.arange(10.).reshape((10, 1))
@@ -56,7 +60,8 @@ def test_PolynomialRegression_simple():
     y_true = clf.predict(x)
 
     assert_allclose(y, y_true, atol=1E-10)
-    
+
+
 def test_BasisfunctionRegression_simple():
     x = np.arange(10.).reshape((10, 1))
     y = np.arange(10.) + 1

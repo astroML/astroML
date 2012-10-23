@@ -17,7 +17,8 @@ from tools import download_with_progress_bar
 from . import get_data_home
 
 
-DATA_URL = 'http://www.astro.washington.edu/users/ivezic/DMbook/nsa_v0_1_2_reduced.npy'
+DATA_URL = ('http://www.astro.washington.edu/users/ivezic/'
+            'DMbook/nsa_v0_1_2_reduced.npy')
 
 ARCHIVE_FILE = os.path.basename(DATA_URL)
 
@@ -51,7 +52,7 @@ def fetch_nasa_atlas(data_home=None,
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
         os.makedirs(data_home)
-    
+
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 
     if not os.path.exists(archive_file):

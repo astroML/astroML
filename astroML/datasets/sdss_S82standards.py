@@ -6,8 +6,10 @@ from cStringIO import StringIO
 import numpy as np
 from . import get_data_home
 
-DATA_URL = 'http://www.astro.washington.edu/users/ivezic/sdss/catalogs/stripe82calibStars_v2.6.dat.gz'
-DATA_URL_2MASS = 'http://www.astro.washington.edu/users/ivezic/sdss/catalogs/stripe82calibStars_2MASS_v2.6.dat.gz'
+DATA_URL = ('http://www.astro.washington.edu/users/ivezic/'
+            'sdss/catalogs/stripe82calibStars_v2.6.dat.gz')
+DATA_URL_2MASS = ('http://www.astro.washington.edu/users/ivezic/'
+                  'sdss/catalogs/stripe82calibStars_2MASS_v2.6.dat.gz')
 
 ARCHIVE_FILE = 'sdss_S82standards.npy'
 ARCHIVE_FILE_2MASS = 'sdss_S82standards_2mass.npy'
@@ -29,9 +31,9 @@ DTYPE_2MASS = DTYPE + [('ra2MASS', 'f4'),
                        ('J', 'f4'),
                        ('Jerr', 'f4'),
                        ('H', 'f4'),
-                       ('Herr', 'f4'), 
+                       ('Herr', 'f4'),
                        ('K', 'f4'),
-                       ('Kerr', 'f4'), 
+                       ('Kerr', 'f4'),
                        ('theta', 'f4')]
 
 # first column is 'CALIBSTARS'.  We'll ignore this.
@@ -63,7 +65,7 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
 
     Notes
     -----
-    Information on the data can be found at 
+    Information on the data can be found at
     http://www.astro.washington.edu/users/ivezic/sdss/catalogs/stripe82.html
     Data is described in Ivezic et al. 2007 (Astronomical Journal, 134, 973).
     Columns are as follows:
@@ -74,12 +76,13 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
        DECrms            rms of declination (arcsec)
        Ntot              total number of epochs
        A_r               SFD ISM extinction (mags)
-    
+
        for each band in (u g r i z):
            Nobs_<band>    number of observations in this band
            mmed_<band>    median magnitude in this band
            mmu_<band>     mean magnitude in this band
-           msig_<band>    standard error on the mean (1.25 times larger for median)
+           msig_<band>    standard error on the mean
+                          (1.25 times larger for median)
            mrms_<band>    root-mean-square scatter
            mchi2_<band>   chi2 per degree of freedom for mean magnitude
 
@@ -110,16 +113,16 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
         os.makedirs(data_home)
-    
+
     if crossmatch_2mass:
         archive_file = os.path.join(data_home, ARCHIVE_FILE_2MASS)
         data_url = DATA_URL_2MASS
-        kwargs = dict(dtype = DTYPE_2MASS)
+        kwargs = dict(dtype=DTYPE_2MASS)
 
     else:
         archive_file = os.path.join(data_home, ARCHIVE_FILE)
         data_url = DATA_URL
-        kwargs = dict(usecols=COLUMNS, dtype = DTYPE)
+        kwargs = dict(usecols=COLUMNS, dtype=DTYPE)
 
     if not os.path.exists(archive_file):
         if not download_if_missing:

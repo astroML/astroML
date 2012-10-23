@@ -3,6 +3,7 @@ from numpy.testing import assert_allclose, assert_
 from astroML.density_estimation import \
     scotts_bin_width, freedman_bin_width, knuth_bin_width, histogram
 
+
 def test_scotts_bin_width(N=10000, rseed=0):
     np.random.seed(rseed)
     X = np.random.normal(size=N)
@@ -17,10 +18,10 @@ def test_freedman_bin_width(N=10000, rseed=0):
     delta = freedman_bin_width(X)
 
     indices = np.argsort(X)
-    i25 = indices[N/4 - 1]
+    i25 = indices[N / 4 - 1]
     i75 = indices[(3 * N) / 4 - 1]
-    
-    assert_allclose(delta, 2 * (X[i75] - X[i25]) / N ** (1./ 3))
+
+    assert_allclose(delta, 2 * (X[i75] - X[i25]) / N ** (1. / 3))
 
 
 def test_knuth_bin_width(N=10000, rseed=0):

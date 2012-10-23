@@ -10,11 +10,13 @@ import numpy as np
 from . import get_data_home
 from tools import download_with_progress_bar
 
-DATA_URL_LARGE = 'http://www.astro.washington.edu/users/ivezic/DMbook/LIGO/hoft.968653908-968655956.H1.dat.gz'
+DATA_URL_LARGE = ('http://www.astro.washington.edu/users/ivezic/'
+                  'DMbook/LIGO/hoft.968653908-968655956.H1.dat.gz')
 LOCAL_FILE_LARGE = 'LIGO_large.npy'
 
 DATA_URL = 'http://www.ligo.org/science/GW100916/HLV-strain.txt'
 LOCAL_FILE = 'LIGO_bigdog.npy'
+
 
 def fetch_LIGO_large(data_home=None, download_if_missing=True):
     """Loader for LIGO large dataset

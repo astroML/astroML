@@ -108,8 +108,8 @@ ax.set_ylabel('y')
 #------------------------------------------------------------
 # plot the likelihood contour in m, b
 ax = fig.add_subplot(122)
-m = np.linspace(1., 2.7, 100)
-b = np.linspace(-50, 110, 100)
+m = np.linspace(1.7, 2.8, 100)
+b = np.linspace(-60, 110, 100)
 logL = np.zeros((len(m), len(b)))
 
 for i in range(len(m)):
@@ -122,6 +122,6 @@ ax.contour(m, b, convert_to_stdev(logL.T),
 ax.set_xlabel('slope')
 ax.set_ylabel('intercept')
 ax.set_xlim(1.7, 2.8)
-ax.set_ylim(-50, 110)
+ax.set_ylim(-60, 110)
 
 plt.show()

@@ -5,6 +5,7 @@ from astroML.density_estimation import\
     scotts_bin_width, freedman_bin_width,\
     knuth_bin_width, bayesian_blocks
 
+
 def hist(x, bins=10, range=None, *args, **kwargs):
     """Enhanced histogram
 
@@ -32,11 +33,10 @@ def hist(x, bins=10, range=None, *args, **kwargs):
     ax : Axes instance (optional)
         specify the Axes on which to draw the histogram.  If not specified,
         then the current active axes will be used.
-    
-    other keyword arguments are described in pylab.hist().
+
+    **kwargs :
+        other keyword arguments are described in pylab.hist().
     """
-    # TODO: use an event-based Bayesian Blocks fitness function to allow for
-    #       data with repeated values (see ValueError below)
     x = np.asarray(x)
 
     if 'ax' in kwargs:
@@ -47,15 +47,11 @@ def hist(x, bins=10, range=None, *args, **kwargs):
 
     # if range is specified, we need to truncate the data for
     # the bin-finding routines
-    if (range is not None and
-             (bins in ['blocks', 'knuth', 'scotts', 'freedman'])):
+    if (range is not None and (bins in ['blocks', 'knuth',
+                                        'scotts', 'freedman'])):
         x = x[(x >= range[0]) & (x <= range[1])]
 
     if bins == 'blocks':
-        unique = np.unique(x)
-        if unique.size < x.size:
-            raise ValueError("bins='blocks' does not yet support data "
-                             "with repeated values")
         bins = bayesian_blocks(x)
     elif bins == 'knuth':
         dx, bins = knuth_bin_width(x, True)

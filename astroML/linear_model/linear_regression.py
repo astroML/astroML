@@ -1,6 +1,7 @@
 import numpy as np
 from astroML.utils import combinations_with_replacement
 
+
 class LinearRegression:
     """Simple Linear Regression with errors in y
 
@@ -14,9 +15,9 @@ class LinearRegression:
 
     Notes
     -----
-    This implementation may be compared to that in 
+    This implementation may be compared to that in
     sklearn.linear_model.LinearRegression.
-    The difference is that here errors are 
+    The difference is that here errors are
     """
     def __init__(self, fit_intercept=True):
         self.fit_intercept = fit_intercept
@@ -42,7 +43,7 @@ class LinearRegression:
         X_fit, y_fit = self._process_Xy(self.X_, self.y_, dy)
 
         self.coef_ = np.linalg.solve(np.dot(X_fit.T, X_fit),
-                                     np.dot(X_fit.T, y_fit))   
+                                     np.dot(X_fit.T, y_fit))
         return self
 
     def predict(self, X):
@@ -93,7 +94,7 @@ class BasisFunctionRegression(LinearRegression):
         extra arguments and keyword arguments are passed to the basis
         function
     """
-    def __init__(self, basis_func='gaussian', fit_intercept=True, **kwargs):   
+    def __init__(self, basis_func='gaussian', fit_intercept=True, **kwargs):
         if basis_func == 'gaussian':
             self.basis_func = gaussian_basis
             if ('mu' not in kwargs) or ('sigma' not in kwargs):
@@ -109,7 +110,7 @@ class BasisFunctionRegression(LinearRegression):
 
     def _process_X(self, X):
         X = self.basis_func(X, **self.kwargs)
-        
+
         if self.fit_intercept:
             X = np.hstack([np.ones((X.shape[0], 1)), X])
 
@@ -141,7 +142,7 @@ def gaussian_basis(X, mu, sigma):
 
     n_samples, n_features = X.shape
     n_bases = mu.shape[0]
-    
+
     if mu.shape[1] != n_features:
         raise ValueError('shape of mu must match shape of X')
 

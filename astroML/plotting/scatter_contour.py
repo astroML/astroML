@@ -1,6 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
+
 def scatter_contour(x, y,
                     levels=10,
                     threshold=100,
@@ -38,7 +39,7 @@ def scatter_contour(x, y,
         ax = plt.gca()
 
     H, xbins, ybins = np.histogram2d(x, y, **histogram2d_args)
-    
+
     Nx = len(xbins)
     Ny = len(ybins)
 
@@ -47,11 +48,11 @@ def scatter_contour(x, y,
         threshold = np.log10(1 + threshold)
 
     levels = np.asarray(levels)
-    
+
     if levels.size == 1:
         levels = np.linspace(threshold, H.max(), levels)
 
-    extent = extent=[xbins[0], xbins[-1], ybins[0], ybins[-1]]
+    extent = [xbins[0], xbins[-1], ybins[0], ybins[-1]]
 
     i_min = np.argmin(levels)
 

@@ -3,6 +3,7 @@ import numpy as np
 from numpy.testing import assert_almost_equal, assert_array_almost_equal
 from astroML.utils import logsumexp, log_multivariate_gaussian, convert_2D_cov
 
+
 def positive_definite_matrix(N, M=None):
     """return an array of M positive-definite matrices with shape (N, N)"""
     if M is None:
@@ -18,7 +19,7 @@ def positive_definite_matrix(N, M=None):
 def test_logsumexp():
     np.random.seed(0)
     X = np.random.random((100, 100))
-    
+
     for axis in (None, 0, 1):
         np_result = np.log(np.sum(np.exp(X), axis=axis))
         aML_result = logsumexp(X, axis=axis)

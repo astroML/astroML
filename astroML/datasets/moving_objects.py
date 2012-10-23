@@ -113,7 +113,7 @@ def fetch_moving_objects(data_home=None, download_if_missing=True,
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
         os.makedirs(data_home)
-    
+
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 
     if not os.path.exists(archive_file):
@@ -147,5 +147,5 @@ def fetch_moving_objects(data_home=None, download_if_missing=True,
                 (i_z <= 0.6) & (i_z >= -0.8))
 
         data = data[flag]
-        
+
     return data

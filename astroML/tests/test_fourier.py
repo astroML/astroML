@@ -3,12 +3,13 @@ from numpy.testing import assert_allclose
 from astroML.fourier import\
     FT_continuous, IFT_continuous, PSD_continuous, sinegauss, sinegauss_FT
 
+
 def check_wavelets(t0, f0, Q, t):
     h = sinegauss(t, t0, f0, Q)
     f, H = FT_continuous(t, h)
     H2 = sinegauss_FT(f, t0, f0, Q)
     assert_allclose(H, H2, atol=1E-8)
-    
+
 
 def test_wavelets():
     t = np.linspace(-10, 10, 10000)
@@ -46,7 +47,7 @@ def check_FT_continuous(a, t0, f0, method, t):
     h = sinegauss(t, t0, f0, a)
     f, H = FT_continuous(t, h, method=method)
     assert_allclose(H, sinegauss_FT(f, t0, f0, a), atol=1E-12)
-    
+
 
 def test_FT_continuous():
     t = np.linspace(-9, 10, 10000)
@@ -61,7 +62,7 @@ def check_PSD_continuous(a, t0, f0, method, t):
     h = sinegauss(t, t0, f0, a)
     f, P = PSD_continuous(t, h, method=method)
     assert_allclose(P, sinegauss_PSD(f, t0, f0, a), atol=1E-12)
-    
+
 
 def test_PSD_continuous():
     t = np.linspace(-9, 10, 10000)
@@ -94,6 +95,6 @@ def test_IFT_FT():
     x = np.random.random(10000)
 
     f, y = FT_continuous(t, x)
-    _, xp = IFT_continuous(f, y)
-        
+    t, xp = IFT_continuous(f, y)
+
     assert_allclose(x, xp, atol=1E-7)

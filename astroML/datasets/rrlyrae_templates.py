@@ -6,7 +6,8 @@ import numpy as np
 
 from . import get_data_home
 from tools import download_with_progress_bar
-DATA_URL = "http://www.astro.washington.edu/users/bsesar/S82_RRLyr/RRLyr_ugriz_templates.tar.gz"
+DATA_URL = ("http://www.astro.washington.edu/users/bsesar/"
+            "S82_RRLyr/RRLyr_ugriz_templates.tar.gz")
 
 
 def fetch_rrlyrae_templates(data_home=None, download_if_missing=True):
@@ -44,7 +45,7 @@ def fetch_rrlyrae_templates(data_home=None, download_if_missing=True):
         open(data_file, 'w').write(databuffer)
 
     data = tarfile.open(data_file)
-    
+
     return dict([(name.strip('.dat'),
                   np.loadtxt(data.extractfile(name)))
                  for name in data.getnames()])

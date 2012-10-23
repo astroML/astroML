@@ -8,8 +8,11 @@ import pylab as pl
 from . import get_data_home
 from tools import download_with_progress_bar
 
-DATA_URL = 'http://lambda.gsfc.nasa.gov/data/map/dr4/skymaps/7yr/raw/wmap_band_imap_r9_7yr_W_v4.fits'
-MASK_URL = 'http://lambda.gsfc.nasa.gov/data/map/dr4/ancillary/masks/wmap_temperature_analysis_mask_r9_7yr_v4.fits'
+DATA_URL = ('http://lambda.gsfc.nasa.gov/data/map/dr4/'
+            'skymaps/7yr/raw/wmap_band_imap_r9_7yr_W_v4.fits')
+MASK_URL = ('http://lambda.gsfc.nasa.gov/data/map/dr4/'
+            'ancillary/masks/wmap_temperature_analysis_mask_r9_7yr_v4.fits')
+
 
 def fetch_wmap_temperatures(masked=False, data_home=None,
                             download_if_missing=True):
@@ -58,10 +61,10 @@ def fetch_wmap_temperatures(masked=False, data_home=None,
                               'set download_if_missing=True to download')
             mask_buffer = download_with_progress_bar(MASK_URL)
             open(mask_file, 'w').write(mask_buffer)
-        
+
         mask = hp.read_map(mask_file)
 
         data = hp.ma(data)
-        data.mask = np.logical_not(mask) # WMAP mask has 0=bad.  We need 1=bad
+        data.mask = np.logical_not(mask)  # WMAP mask has 0=bad. We need 1=bad
 
     return data

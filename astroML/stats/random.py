@@ -4,6 +4,7 @@ Statistics for astronomy
 import numpy as np
 from scipy.stats.distributions import rv_continuous
 
+
 def bivariate_normal(mu=[0, 0], sigma_1=1, sigma_2=1, alpha=0,
                      size=None, return_cov=False):
     """Sample points from a 2D normal distribution
@@ -63,10 +64,8 @@ def bivariate_normal(mu=[0, 0], sigma_1=1, sigma_2=1, alpha=0,
         return x
 
 
-
 #----------------------------------------------------------------------
 # Define some new distributions based on rv_continuous
-
 class trunc_exp_gen(rv_continuous):
     """A truncated positive exponential continuous random variable.
 
@@ -96,7 +95,6 @@ class trunc_exp_gen(rv_continuous):
         return (1. / k) * np.log(1 + y * k / self._const)
 
 trunc_exp = trunc_exp_gen(name="trunc_exp", shapes='a, b, k')
-
 
 
 class linear_gen(rv_continuous):

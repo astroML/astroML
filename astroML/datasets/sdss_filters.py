@@ -49,13 +49,13 @@ def fetch_sdss_filter(fname, data_home=None, download_if_missing=True):
         if not download_if_missing:
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
-            
+
         print "downloading from %s" % url
         F = urllib2.urlopen(url)
         open(archive_file, 'w').write(F.read())
 
     F = open(archive_file)
-        
+
     return np.loadtxt(F, unpack=True)
 
 
@@ -86,7 +86,7 @@ def fetch_vega_spectrum(data_home=None, download_if_missing=True):
 
     archive_name = os.path.join(data_home, VEGA_URL.split('/')[-1])
 
-    if  not os.path.exists(archive_name):
+    if not os.path.exists(archive_name):
         if not download_if_missing:
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')

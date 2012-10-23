@@ -5,6 +5,7 @@ import numpy as np
 from .tools import get_data_home, download_with_progress_bar,\
     SDSSfits, sdss_fits_url, sdss_fits_filename
 
+
 def fetch_sdss_spectrum(plate, mjd, fiber, data_home=None,
                         download_if_missing=True,
                         cache_to_disk=True):
@@ -39,11 +40,11 @@ def fetch_sdss_spectrum(plate, mjd, fiber, data_home=None,
     target_url = sdss_fits_url(plate, mjd, fiber)
     target_file = os.path.join(data_home, 'SDSSspec', '%04i' % plate,
                                sdss_fits_filename(plate, mjd, fiber))
-                               
-    if not os.path.exists(target_file):        
+
+    if not os.path.exists(target_file):
         if not download_if_missing:
             raise IOError("SDSS colors training data not found")
-        
+
         buf = download_with_progress_bar(target_url, return_buffer=True)
 
         if cache_to_disk:
@@ -53,7 +54,6 @@ def fetch_sdss_spectrum(plate, mjd, fiber, data_home=None,
             fhandler = open(target_file, 'wb')
             fhandler.write(buf.read())
             buf.reset()
-    
     else:
         buf = target_file
 

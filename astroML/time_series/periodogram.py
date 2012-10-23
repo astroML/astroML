@@ -18,7 +18,7 @@ def lomb_scargle_bootstrap(t, y, dy, omega,
     Parameters
     ----------
     The first set of parameters are passed to the lomb_scargle algorithm
-    
+
     t : array_like
         sequence of times
     y : array_like
@@ -75,7 +75,7 @@ def lomb_scargle_AIC(P, y, dy, n_harmonics=1):
         errors
     n_harmonics : int (optional)
         the number of harmonics used in the Lomb-Scargle fit. Default is 1
-    
+
     Returns
     -------
     AIC : ndarray
@@ -101,7 +101,7 @@ def lomb_scargle_BIC(P, y, dy, n_harmonics=1):
         errors
     n_harmonics : int (optional)
         the number of harmonics used in the Lomb-Scargle fit. Default is 1
-    
+
     Returns
     -------
     BIC : ndarray
@@ -170,18 +170,18 @@ def multiterm_periodogram(t, y, dy, omega, n_terms=3):
         for m in range(1, n_terms + 1):
             X[:, 2 * m - 1] = np.sin(m * omega_i * t)
             X[:, 2 * m] = np.cos(m * omega_i * t)
-        
+
         X *= dy_inv
 
         M, chi2[i], rank, s = np.linalg.lstsq(X, y)
-    
+
     return 1. - chi2.reshape(shape) / chi2_0
 
 
 def search_frequencies(t, y, dy,
                        LS_func=lomb_scargle,
                        LS_kwargs=None,
-                       initial_guess = 25,
+                       initial_guess=25,
                        limit_fractions=[0.04, 0.3, 0.9, 0.99],
                        n_eval=10000,
                        n_retry=5,
@@ -216,13 +216,14 @@ def search_frequencies(t, y, dy,
     limit_fractions : array_like
         the list of fractions to use when zooming in on peak possibilities.
         On the i^th iteration, with f_i = limit_fractions[i], the range
-        probed around each candidate will be (candidate * f_i, candidate / f_i).
+        probed around each candidate will be
+        (candidate * f_i, candidate / f_i).
     n_eval : integer or list
         The number of point to evaluate in the range on each iteration.
         If n_eval is a list, it should have the same length as limit_fractions.
     n_retry : integer or list
-        Number of top points to search on each iteration.
-        If n_retry is a list, it should have the same length as limit_fractions.
+        Number of top points to search on each iteration. If n_retry is a list,
+        it should have the same length as limit_fractions.
     n_save : integer or list
         Number of evaluations to save on each iteration.
         If n_save is a list, it should have the same length as limit_fractions.
@@ -291,10 +292,10 @@ class MultiTermFit:
                        np.sin(k * self.omega * t[:, None]),
                        np.cos(k * self.omega * t[:, None])])
         return X
-        
+
     def fit(self, t, y, dy):
         """Fit multiple Fourier terms to the data
-        
+
         Parameters
         ----------
         t: array_like
@@ -306,7 +307,7 @@ class MultiTermFit:
 
         Returns
         -------
-        self : 
+        self :
             The MultiTermFit object is  returned
         """
         t = np.asarray(t)
@@ -320,7 +321,7 @@ class MultiTermFit:
         self.w_ = np.linalg.solve(np.dot(X_scaled.T, X_scaled),
                                   np.dot(X_scaled.T, y_scaled))
         return self
-        
+
     def predict(self, Nphase, return_phased_times=False, adjust_offset=True):
         """Compute the phased fit, and optionally return phased times
 

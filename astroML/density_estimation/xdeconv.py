@@ -47,7 +47,7 @@ class XDGMM:
 
     def fit(self, X, Xerr, R=None):
         """Fit the XD model to data
-        
+
         Parameters
         ----------
         X: array_like
@@ -97,7 +97,7 @@ class XDGMM:
     def logprob_a(self, X, Xerr):
         """
         Evaluate the probability for a set of points
-        
+
         Parameters
         ----------
         X: array_like
@@ -120,9 +120,8 @@ class XDGMM:
         X = X[:, np.newaxis, :]
         Xerr = Xerr[:, np.newaxis, :, :]
         T = Xerr + self.V
-        
-        return log_multivariate_gaussian(X, self.mu, T)
 
+        return log_multivariate_gaussian(X, self.mu, T)
 
     def logL(self, X, Xerr):
         """Compute the log-likelihood of data given the model
@@ -140,7 +139,6 @@ class XDGMM:
             log-likelihood
         """
         return np.sum(logsumexp(self.logprob_a(X, Xerr), -1))
-
 
     def _EMstep(self, X, Xerr):
         """
@@ -163,7 +161,7 @@ class XDGMM:
         Tinv = np.array([linalg.inv(T[i])
                          for i in range(T.shape[0])]).reshape(Tshape)
         T = T.reshape(Tshape)
-        
+
         #------------------------------------------------------------
         # evaluate each mixture at each point
         N = np.exp(log_multivariate_gaussian(X, self.mu, T, Vinv=Tinv))
@@ -199,7 +197,7 @@ class XDGMM:
     def sample(self, size=1):
         shape = tuple(np.atleast_1d(size)) + (self.mu.shape[1],)
         npts = np.prod(size)
-        
+
         alpha_cs = np.cumsum(self.alpha)
         r = np.atleast_1d(np.random.random(size))
         r.sort()

@@ -5,6 +5,7 @@ import numpy as np
 from scipy import fftpack
 from .periodogram import lomb_scargle
 
+
 def ACF_scargle(t, y, dy, n_omega=2 ** 10, omega_max=100):
     """Compute the Auto-correlation function via Scargle's method
 
@@ -94,7 +95,7 @@ def ACF_EK(t, y, dy, bins=20):
 
     if y.shape != t.shape:
         raise ValueError("shapes of t and y must match")
-    
+
     if t.ndim != 1:
         raise ValueError("t should be a 1-dimensional array")
 
@@ -126,8 +127,7 @@ def ACF_EK(t, y, dy, bins=20):
         flag = (dt >= bins[i]) & (dt < bins[i + 1])
         M[i] = flag.sum()
         ACF[i] = np.sum(UDCF[flag])
-        
+
     ACF /= M
 
     return ACF, np.sqrt(2. / M), bins
-    

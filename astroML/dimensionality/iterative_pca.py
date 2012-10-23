@@ -5,6 +5,7 @@ import pylab as pl
 
 from scipy.linalg import solve
 
+
 def iterative_pca(X, M, n_ev=5, n_iter=15, norm=None, full_output=False):
     """
     Parameters
@@ -80,12 +81,12 @@ def iterative_pca(X, M, n_ev=5, n_iter=15, norm=None, full_output=False):
                 X_recons /= np.sum(X_recons, 1)[:, None]
             else:
                 X_recons /= np.sqrt(np.sum(X_recons ** 2, 1))[:, None]
-        
+
             # find the mean
             mu = (X_recons * notM).sum(0) / notM.sum(0)
             mu = mu * np.ones([n_samples, 1])
             X_recons[M] = mu[M]
-    
+
     # Matrix of coefficients
     coeffs = np.zeros((n_samples, n_ev))
 
@@ -100,7 +101,7 @@ def iterative_pca(X, M, n_ev=5, n_iter=15, norm=None, full_output=False):
             X_recons /= np.sum(X_recons, 1)[:, None]
         else:
             X_recons /= np.sqrt(np.sum(X_recons ** 2, 1))[:, None]
-        
+
         # now compute the principal components
         mu = X_recons.mean(0)
         X_centered = X_recons - mu

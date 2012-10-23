@@ -71,7 +71,7 @@ def plot_mcmc(traces, labels=None, limits=None, true_values=None,
 
     if labels is None:
         labels = ['' for t in traces]
-        
+
     num_traces = len(traces)
 
     bins = [np.linspace(limits[i][0], limits[i][1], bins + 1)
@@ -79,7 +79,7 @@ def plot_mcmc(traces, labels=None, limits=None, true_values=None,
 
     xmin, xmax = bounds[0], bounds[2]
     ymin, ymax = bounds[1], bounds[3]
-    
+
     dx = (xmax - xmin) * 1. / (num_traces - 1)
     dy = (ymax - ymin) * 1. / (num_traces - 1)
 
@@ -90,7 +90,7 @@ def plot_mcmc(traces, labels=None, limits=None, true_values=None,
             ax = fig.add_axes([xmin + i * dx,
                                ymin + (num_traces - 1 - j) * dy,
                                dx, dy])
-            
+
             if scatter:
                 plt.scatter(traces[i], traces[j], **kwargs)
 
@@ -116,8 +116,10 @@ def plot_mcmc(traces, labels=None, limits=None, true_values=None,
                 ax.xaxis.set_major_formatter(plt.NullFormatter())
 
             if true_values is not None:
-                ax.plot(limits[i], [true_values[j], true_values[j]], ':k', lw=1)
-                ax.plot([true_values[i], true_values[i]], limits[j], ':k', lw=1)
+                ax.plot(limits[i], [true_values[j], true_values[j]],
+                        ':k', lw=1)
+                ax.plot([true_values[i], true_values[i]], limits[j],
+                        ':k', lw=1)
 
             ax.set_xlim(limits[i])
             ax.set_ylim(limits[j])

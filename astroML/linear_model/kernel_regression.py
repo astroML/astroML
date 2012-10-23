@@ -2,6 +2,7 @@ import numpy as np
 from .linear_regression import gaussian_basis
 from sklearn.metrics import pairwise_kernels
 
+
 class NadarayaWatson:
     """Nadaraya-Watson Kernel Regression
 
@@ -15,7 +16,7 @@ class NadarayaWatson:
     h : float or array_like
         width of kernel.  If array, its length must be the number of
         dimensions in the training data
-    
+
     Additional keyword arguments are passed to the kernel.
     """
     def __init__(self, kernel='gaussian', h=None, **kwargs):
@@ -48,4 +49,4 @@ class NadarayaWatson:
 
         K /= self.dy ** 2
 
-        return (K *  self.y).sum(1) / K.sum(1)
+        return (K * self.y).sum(1) / K.sum(1)
