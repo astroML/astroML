@@ -32,6 +32,10 @@ check, and extend the results.
 Textbook
 --------
 
+.. image:: ../_static/text_cover.png
+     :width: 150 px
+     :align: left
+
 The astroML package is used to create all of the examples and figures in the
 book **Statistics, Data Mining, and Machine Learning in Astronomy**,
 by Zeljko Ivezic, Andrew Connolly, Jacob Vanderplas, and Alex Gray,

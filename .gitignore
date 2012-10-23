@@ -2,10 +2,12 @@
 *.pyc
 *.so
 
+*.tgz
 *.pkl
 *.pdf
 *.png
 
+astroML.tgz
 build
 doc/_build
 doc/examples/

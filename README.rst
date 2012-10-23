@@ -13,6 +13,8 @@ This project was started in 2012 by Jake VanderPlas to accompany the book
 *Statistics, Data Mining, and Machine Learning in Astronomy* by
 Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray.
 
+Core and Addons
+---------------
 The project is split into two components.  The core ``astroML`` library is
 written in python only, and is designed to be very easy to install for
 any users, even those who don't have a working C or fortran compiler.
@@ -25,9 +27,41 @@ Furthermore, if ``astroML_addons`` is installed on your system, the core
 
 
 Important Links
-===============
+---------------
 - Source-code repository: http://github.com/astroML/astroML
 - HTML documentation: http://astroML.github.com
+
+
+Installation
+============
+
+This package uses distutils, which is the default way of installing python
+modules.  Before installation, make sure your system meets the prerequisites
+listed in Dependencies, below.
+
+Core
+----
+To install the core ``astroML`` package in your home directory, use::
+
+  python setup.py install --home
+
+You can specify an arbitrary directory for installation using::
+
+  python setup.py install --prefix='/some/path'
+
+To install system-wide on Linux/Unix systems::
+
+  python setup.py build
+  sudo python setup.py install
+
+Addons
+------
+The ``astroML_addons`` package requires a working C/C++ compiler for
+installation.  It can be installed using::
+
+  python setup_addons.py install
+
+The script can make use of any of the extra options discussed above.
 
 
 Dependencies
@@ -74,37 +108,6 @@ requirements are listed at the top of the example scripts.
 - `healpy <https://github.com/healpy/healpy>`_ provides an interface to
   the HEALPix pixelization scheme, as well as fast spherical harmonic
   transforms.
-
-Installation
-============
-
-This package uses distutils, which is the default way of installing python
-modules.
-
-Core
-----
-To install the core ``astroML`` package in your home directory, use::
-
-  python setup.py install --home
-
-You can specify an arbitrary directory for installation using::
-
-  python setup.py install --prefix='/some/path'
-
-To install system-wide on Linux/Unix systems::
-
-  python setup.py build
-  sudo python setup.py install
-
-Addons
-------
-The ``astroML_addons`` package requires a working C/C++ compiler for
-installation.  It can be installed using::
-
-  python setup_addons.py install
-
-The script can make use of any of the extra options discussed above.
-
 
 Development
 ===========
