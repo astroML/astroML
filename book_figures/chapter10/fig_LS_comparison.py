@@ -18,7 +18,7 @@ from astroML.time_series import\
 from astroML.datasets import fetch_LINEAR_sample
 
 #id, period = 11375941, 58.4
-id, period =  18525697, 17.05
+id, period = 18525697, 17.05
 
 data = fetch_LINEAR_sample()
 t, y, dy = data[id].T
@@ -41,9 +41,9 @@ plt.ylabel('$1 - \chi^2(\omega) / \chi^2_{ref}$')
 plt.subplot(212, sharex=ax)
 for generalized in [True, False]:
     if generalized:
-        label='generalized LS'
+        label = 'generalized LS'
     else:
-        label='standard LS'
+        label = 'standard LS'
     P2 = lomb_scargle(t, y, dy, omega, generalized=generalized)
     plt.plot(omega, P2, lw=1, label=label)
 plt.legend(loc=2)

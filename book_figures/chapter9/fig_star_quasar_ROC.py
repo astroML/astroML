@@ -59,6 +59,7 @@ y[:Nqso] = 1
 (X_train, X_test), (y_train, y_test) = split_samples(X, y, [0.9, 0.1],
                                                      random_state=0)
 
+
 #------------------------------------------------------------
 # Compute fits for all the classifiers
 @pickle_results('star_quasar_ROC.pkl')

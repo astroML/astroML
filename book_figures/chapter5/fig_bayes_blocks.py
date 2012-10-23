@@ -64,7 +64,7 @@ for N, subplot in zip(N_values, subplots):
 
     if subplot == 212:
         ax.set_xlabel('x')
-    
+
     ax.set_xlim(0, 20)
     ax.set_ylim(-0.01, 0.4001)
 

@@ -71,7 +71,6 @@ for i in range(4):
     ax.text(0.5, 0.05, r"$\chi^2_{\rm dof} = %.2f$" % chi2_dof,
             ha='center', va='bottom', transform=ax.transAxes, fontsize=14)
 
-
     ax.set_xlim(0.01, 1.8)
     ax.set_ylim(36.01, 48)
     ax.text(0.05, 0.95, text[i], ha='left', va='top',

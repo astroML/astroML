@@ -30,7 +30,7 @@ plt.scatter(RA, DEC, s=1, lw=0, c=data['Z'], cmap=plt.cm.copper)
 plt.grid(True)
 
 plt.title('NASA Atlas Galaxy Locations')
-cb = plt.colorbar(cax = plt.axes([0.05, 0.1, 0.9, 0.05]),
+cb = plt.colorbar(cax=plt.axes([0.05, 0.1, 0.9, 0.05]),
                  orientation='horizontal',
                  ticks=np.linspace(0, 0.05, 6))
 cb.set_label('redshift')

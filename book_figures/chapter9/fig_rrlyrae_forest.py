@@ -16,6 +16,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 from astroML.datasets import fetch_rrlyrae_mags, fetch_sdss_S82standards
 
+
 def load_rrlyrae_data():
     """Load the RR Lyrae data.
     This will be used in several examples.
@@ -54,6 +55,7 @@ def load_rrlyrae_data():
     y[-colors_rr.shape[1]:] = 1
 
     return X, y
+
 
 def split_samples(X, y, rseed=0, training_fraction=0.75):
     """split samples into training and test sets"""

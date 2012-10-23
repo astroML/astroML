@@ -31,6 +31,7 @@ z_train = z[::10]
 mag_test = mag[1::100]
 z_test = z[1::100]
 
+
 def plot_results(z, z_fit, plotlabel=None,
                  xlabel=True, ylabel=True):
     plt.scatter(z[::1], z_fit[::1], s=1, lw=0, c='k')
@@ -39,21 +40,21 @@ def plot_results(z, z_fit, plotlabel=None,
     plt.ylim(-0.02, 0.4001)
     plt.gca().xaxis.set_major_locator(plt.MultipleLocator(0.1))
     plt.gca().yaxis.set_major_locator(plt.MultipleLocator(0.1))
-                
+
     if plotlabel:
         plt.text(0.03, 0.97, plotlabel,
-                ha='left', va='top', transform=ax.transAxes)
+                 ha='left', va='top', transform=ax.transAxes)
 
     if xlabel:
         plt.xlabel(r'$\rm z_{true}$', fontsize=16)
     else:
         plt.gca().xaxis.set_major_formatter(plt.NullFormatter())
-        
+
     if ylabel:
         plt.ylabel(r'$\rm z_{fit}$', fontsize=16)
     else:
         plt.gca().yaxis.set_major_formatter(plt.NullFormatter())
-        
+
 
 plt.figure(figsize=(8, 4))
 plt.subplots_adjust(wspace=0.1,

@@ -39,6 +39,7 @@ z_train = z[::10]
 mag_test = mag[1::100]
 z_test = z[1::100]
 
+
 def plot_results(z, z_fit, plotlabel=None,
                  xlabel=True, ylabel=True):
     plt.scatter(z, z_fit, s=1, lw=0, c='k')
@@ -56,7 +57,7 @@ def plot_results(z, z_fit, plotlabel=None,
         plt.xlabel(r'$\rm z_{true}$', fontsize=16)
     else:
         plt.gca().xaxis.set_major_formatter(plt.NullFormatter())
-        
+
     if ylabel:
         plt.ylabel(r'$\rm z_{fit}$', fontsize=16)
     else:
@@ -117,7 +118,6 @@ def gaussian_RBF_features(X, centers, widths):
         widths = widths[:, np.newaxis]
     return np.exp(-0.5 * ((X[:, np.newaxis, :]
                            - centers) / widths) ** 2).sum(-1)
-    
 
 plt.figure(figsize=(8, 8))
 plt.subplots_adjust(hspace=0.05, wspace=0.05,

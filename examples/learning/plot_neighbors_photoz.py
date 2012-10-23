@@ -41,7 +41,7 @@ X[:, 3] = data['i'] - data['z']
 z = data['redshift']
 
 # divide into training and testing data
-Ntrain = N/2
+Ntrain = N / 2
 Xtrain = X[:Ntrain]
 ztrain = z[:Ntrain]
 
@@ -72,6 +72,3 @@ plt.title('Photo-z: Nearest Neigbor Regression')
 plt.xlabel(r'$\mathrm{z_{spec}}$', fontsize=14)
 plt.ylabel(r'$\mathrm{z_{phot}}$', fontsize=14)
 plt.show()
-
-
-

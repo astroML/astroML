@@ -43,7 +43,7 @@ for (k, subplot) in zip(kvals, subplots):
     label = "%i mode" % k
     if k > 1:
         label += 's'
-        
+
     ax.text(0.02, 0.1, label, ha='left', va='bottom',
             fontsize=14, transform=ax.transAxes)
 

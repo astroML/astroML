@@ -24,10 +24,10 @@ def wavelet_FT(f, t0, f0, Q):
     # H(f) = integral[ h(t) exp(-2pi i f t) dt]
     return (np.sqrt(np.pi) * Q / f0
             * np.exp(-2j * np.pi * f * t0)
-            * np.exp(-(np.pi * (f - f0) * Q / f0)** 2))
+            * np.exp(-(np.pi * (f - f0) * Q / f0) ** 2))
 
 
-def check_funcs(t0 = 1, f0 = 2, Q = 3):
+def check_funcs(t0=1, f0=2, Q=3):
     t = np.linspace(-10, 10, 10000)
     h = wavelet(t, t0, f0, Q)
 
@@ -50,9 +50,6 @@ W = np.conj(wavelet_FT(f, 0, f0[:, None], Q))
 
 t, HW = IFT_continuous(f, H * W)
 
-print t.shape
-print HW.shape
-
 t = t[::100]
 HW = HW[:, ::100]
 
@@ -63,5 +60,3 @@ plt.gca().yaxis.set_major_locator(plt.MultipleLocator(1))
 plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, *args:
                                                         "%i" % (2 ** x)))
 plt.show()
-
-

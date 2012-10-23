@@ -20,7 +20,7 @@ con = sqlite3.connect(DATABASE)
 
 with con:
     cur = con.cursor()
-    
+
     try:
         cur.execute("CREATE TABLE Periods(id INT, omega FLOAT)")
     except:
@@ -36,7 +36,7 @@ with con:
 
         else:
             print ("computing period for id = %i (%i / %i)"
-                   % (id, count+1, len(data.ids)))
+                   % (id, count + 1, len(data.ids)))
 
             lc = data[id]
 
@@ -49,14 +49,13 @@ with con:
             omega_best = omega[np.argmax(power)]
             t1 = time()
             print " - execution time: %.2g sec" % (t1 - t0)
-            
+
             # insert value and commit to disk
             cur.execute("INSERT INTO Periods VALUES(%i, %f)"
                         % (id, omega_best))
             con.commit()
 
     con.close()
-    
 
     #cur.execute("SELECT * from Periods")
     #print cur.fetchall()

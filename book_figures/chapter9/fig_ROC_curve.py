@@ -33,6 +33,7 @@ y = y.astype(int)
 (X_train, X_test), (y_train, y_test) = split_samples(X, y, [0.75, 0.25],
                                                      random_state=0)
 
+
 #------------------------------------------------------------
 # Fit all the models to the training data, and cache to disk
 @pickle_results('rrlyrae_ROC.pkl')
@@ -90,11 +91,11 @@ thresholds = np.linspace(0, 1, 1001)[:-1]
 # iterate through and show results
 for name, y_prob in zip(names, probs):
     fpr, tpr, thresh = roc_curve(y_test, y_prob)
-    
+
     # add (0, 0) as first point
     fpr = np.concatenate([[0], fpr])
     tpr = np.concatenate([[0], tpr])
-    
+
     ax1.plot(fpr, tpr, label=labels[name])
 
     comp = np.zeros_like(thresholds)

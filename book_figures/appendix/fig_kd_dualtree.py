@@ -10,7 +10,7 @@ KD Dual-tree Diagram
 import numpy as np
 from matplotlib import pyplot as plt
 
-fig = plt.figure(figsize=(8,8))
+fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.05, right=0.95, bottom=0.05, top=0.95, hspace=0.05)
 
 #------------------------------------------------------------

@@ -21,11 +21,12 @@ radius = 0.3
 
 arrow_kwargs = dict(head_width=0.05, fc='black')
 
+
 # function to draw arrows
 def draw_connecting_arrow(ax, circ1, rad1, circ2, rad2):
     theta = np.arctan2(circ2[1] - circ1[1],
                        circ2[0] - circ1[0])
-    
+
     starting_point = (circ1[0] + rad1 * np.cos(theta),
                       circ1[1] + rad1 * np.sin(theta))
 
@@ -34,6 +35,7 @@ def draw_connecting_arrow(ax, circ1, rad1, circ2, rad2):
 
     ax.arrow(starting_point[0], starting_point[1],
              length[0], length[1], **arrow_kwargs)
+
 
 # function to draw circles
 def draw_circle(ax, center, radius):
@@ -47,7 +49,7 @@ y3 = 0
 
 #------------------------------------------------------------
 # draw circles
-for i,y1 in enumerate(np.linspace(1.5, -1.5, 4)):
+for i, y1 in enumerate(np.linspace(1.5, -1.5, 4)):
     draw_circle(ax, (x1, y1), radius)
     ax.text(x1 - 0.9, y1, 'Input #%i' % (i + 1),
             ha='right', va='center', fontsize=16)
@@ -68,7 +70,7 @@ for y1 in np.linspace(-1.5, 1.5, 4):
 
 for y2 in np.linspace(-2, 2, 5):
     draw_connecting_arrow(ax, (x2, y2), radius, (x3, y3), radius)
-    
+
 #------------------------------------------------------------
 # Add text labels
 plt.text(x1, 2.7, "Input\nLayer", ha='center', va='top', fontsize=16)

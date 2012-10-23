@@ -63,11 +63,11 @@ for Npts, ax, ls in zip([100, 1000, 10000], ax_list, linestyles):
 
     # plot the BIC
     ax_list[3].plot(Nclusters, BICs / Npts, ls, c='k',
-                    label="N=%i" % Npts)                  
+                    label="N=%i" % Npts)
 
     clf = clfs[np.argmin(BICs)]
     log_dens = clf.score(Xgrid).reshape((70, 70))
-    
+
     # scatter the points
     ax.plot(X[:, 0], X[:, 1], '.', c='gray', ms=1, zorder=1)
 
@@ -78,7 +78,7 @@ for Npts, ax, ls in zip([100, 1000, 10000], ax_list, linestyles):
         if cov.ndim == 1:
             cov = np.diag(cov)
         draw_ellipse(mean, cov, ax=ax, fc='none', ec='k', zorder=2)
-        
+
     # label the plot
     ax.text(0.05, 0.95, "N = %i points" % Npts,
             ha='left', va='top', transform=ax.transAxes,
@@ -104,5 +104,3 @@ ax_list[-1].set_ylabel('BIC / N')
 ax_list[-1].set_ylim(16, 18)
 
 plt.show()
-
-

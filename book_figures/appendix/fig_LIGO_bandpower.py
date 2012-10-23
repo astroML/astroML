@@ -36,8 +36,8 @@ X = fetch_LIGO_bigdog()
 t = X['t']
 x = X['Hanford']
 
-window_size=10000
-step_size=500
+window_size = 10000
+step_size = 500
 
 f, P = multiple_power_spectrum(t, x,
                                window_size=window_size, step_size=step_size)

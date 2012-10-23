@@ -18,26 +18,30 @@ from sklearn.tree import DecisionTreeClassifier
 
 from astroML.datasets import fetch_imaging_sample
 
+
 def get_x_position(level, n_levels, xmin=0.01, xmax=1):
     dx = (xmax - xmin) / (n_levels - 1.)
     return xmin + level * dx
+
 
 def get_y_position(level, j, ymin=0, ymax=1):
     n = 2 ** level
     dy = (ymax - ymin) * 1. / n
     return ymin + (j + 0.5) * dy
 
+
 def draw_connections(x_positions, y_positions, children, i, linestyle='-k'):
-    for c,y in zip(children, y_positions):
+    for c, y in zip(children, y_positions):
         if c == -1:
             continue
-        plt.plot(x_positions[i-1:i+1], [y, y], linestyle, lw=1)
+        plt.plot(x_positions[i - 1:i + 1], [y, y], linestyle, lw=1)
 
     for j in range(0, 2 ** i, 2):
         if children[j] == -1 or children[j + 1] == -1:
             continue
-        plt.plot(2*[x_positions[i - 1]], y_positions[j:j+2], linestyle, lw=1)
-        
+        plt.plot(2 * [x_positions[i - 1]], y_positions[j:j + 2],
+                 linestyle, lw=1)
+
 
 def visualize_tree(T, data, classes, labels=None, levels=5,
                    ymin=0, ymax=1, xmin=0, xmax=1):
@@ -77,14 +81,14 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
             split_mask = (data[:, T_feature[ind]] < T_threshold[ind])
             new_data_masks.append(np.logical_and(data_masks[j], split_mask))
             new_data_masks.append(np.logical_and(data_masks[j], ~split_mask))
-            
+
             n_stars = np.sum(classes[data_masks[j]] == 3)
             n_gals = np.sum(classes[data_masks[j]] == 6)
 
             text = "$%i\ /\ %i$" % (n_stars, n_gals)
 
             # assure that we're doing this correctly
-            assert (n_stars + n_gals ==  T_nsamples[ind])
+            assert (n_stars + n_gals == T_nsamples[ind])
 
             # check if node is a leaf
             if n_stars == 0:
@@ -95,9 +99,9 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
                 text += "\n" + r"$\rm split\ on$ %s" % labels[T_feature[ind]]
 
             if i < 4:
-                fontsize=12
+                fontsize = 12
             else:
-                fontsize=10
+                fontsize = 10
 
             plt.text(x_positions[i], y_positions[j], text,
                     ha='center', va='center',
@@ -107,7 +111,7 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
         # draw lines connecting nodes to parents
         if i > 0:
             draw_connections(x_positions, y_positions, node_list, i, '-k')
-        
+
         # get next set of nodes
         node_list = np.concatenate(list(T_children[node_list]))
 
@@ -123,8 +127,8 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
 
 data = fetch_imaging_sample()
 
-mag = np.vstack([data[f+'Raw'] for f in 'ugriz']
-                + [data[f+'RawPSF'] for f in 'ugriz']).T
+mag = np.vstack([data[f + 'Raw'] for f in 'ugriz']
+                + [data[f + 'RawPSF'] for f in 'ugriz']).T
 
 label = data['type']
 

@@ -16,6 +16,7 @@ from astroML.datasets import fetch_sdss_spectrum
 from astroML.datasets.tools import query_plate_mjd_fiber, TARGET_GALAXY
 from astroML.dimensionality import iterative_pca
 
+
 def fetch_and_shift_spectra(n_spectra,
                             outfile,
                             primtarget=TARGET_GALAXY,
@@ -71,7 +72,7 @@ def fetch_and_shift_spectra(n_spectra,
             continue
 
         spec_cln[i] = spec.spec_cln
-        
+
         lineindex_cln[i], (log_NII_Ha[i], log_OIII_Hb[i])\
             = spec.lineratio_index()
 
@@ -90,14 +91,14 @@ def fetch_and_shift_spectra(n_spectra,
     print "saving to %s" % outfile
 
     np.savez(outfile,
-             spectra = spectra[:N],
-             mask = mask[:N],
-             coeff0 = new_coeff0,
-             coeff1 = new_coeff1,
-             spec_cln = spec_cln[:N],
-             lineindex_cln = lineindex_cln[:N],
-             log_NII_Ha = log_NII_Ha[:N],
-             log_OIII_Hb = log_OIII_Hb[:N],
+             spectra=spectra[:N],
+             mask=mask[:N],
+             coeff0=new_coeff0,
+             coeff1=new_coeff1,
+             spec_cln=spec_cln[:N],
+             lineindex_cln=lineindex_cln[:N],
+             log_NII_Ha=log_NII_Ha[:N],
+             log_OIII_Hb=log_OIII_Hb[:N],
              z=z[:N],
              zerr=zerr[:N])
 
@@ -110,7 +111,7 @@ def spec_iterative_pca(outfile, n_ev=10, n_iter=20, norm='L2'):
     data_in = np.load(outfile)
     spectra = data_in['spectra']
     mask = data_in['mask']
-    
+
     res = iterative_pca(spectra, mask,
                         n_ev=n_ev, n_iter=n_iter, norm=norm,
                         full_output=True)
@@ -127,7 +128,7 @@ def spec_iterative_pca(outfile, n_ev=10, n_iter=20, norm='L2'):
 
     np.savez(outfile,
              **input_dict)
-        
+
 if __name__ == '__main__':
     fetch_and_shift_spectra(4000, 'spec4000.npz')
     spec_iterative_pca('spec4000.npz')

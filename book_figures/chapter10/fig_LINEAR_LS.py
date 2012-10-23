@@ -17,7 +17,8 @@ from astroML.datasets import fetch_LINEAR_sample
 #------------------------------------------------------------
 # Load the dataset
 data = fetch_LINEAR_sample()
-ids =  [14752041, 1009459, 10022663, 10025796, 11375941, 18525697]
+ids = [14752041, 1009459, 10022663, 10025796, 11375941, 18525697]
+
 
 #------------------------------------------------------------
 # Compute the best frequencies
@@ -30,7 +31,7 @@ def compute_best_frequencies(ids, n_eval=10000, n_retry=5, generalized=True):
         kwargs = dict(generalized=generalized)
         omega, power = search_frequencies(t, y, dy, n_eval=n_eval,
                                           n_retry=n_retry,
-                                          LS_kwargs = kwargs)
+                                          LS_kwargs=kwargs)
         results[i] = [omega, power]
 
     return results

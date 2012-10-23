@@ -7,7 +7,8 @@ the SDSS Stripe 82 standard stars.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
-import os, sys
+import os
+import sys
 from time import time
 
 import numpy as np
@@ -30,7 +31,7 @@ stX[:, 0] = standards_data['RA']
 stX[:, 1] = standards_data['DEC']
 
 # crossmatch catalogs
-max_radius = 1./3600  # 1 arcsec
+max_radius = 1. / 3600  # 1 arcsec
 dist, ind = crossmatch(imX, stX, max_radius)
 match = ~np.isinf(dist)
 

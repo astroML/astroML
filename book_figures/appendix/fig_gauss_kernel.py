@@ -57,9 +57,6 @@ plt.annotate("R.c", (x0, y0), (0.2, 0.2), arrowprops=dict(arrowstyle='-',
                                                          color='gray'),
             bbox=dict(boxstyle='round', ec='k', fc='w'))
 
-
-
-
 plt.xlim(-1.9, 1.9)
 plt.ylim(-1.2, 0.8)
 plt.show()
