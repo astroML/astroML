@@ -1,6 +1,7 @@
 import numpy as np
 from astroML.utils import check_random_state
 
+
 def bootstrap(data, n_bootstraps, user_statistic, kwargs=None,
               pass_indices=False, random_state=None):
     """Compute bootstraped statistics of a dataset.
@@ -55,7 +56,7 @@ def bootstrap(data, n_bootstraps, user_statistic, kwargs=None,
 
     # compute the statistic on the data
     return stat_bootstrap
-    
+
 
 def jackknife(data, user_statistic, kwargs=None,
               return_raw_distribution=False, pass_indices=False):
@@ -132,10 +133,9 @@ def jackknife(data, user_statistic, kwargs=None,
     stat_data = np.asarray(stat_data)
     ndim = stat_data.ndim
 
-
     if ndim == 0:
         raise ValueError("user_statistic should return row-wise statistics")
-    
+
     stat_data = np.atleast_2d(stat_data).T
     stat_jackknife = np.atleast_2d(stat_jackknife)
 
@@ -151,7 +151,7 @@ def jackknife(data, user_statistic, kwargs=None,
         results = zip(stat_corrected, sigma_stat, stat_jackknife)
     else:
         results = zip(stat_corrected, sigma_stat)
-                    
+
     if ndim == 1:
         return results[0]
     else:

@@ -21,7 +21,6 @@ def uniform_sphere(RAlim, DEClim, size=1):
     RA, DEC : ndarray
         the random sample on the sphere within the given limits.
         arrays have shape equal to size.
-   
     """
     zlim = np.sin(np.pi * np.asarray(DEClim) / 180.)
 
@@ -91,7 +90,7 @@ def two_point(data, bins, method='standard',
 
     if bins.ndim != 1:
         raise ValueError("bins must be a 1D array")
-    
+
     if data.ndim == 1:
         data = data[:, np.newaxis]
     elif data.ndim != 2:
@@ -109,7 +108,7 @@ def two_point(data, bins, method='standard',
         data_R = np.asarray(data_R)
         if (data_R.ndim != 2) or (data_R.shape[-1] != n_features):
             raise ValueError('data_R must have same n_features as data')
-    
+
     factor = len(data_R) * 1. / len(data)
 
     BT_D = BallTree(data)
@@ -183,7 +182,7 @@ def bootstrap_two_point(data, bins, Nbootstrap=10,
 
     if bins.ndim != 1:
         raise ValueError("bins must be a 1D array")
-    
+
     if data.ndim == 1:
         data = data[:, np.newaxis]
     elif data.ndim != 2:
@@ -195,10 +194,10 @@ def bootstrap_two_point(data, bins, Nbootstrap=10,
     n_samples, n_features = data.shape
 
     # get the baseline estimate
-    corr =  two_point(data, bins, method=method, random_state=rng)
-    
+    corr = two_point(data, bins, method=method, random_state=rng)
+
     bootstraps = np.zeros((Nbootstrap, len(corr)))
-                          
+
     for i in range(Nbootstrap):
         indices = rng.randint(0, n_samples, n_samples)
         bootstraps[i] = two_point(data[indices, :], bins, method=method,
@@ -249,7 +248,7 @@ def two_point_angular(ra, dec, bins, method='standard', random_state=None):
 
     if bins.ndim != 1:
         raise ValueError("bins must be a 1D array")
-    
+
     if (ra.ndim != 1) or (dec.ndim != 1) or (ra.shape != dec.shape):
         raise ValueError('ra and dec must be 1-dimensional '
                          'arrays of the same length')
@@ -261,7 +260,7 @@ def two_point_angular(ra, dec, bins, method='standard', random_state=None):
     ra_R, dec_R = uniform_sphere((min(ra), max(ra)),
                                  (min(dec), max(dec)),
                                  2 * len(ra))
-    
+
     data = np.asarray(ra_dec_to_xyz(ra, dec), order='F').T
     data_R = np.asarray(ra_dec_to_xyz(ra_R, dec_R), order='F').T
 
@@ -270,8 +269,6 @@ def two_point_angular(ra, dec, bins, method='standard', random_state=None):
 
     return two_point(data, bins_transform, method=method,
                      data_R=data_R, random_state=rng)
-
-
 
 
 def bootstrap_two_point_angular(ra, dec, bins, method='standard',
@@ -318,7 +315,7 @@ def bootstrap_two_point_angular(ra, dec, bins, method='standard',
 
     if bins.ndim != 1:
         raise ValueError("bins must be a 1D array")
-    
+
     if (ra.ndim != 1) or (dec.ndim != 1) or (ra.shape != dec.shape):
         raise ValueError('ra and dec must be 1-dimensional '
                          'arrays of the same length')
@@ -331,13 +328,13 @@ def bootstrap_two_point_angular(ra, dec, bins, method='standard',
     bins_transform = angular_dist_to_euclidean_dist(bins)
 
     bootstraps = []
-    
+
     for i in range(Nbootstraps):
         # draw a random sample with N points
         ra_R, dec_R = uniform_sphere((min(ra), max(ra)),
                                      (min(dec), max(dec)),
                                      2 * len(ra))
-    
+
         data_R = np.asarray(ra_dec_to_xyz(ra_R, dec_R), order='F').T
 
         if i > 0:
@@ -355,5 +352,3 @@ def bootstrap_two_point_angular(ra, dec, bins, method='standard',
     corr_err = np.std(bootstraps, 0, ddof=1)
 
     return corr, corr_err, bootstraps
-
-    

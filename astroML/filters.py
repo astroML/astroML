@@ -1,6 +1,7 @@
 import numpy as np
 from scipy import optimize, fftpack, signal
 
+
 # Note: there is a scipy PR to include an improved SG filter within the
 # scipy.signal submodule.  It should replace this when it's finished.
 # see http://github.com/scipy/scipy/pull/304
@@ -75,21 +76,22 @@ def savitzky_golay(y, window_size, order, deriv=0,
     if window_size < order + 2:
         raise TypeError("window_size is too small for the polynomials order")
 
-    order_range = range(order+1)
+    order_range = range(order + 1)
 
-    half_window = (window_size -1) // 2
+    half_window = (window_size - 1) // 2
 
     # precompute coefficients
-    b = np.mat([[k**i for i in order_range] for k in range(-half_window, half_window+1)])
+    b = np.mat([[k ** i for i in order_range]
+                for k in range(-half_window, half_window + 1)])
     m = np.linalg.pinv(b).A[deriv]
- 
+
     # pad the signal at the extremes with
     # values taken from the signal itself
-    firstvals = y[0] - np.abs( y[1:half_window+1][::-1] - y[0] )
-    lastvals = y[-1] + np.abs(y[-half_window-1:-1][::-1] - y[-1])
-    
+    firstvals = y[0] - np.abs(y[1:half_window + 1][::-1] - y[0])
+    lastvals = y[-1] + np.abs(y[-half_window - 1:-1][::-1] - y[-1])
+
     y = np.concatenate((firstvals, y, lastvals))
-    
+
     if use_fft:
         return signal.fftconvolve(m, y, mode='valid')
     else:
@@ -231,7 +233,6 @@ def min_component_filter(x, y, feature_mask, p=1, fcut=None, Q=None):
 
     if Q is None:
         Q = 0.1 * fcut
-    
 
     # compute polynomial features
     XX = x[:, None] ** np.arange(p + 1)

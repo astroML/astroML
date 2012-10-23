@@ -51,9 +51,9 @@ def logsumexp(arr, axis=None):
 
 def log_multivariate_gaussian(x, mu, V, Vinv=None, method=1):
     """Evaluate a multivariate gaussian N(x|mu, V)
-    
+
     This allows for multiple evaluations at once, using array broadcasting
-    
+
     Parameters
     ----------
     x: array_like
@@ -113,7 +113,7 @@ def log_multivariate_gaussian(x, mu, V, Vinv=None, method=1):
                           for i in range(V.shape[0])])
         logdet = np.array([2 * np.sum(np.log(np.diagonal(Vchol[i])))
                            for i in range(V.shape[0])])
-        
+
         VcholI = VcholI.reshape(Vshape)
         logdet = logdet.reshape(Vshape[:-2])
 
@@ -281,6 +281,6 @@ def convert_2D_cov(*args):
 
         return np.array([[sigma_x2, sigma_xy],
                          [sigma_xy, sigma_y2]])
-        
+
     else:
         raise ValueError("Input not understood")

@@ -19,7 +19,7 @@ def FT_continuous(t, h, axis=-1, method=1):
        H(f) = \int h(t) exp(-2 \pi i f t) dt
 
     It returns f and H, which approximate H(f).
-    
+
     Parameters
     ----------
     t : array_like
@@ -31,7 +31,7 @@ def FT_continuous(t, h, axis=-1, method=1):
     axis : int
         axis along which to perform fourier transform.
         This axis must be the same length as t.
-       
+
     Returns
     -------
     f : ndarray
@@ -62,7 +62,7 @@ def FT_continuous(t, h, axis=-1, method=1):
         H = Dt * fft(h * phase, axis=axis)
     else:
         H = Dt * fftshift(fft(h, axis=axis), axes=axis)
-    
+
     H *= phase
     H *= np.exp(-2j * np.pi * t0 * f.reshape(shape))
     H *= np.exp(-1j * np.pi * N / 2)
@@ -84,7 +84,7 @@ def IFT_continuous(f, H, axis=-1, method=1):
        h(t) = integral[ H(f) exp(2 pi i f t) dt]
 
     It returns t and h, which approximate h(t).
-    
+
     Parameters
     ----------
     f : array_like
@@ -96,7 +96,7 @@ def IFT_continuous(f, H, axis=-1, method=1):
     axis : int
         axis along which to perform fourier transform.
         This axis must be the same length as t.
-       
+
     Returns
     -------
     f : ndarray
@@ -114,7 +114,7 @@ def IFT_continuous(f, H, axis=-1, method=1):
     Df = f[1] - f[0]
 
     t0 = -0.5 / Df
-    Dt =  1. / (N * Df)
+    Dt = 1. / (N * Df)
     t = t0 + Dt * np.arange(N)
 
     shape = np.ones(H.ndim, dtype=int)
@@ -126,7 +126,7 @@ def IFT_continuous(f, H, axis=-1, method=1):
     H_prime = H * np.exp(2j * np.pi * t0 * f_calc)
     h_prime = ifft(H_prime, axis=axis)
     h = N * Df * np.exp(2j * np.pi * f0 * (t_calc - t0)) * h_prime
-    
+
     return t, h
 
 
@@ -146,7 +146,7 @@ def PSD_continuous(t, h, axis=-1, method=1):
     .. math::
 
         PSD(f) = |H(f)|^2 + |H(-f)|^2
-    
+
     Parameters
     ----------
     t : array_like
@@ -158,7 +158,7 @@ def PSD_continuous(t, h, axis=-1, method=1):
     axis : int
         axis along which to perform fourier transform.
         This axis must be the same length as t.
-       
+
     Returns
     -------
     f : ndarray
@@ -173,30 +173,31 @@ def PSD_continuous(t, h, axis=-1, method=1):
         raise ValueError("number of samples must be even")
 
     ax = axis % h.ndim
-    
+
     if method == 1:
         # use FT_continuous
         f, Hf = FT_continuous(t, h, axis)
         Hf = np.rollaxis(Hf, ax)
-        f = -f[N/2::-1]
-        PSD = abs(Hf[N/2::-1]) ** 2
-        PSD[:-1] += abs(Hf[N/2:]) ** 2
+        f = -f[N / 2::-1]
+        PSD = abs(Hf[N / 2::-1]) ** 2
+        PSD[:-1] += abs(Hf[N / 2:]) ** 2
         PSD = np.rollaxis(PSD, 0, ax + 1)
     else:
         # A faster way to do it is with fftshift
         # take advantage of the fact that phases go away
         Dt = t[1] - t[0]
         Df = 1. / (N * Dt)
-        f = Df * np.arange(N/2 + 1)
+        f = Df * np.arange(N / 2 + 1)
         Hf = fft(h, axis=axis)
         Hf = np.rollaxis(Hf, ax)
-        PSD = abs(Hf[:N/2 + 1]) ** 2
+        PSD = abs(Hf[:N / 2 + 1]) ** 2
         PSD[-1] = 0
-        PSD[1:] += abs(Hf[N/2:][::-1]) ** 2
+        PSD[1:] += abs(Hf[N / 2:][::-1]) ** 2
         PSD[0] *= 2
         PSD = Dt ** 2 * np.rollaxis(PSD, 0, ax + 1)
 
     return f, PSD
+
 
 def sinegauss(t, t0, f0, Q):
     """Sine-gaussian wavelet"""
@@ -224,7 +225,7 @@ def sinegauss_PSD(f, t0, f0, Q):
     """Compute the PSD of the sine-gaussian function at frequency f
 
     .. math::
-       
+
        PSD(f) = |H(f)|^2 + |H(-f)|^2
     """
     a = (f0 * 1. / Q) ** 2

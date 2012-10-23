@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.spatial import cKDTree
 
+
 def crossmatch(X1, X2, max_distance=np.inf):
     """Cross-match the values between X1 and X2
 
@@ -29,7 +30,7 @@ def crossmatch(X1, X2, max_distance=np.inf):
 
     N1, D = X1.shape
     N2, D2 = X2.shape
-    
+
     if D != D2:
         raise ValueError('Arrays must have the same second dimension')
 

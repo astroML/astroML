@@ -4,6 +4,7 @@ Functions for regression using sums-of-norms
 
 import numpy as np
 
+
 def norm(x, x0, sigma):
     return (1. / np.sqrt(2 * np.pi) / sigma
             * np.exp(-0.5 * (x - x0) ** 2 / sigma ** 2))
@@ -28,7 +29,7 @@ def sum_of_norms(x, y, num_gaussians=None, locs=None,
         will be uniformly spaced between the end-points of x.
     widths : float or array-like (optional)
         The widths of the gaussians to use.  If a single value, use this for
-        all widths.  If multiple values, the length must be equal to 
+        all widths.  If multiple values, the length must be equal to
         len(locs), if specified, and/or num_gaussians, if specified.
         If widths is not provided, then widths will be used which are
         half the distance between adjacent gaussians will be used.
@@ -62,7 +63,7 @@ def sum_of_norms(x, y, num_gaussians=None, locs=None,
     :math:`n` is the number of gaussians in the fit.  We seek the linear
     combination of these :math:`n` gaussians which minimizes the squared
     residual error, which in matrix form can be expressed
-    
+
     .. math:
         \epsilon = \min\left|y - Xw \right|
 
@@ -93,7 +94,7 @@ def sum_of_norms(x, y, num_gaussians=None, locs=None,
             num_gaussians = len(locs)
         if num_gaussians is not None:
             assert len(locs) == num_gaussians
-    
+
     if widths is None:
         widths = np.zeros(num_gaussians)
         widths[:-1] = locs[1:] - locs[:-1]
@@ -105,7 +106,7 @@ def sum_of_norms(x, y, num_gaussians=None, locs=None,
         widths = np.atleast_1d(widths)
         assert widths.size in (1, num_gaussians)
         widths = widths + np.zeros(num_gaussians)  # broadcast to shape
-    
+
     # use broadcasting to compute X in one go, without slow loops
     X = norm(x.reshape(n_training, 1),
              locs.reshape(1, num_gaussians),

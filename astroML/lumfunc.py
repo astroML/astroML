@@ -6,7 +6,7 @@ def _sorted_interpolate(x, y, x_eval):
     # note that x should be sorted
     N = len(x)
     ind = x.searchsorted(x_eval)
-    ind[ind == N] = N-1
+    ind[ind == N] = N - 1
 
     y_eval = np.zeros(x_eval.shape)
 
@@ -191,7 +191,7 @@ def bootstrap_Cminus(x, y, xmax, ymax, xbins, ybins,
     y_dist = np.zeros((Nbootstraps, len(ybins) - 1))
 
     for i in range(Nbootstraps):
-        ind = np.random.randint(0, len(x), len(x))        
+        ind = np.random.randint(0, len(x), len(x))
         x_dist[i], y_dist[i] = binned_Cminus(x[ind], y[ind],
                                              xmax[ind], ymax[ind],
                                              xbins, ybins,

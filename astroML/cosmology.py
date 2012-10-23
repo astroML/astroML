@@ -2,6 +2,7 @@ import numpy as np
 from scipy import integrate
 import pylab as pl
 
+
 class Cosmology:
     """Class to enable simple cosmological calculations.
 
@@ -47,7 +48,7 @@ class Cosmology:
         Line of sight comoving distance at redshift z
         Remains constant with epoch if objects are in the Hubble flow
         """
-        if z==0:
+        if z == 0:
             return 0
         else:
             f = lambda z: 1.0 / self._hinv(z)
@@ -63,11 +64,11 @@ class Cosmology:
         sOk = np.sqrt(abs(self.omegaK))
 
         if self.omegaK < 0.0:
-            return self.Dh * np.sin(sOk * self.Dc(z) / self.Dh ) / sOk
+            return self.Dh * np.sin(sOk * self.Dc(z) / self.Dh) / sOk
         elif self.omegaK == 0.0:
             return self.Dc(z)
         else:
-            return self.Dh * np.sinh(sOk * self.Dc(z) / self.Dh ) / sOk
+            return self.Dh * np.sinh(sOk * self.Dc(z) / self.Dh) / sOk
 
     def Dl(self, z):
         """Luminosity distance (Mpc) at redshift z"""

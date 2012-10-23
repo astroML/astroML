@@ -2,6 +2,7 @@ import os
 import cPickle
 import numpy as np
 
+
 def pickle_results(filename=None, verbose=True):
     """Generator for decorator which allows pickling the results of a funcion
 
@@ -43,6 +44,7 @@ def pickle_results(filename=None, verbose=True):
     def pickle_func(f, filename=filename, verbose=verbose):
         if filename is None:
             filename = '%s_output.pkl' % f.__name__
+
         def new_f(*args, **kwargs):
             try:
                 D = cPickle.load(open(filename, 'r'))
@@ -50,7 +52,6 @@ def pickle_results(filename=None, verbose=True):
             except:
                 D = {}
                 cache_exists = False
-                
 
             # simple comparison doesn't work in the case of numpy arrays
             Dargs = D.get('args')
@@ -90,7 +91,6 @@ def pickle_results(filename=None, verbose=True):
                 cPickle.dump(dict(funcname=f.__name__, retval=retval,
                                   args=args, kwargs=kwargs),
                              open(filename, 'w'))
-        
             return retval
         return new_f
     return pickle_func
