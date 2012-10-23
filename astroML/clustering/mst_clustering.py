@@ -76,7 +76,7 @@ class HierarchicalClustering:
 
         # generate a sparse graph using the k nearest neighbors of each point
         G = kneighbors_graph(X, n_neighbors=self.n_neighbors, mode='distance')
-        
+
         # Compute the minimum spanning tree of this graph
         self.full_tree_ = minimum_spanning_tree(G, overwrite=True)
 
@@ -186,4 +186,3 @@ def get_graph_segments(X, G):
     y_coords = np.vstack([A[1], B[1]])
 
     return x_coords, y_coords
-    

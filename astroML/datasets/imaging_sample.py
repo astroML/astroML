@@ -5,8 +5,11 @@ import numpy as np
 from . import get_data_home
 from tools import download_with_progress_bar
 
-DATA_URL = "http://www.astro.washington.edu/users/ivezic/DMbook/data/imagingSample_20sqdeg.fit"
-DATA_URL = "http://www.astro.washington.edu/users/ivezic/DMbook/data/sgSDSSimagingSample.fit"
+DATA_URL = ("http://www.astro.washington.edu/users/"
+            "ivezic/DMbook/data/imagingSample_20sqdeg.fit")
+DATA_URL = ("http://www.astro.washington.edu/users/"
+            "ivezic/DMbook/data/sgSDSSimagingSample.fit")
+
 
 def fetch_imaging_sample(data_home=None, download_if_missing=True):
     """Loader for SDSS Imaging sample data
@@ -50,26 +53,26 @@ def fetch_imaging_sample(data_home=None, download_if_missing=True):
           round(p.extinction_r,3) as rExtSFD, --- r band extinction from SFD
           round(p.modelMag_u,3) as uRaw,      --- ISM-uncorrected model mags
           round(p.modelMag_g,3) as gRaw,      --- rounding up model magnitudes
-          round(p.modelMag_r,3) as rRaw,  
-          round(p.modelMag_i,3) as iRaw, 
-          round(p.modelMag_z,3) as zRaw, 
-          round(p.modelMagErr_u,3) as uErr,   --- errors are important! 
-          round(p.modelMagErr_g,3) as gErr, 
-          round(p.modelMagErr_r,3) as rErr, 
+          round(p.modelMag_r,3) as rRaw,
+          round(p.modelMag_i,3) as iRaw,
+          round(p.modelMag_z,3) as zRaw,
+          round(p.modelMagErr_u,3) as uErr,   --- errors are important!
+          round(p.modelMagErr_g,3) as gErr,
+          round(p.modelMagErr_r,3) as rErr,
           round(p.modelMagErr_i,3) as iErr,
           round(p.modelMagErr_z,3) as zErr,
-          round(p.psfMag_u,3) as psfRaw,      --- psf magnitudes 
-          round(p.psfMag_g,3) as psfRaw,       
-          round(p.psfMag_r,3) as psfRaw,  
-          round(p.psfMag_i,3) as psfRaw, 
-          round(p.psfMag_z,3) as psfRaw, 
-          round(p.psfMagErr_u,3) as psfuErr,    
-          round(p.psfMagErr_g,3) as psfgErr, 
-          round(p.psfMagErr_r,3) as psfrErr, 
+          round(p.psfMag_u,3) as psfRaw,      --- psf magnitudes
+          round(p.psfMag_g,3) as psfRaw,
+          round(p.psfMag_r,3) as psfRaw,
+          round(p.psfMag_i,3) as psfRaw,
+          round(p.psfMag_z,3) as psfRaw,
+          round(p.psfMagErr_u,3) as psfuErr,
+          round(p.psfMagErr_g,3) as psfgErr,
+          round(p.psfMagErr_r,3) as psfrErr,
           round(p.psfMagErr_i,3) as psfiErr,
           round(p.psfMagErr_z,3) as psfzErr,
-          p.type,                          --- tells if a source is resolved or not
-          (case when (p.flags & '16') = 0 then 1 else 0 end) as ISOLATED --- useful
+          p.type,                   --- tells if a source is resolved or not
+          (case when (p.flags & '16') = 0 then 1 else 0 end) as ISOLATED
         INTO mydb.SDSSimagingSample
         FROM PhotoTag p
         WHERE

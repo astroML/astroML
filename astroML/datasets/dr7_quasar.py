@@ -78,7 +78,7 @@ def fetch_dr7_quasar(data_home=None, download_if_missing=True):
     Notes
     -----
     Not all available data is extracted and saved.  The extracted columns are:
-    
+
     sdssID, RA, DEC, redshift, mag_u, err_u, mag_g, err_g, mag_r, err_r,
     mag_i, err_i, mag_z, err_z, mag_J, err_J, mag_H, err_H, mag_K, err_K,
     specobjid
@@ -91,7 +91,7 @@ def fetch_dr7_quasar(data_home=None, download_if_missing=True):
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
         os.makedirs(data_home)
-    
+
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 
     if not os.path.exists(archive_file):
@@ -115,4 +115,3 @@ def fetch_dr7_quasar(data_home=None, download_if_missing=True):
         data = np.load(archive_file)
 
     return data
-

@@ -25,7 +25,7 @@ def generate_mu_z(size=1000, z0=0.3, dmu_0=0.1, dmu_1=0.02,
         random seed or random number generator
     **kwargs :
         additional keyword arguments are passed to the Cosmology function
-    
+
     Returns
     -------
     z, mu, dmu : ndarrays
@@ -37,7 +37,7 @@ def generate_mu_z(size=1000, z0=0.3, dmu_0=0.1, dmu_1=0.02,
     zdist = FunctionDistribution(redshift_distribution, func_args=dict(z0=z0),
                                  xmin=0.1 * z0, xmax=10 * z0,
                                  random_state=random_state)
-    
+
     z_sample = zdist.rvs(size)
     mu_sample = np.asarray(map(cosmo.mu, np.ravel(z_sample))).reshape(size)
     dmu = dmu_0 + dmu_1 * mu_sample

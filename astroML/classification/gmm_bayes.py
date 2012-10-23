@@ -22,7 +22,7 @@ class GMMBayes(BaseNB):
     n_components : int or list
         number of components to use in the gmm.  If specified as a list, it
         must match the number of class labels
-    
+
     other keywords are passed directly to GMM
     """
     def __init__(self, n_components=1, **kwargs):
@@ -50,7 +50,7 @@ class GMMBayes(BaseNB):
 
         self.gmms_ = [None for i in range(n_classes)]
         self.class_prior_ = np.zeros(n_classes)
-        
+
         n_comp = np.zeros(len(self.classes_), dtype=int) + self.n_components
 
         for i, y_i in enumerate(unique_y):
