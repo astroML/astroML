@@ -20,16 +20,26 @@ written in python only, and is designed to be very easy to install for
 any users, even those who don't have a working C or fortran compiler.
 A companion library, ``astroML_addons``, can be optionally installed for
 increased performance on certain algorithms.  Every algorithm
-in ``astroML_addons`` exists in the core ``astroML`` implementation, but the
-``astroML_addons`` library contains faster and more efficient implementations.
+in ``astroML_addons`` has a pure python counterpart in the
+core ``astroML`` implementation, but the ``astroML_addons`` library
+contains faster and more efficient implementations in compiled code.
 Furthermore, if ``astroML_addons`` is installed on your system, the core
 ``astroML`` library will import and use the faster routines by default.
+
+The reason for this split is the ease of use for newcomers to Python.  If the
+prerequisites are already installed on your system, the core ``astroML``
+library can be installed and used on any system with little trouble.  The
+``astroML_addons`` library requires a C compiler, but is also designed to be
+easy to install for more advanced users.  See further discussion in
+"Development", below.
 
 
 Important Links
 ---------------
-- Source-code repository: http://github.com/astroML/astroML
 - HTML documentation: http://astroML.github.com
+- Source-code repository: http://github.com/astroML/astroML
+- Issue Tracker: http://github.com/astroML/astroML/issues
+- Mailing List: https://groups.google.com/forum/#!forum/astroml-general
 
 
 Installation
@@ -96,15 +106,17 @@ The fast code in ``astroML_addons`` requires a working C/C++ compiler.
 
 Optional Dependencies
 ---------------------
-Several of the example scripts require specialized or upgraded packages.  These
-requirements are listed at the top of the example scripts.
+Several of the example scripts require specialized or upgraded packages.
+These requirements are listed at the top of the particular scripts
 
 - `scipy <http://www.scipy.org>`_ version 0.11 added a sparse graph submodule.
   The minimum spanning tree example requires scipy >= 0.11
+
 - `pyMC <http://pymc-devs.github.com/pymc/>`_
   provides a nice interface for Markov-Chain Monte Carlo.  Several examples
   use pyMC for exploration of high-dimensional spaces.  The examples
   were written with pymc version 2.2
+
 - `healpy <https://github.com/healpy/healpy>`_ provides an interface to
   the HEALPix pixelization scheme, as well as fast spherical harmonic
   transforms.

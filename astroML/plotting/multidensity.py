@@ -2,26 +2,32 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import ticker
 
-def multiimshow(data, extents, labels,
-                xspacing=0.01, yspacing=0.01,
-                left=0.1, right=0.1, bottom=0.1, top=0.1,
-                fig=None,
-                imshow_kwargs={}):
-    """
-    show a multi-panel projection of a data cube
+def densityplot(x, y, bins=None, cmap=plt.cm.jet, ax=None, **kwargs):
+    if ax is None:
+        ax = plt.gca()
 
-    Parameters
-    ----------
-    data : array, shape = (n_features, n_features, N, N)
-        data[i,j] is the image showing the density of feature i vs feature j
-    extents : array, shape = (n_features, 2)
-        extents[i] gives the extent of feature i
+    H, xbins, ybins = np.histogram2d(x, y, bins)
+    ax.imshow(H.T, origin='lower',
+              extent=(xbins[0], xbins[-1], ybins[0], ybins[-1]),
+              aspect='auto', **kwargs)
+
+
+def multidensity(data, labels=None, bins=None,
+                 xspacing=0.01, yspacing=0.01,
+                 left=0.1, right=0.1, bottom=0.1, top=0.1,
+                 fig=None,
+                 kwargs={}):
+    """
+    Make a multiple-panel scatter-plot
     """
     if fig is None:
         fig = plt.figure(figsize=(10,10))
 
-    n_features = data.ndim
-    
+    n_samples, n_features = data.shape
+
+    if bins is None:
+        bins = n_features * [100]
+
     xsize = (1. - left - right - xspacing * (n_features - 2)) / (n_features - 1)
     ysize = (1. - top - bottom - yspacing * (n_features - 2)) / (n_features - 1)
 
@@ -36,13 +42,9 @@ def multiimshow(data, extents, labels,
             ax = fig.add_axes([xlocs[i], ylocs[j], xsize, ysize])
             ax_list[i, j] = ax
 
-            kwargs = imshow_kwargs.copy()
-            kwargs['extent'] = (tuple(extents[i])
-                                + tuple(extents[n_features - 1 - j]))
-            kwargs['aspect'] = 'auto'
-            kwargs['origin'] = 'lower'
-
-            ax.imshow(data[i, n_features - 1 - j], **kwargs)
+            densityplot(data[:, i], data[:, n_features - 1 - j], 
+                        (bins[i], bins[n_features - 1 - j]),
+                        **kwargs)
                 
             if i == 0:
                 ax.set_ylabel(labels[n_features - 1 - j])
@@ -51,8 +53,10 @@ def multiimshow(data, extents, labels,
 
             if j == 0:
                 ax.set_xlabel(labels[i])
+                ticklabels = ax.get_xticklabels()
+                for label in ticklabels:
+                    label.set_rotation(90) 
             else:
                 ax.xaxis.set_major_formatter(ticker.NullFormatter())
-
 
     return ax_list

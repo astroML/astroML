@@ -27,7 +27,6 @@ Functions
    :template: function.rst
 
    plotting.hist
-   plotting.hist_with_fit
    plotting.scatter_contour
 
 Density Estimation & Histograms: :mod:`astroML.density_estimation`

@@ -7,6 +7,23 @@ from .likelihood import convert_to_stdev
 def plot_mcmc_contours(x, y, ax=None,
                        levels=[0.683, 0.955],
                        bins=20, **contour_args):
+    """Plot Contours given an MCMC sample
+
+    Parameters
+    ----------
+    x, y : ndarrays
+        arrays giving the x and y coordinates of the MCMC point chain
+    ax : matplotlib.Axes instance
+        the axes instance on which to plot.  If not specified, then use
+        the current axes
+    levels : array_like
+        the list of percentile levels at which to plot contours.  Each
+        entry should be between 0 and 1
+    bins : int, tuple, array, or tuple of arrays
+        the binning parameter passed to np.histogram2d.  It is assumed that
+        the point density is constant on the scale of the bins
+    additional arguments are passed to ax.contour()
+    """
     if ax is None:
         ax = plt.gca()
 
@@ -21,9 +38,45 @@ def plot_mcmc_contours(x, y, ax=None,
 
 
 def plot_mcmc(traces, labels=None, limits=None, true_values=None,
-              max_posterior=None, fig=None, contour=True, scatter=False,
+              fig=None, contour=True, scatter=False,
               levels=[0.683, 0.955], bins=20,
               bounds=[0.08, 0.08, 0.95, 0.95], **kwargs):
+    """Plot a grid of MCMC results
+
+    Parameters
+    ----------
+    traces : array_like
+        the MCMC chain traces.  shape is [Ndim, Nchain]
+    labels : list of strings (optional)
+        if specified, the label associated with each trace
+    limits : list of tuples (optional)
+        if specified, the axes limits for each trace
+    true_values : list of floats (optional)
+        if specified, the true value for each trace (will be indicated with
+        an 'X' on the plot)
+    fig : matplotlib.Figure (optional)
+        the figure on which to draw the axes.  If not specified, a new one
+        will be created.
+    contour : bool (optional)
+        if True, then draw contours in each subplot.  Default=True.
+    scatter : bool (optional)
+        if True, then scatter points in each subplot.  Default=False.
+    levels : list of floats
+        the list of percentile levels at which to plot contours.  Each
+        entry should be between 0 and 1
+    bins : int, tuple, array, or tuple of arrays
+        the binning parameter passed to np.histogram2d.  It is assumed that
+        the point density is constant on the scale of the bins
+    bounds : list of floats
+        the bounds of the set of axes used for plotting
+
+    additional keyword arguments are passed to scatter() and contour()
+
+    Returns
+    -------
+    axes_list : list of matplotlib.Axes instances
+        the list of axes created by the routine
+    """
     if fig is None:
         fig = plt.figure(figsize=(8, 8))
 
