@@ -54,7 +54,7 @@ ax1.plot([period[0], period[-1]], [sig1, sig1], ':', c='black')
 ax1.plot([period[0], period[-1]], [sig5, sig5], ':', c='black')
 
 ax1.annotate(" ", (0.3, 0.65), (0.3, 0.85), ha='center',
-            arrowprops=dict(arrowstyle='->'))
+             arrowprops=dict(arrowstyle='->'))
 
 ax1.set_xlim(period[0], period[-1])
 ax1.set_ylim(-0.05, 0.85)

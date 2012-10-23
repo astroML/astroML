@@ -54,9 +54,9 @@ fig = plt.figure()
 ax = fig.add_axes([0.35, 0.35, 0.45, 0.6], xticks=[], yticks=[])
 logL[logL < -10] = -10  # truncate for clean plotting
 plt.imshow(logL, origin='lower',
-          extent=(mu[0], mu[-1], W[0], W[-1]),
-          cmap=plt.cm.binary,
-          aspect='auto')
+           extent=(mu[0], mu[-1], W[0], W[-1]),
+           cmap=plt.cm.binary,
+           aspect='auto')
 
 # colorbar
 cax = plt.axes([0.82, 0.35, 0.02, 0.6])

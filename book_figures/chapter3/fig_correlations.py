@@ -32,8 +32,7 @@ f = 0.01
 # sample the distribution
 # without outliers and with outliers
 np.random.seed(0)
-X = bivariate_normal(mu, sigma1, sigma2,
-                   alpha, N)
+X = bivariate_normal(mu, sigma1, sigma2, alpha, N)
 
 X_out = X.copy()
 X_out[:int(f * N)] = bivariate_normal(mu, 2, 5,

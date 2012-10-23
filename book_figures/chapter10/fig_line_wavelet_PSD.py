@@ -107,6 +107,6 @@ ax.set_xlabel('$t$')
 ax.set_ylabel('$f_0$')
 
 ax.yaxis.set_major_locator(plt.MultipleLocator(1))
-ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, *args:
-                                                  "1/%i" % (2 ** -x)))
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, *args: ("1/%i"
+                                                                 % (2 ** -x))))
 plt.show()

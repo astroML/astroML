@@ -27,15 +27,17 @@ log_V_cube = dims * np.log(2)
 # compute the log of f_k to avoid overflow errors
 log_f_k = log_V_sphere - log_V_cube
 
-plt.semilogy(dims, np.exp(log_V_cube), '-k',
+ax = plt.axes()
+ax.semilogy(dims, np.exp(log_V_cube), '-k',
             label='side-2 hypercube')
-plt.semilogy(dims, np.exp(log_V_sphere), '--k',
+ax.semilogy(dims, np.exp(log_V_sphere), '--k',
             label='inscribed unit hypersphere')
 
-plt.xlim(0, 50)
-plt.ylim(1E-13, 1E15)
+ax.set_xlim(0, 50)
+ax.set_ylim(1E-13, 1E15)
 
-plt.xlabel('Number of Dimensions')
-plt.ylabel('Hyper-Volume')
-plt.legend(loc=3)
+ax.set_xlabel('Number of Dimensions')
+ax.set_ylabel('Hyper-Volume')
+ax.legend(loc=3)
+
 plt.show()

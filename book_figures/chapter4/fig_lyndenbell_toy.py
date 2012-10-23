@@ -83,7 +83,7 @@ ax.set_ylabel('normalized distribution')
 ax = fig.add_subplot(122)
 H, xb, yb = np.histogram2d(x, y, bins=np.linspace(0, 1, 41))
 plt.imshow(H.T, origin='lower', interpolation='nearest',
-          extent=[0, 1, 0, 1], cmap=plt.cm.binary)
+           extent=[0, 1, 0, 1], cmap=plt.cm.binary)
 cb = plt.colorbar()
 
 x_limit = np.linspace(-0.1, 1.1, 1000)

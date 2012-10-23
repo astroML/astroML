@@ -55,7 +55,7 @@ fig.subplots_adjust(hspace=0.05, wspace=0.05)
 ax = fig.add_subplot(221)
 ax.plot(x, y, '-k', label=r'data $D(x)$')
 ax.fill(x, w, color='gray', alpha=0.5,
-                label=r'window $W(x)$')
+        label=r'window $W(x)$')
 ax.fill(x, w[::-1], color='gray', alpha=0.5)
 
 ax.legend(prop=dict(size=14))

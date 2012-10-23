@@ -47,8 +47,8 @@ ax.set_title('Mercator projection')
 # Other projections can be done more automatically
 plt.figure(figsize=(10, 8))
 plt.subplots_adjust(hspace=0, wspace=0.1,
-                   left=0.05, right=0.95,
-                   bottom=0.05, top=1.0)
+                    left=0.05, right=0.95,
+                    bottom=0.05, top=1.0)
 
 for (i, projection) in enumerate(['Hammer', 'Aitoff', 'Mollweide', 'Lambert']):
     ax = plt.subplot(221 + i, projection=projection.lower())

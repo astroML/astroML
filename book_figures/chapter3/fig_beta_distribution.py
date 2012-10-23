@@ -43,7 +43,7 @@ for a, b, ls in zip(alpha_values, beta_values, linestyles):
     dist = beta(a, b)
 
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
-            label=r'$\alpha=%.1f,\ \beta=%.1f$' % (a, b))
+             label=r'$\alpha=%.1f,\ \beta=%.1f$' % (a, b))
 
 plt.xlim(0, 1)
 plt.ylim(0, 3)

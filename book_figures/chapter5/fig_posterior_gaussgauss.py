@@ -89,7 +89,7 @@ mu_boot, sigma_boot = approximate_mu_sigma(xi_boot, ei_boot, 0)
 # Plot data
 fig = plt.figure(figsize=(8, 4))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.24,
-                   bottom=0.15, top=0.9)
+                    bottom=0.15, top=0.9)
 
 # first plot the histograms for mu
 ax = fig.add_subplot(121)

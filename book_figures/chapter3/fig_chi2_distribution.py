@@ -43,7 +43,7 @@ for k, ls in zip(k_values, linestyles):
     dist = chi2(k, mu)
 
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
-            label=r'$k=%i$' % k)
+             label=r'$k=%i$' % k)
 
 plt.xlim(0, 10)
 plt.ylim(0, 0.6)

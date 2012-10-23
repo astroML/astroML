@@ -39,8 +39,8 @@ for n_gaussians in (10, 50, 100):
     plt.legend(loc=0)
 
     plt.text(0.97, 0.8,
-            "rms error = %.2g" % rms,
-            ha='right', va='top', transform=plt.gca().transAxes)
+             "rms error = %.2g" % rms,
+             ha='right', va='top', transform=plt.gca().transAxes)
     plt.title("Fit to a Spectrum with a Sum of %i Gaussians" % n_gaussians)
 
 plt.show()

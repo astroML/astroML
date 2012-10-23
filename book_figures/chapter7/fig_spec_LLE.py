@@ -57,9 +57,7 @@ cdict = ['unknown', 'star', 'absorption galaxy',
          'galaxy', 'emission galaxy',
          'narrow-line QSO', 'broad-line QSO']
 cticks = [2, 3, 4, 5, 6]
-formatter = plt.FuncFormatter(lambda t, *args:
-                                 cdict[int(np.round(t))])
-
+formatter = plt.FuncFormatter(lambda t, *args: cdict[int(np.round(t))])
 
 #------------------------------------------------------------
 # Plot the results

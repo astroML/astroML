@@ -53,7 +53,7 @@ x_sample = interpolate.splev(Px_cuml_sample, tck)
 # Plot the cloned distribution and the procedure for obtaining it
 fig = plt.figure(figsize=(10, 10))
 fig.subplots_adjust(hspace=0.25, left=0.1, right=0.95,
-                   bottom=0.08, top=0.92)
+                    bottom=0.08, top=0.92)
 
 indices = np.linspace(0, Ndata - 1, 20).astype(int)
 

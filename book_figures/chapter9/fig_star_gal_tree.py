@@ -65,7 +65,7 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
 
         # plot the positions of the nodes
         plt.plot(x_positions[i] * np.ones(2 ** i)[mask],
-                y_positions[mask], 'ok')
+                 y_positions[mask], 'ok')
 
         data_masks = new_data_masks
         new_data_masks = []
@@ -104,9 +104,9 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
                 fontsize = 10
 
             plt.text(x_positions[i], y_positions[j], text,
-                    ha='center', va='center',
-                    fontsize=fontsize,
-                    bbox=dict(boxstyle='round', ec='k', fc='w'))
+                     ha='center', va='center',
+                     fontsize=fontsize,
+                     bbox=dict(boxstyle='round', ec='k', fc='w'))
 
         # draw lines connecting nodes to parents
         if i > 0:
@@ -171,23 +171,23 @@ visualize_tree(clf, mag_train, label_train,
                        [r'$\rm %s\_psf$' % f for f in 'ugriz']))
 
 plt.text(0.1, 0.95, (" Numbers are\n"
-                    " star count / galaxy count\n"
-                    " in each node"),
-        ha='center', va='center',
-        fontsize=12,
-        bbox=dict(boxstyle='round', ec='k', fc='w'))
+                     " star count / galaxy count\n"
+                     " in each node"),
+         ha='center', va='center',
+         fontsize=12,
+         bbox=dict(boxstyle='round', ec='k', fc='w'))
 
 plt.text(-0.08, 0.01, ("Training Set Size:\n"
-                      "  %i objects\n\n"
-                      "Cross-Validation, with\n"
-                      "  %i galaxies (positive)\n"
-                      "  %i stars (negative)\n"
-                      "  false positives: %i (%.1f%%)\n"
-                      "  false negatives: %i (%.1f%%)"
-                      % (len(label_train), tot_pos, tot_neg,
-                         fp, fp * 100. / (tp + fp),
-                         fn, fn * 100. / (tn + fn))),
-        fontsize=12, ha='left', va='bottom')
+                       "  %i objects\n\n"
+                       "Cross-Validation, with\n"
+                       "  %i galaxies (positive)\n"
+                       "  %i stars (negative)\n"
+                       "  false positives: %i (%.1f%%)\n"
+                       "  false negatives: %i (%.1f%%)"
+                       % (len(label_train), tot_pos, tot_neg,
+                          fp, fp * 100. / (tp + fp),
+                          fn, fn * 100. / (tn + fn))),
+         fontsize=12, ha='left', va='bottom')
 
 #--------------------------------------------------
 # compute statistics for a larger training set

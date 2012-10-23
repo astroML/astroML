@@ -28,9 +28,9 @@ DEC *= np.pi / 180
 ax = plt.axes(projection='mollweide')
 
 ax = plt.axes()
-plt.grid(True)
+ax.grid()
 plt.scatter(RA, DEC, s=1, lw=0, c=data['z'], cmap=plt.cm.copper,
-           vmin=0, vmax=0.4)
+            vmin=0, vmax=0.4)
 
 plt.title('SDSS DR8 Spectroscopic Galaxies')
 cb = plt.colorbar(cax=plt.axes([0.05, 0.1, 0.9, 0.05]),
@@ -48,7 +48,7 @@ rPetro = data['petroMag_r']
 plt.figure()
 ax = plt.axes()
 plt.scatter(u - r, rPetro, s=1, lw=0, c=data['z'], cmap=plt.cm.copper,
-           vmin=0, vmax=0.4)
+            vmin=0, vmax=0.4)
 plt.colorbar(ticks=np.linspace(0, 0.4, 9)).set_label('redshift')
 
 plt.xlim(0.5, 5.5)

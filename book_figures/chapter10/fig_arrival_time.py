@@ -18,7 +18,7 @@ import scipy.misc
 scipy.derivative = scipy.misc.derivative
 import pymc
 
-from astroML.plotting.mcmc  import plot_mcmc
+from astroML.plotting.mcmc import plot_mcmc
 from astroML.decorators import pickle_results
 
 #------------------------------------------------------------

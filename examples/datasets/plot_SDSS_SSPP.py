@@ -75,7 +75,7 @@ plt.xlabel(r'$\mathrm{T_{eff}}$')
 plt.ylabel(r'$\mathrm{log(g)}$')
 
 cb = plt.colorbar(ticks=np.arange(-2.5, 1, 0.5),
-                 format=r'$%.1f$', orientation='horizontal')
+                  format=r'$%.1f$', orientation='horizontal')
 cb.set_label(r'$\mathrm{mean\ [Fe/H]\ in\ pixel}$')
 plt.clim(-2.5, 0.5)
 

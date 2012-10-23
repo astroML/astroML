@@ -65,8 +65,8 @@ fig.subplots_adjust(left=0.17, top=0.95)
 
 ax = fig.add_subplot(211)
 plt.imshow(logL, origin='lower', aspect='auto',
-          extent=(sigma[0], sigma[-1], A[0], A[-1]),
-          cmap=plt.cm.binary)
+           extent=(sigma[0], sigma[-1], A[0], A[-1]),
+           cmap=plt.cm.binary)
 plt.colorbar()
 plt.clim(-5, 0)
 ax.set_xlabel(r'$\sigma$')

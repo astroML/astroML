@@ -51,7 +51,7 @@ class QuadTree:
             data_q3 = data[(data[:, 0] >= mids[0])
                            & (data[:, 1] < mids[1])]
             data_q4 = data[(data[:, 0] >= mids[0])
-                               & (data[:, 1] >= mids[1])]
+                           & (data[:, 1] >= mids[1])]
 
             # recursively build a quad tree on each quadrant which has data
             if data_q1.shape[0] > 0:
@@ -75,7 +75,7 @@ class QuadTree:
         """Recursively plot a visualization of the quad tree region"""
         if depth is None or depth == 0:
             rect = plt.Rectangle(self.mins, *self.sizes, zorder=2,
-                                ec='#000000', fc='none')
+                                 ec='#000000', fc='none')
             ax.add_patch(rect)
         if depth is None or depth > 0:
             for child in self.children:

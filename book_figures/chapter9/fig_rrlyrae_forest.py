@@ -137,11 +137,11 @@ print "contamination", contamination
 # plot the results
 plt.figure(figsize=(8, 4))
 plt.subplots_adjust(bottom=0.15, top=0.95, hspace=0.0,
-                   left=0.1, right=0.95, wspace=0.2)
+                    left=0.1, right=0.95, wspace=0.2)
 
 ax = plt.subplot(121)
 plt.scatter(X[-N_plot:, 0], X[-N_plot:, 1], c=y[-N_plot:],
-           s=4, lw=0, cmap=plt.cm.binary, zorder=2)
+            s=4, lw=0, cmap=plt.cm.binary, zorder=2)
 plt.clim(-0.5, 1)
 
 clf = classifiers[1][1]
@@ -167,7 +167,7 @@ plt.xlabel('u-g')
 plt.ylabel('g-r')
 
 plt.text(0.02, 0.02, "depth = %i" % depths[1],
-        transform=ax.transAxes)
+         transform=ax.transAxes)
 
 ax = plt.subplot(222)
 plt.plot(Ncolors, completeness[0], 'o-k', label="depth=%i" % depths[0])
@@ -186,8 +186,8 @@ ax = plt.subplot(224)
 plt.plot(Ncolors, contamination[0], 'o-k', label="depth=%i" % depths[0])
 plt.plot(Ncolors, contamination[1], '^--k', label="depth=%i" % depths[1])
 plt.legend(prop=dict(size=12),
-          loc='lower right',
-          bbox_to_anchor=(1.0, 0.79))
+           loc='lower right',
+           bbox_to_anchor=(1.0, 0.79))
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(1))
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))

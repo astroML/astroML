@@ -51,7 +51,7 @@ def plot_results(z, z_fit, plotlabel=None,
 
     if plotlabel:
         plt.text(0.03, 0.97, plotlabel,
-                ha='left', va='top', transform=ax.transAxes)
+                 ha='left', va='top', transform=ax.transAxes)
 
     if xlabel:
         plt.xlabel(r'$\rm z_{true}$', fontsize=16)
@@ -121,8 +121,8 @@ def gaussian_RBF_features(X, centers, widths):
 
 plt.figure(figsize=(8, 8))
 plt.subplots_adjust(hspace=0.05, wspace=0.05,
-                   left=0.1, right=0.95,
-                   bottom=0.1, top=0.95)
+                    left=0.1, right=0.95,
+                    bottom=0.1, top=0.95)
 
 #----------------------------------------------------------------------
 # first do a simple linear regression between the r-band and redshift,

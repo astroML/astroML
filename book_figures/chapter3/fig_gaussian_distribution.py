@@ -46,7 +46,7 @@ for sigma, ls in zip(sigma_values, linestyles):
     dist = norm(mu, sigma)
 
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
-            label=r'$\mu=%i,\ \sigma=%.1f$' % (mu, sigma))
+             label=r'$\mu=%i,\ \sigma=%.1f$' % (mu, sigma))
 
 plt.xlim(-5, 5)
 plt.ylim(0, 1.0)

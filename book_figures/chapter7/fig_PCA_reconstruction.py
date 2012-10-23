@@ -66,8 +66,8 @@ for subplot, i in zip(subplots, specnums):
     ylim = ax.get_ylim()
     mask_shade = ylim[0] + mask[i][i_plot].astype(float) * ylim[1]
     plt.fill(np.concatenate([lam[:1], lam, lam[-1:]]),
-            np.concatenate([[ylim[0]], mask_shade, [ylim[0]]]),
-            lw=0, fc='k', alpha=0.2)
+             np.concatenate([[ylim[0]], mask_shade, [ylim[0]]]),
+             lw=0, fc='k', alpha=0.2)
 
     ax.set_xlim(lam[0], lam[-1])
     ax.set_ylim(ylim)

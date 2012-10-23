@@ -58,8 +58,8 @@ def plot_results(z, z_fit, plotlabel=None,
 
 plt.figure(figsize=(8, 4))
 plt.subplots_adjust(wspace=0.1,
-                   left=0.1, right=0.95,
-                   bottom=0.15, top=0.9)
+                    left=0.1, right=0.95,
+                    bottom=0.15, top=0.9)
 
 ax = plt.subplot(121)
 z_fit = DecisionTreeRegressor(max_depth=10).fit(mag_train,

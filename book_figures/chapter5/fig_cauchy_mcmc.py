@@ -115,7 +115,7 @@ ax2 = fig.add_axes((0.1, 0.4, 0.29, 0.55))
 ax2.xaxis.set_major_formatter(plt.NullFormatter())
 ax2.plot(hist_gamma, 0.5 * (bins_gamma[1:] + bins_gamma[:-1]
                             - bins_gamma[1] + bins_gamma[0]),
-        '-k', drawstyle='steps')
+         '-k', drawstyle='steps')
 ax2.plot(p_gamma, gamma, '--b')
 ax2.set_ylabel(r'$\gamma$')
 ax2.set_ylim(0, 5)
@@ -124,7 +124,7 @@ ax2.set_ylim(0, 5)
 ax3 = fig.add_axes((0.4, 0.1, 0.55, 0.29))
 ax3.yaxis.set_major_formatter(plt.NullFormatter())
 ax3.plot(0.5 * (bins_mu[1:] + bins_mu[:-1]), hist_mu,
-        '-k', drawstyle='steps-mid')
+         '-k', drawstyle='steps-mid')
 ax3.plot(mu, p_mu, '--b')
 ax3.set_xlabel(r'$\mu$')
 plt.xlim(-5, 5)

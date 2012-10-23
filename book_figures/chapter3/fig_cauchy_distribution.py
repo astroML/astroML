@@ -45,7 +45,7 @@ for gamma, ls in zip(gamma_values, linestyles):
     dist = cauchy(mu, gamma)
 
     plt.plot(x, dist.pdf(x), ls=ls, color='black',
-            label=r'$\mu=%i,\ \gamma=%.1f$' % (mu, gamma))
+             label=r'$\mu=%i,\ \gamma=%.1f$' % (mu, gamma))
 
 plt.xlim(-5, 5)
 plt.ylim(0, 0.8)

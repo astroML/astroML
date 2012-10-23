@@ -45,7 +45,7 @@ for delta, ls in zip(delta_values, linestyles):
     dist = laplace(mu, delta)
 
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
-            label=r'$\mu=%i,\ \Delta=%.1f$' % (mu, delta), lw=2)
+             label=r'$\mu=%i,\ \Delta=%.1f$' % (mu, delta), lw=2)
 
 plt.xlim(-7, 7)
 plt.ylim(0, 1.1)

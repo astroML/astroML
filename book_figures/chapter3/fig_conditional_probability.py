@@ -66,13 +66,13 @@ ax_Py.xaxis.set_major_formatter(NullFormatter())
 plt.axes(ax_Pxy)
 H *= 1000
 plt.imshow(H, interpolation='nearest', origin='lower', aspect='auto',
-          extent=[0, 2, 0, 2], cmap=plt.cm.binary)
+           extent=[0, 2, 0, 2], cmap=plt.cm.binary)
 
 cb = plt.colorbar(cax=ax_cb)
 cb.set_label('P(x, y)')
 plt.text(0, 1, r'$\times 10^{-3}$',
-        fontsize=14,
-        transform=ax_cb.transAxes)
+         fontsize=14,
+         transform=ax_cb.transAxes)
 
 # draw P(x) distribution
 ax_Px.plot(xbins[1:], H.sum(0), '-k', drawstyle='steps')

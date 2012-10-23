@@ -45,7 +45,7 @@ x = np.linspace(-10, 10, 1000)
 for (k, lam, ls) in zip(k_values, lam_values, linestyles):
     dist = dweibull(k, mu, lam)
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
-            label=r'$k=%.1f,\ \lambda=%i$' % (k, lam))
+             label=r'$k=%.1f,\ \lambda=%i$' % (k, lam))
 
 plt.xlim(0, 5)
 plt.ylim(0, 1.0)

@@ -89,7 +89,7 @@ ax.scatter(f[:N / 2], PSD[:N / 2], s=9, c='k', lw=0)
 ax.plot(f[:N / 2], P_S[:N / 2], '-k')
 ax.plot(f[:N / 2], P_N[:N / 2], '-k')
 
-plt.text(0.98, 0.95, "Input PSD", ha='right', va='top', fontsize=12,
+ax.text(0.98, 0.95, "Input PSD", ha='right', va='top', fontsize=12,
         transform=ax.transAxes)
 
 ax.set_ylim(-100, 3500)
@@ -105,7 +105,7 @@ ax = fig.add_subplot(224)
 filtered_PSD = (Phi * abs(HN)) ** 2
 ax.scatter(f[:N / 2], filtered_PSD[:N / 2], s=9, c='k', lw=0)
 
-plt.text(0.98, 0.95, "Filtered PSD", ha='right', va='top', fontsize=12,
+ax.text(0.98, 0.95, "Filtered PSD", ha='right', va='top', fontsize=12,
         transform=ax.transAxes)
 
 ax.set_ylim(-100, 3500)

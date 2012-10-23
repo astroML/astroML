@@ -54,9 +54,9 @@ t = t[::100]
 HW = HW[:, ::100]
 
 plt.imshow(abs(HW), origin='lower', aspect='auto',
-          extent=[t[0], t[-1], np.log2(f0[0]), np.log2(f0[-1])])
+           extent=[t[0], t[-1], np.log2(f0[0]), np.log2(f0[-1])])
 plt.colorbar()
 plt.gca().yaxis.set_major_locator(plt.MultipleLocator(1))
 plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, *args:
-                                                        "%i" % (2 ** x)))
+                                                      "%i" % (2 ** x)))
 plt.show()

@@ -13,16 +13,15 @@ from matplotlib import pyplot as plt
 
 plt.figure(facecolor='w')
 ax = plt.axes([0, 0, 1, 1], frameon=False, xticks=[], yticks=[])
-#ax = plt.axes()
 
 ax.add_patch(plt.Rectangle((-0.5, -0.25), 0.8, 0.4,
-                          fc='none', ec='k', lw=2))
+                           fc='none', ec='k', lw=2))
 ax.add_patch(plt.Rectangle((-1.75, 0.1), 0.8, 0.4,
-                          fc='none', ec='k', lw=2, linestyle='dashed'))
+                           fc='none', ec='k', lw=2, linestyle='dashed'))
 ax.add_patch(plt.Rectangle((0.8, -0.55), 0.8, 0.4,
-                          fc='none', ec='k', lw=2, linestyle='dashed'))
+                           fc='none', ec='k', lw=2, linestyle='dashed'))
 ax.add_patch(plt.Rectangle((-1.3, -0.95), 0.8, 0.4,
-                          fc='none', ec='k', lw=2, linestyle='dashed'))
+                           fc='none', ec='k', lw=2, linestyle='dashed'))
 
 red_pts = np.array([[-0.163, 0.093],
                     [-0.123, -0.22],
@@ -40,23 +39,23 @@ blue_pts = np.array([[-1.51, 0.17],
 x0 = -0.5 + 0.4
 y0 = -0.25 + 0.2
 
-plt.scatter(red_pts[:, 0], red_pts[:, 1], c='r')
-plt.scatter(blue_pts[:, 0], blue_pts[:, 1], c='b')
-plt.scatter([x0], [y0], c='gray')
+ax.scatter(red_pts[:, 0], red_pts[:, 1], c='r')
+ax.scatter(blue_pts[:, 0], blue_pts[:, 1], c='b')
+ax.scatter([x0], [y0], c='gray')
 
 for pt in blue_pts:
-    plt.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='->',
+    ax.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='->',
                                                    linestyle='dashed'))
 
 for i, pt in enumerate(red_pts):
-    plt.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='<-'))
-    plt.text(pt[0] + 0.03, pt[1] + 0.03, '$r_{j%i}$' % (i + 1),
+    ax.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='<-'))
+    ax.text(pt[0] + 0.03, pt[1] + 0.03, '$r_{j%i}$' % (i + 1),
             bbox=dict(boxstyle='round', ec='k', fc='w', alpha=0.7))
 
-plt.annotate("R.c", (x0, y0), (0.2, 0.2), arrowprops=dict(arrowstyle='-',
-                                                         color='gray'),
+ax.annotate("R.c", (x0, y0), (0.2, 0.2),
+            arrowprops=dict(arrowstyle='-', color='gray'),
             bbox=dict(boxstyle='round', ec='k', fc='w'))
 
-plt.xlim(-1.9, 1.9)
-plt.ylim(-1.2, 0.8)
+ax.set_xlim(-1.9, 1.9)
+ax.set_ylim(-1.2, 0.8)
 plt.show()

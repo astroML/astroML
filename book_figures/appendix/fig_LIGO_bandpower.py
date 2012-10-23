@@ -23,9 +23,6 @@ def multiple_power_spectrum(t, x, window_size=10000, step_size=1000):
     indices = np.arange(window_size) + step_size * np.arange(N_steps)[:, None]
     X = x[indices].astype(complex)
 
-    #kernel = np.exp(-0.5 * np.linspace(-5, 5, window_size)**2)
-    #X *= kernel
-
     f, H = FT_continuous(t[:window_size], X)
 
     i = (f > 0)
@@ -40,22 +37,17 @@ window_size = 10000
 step_size = 500
 
 f, P = multiple_power_spectrum(t, x,
-                               window_size=window_size, step_size=step_size)
+                               window_size=window_size,
+                               step_size=step_size)
 
 i = (f > 50) & (f < 1500)
-#i = (f > 330) & (f < 360)
 P = P[:, i]
 f = f[i]
 
-#for i in range(P.shape[0]):
-#    plt.semilogy(f, P[i] * f, lw=1)
-#plt.show()
-#exit()
-
 plt.imshow(np.log10(P).T, origin='lower', aspect='auto',
-          extent=[t[window_size / 2],
-                  t[window_size / 2 + step_size * P.shape[0]],
-                  f[0], f[-1]])
+           extent=[t[window_size / 2],
+                   t[window_size / 2 + step_size * P.shape[0]],
+                   f[0], f[-1]])
 plt.xlabel('t (s)')
 plt.ylabel('f (Hz) derived from %.2fs window' % (t[window_size] - t[0]))
 plt.colorbar().set_label('|H(f)|')

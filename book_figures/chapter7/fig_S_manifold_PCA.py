@@ -46,14 +46,14 @@ Y_iso = iso.fit_transform(X)
 # plot the 3D dataset
 fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(left=0.05, right=0.95,
-                   bottom=0.05, top=0.9)
+                    bottom=0.05, top=0.9)
 try:
     # matplotlib 1.0+ has a toolkit for generating 3D plots
     from mpl_toolkits.mplot3d import Axes3D
     ax1 = fig.add_subplot(221, projection='3d',
                           xticks=[], yticks=[], zticks=[])
     ax1.scatter(X[:, 0], X[:, 1], X[:, 2], c=color,
-               cmap=plt.cm.jet, s=9, lw=1)
+                cmap=plt.cm.jet, s=9, lw=1)
     ax1.view_init(11, -73)
 
 except:

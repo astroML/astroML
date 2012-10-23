@@ -31,8 +31,8 @@ def labeled_rect(ax, center, width, height, text,
                             N + 2)[1:-1]
         for x in xlocs:
             plt.plot([x, x],
-                    [center[1] - 0.5 * height,
-                     center[1] + 0.5 * height], '-k')
+                     [center[1] - 0.5 * height,
+                      center[1] + 0.5 * height], '-k')
 
     elif stripe == 'horiz':
         ylocs = np.linspace(center[1] - 0.5 * height,
@@ -40,13 +40,12 @@ def labeled_rect(ax, center, width, height, text,
                             N + 2)[1:-1]
         for y in ylocs:
             plt.plot([center[0] - 0.5 * width,
-                     center[0] + 0.5 * width],
-                    [y, y], '-k')
+                      center[0] + 0.5 * width],
+                     [y, y], '-k')
 
     elif stripe == 'diag':
         plt.plot([center[0] - 0.5 * width, center[0] + 0.5 * width],
-                [center[1] + 0.5 * height, center[1] - 0.5 * height],
-                '-k')
+                 [center[1] + 0.5 * height, center[1] - 0.5 * height], '-k')
     else:
         raise ValueError("unrecognized stripe type")
 

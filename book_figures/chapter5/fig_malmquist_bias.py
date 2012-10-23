@@ -59,8 +59,8 @@ ax.hist(h_obs, bins, histtype='stepfilled',
 ax.legend(loc=2, prop=dict(size=12))
 
 ax.add_patch(plt.Rectangle((hmin, 0), hmax - hmin, 1.2,
-                          fc='gray', ec='k', linestyle='dashed',
-                          alpha=0.3))
+                           fc='gray', ec='k', linestyle='dashed',
+                           alpha=0.3))
 ax.text(5, 0.07, 'sampled region', rotation=45, ha='center', va='center',
         color='gray', fontsize=12)
 

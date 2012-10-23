@@ -22,7 +22,7 @@ x = np.linspace(-8, 8, 1000)
 N = stats.norm(0, 1)
 
 l1, = ax.plot(x, N.pdf(x), '-k',
-             label=r'${\rm Gaussian,}\ \Sigma=0$')
+              label=r'${\rm Gaussian,}\ \Sigma=0$')
 
 l2, = ax.plot(x, 0.5 * N.pdf(x) * (2 + x + 0.5 * (x * x - 1)),
               '--k', label=r'${\rm mod.\ Gauss,}\ \Sigma=-0.36$')
@@ -44,13 +44,13 @@ ax.set_title('Skew $\Sigma$ and Kurtosis $K$')
 ax = fig.add_subplot(212)
 x = np.linspace(-5, 5, 1000)
 l1, = ax.plot(x, stats.laplace(0, 1).pdf(x), '--k',
-             label=r'${\rm Laplace,}\ K=+3$')
+              label=r'${\rm Laplace,}\ K=+3$')
 l2, = ax.plot(x, stats.norm(0, 1).pdf(x), '-k',
-             label=r'${\rm Gaussian,}\ K=0$')
+              label=r'${\rm Gaussian,}\ K=0$')
 l3, = ax.plot(x, stats.cosine(0, 1).pdf(x), '-.k',
-             label=r'${\rm Cosine,}\ K=-0.59$')
+              label=r'${\rm Cosine,}\ K=-0.59$')
 l4, = ax.plot(x, stats.uniform(-2, 4).pdf(x), ':k',
-             label=r'${\rm Uniform,}\ K=-1.2$')
+              label=r'${\rm Uniform,}\ K=-1.2$')
 
 ax.set_xlim(-5, 5)
 ax.set_ylim(0, 0.6001)

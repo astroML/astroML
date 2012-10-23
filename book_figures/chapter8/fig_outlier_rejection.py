@@ -224,7 +224,7 @@ for i, M in enumerate(models):
         outlier_x = xi[Pi < 0.32]
         outlier_y = yi[Pi < 0.32]
         ax1.scatter(outlier_x, outlier_y, lw=1, s=400, alpha=0.5,
-                   facecolors='none', edgecolors='red')
+                    facecolors='none', edgecolors='red')
 
     # plot the likelihood contours
     ax = plt.subplot(222 + i)

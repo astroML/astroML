@@ -29,7 +29,7 @@ data = fetch_sdss_corrected_spectra()
 i = np.where((data['lineindex_cln'] == 4) | (data['lineindex_cln'] == 5))
 
 plt.scatter(data['log_NII_Ha'][i], data['log_OIII_Hb'][i],
-           c=data['lineindex_cln'][i], s=9, lw=0)
+            c=data['lineindex_cln'][i], s=9, lw=0)
 
 NII = np.linspace(-2.0, 0.35)
 plt.plot(NII, log_OIII_Hb_NII(NII), '-k')

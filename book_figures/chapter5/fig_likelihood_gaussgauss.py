@@ -44,20 +44,20 @@ logL -= logL.max()
 #------------------------------------------------------------
 # plot the results
 plt.imshow(logL, origin='lower',
-          extent=(mu[0], mu[-1], sigma[0], sigma[-1]),
-          cmap=plt.cm.binary,
-          aspect='auto')
+           extent=(mu[0], mu[-1], sigma[0], sigma[-1]),
+           cmap=plt.cm.binary,
+           aspect='auto')
 plt.colorbar()
 plt.clim(-5, 0)
 
 plt.text(0.5, 0.9,
-        r'$L(\mu,\sigma)\ \mathrm{for\ \bar{x}=1,\ \sigma_{true}=1,\ n=10}$',
-        bbox=dict(ec='k', fc='w', alpha=0.9),
-        fontsize=18, ha='center', va='center', transform=plt.gca().transAxes)
+         r'$L(\mu,\sigma)\ \mathrm{for\ \bar{x}=1,\ \sigma_{true}=1,\ n=10}$',
+         bbox=dict(ec='k', fc='w', alpha=0.9),
+         fontsize=18, ha='center', va='center', transform=plt.gca().transAxes)
 
 plt.contour(mu, sigma, convert_to_stdev(logL),
-           levels=(0.683, 0.955, 0.997),
-           colors='k', linewidths=2)
+            levels=(0.683, 0.955, 0.997),
+            colors='k', linewidths=2)
 
 plt.xlabel(r'$\mu$')
 plt.ylabel(r'$\sigma$')

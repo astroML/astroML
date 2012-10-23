@@ -34,7 +34,7 @@ for i in range(len(N)):
     x_i = x[:N[i], :].mean(0)
 
     # histogram the data
-    plt.hist(x_i, bins=np.linspace(0, 1, 101),
+    ax.hist(x_i, bins=np.linspace(0, 1, 101),
             histtype='stepfilled', alpha=0.5, normed=True)
 
     # plot the expected gaussian pdf

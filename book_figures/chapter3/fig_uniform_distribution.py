@@ -46,7 +46,7 @@ for W, ls in zip(W_values, linestyles):
     dist = uniform(left, W)
 
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
-            label=r'$\mu=%i,\ W=%i$' % (mu, W))
+             label=r'$\mu=%i,\ W=%i$' % (mu, W))
 
 plt.xlim(-2, 2)
 plt.ylim(0, 1.5)

@@ -222,12 +222,12 @@ def min_component_filter(x, y, feature_mask, p=1, fcut=None, Q=None):
     y = np.asarray(y, dtype=float)
     feature_mask = np.asarray(feature_mask, dtype=bool)
 
-    if ((x.ndim != 1) or (x.shape != y.shape)
-                   or (y.shape != feature_mask.shape)):
+    if ((x.ndim != 1) or (x.shape != y.shape) or (y.shape !=
+                                                  feature_mask.shape)):
         raise ValueError('x, y, and feature_mask must be 1 dimensional '
                          'with matching lengths')
 
-    if fcut == None:
+    if fcut is None:
         f_nyquist = 1. / (x[1] - x[0])
         fcut = f_nyquist / np.sqrt(len(x))
 

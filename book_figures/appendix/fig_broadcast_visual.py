@@ -68,7 +68,7 @@ def draw_cube(ax, xy, size, depth=0.4,
     if label:
         if label_kwargs is None:
             label_kwargs = {}
-        plt.text(x + 0.5 * size, y + 0.5 * size, label,
+        ax.text(x + 0.5 * size, y + 0.5 * size, label,
                 ha='center', va='center', **label_kwargs)
 
 solid = dict(c='black', ls='-', lw=1,
@@ -91,9 +91,9 @@ draw_cube(ax, (12, 10), 1, depth, [1, 2, 3, 4, 5, 6, 9], '5', **solid)
 draw_cube(ax, (13, 10), 1, depth, [1, 2, 3, 6, 9], '6', **solid)
 draw_cube(ax, (14, 10), 1, depth, [1, 2, 3, 6, 7, 9, 10], '7', **solid)
 
-plt.text(5, 10.5, '+', size=18, ha='center', va='center')
-plt.text(10.5, 10.5, '=', size=18, ha='center', va='center')
-plt.text(1, 11.5, r'${\tt np.arange(3) + 5}$', size=18,
+ax.text(5, 10.5, '+', size=18, ha='center', va='center')
+ax.text(10.5, 10.5, '=', size=18, ha='center', va='center')
+ax.text(1, 11.5, r'${\tt np.arange(3) + 5}$', size=18,
         ha='left', va='bottom')
 
 #------------------------------------------------------------
@@ -138,9 +138,9 @@ draw_cube(ax, (12, 5.5), 1, depth, [2, 3, 4], '1', **solid)
 draw_cube(ax, (13, 5.5), 1, depth, [2, 3], '2', **solid)
 draw_cube(ax, (14, 5.5), 1, depth, [2, 3, 7, 10], '3', **solid)
 
-plt.text(5, 7.0, '+', size=18, ha='center', va='center')
-plt.text(10.5, 7.0, '=', size=18, ha='center', va='center')
-plt.text(1, 9.0, r'${\tt np.ones((3,\, 3)) + np.arange(3)}$',
+ax.text(5, 7.0, '+', size=18, ha='center', va='center')
+ax.text(10.5, 7.0, '=', size=18, ha='center', va='center')
+ax.text(1, 9.0, r'${\tt np.ones((3,\, 3)) + np.arange(3)}$',
         size=18, ha='left', va='bottom')
 
 #------------------------------------------------------------
@@ -185,9 +185,9 @@ draw_cube(ax, (12, 1), 1, depth, [2, 3, 4], '2', **solid)
 draw_cube(ax, (13, 1), 1, depth, [2, 3], '3', **solid)
 draw_cube(ax, (14, 1), 1, depth, [2, 3, 7, 10], '4', **solid)
 
-plt.text(5, 2.5, '+', size=18, ha='center', va='center')
-plt.text(10.5, 2.5, '=', size=18, ha='center', va='center')
-plt.text(1, 4.5, r'${\tt np.arange(3).reshape((3,\, 1)) + np.arange(3)}$',
+ax.text(5, 2.5, '+', size=18, ha='center', va='center')
+ax.text(10.5, 2.5, '=', size=18, ha='center', va='center')
+ax.text(1, 4.5, r'${\tt np.arange(3).reshape((3,\, 1)) + np.arange(3)}$',
         size=18, ha='left', va='bottom')
 
 ax.set_xlim(0, 16)

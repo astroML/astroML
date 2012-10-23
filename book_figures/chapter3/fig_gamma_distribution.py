@@ -44,7 +44,7 @@ x = np.linspace(1E-6, 10, 1000)
 for k, t, ls in zip(k_values, theta_values, linestyles):
     dist = gamma(k, 0, t)
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
-            label=r'$k=%.1f,\ \theta=%.1f$' % (k, t))
+             label=r'$k=%.1f,\ \theta=%.1f$' % (k, t))
 
 plt.xlim(0, 10)
 plt.ylim(0, 0.5)

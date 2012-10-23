@@ -46,7 +46,7 @@ for (n, b, ls) in zip(n_values, b_values, linestyles):
     dist = binom(n, b)
 
     plt.plot(x, dist.pmf(x), ls=ls, c='black',
-            label=r'$b=%.1f,\ n=%i$' % (b, n), linestyle='steps')
+             label=r'$b=%.1f,\ n=%i$' % (b, n), linestyle='steps')
 
 plt.xlim(0, 40)
 plt.ylim(0, 0.3)

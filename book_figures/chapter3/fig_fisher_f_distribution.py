@@ -44,7 +44,7 @@ for (d1, d2, ls) in zip(d1_values, d2_values, linestyles):
     dist = fisher_f(d1, d2, mu)
 
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
-            label=r'$d_1=%i,\ d_2=%i$' % (d1, d2))
+             label=r'$d_1=%i,\ d_2=%i$' % (d1, d2))
 
 plt.xlim(0, 4)
 plt.ylim(0.0, 1.2)

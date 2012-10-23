@@ -30,11 +30,11 @@ ax = fig.add_axes([0, 0, 1, 1], frameon=False, xticks=[], yticks=[])
 
 # draw axes
 plt.annotate(r'$x_1$', (-0.08, -0.02), (1.05, -0.02),
-            ha='center', va='center', fontsize=16,
-            arrowprops=dict(arrowstyle='<-', color='k', lw=1.5))
+             ha='center', va='center', fontsize=16,
+             arrowprops=dict(arrowstyle='<-', color='k', lw=1.5))
 plt.annotate(r'$x_2$', (-0.02, -0.08), (-0.02, 1.05),
-            ha='center', va='center', fontsize=16,
-            arrowprops=dict(arrowstyle='<-', color='k', lw=1.5))
+             ha='center', va='center', fontsize=16,
+             arrowprops=dict(arrowstyle='<-', color='k', lw=1.5))
 
 # draw ellipses, points, and boundaries
 ax.scatter(mu1[:1], mu1[1:], c='k')

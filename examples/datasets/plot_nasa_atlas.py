@@ -31,8 +31,8 @@ plt.grid(True)
 
 plt.title('NASA Atlas Galaxy Locations')
 cb = plt.colorbar(cax=plt.axes([0.05, 0.1, 0.9, 0.05]),
-                 orientation='horizontal',
-                 ticks=np.linspace(0, 0.05, 6))
+                  orientation='horizontal',
+                  ticks=np.linspace(0, 0.05, 6))
 cb.set_label('redshift')
 
 
