@@ -1,5 +1,5 @@
 """
-Extreme Deconvolution on Stellar Data
+Extreme Deconvolution of Stellar Data
 -------------------------------------
 This figure demonstrates the use of Extreme Deconvolution on real stellar
 data.  We compare the single-epoch photometry from SDSS to the multi-epoch

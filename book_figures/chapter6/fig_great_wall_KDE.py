@@ -18,7 +18,7 @@ from scipy.spatial import cKDTree
 from scipy.stats import gaussian_kde
 
 from astroML.datasets import fetch_great_wall
-from astroML.density_estimation import KDE, KNeighborsDensity
+from astroML.density_estimation import KDE
 
 #------------------------------------------------------------
 # Fetch the great wall data

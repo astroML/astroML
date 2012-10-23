@@ -12,7 +12,7 @@ This follows the formalism in Hogg et al 2010,
 import numpy as np
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_hogg2010test
-from astroML.plotting.mcmc import plot_mcmc_contours, convert_to_stdev
+from astroML.plotting.mcmc import convert_to_stdev
 
 # Hack to fix import issue in older versions of pymc
 import scipy
@@ -228,8 +228,15 @@ for i, M in enumerate(models):
 
     # plot the likelihood contours
     ax = plt.subplot(222 + i)
-    plot_mcmc_contours(trace[:, 1], trace[:, 0], ax=ax,
-                       colors='black', bins=bins[i])
+
+    H, xbins, ybins = np.histogram2d(trace[:, 1], trace[:, 0], bins=bins[i])
+    H[H == 0] = 1E-16
+    Nsigma = convert_to_stdev(np.log(H))
+
+    ax.contour(0.5 * (xbins[1:] + xbins[:-1]),
+               0.5 * (ybins[1:] + ybins[:-1]),
+               Nsigma.T, levels=[0.683, 0.955], colors='black')
+
     ax.set_xlabel('intercept')
     ax.set_ylabel('slope')
     ax.grid()

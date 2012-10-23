@@ -24,7 +24,6 @@ dataset (if you find that hard to believe, see the source code that generated
 the figure by clicking on the image).  The difference between the two is
 the bin size: this illustrates the importance of choosing the correct bin
 size when visualizing a dataset.
-
 In practice, scientists often address this through trial and error: plot the
 data a few times until it looks "right".  But what does it mean for histogram
 data to look right?
@@ -47,13 +46,13 @@ approaches to histogram binning in a natural way.  It can be used as follows::
    import numpy as np
    from astroML.plotting import hist
    x = np.random.normal(size=1000)
-   hist(x, 'blocks')
+   hist(x, bins='blocks')
 
 The syntax is identical to the ``hist()`` function in matplotlib
 (including all additional keyword arguments) with the sole exception that
 the ``bins`` argument also accepts a string, which can be one of
-``'blocks'``, ``'knuth'``, ``'scott'``, or ``'freedman'``, which
-cause the histogram to be built using the
+``'blocks'``, ``'knuth'``, ``'scott'``, or ``'freedman'``.
+Using one of these causes the histogram binning to be chosen using the
 rules or procedures outlined above.  The results on our data using Knuth's
 rule and Bayesian Blocks are shown below:
 
@@ -64,14 +63,15 @@ rule and Bayesian Blocks are shown below:
 
 The Knuth bins on the left do a good job of representing the underlying
 structure of the data.  The Bayesian Blocks on the right capture most of the
-same features, but notice that the outer regions (where the variability of the
-density goes down) are represented by very wide bins.
+same features, but notice that the lack of density variation in the
+outer regions is recognized by the Bayesian blocks procedure, which settles
+on very wide bins in these regions.
 
-The utility of the Bayesian Blocks approach goes beyond simple data
-representation, however.  The bins can be shown to be optimal in a quantitative
+The utility of the Bayesian blocks approach goes beyond simple data
+representation, however: the bins can be shown to be optimal in a quantitative
 sense, meaning that the histogram becomes a powerful statistical measure.  For
-example, if data comes from a uniform distribution, the Bayesian blocks
-representation will represent it with a single wide bin.
+example, if the data is consistent with a uniform distribution, the Bayesian
+blocks representation will reflect this by choosing a single wide bin.
 
 References
 ~~~~~~~~~~
@@ -102,7 +102,8 @@ Kernel Density Estimation
 Kernel Density estimation is a non-parametric density estimation technique
 which can be very powerful.  It is implemented in astroML using the object
 :class:`astroML.density_estimation.KDE`.
-See :ref:`book_fig_chapter6_fig_great_wall_KDE` or
+See :ref:`book_fig_chapter6_fig_great_wall` ,
+:ref:`book_fig_chapter6_fig_great_wall_KDE` or
 :ref:`book_fig_chapter6_fig_density_estimation` for examples of how it
 is used.
 
@@ -113,6 +114,6 @@ Nearest Neighbors Density estimation can be a fast alternative to KDE, and is
 similar to KDE with a hard-edged kernel.
 It is implemented in astroML using the object
 :class:`astroML.density_estimation.KNeighborsDensity`.
-See :ref:`book_fig_chapter6_fig_great_wall_KDE` or
+See :ref:`book_fig_chapter6_fig_great_wall` or
 :ref:`book_fig_chapter6_fig_density_estimation` for examples of how it
 is used.

@@ -23,39 +23,6 @@ def convert_to_stdev(logL):
     return sigma_cumsum[i_unsort].reshape(shape)
 
 
-def plot_mcmc_contours(x, y, ax=None,
-                       levels=[0.683, 0.955],
-                       bins=20, **contour_args):
-    """Plot Contours given an MCMC sample
-
-    Parameters
-    ----------
-    x, y : ndarrays
-        arrays giving the x and y coordinates of the MCMC point chain
-    ax : matplotlib.Axes instance
-        the axes instance on which to plot.  If not specified, then use
-        the current axes
-    levels : array_like
-        the list of percentile levels at which to plot contours.  Each
-        entry should be between 0 and 1
-    bins : int, tuple, array, or tuple of arrays
-        the binning parameter passed to np.histogram2d.  It is assumed that
-        the point density is constant on the scale of the bins
-    additional arguments are passed to ax.contour()
-    """
-    if ax is None:
-        ax = plt.gca()
-
-    H, xbins, ybins = np.histogram2d(x, y, bins=bins)
-
-    H[H == 0] = 1E-16
-    Nsigma = convert_to_stdev(np.log(H))
-
-    ax.contour(0.5 * (xbins[1:] + xbins[:-1]),
-               0.5 * (ybins[1:] + ybins[:-1]),
-               Nsigma.T, levels=levels, **contour_args)
-
-
 def plot_mcmc(traces, labels=None, limits=None, true_values=None,
               fig=None, contour=True, scatter=False,
               levels=[0.683, 0.955], bins=20,
