@@ -13,7 +13,7 @@ error :math:`\gamma` when the posterior is assumed to be a Cauchy distribution.
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import cauchy
-from astroML.plotting.likelihood import convert_to_stdev
+from astroML.plotting.mcmc import convert_to_stdev
 from astroML.stats import median_sigmaG
 
 

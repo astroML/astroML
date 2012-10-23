@@ -14,7 +14,7 @@ with a linear background.
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import truncnorm, uniform
-from astroML.plotting.likelihood import convert_to_stdev
+from astroML.plotting.mcmc import convert_to_stdev
 
 
 def gausslin_logL(xi, A=0.5, sigma=1.0, mu=5.0, L=10.0):

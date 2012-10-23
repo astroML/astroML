@@ -13,7 +13,7 @@ parameters of a Cauchy distribution
 import numpy as np
 from scipy.stats import cauchy
 from matplotlib import pyplot as plt
-from astroML.plotting.likelihood import convert_to_stdev
+from astroML.plotting.mcmc import convert_to_stdev
 
 # this fixes a problem when using older versions of pymc with newer
 # versions of scipy

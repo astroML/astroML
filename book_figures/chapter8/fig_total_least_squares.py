@@ -15,7 +15,7 @@ from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
 
 from astroML.linear_model import TLS_logL
-from astroML.plotting.likelihood import convert_to_stdev
+from astroML.plotting.mcmc import convert_to_stdev
 from astroML.datasets import fetch_hogg2010test
 
 

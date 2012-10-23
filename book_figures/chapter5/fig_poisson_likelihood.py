@@ -15,7 +15,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy import stats, interpolate
 from astroML.stats.random import linear
-from astroML.plotting.likelihood import convert_to_stdev
+from astroML.plotting.mcmc import convert_to_stdev
 
 
 def logL_gaussian(xi, yi, a, b):

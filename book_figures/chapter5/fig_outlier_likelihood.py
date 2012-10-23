@@ -13,7 +13,7 @@ mean, and the probability of a particular point being an outlier.
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import norm
-from astroML.plotting.likelihood import convert_to_stdev
+from astroML.plotting.mcmc import convert_to_stdev
 
 
 def p(mu, g1, xi, sigma1, sigma2):

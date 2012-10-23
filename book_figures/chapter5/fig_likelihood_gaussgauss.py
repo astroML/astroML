@@ -13,7 +13,7 @@ points have heteroscedatic gaussian errors.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
-from astroML.plotting.likelihood import convert_to_stdev
+from astroML.plotting.mcmc import convert_to_stdev
 
 
 def gaussgauss_logL(xi, ei, mu, sigma):

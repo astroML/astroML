@@ -20,7 +20,7 @@ import scipy.misc
 scipy.derivative = scipy.misc.derivative
 import pymc
 
-from astroML.plotting.likelihood import convert_to_stdev
+from astroML.plotting.mcmc import convert_to_stdev
 from astroML.plotting import plot_mcmc
 
 

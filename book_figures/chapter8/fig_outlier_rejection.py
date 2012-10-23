@@ -12,8 +12,7 @@ This follows the formalism in Hogg et al 2010,
 import numpy as np
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_hogg2010test
-from astroML.plotting.likelihood import convert_to_stdev
-from astroML.plotting.mcmc import plot_mcmc_contours
+from astroML.plotting.mcmc import plot_mcmc_contours, convert_to_stdev
 
 # Hack to fix import issue in older versions of pymc
 import scipy
