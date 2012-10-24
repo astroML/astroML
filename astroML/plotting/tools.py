@@ -10,7 +10,7 @@ from matplotlib.transforms import Bbox
 from matplotlib.patches import Ellipse
 
 
-def devectorize_axes(ax, dpi=None):
+def devectorize_axes(ax=gca(), dpi=None, transparent=True, tempfile='__temp__.png'):
     """Convert axes contents to a png.
 
     This is useful when plotting many points, as the size of the saved file
@@ -22,13 +22,24 @@ def devectorize_axes(ax, dpi=None):
     extents = ax.bbox.extents / fig.dpi
     axlim = ax.axis()
 
+    _sp = {}
+    for k in ax.spines:
+	    _sp[k] = ax.spines[k].get_visible()
+	    ax.spines[k].set_visible(False)
+    _xax = ax.xaxis.get_visible()
+    _yax = ax.yaxis.get_visible()
+    _patch = ax.axesPatch.get_visible()
+    ax.axesPatch.set_visible(False)
+    ax.xaxis.set_visible(False)
+    ax.yaxis.set_visible(False)
     # save png covering axis
-    plt.savefig('tmp.png',
+    plt.savefig(tempfile,
                 format='png',
                 dpi=dpi,
+		transparent=transparent,
                 bbox_inches=Bbox([extents[:2], extents[2:]]))
-    im = image.imread('tmp.png')
-    os.remove('tmp.png')
+    im = image.imread(tempfile)
+    #os.remove(tempfile)
 
     # clear everything on axis (but not text)
     ax.lines = []
@@ -40,6 +51,12 @@ def devectorize_axes(ax, dpi=None):
 
     # show the image
     ax.imshow(im, extent=axlim, aspect='auto')
+
+    for k in ax.spines:
+	    ax.spines[k].set_visible(_sp[k])
+    ax.axesPatch.set_visible(_patch)
+    ax.xaxis.set_visible(_xax)
+    ax.yaxis.set_visible(_yax)
 
 
 def discretize_cmap(cmap, N):
