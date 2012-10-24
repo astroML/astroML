@@ -3,7 +3,7 @@ NOSETESTS ?= nosetests
 
 SOURCES = Makefile setup.py setup_addons.py README.rst astroML astroML_addons
 
-VERSION = 0.1
+VERSION = 0.2-git
 
 all: build install test
 
