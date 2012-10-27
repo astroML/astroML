@@ -23,7 +23,7 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
         transparent: make the image background transparent
     """
     if ax is None:
-            ax = plt.gca()
+        ax = plt.gca()
 
     fig = ax.figure
 
@@ -34,8 +34,8 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
 
     _sp = {}
     for k in ax.spines:
-	    _sp[k] = ax.spines[k].get_visible()
-	    ax.spines[k].set_visible(False)
+        _sp[k] = ax.spines[k].get_visible()
+	ax.spines[k].set_visible(False)
     _xax = ax.xaxis.get_visible()
     _yax = ax.yaxis.get_visible()
     _patch = ax.axesPatch.get_visible()
@@ -44,11 +44,7 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
     ax.yaxis.set_visible(False)
     # save png covering axis
     id, tmpf = tempfile.mkstemp(suffix='.png')
-    plt.savefig(tempfile,
-                format='png',
-                dpi=dpi,
-		transparent=transparent,
-                bbox_inches=Bbox([extents[:2], extents[2:]]))
+    plt.savefig( tmpf, format='png', dpi=dpi, transparent=transparent, bbox_inches=Bbox([extents[:2], extents[2:]]) )
     im = image.imread(tmpf)
     os.remove(tmpf)
 
@@ -64,13 +60,13 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
     ax.imshow(im, extent=axlim, aspect='auto')
 
     for k in ax.spines:
-	    ax.spines[k].set_visible(_sp[k])
+        ax.spines[k].set_visible(_sp[k])
     ax.axesPatch.set_visible(_patch)
     ax.xaxis.set_visible(_xax)
     ax.yaxis.set_visible(_yax)
 
     if plt.isinteractive():
-	    plt.draw()
+        plt.draw()
 
 
 def discretize_cmap(cmap, N):
