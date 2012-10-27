@@ -35,7 +35,7 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
     _sp = {}
     for k in ax.spines:
         _sp[k] = ax.spines[k].get_visible()
-	ax.spines[k].set_visible(False)
+	    ax.spines[k].set_visible(False)
     _xax = ax.xaxis.get_visible()
     _yax = ax.yaxis.get_visible()
     _patch = ax.axesPatch.get_visible()
