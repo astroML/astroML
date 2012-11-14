@@ -99,16 +99,16 @@ def freedman_bin_width(data, return_bins=False):
     if n < 4:
         raise ValueError("data should have more than three entries")
 
-    indices = np.argsort(data)
-    i25 = indices[n / 4 - 1]
-    i75 = indices[(3 * n) / 4 - 1]
+    dsorted = np.sort(data)
+    v25 = dsorted[n / 4 - 1]
+    v75 = dsorted[(3 * n) / 4 - 1]
 
-    dx = 2 * (data[i75] - data[i25]) * 1. / (n ** (1. / 3))
+    dx = 2 * (v75 - v25) * 1. / (n ** (1. / 3))
 
     if return_bins:
-        Nbins = np.ceil((data.max() - data.min()) * 1. / dx)
+        Nbins = np.ceil((dsorted[-1] - dsorted[0]) * 1. / dx)
         Nbins = max(1, Nbins)
-        bins = data.min() + dx * np.arange(Nbins + 1)
+        bins = dsorted[0] + dx * np.arange(Nbins + 1)
         return dx, bins
     else:
         return dx
