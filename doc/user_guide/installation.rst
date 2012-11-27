@@ -98,13 +98,15 @@ The core ``astroML`` package requires the following:
   (astroML does not yet support python 3.x)
 - `Numpy <http://numpy.scipy.org/>`_ >= 1.4
 - `Scipy <http://www.scipy.org/>`_ >= 0.7
+- `scikit-learn <http://scikit-learn.org/>`_ >= 0.10
 - `matplotlib <http://matplotlib.org/>`_ >= 0.99
 - `pyfits <http://www.stsci.edu/institute/software_hardware/pyfits>`_ >= 3.0.
   PyFITS is a python reader for Flexible Image Transport
   System (FITS) files, based on cfitsio.  Several of the dataset loaders
   require pyfits.
 
-This configuration matches the Ubuntu 10.04 LTS release from April 2010.
+This configuration matches the Ubuntu 10.04 LTS release from April 2010,
+with the addition of scikit-learn.
 
 To run unit tests, you will also need nose >= 0.10
 
