@@ -48,7 +48,7 @@ ax.plot(x_sample, norm(med_sample, sigG_sample).pdf(x_sample),
         '--k', lw=1.5, label='$\sigma_G$ fit')
 ax.legend()
 
-ax.set_xlim(-10, 10)
+ax.set_xlim(-7.5, 7.5)
 ax.set_xlabel('x')
 ax.set_ylabel('p(x)')
 plt.show()

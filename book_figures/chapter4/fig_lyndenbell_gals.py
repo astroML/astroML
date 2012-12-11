@@ -136,8 +136,8 @@ for i in range(2):
 
     ax.set_xlim(0.075, 0.125)
     ax.set_ylim(-22, -19.8)
-    ax.set_xlabel('redshift')
-    ax.set_ylabel('magnitude')
+    ax.set_xlabel('$z$')
+    ax.set_ylabel('$M$')
 
     #------------------------------------------------------------
     # Second axes: plot the inferred 1D distribution in z

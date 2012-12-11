@@ -43,7 +43,7 @@ ax.text(3, 0.1, '$g_2(x)$', ha='center', va='center',
 ax.set_xlim(-2, 7)
 ax.set_ylim(0, 0.5)
 
-ax.set_xlabel('x')
-ax.set_ylabel('p(x)')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$p(x)$')
 
 plt.show()

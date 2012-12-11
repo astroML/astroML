@@ -39,7 +39,7 @@ sample_std = np.std(x_sample, ddof=1)
 ax = plt.axes()
 
 ax.hist(x_sample, 20, histtype='stepfilled', normed=True, fc='#CCCCCC')
-x = np.linspace(-2, 4, 1000)
+x = np.linspace(-2.1, 4.1, 1000)
 
 factor1 = ratio_in / (1. + ratio_in)
 factor2 = 1. / (1. + ratio_in)
@@ -50,6 +50,8 @@ ax.plot(x, gm.pdf_individual(x), ':k')
 ax.plot(x, norm.pdf(x, sample_mu, sample_std), '--k', label='best fit normal')
 
 ax.legend(loc=1)
+
+ax.set_xlim(-2.1, 4.1)
 
 ax.set_xlabel('x')
 ax.set_ylabel('p(x)')

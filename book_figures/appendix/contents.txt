@@ -3,10 +3,9 @@ fig_plotting_examples.py
 fig_sdss_filters.py
 fig_fft_text_example.py
 
-# Might be deleted:
-fig_gauss_kernel.py
-fig_neural_network.py
-fig_ball_dualtree.py
-fig_kd_dualtree.py
-fig_LIGO_bandpower.py
-fig_LIGO_wavelets.py
+#fig_gauss_kernel.py
+#fig_neural_network.py
+#fig_ball_dualtree.py
+#fig_kd_dualtree.py
+#fig_LIGO_bandpower.py
+#fig_LIGO_wavelets.py

@@ -24,7 +24,11 @@ spec = fetch_sdss_spectrum(plate, mjd, fiber)
 # Plot the resulting spectrum
 ax = plt.axes()
 ax.plot(spec.wavelength(), spec.spectrum, '-k', lw=1)
-ax.set_xlabel(r'$\lambda (\AA)$')
+
+ax.set_xlim(3000, 10000)
+ax.set_ylim(25, 300)
+
+ax.set_xlabel(r'$\lambda {(\rm \AA)}$')
 ax.set_ylabel('Flux')
 ax.set_title('Plate = %(plate)i, MJD = %(mjd)i, Fiber = %(fiber)i' % locals())
 

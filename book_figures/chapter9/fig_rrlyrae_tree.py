@@ -12,6 +12,13 @@ and plots a visualization of the first several levels of the tree.
 import numpy as np
 from matplotlib import pyplot as plt
 
+# % sign needs to be escaped if usetex is True
+import matplotlib
+if matplotlib.rcParams.get('text.usetex'):
+    pct = r'\%'
+else:
+    pct = '%'
+
 from sklearn.tree import DecisionTreeClassifier
 from astroML.datasets import fetch_rrlyrae_combined
 from astroML.utils import split_samples
@@ -92,18 +99,18 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
             n_neg = np.sum(classes[data_masks[j]] == 0)
             n_pos = np.sum(classes[data_masks[j]] == 1)
 
-            text = "$%i\ /\ %i$" % (n_neg, n_pos)
+            text = "$%i\,/\,%i$" % (n_neg, n_pos)
 
             # assure that we're doing this correctly
             assert (n_neg + n_pos == T_nsamples[ind])
 
             # check if node is a leaf
             if n_neg == 0:
-                text += "\n" + r"$\rm(RR\,Lyrae)$"
+                text += "\n" + r"${\rm(RR\,Lyrae)}$"
             elif n_pos == 0:
-                text += "\n" + r"$\rm(non-variable)$"
+                text += "\n" + r"${\rm non}$-${\rm variable}$"
             else:
-                text += "\n" + r"$\rm split\ on$ %s" % labels[T_feature[ind]]
+                text += "\n" + r"${\rm split\ on}$ %s" % labels[T_feature[ind]]
 
             if i < 4:
                 fontsize = 12
@@ -178,23 +185,26 @@ ax = fig.add_axes([0, 0, 1, 1], xticks=[], yticks=[], frameon=False)
 visualize_tree(clf, X_train, y_train,
                labels=(['$u-g$', '$g-r$', '$r-i$', '$i-z$']))
 
-ax.text(0.12, 0.95, (" Numbers are count of\n"
-                     " non-variable / RR-Lyrae\n"
-                     " in each node"),
+
+ax.text(0.12, 0.95, ("Numbers are count of\n"
+                     "non-variable / RR-Lyrae\n"
+                     "in each node"),
         ha='center', va='center',
         fontsize=12,
         bbox=dict(boxstyle='round', ec='k', fc='w'))
 
-ax.text(-0.08, 0.01, ("Training Set Size:\n"
-                      "  %i objects\n\n"
-                      "Cross-Validation, with\n"
+ax.text(-0.08, 0.14, ("Training Set Size:\n"
+                      "  %i objects" % len(y_train)),
+        fontsize=12, ha='left', va='bottom')
+
+ax.text(-0.08, 0.01, ("Cross-Validation, with\n"
                       "  %i RR-Lyraes (positive)\n"
                       "  %i non-variables (negative)\n"
-                      "  false positives: %i (%.1f%%)\n"
-                      "  false negatives: %i (%.1f%%)"
-                      % (len(y_train), tot_pos, tot_neg,
-                         fp, fp * 100. / (tp + fp),
-                         fn, fn * 100. / (tn + fn))),
+                      "  false positives: %i (%.1f%s)\n"
+                      "  false negatives: %i (%.1f%s)"
+                      % (tot_pos, tot_neg,
+                         fp, fp * 100. / (tp + fp), pct,
+                         fn, fn * 100. / (tn + fn), pct)),
         fontsize=12, ha='left', va='bottom')
 
 #--------------------------------------------------

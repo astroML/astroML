@@ -96,6 +96,6 @@ ax.set_xlabel('$g_1$')
 ax.set_ylabel('$p(g_1)$')
 
 ax.set_xlim(0, 1)
-ax.set_ylim(0, 1.8)
+ax.set_ylim(0.1, 1.8)
 
 plt.show()

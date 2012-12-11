@@ -44,11 +44,11 @@ ax.scatter(blue_pts[:, 0], blue_pts[:, 1], c='b')
 ax.scatter([x0], [y0], c='gray')
 
 for pt in blue_pts:
-    ax.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='->',
+    ax.annotate("", pt, (x0, y0), arrowprops=dict(arrowstyle='->',
                                                    linestyle='dashed'))
 
 for i, pt in enumerate(red_pts):
-    ax.annotate(" ", pt, (x0, y0), arrowprops=dict(arrowstyle='<-'))
+    ax.annotate("", pt, (x0, y0), arrowprops=dict(arrowstyle='<-'))
     ax.text(pt[0] + 0.03, pt[1] + 0.03, '$r_{j%i}$' % (i + 1),
             bbox=dict(boxstyle='round', ec='k', fc='w', alpha=0.7))
 

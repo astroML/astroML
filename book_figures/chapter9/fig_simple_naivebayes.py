@@ -53,7 +53,7 @@ ax.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
 ax.set_xlim(xlim)
 ax.set_ylim(ylim)
 
-ax.set_xlabel('x')
-ax.set_ylabel('y')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$y$')
 
 plt.show()

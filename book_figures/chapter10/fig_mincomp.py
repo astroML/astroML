@@ -64,7 +64,9 @@ ax.plot(lam, spec_filtered, '-k')
 ax.text(0.99, 0.95, "SDSS white dwarf\n %i-%i-%i" % (mjd, plate, fiber),
         ha='right', va='top', transform=ax.transAxes, fontsize=12)
 
-ax.set_xlabel(r'$\lambda\ (\AA)$')
+ax.set_ylim(25, 110)
+
+ax.set_xlabel(r'$\lambda\ {\rm (\AA)}$')
 ax.set_ylabel('flux')
 
 # Bottom panel: plot noisy and smoothed PSD

@@ -52,6 +52,8 @@ ax.hist(mu2_bootstrap, bins=50, normed=True, histtype='step',
         color='red', lw=2, label=r'$\sigma_G\ {\rm (quartile)}$')
 ax.plot(x, pdf2, color='gray')
 
+ax.set_xlim(0.82, 1.18)
+
 ax.set_xlabel(r'$\sigma$', fontsize=18)
 ax.set_ylabel(r'$p(\sigma|x,I)$', fontsize=18)
 

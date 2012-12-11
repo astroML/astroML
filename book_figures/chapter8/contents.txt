@@ -1,7 +1,6 @@
 fig_linreg_inline.py
 fig_regression_mu_z.py
-fig_ridge_diagram.py
-fig_lasso_diagram.py
+fig_lasso_ridge.py
 fig_rbf_ridge_mu_z.py
 fig_nonlinear_mu_z.py
 fig_total_least_squares.py

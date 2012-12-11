@@ -14,6 +14,11 @@ import glob
 import matplotlib
 matplotlib.use('Agg') #don't display plots
 
+# set some font properties
+matplotlib.rc('text', usetex=True)
+matplotlib.rc('font', family='serif', style='normal', variant='normal',
+              stretch='normal', weight='normal',)
+
 from matplotlib import image
 from matplotlib import pyplot as plt
 
@@ -314,29 +319,7 @@ class ExampleBuilder:
         """
         contents_dir = os.path.join(self.source_dir, path)
         contents_file = os.path.join(contents_dir, self.contents_file)
-
-        if not os.path.exists(contents_file):
-            import warning
-            warnings.warn("Contents file not found in %s. "
-                          "Skipping directory" % path)
-            return []
-
-        if check_for_missing:
-            files = os.listdir(contents_dir)
-
-        L = []
-        for line in open(contents_file):
-            filename = line.split('#')[0].strip()
-            if len(filename) == 0:
-                continue
-
-            if check_for_missing and (filename not in files):
-                raise ValueError("Fatal: file %s not found in %s"
-                                 % (filename, contents_dir))
-
-            L.append(filename)
-
-        return L
+        return read_contents(contents_file, check_for_missing)
 
     #============================================================
     # Directory parser:
@@ -574,3 +557,47 @@ class ExampleBuilder:
                             fname=fname,
                             image_list=self.image_list(figure_list),
                             end_line=EF.end_line))
+
+
+def read_contents(contents_file, check_for_missing=True):
+    """Read contents file
+
+    A contents file is a list of filenames within the directory,
+    with comments marked by '#' in the normal way.
+
+    Parameters
+    ----------
+    contents_file : str
+        location of the contents file
+
+    Returns
+    -------
+    L : list
+        list of filenames from the contents
+    """
+    if not os.path.exists(contents_file):
+        import warning
+        warnings.warn("Contents file not found in %s. "
+                      "Skipping directory" % path)
+        return []
+
+    if check_for_missing:
+        contents_dir = os.path.split(contents_file)[0]
+        files = os.listdir(contents_dir)
+    else:
+        contents_dir = None
+        files = None
+
+    L = []
+    for line in open(contents_file):
+        filename = line.split('#')[0].strip()
+        if len(filename) == 0:
+            continue
+
+        if check_for_missing and (filename not in files):
+            raise ValueError("Fatal: file %s not found in %s"
+                             % (filename, contents_dir))
+
+        L.append(filename)
+
+    return L

@@ -92,15 +92,15 @@ ax_list[0].xaxis.set_major_formatter(plt.NullFormatter())
 ax_list[2].yaxis.set_major_formatter(plt.NullFormatter())
 
 for i in (0, 1):
-    ax_list[i].set_ylabel('y')
+    ax_list[i].set_ylabel('$y$')
 
 for j in (1, 2):
-    ax_list[j].set_xlabel('x')
+    ax_list[j].set_xlabel('$x$')
 
 ax_list[-1].legend(loc=1, prop=dict(size=11))
 
-ax_list[-1].set_xlabel('number of clusters')
-ax_list[-1].set_ylabel('BIC / N')
+ax_list[-1].set_xlabel('n. clusters')
+ax_list[-1].set_ylabel('$BIC / N$')
 ax_list[-1].set_ylim(16, 18)
 
 plt.show()

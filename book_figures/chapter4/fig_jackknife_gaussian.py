@@ -80,6 +80,7 @@ plt.legend(loc='upper left')
 
 ax.set_xlabel(r'$\sigma$', fontsize=18)
 ax.set_ylabel(r'$p(\sigma|x,I)$', fontsize=18)
+ax.set_xlim(0.45, 1.15)
 ax.set_ylim(0, 24)
 
 plt.show()

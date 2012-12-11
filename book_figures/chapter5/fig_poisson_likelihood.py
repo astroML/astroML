@@ -128,7 +128,7 @@ for num, nbins in enumerate([5, 40]):
     ax.set_ylabel(r'$b^\ast$')
 
     ax.set_xlim(0, 0.04)
-    ax.set_ylim(0, 0.15)
+    ax.set_ylim(0.001, 0.15)
 
     ax.xaxis.set_major_locator(plt.MultipleLocator(0.02))
 

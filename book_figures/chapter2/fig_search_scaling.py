@@ -15,7 +15,7 @@ from matplotlib import pyplot as plt
 
 #------------------------------------------------------------
 # Compute the execution times as a function of array size
-Nsamples = 10 ** np.linspace(6.2, 7.8, 15)
+Nsamples = 10 ** np.linspace(6.0, 7.8, 17)
 time_linear = np.zeros_like(Nsamples)
 time_binary = np.zeros_like(Nsamples)
 
@@ -50,14 +50,16 @@ ax.grid()
 ax.plot(Nsamples, time_linear, 'ok', color='gray', markersize=10,
         label=r'linear search $(\mathcal{O}[N])$')
 ax.plot(Nsamples, time_binary, 'sk', color='gray', markersize=10,
-        label=r'efficient search $(\mathcal{O}[\logN])$')
+        label=r'efficient search $(\mathcal{O}[\log N])$')
 
 # plot the expected scaling
-scale = 10 ** np.linspace(6, 8, 100)
+scale = 10 ** np.linspace(5, 8, 100)
 scaling_N = scale * time_linear[7] / Nsamples[7]
 scaling_logN = np.log(scale) * time_binary[7] / np.log(Nsamples[7])
 ax.plot(scale, scaling_N, '--k')
 ax.plot(scale, scaling_logN, '--k')
+
+ax.set_xlim(9E5, 1E8)
 
 # add text and labels
 ax.set_title("Scaling of Search Algorithms")

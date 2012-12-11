@@ -215,10 +215,10 @@ for data, label, ls in zip((X, Y, X_sample), labels, linestyles):
             normed=True)
 
 ax.legend(loc=2)
-ax.text(0.99, 0.99, '$w = -0.227g + 0.792r$\n$ - 0.567i + 0.05$',
+ax.text(0.95, 0.95, '$w = -0.227g + 0.792r$\n$ - 0.567i + 0.05$',
         transform=ax.transAxes, ha='right', va='top', size=14)
 
-ax.set_xlim(-0.08, 0.08)
+ax.set_xlim(-0.07, 0.07)
 ax.set_ylim(0, 55)
 
 ax.set_xlabel('$w$')

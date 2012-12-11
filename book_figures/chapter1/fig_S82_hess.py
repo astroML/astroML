@@ -34,6 +34,7 @@ cmap.set_bad('w', 1.)
 
 # Use the image display function imshow() to plot the result
 ax = plt.axes()
+H[H == 0] = 1  # prevent warnings in log10
 ax.imshow(np.log10(H).T, origin='lower',
           extent=[xbins[0], xbins[-1], ybins[0], ybins[-1]],
           cmap=cmap, interpolation='nearest',
@@ -42,7 +43,7 @@ ax.imshow(np.log10(H).T, origin='lower',
 ax.set_xlabel('g - r')
 ax.set_ylabel('r - i')
 
-ax.set_xlim(-0.5, 2.5)
-ax.set_ylim(-0.5, 2.5)
+ax.set_xlim(-0.6, 2.5)
+ax.set_ylim(-0.6, 2.5)
 
 plt.show()

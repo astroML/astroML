@@ -37,7 +37,7 @@ from matplotlib import pyplot as plt
 n_values = [20, 20, 40]
 b_values = [0.2, 0.6, 0.6]
 linestyles = ['-', '--', ':']
-x = np.arange(200)
+x = np.arange(-1, 200)
 
 #------------------------------------------------------------
 # plot the distributions
@@ -46,9 +46,9 @@ for (n, b, ls) in zip(n_values, b_values, linestyles):
     dist = binom(n, b)
 
     plt.plot(x, dist.pmf(x), ls=ls, c='black',
-             label=r'$b=%.1f,\ n=%i$' % (b, n), linestyle='steps')
+             label=r'$b=%.1f,\ n=%i$' % (b, n), linestyle='steps-mid')
 
-plt.xlim(0, 40)
+plt.xlim(-0.5, 40)
 plt.ylim(0, 0.3)
 
 plt.xlabel('$x$', fontsize=14)

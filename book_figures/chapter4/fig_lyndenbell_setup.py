@@ -41,14 +41,14 @@ for ax in (ax1, ax2):
 xi = 0.4
 yi = 0.35
 ax1.scatter([xi], [yi], s=16, lw=0, c='k')
-ax1.text(xi, yi, ' $(x_i, y_i)$', ha='left', va='center')
+ax1.text(xi + 0.02, yi + 0.02, ' $(x_i, y_i)$', ha='left', va='center')
 ax1.add_patch(Rectangle((0, 0), xi, max_func(xi), ec='k', fc='gray',
                         linestyle='dashed', lw=1, alpha=0.5))
 ax1.text(0.5 * xi, 0.5 * max_func(xi), '$J_i$', ha='center', va='center')
 
 # draw and label J_k in the second axes
 ax2.scatter([xi], [yi], s=16, lw=0, c='k')
-ax2.text(xi, yi, ' $(x_k, y_k)$', ha='center', va='bottom')
+ax2.text(xi + 0.02, yi + 0.02, ' $(x_k, y_k)$', ha='center', va='bottom')
 ax2.add_patch(Rectangle((0, 0), max_func(yi), yi, ec='k', fc='gray',
                         linestyle='dashed', lw=1, alpha=0.5))
 ax2.text(0.5 * max_func(yi), 0.5 * yi, '$J_k$', ha='center', va='center')

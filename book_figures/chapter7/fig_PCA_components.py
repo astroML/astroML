@@ -46,18 +46,18 @@ scatter_kwargs = dict(s=4, linewidths=0, edgecolors='none', c=c, cmap=cmap)
 ax1 = plt.subplot(221)
 im1 = ax1.scatter(coeffs[:, 0], coeffs[:, 1], **scatter_kwargs)
 im1.set_clim(clim)
-ax1.set_ylabel('c2')
+ax1.set_ylabel('$c_2$')
 
 ax2 = plt.subplot(223)
 im2 = ax2.scatter(coeffs[:, 0], coeffs[:, 2], **scatter_kwargs)
 im2.set_clim(clim)
-ax2.set_xlabel('c1')
-ax2.set_ylabel('c3')
+ax2.set_xlabel('$c_1$')
+ax2.set_ylabel('$c_3$')
 
 ax3 = plt.subplot(224)
 im3 = ax3.scatter(coeffs[:, 1], coeffs[:, 2], **scatter_kwargs)
 im3.set_clim(clim)
-ax3.set_xlabel('c2')
+ax3.set_xlabel('$c_2$')
 
 fig.colorbar(im3, ax=ax3, cax=cax,
              ticks=cticks,

@@ -10,7 +10,6 @@ fig_S82_scatter_contour.py
 fig_S82_hess.py
 fig_SSPP_metallicity.py
 fig_moving_objects_multicolor.py
+fig_mercator.py
 fig_projections.py
-fig_projections.py
-fig_healpix_pixels.py
-fig_wmap_healpix.py
+fig_healpix_ex.py

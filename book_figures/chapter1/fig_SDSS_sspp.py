@@ -34,7 +34,7 @@ ax = plt.axes()
 ax.plot(Teff, logg, marker='.', markersize=2, linestyle='none', color='black')
 
 ax.set_xlim(8000, 4500)
-ax.set_ylim(5, 1)
+ax.set_ylim(5.1, 1)
 
 ax.set_xlabel(r'$\mathrm{T_{eff}\ (K)}$')
 ax.set_ylabel(r'$\mathrm{log_{10}[g / (cm/s^2)]}$')

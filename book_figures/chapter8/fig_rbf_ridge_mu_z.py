@@ -83,12 +83,12 @@ for i in range(3):
     # plot weights
     ax = plt.subplot(234 + i)
     ax.xaxis.set_major_locator(plt.MultipleLocator(0.5))
-    ax.set_xlabel('z')
+    ax.set_xlabel('$z$')
     if i == 0:
         ax.set_ylabel(r'$\theta$')
         w *= 1E-12
-        ax.text(0, 1, r'$\rm \times 10^{12}$',
-                transform=ax.transAxes, fontsize=16)
+        ax.text(0, 1.01, r'$\rm \times 10^{12}$',
+                transform=ax.transAxes, fontsize=14)
     ax.scatter(centers, w, s=9, lw=0, c='k')
 
     ax.set_xlim(-0.05, 1.8)

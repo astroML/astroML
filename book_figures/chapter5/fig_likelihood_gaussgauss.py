@@ -47,11 +47,11 @@ plt.imshow(logL, origin='lower',
            extent=(mu[0], mu[-1], sigma[0], sigma[-1]),
            cmap=plt.cm.binary,
            aspect='auto')
-plt.colorbar()
+plt.colorbar().set_label(r'$\log(L)$')
 plt.clim(-5, 0)
 
 plt.text(0.5, 0.9,
-         r'$L(\mu,\sigma)\ \mathrm{for\ \bar{x}=1,\ \sigma_{true}=1,\ n=10}$',
+         r'$L(\mu,\sigma)\ \mathrm{for}\ \bar{x}=1,\ \sigma_{true}=1,\ n=10$',
          bbox=dict(ec='k', fc='w', alpha=0.9),
          fontsize=18, ha='center', va='center', transform=plt.gca().transAxes)
 

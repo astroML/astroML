@@ -72,6 +72,8 @@ for n, s in zip(Npts, styles):
     ax2.plot(a, logL, s, label=r'$\rm %i\ pts$' % n)
 ax2.legend(loc=2, prop=dict(size=14))
 
+ax2.set_xlim(-0.011, 0.02)
+
 ax2.set_xlabel('$a$')
 ax2.set_ylabel('$p(a)$')
 

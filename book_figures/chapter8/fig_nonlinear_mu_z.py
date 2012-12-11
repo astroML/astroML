@@ -72,7 +72,7 @@ ax.errorbar(z_sample, mu_sample, dmu, fmt='.k', ecolor='gray', lw=1)
 ax.set_xlim(0, 1.8)
 ax.set_ylim(36, 46)
 
-ax.set_xlabel('z')
+ax.set_xlabel('$z$')
 ax.set_ylabel(r'$\mu$', fontsize=16)
 
 ax.text(0.02, 0.98, "%i observations" % len(z_sample),

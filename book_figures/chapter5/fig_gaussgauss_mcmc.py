@@ -89,7 +89,7 @@ trace_sigma = S.trace('sigma')[:]
 
 fig = plt.figure()
 ax, = plot_mcmc([trace_mu, trace_sigma], fig=fig,
-                limits=[(-3, 5), (0, 5)],
+                limits=[(-3.2, 4.2), (0, 5)],
                 labels=(r'$\mu$', r'$\sigma$'),
                 levels=[0.683, 0.955, 0.997],
                 colors='k', linewidths=2)
@@ -98,7 +98,7 @@ ax, = plot_mcmc([trace_mu, trace_sigma], fig=fig,
 # Compute and plot likelihood with known ei for comparison
 # (Same as fig_likelihood_gaussgauss)
 sigma = np.linspace(0.01, 5, 41)
-mu = np.linspace(-3, 5, 41)
+mu = np.linspace(-3.2, 4.2, 41)
 
 logL = gaussgauss_logL(xi, ei, mu, sigma[:, np.newaxis])
 logL -= logL.max()
@@ -110,7 +110,7 @@ im.set_clim(0, 1.1)
 
 ax.set_xlabel(r'$\mu$')
 ax.set_ylabel(r'$\sigma$')
-ax.set_xlim(-3, 5)
+ax.set_xlim(-3.2, 4.2)
 ax.set_ylim(0, 5)
 
 ax.set_aspect(1. / ax.get_data_ratio())

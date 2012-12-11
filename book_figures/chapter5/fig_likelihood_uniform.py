@@ -61,7 +61,7 @@ plt.imshow(logL, origin='lower',
 # colorbar
 cax = plt.axes([0.82, 0.35, 0.02, 0.6])
 cb = plt.colorbar(cax=cax)
-cb.set_label(r'$L(\mu, W)$')
+cb.set_label(r'$\log L(\mu, W)$')
 plt.clim(-7, 0)
 
 ax.text(0.5, 0.9, r'$L(\mu,W)\ \mathrm{uniform,\ n=100}$',

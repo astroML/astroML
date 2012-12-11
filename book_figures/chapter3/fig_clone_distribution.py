@@ -63,8 +63,8 @@ hist(x, bins='knuth', ax=ax,
      histtype='stepfilled', ec='k', fc='#AAAAAA')
 ax.set_ylim(0, 300)
 ax.set_title('Input data distribution')
-ax.set_xlabel('x')
-ax.set_ylabel('N(x)')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$N(x)$')
 
 # plot the cumulative distribution
 ax = fig.add_subplot(222)
@@ -73,8 +73,8 @@ ax.plot(x, Px_cuml, '-k')
 ax.set_xlim(-3, 3)
 ax.set_ylim(-0.05, 1.05)
 ax.set_title('Cumulative Distribution')
-ax.set_xlabel('x')
-ax.set_ylabel('p(<x)')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$p(<x)$')
 
 # plot the inverse cumulative distribution and spline fit
 ax = fig.add_subplot(223)
@@ -85,8 +85,8 @@ ax.arrow(0.7, 0.9, -0.69, 0, width=0.1, fc='gray', ec='gray', head_length=0.06)
 ax.set_xlim(-0.05, 1.05)
 ax.set_ylim(-3, 3)
 ax.set_title('Inverse Cuml. Distribution')
-ax.set_xlabel('p(<x)')
-ax.set_ylabel('x')
+ax.set_xlabel('$p(<x)$')
+ax.set_ylabel('$x$')
 
 # plot the resulting cloned distribution
 ax = fig.add_subplot(224)
@@ -98,8 +98,8 @@ hist(x_cloned, bins='knuth', ax=ax,
      histtype='step', normed=True,
      color='k', label='cloned data')
 ax.set_title('Cloned Distribution')
-ax.set_xlabel('x')
-ax.set_ylabel('p(x)dx')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$p(x)dx$')
 ax.text(0.75, 0.95, "KS test:\nD = %.2f\np = %.2f" % (D, p),
         ha='left', va='top', transform=ax.transAxes)
 

@@ -13,7 +13,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.ticker import NullFormatter, NullLocator, MultipleLocator
 
-
 def banana_distribution(N=10000):
     """This generates random points in a banana shape"""
     # create a truncated normal distribution
@@ -69,9 +68,8 @@ plt.imshow(H, interpolation='nearest', origin='lower', aspect='auto',
            extent=[0, 2, 0, 2], cmap=plt.cm.binary)
 
 cb = plt.colorbar(cax=ax_cb)
-cb.set_label('P(x, y)')
-plt.text(0, 1, r'$\times 10^{-3}$',
-         fontsize=14,
+cb.set_label('$P(x, y)$')
+plt.text(0, 1.02, r'$\times 10^{-3}$',
          transform=ax_cb.transAxes)
 
 # draw P(x) distribution
@@ -87,12 +85,12 @@ ax_Px.set_xlim(0, 2)
 ax_Py.set_ylim(0, 2)
 
 # label axes
-ax_Pxy.set_xlabel('x')
-ax_Pxy.set_ylabel('y')
-ax_Px.set_xlabel('x')
-ax_Px.set_ylabel('P(x)')
-ax_Py.set_ylabel('y')
-ax_Py.set_xlabel('P(y)')
+ax_Pxy.set_xlabel('$x$')
+ax_Pxy.set_ylabel('$y$')
+ax_Px.set_xlabel('$x$')
+ax_Px.set_ylabel('$P(x)$')
+ax_Py.set_ylabel('$y$')
+ax_Py.set_xlabel('$P(y)$')
 
 
 # draw marginal probabilities
@@ -107,10 +105,10 @@ for i in range(3):
     Px_y = H[iy[i]] / H[iy[i]].sum()
     ax_Px_y[i].plot(xbins[1:], Px_y, drawstyle='steps', c=colors[i])
     ax_Px_y[i].yaxis.set_major_formatter(NullFormatter())
-    ax_Px_y[i].set_ylabel('P(x|y=%.1f)' % ybins[iy[i]])
+    ax_Px_y[i].set_ylabel('$P(x | y=%.1f)$' % ybins[iy[i]])
 ax_Pxy.axis(axis)
 
-ax_Px_y[2].set_xlabel('x')
+ax_Px_y[2].set_xlabel('$x$')
 
 ax_Pxy.set_title('Joint Probability')
 ax_Px_y[0].set_title('Conditional Probability')

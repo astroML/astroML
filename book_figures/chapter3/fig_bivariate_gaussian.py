@@ -53,14 +53,15 @@ for N in (1, 2, 3):
                          angle=alpha * 180. / np.pi, lw=1,
                          ec='k', fc='none'))
 
-ax.text(0.02, 0.98, (r"$\sigma_1 = %i$" % sigma_1 + "\n" +
-                     r"$\sigma_2 = %i$" % sigma_2 + "\n" +
-                     r"$\alpha = \pi / %i$" % (np.pi / alpha) + "\n"),
-        ha='left', va='top', transform=ax.transAxes, fontsize=16)
-ax.text(0.25, 0.98, (r"$\sigma_x = %.2f$" % sigma_x + "\n" +
-                     r"$\sigma_y = %.2f$" % sigma_y + "\n" +
-                     r"$\sigma_{xy} = %.2f$" % sigma_xy + "\n"),
-        ha='left', va='top', transform=ax.transAxes, fontsize=16)
+kwargs = dict(ha='left', va='top', transform=ax.transAxes, fontsize=16)
+
+ax.text(0.02, 0.98, r"$\sigma_1 = %i$" % sigma_1, **kwargs)
+ax.text(0.02, 0.93, r"$\sigma_2 = %i$" % sigma_2, **kwargs)
+ax.text(0.02, 0.88, r"$\alpha = \pi / %i$" % (np.pi / alpha), **kwargs)
+
+ax.text(0.27, 0.98, r"$\sigma_x = %.2f$" % sigma_x, **kwargs)
+ax.text(0.27, 0.93, r"$\sigma_y = %.2f$" % sigma_y, **kwargs)
+ax.text(0.27, 0.88, r"$\sigma_{xy} = %.2f$" % sigma_xy, **kwargs)
 
 ax.set_xlabel('x')
 ax.set_ylabel('y')

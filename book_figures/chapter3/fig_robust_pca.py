@@ -18,6 +18,12 @@ from matplotlib.patches import Ellipse
 from astroML.stats import fit_bivariate_normal
 from astroML.stats.random import bivariate_normal
 
+# percent sign needs to be escaped if usetex is activated
+import matplotlib
+if matplotlib.rcParams.get('text.usetex'):
+    pct = '\%'
+else:
+    pct = '%'
 
 N = 1000
 
@@ -85,16 +91,15 @@ for i, f in enumerate([0.05, 0.15]):
                     lw=2, ec='k', fc='none', linestyle='dashed')
         ax.add_patch(E)
 
-    ax.text(0.02, 0.98, '%i%% outliers' % (f * 100),
+    ax.text(0.02, 0.98, '%i%s outliers' % (f * 100, pct),
             ha='left', va='top', transform=ax.transAxes)
 
     ax.set_xlim(5.5, 14.5)
     ax.set_ylim(5.5, 14.5)
-
     ax.set_xlabel('x')
 
     # This is a bit of a hack:
-    # We'll draw some lines off the picture to make our legend work
+    # We'll draw some lines off the picture to make our legend look better
     ax.plot([0], [0], '-k', lw=2, label='Input')
     ax.plot([0], [0], ':k', lw=2, label='Fit')
     ax.plot([0], [0], '--k', lw=2, label='Robust Fit')

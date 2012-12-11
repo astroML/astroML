@@ -47,7 +47,7 @@ ax = fig.add_subplot(131, aspect='equal')
 ax.plot(X[:, 0], X[:, 1], '.k', ms=2)
 
 ax.set_title("Input Distribution")
-ax.set_ylabel('y')
+ax.set_ylabel('$y$')
 
 # next plot the gmm fit
 ax = fig.add_subplot(132, aspect='equal')
@@ -67,6 +67,6 @@ ax.yaxis.set_major_formatter(plt.NullFormatter())
 for ax in fig.axes:
     ax.set_xlim(xmin, xmax)
     ax.set_ylim(xmin, xmax)
-    ax.set_xlabel('x')
+    ax.set_xlabel('$x$')
 
 plt.show()

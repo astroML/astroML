@@ -49,8 +49,8 @@ ax.text(0.05, 0.95, "d = 1", transform=plt.gca().transAxes,
         bbox=dict(ec='k', fc='w', pad=10))
 
 ax.plot(x_fit, y_fit, '-b')
-ax.set_xlabel('x')
-ax.set_ylabel('y')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$y$')
 
 #------------------------------------------------------------
 # Second figure: plot fit for several orders of polynomial
@@ -71,8 +71,8 @@ for i, d in enumerate([2, 3, 19]):
     if i in (1, 2):
         ax.yaxis.set_major_formatter(plt.NullFormatter())
     else:
-        ax.set_ylabel('y')
-    ax.set_xlabel('x')
+        ax.set_ylabel('$y$')
+    ax.set_xlabel('$x$')
     ax.text(0.05, 0.95, "d = %i" % d, transform=ax.transAxes,
             ha='left', va='top',
             bbox=dict(ec='k', fc='w', pad=10))

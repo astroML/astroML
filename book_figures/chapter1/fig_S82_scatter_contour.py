@@ -35,7 +35,7 @@ scatter_contour(g - r, r - i, threshold=200, log_counts=True, ax=ax,
 ax.set_xlabel('g - r')
 ax.set_ylabel('r - i')
 
-ax.set_xlim(-0.5, 2.5)
-ax.set_ylim(-0.5, 2.5)
+ax.set_xlim(-0.6, 2.5)
+ax.set_ylim(-0.6, 2.5)
 
 plt.show()

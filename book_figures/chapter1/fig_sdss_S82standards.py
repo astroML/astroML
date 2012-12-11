@@ -30,6 +30,9 @@ ax = plt.axes()
 ax.plot(g - r, r - i, marker='.', markersize=2,
         color='black', linestyle='none')
 
+ax.set_xlim(-0.6, 2.0)
+ax.set_ylim(-0.6, 2.5)
+
 ax.set_xlabel('g - r')
 ax.set_ylabel('r - i')
 

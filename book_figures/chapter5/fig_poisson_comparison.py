@@ -85,7 +85,7 @@ for L, ls, n in zip(L_p, ['-', '--'], nbins):
 ylim = (0, 200)
 plt.plot([a_true, a_true], ylim, ':k', lw=1)
 
-ax.set_xlim(0, 0.02)
+ax.set_xlim(-0.001, 0.021)
 ax.set_ylim(ylim)
 
 ax.set_xlabel('$a$')

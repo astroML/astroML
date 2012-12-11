@@ -102,8 +102,8 @@ ax.plot(x_fit, m_fit * x_fit + b_fit, '-k')
 
 ax.set_xlim(40, 250)
 ax.set_ylim(100, 600)
-ax.set_xlabel('x')
-ax.set_ylabel('y')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$y$')
 
 #------------------------------------------------------------
 # plot the likelihood contour in m, b

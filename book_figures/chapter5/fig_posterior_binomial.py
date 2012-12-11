@@ -44,6 +44,8 @@ ax = fig.add_subplot(121)
 ax.plot(b, p_b, '-b')
 ax.plot(b, p_g, '--r')
 
+ax.set_ylim(-0.05, 3)
+
 ax.set_xlabel('$b$')
 ax.set_ylabel('$p(b|x,I)$')
 

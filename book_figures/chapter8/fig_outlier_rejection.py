@@ -183,8 +183,8 @@ fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
 # first axes: plot the data
 ax1 = fig.add_subplot(221)
 ax1.errorbar(xi, yi, dyi, fmt='.k', ecolor='gray', lw=1)
-ax1.set_xlabel('x')
-ax1.set_ylabel('y')
+ax1.set_xlabel('$x$')
+ax1.set_ylabel('$y$')
 
 #------------------------------------------------------------
 # Go through models; compute and plot likelihoods
@@ -239,7 +239,7 @@ for i, M in enumerate(models):
 
     ax.set_xlabel('intercept')
     ax.set_ylabel('slope')
-    ax.grid()
+    ax.grid(color='gray')
     ax.xaxis.set_major_locator(plt.MultipleLocator(40))
     ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))
 

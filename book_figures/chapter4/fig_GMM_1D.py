@@ -79,7 +79,8 @@ ax.set_ylabel('p(x)')
 ax = fig.add_subplot(132)
 ax.plot(N, AIC, '-k', label='AIC')
 ax.plot(N, BIC, '--k', label='BIC')
-ax.set_xlabel('num components')
+ax.set_xlabel('n. components')
+ax.set_ylabel('information criterion')
 ax.legend(loc=2, prop=dict(size=12))
 
 
@@ -96,7 +97,7 @@ ax.fill_between(x, p[1], 1, color='gray', alpha=0.7)
 ax.set_xlim(-6, 6)
 ax.set_ylim(0, 1)
 ax.set_xlabel('x')
-ax.set_ylabel('p(class|x)')
+ax.set_ylabel(r'$p({\rm class}|x)$')
 
 ax.text(-5, 0.3, 'class 1', rotation='vertical')
 ax.text(0, 0.5, 'class 2', rotation='vertical')

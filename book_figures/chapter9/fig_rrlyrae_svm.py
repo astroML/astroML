@@ -90,8 +90,8 @@ im.set_clim(-0.5, 1)
 ax.set_xlim(0.7, 1.35)
 ax.set_ylim(-0.15, 0.4)
 
-ax.set_xlabel('u-g')
-ax.set_ylabel('g-r')
+ax.set_xlabel('$u-g$')
+ax.set_ylabel('$g-r$')
 
 # plot completeness vs Ncolors
 ax = fig.add_subplot(222)

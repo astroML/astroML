@@ -49,7 +49,7 @@ ax.set_ylabel('$p_x(x)$')
 ax = fig.add_subplot(122)
 ax.hist(y_sample, 20, histtype='stepfilled', fc='#CCCCCC', normed=True)
 ax.plot(y, Py, '-k')
-ax.set_xlim(0.8, 2.9)
+ax.set_xlim(0.85, 2.9)
 ax.xaxis.set_major_locator(plt.MaxNLocator(6))
 ax.text(0.95, 0.95, '$y=\exp(x)$\n$p_y(y)=p_x(\ln y) / y$',
         va='top', ha='right',

@@ -83,7 +83,9 @@ ax = fig.add_subplot(211)
 ax.plot(lam, spec, '-', c='gray', lw=1)
 ax.plot(lam, spec_patched + spec_fit, '-k', lw=1)
 
-ax.set_xlabel('$\lambda$')
+ax.set_ylim(25, 110)
+
+ax.set_xlabel(r'$\lambda\ {\rm(\AA)}$')
 ax.set_ylabel('flux')
 
 ax = fig.add_subplot(212)

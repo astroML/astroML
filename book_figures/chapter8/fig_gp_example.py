@@ -79,7 +79,7 @@ fig = plt.figure(figsize=(8, 8))
 # first: plot a selection of unconstrained functions
 ax = fig.add_subplot(221)
 ax.plot(x, draws.T, '-k')
-ax.set_ylabel('f(x)')
+ax.set_ylabel('$f(x)$')
 
 # second: plot a constrained function
 ax = fig.add_subplot(222)
@@ -94,8 +94,8 @@ ax.plot(x, f2, '-', color='gray')
 ax.fill_between(x, f2 - 2 * f2_err, f2 + 2 * f2_err, color='gray', alpha=0.3)
 ax.errorbar(x1, y1, dy2, fmt='ok')
 
-ax.set_xlabel('x')
-ax.set_ylabel('f(x)')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$f(x)$')
 
 # third: plot a more constrained function with errors
 ax = fig.add_subplot(224)
@@ -105,7 +105,7 @@ ax.errorbar(x3, y3, dy3, fmt='.k')
 
 ax.plot(x, np.cos(x), ':k')
 
-ax.set_xlabel('x')
+ax.set_xlabel('$x$')
 
 for ax in fig.axes:
     ax.set_xlim(0, 10)

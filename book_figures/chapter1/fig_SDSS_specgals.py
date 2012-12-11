@@ -28,7 +28,7 @@ ax = plt.axes()
 ax.plot(u - r, rPetro, '.k', markersize=4)
 
 ax.set_xlim(1, 4.5)
-ax.set_ylim(18, 13.5)
+ax.set_ylim(18.1, 13.5)
 
 ax.set_xlabel(r'$\mathrm{u - r}$')
 ax.set_ylabel(r'$\mathrm{r_{petrosian}}$')

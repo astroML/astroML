@@ -86,8 +86,8 @@ ax.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
 ax.set_xlim(xlim)
 ax.set_ylim(ylim)
 
-ax.set_xlabel('u-g')
-ax.set_ylabel('g-r')
+ax.set_xlabel('$u-g$')
+ax.set_ylabel('$g-r$')
 
 # Plot completeness vs Ncolors
 ax = plt.subplot(222)

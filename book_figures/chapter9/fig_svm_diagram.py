@@ -61,7 +61,7 @@ ax.plot(xx, yy + db2, '--k')
 ax.set_ylim(-1.5, 4)
 ax.set_xlim(-3, 4)
 
-ax.set_xlabel('x')
-ax.set_ylabel('y')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$y$')
 
 plt.show()

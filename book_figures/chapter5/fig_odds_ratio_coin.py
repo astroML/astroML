@@ -56,15 +56,16 @@ for subplot, n in zip(subplots, n_array):
                 label=r'$b^* = %.1f$' % bstar)
 
     if subplot == 121:
+        ax.set_xlim(0, n - 0.01)
         ax.set_ylabel(r'$O_{21}$')
         ax.legend(loc=2)
     else:
-        ax.set_xlim(0.01, n)
+        ax.set_xlim(0, n)
         ax.yaxis.set_major_formatter(plt.NullFormatter())
 
-    ax.set_xlabel('k')
-    ax.set_title('n = %i' % n)
-    ax.set_ylim(1E-1, 1E4)
+    ax.set_xlabel('$k$')
+    ax.set_title('$n = %i$' % n)
+    ax.set_ylim(8E-2, 1E3)
     ax.xaxis.set_major_locator(plt.MultipleLocator(n / 5))
     ax.grid()
 

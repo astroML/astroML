@@ -53,7 +53,7 @@ l4, = ax.plot(x, stats.uniform(-2, 4).pdf(x), ':k',
               label=r'${\rm Uniform,}\ K=-1.2$')
 
 ax.set_xlim(-5, 5)
-ax.set_ylim(0, 0.6001)
+ax.set_ylim(0, 0.55)
 ax.set_xlabel('$x$', fontsize=16)
 ax.set_ylabel('$p(x)$', fontsize=16)
 

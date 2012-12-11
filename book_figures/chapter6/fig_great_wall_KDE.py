@@ -90,12 +90,12 @@ for ax in [ax1, ax2]:
     ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 for ax in [ax3, ax4]:
-    ax.set_xlabel('y (Mpc)')
+    ax.set_xlabel('$y$ (Mpc)')
 
 for ax in [ax2, ax4]:
     ax.yaxis.set_major_formatter(plt.NullFormatter())
 
 for ax in [ax1, ax3]:
-    ax.set_ylabel('x (MPC)')
+    ax.set_ylabel('$x$ (Mpc)')
 
 plt.show()

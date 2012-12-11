@@ -67,12 +67,12 @@ ax = fig.add_subplot(211)
 plt.imshow(logL, origin='lower', aspect='auto',
            extent=(sigma[0], sigma[-1], A[0], A[-1]),
            cmap=plt.cm.binary)
-plt.colorbar()
+plt.colorbar().set_label(r'$\log(L)$')
 plt.clim(-5, 0)
 ax.set_xlabel(r'$\sigma$')
 ax.set_ylabel(r'$A$')
 
-ax.text(0.5, 0.9, r'$L(\sigma,A)\ (\rm{Gauss + bkgd},\ n=200)$',
+ax.text(0.5, 0.9, r'$L(\sigma,A)\ (\mathrm{Gauss + bkgd},\ n=200)$',
         fontsize=16, bbox=dict(ec='k', fc='w', alpha=0.9),
         ha='center', va='center', transform=plt.gca().transAxes)
 
@@ -85,9 +85,9 @@ ax2.yaxis.set_major_locator(plt.MultipleLocator(0.1))
 ax2.plot(x, fracA * dist1.pdf(x) + (1. - fracA) * dist2.pdf(x), '-k')
 ax2.hist(xi, 30, normed=True, histtype='stepfilled', fc='black', alpha=0.5)
 
-ax2.set_ylim(0, 0.3)
-ax2.set_xlim(-2, 12)
+ax2.set_ylim(0, 0.301)
+ax2.set_xlim(-1, 11)
 
-ax2.set_xlabel('x')
-ax2.set_ylabel('p(x)')
+ax2.set_xlabel('$x$')
+ax2.set_ylabel('$p(x)$')
 plt.show()

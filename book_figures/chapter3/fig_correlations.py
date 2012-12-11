@@ -16,6 +16,13 @@ from matplotlib import pyplot as plt
 from astroML.stats.random import bivariate_normal
 from astroML.decorators import pickle_results
 
+# percent sign must be escaped if usetex=True
+import matplotlib
+if matplotlib.rcParams.get('text.usetex'):
+    pct = '\%'
+else:
+    pct = '%'
+
 #------------------------------------------------------------
 # Set parameters for the distributions
 Nbootstraps = 5000
@@ -72,7 +79,7 @@ fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(bottom=0.07, top=0.95, hspace=0.25)
 
 histargs = (dict(alpha=0.5, label='No Outliers'),
-            dict(alpha=0.8, label='%i%% Outliers' % int(f * 100)))
+            dict(alpha=0.8, label='%i%s Outliers' % (int(f * 100), pct)))
 
 distributions = ['Pearson-r', 'Spearman-r', r'Kendall-$\tau$']
 xlabels = ['$r_p$', '$r_s$', r'$\tau$']\
@@ -89,9 +96,10 @@ for i in range(3):
     ylim = ax.get_ylim()
     if i < 2:
         ax.plot([rho_true, rho_true], ylim, '--k', lw=1)
-        ax.set_xlim(0.3, 0.7)
+        ax.set_xlim(0.34, 0.701)
     else:
         ax.plot([tau_true, tau_true], ylim, '--k', lw=1)
+        ax.set_xlim(0.31, 0.48)
     ax.set_ylim(ylim)
 
     ax.text(0.98, 0.95, distributions[i], ha='right', va='top',

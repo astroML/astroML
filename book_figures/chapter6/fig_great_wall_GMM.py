@@ -62,12 +62,12 @@ ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
 
 ax.xaxis.set_major_formatter(plt.NullFormatter())
-plt.ylabel('x (Mpc)')
+plt.ylabel('$x$ (Mpc)')
 
 ax = fig.add_subplot(212, aspect='equal')
 ax.imshow(np.exp(log_dens.T), origin='lower', cmap=plt.cm.binary,
           extent=[ymin, ymax, xmin, xmax])
-ax.set_xlabel('y (Mpc)')
-ax.set_ylabel('x (Mpc)')
+ax.set_xlabel('$y$ (Mpc)')
+ax.set_ylabel('$x$ (Mpc)')
 
 plt.show()

@@ -73,7 +73,7 @@ for i, comp in enumerate(decompositions):
         if j < n_components - 1:
             ax.xaxis.set_major_formatter(plt.NullFormatter())
         else:
-            ax.set_xlabel(r'wavelength $(\AA)$')
+            ax.set_xlabel(r'wavelength ${\rm (\AA)}$')
 
         ax.plot(wavelengths, comp[j], '-k', lw=1)
 

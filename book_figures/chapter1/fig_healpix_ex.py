@@ -1,6 +1,6 @@
 """
-Demonstration of HEALPix pixelization
--------------------------------------
+Example of HealPix pixellization
+--------------------------------
 This uses HEALpy, the python wrapper for HEALpix, to plot the HEALPix
 pixellization of the sky.
 """
@@ -15,19 +15,31 @@ from matplotlib import pyplot as plt
 #  a segmentation fault in some circumstances.
 import healpy as hp
 
+from astroML.datasets import fetch_wmap_temperatures
+
 #------------------------------------------------------------
+# First plot an example pixellization
+
 # Prepare the healpix pixels
 NSIDE = 4
 m = np.arange(hp.nside2npix(NSIDE))
 print "number of pixels:", len(m)
 
-#------------------------------------------------------------
 # Plot the pixelization
 fig = plt.figure(1)
-hp.mollview(m, nest=True, title="HEALPix Pixels (Mollweide)",
-            cmap=plt.cm.binary, fig=1)
+hp.mollview(m, nest=True, title="HEALPix Pixels (Mollweide)", fig=1)
 
 # remove colorbar: we don't need it for this plot
-fig.axes.remove(fig.axes[1])
+fig.delaxes(fig.axes[1])
+
+#------------------------------------------------------------
+# Next plot the wmap pixellization
+wmap_unmasked = fetch_wmap_temperatures(masked=False)
+
+# plot the unmasked map
+fig = plt.figure(2)
+hp.mollview(wmap_unmasked, min=-1, max=1, title='Raw WMAP data',
+            unit=r'$\Delta$T (mK)', fig=2)
+plt.show()
 
 plt.show()

@@ -163,8 +163,8 @@ plt.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
 plt.xlim(xlim)
 plt.ylim(ylim)
 
-plt.xlabel('u-g')
-plt.ylabel('g-r')
+plt.xlabel('$u-g$')
+plt.ylabel('$g-r$')
 
 plt.text(0.02, 0.02, "depth = %i" % depths[1],
          transform=ax.transAxes)

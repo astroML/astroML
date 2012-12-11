@@ -96,11 +96,11 @@ for i in range(4):
     if i in (0, 1):
         ax[i].xaxis.set_major_formatter(plt.NullFormatter())
     else:
-        ax[i].set_xlabel('x')
+        ax[i].set_xlabel('$x$')
 
     if i in (1, 3):
         ax[i].yaxis.set_major_formatter(plt.NullFormatter())
     else:
-        ax[i].set_ylabel('y')
+        ax[i].set_ylabel('$y$')
 
 plt.show()

@@ -88,8 +88,8 @@ for l in ax.yaxis.get_minorticklines():
     l.set_markersize(3)
 
 ax = fig.add_subplot(122)
-ax.plot(pErrGrid, med2, '-k', label='p=2')
-ax.plot(pErrGrid, med4, '--k', label='p=4')
+ax.plot(pErrGrid, med2, '-k', label='$p=2$')
+ax.plot(pErrGrid, med4, '--k', label='$p=4$')
 ax.legend(loc=2, prop=dict(size=14))
 ax.set_xlabel(r'$\sigma_\pi / \pi$')
 ax.set_ylabel('absolute magnitude bias')

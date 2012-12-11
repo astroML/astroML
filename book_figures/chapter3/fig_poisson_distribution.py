@@ -50,12 +50,12 @@ for mu, ls in zip(mu_values, linestyles):
     # we could generate a random sample from this distribution using, e.g.
     #   rand = dist.rvs(1000)
     dist = poisson(mu)
-    x = np.arange(200)
+    x = np.arange(-1, 200)
 
     plt.plot(x, dist.pmf(x), ls=ls, color='black',
-             label=r'$\mu=%i$' % mu, linestyle='steps')
+             label=r'$\mu=%i$' % mu, linestyle='steps-mid')
 
-plt.xlim(0, 30)
+plt.xlim(-0.5, 30)
 plt.ylim(0, 0.4)
 
 plt.xlabel('$x$', fontsize=14)

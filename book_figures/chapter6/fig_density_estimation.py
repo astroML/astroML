@@ -68,11 +68,11 @@ for N, k, subplot in zip(N_values, k_values, subplots):
     # label the plot
     ax.text(0.02, 0.95, "%i points" % N, ha='left', va='top',
             transform=ax.transAxes)
-    ax.set_ylabel('p(x)')
+    ax.set_ylabel('$p(x)$')
     ax.legend(loc='upper right', prop=dict(size=12))
 
     if subplot == 212:
-        ax.set_xlabel('x')
+        ax.set_xlabel('$x$')
 
     ax.set_xlim(0, 20)
     ax.set_ylim(-0.01, 0.4001)
