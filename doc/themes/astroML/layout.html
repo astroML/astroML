@@ -152,11 +152,12 @@ $(document).ready(function(){
     for {{project}} <strong>version {{ release|e }}</strong>
     <!-- &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p> -->
         {% else %}
-        <h3>Headline</h3>
-
+        <h3>News</h3>
 	<p>October 2012: astroML 0.1 has been released!  Get the source on
-	   <a href="http://github.com/astroML/astroML">Github</a></p>.
-
+	    <a href="http://github.com/astroML/astroML">Github</a></p>
+	<p>Our <a href="{{pathto('index')}}citing-astroml">
+	    Introduction to astroML paper</a> received the CIDU 2012
+	  best paper award.</p>
         {% endif %}
 
 	{% if pagename != 'index' %}
@@ -168,7 +169,13 @@ $(document).ready(function(){
 
 	<h3>Links</h3>
 	<p><a href="https://groups.google.com/forum/#!forum/astroml-general">astroML Mailing List</a></p>
-	<p><a href="http://github.com/astroML/astroML/issues">GitHub Issue Tracker</a>.</p>
+	<p><a href="http://github.com/astroML/astroML/issues">GitHub Issue Tracker</a></p>
+
+
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="{{pathto('index')}}citing-astroml">citing astroML</a>.</p>
+
 
         {% if pagename == 'index' %}
 	<!--

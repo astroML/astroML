@@ -15,7 +15,7 @@ from matplotlib import pyplot as plt
 from sklearn.svm import SVC
 from sklearn import metrics
 
-from astroML.datasets import fetch_rrlyrae_mags, fetch_sdss_S82standards
+from astroML.datasets import fetch_rrlyrae_mags
 from astroML.decorators import pickle_results
 from astroML.datasets import fetch_rrlyrae_combined
 from astroML.utils import split_samples

@@ -116,6 +116,7 @@ to be published in early 2013.
 
 .. include:: includes/big_toc_css.rst
 
+
 User Guide
 ==========
 
@@ -141,4 +142,48 @@ Development
    :maxdepth: 2
 
    development/index
+
+.. _citing-astroml:
+
+Citing astroML
+==============
+If you make use of any of these datasets, tools, or examples in a scientific
+publication, please consider citing astroML.  You may reference the following
+paper:
+
+- `Introduction to astroML: Machine learning for astrophysics
+  <http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=6382200>`_,
+  Vanderplas *et al*, proc. of CIDU, pp. 47-54, 2012.
+
+  **Recipient of the best paper award for CIDU 2012**
+
+  Bibtex entry::
+
+       @INPROCEEDINGS{astroML,
+        author={{Vanderplas}, J.T. and {Connolly}, A.J.
+                and {Ivezi{\'c}}, {\v Z}. and {Gray}, A.},
+        booktitle={Conference on Intelligent Data Understanding (CIDU)},
+        title={Introduction to astroML: Machine learning for astrophysics},
+        month={oct.},
+        pages={47 -54},
+        doi={10.1109/CIDU.2012.6382200},
+        year={2012}
+       }
+
+You may also reference the accompanying textbook:
+
+- Statistics, Data Mining, and Machine Learning for Astronomy,
+  Ivezic *et al*, 2013
+
+  Bibtex entry::
+
+       @BOOK{astroMLText,
+        title={Statistics, Data Mining and Machine Learning in Astronomy},
+        author={{Ivezi{\'c}}, {\v Z}. and {Connolly}, A.J.
+                and {Vanderplas}, J.T. and {Gray}, A.},
+        publisher={Princeton University Press},
+        location={Princeton, NJ},
+        year={2013}
+       }
+
 
