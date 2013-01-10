@@ -42,7 +42,7 @@ def fetch_rrlyrae_templates(data_home=None, download_if_missing=True):
                           'set download_if_missing=True to download')
 
         databuffer = download_with_progress_bar(DATA_URL)
-        open(data_file, 'w').write(databuffer)
+        open(data_file, 'wb').write(databuffer)
 
     data = tarfile.open(data_file)
 

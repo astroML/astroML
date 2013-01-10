@@ -50,7 +50,7 @@ def fetch_wmap_temperatures(masked=False, data_home=None,
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
         data_buffer = download_with_progress_bar(DATA_URL)
-        open(data_file, 'w').write(data_buffer)
+        open(data_file, 'wb').write(data_buffer)
 
     data = hp.read_map(data_file)
 

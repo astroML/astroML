@@ -119,7 +119,7 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
                           'set download_if_missing=True to download')
 
         fitsdata = download_with_progress_bar(DATA_URL)
-        open(archive_file, 'w').write(fitsdata)
+        open(archive_file, 'wb').write(fitsdata)
 
     hdulist = pyfits.open(archive_file)
 

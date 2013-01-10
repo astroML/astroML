@@ -60,7 +60,7 @@ def fetch_rrlyrae_mags(data_home=None, download_if_missing=True):
                           'set download_if_missing=True to download')
 
         fitsdata = download_with_progress_bar(DATA_URL)
-        open(archive_file, 'w').write(fitsdata)
+        open(archive_file, 'wb').write(fitsdata)
 
     hdulist = pyfits.open(archive_file)
     return np.asarray(hdulist[1].data)

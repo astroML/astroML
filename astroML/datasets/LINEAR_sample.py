@@ -142,7 +142,7 @@ def fetch_LINEAR_sample(data_home=None, download_if_missing=True):
                           'set download_if_missing=True to download')
 
         targets = download_with_progress_bar(TARGETLIST_URL)
-        open(targetlist_file, 'w').write(targets)
+        open(targetlist_file, 'wb').write(targets)
 
     if not os.path.exists(data_file):
         if not download_if_missing:
@@ -150,7 +150,7 @@ def fetch_LINEAR_sample(data_home=None, download_if_missing=True):
                           'set download_if_missing=True to download')
 
         databuffer = download_with_progress_bar(DATA_URL)
-        open(data_file, 'w').write(databuffer)
+        open(data_file, 'wb').write(databuffer)
 
     return LINEARdata(data_file, targetlist_file)
 
