@@ -9,6 +9,8 @@
 
 astroML.tgz
 build
+dist
+MANIFEST
 doc/_build
 doc/examples/
 doc/book_figures/
