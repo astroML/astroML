@@ -53,6 +53,11 @@ Core
 ----
 To install the core ``astroML`` package in your home directory, use::
 
+  pip install astroML
+
+The core package is pure python, so installation should be straightforward
+on most systems.  To install from source, use::
+
   python setup.py install --home
 
 You can specify an arbitrary directory for installation using::
@@ -68,6 +73,10 @@ Addons
 ------
 The ``astroML_addons`` package requires a working C/C++ compiler for
 installation.  It can be installed using::
+
+  pip install astroML_addons
+
+To install from source, use::
 
   python setup_addons.py install
 
