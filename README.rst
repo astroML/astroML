@@ -1,3 +1,5 @@
+.. -*- mode: rst -*-
+
 AstroML: Machine Learning code for Astronomy
 ============================================
 
