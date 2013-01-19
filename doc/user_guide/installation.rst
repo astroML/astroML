@@ -19,16 +19,34 @@ Important Links
 ---------------
 - Source-code repository: http://github.com/astroML/astroML
 - HTML documentation: http://astroML.github.com
+- Python Package Index: http://pypi.python.org/pypi/astroML/
 
 
 Installation
 ------------
 
-This package uses distutils, which is the default way of installing python
-modules.  The first step is to obtain the source code: we recommend
-downloading it from the
+Python Package Index
+~~~~~~~~~~~~~~~~~~~~
+The easiest way to install astroML is to use the Python Package Index ``pip``
+command.  First make sure the :ref:`dependencies <astroML_dependencies>`
+are fulfilled: lacking some of these may not affect installation, but it
+will affect the ability to execute code and examples.  Next, use the ``pip``
+command to install the packages::
+
+  pip install astroML
+  pip install astroML_addons
+
+(For information about ``pip``, see http://pypi.python.org/pypi/pip)
+The first package is python-only, and should install easily on any system.  The
+second package requires a working C compliler.  ``astroML_addons`` provides
+optional faster implementations of some routines.
+
+From Source
+~~~~~~~~~~~
+To install the latest version from source, we recommend downloading astroML
+from the
 `github repository <http://github.com/astroML/astroML>`_ shown above.
-Additionally, you must make sure the :ref:`dependencies <astroML_dependencies>`
+You must first make sure the :ref:`dependencies <astroML_dependencies>`
 are filled: lacking some
 of these dependencies will not affect installation, but will affect the
 ability to execute the code and examples
@@ -57,7 +75,7 @@ You can specify an arbitrary directory for installation using::
 
 
 Core
-~~~~
+++++
 The core astroML package is pure python, so the build phase is trivial.  The
 installation script is ``setup.py``, and the code can be installed as follows::
 
@@ -66,7 +84,7 @@ installation script is ``setup.py``, and the code can be installed as follows::
 
 
 Addons
-~~~~~~
+++++++
 The ``astroML_addons`` package requires a working C/C++ compiler for
 installation.  It can be installed using::
 

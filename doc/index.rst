@@ -83,9 +83,9 @@ AstroML: Machine Learning and Data Mining for Astronomy
 
  .. sidebar:: Download 
     
-    * Source code: `github <https://github.com/astroML/astroML>`_
+    * Released Versions: `Python Package Index http://pypi.python.org/pypi/astroML/`_
 
-    * Source tarball: :download:`astroML_0.1.tgz <_static/astroML_0.1.tgz>`
+    * Bleeding-edge Source: `github <https://github.com/astroML/astroML>`_
 
 .. sectionauthor:: Jake Vanderplas <vanderplas@astro.washington.edu>
 
