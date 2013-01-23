@@ -60,7 +60,7 @@ To install the core ``astroML`` package in your home directory, use::
 The core package is pure python, so installation should be straightforward
 on most systems.  To install from source, use::
 
-  python setup.py install --home
+  python setup.py install
 
 You can specify an arbitrary directory for installation using::
 

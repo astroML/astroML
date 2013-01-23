@@ -64,12 +64,8 @@ install location is in your ``site_packages`` or ``dist_packages`` directory
 in your default python path.
 
 If you are on a machine without write access to the default installation
-location, the location can be specified when installing.  For example, to
-install the package in your home directory, use::
-
-  python setup.py install --home
-
-You can specify an arbitrary directory for installation using::
+location, the location can be specified when installing.  For example,
+you can specify an arbitrary directory for installation using::
 
   python setup.py install --prefix='/some/path'
 

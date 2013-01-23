@@ -83,7 +83,7 @@ AstroML: Machine Learning and Data Mining for Astronomy
 
  .. sidebar:: Download 
     
-    * Released Versions: `Python Package Index http://pypi.python.org/pypi/astroML/`_
+    * Released Versions: `Python Package Index <http://pypi.python.org/pypi/astroML/>`_
 
     * Bleeding-edge Source: `github <https://github.com/astroML/astroML>`_
 
