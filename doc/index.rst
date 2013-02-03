@@ -81,11 +81,12 @@ AstroML: Machine Learning and Data Mining for Astronomy
 
 .. only:: html
 
- .. sidebar:: Download 
+ .. sidebar:: Downloads
     
     * Released Versions: `Python Package Index <http://pypi.python.org/pypi/astroML/>`_
 
     * Bleeding-edge Source: `github <https://github.com/astroML/astroML>`_
+
 
 .. sectionauthor:: Jake Vanderplas <vanderplas@astro.washington.edu>
 
@@ -100,23 +101,24 @@ routines for analyzing astronomical data in python, loaders for several open
 astronomical datasets, and a large suite of examples of analyzing and
 visualizing astronomical datasets.
 
+
 .. image:: _static/text_cover.png
-     :width: 100 px
-     :align: left
+   :width: 100 px
+   :align: right
+
 
 The goal of astroML is to provide a community repository for fast Python
 implementations of common tools and routines used for statistical
 data analysis in astronomy and astrophysics, to provide a uniform and
 easy-to-use interface to freely available astronomical datasets.
 We hope this package will be useful to researchers and students of
-astronomy.  The project was started in 2012 to accompany the book
+astronomy. The astroML project was started in 2012 to accompany the book
 **Statistics, Data Mining, and Machine Learning in Astronomy** by
 Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray,
 to be published in early 2013.
 
 .. include:: includes/big_toc_css.rst
 
-.
 
 User Guide
 ==========
