@@ -11,6 +11,7 @@ a long time to run (~30 minutes for 4000 spectra).
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
 import sys
+from urllib2 import HTTPError
 import numpy as np
 from astroML.datasets import fetch_sdss_spectrum
 from astroML.datasets.tools import query_plate_mjd_fiber, TARGET_GALAXY
@@ -59,7 +60,7 @@ def fetch_and_shift_spectra(n_spectra,
         sys.stdout.flush()
         try:
             spec = fetch_sdss_spectrum(plate[i], mjd[i], fiber[i])
-        except:
+        except HTTPError:
             num_skipped += 1
             print "%i, %i, %i not found" % (plate[i], mjd[i], fiber[i])
             continue
