@@ -63,6 +63,7 @@ def fetch_and_shift_spectra(n_spectra,
         except HTTPError:
             num_skipped += 1
             print "%i, %i, %i not found" % (plate[i], mjd[i], fiber[i])
+            i += 1
             continue
 
         spec_rebin = spec.restframe().rebin(new_coeff0, new_coeff1, Nlam)
