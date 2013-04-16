@@ -15,7 +15,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_imaging_sample, fetch_sdss_S82standards
-from astroML.crossmatch import crossmatch
+from astroML.crossmatch import crossmatch_angular
 from astroML.plotting import hist
 
 # get imaging data
@@ -32,7 +32,7 @@ stX[:, 1] = standards_data['DEC']
 
 # crossmatch catalogs
 max_radius = 1. / 3600  # 1 arcsec
-dist, ind = crossmatch(imX, stX, max_radius)
+dist, ind = crossmatch_angular(imX, stX, max_radius)
 match = ~np.isinf(dist)
 
 dist_match = dist[match]
