@@ -115,7 +115,8 @@ We hope this package will be useful to researchers and students of
 astronomy. The astroML project was started in 2012 to accompany the book
 **Statistics, Data Mining, and Machine Learning in Astronomy** by
 Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray,
-to be published in early 2013.
+to be published in late 2013. The table of contents is available
+here: :download:`here(pdf) <documents/DMbookTOC.pdf>`.
 
 .. include:: includes/big_toc_css.rst
 

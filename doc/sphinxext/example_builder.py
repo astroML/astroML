@@ -72,6 +72,8 @@ DEFAULT_INDEX_TEMPLATE = """
 
 %(figure_contents)s
 
+%(footer)s
+
 .. raw:: html
 
     <div style="clear: both"></div>
@@ -270,6 +272,7 @@ class ExampleBuilder:
                  template_index=None,
                  contents_file=None,
                  dir_info_file=None,
+                 dir_footer_file=None,
                  execute_files=True,
                  force_rerun=False):
         self.source_dir = source_dir
@@ -285,6 +288,7 @@ class ExampleBuilder:
 
         self.contents_file = contents_file
         self.dir_info_file = dir_info_file
+        self.dir_footer_file = dir_footer_file
 
         self.force_rerun = force_rerun
         self.execute_files = execute_files
@@ -460,6 +464,13 @@ class ExampleBuilder:
             info = os.path.split(path.rstrip('/'))[-1]
             info += '\n' + (len(info) * '-') + '\n'
 
+        # Get the footer information
+        try:
+            footer = open(os.path.join(self.source_dir, path,
+                                       self.dir_footer_file)).read()
+        except:
+            footer = ''
+
         # Find the index file
         index_file = os.path.join(self.target_dir,
                                   self.rst_index_filename(path))
@@ -478,6 +489,7 @@ class ExampleBuilder:
                       dict(sphinx_tag=self.sphinx_tag(path),
                            subdir_contents=self.subdir_contents(path, subdirs),
                            info=info,
+                           footer=footer,
                            figure_contents=self.figure_contents(path,
                                                                 scripts)))
 

@@ -69,6 +69,7 @@ def main(app):
                         execute_files=plot_gallery,
                         contents_file='contents.txt',
                         dir_info_file='README.rst',
+                        dir_footer_file='FOOTER.rst',
                         sphinx_tag_base='book_fig',
                         template_example=RST_TEMPLATE)
     EB.run()
