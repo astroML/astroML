@@ -45,8 +45,7 @@ for k in kvals:
     classifiers.append([])
     predictions.append([])
     for nc in Ncolors:
-        clf = KNeighborsClassifier(n_neighbors=k,
-                                   warn_on_equidistant=False)
+        clf = KNeighborsClassifier(n_neighbors=k)
         clf.fit(X_train[:, :nc], y_train)
         y_pred = clf.predict(X_test[:, :nc])
 
