@@ -11,8 +11,13 @@ TARGETLIST_URL = ("http://www.astro.washington.edu/users/ivezic/"
                   "linear/allDataFinal/allLINEARfinal_targets.dat")
 DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
             "linear/allDataFinal/allLINEARfinal_dat.tar.gz")
+
+# old version of the data
+#GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
+#              "DMbook/data/LINEARattributes.dat"
 GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
-              "DMbook/data/LINEARattributes.dat")
+              "DMbook/data/LINEARattributesFinalApr2013.dat")
+
 GENEVA_ARCHIVE = 'LINEARattributes.npy'
 
 ARCHIVE_DTYPE = [(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
