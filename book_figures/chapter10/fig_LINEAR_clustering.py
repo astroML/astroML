@@ -2,12 +2,6 @@
 Clustering of LINEAR data
 -------------------------
 """
-import os
-os.environ['ASTROML_DATA'] = os.getcwd()
-from astroML.datasets.tools import get_data_home
-print get_data_home()
-
-
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure produced by this code is published in the textbook
