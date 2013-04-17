@@ -250,7 +250,8 @@ def fit_bivariate_normal(x, y, robust=False):
 
     # There is a degeneracy.  Given our input, we set sigma1 > sigma2,
     #  so alpha must be positive
-    alpha = abs(alpha)
+    if alpha < 0:
+        alpha += 0.5 * np.pi
 
     sigma1 = np.sqrt((0.5 * (sigma_x ** 2 + sigma_y ** 2)
                       + np.sqrt(0.25 * (sigma_x ** 2 - sigma_y ** 2) ** 2
