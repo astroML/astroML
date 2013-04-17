@@ -82,11 +82,12 @@ def crossmatch_angular(X1, X2, max_distance=np.inf):
 
     # law of cosines to compute 3D distance
     max_y = np.sqrt(2 - 2 * np.cos(max_distance))
-
     dist, ind = crossmatch(Y1, Y2, max_y)
 
-    # convert distances back to angles
+    # convert distances back to angles using the law of tangents
     not_inf = ~np.isinf(dist)
-    dist[not_inf] = 180. / np.pi * np.arccos(-0.5 * (dist[not_inf] ** 2 - 2))
+    x = 0.5 * dist[not_inf]
+    dist[not_inf] = (180. / np.pi * 2 * np.arctan2(x,
+                                  np.sqrt(np.maximum(0, 1 - x ** 2))))
 
     return dist, ind
