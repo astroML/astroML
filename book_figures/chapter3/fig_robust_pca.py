@@ -96,7 +96,7 @@ for i, f in enumerate([0.05, 0.15]):
 
     ax.set_xlim(5.5, 14.5)
     ax.set_ylim(5.5, 14.5)
-    ax.set_xlabel('x')
+    ax.set_xlabel('$x$')
 
     # This is a bit of a hack:
     # We'll draw some lines off the picture to make our legend look better
@@ -106,7 +106,7 @@ for i, f in enumerate([0.05, 0.15]):
     ax.legend(loc='lower right', prop=dict(size=12))
 
     if i == 0:
-        ax.set_ylabel('y')
+        ax.set_ylabel('$y$')
     else:
         ax.yaxis.set_major_formatter(plt.NullFormatter())
 

@@ -49,7 +49,7 @@ plt.xlim(0, 1)
 plt.ylim(0, 3)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|\alpha,\beta)$', fontsize=14)
+plt.ylabel(r'$p(x|\alpha,\beta)$', fontsize=14)
 plt.title('Beta Distribution')
 
 plt.legend(loc=0)

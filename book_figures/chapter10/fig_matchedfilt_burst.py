@@ -109,6 +109,6 @@ ax.scatter(t, y_obs, s=9, lw=0, c='k')
 ax.plot(t_fit, y_fit, '-k')
 ax.set_xlim(0, 100)
 ax.set_xlabel('$t$')
-ax.set_ylabel('$h_{obs}$')
+ax.set_ylabel(r'$h_{\rm obs}$')
 
 plt.show()

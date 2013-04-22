@@ -50,7 +50,7 @@ plt.xlim(0, 10)
 plt.ylim(0, 0.5)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|\alpha,\beta)$', fontsize=14)
+plt.ylabel(r'$p(x|k,\theta)$', fontsize=14)
 plt.title('Gamma Distribution')
 
 plt.legend(loc=0)

@@ -93,5 +93,5 @@ for level in range(1, 5):
     ax.set_title('level %i' % level)
 
 # suptitle() adds a title to the entire figure
-fig.suptitle('Ball Tree Example', fontsize=18)
+fig.suptitle('Ball-tree Example', fontsize=18)
 plt.show()

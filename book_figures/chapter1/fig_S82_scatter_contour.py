@@ -32,8 +32,8 @@ scatter_contour(g - r, r - i, threshold=200, log_counts=True, ax=ax,
                                markersize=1, color='black'),
                 contour_args=dict(cmap=plt.cm.bone))
 
-ax.set_xlabel('g - r')
-ax.set_ylabel('r - i')
+ax.set_xlabel(r'${\rm g - r}$')
+ax.set_ylabel(r'${\rm r - i}$')
 
 ax.set_xlim(-0.6, 2.5)
 ax.set_ylim(-0.6, 2.5)

@@ -30,7 +30,7 @@ ax.plot(a, sini, '.', markersize=2, color='black')
 ax.set_xlim(2.0, 3.6)
 ax.set_ylim(-0.01, 0.31)
 
-ax.set_xlabel('Semi-major Axis (AU)')
+ax.set_xlabel('Semimajor Axis (AU)')
 ax.set_ylabel('Sine of Inclination Angle')
 
 plt.show()

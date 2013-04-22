@@ -53,8 +53,8 @@ plt.xlim(-5, 5)
 plt.ylim(0.0, 0.5)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|k)$', fontsize=14)
-plt.title("Student's t Distribution")
+plt.ylabel(r'$p(x|k)$', fontsize=14)
+plt.title("Student's $t$ Distribution")
 
 plt.legend()
 plt.show()

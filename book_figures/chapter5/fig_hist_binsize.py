@@ -79,8 +79,8 @@ plot_labeled_histogram('knuth', data_G, 'Knuth\'s Rule', x, pdf_G,
                        ax=ax[4], hide_x=False, hide_y=True)
 
 ax[0].set_title('Gaussian distribution')
-ax[2].set_ylabel('P(x)')
-ax[4].set_xlabel('x')
+ax[2].set_ylabel('$p(x)$')
+ax[4].set_xlabel('$x$')
 
 # second column: non-gaussian distribution
 plot_labeled_histogram('scotts', data_NG, 'Scott\'s Rule', x, pdf_NG,
@@ -91,6 +91,6 @@ plot_labeled_histogram('knuth', data_NG, 'Knuth\'s Rule', x, pdf_NG,
                        ax=ax[5], hide_x=False, hide_y=True)
 
 ax[1].set_title('non-Gaussian distribution')
-ax[5].set_xlabel('x')
+ax[5].set_xlabel('$x$')
 
 plt.show()

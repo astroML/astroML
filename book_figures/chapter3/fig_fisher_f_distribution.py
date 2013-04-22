@@ -50,7 +50,7 @@ plt.xlim(0, 4)
 plt.ylim(0.0, 1.2)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|d_1, d_2)$', fontsize=14)
+plt.ylabel(r'$p(x|d_1, d_2)$', fontsize=14)
 plt.title("Fisher's Distribution")
 
 plt.legend()

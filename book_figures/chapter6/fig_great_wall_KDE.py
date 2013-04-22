@@ -62,7 +62,7 @@ ax1.text(0.98, 0.95, "input", ha='right', va='top',
 ax2 = plt.subplot(222, aspect='equal')
 ax2.imshow(dens1.T, origin='lower', norm=LogNorm(),
            extent=(ymin, ymax, xmin, xmax), cmap=plt.cm.binary)
-ax2.text(0.98, 0.95, "gaussian $(h=5)$", ha='right', va='top',
+ax2.text(0.98, 0.95, "Gaussian $(h=5)$", ha='right', va='top',
          transform=ax2.transAxes, fontsize=12,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
 

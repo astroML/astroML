@@ -63,7 +63,7 @@ ax.text(0.27, 0.98, r"$\sigma_x = %.2f$" % sigma_x, **kwargs)
 ax.text(0.27, 0.93, r"$\sigma_y = %.2f$" % sigma_y, **kwargs)
 ax.text(0.27, 0.88, r"$\sigma_{xy} = %.2f$" % sigma_xy, **kwargs)
 
-ax.set_xlabel('x')
-ax.set_ylabel('y')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$y$')
 
 plt.show()

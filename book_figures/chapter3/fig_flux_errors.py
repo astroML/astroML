@@ -45,8 +45,8 @@ ax.plot([1, 1], [0, 2], ':k', lw=1)
 ax.set_xlim(-0.1, 2.1)
 ax.set_ylim(0, 1.8)
 
-ax.set_xlabel('flux')
-ax.set_ylabel('p(flux)')
+ax.set_xlabel(r'${\rm flux}$')
+ax.set_ylabel(r'$p({\rm flux})$')
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.4))
 ax.text(0.02, 0.98, r'${\rm 20\%\ flux\ error}$',
         ha='left', va='top', transform=ax.transAxes,
@@ -65,7 +65,7 @@ ax.text(0.02, 0.98, r'${\rm mag} = -2.5\log_{10}({\rm flux})$',
         ha='left', va='top', transform=ax.transAxes,
         bbox=dict(ec='none', fc='w'))
 
-ax.set_xlabel('mag')
-ax.set_ylabel('p(mag)')
+ax.set_xlabel(r'${\rm mag}$')
+ax.set_ylabel(r'$p({\rm mag})$')
 
 plt.show()

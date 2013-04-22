@@ -51,7 +51,7 @@ plt.xlim(-7, 7)
 plt.ylim(0, 1.1)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|\mu,\Delta)$', fontsize=14)
+plt.ylabel(r'$p(x|\mu,\Delta)$', fontsize=14)
 plt.title('Laplace Distribution')
 
 plt.legend()

@@ -92,7 +92,7 @@ except:
 #------------------------------------------------------------
 # Plot the projections
 subplots = [222, 223, 224]
-titles = ['PCA projection', 'LLE projection', 'Isomap projection']
+titles = ['PCA projection', 'LLE projection', 'IsoMap projection']
 Yvals = [Y_pca, Y_lle, Y_iso]
 
 for (Y, title, subplot) in zip(Yvals, titles, subplots):

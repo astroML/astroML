@@ -85,8 +85,8 @@ for i in range(2):
         ax.set_ylim(0, 0.55)
     else:
         ax.set_ylim(0, 0.35)
-        ax.set_xlabel('x')
+        ax.set_xlabel('$x$')
 
-    ax.set_ylabel('p(x)')
+    ax.set_ylabel('$p(x)$')
 
 plt.show()

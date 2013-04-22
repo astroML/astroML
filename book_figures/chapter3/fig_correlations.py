@@ -82,7 +82,7 @@ histargs = (dict(alpha=0.5, label='No Outliers'),
             dict(alpha=0.8, label='%i%s Outliers' % (int(f * 100), pct)))
 
 distributions = ['Pearson-r', 'Spearman-r', r'Kendall-$\tau$']
-xlabels = ['$r_p$', '$r_s$', r'$\tau$']\
+xlabels = ['r_p', 'r_s', r'\tau']\
 
 for i in range(3):
     ax = fig.add_subplot(311 + i)
@@ -105,7 +105,7 @@ for i in range(3):
     ax.text(0.98, 0.95, distributions[i], ha='right', va='top',
             transform=ax.transAxes, bbox=dict(fc='w', ec='w'))
 
-    ax.set_xlabel(xlabels[i])
-    ax.set_ylabel('N(%s)' % xlabels[i])
+    ax.set_xlabel('$%s$' % xlabels[i])
+    ax.set_ylabel('$N(%s)$' % xlabels[i])
 
 plt.show()

@@ -74,15 +74,14 @@ ax.scatter(X[:, 1], X[:, 0], s=1, lw=0, c='k')
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
 ax.xaxis.set_major_formatter(plt.NullFormatter())
-ax.set_ylabel('$x$ (Mpc)')
+ax.set_ylabel(r'$x\ {\rm (Mpc)}$')
 
 ax = fig.add_subplot(312, aspect='equal')
 ax.plot(T_y, T_x, c='k', lw=1)
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
 ax.xaxis.set_major_formatter(plt.NullFormatter())
-ax.set_xlabel('$y$ (Mpc)')
-ax.set_ylabel('$x$ (Mpc)')
+ax.set_ylabel(r'$x\ {\rm (Mpc)}$')
 
 ax = fig.add_subplot(313, aspect='equal')
 ax.plot(T_trunc_y, T_trunc_x, c='k', lw=1)
@@ -93,8 +92,7 @@ ax.imshow(density.T, origin='lower', cmap=plt.cm.binary,
 
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
-ax.xaxis.set_major_formatter(plt.NullFormatter())
-ax.set_xlabel('$y$ (Mpc)')
-ax.set_ylabel('$x$ (Mpc)')
+ax.set_xlabel(r'$y\ {\rm (Mpc)}$')
+ax.set_ylabel(r'$x\ {\rm (Mpc)}$')
 
 plt.show()

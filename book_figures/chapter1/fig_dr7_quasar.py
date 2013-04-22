@@ -31,7 +31,7 @@ ax.plot(z, r - i, marker='.', markersize=4, linestyle='none', color='black')
 ax.set_xlim(0, 5)
 ax.set_ylim(-0.5, 1.0)
 
-ax.set_xlabel('redshift')
-ax.set_ylabel('r-i')
+ax.set_xlabel(r'${\rm redshift}$')
+ax.set_ylabel(r'${\rm r-i}$')
 
 plt.show()

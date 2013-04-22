@@ -72,6 +72,6 @@ ax2.set_ylim(tuple(lomb_scargle_BIC(ax.get_ylim(), y_obs, dy)))
 ax2.set_ylabel(r'$\Delta BIC$')
 
 ax.set_xlabel('$\omega$')
-ax.set_ylabel('$P_{LS}(\omega)$')
+ax.set_ylabel(r'$P_{\rm LS}(\omega)$')
 ax.set_ylim(0, 1.1)
 plt.show()

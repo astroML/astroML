@@ -55,7 +55,7 @@ ax.plot(b, cuml_p_g, '--r')
 ax.plot([0.1, 0.1], [1E-6, 2], ':k', lw=1)
 
 ax.set_xlabel('$b$')
-ax.set_ylabel('$p(<b|x,I)$')
+ax.set_ylabel('$P(<b|x,I)$')
 ax.set_ylim(1E-6, 2)
 
 plt.show()

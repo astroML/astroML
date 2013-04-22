@@ -58,7 +58,7 @@ ax.plot(x_sample, norm(med_sample, sigG_sample).pdf(x_sample), '--k', lw=1.5,
 ax.legend()
 
 ax.set_xlim(-8, 8)
-ax.set_xlabel('x')
-ax.set_ylabel('p(x)')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$p(x)$')
 
 plt.show()

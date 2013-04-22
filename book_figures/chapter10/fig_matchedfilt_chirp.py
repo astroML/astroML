@@ -1,5 +1,5 @@
 """
-Matched Filter Burst Search
+Matched Filter Chirp Search
 ---------------------------
 """
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
@@ -110,7 +110,7 @@ plt.scatter(t, y_obs, s=9, lw=0, c='k')
 plt.plot(t_fit, y_fit, '-k')
 plt.xlim(0, 100)
 plt.xlabel('$t$')
-plt.ylabel('$h_{obs}$')
+plt.ylabel(r'$h_{\rm obs}$')
 
 # This function plots multiple panels with the traces
 plot_mcmc(traces, labels=labels, limits=limits, true_values=true, fig=fig,

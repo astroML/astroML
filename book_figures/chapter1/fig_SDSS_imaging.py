@@ -34,10 +34,6 @@ def plot_stars_and_galaxies(stars, galaxies):
     # and/or sizes
     plot_kwargs = dict(color='k', linestyle='none', marker='.', markersize=1)
 
-    print type(galaxies)
-    print galaxies.shape
-    print galaxies['gRaw'].shape
-
     ax1 = plt.subplot(221)
     ax1.plot(galaxies['gRaw'] - galaxies['rRaw'],
              galaxies['rRaw'],
@@ -59,10 +55,10 @@ def plot_stars_and_galaxies(stars, galaxies):
              **plot_kwargs)
 
     # set labels and titles
-    ax1.set_ylabel('r')
-    ax2.set_ylabel('r - i')
-    ax2.set_xlabel('g - r')
-    ax4.set_xlabel('g - r')
+    ax1.set_ylabel(r'${\rm r}$')
+    ax2.set_ylabel(r'${\rm r - i}$')
+    ax2.set_xlabel(r'${\rm g - r}$')
+    ax4.set_xlabel(r'${\rm g - r}$')
     ax1.set_title('Galaxies')
     ax3.set_title('Stars')
 

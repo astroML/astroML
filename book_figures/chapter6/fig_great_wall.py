@@ -60,7 +60,7 @@ ax1.text(0.98, 0.95, "input", ha='right', va='top',
 ax2 = plt.subplot(222, aspect='equal')
 ax2.imshow(dens_KDE.T, origin='lower', norm=LogNorm(),
            extent=(ymin, ymax, xmin, xmax), cmap=plt.cm.binary)
-ax2.text(0.98, 0.95, "KDE: gaussian $(h=5)$", ha='right', va='top',
+ax2.text(0.98, 0.95, "KDE: Gaussian $(h=5)$", ha='right', va='top',
          transform=ax2.transAxes, fontsize=12,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
 
@@ -68,7 +68,7 @@ ax2.text(0.98, 0.95, "KDE: gaussian $(h=5)$", ha='right', va='top',
 ax3 = plt.subplot(223, aspect='equal')
 ax3.imshow(dens_k5.T, origin='lower', norm=LogNorm(),
            extent=(ymin, ymax, xmin, xmax), cmap=plt.cm.binary)
-ax3.text(0.98, 0.95, "KNN $(k=5)$", ha='right', va='top',
+ax3.text(0.98, 0.95, "$k$-neighbors $(k=5)$", ha='right', va='top',
          transform=ax3.transAxes, fontsize=12,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
 
@@ -76,7 +76,7 @@ ax3.text(0.98, 0.95, "KNN $(k=5)$", ha='right', va='top',
 ax4 = plt.subplot(224, aspect='equal')
 ax4.imshow(dens_k40.T, origin='lower', norm=LogNorm(),
            extent=(ymin, ymax, xmin, xmax), cmap=plt.cm.binary)
-ax4.text(0.98, 0.95, "KNN $(k=40)$", ha='right', va='top',
+ax4.text(0.98, 0.95, "$k$-neighbors $(k=40)$", ha='right', va='top',
          transform=ax4.transAxes, fontsize=12,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
 

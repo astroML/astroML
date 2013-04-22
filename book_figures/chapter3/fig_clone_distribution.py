@@ -80,8 +80,10 @@ ax.set_ylabel('$p(<x)$')
 ax = fig.add_subplot(223)
 ax.scatter(Px_cuml[indices], x[indices], lw=0, c='k')
 ax.plot(Px_cuml_sample, x_sample, '-k')
-ax.arrow(0.7, -3, 0, 3.5, width=0.015, fc='gray', ec='gray', head_length=0.4)
-ax.arrow(0.7, 0.9, -0.69, 0, width=0.1, fc='gray', ec='gray', head_length=0.06)
+ax.arrow(0.7, -3, 0, 3.5, width=0.015, fc='gray', ec='gray',
+         head_width=0.05, head_length=0.4)
+ax.arrow(0.7, 0.9, -0.69, 0, width=0.1, fc='gray', ec='gray',
+         head_width=0.3, head_length=0.06)
 ax.set_xlim(-0.05, 1.05)
 ax.set_ylim(-3, 3)
 ax.set_title('Inverse Cuml. Distribution')

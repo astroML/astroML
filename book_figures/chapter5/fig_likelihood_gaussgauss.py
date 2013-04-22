@@ -51,7 +51,8 @@ plt.colorbar().set_label(r'$\log(L)$')
 plt.clim(-5, 0)
 
 plt.text(0.5, 0.9,
-         r'$L(\mu,\sigma)\ \mathrm{for}\ \bar{x}=1,\ \sigma_{true}=1,\ n=10$',
+         (r'$L(\mu,\sigma)\ \mathrm{for}\ \bar{x}=1,\ '
+          r'\sigma_{\rm true}=1,\ n=10$'),
          bbox=dict(ec='k', fc='w', alpha=0.9),
          fontsize=18, ha='center', va='center', transform=plt.gca().transAxes)
 

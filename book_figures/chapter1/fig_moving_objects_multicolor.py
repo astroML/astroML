@@ -90,8 +90,8 @@ ax.plot([0, 0.4], [-0.15, -0.15], '--w', lw=2)
 ax.set_xlim(-0.3, 0.4)
 ax.set_ylim(-0.8, 0.6)
 
-ax.set_xlabel('a*', color='w')
-ax.set_ylabel('i-z', color='w')
+ax.set_xlabel(r'${\rm a*}$', color='w')
+ax.set_ylabel(r'${\rm i-z}$', color='w')
 
 # plot the orbital parameters plot
 ax = black_bg_subplot(122)
@@ -105,8 +105,8 @@ ax.plot([2.82, 2.82], [-0.02, 0.3], '--w')
 ax.set_xlim(2.0, 3.3)
 ax.set_ylim(-0.02, 0.3)
 
-ax.set_xlabel('a (AU)', color='w')
-ax.set_ylabel('sin(i)', color='w')
+ax.set_xlabel(r'${\rm a (AU)}$', color='w')
+ax.set_ylabel(r'${\rm sin(i)}$', color='w')
 
 # label the plot
 text_kwargs = dict(color='w', fontsize=14,

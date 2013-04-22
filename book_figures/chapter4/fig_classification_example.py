@@ -36,6 +36,6 @@ ax.text(125, 0.01, r'$(x > x_c\ {\rm classified\ as\ sources})$', fontsize=18)
 ax.set_xlim(50, 200)
 ax.set_ylim(0, 0.04)
 
-ax.set_xlabel('x')
-ax.set_ylabel('p(x)')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$p(x)$')
 plt.show()

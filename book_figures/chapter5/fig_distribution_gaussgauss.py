@@ -49,6 +49,6 @@ ax.plot(x_sample, norm(med_sample, sigG_sample).pdf(x_sample),
 ax.legend()
 
 ax.set_xlim(-7.5, 7.5)
-ax.set_xlabel('x')
-ax.set_ylabel('p(x)')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$p(x)$')
 plt.show()

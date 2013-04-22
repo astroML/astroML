@@ -90,7 +90,7 @@ ax.text(0.98, 0.05,
 
 ax.set_xlim(-40, 40)
 ax.set_ylim(-1.4, 1.4)
-ax.set_ylabel('$w(t; f_0, t_0, Q)$')
+ax.set_ylabel('$w(t; t_0, f_0, Q)$')
 ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 # Third panel: the spectrogram

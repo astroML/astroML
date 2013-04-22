@@ -88,7 +88,7 @@ ax2.plot(mu, pmu.cumsum() * dmu, '-k')
 ax2.hist(mu_bootstrap, mu_bins, normed=True, cumulative=True,
          histtype='step', color='b', linestyle='dashed')
 ax2.set_xlabel(r'$\mu$')
-ax2.set_ylabel(r'$p(<\mu|x,I)$')
+ax2.set_ylabel(r'$P(<\mu|x,I)$')
 ax2.set_xlim(-3, 3)
 
 # third axes: gamma posterior
@@ -106,7 +106,7 @@ ax4.plot(gamma, pgamma.cumsum() * dgamma, '-k')
 ax4.hist(gamma_bootstrap, gamma_bins, normed=True, cumulative=True,
          histtype='step', color='b', linestyle='dashed')
 ax4.set_xlabel(r'$\gamma$')
-ax4.set_ylabel(r'$p(<\gamma|x,I)$')
+ax4.set_ylabel(r'$P(<\gamma|x,I)$')
 ax4.set_ylim(-0.05, 1.1)
 ax4.set_xlim(0, 4)
 

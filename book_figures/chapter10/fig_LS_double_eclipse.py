@@ -97,10 +97,10 @@ for i, f in enumerate(factors):
     ax2.yaxis.set_major_locator(plt.MultipleLocator(0.4))
 
     # label both axes
-    ax1.set_ylabel(r'$P_{LS}(\omega)$')
-    ax2.set_ylabel('mag')
+    ax1.set_ylabel(r'$P_{\rm LS}(\omega)$')
+    ax2.set_ylabel(r'${\rm mag}$')
     if i == 1:
         ax1.set_xlabel(r'$\omega$')
-        ax2.set_xlabel('phase')
+        ax2.set_xlabel(r'${\rm phase}$')
 
 plt.show()

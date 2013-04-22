@@ -51,7 +51,7 @@ plt.xlim(-5, 5)
 plt.ylim(0, 0.8)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|\mu,\gamma)$', fontsize=14)
+plt.ylabel(r'$p(x|\mu,\gamma)$', fontsize=14)
 plt.title('Cauchy Distribution')
 
 plt.legend()

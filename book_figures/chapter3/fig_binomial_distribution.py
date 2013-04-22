@@ -52,7 +52,7 @@ plt.xlim(-0.5, 40)
 plt.ylim(0, 0.3)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|b, n)$', fontsize=14)
+plt.ylabel(r'$p(x|b, n)$', fontsize=14)
 plt.title('Binomial Distribution')
 
 plt.legend()

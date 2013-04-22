@@ -70,7 +70,7 @@ ax.legend(loc=1, prop=dict(size=14))
 
 ax.set_xlim(-4, 4)
 ax.set_ylim(-1.4, 1.4)
-ax.set_ylabel('$w(t; f_0, t_0, Q)$')
+ax.set_ylabel('$w(t; t_0, f_0, Q)$')
 ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 # Third panel: the spectrogram

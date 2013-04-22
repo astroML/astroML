@@ -51,7 +51,7 @@ plt.xlim(0, 5)
 plt.ylim(0, 1.0)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|k,\lambda)$', fontsize=14)
+plt.ylabel(r'$p(x|k,\lambda)$', fontsize=14)
 plt.title('Weibull Distribution')
 
 plt.legend()

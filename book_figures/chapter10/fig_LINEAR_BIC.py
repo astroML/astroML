@@ -68,7 +68,7 @@ for i in range(2):
     ax_inset[i].yaxis.set_major_formatter(plt.FormatStrFormatter('%i'))
     ax_inset[i].set_xlim(7, 19.75)
     ax_inset[i].set_ylim(ylims[i])
-    ax_inset[i].set_title('zooomed view')
+    ax_inset[i].set_title('zoomed view')
     ax_inset[i].grid(color='gray')
 
 plt.show()

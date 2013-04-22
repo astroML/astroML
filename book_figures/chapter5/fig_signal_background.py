@@ -89,6 +89,6 @@ ax.plot(x_pdf, y_pdf, '-k')
 ax.set_xlim(0, 10)
 ax.set_ylim(0, 0.5)
 ax.set_xlabel('$x$')
-ax.set_ylabel('$y_{obs}$')
+ax.set_ylabel(r'$y_{\rm obs}$')
 
 plt.show()

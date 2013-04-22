@@ -49,7 +49,7 @@ plt.xlim(0, 10)
 plt.ylim(0, 0.6)
 
 plt.xlabel('$Q$', fontsize=14)
-plt.ylabel(r'$P(Q|k)$', fontsize=14)
+plt.ylabel(r'$p(Q|k)$', fontsize=14)
 plt.title(r'$\chi^2\ \mathrm{Distribution}$', fontsize=14)
 
 plt.legend()

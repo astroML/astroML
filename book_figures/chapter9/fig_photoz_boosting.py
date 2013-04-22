@@ -90,8 +90,8 @@ ax.plot([-0.1, 0.4], [-0.1, 0.4], ':k')
 ax.text(0.03, 0.97, "N = %i\nrms = %.3f" % (best_N, rms_test[i_best]),
         ha='left', va='top', transform=ax.transAxes)
 
-ax.set_xlabel(r'$\rm z_{true}$', fontsize=16)
-ax.set_ylabel(r'$\rm z_{fit}$', fontsize=16)
+ax.set_xlabel(r'$z_{\rm true}$', fontsize=16)
+ax.set_ylabel(r'$z_{\rm fit}$', fontsize=16)
 
 ax.set_xlim(-0.02, 0.4001)
 ax.set_ylim(-0.02, 0.4001)

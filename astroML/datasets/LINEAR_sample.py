@@ -16,13 +16,17 @@ DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
 #GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
 #              "DMbook/data/LINEARattributes.dat"
 #GENEVA_ARCHIVE = 'LINEARattributes.npy'
+#ARCHIVE_DTYPE = [(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
+#                                     'JK', 'logP', 'amp', 'skew')]
 
 GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
               "DMbook/data/LINEARattributesFinalApr2013.dat")
 GENEVA_ARCHIVE = 'LINEARattributesFinalApr2013.npy'
+ARCHIVE_DTYPE = ([(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
+                                     'JK', 'logP', 'amp', 'skew',
+                                     'kurt', 'magMed', 'nObs')]
+                 + [('LCtype', 'i4'), ('LINEARobjectID', '|S20')])
 
-ARCHIVE_DTYPE = [(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
-                                     'JK', 'logP', 'amp', 'skew')]
 
 target_names = ['objectID', 'raLIN', 'decLIN', 'raSDSS', 'decSDSS', 'r',
                 'ug', 'gr', 'ri', 'iz', 'JK', '<mL>', 'std', 'rms',

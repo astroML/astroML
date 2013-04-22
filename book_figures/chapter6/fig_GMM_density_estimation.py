@@ -69,16 +69,16 @@ for N, k, subplot in zip(N_values, k_values, subplots):
     ax.plot(t, np.exp(logprob), '-', color='gray',
             label="Mixture Model\n(%i components)" % n_components[i_min])
     ax.plot(t, dens_kde, '-', color='black', zorder=3,
-            label="Kernel Density (h=0.1)")
+            label="Kernel Density $(h=0.1)$")
 
     # label the plot
     ax.text(0.02, 0.95, "%i points" % N, ha='left', va='top',
             transform=ax.transAxes)
-    ax.set_ylabel('p(x)')
+    ax.set_ylabel('$p(x)$')
     ax.legend(loc='upper right', prop=dict(size=12))
 
     if subplot == 212:
-        ax.set_xlabel('x')
+        ax.set_xlabel('$x$')
 
     ax.set_xlim(0, 20)
     ax.set_ylim(-0.01, 0.4001)

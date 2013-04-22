@@ -53,11 +53,11 @@ ax.legend(loc=1)
 
 ax.set_xlim(-2.1, 4.1)
 
-ax.set_xlabel('x')
-ax.set_ylabel('p(x)')
-ax.set_title('Input PDF and sampled data')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$p(x)$')
+ax.set_title('Input pdf and sampled data')
 ax.text(0.95, 0.80, ('$\mu_1 = 0;\ \sigma_1=0.3$\n'
-                     '$\mu_2=1;\ \sigma_2=1,0$\n'
+                     '$\mu_2=1;\ \sigma_2=1.0$\n'
                      '$\mathrm{ratio}=1.5$'),
         transform=ax.transAxes, ha='right', va='top', fontsize=16)
 plt.show()

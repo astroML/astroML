@@ -33,7 +33,7 @@ ax.plot(g - r, r - i, marker='.', markersize=2,
 ax.set_xlim(-0.6, 2.0)
 ax.set_ylim(-0.6, 2.5)
 
-ax.set_xlabel('g - r')
-ax.set_ylabel('r - i')
+ax.set_xlabel(r'${\rm g - r}$')
+ax.set_ylabel(r'${\rm r - i}$')
 
 plt.show()

@@ -68,14 +68,14 @@ plt.imshow(H, interpolation='nearest', origin='lower', aspect='auto',
            extent=[0, 2, 0, 2], cmap=plt.cm.binary)
 
 cb = plt.colorbar(cax=ax_cb)
-cb.set_label('$P(x, y)$')
+cb.set_label('$p(x, y)$')
 plt.text(0, 1.02, r'$\times 10^{-3}$',
          transform=ax_cb.transAxes)
 
-# draw P(x) distribution
+# draw p(x) distribution
 ax_Px.plot(xbins[1:], H.sum(0), '-k', drawstyle='steps')
 
-# draw P(y) distribution
+# draw p(y) distribution
 ax_Py.plot(H.sum(1), ybins[1:], '-k', drawstyle='steps')
 
 # define axis limits
@@ -88,9 +88,9 @@ ax_Py.set_ylim(0, 2)
 ax_Pxy.set_xlabel('$x$')
 ax_Pxy.set_ylabel('$y$')
 ax_Px.set_xlabel('$x$')
-ax_Px.set_ylabel('$P(x)$')
+ax_Px.set_ylabel('$p(x)$')
 ax_Py.set_ylabel('$y$')
-ax_Py.set_xlabel('$P(y)$')
+ax_Py.set_xlabel('$p(y)$')
 
 
 # draw marginal probabilities
@@ -105,7 +105,7 @@ for i in range(3):
     Px_y = H[iy[i]] / H[iy[i]].sum()
     ax_Px_y[i].plot(xbins[1:], Px_y, drawstyle='steps', c=colors[i])
     ax_Px_y[i].yaxis.set_major_formatter(NullFormatter())
-    ax_Px_y[i].set_ylabel('$P(x | y=%.1f)$' % ybins[iy[i]])
+    ax_Px_y[i].set_ylabel('$p(x | y=%.1f)$' % ybins[iy[i]])
 ax_Pxy.axis(axis)
 
 ax_Px_y[2].set_xlabel('$x$')

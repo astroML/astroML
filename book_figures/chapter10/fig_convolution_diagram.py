@@ -125,7 +125,7 @@ ax.yaxis.set_major_formatter(plt.NullFormatter())
 ax = fig.add_subplot(224)
 ax.plot(k, abs(np.fft.fftshift(yw_fft)), '-k')
 
-ax.text(0.95, 0.95, ('Point-wise\nproduct:\n' +
+ax.text(0.95, 0.95, ('Pointwise\nproduct:\n' +
                      r'$\mathcal{F}(D) \cdot \mathcal{F}(W)$'),
         ha='right', va='top', transform=ax.transAxes, size=14,
         bbox=dict(fc='w', ec='k', pad=8), zorder=2)

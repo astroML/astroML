@@ -61,7 +61,7 @@ x_fit = np.linspace(0, 350, 10)
 ax.plot(x_fit, beta_squared[0] * x_fit + beta_squared[1], '--k',
         label="squared loss:\n $y=%.2fx + %.1f$" % tuple(beta_squared))
 ax.plot(x_fit, beta_huber[0] * x_fit + beta_huber[1], '-k',
-        label="huber loss:\n $y=%.2fx + %.1f$" % tuple(beta_huber))
+        label="Huber loss:\n $y=%.2fx + %.1f$" % tuple(beta_huber))
 ax.legend(loc=4, prop=dict(size=14))
 
 ax.errorbar(x, y, dy, fmt='.k', lw=1, ecolor='gray')

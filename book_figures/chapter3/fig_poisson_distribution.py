@@ -59,7 +59,7 @@ plt.xlim(-0.5, 30)
 plt.ylim(0, 0.4)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|\mu)$', fontsize=14)
+plt.ylabel(r'$p(x|\mu)$', fontsize=14)
 plt.title('Poisson Distribution')
 
 plt.legend()

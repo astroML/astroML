@@ -1,5 +1,5 @@
 """
-Decision Tree for RR-Lyrae Classification
+Decision Tree for RR Lyrae Classification
 -----------------------------------------
 This uses a decision tree to photometrically classify RR Lyrae variables,
 and plots a visualization of the first several levels of the tree.
@@ -172,9 +172,9 @@ fp = np.sum((y_test == 0) & (y_out == 1))
 tp = np.sum((y_test == 1) & (y_out == 1))
 
 print "----------------------------------------------------------------"
-print ("partial training set: (%i non-variable, %i RR-Lyrae)"
+print ("partial training set: (%i non-variable, %i RR Lyrae)"
        % (np.sum(y_train == 0), np.sum(y_train == 1)))
-print "positive = RR-Lyrae, negative = non-variable"
+print "positive = RR Lyrae, negative = non-variable"
 print "false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp))
 print "false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn))
 
@@ -187,7 +187,7 @@ visualize_tree(clf, X_train, y_train,
 
 
 ax.text(0.12, 0.95, ("Numbers are count of\n"
-                     "non-variable / RR-Lyrae\n"
+                     "non-variable / RR Lyrae\n"
                      "in each node"),
         ha='center', va='center',
         fontsize=12,
@@ -198,7 +198,7 @@ ax.text(-0.08, 0.14, ("Training Set Size:\n"
         fontsize=12, ha='left', va='bottom')
 
 ax.text(-0.08, 0.01, ("Cross-Validation, with\n"
-                      "  %i RR-Lyraes (positive)\n"
+                      "  %i RR Lyraes (positive)\n"
                       "  %i non-variables (negative)\n"
                       "  false positives: %i (%.1f%s)\n"
                       "  false negatives: %i (%.1f%s)"
@@ -225,7 +225,7 @@ fp = np.sum((y_test == 0) & (y_out == 1))
 tp = np.sum((y_test == 1) & (y_out == 1))
 
 print "----------------------------------------------------------------"
-print ("full training set: (%i non-variables, %i RR-Lyraes)"
+print ("full training set: (%i non-variables, %i RR Lyraes)"
        % (np.sum(y_train == 0), np.sum(y_train == 1)))
 print "positive = RR Lyrae, negative = non-variables"
 print "false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp))

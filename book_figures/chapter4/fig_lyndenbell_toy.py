@@ -76,7 +76,7 @@ ax.errorbar(y_mid, y_dist, dy_dist, fmt='^k', ecolor='k', lw=1)
 
 ax.set_ylim(0, 1.8)
 ax.set_xlim(0, 1)
-ax.set_xlabel('x, y')
+ax.set_xlabel('$x$, $y$')
 ax.set_ylabel('normalized distribution')
 
 # Second subplot is the "observed" 2D distribution
@@ -94,8 +94,8 @@ ax.plot(x_limit, y_limit, '-k')
 
 ax.set_xlim(0, 1.1)
 ax.set_ylim(0, 1.1)
-ax.set_xlabel('x')
-ax.set_ylabel('y')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$y$')
 cb.set_label('counts per pixel')
 ax.text(0.96, 0.96, '%i points' % len(x), ha='right', va='top',
         transform=ax.transAxes)

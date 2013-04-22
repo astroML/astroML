@@ -91,7 +91,7 @@ for dt in (0.9, 1.5):
         ax.annotate('', (ts, hs), (ts, 0), ha='center', va='center',
                     arrowprops=dict(arrowstyle='->'))
     ax.plot(t, h, ':k')
-    ax.text(0.03, 0.95, "Sampled signal: point-wise\nmultiplication",
+    ax.text(0.03, 0.95, "Sampled signal: pointwise\nmultiplication",
             size=11, ha='left', va='top', transform=ax.transAxes)
     ax.set_xlabel('$t$')
     ax.set_ylabel('$h(t)$')
@@ -116,7 +116,7 @@ for dt in (0.9, 1.5):
     ax.yaxis.set_major_formatter(plt.NullFormatter())
 
     if dt > 1:
-        fig.suptitle(r"Under-sampled data: $\Delta t > t_c$")
+        fig.suptitle(r"Undersampled data: $\Delta t > t_c$")
     else:
         fig.suptitle(r"Well-sampled data: $\Delta t < t_c$")
 

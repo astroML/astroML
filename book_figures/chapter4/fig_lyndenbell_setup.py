@@ -32,10 +32,10 @@ for ax in (ax1, ax2):
 
     ax.plot([-0.1, 1], [1, 1], '--k', lw=1)
 
-    ax.text(0.7, 0.35, '$y_{max}(x)$', rotation=-30)
+    ax.text(0.7, 0.35, r'$y_{\rm max}(x)$', rotation=-30)
 
     ax.plot([1, 1], [0, 1], '--k', lw=1)
-    ax.text(1.01, 0.5, '$x_{max}$', ha='left', va='center', rotation=90)
+    ax.text(1.01, 0.5, r'$x_{\rm max}$', ha='left', va='center', rotation=90)
 
 # draw and label J_i in the first axes
 xi = 0.4
@@ -57,7 +57,7 @@ ax2.text(0.5 * max_func(yi), 0.5 * yi, '$J_k$', ha='center', va='center')
 for ax in (ax1, ax2):
     ax.set_xlim(0, 1.1)
     ax.set_ylim(0, 1.1)
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
+    ax.set_xlabel('$x$')
+    ax.set_ylabel('$y$')
 
 plt.show()

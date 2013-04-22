@@ -71,8 +71,8 @@ ax.plot(x, pdf, '-k')
 ax.plot(x, pdf_individual, '--k')
 ax.text(0.04, 0.96, "Best-fit Mixture",
         ha='left', va='top', transform=ax.transAxes)
-ax.set_xlabel('x')
-ax.set_ylabel('p(x)')
+ax.set_xlabel('$x$')
+ax.set_ylabel('$p(x)$')
 
 
 # plot 2: AIC and BIC
@@ -96,7 +96,7 @@ ax.fill_between(x, p[0], p[1], color='gray', alpha=0.5)
 ax.fill_between(x, p[1], 1, color='gray', alpha=0.7)
 ax.set_xlim(-6, 6)
 ax.set_ylim(0, 1)
-ax.set_xlabel('x')
+ax.set_xlabel('$x$')
 ax.set_ylabel(r'$p({\rm class}|x)$')
 
 ax.text(-5, 0.3, 'class 1', rotation='vertical')

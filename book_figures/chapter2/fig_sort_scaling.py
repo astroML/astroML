@@ -44,7 +44,7 @@ ax.grid()
 
 # plot the observed times
 ax.plot(N_list, time_list, 'sk', color='gray', ms=10, label='list sort')
-ax.plot(N_npy, time_npy, 'ok', color='gray', ms=10, label='numpy sort')
+ax.plot(N_npy, time_npy, 'ok', color='gray', ms=10, label='NumPy sort')
 
 # plot the expected scalings
 scale = np.linspace(N_npy[0] / 2, N_npy[-1] * 2, 100)

@@ -52,7 +52,7 @@ plt.xlim(-1.9, 1.9)
 plt.ylim(0, 1.5)
 
 plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$P(x|\mu, W)$', fontsize=14)
+plt.ylabel(r'$p(x|\mu, W)$', fontsize=14)
 plt.title('Uniform Distribution')
 
 plt.legend()
