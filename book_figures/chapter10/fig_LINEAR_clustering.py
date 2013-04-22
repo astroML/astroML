@@ -43,7 +43,6 @@ def compute_GMM_results(components, attributes):
     clfs = []
 
     for attr, X in zip(attributes, Xarrays):
-        print attr, X.shape
         clfs_i = []
 
         for comp in components:
@@ -96,7 +95,7 @@ for i in range(2):
     stdevs = []
     counts = []
 
-    names = data.dtype.names[2:]
+    names = [name for name in data.dtype.names[2:] if name != 'LINEARobjectID']
     i_logP = names.index('logP')
 
     for j in range(Nclusters):
@@ -110,7 +109,13 @@ for i in range(2):
     stdevs = np.array(stdevs)
 
     # define colors based on median of logP
-    j_ordered = np.argsort(means[:, i_logP])[::-1]
+    j_ordered = np.argsort(-means[:, i_logP])
+    print j_ordered
+
+    # tweak colors by hand
+    if i == 1:
+        j_ordered[3], j_ordered[2] = j_ordered[2], j_ordered[3]
+
     color = np.zeros(c.shape)
     for j in range(Nclusters):
         flag = (c == isort[j_ordered[j]])
@@ -154,7 +159,7 @@ for i in range(2):
     # print table of means and medians directly to LaTeX format
     print r"\begin{tabular}{|l|lllllll|}"
     print r"   \hline"
-    for j in range(len(names)):
+    for j in range(len(labels)):
         print '   &', labels[j],
     print r"\\"
     print r"   \hline"
