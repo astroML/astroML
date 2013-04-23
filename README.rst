@@ -97,13 +97,13 @@ Core Dependencies
 -----------------
 The core ``astroML`` package requires the following:
 
-- `Python <http://python.org>`_ version 2.6.x - 2.7.x
+- Python_ version 2.6.x - 2.7.x
   (astroML does not yet support python 3.x)
-- `Numpy <http://numpy.scipy.org/>`_ >= 1.4
-- `Scipy <http://www.scipy.org/>`_ >= 0.7
-- `scikit-learn <http://scikit-learn.org/>`_ >= 0.10
-- `matplotlib <http://matplotlib.org/>`_ >= 0.99
-- `pyfits <http://www.stsci.edu/institute/software_hardware/pyfits>`_ >= 3.0.
+- Numpy_ >= 1.4
+- Scipy_ >= 0.7
+- Scikit-learn_ >= 0.10
+- Matplotlib_ >= 0.99
+- PyFITS_ >= 3.0.
   PyFITS is a python reader for Flexible Image Transport
   System (FITS) files, based on cfitsio.  Several of the dataset loaders
   require pyfits.
@@ -122,15 +122,14 @@ Optional Dependencies
 Several of the example scripts require specialized or upgraded packages.
 These requirements are listed at the top of the particular scripts
 
-- `scipy <http://www.scipy.org>`_ version 0.11 added a sparse graph submodule.
+- Scipy_ version 0.11 added a sparse graph submodule.
   The minimum spanning tree example requires scipy >= 0.11
 
-- `pyMC <http://pymc-devs.github.com/pymc/>`_
-  provides a nice interface for Markov-Chain Monte Carlo.  Several examples
-  use pyMC for exploration of high-dimensional spaces.  The examples
+- PyMC_ provides a nice interface for Markov-Chain Monte Carlo. Several astroML
+  examples use pyMC for exploration of high-dimensional spaces. The examples
   were written with pymc version 2.2
 
-- `healpy <https://github.com/healpy/healpy>`_ provides an interface to
+- HEALPy_ provides an interface to
   the HEALPix pixelization scheme, as well as fast spherical harmonic
   transforms.
 
@@ -138,8 +137,8 @@ Development
 ===========
 This package is designed to be a repository for well-written astronomy code,
 and submissions of new routines are encouraged.  After installing the
-version-control system `git <http://git-scm.com/>`_, you can check out
-the latest sources from `github <http://github.com>`_ using::
+version-control system Git_, you can check out
+the latest sources from GitHub_ using::
 
   git clone git://github.com/astroML/astroML.git
 
@@ -217,3 +216,15 @@ Code Contribution
 -----------------
 * Morgan Fouesneau https://github.com/mfouesneau
 * Julian Taylor http://github.com/juliantaylor
+
+
+.. _Python: http://www.python.org
+.. _Numpy: http://www.numpy.org
+.. _Scipy: http://www.scipy.org
+.. _Scikit-learn: http://scikit-learn.org
+.. _Matplotlib: http://matplotlib.org
+.. _PyFITS: http://www.stsci.edu/institute/software_hardware/pyfits
+.. _PyMC: http://pymc-devs.github.com/pymc/
+.. _HEALPy: https://github.com/healpy/healpy>
+.. _Git: http://git-scm.com/
+.. _GitHub: http://www.github.com
