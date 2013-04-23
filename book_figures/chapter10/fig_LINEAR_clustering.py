@@ -110,7 +110,6 @@ for i in range(2):
 
     # define colors based on median of logP
     j_ordered = np.argsort(-means[:, i_logP])
-    print j_ordered
 
     # tweak colors by hand
     if i == 1:
