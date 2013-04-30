@@ -65,11 +65,16 @@ clfs = compute_GMM_results(components, attributes)
 fig = plt.figure(figsize=(8, 8))
 fig.subplots_adjust(hspace=0.1, wspace=0.1)
 
+class_labels = []
+
 for i in range(2):
     # Grab the best classifier, based on the BIC
     X = Xarrays[i]
     BIC = [c.bic(X) for c in clfs[i]]
     i_best = np.argmin(BIC)
+
+    print "number of components:", components[i_best]
+
     clf = clfs[i][i_best]
     n_components = clf.n_components
 
@@ -77,18 +82,20 @@ for i in range(2):
     c = clf.predict(X)
     classes = np.unique(c)
 
+    class_labels.append(c)
+
     # sort the cluster by normalized density of points
     counts = np.sum(c == classes[:, None], 1)
     size = np.array([np.linalg.det(C) for C in clf.covars_])
     weights = clf.weights_
-    density = counts * 1. / weights / size
+    density = counts / size
 
     # Clusters with very few points are less interesting:
     # set their density to zero so they'll go to the end of the list
     density[counts < 5] = 0
     isort = np.argsort(density)[::-1]
 
-    # find statistics of the top 6 clusters
+    # find statistics of the top 10 clusters
     Nclusters = 6
 
     means = []
@@ -192,5 +199,41 @@ for i in range(4):
 
     ax.set_xlim(-0.6, 2.1)
     ax.set_ylim(ylims[i])
+
+#------------------------------------------------------------
+# Save the results
+#
+# run the script as
+#
+#   >$ python fig_LINEAR_clustering.py save
+#
+# to output the data file showing the cluster labels of each point
+import sys
+if len(sys.argv) > 1 and sys.argv[1] == 'save':
+    filename = 'cluster_labels.dat'
+
+    print "Saving cluster labels to %s" % filename
+
+    from astroML.datasets.LINEAR_sample import ARCHIVE_DTYPE
+    new_data = np.zeros(len(data),
+                        dtype=(ARCHIVE_DTYPE + [('2D_cluster_ID', 'i4'),
+                                                ('7D_cluster_ID', 'i4')]))
+
+    for name in data.dtype.names:
+        new_data[name] = data[name]
+    new_data['2D_cluster_ID'] = class_labels[0]
+    new_data['7D_cluster_ID'] = class_labels[1]
+
+    fmt = ('%.6f   %.6f   %.3f   %.3f   %.3f   %.3f   %.7f   %.3f   %.3f   '
+           '%.3f    %.2f     %i     %i      %s          %i              %i\n')
+
+
+    F = open(filename, 'w')
+    F.write('#    ra           dec       ug      gi      iK      JK     '
+            'logP       Ampl    skew      kurt    magMed    nObs  LCtype  '
+            'LINEARobjectID  2D_cluster_ID   7D_cluster_ID\n')
+    for line in new_data:
+        F.write(fmt % tuple(line[col] for col in line.dtype.names))
+    F.close()
 
 plt.show()
