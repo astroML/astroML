@@ -205,11 +205,11 @@ for i in range(4):
 #
 # run the script as
 #
-#   >$ python fig_LINEAR_clustering.py save
+#   >$ python fig_LINEAR_clustering.py --save
 #
 # to output the data file showing the cluster labels of each point
 import sys
-if len(sys.argv) > 1 and sys.argv[1] == 'save':
+if len(sys.argv) > 1 and sys.argv[1] == '--save':
     filename = 'cluster_labels.dat'
 
     print "Saving cluster labels to %s" % filename
