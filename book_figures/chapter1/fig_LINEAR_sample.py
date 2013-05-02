@@ -11,11 +11,12 @@ as well as the phased light curve of a single LINEAR object.
 #   For more information, see http://astroML.github.com
 import numpy as np
 from matplotlib import pyplot as plt
-from astroML.datasets import fetch_LINEAR_sample
+from astroML.datasets import fetch_LINEAR_sample, fetch_LINEAR_geneva
 
 #------------------------------------------------------------
 # Get data for the plot
 data = fetch_LINEAR_sample()
+geneva = fetch_LINEAR_geneva()  # contains well-measured periods
 
 # Compute the phased light curve for a single object.
 # the best-fit period in the file is not accurate enough
@@ -32,6 +33,24 @@ r = targets['r']
 gr = targets['gr']
 ri = targets['ri']
 logP = targets['LP1']
+
+# Cross-match by ID with the geneva catalog to get more accurate periods
+targetIDs = map(lambda ID: str(ID).lstrip('0'), targets['objectID'])
+genevaIDs = map(lambda ID: str(ID).lstrip('0'), geneva['LINEARobjectID'])
+
+def safe_index(L, val):
+    try:
+        return L.index(val)
+    except ValueError:
+        return -1
+
+ind = np.array([safe_index(genevaIDs, ID) for ID in targetIDs])
+mask = (ind >= 0)
+
+logP = geneva['logP'][ind[mask]]
+r = r[mask]
+gr = gr[mask]
+ri = ri[mask]
 
 #------------------------------------------------------------
 # plot the results
@@ -50,7 +69,7 @@ plt.title("example of\nphased light curve", fontsize=14)
 ax = fig.add_subplot(223)
 ax.plot(gr, ri, '.', color='black', markersize=2)
 ax.set_xlim(-1.5, 1.7)
-ax.set_ylim(-1.0, 1.9)
+ax.set_ylim(-1.0, 2.0)
 ax.xaxis.set_major_locator(plt.MultipleLocator(1.0))
 ax.yaxis.set_major_locator(plt.MultipleLocator(1.0))
 ax.set_xlabel(r'${\rm g-r}$')
@@ -59,15 +78,15 @@ ax.set_ylabel(r'${\rm r-i}$')
 ax = fig.add_subplot(221, yscale='log')
 ax.plot(gr, 10 ** logP, '.', color='black', markersize=2)
 ax.set_xlim(-1.5, 1.7)
-ax.set_ylim(1E-2, 1E2)
+ax.set_ylim(3E-2, 1E1)
 ax.xaxis.set_major_locator(plt.MultipleLocator(1.0))
 ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_ylabel('principal period (days)')
 
 ax = fig.add_subplot(224, xscale='log')
 ax.plot(10 ** logP, ri, '.', color='black', markersize=2)
-ax.set_xlim(1E-2, 1E2)
-ax.set_ylim(-1.0, 1.9)
+ax.set_xlim(3E-2, 1E1)
+ax.set_ylim(-1.0, 2.0)
 ax.yaxis.set_major_formatter(plt.NullFormatter())
 ax.yaxis.set_major_locator(plt.MultipleLocator(1.0))
 ax.set_xlabel('principal period (days)')
