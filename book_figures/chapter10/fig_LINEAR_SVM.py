@@ -24,8 +24,10 @@ y = []
 
 for attr in attributes:
     X.append(np.vstack([data[a] for a in attr]).T)
+    LCtype = data[cls].copy()
 
-    LCtype = data[cls]
+    # there is no #3.  For a better color scheme in plots,
+    # we'll set 6->3
     LCtype[LCtype == 6] = 3
     y.append(LCtype)
 
@@ -116,5 +118,50 @@ for i in range(4):
 
     ax.set_xlim(-0.6, 2.1)
     ax.set_ylim(ylims[i])
+
+#------------------------------------------------------------
+# Save the results
+#
+# run the script as
+#
+#   >$ python fig_LINEAR_clustering.py --save
+#
+# to output the data file showing the cluster labels of each point
+import sys
+if len(sys.argv) > 1 and sys.argv[1] == '--save':
+    filename = 'cluster_labels_svm.dat'
+
+    print "Saving cluster labels to %s" % filename
+
+    from astroML.datasets.LINEAR_sample import ARCHIVE_DTYPE
+    new_data = np.zeros(len(data),
+                        dtype=(ARCHIVE_DTYPE + [('2D_cluster_ID', 'i4'),
+                                                ('7D_cluster_ID', 'i4')]))
+    
+    # switch the labels back 3->6
+    for i in range(2):
+        ypred[i][ypred[i] == 3] = 6
+
+    # need to put labels back in order
+    class_labels = [-999 * np.ones(len(data)) for i in range(2)]
+    for i in range(2):
+        class_labels[i][i_test] = ypred[i]
+
+    for name in data.dtype.names:
+        new_data[name] = data[name]
+    new_data['2D_cluster_ID'] = class_labels[0]
+    new_data['7D_cluster_ID'] = class_labels[1]
+
+    fmt = ('%.6f   %.6f   %.3f   %.3f   %.3f   %.3f   %.7f   %.3f   %.3f   '
+           '%.3f    %.2f     %i     %i      %s          %i              %i\n')
+
+
+    F = open(filename, 'w')
+    F.write('#    ra           dec       ug      gi      iK      JK     '
+            'logP       Ampl    skew      kurt    magMed    nObs  LCtype  '
+            'LINEARobjectID  2D_cluster_ID   7D_cluster_ID\n')
+    for line in new_data:
+        F.write(fmt % tuple(line[col] for col in line.dtype.names))
+    F.close()
 
 plt.show()
