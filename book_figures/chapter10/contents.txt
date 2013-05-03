@@ -19,6 +19,8 @@ fig_LINEAR_LS.py
 fig_LS_double_eclipse.py
 fig_LINEAR_BIC.py
 fig_LINEAR_clustering.py
+fig_LINEAR_SVM.py
+fig_LINEAR_GMMBayes.py
 fig_arrival_time.py
 fig_matchedfilt_burst.py
 fig_matchedfilt_chirp.py

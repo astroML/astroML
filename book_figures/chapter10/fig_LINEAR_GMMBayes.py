@@ -77,13 +77,13 @@ for i in range(2):
     # Plot the resulting classifications
     ax1 = fig.add_subplot(221 + 2 * i)
     ax1.scatter(Xtest[:, 0], Xtest[:, 1],
-                c=ypred[i], s=4, linewidths=0)
+                c=ypred[i], edgecolors='none', s=4, linewidths=0)
 
     ax1.set_ylabel(r'$\log(P)$')
 
     ax2 = plt.subplot(222 + 2 * i)
     ax2.scatter(amp, Xtest[:, 1],
-                c=ypred[i], s=4, lw=0)
+                c=ypred[i], edgecolors='none', s=4, lw=0)
 
     #------------------------------
     # set axis limits
@@ -112,7 +112,7 @@ ylims = [(-1.8, 2.2), (0.6, 2.9), (0.1, 2.6), (-0.2, 1.2)]
 for i in range(4):
     ax = fig.add_subplot(221 + i)
     ax.scatter(data['gi'][i_test], data[attrs[i]][i_test],
-               c=ypred[1], s=4, lw=0)
+               c=ypred[1], edgecolors='none', s=4, lw=0)
     ax.set_xlabel('$g-i$')
     ax.set_ylabel(labels[i])
 
