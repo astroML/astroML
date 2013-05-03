@@ -21,7 +21,6 @@ scipy.derivative = scipy.misc.derivative
 import pymc
 
 np.random.seed(0)
-pymc.numpy.random.seed(0)
 
 #------------------------------------------------------------
 # Get data: this includes outliers
@@ -143,7 +142,7 @@ def model_M2(xi=xi, beta=beta_M2):
     slope, intercept = beta
     return slope * xi + intercept
 
-# qui is bernoulli distributed
+# qi is bernoulli distributed
 qi = pymc.Bernoulli('qi', p=1 - Pb, value=np.ones(len(xi)))
 
 

@@ -25,8 +25,6 @@ data = fetch_LINEAR_geneva()
 filetemplate = 'gmm_res_%i_%i.pkl'
 attributes = [('gi', 'logP'),
               ('ug', 'gi', 'iK', 'JK', 'logP', 'amp', 'skew')]
-labels = ['$u-g$', '$g-i$', '$i-K$', '$J-K$',
-          r'$\log(P)$', 'amplitude', 'skew']
 components = np.arange(1, 21)
 
 #------------------------------------------------------------
@@ -103,6 +101,12 @@ for i in range(2):
     counts = []
 
     names = [name for name in data.dtype.names[2:] if name != 'LINEARobjectID']
+    labels = ['$u-g$', '$g-i$', '$i-K$', '$J-K$',
+              r'$\log(P)$', 'amplitude', 'skew',
+              'kurtosis', 'median mag', r'$N_{\rm obs}$', 'Visual Class']
+    
+    assert len(names) == len(labels)
+    
     i_logP = names.index('logP')
 
     for j in range(Nclusters):
@@ -134,17 +138,17 @@ for i in range(2):
     # Plot the resulting clusters
     ax1 = fig.add_subplot(221 + 2 * i)
     ax1.scatter(data['gi'][back], data['logP'][back],
-                c='gray', s=4, linewidths=0)
+                c='gray', edgecolors='none', s=4, linewidths=0)
     ax1.scatter(data['gi'][fore], data['logP'][fore],
-                c=color[fore], s=4, linewidths=0)
+                c=color[fore], edgecolors='none',  s=4, linewidths=0)
 
     ax1.set_ylabel(r'$\log(P)$')
 
     ax2 = plt.subplot(222 + 2 * i)
     ax2.scatter(data['amp'][back], data['logP'][back],
-                c='gray', s=4, lw=0)
+                c='gray', edgecolors='none', s=4, linewidths=0)
     ax2.scatter(data['amp'][fore], data['logP'][fore],
-                c=color[fore], s=4, lw=0)
+                c=color[fore], edgecolors='none', s=4, linewidths=0)
 
     #------------------------------
     # set axis limits
@@ -161,18 +165,19 @@ for i in range(2):
         ax1.set_xlabel(r'$g-i$')
         ax2.set_xlabel(r'$A$')
 
+
     #------------------------------
     # print table of means and medians directly to LaTeX format
     print r"\begin{tabular}{|l|lllllll|}"
     print r"   \hline"
-    for j in range(len(labels)):
+    for j in range(7):
         print '   &', labels[j],
     print r"\\"
     print r"   \hline"
 
     for j in range(Nclusters):
         print "   %i " % (j + 1),
-        for k in range(len(names)):
+        for k in range(7):
             print " & $%.2f \pm %.2f$ " % (means[j, k], stdevs[j, k]),
         print r"\\"
 
@@ -191,9 +196,9 @@ ylims = [(-1.8, 2.2), (0.6, 2.9), (0.1, 2.6), (-0.2, 1.2)]
 for i in range(4):
     ax = fig.add_subplot(221 + i)
     ax.scatter(data['gi'][back], data[attrs[i]][back],
-               c='gray', s=4, lw=0)
+               c='gray', edgecolors='none', s=4, linewidths=0)
     ax.scatter(data['gi'][fore], data[attrs[i]][fore],
-               c=color[fore], s=4, lw=0)
+               c=color[fore], edgecolors='none', s=4, linewidths=0)
     ax.set_xlabel('$g-i$')
     ax.set_ylabel(labels[i])
 
