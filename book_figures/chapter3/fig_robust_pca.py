@@ -57,7 +57,7 @@ for i, f in enumerate([0.05, 0.15]):
     ax = fig.add_subplot(1, 2, i + 1)
 
     # add outliers distributed using a bivariate normal.
-    X[:int(f * N)] = bivariate_normal((10, 10), 2, 5,
+    X[:int(f * N)] = bivariate_normal((10, 10), 2, 4,
                                       45 * np.pi / 180., int(f * N))
     x, y = X.T
 
