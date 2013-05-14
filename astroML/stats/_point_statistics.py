@@ -245,19 +245,16 @@ def fit_bivariate_normal(x, y, robust=False):
 
         r_xy = stats.pearsonr(x, y)[0]
 
-    sigma_xy = np.sign(r_xy) * np.sqrt(abs(r_xy) * sigma_x * sigma_y)
-    alpha = 0.5 * np.arctan(2 * sigma_xy ** 2 / (sigma_x ** 2 - sigma_y ** 2))
-
-    # There is a degeneracy.  Given our input, we set sigma1 > sigma2,
-    #  so alpha must be positive
-    if alpha < 0:
-        alpha += 0.5 * np.pi
+    # We need to use the full (-180, 180) version of arctan: this is
+    # np.arctan2(x, y) = np.arctan(x / y), modulo 180 degrees
+    sigma_xy = r_xy * sigma_x * sigma_y
+    alpha = 0.5 * np.arctan2(2 * sigma_xy, sigma_x ** 2 - sigma_y ** 2)
 
     sigma1 = np.sqrt((0.5 * (sigma_x ** 2 + sigma_y ** 2)
                       + np.sqrt(0.25 * (sigma_x ** 2 - sigma_y ** 2) ** 2
-                                + sigma_xy ** 4)))
+                                + sigma_xy ** 2)))
     sigma2 = np.sqrt((0.5 * (sigma_x ** 2 + sigma_y ** 2)
                       - np.sqrt(0.25 * (sigma_x ** 2 - sigma_y ** 2) ** 2
-                                + sigma_xy ** 4)))
+                                + sigma_xy ** 2)))
 
     return [mu_x, mu_y], sigma1, sigma2, alpha

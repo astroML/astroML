@@ -1,7 +1,9 @@
 import numpy as np
 from numpy.testing import (assert_array_almost_equal, assert_array_equal,
                            assert_equal, assert_allclose)
-from astroML.stats import mean_sigma, median_sigmaG, sigmaG
+from astroML.stats import (mean_sigma, median_sigmaG, sigmaG,
+                           fit_bivariate_normal)
+from astroML.stats.random import bivariate_normal
 
 
 #---------------------------------------------------------------------------
@@ -109,3 +111,30 @@ def test_median_sigmaG_approx():
     for axis in (None, 1):
         for keepdims in (True, False):
             yield (check_median_sigmaG_approx, a, axis, keepdims, 0.02)
+
+
+#---------------------------------------------------------------------------
+# Check the bivariate normal fit
+def check_fit_bivariate_normal(sigma1, sigma2, mu, alpha, N=1000):
+    # poisson stats
+    rtol = 2 * np.sqrt(N) / N
+
+    x, y = bivariate_normal(mu, sigma1, sigma2, alpha, N).T
+    mu_fit, sigma1_fit, sigma2_fit, alpha_fit = fit_bivariate_normal(x, y)
+
+    if alpha_fit > np.pi / 2:
+        alpha_fit -= np.pi
+    elif alpha_fit < -np.pi / 2:
+        alpha_fit += np.pi
+
+    # Circular degeneracy in alpha: test sin(2*alpha) instead
+    assert_allclose(np.sin(2 * alpha_fit), np.sin(2 * alpha), atol=2 * rtol)
+    assert_allclose(mu, mu_fit, rtol=rtol)
+    assert_allclose(sigma1_fit, sigma1, rtol=rtol)
+    assert_allclose(sigma2_fit, sigma2, rtol=rtol)
+
+def test_fit_bivariate_normal(sigma1=2.0, sigma2=1.0, N=1000):
+    np.random.seed(0)
+    mu = [10, 10]
+    for alpha in np.linspace(-np.pi / 2, np.pi / 2, 7):
+        yield check_fit_bivariate_normal, sigma1, sigma2, mu, alpha, N
