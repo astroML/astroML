@@ -13,6 +13,10 @@ from matplotlib import pyplot as plt
 from astroML.datasets import fetch_nasa_atlas
 from astroML.plotting.tools import devectorize_axes
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 data = fetch_nasa_atlas()
 RA = data['RA']
 DEC = data['DEC']
@@ -22,6 +26,7 @@ RA -= 180
 RA *= np.pi / 180
 DEC *= np.pi / 180
 
+fig = plt.figure(figsize=(5, 3.75))
 ax = plt.axes(projection='mollweide')
 plt.scatter(RA, DEC, s=1, lw=0, c=data['Z'], cmap=plt.cm.copper)
 plt.grid(True)

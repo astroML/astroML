@@ -15,6 +15,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.plotting import plot_tissot_ellipse
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 #------------------------------------------------------------
 # generate a latitude/longitude grid
@@ -38,7 +42,7 @@ def mercator_axes():
 
     return ax
 
-plt.figure()
+plt.figure(figsize=(5, 3.75))
 ax = mercator_axes()
 ax.grid(True)
 plot_tissot_ellipse(circ_long[:, None], circ_lat, radius,

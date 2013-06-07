@@ -12,6 +12,10 @@ Stripe 82 and to plot some measures of the orbital dynamics.
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_moving_objects
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch the moving object data
 data = fetch_moving_objects(Parker2008_cuts=True)
@@ -24,7 +28,7 @@ sini = data['sin_iprime']
 
 #------------------------------------------------------------
 # Plot the results
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 ax.plot(a, sini, '.', markersize=2, color='black')
 
 ax.set_xlim(2.0, 3.6)

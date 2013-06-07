@@ -13,6 +13,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_LINEAR_sample, fetch_LINEAR_geneva
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Get data for the plot
 data = fetch_LINEAR_sample()
@@ -54,7 +58,7 @@ ri = ri[mask]
 
 #------------------------------------------------------------
 # plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(hspace=0.1, wspace=0.1,
                     top=0.95, right=0.95)
 
@@ -64,7 +68,7 @@ plt.ylim(plt.ylim()[::-1])
 plt.xlabel('phase')
 plt.ylabel('magnitude')
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.5))
-plt.title("example of\nphased light curve", fontsize=14)
+plt.title("example of\nphased light curve")
 
 ax = fig.add_subplot(223)
 ax.plot(gr, ri, '.', color='black', markersize=2)

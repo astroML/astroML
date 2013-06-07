@@ -16,6 +16,10 @@ from matplotlib import pyplot as plt
 from astroML.datasets import fetch_moving_objects
 from astroML.plotting.tools import devectorize_axes
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def black_bg_subplot(*args, **kwargs):
     """Create a subplot with black background"""
@@ -44,8 +48,7 @@ def compute_color(mag_a, mag_i, mag_z, a_crit=-0.1):
     B = 1.5 * 10 ** (-8 * (mag_a + 0.0))
 
     # enhance green beyond the a_crit cutoff
-    i = np.where(mag_a < a_crit)
-    G[i] += 10000 * (10 ** (-0.01 * (mag_a[i] - a_crit)) - 1)
+    G += 10. / (1 + np.exp((mag_a - a_crit) / 0.02))
 
     # normalize color of each point to its maximum component
     RGB = np.vstack([R, G, B])
@@ -74,18 +77,18 @@ color = compute_color(mag_a, mag_i, mag_z)
 
 #------------------------------------------------------------
 # set up the plot
-fig = plt.figure(figsize=(10.5, 5), facecolor='k')
-fig.subplots_adjust(left=0.1, right=0.95, wspace=0.2,
-                    bottom=0.1, top=0.9)
+fig = plt.figure(figsize=(5, 2.2), facecolor='k')
+fig.subplots_adjust(left=0.1, right=0.95, wspace=0.3,
+                    bottom=0.2, top=0.93)
 
 # plot the color-magnitude plot
 ax = black_bg_subplot(121)
 ax.scatter(mag_a, mag_i - mag_z,
-           c=color, s=1, lw=0)
+           c=color, s=0.5, lw=0)
 devectorize_axes(ax, dpi=400)
 
-ax.plot([0, 0], [-0.8, 0.6], '--w', lw=2)
-ax.plot([0, 0.4], [-0.15, -0.15], '--w', lw=2)
+ax.plot([0, 0], [-0.8, 0.6], '--w', lw=1)
+ax.plot([0, 0.4], [-0.15, -0.15], '--w', lw=1)
 
 ax.set_xlim(-0.3, 0.4)
 ax.set_ylim(-0.8, 0.6)
@@ -96,11 +99,11 @@ ax.set_ylabel(r'${\rm i-z}$', color='w')
 # plot the orbital parameters plot
 ax = black_bg_subplot(122)
 ax.scatter(a, sini,
-           c=color, s=1, lw=0)
+           c=color, s=0.5, lw=0, edgecolor='none')
 devectorize_axes(ax, dpi=400)
 
-ax.plot([2.5, 2.5], [-0.02, 0.3], '--w')
-ax.plot([2.82, 2.82], [-0.02, 0.3], '--w')
+ax.plot([2.5, 2.5], [-0.02, 0.3], '--w', lw=1)
+ax.plot([2.82, 2.82], [-0.02, 0.3], '--w', lw=1)
 
 ax.set_xlim(2.0, 3.3)
 ax.set_ylim(-0.02, 0.3)
@@ -109,13 +112,13 @@ ax.set_xlabel(r'${\rm a (AU)}$', color='w')
 ax.set_ylabel(r'${\rm sin(i)}$', color='w')
 
 # label the plot
-text_kwargs = dict(color='w', fontsize=14,
+text_kwargs = dict(color='w', fontsize=8,
                    transform=plt.gca().transAxes,
                    ha='center', va='bottom')
 
-ax.text(0.25, 1.01, 'Inner', **text_kwargs)
-ax.text(0.53, 1.01, 'Mid', **text_kwargs)
-ax.text(0.83, 1.01, 'Outer', **text_kwargs)
+ax.text(0.25, 1.02, 'Inner', **text_kwargs)
+ax.text(0.53, 1.02, 'Mid', **text_kwargs)
+ax.text(0.83, 1.02, 'Outer', **text_kwargs)
 
 # Saving the black-background figure requires some extra arguments:
 #fig.savefig('moving_objects.png',

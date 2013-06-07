@@ -13,6 +13,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_specgals
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch spectroscopic galaxy data
 data = fetch_sdss_specgals()
@@ -24,8 +28,8 @@ rPetro = data['petroMag_r']
 
 #------------------------------------------------------------
 # Plot the galaxy colors and magnitudes
-ax = plt.axes()
-ax.plot(u - r, rPetro, '.k', markersize=4)
+fig, ax = plt.subplots(figsize=(5, 3.75))
+ax.plot(u - r, rPetro, '.k', markersize=2)
 
 ax.set_xlim(1, 4.5)
 ax.set_ylim(18.1, 13.5)

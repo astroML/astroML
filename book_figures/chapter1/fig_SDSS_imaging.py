@@ -13,6 +13,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_imaging_sample
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def get_stars_and_galaxies(Nstars=5000, Ngals=5000):
     """Get the subset of star/galaxy data to plot"""
@@ -32,24 +36,26 @@ def plot_stars_and_galaxies(stars, galaxies):
     # for large numbers of points.
     # Scatter should be used only when points need to be different colors
     # and/or sizes
-    plot_kwargs = dict(color='k', linestyle='none', marker='.', markersize=1)
+    plot_kwargs = dict(color='k', linestyle='none', marker=',')
 
-    ax1 = plt.subplot(221)
+    fig = plt.figure(figsize=(5, 3.75))
+
+    ax1 = fig.add_subplot(221)
     ax1.plot(galaxies['gRaw'] - galaxies['rRaw'],
              galaxies['rRaw'],
              **plot_kwargs)
 
-    ax2 = plt.subplot(223, sharex=ax1)
+    ax2 = fig.add_subplot(223, sharex=ax1)
     ax2.plot(galaxies['gRaw'] - galaxies['rRaw'],
              galaxies['rRaw'] - galaxies['iRaw'],
              **plot_kwargs)
 
-    ax3 = plt.subplot(222, sharey=ax1)
+    ax3 = fig.add_subplot(222, sharey=ax1)
     ax3.plot(stars['gRaw'] - stars['rRaw'],
              stars['rRaw'],
              **plot_kwargs)
 
-    ax4 = plt.subplot(224, sharex=ax3, sharey=ax2)
+    ax4 = fig.add_subplot(224, sharex=ax3, sharey=ax2)
     ax4.plot(stars['gRaw'] - stars['rRaw'],
              stars['rRaw'] - stars['iRaw'],
              **plot_kwargs)

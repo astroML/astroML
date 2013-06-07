@@ -12,6 +12,10 @@ Pipeline (SSPP) data to show multiple features on a single plot.
 import numpy as np
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Get SDSS SSPP data
 from astroML.datasets import fetch_sdss_sspp
@@ -42,13 +46,13 @@ cmap_multicolor = plt.cm.jet
 cmap_multicolor.set_bad('w', 1.)
 
 # Create figure and subplots
-fig = plt.figure(figsize=(10, 4))
-fig.subplots_adjust(wspace=0.22, left=0.08, right=0.95,
-                    bottom=0.07, top=0.95)
+fig = plt.figure(figsize=(5, 2))
+fig.subplots_adjust(wspace=0.22, left=0.1, right=0.95,
+                    bottom=0.12, top=0.95)
 
 #--------------------
 # First axes:
-plt.subplot(131, xticks=[4000, 5000, 6000, 7000, 8000])
+ax = plt.subplot(131, xticks=[4000, 5000, 6000, 7000, 8000])
 plt.imshow(np.log10(N.T), origin='lower',
            extent=[xedges[0], xedges[-1], yedges[0], yedges[-1]],
            aspect='auto', interpolation='nearest', cmap=cmap)
@@ -57,14 +61,14 @@ plt.ylim(yedges[-1], yedges[0])
 plt.xlabel(r'$\mathrm{T_{eff}}$')
 plt.ylabel(r'$\mathrm{log(g)}$')
 
-cb = plt.colorbar(ticks=[0, 1, 2, 3],
+cb = plt.colorbar(ticks=[0, 1, 2, 3], pad=0.2,
                   format=r'$10^{%i}$', orientation='horizontal')
 cb.set_label(r'$\mathrm{number\ in\ pixel}$')
 plt.clim(0, 3)
 
 #--------------------
 # Second axes:
-plt.subplot(132, xticks=[4000, 5000, 6000, 7000, 8000])
+ax = plt.subplot(132, xticks=[4000, 5000, 6000, 7000, 8000])
 plt.imshow(FeH_mean.T, origin='lower',
            extent=[xedges[0], xedges[-1], yedges[0], yedges[-1]],
            aspect='auto', interpolation='nearest', cmap=cmap)
@@ -72,7 +76,7 @@ plt.xlim(xedges[-1], xedges[0])
 plt.ylim(yedges[-1], yedges[0])
 plt.xlabel(r'$\mathrm{T_{eff}}$')
 
-cb = plt.colorbar(ticks=np.arange(-2.5, 1, 0.5),
+cb = plt.colorbar(ticks=np.arange(-2.5, 1, 0.5), pad=0.2,
                   format=r'$%.1f$', orientation='horizontal')
 cb.set_label(r'$\mathrm{mean\ [Fe/H]\ in\ pixel}$')
 plt.clim(-2.5, 0.5)
@@ -84,7 +88,7 @@ plt.contour(np.log10(N.T), levels, colors='k', linewidths=1,
 
 #--------------------
 # Third axes:
-plt.subplot(133, xticks=[4000, 5000, 6000, 7000, 8000])
+ax = plt.subplot(133, xticks=[4000, 5000, 6000, 7000, 8000])
 plt.imshow(FeH_mean.T, origin='lower',
            extent=[xedges[0], xedges[-1], yedges[0], yedges[-1]],
            aspect='auto', interpolation='nearest', cmap=cmap_multicolor)
@@ -92,7 +96,7 @@ plt.xlim(xedges[-1], xedges[0])
 plt.ylim(yedges[-1], yedges[0])
 plt.xlabel(r'$\mathrm{T_{eff}}$')
 
-cb = plt.colorbar(ticks=np.arange(-2.5, 1, 0.5),
+cb = plt.colorbar(ticks=np.arange(-2.5, 1, 0.5), pad=0.2,
                   format=r'$%.1f$', orientation='horizontal')
 cb.set_label(r'$\mathrm{mean\ [Fe/H]\ in\ pixel}$')
 plt.clim(-2.5, 0.5)

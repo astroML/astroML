@@ -12,6 +12,10 @@ standard stars
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_S82standards
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch the stripe 82 data
 data = fetch_sdss_S82standards()
@@ -26,7 +30,7 @@ i = data['mmu_i']
 
 #------------------------------------------------------------
 # Plot the g-r vs r-i colors
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 ax.plot(g - r, r - i, marker='.', markersize=2,
         color='black', linestyle='none')
 

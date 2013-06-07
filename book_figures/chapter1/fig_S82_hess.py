@@ -14,6 +14,10 @@ from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_sdss_S82standards
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch the stripe 82 data
 data = fetch_sdss_S82standards()
@@ -33,7 +37,7 @@ cmap = plt.cm.binary
 cmap.set_bad('w', 1.)
 
 # Use the image display function imshow() to plot the result
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 H[H == 0] = 1  # prevent warnings in log10
 ax.imshow(np.log10(H).T, origin='lower',
           extent=[xbins[0], xbins[-1], ybins[0], ybins[-1]],

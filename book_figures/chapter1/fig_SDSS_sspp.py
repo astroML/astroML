@@ -13,6 +13,10 @@ of stars.
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_sspp
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch the data
 data = fetch_sdss_sspp()
@@ -30,7 +34,7 @@ Teff = data['Teff']
 
 #------------------------------------------------------------
 # Plot the data
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 ax.plot(Teff, logg, marker='.', markersize=2, linestyle='none', color='black')
 
 ax.set_xlim(8000, 4500)

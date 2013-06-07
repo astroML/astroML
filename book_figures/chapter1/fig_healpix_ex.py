@@ -17,6 +17,10 @@ import healpy as hp
 
 from astroML.datasets import fetch_wmap_temperatures
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # First plot an example pixellization
 
@@ -26,7 +30,7 @@ m = np.arange(hp.nside2npix(NSIDE))
 print "number of pixels:", len(m)
 
 # Plot the pixelization
-fig = plt.figure(1)
+fig = plt.figure(1, figsize=(5, 3.75))
 hp.mollview(m, nest=True, title="HEALPix Pixels (Mollweide)", fig=1)
 
 # remove colorbar: we don't need it for this plot
@@ -37,9 +41,9 @@ fig.delaxes(fig.axes[1])
 wmap_unmasked = fetch_wmap_temperatures(masked=False)
 
 # plot the unmasked map
-fig = plt.figure(2)
+fig = plt.figure(2, figsize=(5, 3.75))
 hp.mollview(wmap_unmasked, min=-1, max=1, title='Raw WMAP data',
             unit=r'$\Delta$T (mK)', fig=2)
-plt.show()
+fig.axes[1].texts[0].set_fontsize(8)
 
 plt.show()

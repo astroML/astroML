@@ -12,6 +12,10 @@ plot the relationship between redshift and color.
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_dr7_quasar
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch the quasar data
 data = fetch_dr7_quasar()
@@ -25,8 +29,8 @@ z = data['redshift']
 
 #------------------------------------------------------------
 # Plot the quasar data
-ax = plt.axes()
-ax.plot(z, r - i, marker='.', markersize=4, linestyle='none', color='black')
+fig, ax = plt.subplots(figsize=(5, 3.75))
+ax.plot(z, r - i, marker='.', markersize=2, linestyle='none', color='black')
 
 ax.set_xlim(0, 5)
 ax.set_ylim(-0.5, 1.0)

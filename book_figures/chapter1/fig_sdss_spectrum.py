@@ -12,6 +12,10 @@ using the plate, MJD, and fiber numbers.
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_spectrum
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch single spectrum
 plate = 1615
@@ -22,7 +26,7 @@ spec = fetch_sdss_spectrum(plate, mjd, fiber)
 
 #------------------------------------------------------------
 # Plot the resulting spectrum
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 ax.plot(spec.wavelength(), spec.spectrum, '-k', lw=1)
 
 ax.set_xlim(3000, 10000)

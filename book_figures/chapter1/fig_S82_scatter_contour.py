@@ -14,6 +14,10 @@ from matplotlib import pyplot as plt
 from astroML.plotting import scatter_contour
 from astroML.datasets import fetch_sdss_S82standards
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch the Stripe 82 standard star catalog
 
@@ -25,11 +29,10 @@ i = data['mmu_i']
 
 #------------------------------------------------------------
 # plot the results
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 scatter_contour(g - r, r - i, threshold=200, log_counts=True, ax=ax,
                 histogram2d_args=dict(bins=40),
-                plot_args=dict(marker='.', linestyle='none',
-                               markersize=1, color='black'),
+                plot_args=dict(marker=',', linestyle='none', color='black'),
                 contour_args=dict(cmap=plt.cm.bone))
 
 ax.set_xlabel(r'${\rm g - r}$')

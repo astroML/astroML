@@ -15,6 +15,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.plotting import plot_tissot_ellipse
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # generate a latitude/longitude grid
 circ_long = np.linspace(-np.pi, np.pi, 13)[1:-1]
@@ -23,7 +27,7 @@ radius = 10 * np.pi / 180.
 
 #------------------------------------------------------------
 # Plot the built-in projections
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(5, 4))
 plt.subplots_adjust(hspace=0, wspace=0.1,
                     left=0.05, right=0.95,
                     bottom=0.05, top=1.0)
