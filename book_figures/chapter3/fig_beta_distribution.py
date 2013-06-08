@@ -32,12 +32,20 @@ import numpy as np
 from scipy.stats import beta
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
 alpha_values = [0.5, 1.5, 3.0, 0.5]
 beta_values = [0.5, 1.5, 3.0, 1.5]
 linestyles = ['-', '--', ':', '-.']
 x = np.linspace(0, 1, 1002)[1:-1]
+
+#------------------------------------------------------------
+# plot the distributions
+fig, ax = plt.subplots(figsize=(5, 3.75))
 
 for a, b, ls in zip(alpha_values, beta_values, linestyles):
     dist = beta(a, b)
@@ -48,8 +56,8 @@ for a, b, ls in zip(alpha_values, beta_values, linestyles):
 plt.xlim(0, 1)
 plt.ylim(0, 3)
 
-plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$p(x|\alpha,\beta)$', fontsize=14)
+plt.xlabel('$x$')
+plt.ylabel(r'$p(x|\alpha,\beta)$')
 plt.title('Beta Distribution')
 
 plt.legend(loc=0)

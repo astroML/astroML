@@ -32,6 +32,10 @@ import numpy as np
 from scipy.stats import gamma
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # plot the distributions
 k_values = [1, 2, 3, 5]
@@ -41,16 +45,18 @@ x = np.linspace(1E-6, 10, 1000)
 
 #------------------------------------------------------------
 # plot the distributions
+fig, ax = plt.subplots(figsize=(5, 3.75))
+
 for k, t, ls in zip(k_values, theta_values, linestyles):
     dist = gamma(k, 0, t)
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
              label=r'$k=%.1f,\ \theta=%.1f$' % (k, t))
 
 plt.xlim(0, 10)
-plt.ylim(0, 0.5)
+plt.ylim(0, 0.45)
 
-plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$p(x|k,\theta)$', fontsize=14)
+plt.xlabel('$x$')
+plt.ylabel(r'$p(x|k,\theta)$')
 plt.title('Gamma Distribution')
 
 plt.legend(loc=0)

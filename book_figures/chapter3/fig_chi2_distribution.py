@@ -32,12 +32,21 @@ import numpy as np
 from scipy.stats import chi2
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
 k_values = [1, 2, 5, 7]
 linestyles = ['-', '--', ':', '-.']
 mu = 0
 x = np.linspace(-1, 20, 1000)
+
+#------------------------------------------------------------
+# plot the distributions
+fig, ax = plt.subplots(figsize=(5, 3.75))
+fig.subplots_adjust(bottom=0.12)
 
 for k, ls in zip(k_values, linestyles):
     dist = chi2(k, mu)
@@ -46,11 +55,11 @@ for k, ls in zip(k_values, linestyles):
              label=r'$k=%i$' % k)
 
 plt.xlim(0, 10)
-plt.ylim(0, 0.6)
+plt.ylim(0, 0.5)
 
-plt.xlabel('$Q$', fontsize=14)
-plt.ylabel(r'$p(Q|k)$', fontsize=14)
-plt.title(r'$\chi^2\ \mathrm{Distribution}$', fontsize=14)
+plt.xlabel('$Q$')
+plt.ylabel(r'$p(Q|k)$')
+plt.title(r'$\chi^2\ \mathrm{Distribution}$')
 
 plt.legend()
 plt.show()

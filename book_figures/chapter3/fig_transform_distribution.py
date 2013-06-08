@@ -13,6 +13,10 @@ import numpy as np
 from scipy import stats
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Set up the data
 np.random.seed(0)
@@ -30,8 +34,8 @@ Py = Px / y
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 4))
-fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25, bottom=0.15, top=0.9)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(left=0.11, right=0.95, wspace=0.3, bottom=0.17, top=0.9)
 
 ax = fig.add_subplot(121)
 ax.hist(x_sample, 20, histtype='stepfilled', fc='#CCCCCC', normed=True)

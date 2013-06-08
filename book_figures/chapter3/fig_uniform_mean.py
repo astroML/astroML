@@ -22,6 +22,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import uniform
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Generate the random distribution
 N = (10 ** np.linspace(2, 4, 1000)).astype(int)
@@ -45,8 +49,8 @@ root_N_scaling = W / np.sqrt(N * 12)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure()
-fig.subplots_adjust(hspace=0)
+fig = plt.figure(figsize=(5, 3.75))
+fig.subplots_adjust(hspace=0, bottom=0.15, left=0.15)
 
 # upper plot: mean statistic
 ax = fig.add_subplot(211, xscale='log')
@@ -59,17 +63,15 @@ for nsig in (1, 2, 3):
                        -nsig * root_N_scaling[::-1])), 'b', alpha=0.2)
 ax.set_xlim(N[0], N[-1])
 ax.set_ylim(-0.199, 0.199)
-ax.set_ylabel(r'$\bar{\mu}$', fontsize=16)
+ax.set_ylabel(r'$\bar{\mu}$')
 ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 ax.text(0.99, 0.95,
         r'$\bar\mu = \mathrm{mean}(x)$',
-        ha='right', va='top', transform=ax.transAxes,
-        fontsize=16)
+        ha='right', va='top', transform=ax.transAxes)
 ax.text(0.99, 0.02,
         r'$\sigma = \frac{1}{\sqrt{12}}\cdot\frac{W}{\sqrt{N}}$',
-        ha='right', va='bottom', transform=ax.transAxes,
-        fontsize=16)
+        ha='right', va='bottom', transform=ax.transAxes)
 
 # lower plot: min/max statistic
 ax = fig.add_subplot(212, xscale='log')
@@ -82,16 +84,14 @@ for nsig in (1, 2, 3):
                        -nsig * N_scaling[::-1])), 'g', alpha=0.2)
 ax.set_xlim(N[0], N[-1])
 ax.set_ylim(-0.0399, 0.0399)
-ax.set_xlabel('$N$', fontsize=16)
-ax.set_ylabel(r'$\bar{\mu}$', fontsize=16)
+ax.set_xlabel('$N$')
+ax.set_ylabel(r'$\bar{\mu}$')
 
 ax.text(0.99, 0.95,
         r'$\bar\mu = \frac{1}{2}[\mathrm{max}(x) + \mathrm{min}(x)]$',
-        ha='right', va='top', transform=ax.transAxes,
-        fontsize=16)
+        ha='right', va='top', transform=ax.transAxes)
 ax.text(0.99, 0.02,
         r'$\sigma = \frac{1}{\sqrt{12}}\cdot\frac{2W}{N}$',
-        ha='right', va='bottom', transform=ax.transAxes,
-        fontsize=16)
+        ha='right', va='bottom', transform=ax.transAxes)
 
 plt.show()

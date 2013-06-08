@@ -32,6 +32,10 @@ import numpy as np
 from scipy.stats import norm
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define the distributions to be plotted
 sigma_values = [0.5, 1.0, 2.0]
@@ -41,6 +45,8 @@ x = np.linspace(-10, 10, 1000)
 
 #------------------------------------------------------------
 # plot the distributions
+fig, ax = plt.subplots(figsize=(5, 3.75))
+
 for sigma, ls in zip(sigma_values, linestyles):
     # create a gaussian / normal distribution
     dist = norm(mu, sigma)
@@ -49,10 +55,10 @@ for sigma, ls in zip(sigma_values, linestyles):
              label=r'$\mu=%i,\ \sigma=%.1f$' % (mu, sigma))
 
 plt.xlim(-5, 5)
-plt.ylim(0, 1.0)
+plt.ylim(0, 0.85)
 
-plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$p(x|\mu,\sigma)$', fontsize=14)
+plt.xlabel('$x$')
+plt.ylabel(r'$p(x|\mu,\sigma)$')
 plt.title('Gaussian Distribution')
 
 plt.legend()

@@ -13,6 +13,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.ticker import NullFormatter, NullLocator, MultipleLocator
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 def banana_distribution(N=10000):
     """This generates random points in a banana shape"""
     # create a truncated normal distribution
@@ -40,16 +44,16 @@ H /= np.sum(H)
 
 #------------------------------------------------------------
 # plot the result
-fig = plt.figure(figsize=(10, 5))
+fig = plt.figure(figsize=(5, 2.5))
 
 # define axes
-ax_Pxy = plt.axes((0.17, 0.3, 0.3, 0.6))
-ax_Px = plt.axes((0.17, 0.1, 0.3, 0.2))
-ax_Py = plt.axes((0.07, 0.3, 0.1, 0.6))
-ax_cb = plt.axes((0.48, 0.3, 0.01, 0.6))
-ax_Px_y = [plt.axes((0.63, 0.64, 0.34, 0.26)),
-           plt.axes((0.63, 0.37, 0.34, 0.26)),
-           plt.axes((0.63, 0.1, 0.34, 0.26))]
+ax_Pxy = plt.axes((0.2, 0.34, 0.27, 0.52))
+ax_Px = plt.axes((0.2, 0.14, 0.27, 0.2))
+ax_Py = plt.axes((0.1, 0.34, 0.1, 0.52))
+ax_cb = plt.axes((0.48, 0.34, 0.01, 0.52))
+ax_Px_y = [plt.axes((0.65, 0.62, 0.32, 0.23)),
+           plt.axes((0.65, 0.38, 0.32, 0.23)),
+           plt.axes((0.65, 0.14, 0.32, 0.23))]
 
 # set axis label formatters
 ax_Px_y[0].xaxis.set_major_formatter(NullFormatter())
@@ -89,8 +93,10 @@ ax_Pxy.set_xlabel('$x$')
 ax_Pxy.set_ylabel('$y$')
 ax_Px.set_xlabel('$x$')
 ax_Px.set_ylabel('$p(x)$')
+ax_Px.yaxis.set_label_position('right')
 ax_Py.set_ylabel('$y$')
 ax_Py.set_xlabel('$p(y)$')
+ax_Py.xaxis.set_label_position('top')
 
 
 # draw marginal probabilities

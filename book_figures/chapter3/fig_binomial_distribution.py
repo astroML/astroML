@@ -32,6 +32,10 @@ import numpy as np
 from scipy.stats import binom
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
 n_values = [20, 20, 40]
@@ -41,6 +45,8 @@ x = np.arange(-1, 200)
 
 #------------------------------------------------------------
 # plot the distributions
+fig, ax = plt.subplots(figsize=(5, 3.75))
+
 for (n, b, ls) in zip(n_values, b_values, linestyles):
     # create a binomial distribution
     dist = binom(n, b)
@@ -48,11 +54,11 @@ for (n, b, ls) in zip(n_values, b_values, linestyles):
     plt.plot(x, dist.pmf(x), ls=ls, c='black',
              label=r'$b=%.1f,\ n=%i$' % (b, n), linestyle='steps-mid')
 
-plt.xlim(-0.5, 40)
-plt.ylim(0, 0.3)
+plt.xlim(-0.5, 35)
+plt.ylim(0, 0.25)
 
-plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$p(x|b, n)$', fontsize=14)
+plt.xlabel('$x$')
+plt.ylabel(r'$p(x|b, n)$')
 plt.title('Binomial Distribution')
 
 plt.legend()

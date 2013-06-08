@@ -32,6 +32,10 @@ import numpy as np
 from scipy.stats import dweibull
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
 k_values = [0.5, 1, 2, 2]
@@ -42,16 +46,18 @@ x = np.linspace(-10, 10, 1000)
 
 #------------------------------------------------------------
 # plot the distributions
+fig, ax = plt.subplots(figsize=(5, 3.75))
+
 for (k, lam, ls) in zip(k_values, lam_values, linestyles):
     dist = dweibull(k, mu, lam)
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
              label=r'$k=%.1f,\ \lambda=%i$' % (k, lam))
 
 plt.xlim(0, 5)
-plt.ylim(0, 1.0)
+plt.ylim(0, 0.6)
 
-plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$p(x|k,\lambda)$', fontsize=14)
+plt.xlabel('$x$')
+plt.ylabel(r'$p(x|k,\lambda)$')
 plt.title('Weibull Distribution')
 
 plt.legend()

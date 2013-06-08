@@ -10,8 +10,12 @@ Diagram of a sum of probabilities
 #   For more information, see http://astroML.github.com
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 # create plot
-fig = plt.figure(figsize=(8, 6), facecolor='w')
+fig = plt.figure(figsize=(5, 3.75), facecolor='w')
 ax = plt.axes([0, 0, 1, 1], xticks=[], yticks=[], frameon=False)
 
 # draw intersecting circles
@@ -19,7 +23,7 @@ ax.add_patch(plt.Circle((1.5, 0.2), 2.2, fc='gray', ec='black', alpha=0.5))
 ax.add_patch(plt.Circle((-1.5, 0.2), 2.2, fc='gray', ec='black', alpha=0.5))
 
 # add text
-text_kwargs = dict(ha='center', va='center', fontsize=20)
+text_kwargs = dict(ha='center', va='center', fontsize=12)
 ax.text(-1.6, 0.2, "$p(A)$", **text_kwargs)
 ax.text(1.6, 0.2, "$p(B)$", **text_kwargs)
 ax.text(0.0, 0.2, "$p(A \cap B)$", **text_kwargs)

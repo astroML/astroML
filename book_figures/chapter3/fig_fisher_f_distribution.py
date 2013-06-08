@@ -32,6 +32,10 @@ import numpy as np
 from scipy.stats import f as fisher_f
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
 mu = 0
@@ -40,6 +44,8 @@ d2_values = [1, 2, 5, 50]
 linestyles = ['-', '--', ':', '-.']
 x = np.linspace(0, 5, 1001)[1:]
 
+fig, ax = plt.subplots(figsize=(5, 3.75))
+
 for (d1, d2, ls) in zip(d1_values, d2_values, linestyles):
     dist = fisher_f(d1, d2, mu)
 
@@ -47,10 +53,10 @@ for (d1, d2, ls) in zip(d1_values, d2_values, linestyles):
              label=r'$d_1=%i,\ d_2=%i$' % (d1, d2))
 
 plt.xlim(0, 4)
-plt.ylim(0.0, 1.2)
+plt.ylim(0.0, 1.0)
 
-plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$p(x|d_1, d_2)$', fontsize=14)
+plt.xlabel('$x$')
+plt.ylabel(r'$p(x|d_1, d_2)$')
 plt.title("Fisher's Distribution")
 
 plt.legend()

@@ -16,6 +16,10 @@ from scipy import stats, interpolate
 from astroML.plotting import hist
 from astroML.density_estimation import EmpiricalDistribution
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Create a distribution and clone it
 Ndata = 1000
@@ -51,8 +55,8 @@ x_sample = interpolate.splev(Px_cuml_sample, tck)
 
 #------------------------------------------------------------
 # Plot the cloned distribution and the procedure for obtaining it
-fig = plt.figure(figsize=(10, 10))
-fig.subplots_adjust(hspace=0.25, left=0.1, right=0.95,
+fig = plt.figure(figsize=(5, 5))
+fig.subplots_adjust(hspace=0.3, left=0.1, right=0.95,
                     bottom=0.08, top=0.92)
 
 indices = np.linspace(0, Ndata - 1, 20).astype(int)
@@ -68,7 +72,7 @@ ax.set_ylabel('$N(x)$')
 
 # plot the cumulative distribution
 ax = fig.add_subplot(222)
-ax.scatter(x[indices], Px_cuml[indices], lw=0, c='k')
+ax.scatter(x[indices], Px_cuml[indices], lw=0, c='k', s=9)
 ax.plot(x, Px_cuml, '-k')
 ax.set_xlim(-3, 3)
 ax.set_ylim(-0.05, 1.05)
@@ -78,7 +82,7 @@ ax.set_ylabel('$p(<x)$')
 
 # plot the inverse cumulative distribution and spline fit
 ax = fig.add_subplot(223)
-ax.scatter(Px_cuml[indices], x[indices], lw=0, c='k')
+ax.scatter(Px_cuml[indices], x[indices], lw=0, c='k', s=9)
 ax.plot(Px_cuml_sample, x_sample, '-k')
 ax.arrow(0.7, -3, 0, 3.5, width=0.015, fc='gray', ec='gray',
          head_width=0.05, head_length=0.4)

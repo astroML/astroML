@@ -23,6 +23,9 @@ if matplotlib.rcParams.get('text.usetex'):
 else:
     pct = '%'
 
+# Adjust font sizes for text
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Set parameters for the distributions
 Nbootstraps = 5000
@@ -75,8 +78,8 @@ results = compute_results(N, Nbootstraps)
 
 #------------------------------------------------------------
 # Plot the results in a three-panel plot
-fig = plt.figure(figsize=(8, 8))
-fig.subplots_adjust(bottom=0.07, top=0.95, hspace=0.25)
+fig = plt.figure(figsize=(5, 5))
+fig.subplots_adjust(bottom=0.1, top=0.95, hspace=0.25)
 
 histargs = (dict(alpha=0.5, label='No Outliers'),
             dict(alpha=0.8, label='%i%s Outliers' % (int(f * 100), pct)))

@@ -13,6 +13,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import norm
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Create our data
 
@@ -32,9 +36,9 @@ pdf_mag_fit /= np.dot(pdf_mag_fit[1:], abs(mag_fit[1:] - mag_fit[:-1]))
 
 #------------------------------------------------------------
 # Plot the result
-fig = plt.figure(figsize=(8, 4))
-fig.subplots_adjust(bottom=0.15, top=0.9,
-                    left=0.1, right=0.95, wspace=0.25)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(bottom=0.17, top=0.9,
+                    left=0.12, right=0.95, wspace=0.3)
 
 # first plot the flux distribution
 ax = fig.add_subplot(121)
@@ -48,7 +52,7 @@ ax.set_ylim(0, 1.8)
 ax.set_xlabel(r'${\rm flux}$')
 ax.set_ylabel(r'$p({\rm flux})$')
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.4))
-ax.text(0.02, 0.98, r'${\rm 20\%\ flux\ error}$',
+ax.text(0.04, 0.98, r'${\rm 20\%\ flux\ error}$',
         ha='left', va='top', transform=ax.transAxes,
         bbox=dict(ec='none', fc='w'))
 
@@ -61,7 +65,7 @@ ax.plot([0, 0], [0, 2], ':k', lw=1)
 ax.set_xlim(-1.1, 1.1)
 ax.set_ylim(0, 1.8)
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.4))
-ax.text(0.02, 0.98, r'${\rm mag} = -2.5\log_{10}({\rm flux})$',
+ax.text(0.04, 0.98, r'${\rm mag} = -2.5\log_{10}({\rm flux})$',
         ha='left', va='top', transform=ax.transAxes,
         bbox=dict(ec='none', fc='w'))
 

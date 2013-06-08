@@ -32,6 +32,10 @@ import numpy as np
 from scipy.stats import uniform
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
 W_values = [1.0, 2.0, 3.0]
@@ -41,6 +45,8 @@ x = np.linspace(-2, 2, 1000)
 
 #------------------------------------------------------------
 # plot the distributions
+fig, ax = plt.subplots(figsize=(5, 3.75))
+
 for W, ls in zip(W_values, linestyles):
     left = mu - 0.5 * W
     dist = uniform(left, W)
@@ -48,11 +54,11 @@ for W, ls in zip(W_values, linestyles):
     plt.plot(x, dist.pdf(x), ls=ls, c='black',
              label=r'$\mu=%i,\ W=%i$' % (mu, W))
 
-plt.xlim(-1.9, 1.9)
-plt.ylim(0, 1.5)
+plt.xlim(-1.7, 1.7)
+plt.ylim(0, 1.2)
 
-plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$p(x|\mu, W)$', fontsize=14)
+plt.xlabel('$x$')
+plt.ylabel(r'$p(x|\mu, W)$')
 plt.title('Uniform Distribution')
 
 plt.legend()

@@ -25,6 +25,9 @@ if matplotlib.rcParams.get('text.usetex'):
 else:
     pct = '%'
 
+# Adjust font sizes for text
+matplotlib.rc('font', size=8)
+
 N = 1000
 
 sigma1 = 2.0
@@ -47,9 +50,9 @@ X = bivariate_normal(mu, sigma1, sigma2, alpha, N)
 
 #------------------------------------------------------------
 # Create the figure showing the fits
-fig = plt.figure(figsize=(10, 5))
-fig.subplots_adjust(left=0.07, right=0.95, wspace=0.05,
-                    bottom=0.1, top=0.95)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(left=0.1, right=0.95, wspace=0.05,
+                    bottom=0.15, top=0.95)
 
 
 # We'll create two figures, with two levels of contamination
@@ -70,28 +73,28 @@ for i, f in enumerate([0.05, 0.15]):
      sigma2_r, alpha_r) = fit_bivariate_normal(x, y, robust=True)
 
     # scatter the points
-    ax.scatter(x, y, s=4, lw=0, c='k', alpha=0.5)
+    ax.scatter(x, y, s=2, lw=0, c='k', alpha=0.5)
 
     # Draw elipses showing the fits
     for Nsig in [1, 3]:
         # True fit
         E = Ellipse((10, 10), sigma1 * Nsig, sigma2 * Nsig, alpha_deg,
-                    lw=2, ec='k', fc='none')
+                    ec='k', fc='none')
         ax.add_patch(E)
 
         # Non-robust fit
         E = Ellipse(mu_nr, sigma1_nr * Nsig, sigma2_nr * Nsig,
                     (alpha_nr * 180. / np.pi),
-                    lw=1, ec='k', fc='none', linestyle='dotted')
+                    ec='k', fc='none', linestyle='dotted')
         ax.add_patch(E)
 
         # Robust fit
         E = Ellipse(mu_r, sigma1_r * Nsig, sigma2_r * Nsig,
                     (alpha_r * 180. / np.pi),
-                    lw=2, ec='k', fc='none', linestyle='dashed')
+                    ec='k', fc='none', linestyle='dashed')
         ax.add_patch(E)
 
-    ax.text(0.02, 0.98, '%i%s outliers' % (f * 100, pct),
+    ax.text(0.04, 0.96, '%i%s outliers' % (f * 100, pct),
             ha='left', va='top', transform=ax.transAxes)
 
     ax.set_xlim(5.5, 14.5)
@@ -100,10 +103,10 @@ for i, f in enumerate([0.05, 0.15]):
 
     # This is a bit of a hack:
     # We'll draw some lines off the picture to make our legend look better
-    ax.plot([0], [0], '-k', lw=2, label='Input')
-    ax.plot([0], [0], ':k', lw=2, label='Fit')
-    ax.plot([0], [0], '--k', lw=2, label='Robust Fit')
-    ax.legend(loc='lower right', prop=dict(size=12))
+    ax.plot([0], [0], '-k', label='Input')
+    ax.plot([0], [0], ':k', label='Fit')
+    ax.plot([0], [0], '--k', label='Robust Fit')
+    ax.legend(loc='lower right', prop=dict(size=8))
 
     if i == 0:
         ax.set_ylabel('$y$')

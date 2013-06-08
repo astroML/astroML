@@ -32,12 +32,20 @@ import numpy as np
 from scipy.stats import t as student_t
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
 mu = 0
 k_values = [1E10, 2, 1, 0.5]
 linestyles = ['-', '--', ':', '-.']
 x = np.linspace(-10, 10, 1000)
+
+#------------------------------------------------------------
+# plot the distributions
+fig, ax = plt.subplots(figsize=(5, 3.75))
 
 for k, ls in zip(k_values, linestyles):
     dist = student_t(k, 0)
@@ -50,10 +58,10 @@ for k, ls in zip(k_values, linestyles):
     plt.plot(x, dist.pdf(x), ls=ls, c='black', label=label)
 
 plt.xlim(-5, 5)
-plt.ylim(0.0, 0.5)
+plt.ylim(0.0, 0.45)
 
-plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$p(x|k)$', fontsize=14)
+plt.xlabel('$x$')
+plt.ylabel(r'$p(x|k)$')
 plt.title("Student's $t$ Distribution")
 
 plt.legend()

@@ -15,6 +15,10 @@ from matplotlib import pyplot as plt
 from scipy import optimize
 from scipy.stats import cauchy, norm
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def robust_mean_mixture(x):
     """Compute the mean via a mixture of two Gaussians
@@ -86,7 +90,7 @@ mean_iter = [robust_mean_iterated(xi[:N]) for N in Nrange]
 
 #------------------------------------------------------------
 # Plot the results as a function of number of points
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.05)
 
 # first plot the mean
@@ -99,14 +103,14 @@ ax.plot(Nrange, 0 * Nrange, '-', c='gray', lw=0.5)
 
 ax.set_xlim(0, 100)
 ax.set_ylim(-7, 7)
-ax.legend(loc=4, ncol=2)
+ax.legend(loc=4, ncol=2, frameon=False)
 ax.set_ylabel('Value')
 ax.xaxis.set_major_formatter(plt.NullFormatter())
 
 # now plot the median
 ax = fig.add_subplot(212)
-ax.scatter(Nrange, xi, lw=0, s=16, c='k')
-ax.plot(Nrange, 0 * Nrange, '-', c='gray', lw=0.5)
+ax.scatter(Nrange, xi, lw=0, s=10, c='k')
+ax.plot(Nrange, 0 * Nrange, '-', c='gray')
 ax.set_xlim(0, 100)
 ax.set_ylim(-75, 75)
 ax.set_xlabel('Sample Size')

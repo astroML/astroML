@@ -15,6 +15,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import norm
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Generate the uniform samples
 N = [2, 3, 10]
@@ -24,7 +28,7 @@ x = np.random.random((max(N), 1E6))
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(hspace=0.05)
 
 for i in range(len(N)):
@@ -44,13 +48,13 @@ for i in range(len(N)):
     x_pdf = np.linspace(-0.5, 1.5, 1000)
     ax.plot(x_pdf, dist.pdf(x_pdf), '-k')
 
-    ax.set_xlim(-0.1, 1.1)
+    ax.set_xlim(0.0, 1.0)
     ax.set_ylim(0.001, None)
 
     ax.xaxis.set_major_locator(plt.MultipleLocator(0.2))
     ax.yaxis.set_major_locator(plt.MaxNLocator(5))
 
-    ax.text(0.99, 0.95, r"$N = %i$" % N[i], fontsize=16,
+    ax.text(0.99, 0.95, r"$N = %i$" % N[i],
             ha='right', va='top', transform=ax.transAxes)
 
     if i == len(N) - 1:

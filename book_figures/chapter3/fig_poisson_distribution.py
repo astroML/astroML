@@ -32,6 +32,10 @@ import numpy as np
 from scipy.stats import poisson
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define the distribution parameters to be plotted
 mu_values = [1, 5, 15]
@@ -45,6 +49,8 @@ linestyles = ['-', '--', ':']
 #     discrete distributions.
 #   - dist.pdf(x) evaluates the probability density function for
 #   evaluates
+fig, ax = plt.subplots(figsize=(5, 3.75))
+
 for mu, ls in zip(mu_values, linestyles):
     # create a poisson distribution
     # we could generate a random sample from this distribution using, e.g.
@@ -58,8 +64,8 @@ for mu, ls in zip(mu_values, linestyles):
 plt.xlim(-0.5, 30)
 plt.ylim(0, 0.4)
 
-plt.xlabel('$x$', fontsize=14)
-plt.ylabel(r'$p(x|\mu)$', fontsize=14)
+plt.xlabel('$x$')
+plt.ylabel(r'$p(x|\mu)$')
 plt.title('Poisson Distribution')
 
 plt.legend()
