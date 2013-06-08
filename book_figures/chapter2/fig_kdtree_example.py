@@ -13,6 +13,10 @@ parameter space, and plots a visualization of the result.
 import numpy as np
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 # We'll create a KDTree class which will recursively subdivide the
 # space into rectangular regions.  Note that this is just an example
@@ -90,14 +94,14 @@ KDT = KDTree(X, [-1.1, -0.1], [1.1, 1.1])
 
 #------------------------------------------------------------
 # Plot four different levels of the KD tree
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(wspace=0.1, hspace=0.15,
                     left=0.1, right=0.9,
                     bottom=0.05, top=0.9)
 
 for level in range(1, 5):
     ax = fig.add_subplot(2, 2, level, xticks=[], yticks=[])
-    ax.scatter(X[:, 0], X[:, 1])
+    ax.scatter(X[:, 0], X[:, 1], s=9)
     KDT.draw_rectangle(ax, depth=level - 1)
 
     ax.set_xlim(-1.2, 1.2)
@@ -105,5 +109,5 @@ for level in range(1, 5):
     ax.set_title('level %i' % level)
 
 # suptitle() adds a title to the entire figure
-fig.suptitle('$k$d-tree Example', fontsize=18)
+fig.suptitle('$k$d-tree Example')
 plt.show()

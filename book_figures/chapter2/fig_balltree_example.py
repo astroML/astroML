@@ -14,6 +14,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Circle
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 # We'll create a BallTree class which will recursively subdivide the
 # space into circular regions.  Note that this is just an example and
@@ -78,14 +82,14 @@ BT = BallTree(X)
 
 #------------------------------------------------------------
 # Plot four different levels of the Ball tree
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(wspace=0.1, hspace=0.15,
                     left=0.1, right=0.9,
                     bottom=0.05, top=0.9)
 
 for level in range(1, 5):
     ax = fig.add_subplot(2, 2, level, xticks=[], yticks=[])
-    ax.scatter(X[:, 0], X[:, 1])
+    ax.scatter(X[:, 0], X[:, 1], s=9)
     BT.draw_circle(ax, depth=level - 1)
 
     ax.set_xlim(-1.35, 1.35)
@@ -93,5 +97,5 @@ for level in range(1, 5):
     ax.set_title('level %i' % level)
 
 # suptitle() adds a title to the entire figure
-fig.suptitle('Ball-tree Example', fontsize=18)
+fig.suptitle('Ball-tree Example')
 plt.show()

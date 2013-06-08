@@ -12,6 +12,10 @@ from time import time
 import numpy as np
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Compute the execution times as a function of array size
 
@@ -39,12 +43,14 @@ for i in range(len(N_list)):
 
 #------------------------------------------------------------
 # Plot the results
+fig = plt.figure(figsize=(5, 3.75))
+fig.subplots_adjust(bottom=0.15)
 ax = plt.axes(xscale='log', yscale='log')
 ax.grid()
 
 # plot the observed times
-ax.plot(N_list, time_list, 'sk', color='gray', ms=10, label='list sort')
-ax.plot(N_npy, time_npy, 'ok', color='gray', ms=10, label='NumPy sort')
+ax.plot(N_list, time_list, 'sk', color='gray', ms=5, label='list sort')
+ax.plot(N_npy, time_npy, 'ok', color='gray', ms=5, label='NumPy sort')
 
 # plot the expected scalings
 scale = np.linspace(N_npy[0] / 2, N_npy[-1] * 2, 100)

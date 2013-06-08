@@ -13,6 +13,10 @@ parameter space, and plots a visualization of the result.
 import numpy as np
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 # We'll create a QuadTree class which will recursively subdivide the
 # space into quadrants
@@ -106,7 +110,7 @@ QT = QuadTree(X, mins, maxs, depth=3)
 
 #------------------------------------------------------------
 # Plot four different levels of the quad tree
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(wspace=0.1, hspace=0.15,
                     left=0.1, right=0.9,
                     bottom=0.05, top=0.9)
@@ -126,5 +130,5 @@ for level in range(1, 5):
     ax.set_title('level %i' % level)
 
 # suptitle() adds a title to the entire figure
-fig.suptitle('Quad-tree Example', fontsize=18)
+fig.suptitle('Quad-tree Example')
 plt.show()

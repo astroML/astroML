@@ -13,6 +13,10 @@ from time import time
 import numpy as np
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Compute the execution times as a function of array size
 Nsamples = 10 ** np.linspace(6.0, 7.8, 17)
@@ -43,13 +47,15 @@ for i in range(len(Nsamples)):
 
 #------------------------------------------------------------
 # Plot the results
+fig = plt.figure(figsize=(5, 3.75))
+fig.subplots_adjust(bottom=0.15)
 ax = plt.axes(xscale='log', yscale='log')
 ax.grid()
 
 # plot the observed times
-ax.plot(Nsamples, time_linear, 'ok', color='gray', markersize=10,
+ax.plot(Nsamples, time_linear, 'ok', color='gray', markersize=5,
         label=r'linear search $(\mathcal{O}[N])$')
-ax.plot(Nsamples, time_binary, 'sk', color='gray', markersize=10,
+ax.plot(Nsamples, time_binary, 'sk', color='gray', markersize=5,
         label=r'efficient search $(\mathcal{O}[\log N])$')
 
 # plot the expected scaling
