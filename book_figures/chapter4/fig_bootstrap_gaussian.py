@@ -17,6 +17,10 @@ from matplotlib import pyplot as plt
 from astroML.resample import bootstrap
 from astroML.stats import sigmaG
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 m = 1000  # number of points
 n = 10000  # number of bootstraps
 
@@ -42,20 +46,20 @@ pdf2 = norm(1, sigma2).pdf(x)
 
 #------------------------------------------------------------
 # Plot the results
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 
 ax.hist(mu1_bootstrap, bins=50, normed=True, histtype='step',
-        color='blue', lw=2, ls='dashed', label=r'$\sigma\ {\rm (std. dev.)}$')
+        color='blue', ls='dashed', label=r'$\sigma\ {\rm (std. dev.)}$')
 ax.plot(x, pdf1, color='gray')
 
 ax.hist(mu2_bootstrap, bins=50, normed=True, histtype='step',
-        color='red', lw=2, label=r'$\sigma_G\ {\rm (quartile)}$')
+        color='red', label=r'$\sigma_G\ {\rm (quartile)}$')
 ax.plot(x, pdf2, color='gray')
 
 ax.set_xlim(0.82, 1.18)
 
-ax.set_xlabel(r'$\sigma$', fontsize=18)
-ax.set_ylabel(r'$p(\sigma|x,I)$', fontsize=18)
+ax.set_xlabel(r'$\sigma$')
+ax.set_ylabel(r'$p(\sigma|x,I)$')
 
 ax.legend()
 

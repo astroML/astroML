@@ -15,6 +15,10 @@ import numpy as np
 from scipy.stats import norm
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # sample values from a normal distribution
 np.random.seed(123)
@@ -49,10 +53,11 @@ print mu2, sigma_mu2
 print "mu_1 mean: %.2f +- %.2f" % (mu1, sigma_mu1)
 print "mu_2 mean: %.2f +- %.2f" % (mu2, sigma_mu2)
 
-fig = plt.figure(figsize=(6, 10))
-fig.subplots_adjust(left=0.17, right=0.9, bottom=0.1, top=0.95)
+fig = plt.figure(figsize=(5, 2))
+fig.subplots_adjust(left=0.11, right=0.95, bottom=0.2, top=0.9,
+                    wspace=0.25)
 
-ax = fig.add_subplot(211)
+ax = fig.add_subplot(121)
 ax.hist(mu1_raw, np.linspace(0.996, 1.008, 100),
         label=r'$\sigma^*\ {\rm (std.\ dev.)}$',
         histtype='stepfilled', fc='white', normed=False)
@@ -62,24 +67,24 @@ ax.hist(mu2_raw, np.linspace(0.996, 1.008, 100),
 ax.legend(loc='upper left')
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(0.004))
-ax.set_xlabel(r'$\sigma^*$', fontsize=18)
-ax.set_ylabel(r'$N(\sigma^*)$', fontsize=18)
+ax.set_xlabel(r'$\sigma^*$')
+ax.set_ylabel(r'$N(\sigma^*)$')
 ax.set_xlim(0.998, 1.008)
 ax.set_ylim(0, 550)
 
-ax = fig.add_subplot(212)
+ax = fig.add_subplot(122)
 x = np.linspace(0.45, 1.15, 1000)
 ax.plot(x, pdf1_jackknife.pdf(x),
-        color='blue', lw=2, ls='dashed', label=r'$\sigma\ {\rm (std.\ dev.)}$',
+        color='blue', ls='dashed', label=r'$\sigma\ {\rm (std.\ dev.)}$',
         zorder=2)
 ax.plot(x, pdf1_theory.pdf(x), color='gray', zorder=1)
 ax.plot(x, pdf2_jackknife.pdf(x),
-        color='red', lw=2, label=r'$\sigma_G\ {\rm (quartile)}$', zorder=2)
+        color='red', label=r'$\sigma_G\ {\rm (quartile)}$', zorder=2)
 ax.plot(x, pdf2_theory.pdf(x), color='gray', zorder=1)
 plt.legend(loc='upper left')
 
-ax.set_xlabel(r'$\sigma$', fontsize=18)
-ax.set_ylabel(r'$p(\sigma|x,I)$', fontsize=18)
+ax.set_xlabel(r'$\sigma$')
+ax.set_ylabel(r'$p(\sigma|x,I)$')
 ax.set_xlim(0.45, 1.15)
 ax.set_ylim(0, 24)
 

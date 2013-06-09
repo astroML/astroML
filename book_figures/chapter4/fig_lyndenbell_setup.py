@@ -12,10 +12,14 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Rectangle
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Draw the schematic
-fig = plt.figure(figsize=(8, 4))
-fig.subplots_adjust(left=0.05, right=0.95, wspace=0.1)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(left=0.06, right=0.95, wspace=0.12)
 ax1 = fig.add_subplot(121, xticks=[], yticks=[])
 ax2 = fig.add_subplot(122, xticks=[], yticks=[])
 

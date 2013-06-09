@@ -17,6 +17,10 @@ import numpy as np
 from scipy import stats
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Generate Dataset
 np.random.seed(1)
@@ -30,7 +34,7 @@ L_obs = np.random.normal(L0, dL, N)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.05,
                     bottom=0.1, top=0.95, hspace=0.05)
 
@@ -59,14 +63,14 @@ for i in range(4):
     ax.plot([-0.1, 1.3], [L0, L0], ':k', lw=1)
 
     # Add labels and text
-    ax.text(0.95, 0.95, titles[i], ha='right', va='top', fontsize=14,
+    ax.text(0.95, 0.95, titles[i], ha='right', va='top',
             transform=ax.transAxes,
             bbox=dict(boxstyle='round', fc='w', ec='k'))
     ax.text(0.02, 0.02, r'$\hat{\mu} = %.2f$' % mu, ha='left', va='bottom',
-            transform=ax.transAxes, fontsize=16)
+            transform=ax.transAxes)
     ax.text(0.98, 0.02,
             r'$\chi^2_{\rm dof} = %.2f\, (%.2g\,\sigma)$' % (chi2dof, nsig),
-            ha='right', va='bottom', transform=ax.transAxes, fontsize=16)
+            ha='right', va='bottom', transform=ax.transAxes)
 
     # set axis limits
     ax.set_xlim(-0.05, 1.05)

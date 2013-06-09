@@ -18,6 +18,10 @@ import numpy as np
 from scipy import stats
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 from astroML.stats import mean_sigma, median_sigmaG
 
 # create some distributions
@@ -37,9 +41,9 @@ xlims = [(-4, 4), (-4, 10)]
 
 #------------------------------------------------------------
 # Compute the statistics and plot the results
-fig = plt.figure(figsize=(6, 8))
-fig.subplots_adjust(left=0.15, right=0.95,
-                    bottom=0.1, top=0.95,
+fig = plt.figure(figsize=(5, 7))
+fig.subplots_adjust(left=0.13, right=0.95,
+                    bottom=0.06, top=0.95,
                     hspace=0.1)
 
 for i in range(2):

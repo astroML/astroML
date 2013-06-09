@@ -22,6 +22,10 @@ from astroML.lumfunc import binned_Cminus, bootstrap_Cminus
 from astroML.cosmology import Cosmology
 from astroML.datasets import fetch_sdss_specgals
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Get the data and perform redshift/magnitude cuts
 data = fetch_sdss_specgals()
@@ -103,9 +107,9 @@ def compute_luminosity_function(z, m, M, m_max, archive_file):
 
 #------------------------------------------------------------
 # Perform the computation and plot the results
-fig = plt.figure(figsize=(8, 8))
-fig.subplots_adjust(left=0.12, right=0.95, wspace=0.3,
-                    bottom=0.07, top=0.95, hspace=0.2)
+fig = plt.figure(figsize=(5, 5))
+fig.subplots_adjust(left=0.13, right=0.95, wspace=0.3,
+                    bottom=0.08, top=0.95, hspace=0.2)
 
 for i in range(2):
     m = data[i]['petroMag_r']
@@ -145,7 +149,7 @@ for i in range(2):
     factor = 0.08 ** 2 / (0.5 * (zbins[1:] + zbins[:-1])) ** 2
     ax2.errorbar(0.5 * (zbins[1:] + zbins[:-1]),
                  factor * dist_z, factor * err_z,
-                 fmt='-k' + markers[i], ecolor='gray', lw=1,
+                 fmt='-k' + markers[i], ecolor='gray', lw=1, ms=4,
                  label=titles[i])
 
     #------------------------------------------------------------
@@ -158,19 +162,19 @@ for i in range(2):
     err_M = err_M[3:-1]
 
     ax3.errorbar(0.5 * (Mbins[1:] + Mbins[:-1]), dist_M, err_M,
-                 fmt='-k' + markers[i], ecolor='gray', lw=1,
+                 fmt='-k' + markers[i], ecolor='gray', lw=1, ms=4,
                  label=titles[i])
 
 #------------------------------------------------------------
 # set labels and limits
-ax2.legend(loc=1, prop=dict(size=14))
+ax2.legend(loc=1, prop=dict(size=9))
 ax2.xaxis.set_major_locator(plt.MultipleLocator(0.01))
 ax2.set_xlabel(r'$z$')
 ax2.set_ylabel(r'$\rho(z) / [z / 0.08]^2$')
 ax2.set_xlim(0.075, 0.125)
 ax2.set_ylim(10, 25)
 
-ax3.legend(loc=3, prop=dict(size=14))
+ax3.legend(loc=3, prop=dict(size=9))
 ax3.xaxis.set_major_locator(plt.MultipleLocator(1.0))
 ax3.set_xlabel(r'$M$')
 ax3.set_ylabel(r'$\Phi(M)$')

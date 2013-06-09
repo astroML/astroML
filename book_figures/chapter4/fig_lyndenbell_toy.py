@@ -16,6 +16,10 @@ from scipy import stats
 
 from astroML.lumfunc import bootstrap_Cminus
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Define and sample our distributions
 N = 10000
@@ -61,18 +65,18 @@ y_mid = 0.5 * (y_fit[1:] + y_fit[:-1])
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(10, 4))
-fig.subplots_adjust(bottom=0.15, top=0.95,
-                    left=0.07, right=0.95, wspace=0.2)
+fig = plt.figure(figsize=(5, 2))
+fig.subplots_adjust(bottom=0.2, top=0.95,
+                    left=0.1, right=0.92, wspace=0.25)
 
 # First subplot is the true & inferred 1D distributions
 ax = fig.add_subplot(121)
-ax.plot(x_mid, x_pdf.pdf(x_mid), '-k', label='p(x)')
-ax.plot(y_mid, y_pdf.pdf(y_mid), '--k', label='p(y)')
-ax.legend(loc='lower center')
+ax.plot(x_mid, x_pdf.pdf(x_mid), '-k', label='$p(x)$')
+ax.plot(y_mid, y_pdf.pdf(y_mid), '--k', label='$p(y)$')
+ax.legend(loc='lower center', prop=dict(size=9))
 
-ax.errorbar(x_mid, x_dist, dx_dist, fmt='ok', ecolor='k', lw=1)
-ax.errorbar(y_mid, y_dist, dy_dist, fmt='^k', ecolor='k', lw=1)
+ax.errorbar(x_mid, x_dist, dx_dist, fmt='ok', ecolor='k', lw=1, ms=4)
+ax.errorbar(y_mid, y_dist, dy_dist, fmt='^k', ecolor='k', lw=1, ms=4)
 
 ax.set_ylim(0, 1.8)
 ax.set_xlim(0, 1)
@@ -97,7 +101,7 @@ ax.set_ylim(0, 1.1)
 ax.set_xlabel('$x$')
 ax.set_ylabel('$y$')
 cb.set_label('counts per pixel')
-ax.text(0.96, 0.96, '%i points' % len(x), ha='right', va='top',
+ax.text(0.93, 0.93, '%i points' % len(x), ha='right', va='top',
         transform=ax.transAxes)
 
 plt.show()

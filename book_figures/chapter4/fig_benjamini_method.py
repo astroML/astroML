@@ -14,6 +14,10 @@ import numpy as np
 from scipy.stats import norm
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Set up the background and foreground distributions
 background = norm(100, 10)
@@ -34,7 +38,7 @@ p_sorted = np.sort(p)
 
 #------------------------------------------------------------
 # plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(bottom=0.15)
 ax = plt.axes(xscale='log', yscale='log')
 
@@ -51,8 +55,7 @@ for (i, epsilon) in enumerate([0.1, 0.01, 0.001, 0.0001]):
 
     ax.text(x[1], y[1],
             r'$\epsilon = %.1g$' % epsilon,
-            ha='center', va='bottom',
-            fontsize=16, rotation=70)
+            ha='center', va='bottom', rotation=70)
 
 ax.xaxis.set_major_locator(plt.LogLocator(base=100))
 

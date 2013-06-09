@@ -12,6 +12,10 @@ from matplotlib import pyplot as plt
 import numpy as np
 from sklearn.mixture import GMM
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Set up the dataset.
 #  We'll use scikit-learn's Gaussian Mixture Model to sample
@@ -52,9 +56,9 @@ BIC = [m.bic(X) for m in models]
 #   2) AIC and BIC vs number of components
 #   3) probability that a point came from each component
 
-fig = plt.figure(figsize=(10, 3.3))
-fig.subplots_adjust(left=0.1, right=0.97,
-                    bottom=0.17, top=0.9, wspace=0.35)
+fig = plt.figure(figsize=(5, 1.7))
+fig.subplots_adjust(left=0.12, right=0.97,
+                    bottom=0.23, top=0.9, wspace=0.5)
 
 
 # plot 1: data + best-fit mixture
@@ -81,7 +85,7 @@ ax.plot(N, AIC, '-k', label='AIC')
 ax.plot(N, BIC, '--k', label='BIC')
 ax.set_xlabel('n. components')
 ax.set_ylabel('information criterion')
-ax.legend(loc=2, prop=dict(size=12))
+ax.legend(loc=2, prop=dict(size=8))
 
 
 # plot 3: posterior probabilities for each component
