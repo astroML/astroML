@@ -21,6 +21,10 @@ import scipy
 scipy.derivative = scipy.misc.derivative
 import pymc
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def cauchy_logL(xi, sigma, mu):
     """Equation 5.74: cauchy likelihood"""
@@ -93,7 +97,7 @@ hist_gamma, bins_gamma = np.histogram(trace_gamma, bins=gamma_bins,
 
 #----------------------------------------------------------------------
 # plot the results
-fig = plt.figure(figsize=(6, 6))
+fig = plt.figure(figsize=(5, 5))
 
 # first axis: likelihood contours
 ax1 = fig.add_axes((0.4, 0.4, 0.55, 0.55))
@@ -102,13 +106,13 @@ ax1.yaxis.set_major_formatter(plt.NullFormatter())
 
 ax1.contour(mu, gamma, convert_to_stdev(logL),
             levels=(0.683, 0.955, 0.997),
-            colors='b', linewidths=2, linestyles='dashed')
+            colors='b', linestyles='dashed')
 
 ax1.contour(0.5 * (mu_bins[:-1] + mu_bins[1:]),
             0.5 * (gamma_bins[:-1] + gamma_bins[1:]),
             convert_to_stdev(np.log(L_MCMC.T)),
             levels=(0.683, 0.955, 0.997),
-            colors='k', linewidths=2)
+            colors='k')
 
 # second axis: marginalized over mu
 ax2 = fig.add_axes((0.1, 0.4, 0.29, 0.55))

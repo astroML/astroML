@@ -15,6 +15,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.plotting.mcmc import convert_to_stdev
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def gaussgauss_logL(xi, ei, mu, sigma):
     """Equation 5.63: gaussian likelihood with gaussian errors"""
@@ -43,6 +47,7 @@ logL -= logL.max()
 
 #------------------------------------------------------------
 # plot the results
+fig = plt.figure(figsize=(5, 3.75))
 plt.imshow(logL, origin='lower',
            extent=(mu[0], mu[-1], sigma[0], sigma[-1]),
            cmap=plt.cm.binary,
@@ -50,15 +55,15 @@ plt.imshow(logL, origin='lower',
 plt.colorbar().set_label(r'$\log(L)$')
 plt.clim(-5, 0)
 
-plt.text(0.5, 0.9,
+plt.text(0.5, 0.93,
          (r'$L(\mu,\sigma)\ \mathrm{for}\ \bar{x}=1,\ '
           r'\sigma_{\rm true}=1,\ n=10$'),
          bbox=dict(ec='k', fc='w', alpha=0.9),
-         fontsize=18, ha='center', va='center', transform=plt.gca().transAxes)
+         ha='center', va='center', transform=plt.gca().transAxes)
 
 plt.contour(mu, sigma, convert_to_stdev(logL),
             levels=(0.683, 0.955, 0.997),
-            colors='k', linewidths=2)
+            colors='k')
 
 plt.xlabel(r'$\mu$')
 plt.ylabel(r'$\sigma$')

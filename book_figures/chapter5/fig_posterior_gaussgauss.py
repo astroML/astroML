@@ -16,6 +16,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.stats import median_sigmaG
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def gaussgauss_logL(xi, ei, mu, sigma):
     """Equation 5.63: gaussian likelihood with gaussian errors"""
@@ -87,7 +91,7 @@ mu_boot, sigma_boot = approximate_mu_sigma(xi_boot, ei_boot, 0)
 
 #--------------------------------------------------
 # Plot data
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.24,
                     bottom=0.15, top=0.9)
 
@@ -127,7 +131,7 @@ ax.plot([sigma_true, sigma_true], [0, 1.0], ':k', lw=1)
 
 ax.set_xlabel(r'$\sigma$')
 ax.set_ylabel(r'$p(\sigma)$')
-ax.legend(loc=1, prop=dict(size=12))
+ax.legend(loc=1, prop=dict(size=8))
 
 ax.set_xlim(0, 5.0)
 ax.set_ylim(0, 1.0)

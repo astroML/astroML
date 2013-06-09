@@ -17,6 +17,10 @@ from scipy import stats, interpolate
 from astroML.stats.random import linear
 from astroML.plotting.mcmc import convert_to_stdev
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def logL_gaussian(xi, yi, a, b):
     """gaussian log-likelihood (Eq. 5.87)"""
@@ -55,7 +59,7 @@ data = lin_dist.rvs(N)
 
 #------------------------------------------------------------
 # Compute and plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.3,
                     bottom=0.1, top=0.95, hspace=0.2)
 
@@ -84,7 +88,7 @@ for num, nbins in enumerate([5, 40]):
 
     # plot scatter and lines
     ax = fig.add_subplot(2, 2, 1 + 2 * num)
-    plt.scatter(xi, yi, s=25, c='gray', lw=0)
+    plt.scatter(xi, yi, s=9, c='gray', lw=0)
 
     x = np.linspace(xmin - 1, xmax + 1, 1000)
     for (ai, bi, s) in [(a_true, b_true, '-k'),
@@ -117,7 +121,7 @@ for num, nbins in enumerate([5, 40]):
     # trick the legend command
     ax.plot([0], [0], '-k', lw=2, label='Poisson Likelihood')
     ax.plot([0], [0], '-', c='gray', lw=1, label='Gaussian Likelihood')
-    ax.legend(loc=1, prop=dict(size=12))
+    ax.legend(loc=1, prop=dict(size=8))
 
     # plot horizontal and vertical lines
     #  in newer matplotlib versions, use ax.vlines() and ax.hlines()

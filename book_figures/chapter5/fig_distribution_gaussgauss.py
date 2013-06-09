@@ -14,6 +14,10 @@ from matplotlib import pyplot as plt
 from scipy.stats import norm, anderson
 from astroML.stats import mean_sigma, median_sigmaG
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Create distributions
 
@@ -36,7 +40,7 @@ med_sample, sigG_sample = median_sigmaG(x)
 
 #------------------------------------------------------------
 # plot the results
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 ax.hist(x, 100, histtype='stepfilled', alpha=0.2,
         lw=1.5, color='k', normed=True)
 

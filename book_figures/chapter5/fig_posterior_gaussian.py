@@ -15,6 +15,10 @@ from matplotlib import pyplot as plt
 from astroML.stats import mean_sigma
 from astroML.resample import bootstrap
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 #------------------------------------------------------------
 # Define functions for computations below
@@ -99,7 +103,7 @@ sig_hist = sig_hist / sig_dbin / sig_hist.sum()
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(wspace=0.35, right=0.95,
                     hspace=0.2, top=0.95)
 

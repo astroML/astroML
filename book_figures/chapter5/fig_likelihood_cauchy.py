@@ -16,6 +16,10 @@ from scipy.stats import cauchy
 from astroML.plotting.mcmc import convert_to_stdev
 from astroML.stats import median_sigmaG
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def cauchy_logL(xi, gamma, mu):
     """Equation 5.74: cauchy likelihood"""
@@ -56,6 +60,7 @@ print "gamma from quartiles:", sigG / 1.483  # Equation 3.54
 
 #------------------------------------------------------------
 # Plot the results
+fig = plt.figure(figsize=(5, 3.75))
 plt.imshow(logL, origin='lower', cmap=plt.cm.binary,
            extent=(mu[0], mu[-1], gamma[0], gamma[-1]),
            aspect='auto')
@@ -64,11 +69,11 @@ plt.clim(-5, 0)
 
 plt.contour(mu, gamma, convert_to_stdev(logL),
             levels=(0.683, 0.955, 0.997),
-            colors='k', linewidths=2)
+            colors='k')
 
-plt.text(0.5, 0.9,
+plt.text(0.5, 0.93,
          r'$L(\mu,\gamma)\ \mathrm{for}\ \bar{x}=0,\ \gamma=2,\ n=10$',
-         fontsize=18, bbox=dict(ec='k', fc='w', alpha=0.9),
+         bbox=dict(ec='k', fc='w', alpha=0.9),
          ha='center', va='center', transform=plt.gca().transAxes)
 
 plt.xlabel(r'$\mu$')

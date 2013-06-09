@@ -21,6 +21,10 @@ import numpy as np
 from scipy import integrate
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 @np.vectorize
 def odds_ratio(n, k, bstar):
@@ -37,8 +41,8 @@ def odds_ratio(n, k, bstar):
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(10, 5))
-fig.subplots_adjust(left=0.1, right=0.95, wspace=0.05, bottom=0.12)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(left=0.13, right=0.95, wspace=0.05, bottom=0.15)
 
 subplots = [121, 122]
 n_array = [10, 20]

@@ -16,6 +16,10 @@ from matplotlib import pyplot as plt
 from scipy.stats import truncnorm, uniform
 from astroML.plotting.mcmc import convert_to_stdev
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def gausslin_logL(xi, A=0.5, sigma=1.0, mu=5.0, L=10.0):
     """Equation 5.80: gaussian likelihood with uniform background"""
@@ -60,8 +64,8 @@ logL -= logL.max()
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(6, 9))
-fig.subplots_adjust(left=0.17, top=0.95)
+fig = plt.figure(figsize=(5, 8))
+fig.subplots_adjust(bottom=0.07, left=0.11, hspace=0.15, top=0.95)
 
 ax = fig.add_subplot(211)
 plt.imshow(logL, origin='lower', aspect='auto',
@@ -73,12 +77,12 @@ ax.set_xlabel(r'$\sigma$')
 ax.set_ylabel(r'$A$')
 
 ax.text(0.5, 0.9, r'$L(\sigma,A)\ (\mathrm{Gauss + bkgd},\ n=200)$',
-        fontsize=16, bbox=dict(ec='k', fc='w', alpha=0.9),
+        bbox=dict(ec='k', fc='w', alpha=0.9),
         ha='center', va='center', transform=plt.gca().transAxes)
 
 ax.contour(sigma, A, convert_to_stdev(logL),
            levels=(0.683, 0.955, 0.997),
-           colors='k', linewidths=2)
+           colors='k')
 
 ax2 = plt.subplot(212)
 ax2.yaxis.set_major_locator(plt.MultipleLocator(0.1))

@@ -15,6 +15,10 @@ import numpy as np
 from scipy.stats import norm, binom
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Plot posterior as a function of b
 n = 10  # number of points
@@ -37,8 +41,8 @@ cuml_p_g /= cuml_p_g[-1]
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(10, 5))
-fig.subplots_adjust(left=0.1, right=0.95, wspace=0.2, bottom=0.12)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(left=0.11, right=0.95, wspace=0.35, bottom=0.18)
 
 ax = fig.add_subplot(121)
 ax.plot(b, p_b, '-b')
@@ -52,7 +56,7 @@ ax.set_ylabel('$p(b|x,I)$')
 ax = fig.add_subplot(122, yscale='log')
 ax.plot(b, cuml_p_b, '-b')
 ax.plot(b, cuml_p_g, '--r')
-ax.plot([0.1, 0.1], [1E-6, 2], ':k', lw=1)
+ax.plot([0.1, 0.1], [1E-6, 2], ':k')
 
 ax.set_xlabel('$b$')
 ax.set_ylabel('$P(<b|x,I)$')

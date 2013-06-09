@@ -26,6 +26,10 @@ import scipy
 scipy.derivative = scipy.misc.derivative
 import pymc
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def get_logp(S, model):
     """compute log(p) given a pyMC model"""
@@ -199,7 +203,7 @@ BF2, dBF2 = estimate_bayes_factor(trace2, logp2, r=0.05)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(10, 10))
+fig = plt.figure(figsize=(5, 5))
 
 labels = [r'$\mu_1$',
           r'$\mu_2$',
@@ -231,15 +235,16 @@ if np.median(trace2[0]) > np.median(trace2[1]):
 # Plot the simple 2-component model
 ax, = plot_mcmc(trace1, fig=fig, bounds=[0.6, 0.6, 0.95, 0.95],
                 limits=[(0.3, 0.8), (0.75, 1.15)],
-                labels=[r'$\mu$', r'$\sigma$'], colors='k', linewidths=2)
+                labels=[r'$\mu$', r'$\sigma$'], colors='k')
 
-ax.text(0.03, 0.97, "Single Gaussian fit", va='top', ha='left',
-        transform=ax.transAxes, fontsize=14)
+ax.text(0.05, 0.95, "Single Gaussian fit", va='top', ha='left',
+        transform=ax.transAxes)
 
 # Plot the 5-component model
 ax_list = plot_mcmc(trace2, limits=limits, labels=labels,
                     true_values=true_values, fig=fig,
-                    colors='k', linewidths=2)
+                    bounds=(0.12, 0.12, 0.95, 0.95),
+                    colors='k')
 for ax in ax_list:
     for axis in [ax.xaxis, ax.yaxis]:
         axis.set_major_locator(plt.MaxNLocator(4))

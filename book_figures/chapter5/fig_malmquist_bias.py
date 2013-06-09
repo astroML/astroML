@@ -16,6 +16,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.stats.random import trunc_exp
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Sample from a truncated exponential distribution
 N = 1E6
@@ -42,8 +46,8 @@ rand = rand[:cut.sum()]
 
 #------------------------------------------------------------
 # plot the results
-fig = plt.figure(figsize=(8, 4))
-fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(left=0.12, right=0.95, wspace=0.3,
                     bottom=0.15, top=0.9)
 
 # First axes: plot the true and observed distribution
@@ -51,18 +55,18 @@ ax = fig.add_subplot(121)
 bins = np.linspace(0, 12, 100)
 
 x_pdf = np.linspace(0, 12, 1000)
-ax.plot(x_pdf, true_dist.pdf(x_pdf), '-k', lw=2,
+ax.plot(x_pdf, true_dist.pdf(x_pdf), '-k',
         label='true distribution')
 ax.hist(h_obs, bins, histtype='stepfilled',
         alpha=0.3, fc='b', normed=True,
         label='observed distribution')
-ax.legend(loc=2, prop=dict(size=12))
+ax.legend(loc=2, prop=dict(size=8))
 
 ax.add_patch(plt.Rectangle((hmin, 0), hmax - hmin, 1.2,
                            fc='gray', ec='k', linestyle='dashed',
                            alpha=0.3))
 ax.text(5, 0.07, 'sampled region', rotation=45, ha='center', va='center',
-        color='gray', fontsize=12)
+        color='gray')
 
 ax.set_xlim(hmin - 1.3, hmax + 1.3)
 ax.set_ylim(0, 0.14001)
@@ -77,8 +81,8 @@ ax.hist(h_obs[cut] - h_true[cut], bins, histtype='stepfilled',
         alpha=0.3, color='k', normed=True, label='observed\nsample')
 ax.hist(h_obs[rand] - h_true[rand], bins, histtype='step',
         color='k', linestyle='dashed', normed=True, label='random\nsample')
-ax.plot([0, 0], [0, 1], ':k', lw=1)
-ax.legend(prop=dict(size=12), ncol=2, loc='upper center', frameon=False)
+ax.plot([0, 0], [0, 1], ':k')
+ax.legend(prop=dict(size=8), ncol=2, loc='upper center', frameon=False)
 
 ax.set_xlim(-4, 4)
 ax.set_ylim(0, 0.65)

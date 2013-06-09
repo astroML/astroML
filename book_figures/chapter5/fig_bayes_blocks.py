@@ -16,6 +16,10 @@ from scipy import stats
 
 from astroML.plotting import hist
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Generate our data: a mix of several Cauchy distributions
 np.random.seed(0)
@@ -35,8 +39,8 @@ x = x[x < 30]
 
 #------------------------------------------------------------
 # plot the results
-fig = plt.figure(figsize=(8, 8))
-fig.subplots_adjust()
+fig = plt.figure(figsize=(5, 5))
+fig.subplots_adjust(bottom=0.08, top=0.95, right=0.95, hspace=0.1)
 N_values = (500, 5000)
 subplots = (211, 212)
 
@@ -46,12 +50,12 @@ for N, subplot in zip(N_values, subplots):
     t = np.linspace(-10, 30, 1000)
 
     # plot the results
-    ax.plot(xN, -0.005 * np.ones(len(xN)), '|k', lw=1.5)
+    ax.plot(xN, -0.005 * np.ones(len(xN)), '|k')
     hist(xN, bins='knuth', ax=ax, normed=True,
          histtype='stepfilled', alpha=0.3,
          label='Knuth Histogram')
     hist(xN, bins='blocks', ax=ax, normed=True,
-         histtype='step', lw=1.5, color='k',
+         histtype='step', color='k',
          label="Bayesian Blocks")
     ax.plot(t, true_pdf(t), '-', color='black',
             label="Generating Distribution")
@@ -60,7 +64,7 @@ for N, subplot in zip(N_values, subplots):
     ax.text(0.02, 0.95, "%i points" % N, ha='left', va='top',
             transform=ax.transAxes)
     ax.set_ylabel('$p(x)$')
-    ax.legend(loc='upper right', prop=dict(size=12))
+    ax.legend(loc='upper right', prop=dict(size=8))
 
     if subplot == 212:
         ax.set_xlabel('$x$')

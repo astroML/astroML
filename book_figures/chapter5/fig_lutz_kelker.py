@@ -13,6 +13,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.stats import median_sigmaG
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def generate_magnitudes(N, k=0.6, m_min=20, m_max=25):
     """
@@ -66,15 +70,15 @@ med4 = [np.median(deltaM4[relErr < e]) for e in pErrGrid]
 
 #----------------------------------------------------------------------
 # plot results
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
-                    bottom=0.15, top=0.95)
+                    bottom=0.17, top=0.95)
 
 ax = fig.add_subplot(121)
 ax.plot(mGrid, sigGrid, '-k', label='scatter')
 ax.plot(mGrid, medGrid, '--k', label='bias')
 ax.plot(mGrid, 0 * mGrid, ':k', lw=1)
-ax.legend(loc=2, prop=dict(size=14))
+ax.legend(loc=2, prop=dict(size=9))
 
 ax.set_xlabel(r'$m_{\rm obs}$')
 ax.set_ylabel('bias/scatter (mag)')
@@ -90,7 +94,7 @@ for l in ax.yaxis.get_minorticklines():
 ax = fig.add_subplot(122)
 ax.plot(pErrGrid, med2, '-k', label='$p=2$')
 ax.plot(pErrGrid, med4, '--k', label='$p=4$')
-ax.legend(loc=2, prop=dict(size=14))
+ax.legend(loc=2, prop=dict(size=9))
 ax.set_xlabel(r'$\sigma_\pi / \pi$')
 ax.set_ylabel('absolute magnitude bias')
 ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))

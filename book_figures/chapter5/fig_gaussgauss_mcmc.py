@@ -23,6 +23,10 @@ import pymc
 from astroML.plotting.mcmc import convert_to_stdev
 from astroML.plotting import plot_mcmc
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def gaussgauss_logL(xi, ei, mu, sigma):
     """Equation 5.22: gaussian likelihood"""
@@ -87,12 +91,13 @@ S.sample(iter=25000, burn=2000)
 trace_mu = S.trace('mu')[:]
 trace_sigma = S.trace('sigma')[:]
 
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 ax, = plot_mcmc([trace_mu, trace_sigma], fig=fig,
                 limits=[(-3.2, 4.2), (0, 5)],
+                bounds=(0.08, 0.12, 0.95, 0.95),
                 labels=(r'$\mu$', r'$\sigma$'),
                 levels=[0.683, 0.955, 0.997],
-                colors='k', linewidths=2)
+                colors='k')
 
 #----------------------------------------------------------------------
 # Compute and plot likelihood with known ei for comparison

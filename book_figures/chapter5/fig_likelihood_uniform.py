@@ -13,6 +13,10 @@ width :math:`W` when the posterior is assumed to be uniform.
 import numpy as np
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def uniform_logL(x, W, mu):
     """Equation 5.76:"""
@@ -48,7 +52,7 @@ p_W /= p_W.sum()
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 
 # 2D likelihood plot
 ax = fig.add_axes([0.35, 0.35, 0.45, 0.6], xticks=[], yticks=[])
@@ -64,8 +68,8 @@ cb = plt.colorbar(cax=cax)
 cb.set_label(r'$\log L(\mu, W)$')
 plt.clim(-7, 0)
 
-ax.text(0.5, 0.9, r'$L(\mu,W)\ \mathrm{uniform,\ n=100}$',
-        fontsize=18,  bbox=dict(ec='k', fc='w', alpha=0.9),
+ax.text(0.5, 0.93, r'$L(\mu,W)\ \mathrm{uniform,\ n=100}$',
+        bbox=dict(ec='k', fc='w', alpha=0.9),
         ha='center', va='center', transform=ax.transAxes)
 ax.set_xlim(4.5, 5.5)
 ax.set_ylim(9.7, 10.7)

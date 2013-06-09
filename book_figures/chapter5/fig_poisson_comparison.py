@@ -14,6 +14,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.stats.random import linear
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def logL_continuous(x, a, xmin, xmax):
     """Continuous log-likelihood (Eq. 5.84)"""
@@ -74,7 +78,7 @@ for i, n in enumerate(nbins):
 
 #------------------------------------------------------------
 # Plot the results
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 
 ax.plot(a, L_c, '-k', label='continuous')
 for L, ls, n in zip(L_p, ['-', '--'], nbins):
@@ -83,7 +87,7 @@ for L, ls, n in zip(L_p, ['-', '--'], nbins):
 
 # plot a vertical line: in newer matplotlib, use ax.vlines([a_true])
 ylim = (0, 200)
-plt.plot([a_true, a_true], ylim, ':k', lw=1)
+ax.plot([a_true, a_true], ylim, ':k', lw=1)
 
 ax.set_xlim(-0.001, 0.021)
 ax.set_ylim(ylim)
@@ -91,6 +95,6 @@ ax.set_ylim(ylim)
 ax.set_xlabel('$a$')
 ax.set_ylabel('$p(a)$')
 
-ax.legend(loc=2, prop=dict(size=14))
+ax.legend(loc=2, prop=dict(size=8))
 
 plt.show()

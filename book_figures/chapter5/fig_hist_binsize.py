@@ -15,6 +15,10 @@ from matplotlib import pyplot as plt
 from scipy import stats
 from astroML.plotting import hist
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def plot_labeled_histogram(style, data, name,
                            x, pdf_true, ax=None,
@@ -25,9 +29,9 @@ def plot_labeled_histogram(style, data, name,
 
     counts, bins, patches = hist(data, bins=style, ax=ax,
                                  color='k', histtype='step', normed=True)
-    ax.text(0.99, 0.95, '%s:\n%i bins' % (name, len(counts)),
+    ax.text(0.95, 0.93, '%s:\n%i bins' % (name, len(counts)),
             transform=ax.transAxes,
-            ha='right', va='top', fontsize=12)
+            ha='right', va='top', size=8)
 
     ax.fill(x, pdf_true, '-', color='#CCCCCC', zorder=0)
 
@@ -66,14 +70,14 @@ pdf_NG = sum(w * d.pdf(x)
 
 #------------------------------------------------------------
 # Plot results
-fig = plt.figure(figsize=(10, 5))
-fig.subplots_adjust(hspace=0, left=0.05, right=0.95, wspace=0.05)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(hspace=0, left=0.07, right=0.95, wspace=0.05, bottom=0.15)
 ax = [fig.add_subplot(3, 2, i + 1) for i in range(6)]
 
 # first column: Gaussian distribution
 plot_labeled_histogram('scotts', data_G, 'Scott\'s Rule', x, pdf_G,
                        ax=ax[0], hide_x=True, hide_y=True)
-plot_labeled_histogram('freedman', data_G, 'Freedman-Diaconis', x, pdf_G,
+plot_labeled_histogram('freedman', data_G, 'Freed.-Diac.', x, pdf_G,
                        ax=ax[2], hide_x=True, hide_y=True)
 plot_labeled_histogram('knuth', data_G, 'Knuth\'s Rule', x, pdf_G,
                        ax=ax[4], hide_x=False, hide_y=True)
@@ -85,7 +89,7 @@ ax[4].set_xlabel('$x$')
 # second column: non-gaussian distribution
 plot_labeled_histogram('scotts', data_NG, 'Scott\'s Rule', x, pdf_NG,
                        ax=ax[1], hide_x=True, hide_y=True)
-plot_labeled_histogram('freedman', data_NG, 'Freedman-Diaconis', x, pdf_NG,
+plot_labeled_histogram('freedman', data_NG, 'Freed.-Diac.', x, pdf_NG,
                        ax=ax[3], hide_x=True, hide_y=True)
 plot_labeled_histogram('knuth', data_NG, 'Knuth\'s Rule', x, pdf_NG,
                        ax=ax[5], hide_x=False, hide_y=True)

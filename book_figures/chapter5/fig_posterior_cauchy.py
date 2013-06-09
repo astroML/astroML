@@ -14,7 +14,11 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import cauchy
 from astroML.stats import median_sigmaG
-from astroML.resample import bootstrap, jackknife
+from astroML.resample import bootstrap
+
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
 
 
 def cauchy_logL(x, gamma, mu):
@@ -70,7 +74,7 @@ mu_bootstrap, gamma_bootstrap = bootstrap(xi, 20000, estimate_mu_gamma,
 
 #------------------------------------------------------------
 # Plot results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(wspace=0.35, right=0.95,
                     hspace=0.2, top=0.95)
 

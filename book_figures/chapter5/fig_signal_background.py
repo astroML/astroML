@@ -19,6 +19,10 @@ import pymc
 
 from astroML.plotting import plot_mcmc
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #----------------------------------------------------------------------
 # Set up dataset: gaussian signal in a uniform background
 np.random.seed(0)
@@ -72,14 +76,15 @@ S.sample(iter=25000, burn=5000)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 ax_list = plot_mcmc([S.trace(s)[:] for s in ['A', 'x0', 'sigma']],
                     limits=[(0.05, 0.65), (5.75, 6.65), (0.05, 0.85)],
                     labels=['$A$', '$\mu$', r'$\sigma$'],
+                    bounds=(0.1, 0.1, 0.95, 0.95),
                     true_values=[A_true, x0_true, sigma_true],
                     fig=fig, colors='k', linewidths=2)
 
-ax = plt.axes([0.6, 0.6, 0.35, 0.35])
+ax = plt.axes([0.62, 0.62, 0.33, 0.33])
 x_pdf = np.linspace(0, 10, 100)
 y_pdf = A_true * signal.pdf(x_pdf) + (1 - A_true) * background.pdf(x_pdf)
 

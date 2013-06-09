@@ -15,6 +15,10 @@ from matplotlib import pyplot as plt
 from scipy.stats import norm
 from astroML.plotting.mcmc import convert_to_stdev
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def p(mu, g1, xi, sigma1, sigma2):
     """Equation 5.97: marginalized likelihood over outliers"""
@@ -55,7 +59,7 @@ L2 /= np.max(L2)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.05,
                     bottom=0.15, top=0.9)
 
@@ -64,7 +68,7 @@ ax1.imshow(L1.T, origin='lower', aspect='auto', cmap=plt.cm.binary,
            extent=[mu[0], mu[-1], g1[0], g1[-1]])
 ax1.contour(mu, g1, convert_to_stdev(np.log(L1).T),
             levels=(0.683, 0.955, 0.997),
-            colors='k', linewidths=2)
+            colors='k')
 ax1.set_xlabel(r'$\mu$')
 ax1.set_ylabel(r'$g_1$')
 
@@ -73,7 +77,7 @@ ax2.imshow(L2.T, origin='lower', aspect='auto', cmap=plt.cm.binary,
            extent=[mu[0], mu[-1], g1[0], g1[-1]])
 ax2.contour(mu, g1, convert_to_stdev(np.log(L2).T),
             levels=(0.683, 0.955, 0.997),
-            colors='k', linewidths=2)
+            colors='k')
 ax2.set_xlabel(r'$\mu$')
 ax2.yaxis.set_major_locator(plt.NullLocator())
 

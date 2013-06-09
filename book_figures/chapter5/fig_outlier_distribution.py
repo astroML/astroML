@@ -17,6 +17,10 @@ from matplotlib import pyplot as plt
 from scipy.stats import norm, anderson
 from astroML.stats import mean_sigma, median_sigmaG
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Create distribution
 Npts = 1E6
@@ -42,17 +46,17 @@ med_sample, sigG_sample = median_sigmaG(x)
 
 #------------------------------------------------------------
 # Plot the results
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 
 # histogram of data
 ax.hist(x, 100, histtype='stepfilled', alpha=0.2,
-        lw=1.5, color='k', normed=True)
+        color='k', normed=True)
 
 # best-fit normal curves
 x_sample = np.linspace(-15, 15, 1000)
-ax.plot(x_sample, norm(mu_sample, sig_sample).pdf(x_sample), '-k', lw=1.5,
+ax.plot(x_sample, norm(mu_sample, sig_sample).pdf(x_sample), '-k',
         label='$\sigma$ fit')
-ax.plot(x_sample, norm(med_sample, sigG_sample).pdf(x_sample), '--k', lw=1.5,
+ax.plot(x_sample, norm(med_sample, sigG_sample).pdf(x_sample), '--k',
         label='$\sigma_G$ fit')
 
 ax.legend()

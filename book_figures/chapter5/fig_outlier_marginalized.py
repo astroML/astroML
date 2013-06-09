@@ -15,6 +15,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import norm
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def p(mu, g1, xi, sigma1, sigma2):
     """Equation 5.97: marginalized likelihood over outliers"""
@@ -73,10 +77,10 @@ p2a /= p2a.sum() * (g1[1] - g1[0])
 
 #------------------------------------------------------------
 # Plot the results
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 
-l1, = ax.plot(g1, p1, '-k', lw=3)
-l2, = ax.plot(g1, p1a, '--k', lw=3)
+l1, = ax.plot(g1, p1, '-k', lw=2)
+l2, = ax.plot(g1, p1a, '--k', lw=2)
 leg1 = ax.legend([l1, l2],
                  [r'$p(g_1)$ (bad point)',
                   r'$p(g_1|\mu_0)$ (bad point)'], loc=9)

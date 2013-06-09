@@ -12,6 +12,10 @@ from matplotlib import pyplot as plt
 from scipy.stats import cauchy, norm
 from scipy import integrate
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def logL_cauchy(xi, gamma, mu,
                 mu_min=-10, mu_max=10, sigma_min=0.01, sigma_max=100):
@@ -102,7 +106,7 @@ for i, N in enumerate(Nrange):
 
 #------------------------------------------------------------
 # plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.1)
 
 ax1 = fig.add_subplot(211, yscale='log')

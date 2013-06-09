@@ -15,6 +15,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.stats.random import linear
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 def linprob_logL(x, a, xmin, xmax):
     x = x.ravel()
@@ -42,8 +46,8 @@ px = lin_dist.pdf(x)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 4))
-fig.subplots_adjust(left=0.11, right=0.95, wspace=0.26,
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(left=0.12, right=0.95, wspace=0.28,
                     bottom=0.15, top=0.9)
 
 # left panel: plot the model and a histogram of the data
@@ -70,7 +74,7 @@ for n, s in zip(Npts, styles):
     logL /= logL.sum() * (a[1] - a[0])
 
     ax2.plot(a, logL, s, label=r'$\rm %i\ pts$' % n)
-ax2.legend(loc=2, prop=dict(size=14))
+ax2.legend(loc=2, prop=dict(size=8))
 
 ax2.set_xlim(-0.011, 0.02)
 
