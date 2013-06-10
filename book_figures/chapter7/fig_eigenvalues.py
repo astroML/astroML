@@ -12,6 +12,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML import datasets
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # load data:
 data = datasets.fetch_sdss_corrected_spectra()
@@ -34,7 +38,7 @@ evals_cs /= evals_cs[-1]
 
 #------------------------------------------------------------
 # plot the eigenvalues
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.05, bottom=0.12)
 
 ax = fig.add_subplot(211, xscale='log', yscale='log')

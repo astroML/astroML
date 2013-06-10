@@ -13,6 +13,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Rectangle
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 
 # Define a function to create a rectangle
 def labeled_rect(ax, center, width, height, text,
@@ -22,7 +26,7 @@ def labeled_rect(ax, center, width, height, text,
     ax.add_patch(Rectangle((left, bottom), width, height,
                            fill=True, color=color, ec='k'))
     ax.text(center[0], center[1], text,
-            fontsize=20, ha='center', va='center',
+            fontsize=14, ha='center', va='center',
             bbox=dict(ec=color, fc=color))
 
     if stripe == 'vert':
@@ -51,7 +55,7 @@ def labeled_rect(ax, center, width, height, text,
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(left=0, bottom=0,
                     right=1, top=1)
 ax = fig.add_subplot(111, xticks=[], yticks=[], frameon=False)
@@ -66,8 +70,8 @@ labeled_rect(ax, (0.975, 0.3), 0.25, 0.5, r'$U_2$', 'vert')
 labeled_rect(ax, (1.275, 0.3), 0.25, 0.25, r'$\Sigma_2$', 'diag')
 labeled_rect(ax, (1.575, 0.3), 0.25, 0.25, r'$V_2^T$', 'horiz')
 
-ax.text(0.7, 0.75, '$=$', fontsize=20, ha='center', va='center')
-ax.text(0.7, 0.3, '$=$', fontsize=20, ha='center', va='center')
+ax.text(0.7, 0.75, '$=$', fontsize=14, ha='center', va='center')
+ax.text(0.7, 0.3, '$=$', fontsize=14, ha='center', va='center')
 
 ax.set_xlim(0, 2)
 ax.set_ylim(0, 1)

@@ -14,6 +14,10 @@ from matplotlib import pyplot as plt
 from sklearn.decomposition import RandomizedPCA
 from astroML.datasets import sdss_corrected_spectra
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #----------------------------------------------------------------------
 # Use pre-computed PCA to reconstruct spectra
 data = sdss_corrected_spectra.fetch_sdss_corrected_spectra()
@@ -30,7 +34,7 @@ spec_sample = spectra[ind]
 
 #----------------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(10, 8))
+fig = plt.figure(figsize=(5, 4))
 
 fig.subplots_adjust(left=0.05, right=0.95, wspace=0.05,
                     bottom=0.1, top=0.95, hspace=0.05)

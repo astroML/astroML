@@ -13,6 +13,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Set parameters and draw the random sample
 np.random.seed(42)
@@ -31,23 +35,23 @@ X = np.dot(R, X)
 
 #------------------------------------------------------------
 # Plot the diagram
-fig = plt.figure(figsize=(8, 8), facecolor='w')
+fig = plt.figure(figsize=(5, 5), facecolor='w')
 ax = plt.axes((0, 0, 1, 1), xticks=[], yticks=[], frameon=False)
 
 # draw axes
 ax.annotate(r'$x$', (-r, 0), (r, 0),
-            ha='center', va='center', fontsize=16,
+            ha='center', va='center',
             arrowprops=dict(arrowstyle='<->', color='k', lw=1.5))
 ax.annotate(r'$y$', (0, -r), (0, r),
-            ha='center', va='center', fontsize=16,
+            ha='center', va='center',
             arrowprops=dict(arrowstyle='<->', color='k', lw=1.5))
 
 # draw rotated axes
 ax.annotate(r'$x^\prime$', (-r * c, -r * s), (r * c, r * s),
-            ha='center', va='center', fontsize=16,
+            ha='center', va='center',
             arrowprops=dict(color='k', arrowstyle='<->', lw=1.5))
 ax.annotate(r'$y^\prime$', (r * s, -r * c), (-r * s, r * c),
-            ha='center', va='center', fontsize=16,
+            ha='center', va='center',
             arrowprops=dict(color='k', arrowstyle='<->', lw=1.5))
 
 # scatter points

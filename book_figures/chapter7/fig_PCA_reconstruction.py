@@ -16,6 +16,10 @@ from matplotlib import ticker
 from astroML.datasets import fetch_sdss_corrected_spectra
 from astroML.datasets import sdss_corrected_spectra
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Get spectra and eigenvectors used to reconstruct them
 data = fetch_sdss_corrected_spectra()
@@ -34,8 +38,8 @@ lam = lam[i_plot]
 specnums = [20, 8, 9]
 subplots = [311, 312, 313]
 
-fig = plt.figure(figsize=(8, 10))
-fig.subplots_adjust(hspace=0)
+fig = plt.figure(figsize=(5, 6.25))
+fig.subplots_adjust(left=0.09, bottom=0.08, hspace=0, right=0.92, top=0.95)
 
 for subplot, i in zip(subplots, specnums):
     ax = fig.add_subplot(subplot)
@@ -50,17 +54,17 @@ for subplot, i in zip(subplots, specnums):
     spec_i[mask_i] = np.nan
 
     # plot the raw masked spectrum
-    ax.plot(lam, spec_i[i_plot], '-', color='k', lw=2,
-            label='True spectrum')
+    ax.plot(lam, spec_i[i_plot], '-', color='k',
+            label='True spectrum', lw=1.5)
 
     # plot two levels of reconstruction
     for nev in [10]:
         if nev == 0:
             label = 'mean'
         else:
-            label = 'nev=%i' % nev
+            label = 'reconstruction\n(nev=%i)' % nev
         spec_i_recons = norms[i] * (mu + np.dot(coeffs[:nev], evecs[:nev]))
-        ax.plot(lam, spec_i_recons[i_plot], label=label)
+        ax.plot(lam, spec_i_recons[i_plot], label=label, color='grey')
 
     # plot shaded background in masked region
     ylim = ax.get_ylim()
@@ -74,7 +78,7 @@ for subplot, i in zip(subplots, specnums):
     ax.yaxis.set_major_formatter(ticker.NullFormatter())
 
     if subplot == 311:
-        ax.legend(loc=1, prop=dict(size=14))
+        ax.legend(loc=1, prop=dict(size=8))
 
     ax.set_xlabel('$\lambda\ (\AA)$')
     ax.set_ylabel('normalized flux')

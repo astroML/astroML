@@ -16,6 +16,10 @@ from matplotlib import ticker
 
 from sklearn import manifold, datasets, decomposition
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # generate the S-curve dataset
 np.random.seed(0)
@@ -44,7 +48,7 @@ Y_iso = iso.fit_transform(X)
 
 #------------------------------------------------------------
 # plot the 3D dataset
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(left=0.05, right=0.95,
                     bottom=0.05, top=0.9)
 try:

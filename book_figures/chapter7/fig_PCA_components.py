@@ -14,6 +14,10 @@ from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_corrected_spectra
 from astroML.plotting.tools import discretize_cmap
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch the data; coefficients have been pre-computed
 data = fetch_sdss_corrected_spectra()
@@ -34,7 +38,7 @@ formatter = plt.FuncFormatter(lambda t, *args: cdict[int(np.round(t))])
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.05, wspace=0.05)
 
 # axes for colorbar

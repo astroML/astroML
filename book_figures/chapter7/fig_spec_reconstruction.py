@@ -16,6 +16,11 @@ from sklearn.decomposition import PCA
 from astroML.datasets import sdss_corrected_spectra
 from astroML.decorators import pickle_results
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
+
 #------------------------------------------------------------
 # Download data
 data = sdss_corrected_spectra.fetch_sdss_corrected_spectra()
@@ -49,8 +54,8 @@ coeff = np.dot(evecs, spec - spec_mean)
 
 #------------------------------------------------------------
 # Plot the sequence of reconstructions
-fig = plt.figure(figsize=(8, 8))
-fig.subplots_adjust(hspace=0)
+fig = plt.figure(figsize=(5, 5))
+fig.subplots_adjust(hspace=0, top=0.95, bottom=0.1, left=0.12, right=0.93)
 
 for i, n in enumerate([0, 4, 8, 20]):
     ax = fig.add_subplot(411 + i)

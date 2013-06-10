@@ -16,6 +16,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.special import gamma, gammaln
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 dims = np.arange(0, 51)
 
 # log of volume of a sphere with r = 1
@@ -27,7 +31,7 @@ log_V_cube = dims * np.log(2)
 # compute the log of f_k to avoid overflow errors
 log_f_k = log_V_sphere - log_V_cube
 
-ax = plt.axes()
+fig, ax = plt.subplots(figsize=(5, 3.75))
 ax.semilogy(dims, np.exp(log_V_cube), '-k',
             label='side-2 hypercube')
 ax.semilogy(dims, np.exp(log_V_sphere), '--k',

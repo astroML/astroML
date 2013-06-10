@@ -18,6 +18,10 @@ from sklearn.decomposition import RandomizedPCA
 from astroML.datasets import sdss_corrected_spectra
 from astroML.decorators import pickle_results
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Download data
 data = sdss_corrected_spectra.fetch_sdss_corrected_spectra()
@@ -58,7 +62,7 @@ decompositions = compute_PCA_ICA_NMF(n_components)
 
 #----------------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(10, 8))
+fig = plt.figure(figsize=(5, 4))
 fig.subplots_adjust(left=0.05, right=0.95, wspace=0.05,
                     bottom=0.1, top=0.95, hspace=0.05)
 
@@ -83,7 +87,7 @@ for i, comp in enumerate(decompositions):
         ax.set_xlim(xlim)
 
         if j == 0:
-            ax.set_title(titles[i], fontsize='medium')
+            ax.set_title(titles[i])
 
         if titles[i].startswith('PCA') or titles[i].startswith('ICA'):
             if j == 0:
@@ -93,9 +97,11 @@ for i, comp in enumerate(decompositions):
         else:
             label = 'component %i' % (j + 1)
 
-        ax.text(0.02, 0.95, label, transform=ax.transAxes,
-                ha='left', va='top', bbox=dict(ec='w', fc='w'),
-                fontsize='small')
+        ax.text(0.03, 0.94, label, transform=ax.transAxes,
+                ha='left', va='top')#, bbox=dict(ec='w', fc='w'))
+
+        for l in ax.get_xticklines() + ax.get_yticklines(): 
+            l.set_markersize(2) 
 
         # adjust y limits
         ylim = plt.ylim()
