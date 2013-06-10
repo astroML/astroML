@@ -20,6 +20,10 @@ from astroML.cosmology import Cosmology
 
 from scipy.sparse.csgraph import minimum_spanning_tree, connected_components
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # get data
 X = fetch_great_wall()
@@ -66,7 +70,7 @@ density = density.reshape((Ny, Nx))
 
 #----------------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(7, 8))
+fig = plt.figure(figsize=(5, 6))
 fig.subplots_adjust(hspace=0, left=0.1, right=0.95, bottom=0.1, top=0.9)
 
 ax = fig.add_subplot(311, aspect='equal')

@@ -19,6 +19,10 @@ from sklearn import preprocessing
 
 from astroML.datasets import fetch_sdss_sspp
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Get data
 data = fetch_sdss_sspp(cleaned=True)
@@ -41,7 +45,7 @@ clf.fit(scaler.fit_transform(X))
 
 #------------------------------------------------------------
 # Visualize the results
-fig = plt.figure(figsize=(6, 6))
+fig = plt.figure(figsize=(5, 5))
 ax = fig.add_subplot()
 
 # plot density
@@ -72,7 +76,7 @@ for i in range(n_clusters):
     Hcp[~flag] = 0
 
     ax.contour(FeH_centers, alphFe_centers, Hcp, [-0.5, 0.5],
-               linewidths=2, colors='k')
+               linewidths=1, colors='k')
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(0.3))
 ax.set_xlim(-1.101, 0.101)

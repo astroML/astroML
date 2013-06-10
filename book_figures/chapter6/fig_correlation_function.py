@@ -16,6 +16,10 @@ from astroML.decorators import pickle_results
 from astroML.datasets import fetch_sdss_specgals
 from astroML.correlation import bootstrap_two_point_angular
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Get data and do some quality cuts
 data = fetch_sdss_specgals()
@@ -78,9 +82,9 @@ bootstraps = [r_bootstraps, b_bootstraps]
 labels = ['$u-r > 2.22$\n$N=%i$' % len(data_red),
           '$u-r < 2.22$\n$N=%i$' % len(data_blue)]
 
-fig = plt.figure(figsize=(8, 4))
-fig.subplots_adjust(bottom=0.15, top=0.9,
-                    left=0.1, right=0.95)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(bottom=0.2, top=0.9,
+                    left=0.13, right=0.95)
 
 for i in range(2):
     ax = fig.add_subplot(121 + i, xscale='log', yscale='log')
@@ -92,8 +96,7 @@ for i in range(2):
     ax.plot(t, 10 * (t / 0.01) ** -0.8, ':k', linewidth=1)
 
     ax.text(0.95, 0.95, labels[i],
-            ha='right', va='top', transform=ax.transAxes,
-            fontsize=16)
+            ha='right', va='top', transform=ax.transAxes)
     ax.set_xlabel(r'$\theta\ (deg)$')
     if i == 0:
         ax.set_ylabel(r'$\hat{w}(\theta)$')

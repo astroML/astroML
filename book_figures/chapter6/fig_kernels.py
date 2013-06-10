@@ -11,6 +11,10 @@ Plot three One-dimensional kernels: the Gaussian, Exponential, and Top-Hat
 import numpy as np
 from matplotlib import pyplot as plt
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Compute Kernels.
 x = np.linspace(-5, 5, 10000)
@@ -25,7 +29,7 @@ tophat[abs(x) > 1] = 0
 
 #------------------------------------------------------------
 # Plot the kernels
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 ax = fig.add_subplot(111)
 
 ax.plot(x, gauss, '-', c='black', lw=3, label='Gaussian')

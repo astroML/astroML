@@ -12,9 +12,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Rectangle
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Set up plot
-fig = plt.figure(figsize=(8, 4.5), facecolor='w')
+fig = plt.figure(figsize=(5, 2.8), facecolor='w')
 
 rect_locs = [(0.5, 3.3), (1.5, 1.8),
              (3.0, 3.8), (4.2, 2.8), (3.1, 1.9),
@@ -35,22 +39,22 @@ for indices in [(0, 1),
                     np.array(rect_locs[pair[1]]) + 0.5 * y_size,
                     arrowprops=dict(arrowstyle='<->'))
 
-ax.text(1.0, 1.0, "(a) 2 point", fontsize=16)
-ax.text(3.5, 1.0, "(b) 3 point", fontsize=16)
-ax.text(6.0, 1.0, "(c) 4 point", fontsize=16)
+ax.text(1.0, 1.0, "(a) 2 point")
+ax.text(3.5, 1.0, "(b) 3 point")
+ax.text(6.0, 1.0, "(c) 4 point")
 
-ax.text(1.4, 2.8, '$\mathbf{r_{12}}$', fontsize=16)
+ax.text(1.4, 2.8, '$\mathbf{r_{12}}$')
 
-ax.text(3.9, 3.7, '$\mathbf{r_{12}}$', fontsize=16)
-ax.text(3.0, 3.0, '$\mathbf{r_{23}}$', fontsize=16)
-ax.text(4.0, 2.3, '$\mathbf{r_{31}}$', fontsize=16)
+ax.text(3.9, 3.7, '$\mathbf{r_{12}}$')
+ax.text(3.0, 3.0, '$\mathbf{r_{23}}$')
+ax.text(4.0, 2.3, '$\mathbf{r_{31}}$')
 
-ax.text(6.4, 4.1, '$\mathbf{r_{12}}$', fontsize=16)
-ax.text(5.5, 3.3, '$\mathbf{r_{13}}$', fontsize=16)
-ax.text(7.2, 2.6, '$\mathbf{r_{24}}$', fontsize=16)
-ax.text(6.7, 2.8, '$\mathbf{r_{14}}$', fontsize=16)
-ax.text(6.0, 1.9, '$\mathbf{r_{23}}$', fontsize=16)
-ax.text(6.5, 1.8, '$\mathbf{r_{34}}$', fontsize=16)
+ax.text(6.4, 4.1, '$\mathbf{r_{12}}$')
+ax.text(5.5, 3.3, '$\mathbf{r_{13}}$')
+ax.text(7.2, 2.6, '$\mathbf{r_{24}}$')
+ax.text(6.7, 2.8, '$\mathbf{r_{14}}$')
+ax.text(6.0, 1.9, '$\mathbf{r_{23}}$')
+ax.text(6.5, 1.8, '$\mathbf{r_{34}}$')
 
 ax.set_xlim(0, 8)
 ax.set_ylim(0.5, 5)

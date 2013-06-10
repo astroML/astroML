@@ -14,6 +14,10 @@ from matplotlib import pyplot as plt
 
 from sklearn.mixture import GMM
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Create our data: two overlapping gaussian clumps,
 # in a uniform background
@@ -38,8 +42,8 @@ dens = np.exp(gmm.score(Xgrid)).reshape((50, 50))
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 3))
-fig.subplots_adjust(left=0.08, right=0.95, wspace=0.05,
+fig = plt.figure(figsize=(5, 2))
+fig.subplots_adjust(left=0.1, right=0.95, wspace=0.05,
                     bottom=0.12, top=0.9)
 
 # first plot the input

@@ -19,6 +19,10 @@ from sklearn import preprocessing
 
 from astroML.datasets import fetch_sdss_sspp
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Get the data
 np.random.seed(0)
@@ -54,7 +58,7 @@ print "number of estimated clusters : %d" % n_clusters
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(6, 6))
+fig = plt.figure(figsize=(5, 5))
 ax = fig.add_subplot(111)
 
 # plot density

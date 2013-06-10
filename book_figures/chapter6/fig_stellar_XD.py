@@ -21,6 +21,10 @@ from astroML.plotting.tools import draw_ellipse
 from astroML.decorators import pickle_results
 from astroML.stats import sigmaG
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # define u-g-r-i-z extinction from Berry et al, arXiv 1111.4985
 # multiply extinction by A_r
@@ -141,8 +145,8 @@ X_sample = clf.sample(X.shape[0])
 
 #------------------------------------------------------------
 # plot the results
-fig = plt.figure()
-fig.subplots_adjust(left=0.1, right=0.95,
+fig = plt.figure(figsize=(5, 3.75))
+fig.subplots_adjust(left=0.12, right=0.95,
                     bottom=0.1, top=0.95,
                     wspace=0.02, hspace=0.02)
 
@@ -188,7 +192,7 @@ for i in range(4):
 
 #------------------------------------------------------------
 # Second figure: the width of the locus
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 ax = fig.add_subplot(111)
 
 labels = ['single epoch', 'standard stars', 'XD resampled']
@@ -216,7 +220,7 @@ for data, label, ls in zip((X, Y, X_sample), labels, linestyles):
 
 ax.legend(loc=2)
 ax.text(0.95, 0.95, '$w = -0.227g + 0.792r$\n$ - 0.567i + 0.05$',
-        transform=ax.transAxes, ha='right', va='top', size=14)
+        transform=ax.transAxes, ha='right', va='top')
 
 ax.set_xlim(-0.07, 0.07)
 ax.set_ylim(0, 55)

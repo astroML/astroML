@@ -18,6 +18,10 @@ from scipy.spatial import cKDTree
 from astroML.datasets import fetch_great_wall
 from astroML.density_estimation import KDE, KNeighborsDensity
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Fetch the great wall data
 X = fetch_great_wall()
@@ -45,39 +49,39 @@ dens_k40 = knn40.fit(X).eval(Xgrid).reshape((Ny, Nx))
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(9, 4.0))
-fig.subplots_adjust(left=0.1, right=0.95, bottom=0.14, top=0.9,
+fig = plt.figure(figsize=(5, 2.2))
+fig.subplots_adjust(left=0.12, right=0.95, bottom=0.2, top=0.9,
                     hspace=0.01, wspace=0.01)
 
 # First plot: scatter the points
 ax1 = plt.subplot(221, aspect='equal')
 ax1.scatter(X[:, 1], X[:, 0], s=1, lw=0, c='k')
-ax1.text(0.98, 0.95, "input", ha='right', va='top',
-         transform=ax1.transAxes, fontsize=12,
+ax1.text(0.95, 0.9, "input", ha='right', va='top',
+         transform=ax1.transAxes,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
 
 # Second plot: KDE
 ax2 = plt.subplot(222, aspect='equal')
 ax2.imshow(dens_KDE.T, origin='lower', norm=LogNorm(),
            extent=(ymin, ymax, xmin, xmax), cmap=plt.cm.binary)
-ax2.text(0.98, 0.95, "KDE: Gaussian $(h=5)$", ha='right', va='top',
-         transform=ax2.transAxes, fontsize=12,
+ax2.text(0.95, 0.9, "KDE: Gaussian $(h=5)$", ha='right', va='top',
+         transform=ax2.transAxes,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
 
 # Third plot: KNN, k=5
 ax3 = plt.subplot(223, aspect='equal')
 ax3.imshow(dens_k5.T, origin='lower', norm=LogNorm(),
            extent=(ymin, ymax, xmin, xmax), cmap=plt.cm.binary)
-ax3.text(0.98, 0.95, "$k$-neighbors $(k=5)$", ha='right', va='top',
-         transform=ax3.transAxes, fontsize=12,
+ax3.text(0.95, 0.9, "$k$-neighbors $(k=5)$", ha='right', va='top',
+         transform=ax3.transAxes,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
 
 # Fourth plot: KNN, k=40
 ax4 = plt.subplot(224, aspect='equal')
 ax4.imshow(dens_k40.T, origin='lower', norm=LogNorm(),
            extent=(ymin, ymax, xmin, xmax), cmap=plt.cm.binary)
-ax4.text(0.98, 0.95, "$k$-neighbors $(k=40)$", ha='right', va='top',
-         transform=ax4.transAxes, fontsize=12,
+ax4.text(0.95, 0.9, "$k$-neighbors $(k=40)$", ha='right', va='top',
+         transform=ax4.transAxes,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
 
 for ax in [ax1, ax2, ax3, ax4]:

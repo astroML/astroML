@@ -16,6 +16,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy import stats
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Draw the random data
 np.random.seed(1)
@@ -25,7 +29,7 @@ x = np.concatenate([np.random.normal(-0.5, 0.3, size=14),
 
 #------------------------------------------------------------
 # First figure: silly histogram binning
-fig1 = plt.figure(figsize=(6, 3.5))
+fig1 = plt.figure(figsize=(5, 3))
 fig1.subplots_adjust(left=0.12, right=0.95, wspace=0.05,
                      bottom=0.15, top=0.9, hspace=0.05)
 
@@ -56,7 +60,7 @@ ax.set_xlabel('$x$')
 
 #------------------------------------------------------------
 # First figure: transition to KDE
-fig2 = plt.figure(figsize=(6, 6))
+fig2 = plt.figure(figsize=(5, 5))
 fig2.subplots_adjust(left=0.12, right=0.95, wspace=0.05,
                      bottom=0.1, top=0.95, hspace=0.05)
 

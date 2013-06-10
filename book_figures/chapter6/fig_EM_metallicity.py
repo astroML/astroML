@@ -19,6 +19,10 @@ from astroML.datasets import fetch_sdss_sspp
 from astroML.decorators import pickle_results
 from astroML.plotting.tools import draw_ellipse
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Get the Segue Stellar Parameters Pipeline data
 data = fetch_sdss_sspp(cleaned=True)
@@ -68,10 +72,10 @@ log_dens = gmm_best.score(Xgrid).reshape((51, 51))
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(9, 3))
-fig.subplots_adjust(wspace=0.4,
-                    bottom=0.2, top=0.9,
-                    left=0.1, right=0.95)
+fig = plt.figure(figsize=(5, 1.66))
+fig.subplots_adjust(wspace=0.5,
+                    bottom=0.25, top=0.9,
+                    left=0.12, right=0.95)
 
 # plot density
 ax = fig.add_subplot(131)
@@ -83,16 +87,16 @@ ax.set_xlabel(r'$\rm [Fe/H]$')
 ax.set_ylabel(r'$\rm [\alpha/Fe]$')
 ax.xaxis.set_major_locator(plt.MultipleLocator(0.3))
 ax.set_xlim(-1.101, 0.101)
-ax.text(0.96, 0.96, "Input\nDistribution", fontsize=12,
+ax.text(0.96, 0.96, "Input",
         va='top', ha='right', transform=ax.transAxes)
 
 # plot AIC/BIC
 ax = fig.add_subplot(132)
 ax.plot(N, AIC, '-k', label='AIC')
-ax.plot(N, BIC, '--k', label='BIC')
-ax.legend(loc=1, prop=dict(size=12))
+ax.plot(N, BIC, ':k', label='BIC')
+ax.legend(loc=1, prop=dict(size=8))
 ax.set_xlabel('N components')
-plt.setp(ax.get_yticklabels(), fontsize=12)
+plt.setp(ax.get_yticklabels(), fontsize=7)
 
 # plot best configurations for AIC and BIC
 ax = fig.add_subplot(133)
@@ -106,7 +110,7 @@ ax.scatter(gmm_best.means_[:, 0], gmm_best.means_[:, 1], c='w')
 for mu, C, w in zip(gmm_best.means_, gmm_best.covars_, gmm_best.weights_):
     draw_ellipse(mu, C, scales=[1.5], ax=ax, fc='none', ec='k')
 
-ax.text(0.96, 0.96, "Converged\nconfiguration", fontsize=12,
+ax.text(0.96, 0.96, "Converged",
         va='top', ha='right', transform=ax.transAxes)
 
 ax.set_xlim(-1.101, 0.101)

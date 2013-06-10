@@ -15,6 +15,10 @@ from astroML.density_estimation import KDE
 from astroML.plotting import hist
 from sklearn.mixture import GMM
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Generate our data: a mix of several Cauchy distributions
 #  this is the same data used in the Bayesian Blocks figure
@@ -35,8 +39,8 @@ x = x[x < 30]
 
 #------------------------------------------------------------
 # plot the results
-fig = plt.figure(figsize=(8, 8))
-fig.subplots_adjust()
+fig = plt.figure(figsize=(5, 5))
+fig.subplots_adjust(bottom=0.08, top=0.95, right=0.95, hspace=0.1)
 N_values = (500, 5000)
 subplots = (211, 212)
 k_values = (10, 100)
@@ -75,7 +79,7 @@ for N, k, subplot in zip(N_values, k_values, subplots):
     ax.text(0.02, 0.95, "%i points" % N, ha='left', va='top',
             transform=ax.transAxes)
     ax.set_ylabel('$p(x)$')
-    ax.legend(loc='upper right', prop=dict(size=12))
+    ax.legend(loc='upper right', prop=dict(size=8))
 
     if subplot == 212:
         ax.set_xlabel('$x$')

@@ -16,6 +16,10 @@ from sklearn.mixture import GMM
 from astroML.datasets import fetch_great_wall
 from astroML.decorators import pickle_results
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # load great wall data
 X = fetch_great_wall()
@@ -52,8 +56,8 @@ log_dens = clf.score(Xgrid).reshape(Ny, Nx)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure()
-fig.subplots_adjust(hspace=0, left=0.1, right=0.95, bottom=0.1, top=0.9)
+fig = plt.figure(figsize=(5, 3.75))
+fig.subplots_adjust(hspace=0, left=0.08, right=0.95, bottom=0.13, top=0.9)
 
 ax = fig.add_subplot(211, aspect='equal')
 ax.scatter(X[:, 1], X[:, 0], s=1, lw=0, c='k')

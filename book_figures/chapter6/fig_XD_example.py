@@ -15,6 +15,10 @@ from astroML.decorators import pickle_results
 from astroML.density_estimation import XDGMM
 from astroML.plotting.tools import draw_ellipse
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Sample the dataset
 N = 2000
@@ -58,7 +62,7 @@ sample = clf.sample(N)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(left=0.1, right=0.95,
                     bottom=0.1, top=0.95,
                     wspace=0.02, hspace=0.02)

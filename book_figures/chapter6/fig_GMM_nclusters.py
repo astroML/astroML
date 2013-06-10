@@ -16,6 +16,10 @@ from sklearn.mixture import GMM
 from astroML.utils import convert_2D_cov
 from astroML.plotting.tools import draw_ellipse
 
+# Adjust font sizes for text
+import matplotlib
+matplotlib.rc('font', size=8)
+
 #------------------------------------------------------------
 # Set up the dataset
 #  We'll use scikit-learn's Gaussian Mixture Model to sample
@@ -38,11 +42,11 @@ gmm_input.weights_ /= gmm_input.weights_.sum()
 
 #------------------------------------------------------------
 # Compute and plot the results
-fig = plt.figure(figsize=(8, 8))
-fig.subplots_adjust(left=0.1, right=0.9, bottom=0.1, top=0.9,
+fig = plt.figure(figsize=(5, 5))
+fig.subplots_adjust(left=0.11, right=0.9, bottom=0.11, top=0.9,
                     hspace=0, wspace=0)
 ax_list = [fig.add_subplot(s) for s in [221, 223, 224]]
-ax_list.append(fig.add_axes([0.6, 0.6, 0.3, 0.3]))
+ax_list.append(fig.add_axes([0.62, 0.62, 0.28, 0.28]))
 
 linestyles = ['-', '--', ':']
 
@@ -97,7 +101,7 @@ for i in (0, 1):
 for j in (1, 2):
     ax_list[j].set_xlabel('$x$')
 
-ax_list[-1].legend(loc=1, prop=dict(size=11))
+ax_list[-1].legend(loc=1, prop=dict(size=8))
 
 ax_list[-1].set_xlabel('n. clusters')
 ax_list[-1].set_ylabel('$BIC / N$')
