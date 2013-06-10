@@ -21,6 +21,14 @@ from sklearn.metrics.pairwise import euclidean_distances
 
 from astroML.datasets import fetch_sdss_specgals
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 np.random.seed(0)
 
 data = fetch_sdss_specgals()
@@ -54,12 +62,12 @@ def plot_results(z, z_fit, plotlabel=None,
                  ha='left', va='top', transform=ax.transAxes)
 
     if xlabel:
-        plt.xlabel(r'$\rm z_{true}$', fontsize=16)
+        plt.xlabel(r'$\rm z_{true}$')
     else:
         plt.gca().xaxis.set_major_formatter(plt.NullFormatter())
 
     if ylabel:
-        plt.ylabel(r'$\rm z_{fit}$', fontsize=16)
+        plt.ylabel(r'$\rm z_{fit}$')
     else:
         plt.gca().yaxis.set_major_formatter(plt.NullFormatter())
 
@@ -119,7 +127,7 @@ def gaussian_RBF_features(X, centers, widths):
     return np.exp(-0.5 * ((X[:, np.newaxis, :]
                            - centers) / widths) ** 2).sum(-1)
 
-plt.figure(figsize=(8, 8))
+plt.figure(figsize=(5, 5))
 plt.subplots_adjust(hspace=0.05, wspace=0.05,
                     left=0.1, right=0.95,
                     bottom=0.1, top=0.95)

@@ -16,6 +16,14 @@ from sklearn.ensemble import RandomForestClassifier
 
 from astroML.datasets import fetch_rrlyrae_mags, fetch_sdss_S82standards
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 
 def load_rrlyrae_data():
     """Load the RR Lyrae data.
@@ -135,7 +143,7 @@ print "contamination", contamination
 
 #----------------------------------------------------------------------
 # plot the results
-plt.figure(figsize=(8, 4))
+plt.figure(figsize=(5, 2.5))
 plt.subplots_adjust(bottom=0.15, top=0.95, hspace=0.0,
                     left=0.1, right=0.95, wspace=0.2)
 
@@ -170,8 +178,8 @@ plt.text(0.02, 0.02, "depth = %i" % depths[1],
          transform=ax.transAxes)
 
 ax = plt.subplot(222)
-plt.plot(Ncolors, completeness[0], 'o-k', label="depth=%i" % depths[0])
-plt.plot(Ncolors, completeness[1], '^--k', label="depth=%i" % depths[1])
+plt.plot(Ncolors, completeness[0], 'o-k', ms=6, label="depth=%i" % depths[0])
+plt.plot(Ncolors, completeness[1], '^--k', ms=6, label="depth=%i" % depths[1])
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(1))
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))
@@ -183,10 +191,9 @@ plt.ylim(-0.1, 1.1)
 plt.grid(True)
 
 ax = plt.subplot(224)
-plt.plot(Ncolors, contamination[0], 'o-k', label="depth=%i" % depths[0])
-plt.plot(Ncolors, contamination[1], '^--k', label="depth=%i" % depths[1])
-plt.legend(prop=dict(size=12),
-           loc='lower right',
+plt.plot(Ncolors, contamination[0], 'o-k', ms=6, label="depth=%i" % depths[0])
+plt.plot(Ncolors, contamination[1], '^--k', ms=6, label="depth=%i" % depths[1])
+plt.legend(loc='lower right',
            bbox_to_anchor=(1.0, 0.79))
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(1))

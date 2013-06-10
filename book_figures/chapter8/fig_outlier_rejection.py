@@ -20,6 +20,14 @@ import scipy.misc
 scipy.derivative = scipy.misc.derivative
 import pymc
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 np.random.seed(0)
 
 #------------------------------------------------------------
@@ -175,7 +183,7 @@ M2 = dict(y_outlier=y_outlier, beta_M2=beta_M2, model_M2=model_M2,
 
 #------------------------------------------------------------
 # plot the data
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
                     bottom=0.1, top=0.95, hspace=0.2)
 
@@ -242,7 +250,7 @@ for i, M in enumerate(models):
     ax.xaxis.set_major_locator(plt.MultipleLocator(40))
     ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))
 
-    ax.text(0.98, 0.98, labels[i], ha='right', va='top', fontsize=14,
+    ax.text(0.98, 0.98, labels[i], ha='right', va='top',
             bbox=dict(fc='w', ec='none', alpha=0.5),
             transform=ax.transAxes)
     ax.set_xlim(bins[i][0][0], bins[i][0][-1])

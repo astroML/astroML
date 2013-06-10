@@ -13,9 +13,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Set parameters and draw the random sample
@@ -41,18 +45,18 @@ ax = plt.axes((0, 0, 1, 1), xticks=[], yticks=[], frameon=False)
 # draw axes
 ax.annotate(r'$x$', (-r, 0), (r, 0),
             ha='center', va='center',
-            arrowprops=dict(arrowstyle='<->', color='k', lw=1.5))
+            arrowprops=dict(arrowstyle='<->', color='k', lw=1))
 ax.annotate(r'$y$', (0, -r), (0, r),
             ha='center', va='center',
-            arrowprops=dict(arrowstyle='<->', color='k', lw=1.5))
+            arrowprops=dict(arrowstyle='<->', color='k', lw=1))
 
 # draw rotated axes
 ax.annotate(r'$x^\prime$', (-r * c, -r * s), (r * c, r * s),
             ha='center', va='center',
-            arrowprops=dict(color='k', arrowstyle='<->', lw=1.5))
+            arrowprops=dict(color='k', arrowstyle='<->', lw=1))
 ax.annotate(r'$y^\prime$', (r * s, -r * c), (-r * s, r * c),
             ha='center', va='center',
-            arrowprops=dict(color='k', arrowstyle='<->', lw=1.5))
+            arrowprops=dict(color='k', arrowstyle='<->', lw=1))
 
 # scatter points
 ax.scatter(X[0], X[1], s=25, lw=0, c='k', zorder=2)

@@ -16,9 +16,13 @@ from sklearn.decomposition import PCA
 from astroML.datasets import sdss_corrected_spectra
 from astroML.decorators import pickle_results
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 
 #------------------------------------------------------------
@@ -77,7 +81,7 @@ for i, n in enumerate([0, 4, 8, 20]):
         text = "mean + %i components\n" % n
         text += r"$(\sigma^2_{tot} = %.2f)$" % evals_cs[n - 1]
 
-    ax.text(0.01, 0.95, text, ha='left', va='top', transform=ax.transAxes)
+    ax.text(0.02, 0.93, text, ha='left', va='top', transform=ax.transAxes)
 
 fig.axes[-1].set_xlabel(r'${\rm wavelength\ (\AA)}$')
 plt.show()

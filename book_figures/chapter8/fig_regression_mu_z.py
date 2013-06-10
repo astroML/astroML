@@ -16,6 +16,14 @@ from astroML.datasets import generate_mu_z
 from astroML.linear_model import LinearRegression, PolynomialRegression,\
     BasisFunctionRegression, NadarayaWatson
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Generate data
 z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0)
@@ -46,7 +54,7 @@ n_constraints = [2, 5, len(basis_mu) + 1, 1]
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(left=0.1, right=0.95,
                     bottom=0.1, top=0.95,
                     hspace=0.05, wspace=0.05)
@@ -69,7 +77,7 @@ for i in range(4):
     ax.errorbar(z_sample, mu_sample, dmu, fmt='.k', ecolor='gray', lw=1)
 
     ax.text(0.5, 0.05, r"$\chi^2_{\rm dof} = %.2f$" % chi2_dof,
-            ha='center', va='bottom', transform=ax.transAxes, fontsize=14)
+            ha='center', va='bottom', transform=ax.transAxes)
 
     ax.set_xlim(0.01, 1.8)
     ax.set_ylim(36.01, 48)

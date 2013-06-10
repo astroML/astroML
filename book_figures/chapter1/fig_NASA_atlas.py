@@ -13,9 +13,13 @@ from matplotlib import pyplot as plt
 from astroML.datasets import fetch_nasa_atlas
 from astroML.plotting.tools import devectorize_axes
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 data = fetch_nasa_atlas()
 RA = data['RA']

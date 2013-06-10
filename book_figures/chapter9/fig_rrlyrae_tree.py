@@ -12,16 +12,24 @@ and plots a visualization of the first several levels of the tree.
 import numpy as np
 from matplotlib import pyplot as plt
 
+from sklearn.tree import DecisionTreeClassifier
+from astroML.datasets import fetch_rrlyrae_combined
+from astroML.utils import split_samples
+
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 # % sign needs to be escaped if usetex is True
 import matplotlib
 if matplotlib.rcParams.get('text.usetex'):
     pct = r'\%'
 else:
     pct = '%'
-
-from sklearn.tree import DecisionTreeClassifier
-from astroML.datasets import fetch_rrlyrae_combined
-from astroML.utils import split_samples
 
 
 def get_x_position(level, n_levels, xmin=0.01, xmax=1):
@@ -113,9 +121,9 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
                 text += "\n" + r"${\rm split\ on}$ %s" % labels[T_feature[ind]]
 
             if i < 4:
-                fontsize = 12
+                fontsize = 8
             else:
-                fontsize = 10
+                fontsize = 7
 
             ax.text(x_positions[i], y_positions[j], text,
                     ha='center', va='center',
@@ -180,7 +188,7 @@ print "false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn))
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 10), facecolor='w')
+fig = plt.figure(figsize=(5, 7), facecolor='w')
 ax = fig.add_axes([0, 0, 1, 1], xticks=[], yticks=[], frameon=False)
 visualize_tree(clf, X_train, y_train,
                labels=(['$u-g$', '$g-r$', '$r-i$', '$i-z$']))
@@ -190,12 +198,11 @@ ax.text(0.12, 0.95, ("Numbers are count of\n"
                      "non-variable / RR Lyrae\n"
                      "in each node"),
         ha='center', va='center',
-        fontsize=12,
         bbox=dict(boxstyle='round', ec='k', fc='w'))
 
 ax.text(-0.08, 0.14, ("Training Set Size:\n"
                       "  %i objects" % len(y_train)),
-        fontsize=12, ha='left', va='bottom')
+        ha='left', va='bottom')
 
 ax.text(-0.08, 0.01, ("Cross-Validation, with\n"
                       "  %i RR Lyraes (positive)\n"
@@ -205,7 +212,7 @@ ax.text(-0.08, 0.01, ("Cross-Validation, with\n"
                       % (tot_pos, tot_neg,
                          fp, fp * 100. / (tp + fp), pct,
                          fn, fn * 100. / (tn + fn), pct)),
-        fontsize=12, ha='left', va='bottom')
+        ha='left', va='bottom')
 
 #--------------------------------------------------
 # compute statistics for a larger training set

@@ -25,6 +25,14 @@ from astroML.classification import GMMBayes
 
 from astroML.decorators import pickle_results
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Fetch data and split into training and test samples
 from astroML.datasets import fetch_dr7_quasar
@@ -95,7 +103,7 @@ names, probs = compute_results((GaussianNB, {}),
 
 #------------------------------------------------------------
 # Plot results
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(left=0.1, right=0.95, bottom=0.15, top=0.9, wspace=0.25)
 
 # First axis shows the data
@@ -126,7 +134,7 @@ for name, y_prob in zip(names, probs):
 
     ax2.plot(fpr, tpr, label=labels[name])
 
-ax2.legend(loc=4, prop=dict(size=12))
+ax2.legend(loc=4)
 ax2.set_xlabel('false positive rate')
 ax2.set_ylabel('true positive rate')
 ax2.set_xlim(0, 0.15)

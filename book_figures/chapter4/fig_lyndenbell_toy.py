@@ -16,9 +16,13 @@ from scipy import stats
 
 from astroML.lumfunc import bootstrap_Cminus
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Define and sample our distributions
@@ -73,7 +77,7 @@ fig.subplots_adjust(bottom=0.2, top=0.95,
 ax = fig.add_subplot(121)
 ax.plot(x_mid, x_pdf.pdf(x_mid), '-k', label='$p(x)$')
 ax.plot(y_mid, y_pdf.pdf(y_mid), '--k', label='$p(y)$')
-ax.legend(loc='lower center', prop=dict(size=9))
+ax.legend(loc='lower center')
 
 ax.errorbar(x_mid, x_dist, dx_dist, fmt='ok', ecolor='k', lw=1, ms=4)
 ax.errorbar(y_mid, y_dist, dy_dist, fmt='^k', ecolor='k', lw=1, ms=4)

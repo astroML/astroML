@@ -12,9 +12,13 @@ Pipeline (SSPP) data to show multiple features on a single plot.
 import numpy as np
 from matplotlib import pyplot as plt
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Get SDSS SSPP data
@@ -83,7 +87,7 @@ plt.clim(-2.5, 0.5)
 
 # Draw density contours over the colors
 levels = np.linspace(0, np.log10(N.max()), 7)[2:]
-plt.contour(np.log10(N.T), levels, colors='k', linewidths=1,
+plt.contour(np.log10(N.T), levels, colors='k',
             extent=[xedges[0], xedges[-1], yedges[0], yedges[-1]])
 
 #--------------------
@@ -103,7 +107,7 @@ plt.clim(-2.5, 0.5)
 
 # Draw density contours over the colors
 levels = np.linspace(0, np.log10(N.max()), 7)[2:]
-plt.contour(np.log10(N.T), levels, colors='k', linewidths=1,
+plt.contour(np.log10(N.T), levels, colors='k',
             extent=[xedges[0], xedges[-1], yedges[0], yedges[-1]])
 
 plt.show()

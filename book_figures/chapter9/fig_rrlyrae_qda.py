@@ -20,6 +20,14 @@ from astroML.utils import split_samples
 from astroML.utils import completeness_contamination
 
 #----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
+#----------------------------------------------------------------------
 # get data and split into training & testing sets
 X, y = fetch_rrlyrae_combined()
 X = X[:, [1, 0, 2, 3]]  # rearrange columns for better 1-color results
@@ -68,7 +76,7 @@ Z = Z[:, 1].reshape(xx.shape)
 
 #----------------------------------------------------------------------
 # plot the results
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(bottom=0.15, top=0.95, hspace=0.0,
                     left=0.1, right=0.95, wspace=0.2)
 
@@ -93,7 +101,7 @@ ax.set_ylabel('$g-r$')
 
 # plot completeness vs Ncolors
 ax = fig.add_subplot(222)
-ax.plot(Ncolors, completeness, 'o-k', c='k', label='unweighted')
+ax.plot(Ncolors, completeness, 'o-k', c='k', ms=6, label='unweighted')
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(1))
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))
@@ -106,7 +114,7 @@ ax.grid(True)
 
 # plot contamination vs Ncolors
 ax = fig.add_subplot(224)
-ax.plot(Ncolors, contamination, 'o-k', c='k', label='unweighted')
+ax.plot(Ncolors, contamination, 'o-k', c='k', ms=6, label='unweighted')
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(1))
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.2))

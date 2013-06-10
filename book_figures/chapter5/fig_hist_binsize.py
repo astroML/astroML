@@ -15,9 +15,13 @@ from matplotlib import pyplot as plt
 from scipy import stats
 from astroML.plotting import hist
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 
 def plot_labeled_histogram(style, data, name,
@@ -31,7 +35,7 @@ def plot_labeled_histogram(style, data, name,
                                  color='k', histtype='step', normed=True)
     ax.text(0.95, 0.93, '%s:\n%i bins' % (name, len(counts)),
             transform=ax.transAxes,
-            ha='right', va='top', size=8)
+            ha='right', va='top')
 
     ax.fill(x, pdf_true, '-', color='#CCCCCC', zorder=0)
 

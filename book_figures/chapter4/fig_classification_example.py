@@ -16,9 +16,13 @@ import numpy as np
 from scipy.stats import norm
 from matplotlib import pyplot as plt
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Generate and draw the curves
@@ -34,7 +38,7 @@ ax.plot([120, 120], [0.0, 0.04], '--k')
 
 ax.text(100, 0.036, r'$h_B(x)$', ha='center', va='bottom')
 ax.text(150, 0.0035, r'$h_S(x)$', ha='center', va='bottom')
-ax.text(122, 0.0395, r'$x_c=120$', ha='left', va='top')
+ax.text(122, 0.039, r'$x_c=120$', ha='left', va='top')
 ax.text(125, 0.01, r'$(x > x_c\ {\rm classified\ as\ sources})$')
 
 ax.set_xlim(50, 200)

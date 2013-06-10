@@ -21,9 +21,13 @@ from astroML.plotting.tools import draw_ellipse
 from astroML.decorators import pickle_results
 from astroML.stats import sigmaG
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # define u-g-r-i-z extinction from Berry et al, arXiv 1111.4985

@@ -22,9 +22,13 @@ from astroML.lumfunc import binned_Cminus, bootstrap_Cminus
 from astroML.cosmology import Cosmology
 from astroML.datasets import fetch_sdss_specgals
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Get the data and perform redshift/magnitude cuts
@@ -167,14 +171,14 @@ for i in range(2):
 
 #------------------------------------------------------------
 # set labels and limits
-ax2.legend(loc=1, prop=dict(size=9))
+ax2.legend(loc=1)
 ax2.xaxis.set_major_locator(plt.MultipleLocator(0.01))
 ax2.set_xlabel(r'$z$')
 ax2.set_ylabel(r'$\rho(z) / [z / 0.08]^2$')
 ax2.set_xlim(0.075, 0.125)
 ax2.set_ylim(10, 25)
 
-ax3.legend(loc=3, prop=dict(size=9))
+ax3.legend(loc=3)
 ax3.xaxis.set_major_locator(plt.MultipleLocator(1.0))
 ax3.set_xlabel(r'$M$')
 ax3.set_ylabel(r'$\Phi(M)$')

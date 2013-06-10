@@ -18,6 +18,14 @@ from astroML.linear_model import TLS_logL
 from astroML.plotting.mcmc import convert_to_stdev
 from astroML.datasets import fetch_hogg2010test
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 
 #------------------------------------------------------------
 # Define some convenience functions
@@ -84,14 +92,14 @@ beta_fit = optimize.fmin(min_func,
 
 #------------------------------------------------------------
 # Plot the data and fits
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
                     bottom=0.15, top=0.9)
 
 #------------------------------------------------------------
 # first let's visualize the data
 ax = fig.add_subplot(121)
-ax.scatter(x, y, c='k')
+ax.scatter(x, y, c='k', s=9)
 plot_ellipses(x, y, sigma_x, sigma_y, rho_xy, ax=ax)
 
 #------------------------------------------------------------
@@ -118,7 +126,7 @@ for i in range(len(m)):
 
 ax.contour(m, b, convert_to_stdev(logL.T),
            levels=(0.683, 0.955, 0.997),
-           colors='k', linewidths=2)
+           colors='k')
 ax.set_xlabel('slope')
 ax.set_ylabel('intercept')
 ax.set_xlim(1.7, 2.8)

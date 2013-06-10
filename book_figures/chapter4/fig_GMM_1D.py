@@ -12,9 +12,13 @@ from matplotlib import pyplot as plt
 import numpy as np
 from sklearn.mixture import GMM
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Set up the dataset.
@@ -58,7 +62,7 @@ BIC = [m.bic(X) for m in models]
 
 fig = plt.figure(figsize=(5, 1.7))
 fig.subplots_adjust(left=0.12, right=0.97,
-                    bottom=0.23, top=0.9, wspace=0.5)
+                    bottom=0.21, top=0.9, wspace=0.5)
 
 
 # plot 1: data + best-fit mixture
@@ -85,7 +89,7 @@ ax.plot(N, AIC, '-k', label='AIC')
 ax.plot(N, BIC, '--k', label='BIC')
 ax.set_xlabel('n. components')
 ax.set_ylabel('information criterion')
-ax.legend(loc=2, prop=dict(size=8))
+ax.legend(loc=2)
 
 
 # plot 3: posterior probabilities for each component

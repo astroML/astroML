@@ -15,6 +15,14 @@ from astroML.cosmology import Cosmology
 from astroML.plotting.mcmc import convert_to_stdev
 from astroML.decorators import pickle_results
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Generate the data
 z_sample, mu_sample, dmu = generate_mu_z(100, z0=0.3,
@@ -52,7 +60,7 @@ res -= np.max(res)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
                     bottom=0.15, top=0.9)
 
@@ -67,15 +75,15 @@ z_fit = np.linspace(0.04, 2, 100)
 mu_fit = np.asarray(map(cosmo.mu, z_fit))
 
 ax.plot(z_fit, mu_fit, '-k')
-ax.errorbar(z_sample, mu_sample, dmu, fmt='.k', ecolor='gray', lw=1)
+ax.errorbar(z_sample, mu_sample, dmu, fmt='.k', ecolor='gray')
 
 ax.set_xlim(0, 1.8)
 ax.set_ylim(36, 46)
 
 ax.set_xlabel('$z$')
-ax.set_ylabel(r'$\mu$', fontsize=16)
+ax.set_ylabel(r'$\mu$')
 
-ax.text(0.02, 0.98, "%i observations" % len(z_sample),
+ax.text(0.04, 0.96, "%i observations" % len(z_sample),
         ha='left', va='top', transform=ax.transAxes)
 
 # right plot: the likelihood
@@ -83,16 +91,16 @@ ax = fig.add_subplot(122)
 
 ax.contour(omegaM, omegaL, convert_to_stdev(res.T),
            levels=(0.683, 0.955, 0.997),
-           colors='k', linewidths=2)
+           colors='k')
 
 ax.plot([0, 1], [1, 0], '--k')
-ax.plot([0, 1], [0.73, 0.73], ':k', lw=1)
-ax.plot([0.27, 0.27], [0, 2], ':k', lw=1)
+ax.plot([0, 1], [0.73, 0.73], ':k')
+ax.plot([0.27, 0.27], [0, 2], ':k')
 
 ax.set_xlim(0.05, 0.75)
 ax.set_ylim(0.4, 1.1)
 
-ax.set_xlabel(r'$\Omega_M$', fontsize=16)
-ax.set_ylabel(r'$\Omega_\Lambda$', fontsize=16)
+ax.set_xlabel(r'$\Omega_M$')
+ax.set_ylabel(r'$\Omega_\Lambda$')
 
 plt.show()

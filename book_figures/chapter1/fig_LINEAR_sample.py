@@ -13,9 +13,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_LINEAR_sample, fetch_LINEAR_geneva
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Get data for the plot
@@ -62,13 +66,14 @@ fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(hspace=0.1, wspace=0.1,
                     top=0.95, right=0.95)
 
-ax = fig.add_axes((0.62, 0.62, 0.3, 0.25))
-plt.errorbar(phase, y, dy, fmt='.', color='black', ecolor='gray', lw=1)
+ax = fig.add_axes((0.64, 0.62, 0.3, 0.25))
+plt.errorbar(phase, y, dy, fmt='.', color='black', ecolor='gray',
+             lw=1, ms=4, capsize=1.5)
 plt.ylim(plt.ylim()[::-1])
 plt.xlabel('phase')
 plt.ylabel('magnitude')
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.5))
-plt.title("example of\nphased light curve")
+plt.title("Example of\nphased light curve")
 
 ax = fig.add_subplot(223)
 ax.plot(gr, ri, '.', color='black', markersize=2)

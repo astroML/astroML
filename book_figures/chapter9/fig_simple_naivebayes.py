@@ -15,6 +15,14 @@ from matplotlib import colors
 
 from sklearn.naive_bayes import GaussianNB
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Simulate some data
 np.random.seed(0)
@@ -44,11 +52,11 @@ Z = Z[:, 1].reshape(xx.shape)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 ax = fig.add_subplot(111)
 ax.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.binary, zorder=2)
 
-ax.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
+ax.contour(xx, yy, Z, [0.5], colors='k')
 
 ax.set_xlim(xlim)
 ax.set_ylim(ylim)

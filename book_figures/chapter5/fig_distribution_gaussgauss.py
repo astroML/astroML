@@ -14,9 +14,13 @@ from matplotlib import pyplot as plt
 from scipy.stats import norm, anderson
 from astroML.stats import mean_sigma, median_sigmaG
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Create distributions
@@ -42,14 +46,14 @@ med_sample, sigG_sample = median_sigmaG(x)
 # plot the results
 fig, ax = plt.subplots(figsize=(5, 3.75))
 ax.hist(x, 100, histtype='stepfilled', alpha=0.2,
-        lw=1.5, color='k', normed=True)
+        color='k', normed=True)
 
 # plot the fitting normal curves
 x_sample = np.linspace(-15, 15, 1000)
 ax.plot(x_sample, norm(mu_sample, sig_sample).pdf(x_sample),
-        '-k', lw=1.5, label='$\sigma$ fit')
+        '-k', label='$\sigma$ fit')
 ax.plot(x_sample, norm(med_sample, sigG_sample).pdf(x_sample),
-        '--k', lw=1.5, label='$\sigma_G$ fit')
+        '--k', label='$\sigma_G$ fit')
 ax.legend()
 
 ax.set_xlim(-7.5, 7.5)

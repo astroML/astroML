@@ -16,6 +16,14 @@ from matplotlib import pyplot as plt
 from sklearn.tree import DecisionTreeRegressor
 from astroML.datasets import fetch_sdss_specgals
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Fetch data and prepare it for the computation
 data = fetch_sdss_specgals()
@@ -57,7 +65,7 @@ best_depth = depth[i_best]
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(wspace=0.25,
                     left=0.1, right=0.95,
                     bottom=0.15, top=0.9)
@@ -71,16 +79,16 @@ ax.set_ylabel('rms error')
 ax.yaxis.set_major_locator(plt.MultipleLocator(0.01))
 ax.set_xlim(0, 21)
 ax.set_ylim(0.009,  0.04)
-ax.legend(loc=1, prop=dict(size=13))
+ax.legend(loc=1)
 
 # second panel: best-fit results
 ax = fig.add_subplot(122)
 ax.scatter(z_test, z_fit_best, s=1, lw=0, c='k')
 ax.plot([-0.1, 0.4], [-0.1, 0.4], ':k')
-ax.text(0.03, 0.97, "depth = %i\nrms = %.3f" % (best_depth, rms_test[i_best]),
+ax.text(0.04, 0.96, "depth = %i\nrms = %.3f" % (best_depth, rms_test[i_best]),
         ha='left', va='top', transform=ax.transAxes)
-ax.set_xlabel(r'$z_{\rm true}$', fontsize=16)
-ax.set_ylabel(r'$z_{\rm fit}$', fontsize=16)
+ax.set_xlabel(r'$z_{\rm true}$')
+ax.set_ylabel(r'$z_{\rm fit}$')
 
 ax.set_xlim(-0.02, 0.4001)
 ax.set_ylim(-0.02, 0.4001)

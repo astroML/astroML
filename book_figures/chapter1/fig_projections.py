@@ -15,9 +15,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.plotting import plot_tissot_ellipse
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # generate a latitude/longitude grid
@@ -28,8 +32,8 @@ radius = 10 * np.pi / 180.
 #------------------------------------------------------------
 # Plot the built-in projections
 plt.figure(figsize=(5, 4))
-plt.subplots_adjust(hspace=0, wspace=0.1,
-                    left=0.05, right=0.95,
+plt.subplots_adjust(hspace=0, wspace=0.12,
+                    left=0.08, right=0.95,
                     bottom=0.05, top=1.0)
 
 for (i, projection) in enumerate(['Hammer', 'Aitoff', 'Mollweide', 'Lambert']):

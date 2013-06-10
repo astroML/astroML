@@ -13,9 +13,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.ticker import NullFormatter, NullLocator, MultipleLocator
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 def banana_distribution(N=10000):
     """This generates random points in a banana shape"""
@@ -111,7 +115,7 @@ for i in range(3):
     Px_y = H[iy[i]] / H[iy[i]].sum()
     ax_Px_y[i].plot(xbins[1:], Px_y, drawstyle='steps', c=colors[i])
     ax_Px_y[i].yaxis.set_major_formatter(NullFormatter())
-    ax_Px_y[i].set_ylabel('$p(x | y=%.1f)$' % ybins[iy[i]])
+    ax_Px_y[i].set_ylabel('$p(x | %.1f)$' % ybins[iy[i]])
 ax_Pxy.axis(axis)
 
 ax_Px_y[2].set_xlabel('$x$')

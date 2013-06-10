@@ -25,8 +25,13 @@ if matplotlib.rcParams.get('text.usetex'):
 else:
     pct = '%'
 
-# Adjust font sizes for text
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 N = 1000
 
@@ -106,7 +111,7 @@ for i, f in enumerate([0.05, 0.15]):
     ax.plot([0], [0], '-k', label='Input')
     ax.plot([0], [0], ':k', label='Fit')
     ax.plot([0], [0], '--k', label='Robust Fit')
-    ax.legend(loc='lower right', prop=dict(size=8))
+    ax.legend(loc='lower right')
 
     if i == 0:
         ax.set_ylabel('$y$')

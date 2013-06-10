@@ -4,7 +4,7 @@ def setup_text_plots(fontsize=8, usetex=True):
     textbook have a uniform format and look.
     """
     import matplotlib
-    matplotlib.rc('legend', fontsize=fontsize)
+    matplotlib.rc('legend', fontsize=fontsize, handlelength=3)
     matplotlib.rc('axes', titlesize=fontsize)
     matplotlib.rc('axes', labelsize=fontsize)
     matplotlib.rc('xtick', labelsize=fontsize)

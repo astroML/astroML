@@ -27,6 +27,14 @@ from astroML.decorators import pickle_results
 from astroML.datasets import fetch_rrlyrae_combined
 
 #----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
+#----------------------------------------------------------------------
 # get data and split into training & testing sets
 X, y = fetch_rrlyrae_combined()
 y = y.astype(int)
@@ -68,7 +76,7 @@ names, probs = compute_models((GaussianNB, {}),
 
 #------------------------------------------------------------
 # Plot ROC curves and completeness/efficiency
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(left=0.1, right=0.95, bottom=0.15, top=0.9, wspace=0.25)
 
 
@@ -110,7 +118,7 @@ ax1.set_ylim(0, 1.02)
 ax1.xaxis.set_major_locator(plt.MaxNLocator(5))
 ax1.set_xlabel('false positive rate')
 ax1.set_ylabel('true positive rate')
-ax1.legend(loc=4, prop=dict(size=12))
+ax1.legend(loc=4)
 
 ax2.set_xlabel('efficiency')
 ax2.set_ylabel('completeness')

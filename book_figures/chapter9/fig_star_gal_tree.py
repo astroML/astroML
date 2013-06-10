@@ -15,8 +15,15 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from sklearn.tree import DecisionTreeClassifier
-
 from astroML.datasets import fetch_imaging_sample
+
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 
 def get_x_position(level, n_levels, xmin=0.01, xmax=1):
@@ -164,7 +171,7 @@ print "positive = galaxy, negative = star"
 print "false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp))
 print "false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn))
 
-plt.figure(figsize=(8, 10), facecolor='w')
+plt.figure(figsize=(5, 7), facecolor='w')
 plt.axes([0, 0, 1, 1], xticks=[], yticks=[], frameon=False)
 visualize_tree(clf, mag_train, label_train,
                labels=([r'$\rm %s\_mod$' % f for f in 'ugriz'] +
@@ -174,7 +181,6 @@ plt.text(0.1, 0.95, (" Numbers are\n"
                      " star count / galaxy count\n"
                      " in each node"),
          ha='center', va='center',
-         fontsize=12,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
 
 plt.text(-0.08, 0.01, ("Training Set Size:\n"
@@ -187,7 +193,7 @@ plt.text(-0.08, 0.01, ("Training Set Size:\n"
                        % (len(label_train), tot_pos, tot_neg,
                           fp, fp * 100. / (tp + fp),
                           fn, fn * 100. / (tn + fn))),
-         fontsize=12, ha='left', va='bottom')
+         ha='left', va='bottom')
 
 #--------------------------------------------------
 # compute statistics for a larger training set

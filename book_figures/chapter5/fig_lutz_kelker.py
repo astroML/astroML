@@ -13,9 +13,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.stats import median_sigmaG
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 
 def generate_magnitudes(N, k=0.6, m_min=20, m_max=25):
@@ -78,7 +82,7 @@ ax = fig.add_subplot(121)
 ax.plot(mGrid, sigGrid, '-k', label='scatter')
 ax.plot(mGrid, medGrid, '--k', label='bias')
 ax.plot(mGrid, 0 * mGrid, ':k', lw=1)
-ax.legend(loc=2, prop=dict(size=9))
+ax.legend(loc=2)
 
 ax.set_xlabel(r'$m_{\rm obs}$')
 ax.set_ylabel('bias/scatter (mag)')
@@ -94,7 +98,7 @@ for l in ax.yaxis.get_minorticklines():
 ax = fig.add_subplot(122)
 ax.plot(pErrGrid, med2, '-k', label='$p=2$')
 ax.plot(pErrGrid, med4, '--k', label='$p=4$')
-ax.legend(loc=2, prop=dict(size=9))
+ax.legend(loc=2)
 ax.set_xlabel(r'$\sigma_\pi / \pi$')
 ax.set_ylabel('absolute magnitude bias')
 ax.xaxis.set_major_locator(plt.MultipleLocator(0.1))
