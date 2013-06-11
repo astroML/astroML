@@ -105,7 +105,7 @@ im = ax.scatter(X[-N_plot:, 1], X[-N_plot:, 0], c=y[-N_plot:],
                 s=4, lw=0, cmap=plt.cm.binary, zorder=2)
 im.set_clim(-0.5, 1)
 
-ax.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
+ax.contour(xx, yy, Z, [0.5], colors='k')
 
 ax.set_xlim(xlim)
 ax.set_ylim(ylim)

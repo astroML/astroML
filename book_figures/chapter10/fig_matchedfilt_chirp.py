@@ -119,5 +119,5 @@ plt.ylabel(r'$h_{\rm obs}$')
 
 # This function plots multiple panels with the traces
 plot_mcmc(traces, labels=labels, limits=limits, true_values=true, fig=fig,
-          bins=30, bounds=[0.12, 0.08, 0.95, 0.91], colors='k', linewidths=2)
+          bins=30, bounds=[0.12, 0.08, 0.95, 0.91], colors='k')
 plt.show()

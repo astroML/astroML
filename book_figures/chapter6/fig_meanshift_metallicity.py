@@ -84,7 +84,7 @@ for i in range(n_clusters):
 
     ax.contour(0.5 * (FeH_bins[1:] + FeH_bins[:-1]),
                0.5 * (alphFe_bins[1:] + alphFe_bins[:-1]),
-               H.T, bins, colors='w', linewidths=2)
+               H.T, bins, colors='w')
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(0.3))
 ax.set_xlim(-1.101, 0.101)

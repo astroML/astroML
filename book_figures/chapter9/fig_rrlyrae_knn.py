@@ -94,7 +94,7 @@ im = ax.imshow(Z, origin='lower', aspect='auto',
                extent=xlim + ylim)
 im.set_clim(0, 2)
 
-ax.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
+ax.contour(xx, yy, Z, [0.5], colors='k')
 
 ax.set_xlim(xlim)
 ax.set_ylim(ylim)

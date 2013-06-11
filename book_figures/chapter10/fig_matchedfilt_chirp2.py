@@ -134,7 +134,7 @@ fig = plt.figure(figsize=(5, 5))
 # This function plots multiple panels with the traces
 axes_list = plot_mcmc(traces, labels=labels, limits=limits,
                       true_values=true, fig=fig,
-                      bins=30, colors='k', linewidths=2,
+                      bins=30, colors='k',
                       bounds=[0.14, 0.08, 0.95, 0.95])
 
 for ax in axes_list:

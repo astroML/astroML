@@ -166,7 +166,7 @@ Z = Z.reshape(xx.shape)
 #from scipy.ndimage import gaussian_filter
 #Z = gaussian_filter(Z, 2)
 
-plt.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
+plt.contour(xx, yy, Z, [0.5], colors='k')
 
 plt.xlim(xlim)
 plt.ylim(ylim)

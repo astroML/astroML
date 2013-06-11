@@ -86,7 +86,7 @@ ax_list = plot_mcmc([S.trace(s)[:] for s in ['A', 'x0', 'sigma']],
                     labels=['$A$', '$\mu$', r'$\sigma$'],
                     bounds=(0.1, 0.1, 0.95, 0.95),
                     true_values=[A_true, x0_true, sigma_true],
-                    fig=fig, colors='k', linewidths=2)
+                    fig=fig, colors='k')
 
 ax = plt.axes([0.62, 0.62, 0.33, 0.33])
 x_pdf = np.linspace(0, 10, 100)

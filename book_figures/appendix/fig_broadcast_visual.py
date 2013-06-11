@@ -81,7 +81,7 @@ def draw_cube(ax, xy, size, depth=0.4,
 
 solid = dict(c='black', ls='-', lw=1,
              label_kwargs=dict(color='k'))
-dotted = dict(c='black', ls=':', lw=1,
+dotted = dict(c='black', ls=':', lw=0.5,
               label_kwargs=dict(color='gray'))
 depth = 0.3
 

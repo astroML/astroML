@@ -69,7 +69,7 @@ ax = fig.add_subplot(211)
 ax.plot(lam, spec, '-', c='gray', lw=1)
 ax.plot(lam, spec_filtered, '-k')
 
-ax.text(0.99, 0.95, "SDSS white dwarf\n %i-%i-%i" % (mjd, plate, fiber),
+ax.text(0.97, 0.93, "SDSS white dwarf\n %i-%i-%i" % (mjd, plate, fiber),
         ha='right', va='top', transform=ax.transAxes)
 
 ax.set_ylim(25, 110)

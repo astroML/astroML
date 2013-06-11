@@ -68,7 +68,7 @@ ax.hist(mu1_raw, np.linspace(0.996, 1.008, 100),
 ax.hist(mu2_raw, np.linspace(0.996, 1.008, 100),
         label=r'$\sigma_G^*\ {\rm (quartile)}$',
         histtype='stepfilled', fc='gray', normed=False)
-ax.legend(loc='upper left')
+ax.legend(loc='upper left', handlelength=2)
 
 ax.xaxis.set_major_locator(plt.MultipleLocator(0.004))
 ax.set_xlabel(r'$\sigma^*$')
@@ -85,7 +85,7 @@ ax.plot(x, pdf1_theory.pdf(x), color='gray', zorder=1)
 ax.plot(x, pdf2_jackknife.pdf(x),
         color='red', label=r'$\sigma_G\ {\rm (quartile)}$', zorder=2)
 ax.plot(x, pdf2_theory.pdf(x), color='gray', zorder=1)
-plt.legend(loc='upper left')
+plt.legend(loc='upper left', handlelength=2)
 
 ax.set_xlabel(r'$\sigma$')
 ax.set_ylabel(r'$p(\sigma|x,I)$')

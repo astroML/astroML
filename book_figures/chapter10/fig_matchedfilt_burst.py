@@ -106,7 +106,7 @@ fig.subplots_adjust(bottom=0.1, top=0.95,
 
 # This function plots multiple panels with the traces
 plot_mcmc(traces, labels=labels, limits=limits, true_values=true, fig=fig,
-          bins=30, colors='k', linewidths=2)
+          bins=30, colors='k')
 
 # Plot the model fit
 ax = fig.add_axes([0.5, 0.7, 0.45, 0.25])
