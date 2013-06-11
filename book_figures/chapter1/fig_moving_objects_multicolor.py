@@ -116,8 +116,7 @@ ax.set_xlabel(r'${\rm a (AU)}$', color='w')
 ax.set_ylabel(r'${\rm sin(i)}$', color='w')
 
 # label the plot
-text_kwargs = dict(color='w', fontsize=8,
-                   transform=plt.gca().transAxes,
+text_kwargs = dict(color='w', transform=plt.gca().transAxes,
                    ha='center', va='bottom')
 
 ax.text(0.25, 1.02, 'Inner', **text_kwargs)

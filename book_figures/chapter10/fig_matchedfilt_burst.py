@@ -19,6 +19,14 @@ import pymc
 from astroML.plotting.mcmc import plot_mcmc
 from astroML.decorators import pickle_results
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 
 #----------------------------------------------------------------------
 # Set up toy dataset
@@ -91,7 +99,7 @@ true = [b0_true, A_true, T_true, alpha_true]
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(bottom=0.1, top=0.95,
                     left=0.1, right=0.95,
                     hspace=0.05, wspace=0.05)

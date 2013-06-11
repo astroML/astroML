@@ -14,6 +14,14 @@ from matplotlib import pyplot as plt
 
 from astroML.fourier import FT_continuous, IFT_continuous
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 
 def wavelet(t, t0, f0, Q):
     return (np.exp(-(f0 / Q * (t - t0)) ** 2)
@@ -56,7 +64,7 @@ t, HW = IFT_continuous(f, H * W)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(hspace=0.05, left=0.12, right=0.95, bottom=0.08, top=0.95)
 
 # First panel: the signal
@@ -78,14 +86,13 @@ W = wavelet(t, 0, 0.125, Q)
 ax.plot(t, W.real, '-k', label='real part', lw=1)
 ax.plot(t, W.imag, '--k', label='imag part', lw=1)
 
-ax.legend(loc=1, prop=dict(size=14))
+ax.legend(loc=1)
 ax.text(0.02, 0.95, ("Example Wavelet\n"
                      "$t_0 = 0$, $f_0=1/8$, $Q=0.3$"),
         ha='left', va='top', transform=ax.transAxes)
 ax.text(0.98, 0.05,
         (r"$w(t; t_0, f_0, Q) = e^{-[f_0 (t - t_0) / Q]^2}"
          "e^{2 \pi i f_0 (t - t_0)}$"),
-        fontsize=14,
         ha='right', va='bottom', transform=ax.transAxes)
 
 ax.set_xlim(-40, 40)

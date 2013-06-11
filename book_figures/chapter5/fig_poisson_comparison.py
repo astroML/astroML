@@ -14,9 +14,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.stats.random import linear
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 
 def logL_continuous(x, a, xmin, xmax):
@@ -95,6 +99,6 @@ ax.set_ylim(ylim)
 ax.set_xlabel('$a$')
 ax.set_ylabel('$p(a)$')
 
-ax.legend(loc=2, prop=dict(size=8))
+ax.legend(loc=2)
 
 plt.show()

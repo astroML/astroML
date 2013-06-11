@@ -13,6 +13,14 @@ from matplotlib import pyplot as plt
 from astroML.time_series import multiterm_periodogram, lomb_scargle_BIC
 from astroML.datasets import fetch_LINEAR_sample
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Fetch the data
 data = fetch_LINEAR_sample()
@@ -37,7 +45,7 @@ for i, omega in enumerate([omega1, omega2]):
 
 #----------------------------------------------------------------------
 # Plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 
 ax = [fig.add_axes((0.15, 0.53, 0.8, 0.37)),
       fig.add_axes((0.15, 0.1, 0.8, 0.37))]
@@ -52,7 +60,7 @@ for i in range(2):
     ax[i].plot(terms, BIC_max[i], '-k')
     ax[i].set_xlim(0, 20)
     ax[i].set_ylim(0, 30000)
-    ax[i].text(0.02, 0.98, r"$\omega_0 = %.2f$" % omega0[i],
+    ax[i].text(0.02, 0.95, r"$\omega_0 = %.2f$" % omega0[i],
                ha='left', va='top', transform=ax[i].transAxes)
 
     ax[i].set_ylabel(r'$\Delta BIC$')

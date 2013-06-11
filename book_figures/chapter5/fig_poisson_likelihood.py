@@ -17,9 +17,13 @@ from scipy import stats, interpolate
 from astroML.stats.random import linear
 from astroML.plotting.mcmc import convert_to_stdev
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 
 def logL_gaussian(xi, yi, a, b):
@@ -121,7 +125,7 @@ for num, nbins in enumerate([5, 40]):
     # trick the legend command
     ax.plot([0], [0], '-k', lw=2, label='Poisson Likelihood')
     ax.plot([0], [0], '-', c='gray', lw=1, label='Gaussian Likelihood')
-    ax.legend(loc=1, prop=dict(size=8))
+    ax.legend(loc=1)
 
     # plot horizontal and vertical lines
     #  in newer matplotlib versions, use ax.vlines() and ax.hlines()

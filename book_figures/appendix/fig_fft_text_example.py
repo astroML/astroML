@@ -15,6 +15,14 @@ from scipy import fftpack
 
 from astroML.fourier import FT_continuous, sinegauss, sinegauss_FT
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Choose parameters for the wavelet
 N = 10000
@@ -36,14 +44,14 @@ rms_err = np.sqrt(np.mean(abs(H - sinegauss_FT(f, t0, f0, Q)) ** 2))
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.25)
 
 # plot the wavelet
 ax = fig.add_subplot(211)
 ax.plot(t, h.real, '-', c='black', label='$Re[h]$', lw=1)
 ax.plot(t, h.imag, ':', c='black', label='$Im[h]$', lw=1)
-ax.legend(prop=dict(size=14))
+ax.legend()
 
 ax.set_xlim(2, 8)
 ax.set_ylim(-1.2, 1.2)
@@ -55,7 +63,7 @@ ax = fig.add_subplot(212)
 ax.plot(f, H.real, '-', c='black', label='$Re[H]$', lw=1)
 ax.plot(f, H.imag, ':', c='black', label='$Im[H]$', lw=1)
 ax.text(0.55, 1.5, "RMS Error = %.2g" % rms_err)
-ax.legend(prop=dict(size=14))
+ax.legend()
 
 ax.set_xlim(0.5, 3.5)
 ax.set_ylim(-1.9, 1.9)

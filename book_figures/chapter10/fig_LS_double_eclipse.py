@@ -13,6 +13,14 @@ from matplotlib import pyplot as plt
 from astroML.time_series import multiterm_periodogram, MultiTermFit
 from astroML.datasets import fetch_LINEAR_sample
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Get data
 data = fetch_LINEAR_sample()
@@ -28,7 +36,7 @@ nterms_fit = 6
 t -= 0.4 * np.pi / omega0
 
 width = 0.03
-omega = np.linspace(omega0 - width, omega0 + width, 1000)
+omega = np.linspace(omega0 - width - 0.01, omega0 + width - 0.01, 1000)
 
 #------------------------------------------------------------
 # Compute periodograms and best-fit solutions
@@ -61,9 +69,9 @@ for f in factors:
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(12, 6))
-fig.subplots_adjust(left=0.07, right=0.95, wspace=0.18,
-                    bottom=0.1, top=0.95, hspace=0.12)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
+                    bottom=0.12, top=0.95, hspace=0.2)
 
 for i, f in enumerate(factors):
     P_best = 2 * np.pi / omega_best[f]
@@ -74,7 +82,7 @@ for i, f in enumerate(factors):
     ax1.plot(omega / f, PSDs[(f, 6)], '-', c='black', label='6 terms')
     ax1.plot(omega / f, PSDs[(f, 1)], '-', c='gray', label='1 term')
     ax1.grid(color='gray')
-    ax1.legend(loc=1, prop=dict(size=14))
+    ax1.legend(loc=2)
 
     ax1.axis('tight')
     ax1.set_ylim(-0.05, 1.001)
@@ -83,7 +91,8 @@ for i, f in enumerate(factors):
 
     # second column: plot the phased data & fit
     ax2 = fig.add_subplot(222 + 2 * i)
-    ax2.errorbar(phase_best, y, dy, fmt='.k', ecolor='gray', lw=1)
+    ax2.errorbar(phase_best, y, dy, fmt='.k', ms=4, ecolor='gray', lw=1,
+                 capsize=1.5)
     ax2.plot(best_fit[(f, 1)][0], best_fit[(f, 1)][1], '-', c='gray')
     ax2.plot(best_fit[(f, 6)][0], best_fit[(f, 6)][1], '-', c='black')
 

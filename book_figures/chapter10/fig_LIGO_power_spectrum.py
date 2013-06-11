@@ -16,6 +16,14 @@ from matplotlib import mlab
 
 from astroML.datasets import fetch_LIGO_large
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Fetch the LIGO hanford data
 data, dt = fetch_LIGO_large()
@@ -69,7 +77,7 @@ PSDW2 = PSDW2[cutoff]
 
 #------------------------------------------------------------
 # Plot the data
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(bottom=0.1, top=0.9, hspace=0.3)
 
 # top panel: time series

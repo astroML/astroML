@@ -14,9 +14,13 @@ from scipy import stats
 from astroML.density_estimation import KDE, KNeighborsDensity
 from astroML.plotting import hist
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Generate our data: a mix of several Cauchy distributions
@@ -73,7 +77,7 @@ for N, k, subplot in zip(N_values, k_values, subplots):
     ax.text(0.02, 0.95, "%i points" % N, ha='left', va='top',
             transform=ax.transAxes)
     ax.set_ylabel('$p(x)$')
-    ax.legend(loc='upper right', prop=dict(size=8))
+    ax.legend(loc='upper right')
 
     if subplot == 212:
         ax.set_xlabel('$x$')

@@ -11,9 +11,17 @@ Download and plot the five SDSS filter bands along with a Vega spectrum.
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_sdss_filter, fetch_vega_spectrum
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Set up figure and axes
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 ax = fig.add_subplot(111)
 
 #----------------------------------------------------------------------
@@ -21,11 +29,11 @@ ax = fig.add_subplot(111)
 spec = fetch_vega_spectrum()
 lam = spec[0]
 spectrum = spec[1] / 2.1 / spec[1].max()
-ax.plot(lam, spectrum, '-k', lw=2)
+ax.plot(lam, spectrum, '-k')
 
 #------------------------------------------------------------
 # Fetch and plot the five filters
-text_kwargs = dict(fontsize=20, ha='center', va='center', alpha=0.5)
+text_kwargs = dict(ha='center', va='center', alpha=0.5, fontsize=14)
 
 for f, c, loc in zip('ugriz', 'bgrmk', [3500, 4600, 6100, 7500, 8800]):
     data = fetch_sdss_filter(f)

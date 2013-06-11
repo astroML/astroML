@@ -12,6 +12,14 @@ data and window function in both temporal space and frequency space.
 import numpy as np
 from matplotlib import pyplot as plt
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 
 def gaussian(x, a=1.0):
     return np.exp(-0.5 * (x / a) ** 2)
@@ -44,8 +52,8 @@ for dt in (0.9, 1.5):
     f_sample = df * (np.arange(N) - N / 2)
 
     # Plot the results
-    fig = plt.figure(figsize=(8, 4))
-    fig.subplots_adjust(left=0.06, right=0.95, wspace=0.12,
+    fig = plt.figure(figsize=(5, 2.5))
+    fig.subplots_adjust(left=0.07, right=0.95, wspace=0.16,
                         bottom=0.1, top=0.85, hspace=0.05)
 
     # First plot: sampled time-series
@@ -57,14 +65,14 @@ for dt in (0.9, 1.5):
                     arrowprops=dict(arrowstyle='->'))
     ax.text(0.03, 0.95,
             ("Signal and Sampling Window\n" +
-             r"Sampling Rate $\Delta t$"), size=11,
+             r"Sampling Rate $\Delta t$"),
             ha='left', va='top', transform=ax.transAxes)
     ax.set_ylabel('$h(t)$')
     ax.set_xlim(-5, 5)
     ax.set_ylim(0, 1.4)
     ax.xaxis.set_major_formatter(plt.NullFormatter())
     ax.yaxis.set_major_formatter(plt.NullFormatter())
-    ax.set_title('Time Domain: Multiplication', size=12)
+    ax.set_title('Time Domain: Multiplication')
 
     # second plot: frequency space
     ax = fig.add_subplot(222)
@@ -74,14 +82,14 @@ for dt in (0.9, 1.5):
                     arrowprops=dict(arrowstyle='->'))
     ax.text(0.03, 0.95,
             ("FT of Signal and Sampling Window\n" +
-             r"$\Delta f = 1 / \Delta t$"), size=11,
+             r"$\Delta f = 1 / \Delta t$"),
             ha='left', va='top', transform=ax.transAxes)
     ax.set_ylabel('$H(f)$')
     ax.set_xlim(-1.5, 1.5)
     ax.set_ylim(0, 3.8)
     ax.xaxis.set_major_formatter(plt.NullFormatter())
     ax.yaxis.set_major_formatter(plt.NullFormatter())
-    ax.set_title('Frequency Domain: Convolution', size=12)
+    ax.set_title('Frequency Domain: Convolution')
 
     # third plot: windowed function
     ax = fig.add_subplot(223)
@@ -92,7 +100,7 @@ for dt in (0.9, 1.5):
                     arrowprops=dict(arrowstyle='->'))
     ax.plot(t, h, ':k')
     ax.text(0.03, 0.95, "Sampled signal: pointwise\nmultiplication",
-            size=11, ha='left', va='top', transform=ax.transAxes)
+            ha='left', va='top', transform=ax.transAxes)
     ax.set_xlabel('$t$')
     ax.set_ylabel('$h(t)$')
     ax.set_xlim(-5, 5)
@@ -107,7 +115,7 @@ for dt in (0.9, 1.5):
     if dt > 1:
         ax.plot(f, window.T, ':k')
     ax.text(0.03, 0.95, "Convolution of signal FT\nand window FT",
-            size=11, ha='left', va='top', transform=ax.transAxes)
+            ha='left', va='top', transform=ax.transAxes)
     ax.set_xlabel('$f$')
     ax.set_ylabel('$H(f)$')
     ax.set_xlim(-1.5, 1.5)

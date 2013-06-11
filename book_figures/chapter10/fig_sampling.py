@@ -15,6 +15,14 @@ from matplotlib import pyplot as plt
 
 from astroML.time_series import lomb_scargle
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Generate the data
 np.random.seed(42)
@@ -45,21 +53,21 @@ omega /= 2 * np.pi
 
 #------------------------------------------------------------
 # Prepare the figures
-fig = plt.figure(figsize=(8, 4))
-fig.subplots_adjust(bottom=0.15, hspace=0.35, wspace=0.2,
-                    left=0.1, right=0.95)
+fig = plt.figure(figsize=(5, 2.5))
+fig.subplots_adjust(bottom=0.15, hspace=0.35, wspace=0.25,
+                    left=0.11, right=0.95)
 
 ax = fig.add_subplot(221)
 ax.plot(t, y, '-', c='gray')
 ax.errorbar(t_obs, y_obs1, dy1, fmt='.k', capsize=1, ecolor='#444444')
-ax.text(0.97, 0.95, "Data", ha='right', va='top', transform=ax.transAxes)
+ax.text(0.96, 0.92, "Data", ha='right', va='top', transform=ax.transAxes)
 ax.set_ylim(-1.5, 1.8)
 ax.set_xlabel('$t$')
 ax.set_ylabel('$y(t)$')
 
 ax = fig.add_subplot(223)
 ax.plot(omega, P_window, '-', c='black')
-ax.text(0.97, 0.95, "Window PSD", ha='right', va='top', transform=ax.transAxes)
+ax.text(0.96, 0.92, "Window PSD", ha='right', va='top', transform=ax.transAxes)
 ax.set_ylim(-0.1, 1.1)
 ax.set_xlabel('$f$')
 ax.set_ylabel(r'$P_{\rm LS}(f)$')
@@ -67,7 +75,7 @@ ax.set_ylabel(r'$P_{\rm LS}(f)$')
 ax = fig.add_subplot(222)
 ax.fill(omega, P_true, fc='gray', ec='gray')
 ax.plot(omega, P_obs1, '-', c='black')
-ax.text(0.97, 0.95, "Data PSD", ha='right', va='top', transform=ax.transAxes)
+ax.text(0.96, 0.92, "Data PSD", ha='right', va='top', transform=ax.transAxes)
 ax.set_ylim(-0.1, 1.1)
 ax.set_xlabel('$f$')
 ax.set_ylabel(r'$P_{\rm LS}(f)$')
@@ -75,7 +83,7 @@ ax.set_ylabel(r'$P_{\rm LS}(f)$')
 ax = fig.add_subplot(224)
 ax.fill(omega, P_true, fc='gray', ec='gray')
 ax.plot(omega, P_obs2, '-', c='black')
-ax.text(0.97, 0.95, "Data PSD\n(10x errors)",
+ax.text(0.96, 0.92, "Data PSD\n(10x errors)",
         ha='right', va='top', transform=ax.transAxes)
 ax.set_ylim(-0.1, 1.1)
 ax.set_xlabel('$f$')

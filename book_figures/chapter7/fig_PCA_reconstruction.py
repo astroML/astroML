@@ -16,9 +16,13 @@ from matplotlib import ticker
 from astroML.datasets import fetch_sdss_corrected_spectra
 from astroML.datasets import sdss_corrected_spectra
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Get spectra and eigenvectors used to reconstruct them
@@ -78,7 +82,7 @@ for subplot, i in zip(subplots, specnums):
     ax.yaxis.set_major_formatter(ticker.NullFormatter())
 
     if subplot == 311:
-        ax.legend(loc=1, prop=dict(size=8))
+        ax.legend(loc=1)
 
     ax.set_xlabel('$\lambda\ (\AA)$')
     ax.set_ylabel('normalized flux')

@@ -15,6 +15,14 @@ from astroML.fourier import PSD_continuous
 from astroML.datasets import fetch_sdss_spectrum
 from astroML.filters import min_component_filter
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Fetch the spectrum from SDSS database & pre-process
 plate = 659
@@ -53,7 +61,7 @@ f, spec_PSD = PSD_continuous(loglam, spec)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.25)
 
 # Top panel: plot noisy and smoothed spectrum
@@ -62,7 +70,7 @@ ax.plot(lam, spec, '-', c='gray', lw=1)
 ax.plot(lam, spec_filtered, '-k')
 
 ax.text(0.99, 0.95, "SDSS white dwarf\n %i-%i-%i" % (mjd, plate, fiber),
-        ha='right', va='top', transform=ax.transAxes, fontsize=12)
+        ha='right', va='top', transform=ax.transAxes)
 
 ax.set_ylim(25, 110)
 

@@ -17,6 +17,14 @@ from astroML.time_series import\
     lomb_scargle, search_frequencies, multiterm_periodogram
 from astroML.datasets import fetch_LINEAR_sample
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #id, period = 11375941, 58.4
 id, period = 18525697, 17.05
 
@@ -29,6 +37,8 @@ t, y, dy = data[id].T
 #exit()
 
 omega = np.linspace(period, period + 0.1, 1000)
+fig = plt.figure(figsize=(5, 3.75))
+
 ax = plt.subplot(211)
 for n_terms in [1, 2, 3]:
     P1 = multiterm_periodogram(t, y, dy, omega, n_terms=n_terms)

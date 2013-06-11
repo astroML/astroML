@@ -13,6 +13,14 @@ from matplotlib import pyplot as plt
 
 from astroML.fourier import FT_continuous, IFT_continuous, wavelet_PSD
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 
 #------------------------------------------------------------
 # Define the chirp signal
@@ -37,13 +45,13 @@ wPSD = wavelet_PSD(t, h, f0, Q=1.0)
 
 #------------------------------------------------------------
 # Plot the  results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.05, left=0.1, right=0.95, bottom=0.1, top=0.95)
 
 # Top: plot the data
 ax = fig.add_subplot(211)
-ax.plot(t + 50, h, '-', c='#AAAAAA', lw=1)
-ax.plot(t + 50, h_true, '-k', lw=2)
+ax.plot(t + 50, h, '-', c='#AAAAAA')
+ax.plot(t + 50, h_true, '-k')
 
 ax.text(0.02, 0.95, "Input Signal: chirp",
         ha='left', va='top', transform=ax.transAxes,

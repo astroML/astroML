@@ -21,6 +21,14 @@ import pymc
 from astroML.plotting.mcmc import plot_mcmc
 from astroML.decorators import pickle_results
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Create  some  data
 np.random.seed(1)
@@ -102,10 +110,7 @@ true = [r0_true, a_true, phi_true, omega_true]
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
-fig.subplots_adjust(bottom=0.1, top=0.95,
-                    left=0.12, right=0.95,
-                    hspace=0.05, wspace=0.05)
+fig = plt.figure(figsize=(5, 5))
 
 # This function plots multiple panels with the traces
 plot_mcmc(traces, labels=labels, limits=limits, true_values=true, fig=fig,
@@ -114,7 +119,7 @@ plot_mcmc(traces, labels=labels, limits=limits, true_values=true, fig=fig,
 # Plot the model of arrival times
 ax = fig.add_axes([0.5, 0.75, 0.45, 0.2])
 ax.fill_between(t, 0, rate_func(t, r0_true, a_true, omega_true, phi_true),
-                facecolor='gray', edgecolor='black')
+                facecolor='#DDDDDD', edgecolor='black')
 ax.xaxis.set_major_formatter(plt.NullFormatter())
 ax.set_xlim(t[0], t[-1])
 ax.set_ylim(0, 20)
@@ -124,7 +129,7 @@ ax.set_ylabel('$r(t)$')
 ax = fig.add_axes([0.5, 0.7, 0.45, 0.04], yticks=[])
 t_obs = t[obs > 0]
 ax.scatter(t_obs, np.random.random(len(t_obs)),
-           marker='+', lw=1)
+           marker='+', color='k')
 ax.set_xlim(t[0], t[-1])
 ax.set_ylim(-0.3, 1.3)
 ax.set_xlabel('$t$')

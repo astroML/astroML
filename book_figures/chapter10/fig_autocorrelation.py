@@ -14,6 +14,14 @@ from matplotlib import pyplot as plt
 from astroML.time_series import lomb_scargle, generate_damped_RW
 from astroML.time_series import ACF_scargle, ACF_EK
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Generate time-series data:
 #  we'll do 1000 days worth of magnitudes
@@ -54,7 +62,7 @@ t_EK = 0.5 * (bins[1:] + bins[:-1])
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 
 # plot the input data
 ax = fig.add_subplot(211)
@@ -69,7 +77,7 @@ ax.plot(t_S, C_S, '-', c='gray', lw=1,
 ax.errorbar(t_EK, C_EK, C_EK_err, fmt='.k', lw=1,
             label='Edelson-Krolik')
 ax.plot(t_S, np.exp(-abs(t_S) / tau_obs), '-k', label='True')
-ax.legend(loc=3, prop=dict(size=14))
+ax.legend(loc=3)
 
 ax.plot(t_S, 0 * t_S, ':', lw=1, c='gray')
 

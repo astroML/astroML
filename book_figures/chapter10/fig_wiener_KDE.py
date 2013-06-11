@@ -17,6 +17,14 @@ from astroML.fourier import IFT_continuous
 from astroML.filters import wiener_filter
 
 #----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
+#----------------------------------------------------------------------
 # sample the same data as the previous Wiener filter figure
 np.random.seed(5)
 t = np.linspace(0, 100, 2001)[:-1]
@@ -52,7 +60,7 @@ h_smooth = np.dot(F, hN) / np.sum(F, 1)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 3.5))
+fig = plt.figure(figsize=(5, 2.2))
 fig.subplots_adjust(left=0.1, right=0.95, wspace=0.25,
                     bottom=0.15, top=0.9)
 
@@ -67,11 +75,11 @@ ax.set_ylim(-0.05, 0.45)
 ax.set_xlabel(r'$\lambda$')
 ax.set_ylabel(r'$K(\lambda)$')
 
-# Second axes: KDE-smoothed results
+# Second axes: Kernel smoothed results
 ax = fig.add_subplot(122)
 ax.plot(t_eval, h_smooth, '-k', lw=1)
 ax.plot(t_eval, 0 * t_eval, '-k', lw=1)
-ax.text(0.95, 0.95, "KDE smoothing result",
+ax.text(0.95, 0.95, "Kernel smoothing\nresult",
         ha='right', va='top', transform=ax.transAxes)
 
 ax.set_xlim(0, 90)

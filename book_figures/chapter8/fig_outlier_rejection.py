@@ -151,6 +151,7 @@ def model_M2(xi=xi, beta=beta_M2):
     return slope * xi + intercept
 
 # qi is bernoulli distributed
+# Note: this syntax requires pymc version 2.2
 qi = pymc.Bernoulli('qi', p=1 - Pb, value=np.ones(len(xi)))
 
 

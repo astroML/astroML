@@ -11,7 +11,15 @@ Gaussian Kernel Expansion Diagram
 import numpy as np
 from matplotlib import pyplot as plt
 
-plt.figure(facecolor='w')
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
+plt.figure(figsize=(5, 3.75), facecolor='w')
 ax = plt.axes([0, 0, 1, 1], frameon=False, xticks=[], yticks=[])
 
 ax.add_patch(plt.Rectangle((-0.5, -0.25), 0.8, 0.4,

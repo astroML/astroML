@@ -13,9 +13,13 @@ width :math:`W` when the posterior is assumed to be uniform.
 import numpy as np
 from matplotlib import pyplot as plt
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 
 def uniform_logL(x, W, mu):
@@ -75,13 +79,13 @@ ax.set_xlim(4.5, 5.5)
 ax.set_ylim(9.7, 10.7)
 
 ax1 = fig.add_axes([0.35, 0.1, 0.45, 0.23], yticks=[])
-ax1.plot(mu, p_mu)
+ax1.plot(mu, p_mu, '-k')
 ax1.set_xlabel(r'$\mu$')
 ax1.set_ylabel(r'$p(\mu)$')
 ax1.set_xlim(4.5, 5.5)
 
 ax2 = fig.add_axes([0.15, 0.35, 0.18, 0.6], xticks=[])
-ax2.plot(p_W, W)
+ax2.plot(p_W, W, '-k')
 ax2.set_xlabel(r'$p(W)$')
 ax2.set_ylabel(r'$W$')
 ax2.set_xlim(ax2.get_xlim()[::-1])  # reverse x axis

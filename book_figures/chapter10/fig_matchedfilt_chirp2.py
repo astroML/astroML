@@ -19,6 +19,14 @@ import pymc
 from astroML.decorators import pickle_results
 from astroML.plotting.mcmc import plot_mcmc
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 
 #----------------------------------------------------------------------
 # Set up toy dataset
@@ -121,7 +129,7 @@ true = [T_true, A_true, omega_true, beta_true]
 
 #------------------------------------------------------------
 # Plot results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 
 # This function plots multiple panels with the traces
 axes_list = plot_mcmc(traces, labels=labels, limits=limits,
@@ -133,7 +141,7 @@ for ax in axes_list:
     for axis in [ax.xaxis, ax.yaxis]:
         axis.set_major_locator(plt.MaxNLocator(5))
 
-ax = fig.add_axes([0.5, 0.7, 0.45, 0.25])
+ax = fig.add_axes([0.52, 0.7, 0.43, 0.25])
 ax.scatter(t, y_obs, s=9, lw=0, c='k')
 ax.plot(t_fit, y_fit, '-k')
 ax.set_xlim(0, 100)

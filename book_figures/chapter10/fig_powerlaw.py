@@ -18,6 +18,14 @@ from matplotlib import pyplot as plt
 from astroML.time_series import generate_power_law
 from astroML.fourier import PSD_continuous
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 N = 1024
 dt = 0.01
 factor = 100
@@ -25,7 +33,7 @@ factor = 100
 t = dt * np.arange(N)
 random_state = np.random.RandomState(1)
 
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(wspace=0.05)
 
 for i, beta in enumerate([1.0, 2.0]):
@@ -37,7 +45,7 @@ for i, beta in enumerate([1.0, 2.0]):
     ax1 = fig.add_subplot(221 + i)
     ax1.plot(t, x, '-k')
 
-    ax1.text(0.95, 0.05, r"$P(f) \propto f^{-%i}$" % beta, fontsize=14,
+    ax1.text(0.95, 0.05, r"$P(f) \propto f^{-%i}$" % beta,
              ha='right', va='bottom', transform=ax1.transAxes)
 
     ax1.set_xlim(0, 10.24)

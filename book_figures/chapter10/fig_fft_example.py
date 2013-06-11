@@ -17,6 +17,14 @@ from scipy.stats import norm
 
 from astroML.fourier import PSD_continuous
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Draw the data
 np.random.seed(1)
@@ -27,7 +35,7 @@ hj *= norm(0, 10).pdf(tj)
 
 #------------------------------------------------------------
 # plot the results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.25)
 ax1 = fig.add_subplot(211)
 ax2 = fig.add_subplot(212)

@@ -16,9 +16,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from astroML.stats.random import trunc_exp
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Sample from a truncated exponential distribution
@@ -60,7 +64,7 @@ ax.plot(x_pdf, true_dist.pdf(x_pdf), '-k',
 ax.hist(h_obs, bins, histtype='stepfilled',
         alpha=0.3, fc='b', normed=True,
         label='observed distribution')
-ax.legend(loc=2, prop=dict(size=8))
+ax.legend(loc=2, handlelength=2)
 
 ax.add_patch(plt.Rectangle((hmin, 0), hmax - hmin, 1.2,
                            fc='gray', ec='k', linestyle='dashed',
@@ -82,7 +86,7 @@ ax.hist(h_obs[cut] - h_true[cut], bins, histtype='stepfilled',
 ax.hist(h_obs[rand] - h_true[rand], bins, histtype='step',
         color='k', linestyle='dashed', normed=True, label='random\nsample')
 ax.plot([0, 0], [0, 1], ':k')
-ax.legend(prop=dict(size=8), ncol=2, loc='upper center', frameon=False)
+ax.legend(ncol=2, loc='upper center', frameon=False, handlelength=1)
 
 ax.set_xlim(-4, 4)
 ax.set_ylim(0, 0.65)

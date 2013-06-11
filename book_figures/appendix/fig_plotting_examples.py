@@ -12,11 +12,19 @@ This file generates the example plots from the Appendix
 import numpy as np
 from matplotlib import pyplot as plt
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 np.random.seed(0)
 
 #------------------------------------------------------------
 # First Example: simple plot
-plt.figure(1)
+plt.figure(1, figsize=(5, 3.75))
 x = np.linspace(0, 2 * np.pi, 1000)
 y = np.sin(x)
 plt.plot(x, y)
@@ -30,7 +38,7 @@ plt.title('Simple Sinusoid Plot')
 
 #------------------------------------------------------------
 # Second Example: error-bars over simple plot
-plt.figure(2)
+plt.figure(2, figsize=(5, 3.75))
 x = np.linspace(0, 2 * np.pi, 1000)
 y = np.sin(x)
 plt.plot(x, y)
@@ -49,7 +57,7 @@ plt.errorbar(x_obs, y_obs, 0.1, fmt='.', color='black')
 
 #------------------------------------------------------------
 # Third Example: histogram
-plt.figure(3)
+plt.figure(3, figsize=(5, 3.75))
 x = np.random.normal(size=1000)
 plt.hist(x, bins=50)
 plt.xlabel('x')
@@ -65,7 +73,7 @@ y = np.sin(x)
 x2 = np.linspace(0, 16, 1000)
 spl = interpolate.UnivariateSpline(x, y, s=0)
 
-plt.figure()
+plt.figure(4, figsize=(5, 3.75))
 plt.plot(x, y, 'ok')
 plt.plot(x2, spl(x2), '-k')
 plt.ylim(-1.3, 1.3)

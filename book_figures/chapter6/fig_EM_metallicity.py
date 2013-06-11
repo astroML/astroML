@@ -98,7 +98,7 @@ ax.text(0.93, 0.93, "Input",
 ax = fig.add_subplot(132)
 ax.plot(N, AIC, '-k', label='AIC')
 ax.plot(N, BIC, ':k', label='BIC')
-ax.legend(loc=1, prop=dict(size=8))
+ax.legend(loc=1)
 ax.set_xlabel('N components')
 plt.setp(ax.get_yticklabels(), fontsize=7)
 

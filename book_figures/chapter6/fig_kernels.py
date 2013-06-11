@@ -11,9 +11,13 @@ Plot three One-dimensional kernels: the Gaussian, Exponential, and Top-Hat
 import numpy as np
 from matplotlib import pyplot as plt
 
-# Adjust font sizes for text
-import matplotlib
-matplotlib.rc('font', size=8)
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Compute Kernels.
@@ -33,8 +37,8 @@ fig = plt.figure(figsize=(5, 3.75))
 ax = fig.add_subplot(111)
 
 ax.plot(x, gauss, '-', c='black', lw=3, label='Gaussian')
-ax.plot(x, exp, '-', c='gray', lw=2, label='Exponential')
-ax.plot(x, tophat, '-', c='black', lw=1, label='Top-hat')
+ax.plot(x, exp, '-', c='#666666', lw=2, label='Exponential')
+ax.plot(x, tophat, '-', c='#999999', lw=1, label='Top-hat')
 
 ax.legend(loc=1)
 

@@ -11,7 +11,15 @@ Ball Dual-tree Diagram
 import numpy as np
 from matplotlib import pyplot as plt
 
-fig = plt.figure(figsize=(8, 4))
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
+fig = plt.figure(figsize=(5, 2.5))
 fig.subplots_adjust(left=0.05, right=0.95,
                     bottom=0.05, top=0.95)
 
@@ -37,19 +45,19 @@ ax.arrow(-0.5, 0.5, -0.16, 0.26, width=0.01, lw=0, color='gray',
 ax.arrow(0.5, 0.5, 0.19, 0.29, width=0.01, lw=0, color='gray',
          length_includes_head=True, zorder=1)
 
-ax.text(-0.8, 0.7, r'$Q$', ha='left', va='bottom', fontsize=18)
-ax.text(0.8, 0.7, r'$R$', ha='left', va='bottom', fontsize=18)
+ax.text(-0.8, 0.7, r'$Q$', ha='left', va='bottom', fontsize=12)
+ax.text(0.8, 0.7, r'$R$', ha='left', va='bottom', fontsize=12)
 
-ax.text(-0.55, 0.55, r'$r_Q$', ha='left', va='bottom', fontsize=18)
-ax.text(0.5, 0.6, r'$r_R$', ha='left', va='bottom', fontsize=18)
+ax.text(-0.55, 0.6, r'$r_Q$', ha='left', va='bottom', fontsize=12)
+ax.text(0.5, 0.65, r'$r_R$', ha='left', va='bottom', fontsize=12)
 
-ax.text(-0.5, 0.48, r'$\vec{\mu}_Q$', ha='left', va='top', fontsize=18)
-ax.text(0.5, 0.48, r'$\vec{\mu}_R$', ha='left', va='top', fontsize=18)
+ax.text(-0.5, 0.48, r'$\vec{\mu}_Q$', ha='left', va='top', fontsize=12)
+ax.text(0.5, 0.48, r'$\vec{\mu}_R$', ha='left', va='top', fontsize=12)
 
-ax.text(0, -0.1, r'$D^l(Q, R) = |\vec{\mu}_Q - \vec{\mu}_R| - r_Q - r_R$',
-        va='bottom', ha='center', fontsize=18)
+ax.text(0, -0.08, r'$D^l(Q, R) = |\vec{\mu}_Q - \vec{\mu}_R| - r_Q - r_R$',
+        va='bottom', ha='center', fontsize=12)
 ax.text(0, 0.02, r'$D^u(Q, R) = |\vec{\mu}_Q - \vec{\mu}_R| + r_Q + r_R$',
-        va='bottom', ha='center', fontsize=18)
+        va='bottom', ha='center', fontsize=12)
 
 ax.set_xlim(-1, 1)
 ax.set_ylim(-0.1, 1)

@@ -13,6 +13,14 @@ from matplotlib import pyplot as plt
 
 from astroML.fourier import FT_continuous, IFT_continuous, sinegauss
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Set up the wavelets
 t0 = 0
@@ -25,7 +33,7 @@ W = sinegauss(t, t0, f0[:, None], Q[:, None])
 
 #------------------------------------------------------------
 # Plot the wavelets
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.05, wspace=0.05)
 
 # in each panel, plot and label a different wavelet
@@ -34,8 +42,8 @@ for i in range(4):
     ax.plot(t, W[i].real, '-k')
     ax.plot(t, W[i].imag, '--k')
 
-    ax.text(0.02, 0.98, "$f_0 = %i$\n$Q = %.1f$" % (f0[i], Q[i]),
-            ha='left', va='top', transform=ax.transAxes, size=14)
+    ax.text(0.04, 0.95, "$f_0 = %i$\n$Q = %.1f$" % (f0[i], Q[i]),
+            ha='left', va='top', transform=ax.transAxes)
 
     ax.set_ylim(-1.2, 1.2)
     ax.set_xlim(-0.35, 0.35)

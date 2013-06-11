@@ -15,6 +15,14 @@ from sklearn.mixture import GMM
 from astroML.decorators import pickle_results
 from astroML.datasets import fetch_LINEAR_geneva
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Get the Geneva periods data
 data = fetch_LINEAR_geneva()
@@ -60,7 +68,7 @@ clfs = compute_GMM_results(components, attributes)
 
 #------------------------------------------------------------
 # Plot the results
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(hspace=0.1, wspace=0.1)
 
 class_labels = []
@@ -186,7 +194,7 @@ for i in range(2):
 
 #------------------------------------------------------------
 # Second figure
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(5, 5))
 fig.subplots_adjust(left=0.11, right=0.95, wspace=0.3)
 
 attrs = ['skew', 'ug', 'iK', 'JK']

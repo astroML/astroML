@@ -17,6 +17,14 @@ from scipy import fftpack
 from astroML.fourier import PSD_continuous
 from astroML.datasets import fetch_sdss_spectrum
 
+#----------------------------------------------------------------------
+# This function adjusts matplotlib settings for a uniform feel in the textbook.
+# Note that with usetex=True, fonts are rendered with LaTeX.  This may
+# result in an error if LaTeX is not installed on your system.  In that case,
+# you can set usetex to False.
+from astroML.plotting import setup_text_plots
+setup_text_plots(fontsize=8, usetex=True)
+
 #------------------------------------------------------------
 # Fetch the spectrum from SDSS database & pre-process
 plate = 659
@@ -76,12 +84,12 @@ spec_filt += spec_fit
 
 #----------------------------------------------------------------------
 # plot results
-fig = plt.figure()
+fig = plt.figure(figsize=(5, 3.75))
 fig.subplots_adjust(hspace=0.25)
 
 ax = fig.add_subplot(211)
-ax.plot(lam, spec, '-', c='gray', lw=1)
-ax.plot(lam, spec_patched + spec_fit, '-k', lw=1)
+ax.plot(lam, spec, '-', c='gray')
+ax.plot(lam, spec_patched + spec_fit, '-k')
 
 ax.set_ylim(25, 110)
 
