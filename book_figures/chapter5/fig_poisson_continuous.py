@@ -6,11 +6,13 @@ unbinned poisson-distributed data, drawn from a distribution p(x) ~ a*x + b
 between 0 and 10.  The goal is to estimate the single parameter a from the
 unbinned data (b is determined by normalization).
 """
-# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# Author: Jake VanderPlas
 # License: BSD
 #   The figure produced by this code is published in the textbook
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
+#   To report a bug or issue, use the following forum:
+#    https://groups.google.com/forum/#!forum/astroml-general
 import numpy as np
 from matplotlib import pyplot as plt
 from astroML.stats.random import linear

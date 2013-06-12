@@ -4,11 +4,13 @@ SDSS Stripe 82 Standard Stars
 This example shows how to use a combination scatter and contour plot to
 more effectively show very dense scatter plots.
 """
-# Author: Jake VanderPlas <vanderplas@astro.washington.edu>
+# Author: Jake VanderPlas
 # License: BSD
 #   The figure produced by this code is published in the textbook
 #   "Statistics, Data Mining, and Machine Learning in Astronomy" (2013)
 #   For more information, see http://astroML.github.com
+#   To report a bug or issue, use the following forum:
+#    https://groups.google.com/forum/#!forum/astroml-general
 from matplotlib import pyplot as plt
 
 from astroML.plotting import scatter_contour
