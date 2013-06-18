@@ -1,5 +1,6 @@
 .. -*- mode: rst -*-
 
+============================================
 AstroML: Machine Learning code for Astronomy
 ============================================
 
@@ -38,8 +39,9 @@ easy to install for more advanced users.  See further discussion in
 
 Important Links
 ---------------
-- HTML documentation: http://astroML.github.com
-- Source-code repository: http://github.com/astroML/astroML
+- HTML documentation: http://www.astroML.org
+- Core source-code repository: http://github.com/astroML/astroML
+- Addons source-code repository: http://github.com/astroML/astroML_addons
 - Issue Tracker: http://github.com/astroML/astroML/issues
 - Mailing List: https://groups.google.com/forum/#!forum/astroml-general
 
@@ -78,11 +80,7 @@ installation.  It can be installed using::
 
   pip install astroML_addons
 
-To install from source, use::
-
-  python setup_addons.py install
-
-The script can make use of any of the extra options discussed above.
+To install from source, refer to http://github.com/astroML/astroML_addons
 
 
 Dependencies
