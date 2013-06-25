@@ -17,7 +17,7 @@ This project was started in 2012 by Jake VanderPlas to accompany the book
 Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray.
 
 Core and Addons
----------------
+===============
 The project is split into two components.  The core ``astroML`` library is
 written in python only, and is designed to be very easy to install for
 any users, even those who don't have a working C or fortran compiler.
@@ -38,7 +38,7 @@ easy to install for more advanced users.  See further discussion in
 
 
 Important Links
----------------
+===============
 - HTML documentation: http://www.astroML.org
 - Core source-code repository: http://github.com/astroML/astroML
 - Addons source-code repository: http://github.com/astroML/astroML_addons
