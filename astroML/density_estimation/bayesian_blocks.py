@@ -133,14 +133,14 @@ class PointMeasures(FitnessFunc):
     gamma : float
         specifies the prior on the number of bins: p ~ gamma^N
         if gamma is not specified, then a prior based on simulations
-        will be used (see sec 3.2 of Scargle 2012)
+        will be used (see sec 3.3 of Scargle 2012)
     """
     def __init__(self, p0=None, gamma=None):
         self.p0 = p0
         self.gamma = gamma
 
     def fitness(self, a_k, b_k):
-        # eq. 19 from Scargle 2012
+        # eq. 41 from Scargle 2012
         return (b_k * b_k) / (4 * a_k)
 
     def prior(self, N, Ntot):
@@ -149,7 +149,7 @@ class PointMeasures(FitnessFunc):
         elif self.p0 is not None:
             return self.p0_prior(N, Ntot)
         else:
-            # eq. at end of sec 3.2 in Scargle 2012
+            # eq. at end of sec 3.3 in Scargle 2012
             return 1.32 + 0.577 * np.log10(N)
 
 
