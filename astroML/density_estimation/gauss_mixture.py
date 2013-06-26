@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.mixture import GMM
 
 
-class GaussianMixture1D:
+class GaussianMixture1D(object):
     """
     Simple class to work with 1D mixtures of Gaussians
 

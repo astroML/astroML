@@ -15,7 +15,7 @@ except:
                      "for minimum spanning tree")
 
 
-class HierarchicalClustering:
+class HierarchicalClustering(object):
     """Hierarchical Clustering via Approximate Euclidean Minimum Spanning Tree
 
     Parameters

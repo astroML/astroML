@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 from matplotlib import rcParams
 
 
-class MultiAxes:
+class MultiAxes(object):
     """Visualize Multiple-dimensional data
 
     This class enables the visualization of multi-dimensional data, using

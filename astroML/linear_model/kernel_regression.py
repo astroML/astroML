@@ -3,7 +3,7 @@ from .linear_regression import gaussian_basis
 from sklearn.metrics import pairwise_kernels
 
 
-class NadarayaWatson:
+class NadarayaWatson(object):
     """Nadaraya-Watson Kernel Regression
 
     This is basically a gaussian-weighted moving average of points

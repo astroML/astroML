@@ -3,7 +3,7 @@ from scipy import interpolate
 from ..utils import check_random_state
 
 
-class FunctionDistribution:
+class FunctionDistribution(object):
     """Generate random variables distributed according to an arbitrary function
 
     Parameters
@@ -58,7 +58,7 @@ class FunctionDistribution:
         return interpolate.splev(y, self._tck)
 
 
-class EmpiricalDistribution:
+class EmpiricalDistribution(object):
     """Empirically learn a distribution from one-dimensional data
 
     Parameters

@@ -14,7 +14,7 @@ import numpy as np
 # TODO: implement other fitness functions from appendix B of Scargle 2012
 
 
-class FitnessFunc:
+class FitnessFunc(object):
     """Base class for fitness functions
 
     Each fitness function class has the following:

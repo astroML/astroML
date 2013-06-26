@@ -2,7 +2,7 @@ import numpy as np
 from astroML.utils import combinations_with_replacement
 
 
-class LinearRegression:
+class LinearRegression(object):
     """Simple Linear Regression with errors in y
 
     This is a stripped-down version of sklearn.linear_model.LinearRegression

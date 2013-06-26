@@ -271,7 +271,7 @@ def search_frequencies(t, y, dy,
     return omega_best[i], power_best[i]
 
 
-class MultiTermFit:
+class MultiTermFit(object):
     """Multi-term Fourier fit to a light curve
 
     Parameters
