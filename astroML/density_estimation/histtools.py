@@ -114,7 +114,7 @@ def freedman_bin_width(data, return_bins=False):
         return dx
 
 
-class KnuthF:
+class KnuthF(object):
     r"""Class which implements the function minimized by knuth_bin_width
 
     Parameters

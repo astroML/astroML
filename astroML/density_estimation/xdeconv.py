@@ -16,7 +16,7 @@ from sklearn.mixture import GMM
 from astroML.utils import logsumexp, log_multivariate_gaussian
 
 
-class XDGMM:
+class XDGMM(object):
     """Extreme Deconvolution
 
     Fit an extreme deconvolution (XD) model to the data
