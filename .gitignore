@@ -17,3 +17,6 @@ doc/book_figures/
 doc/paper_figures/
 doc/modules/generated/
 book_figures/*/*.pkl
+
+# Vim temporaries
+.*.sw[op]
