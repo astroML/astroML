@@ -33,7 +33,7 @@ target_names = ['objectID', 'raLIN', 'decLIN', 'raSDSS', 'decSDSS', 'r',
                 'Lchi2', 'LP1', 'phi1', 'S', 'prior']
 
 
-class LINEARdata:
+class LINEARdata(object):
     """A container class for the linear dataset.
 
     Because the dataset is often not needed all at once, this class

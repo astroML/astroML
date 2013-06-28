@@ -22,7 +22,7 @@ def n_volume(r, n):
     return np.pi ** (0.5 * n) / special.gamma(0.5 * n + 1) * (r ** n)
 
 
-class KDE:
+class KDE(object):
     """Kernel Density Estimate
 
     Parameters
@@ -143,7 +143,7 @@ class KDE:
         return dens
 
 
-class KNeighborsDensity:
+class KNeighborsDensity(object):
     """K-neighbors density estimation
 
     Parameters

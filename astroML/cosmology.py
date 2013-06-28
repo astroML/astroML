@@ -3,7 +3,7 @@ from scipy import integrate
 import pylab as pl
 
 
-class Cosmology:
+class Cosmology(object):
     """Class to enable simple cosmological calculations.
 
     For a more full-featured cosmology package, see CosmoloPy [1]_
