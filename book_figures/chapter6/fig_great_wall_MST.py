@@ -1,6 +1,31 @@
 """
 Euclidean Minimum Spanning Tree
 -------------------------------
+This figure is based on the data presented in Figure 1 of Cowan & Ivezic
+(2008). A similar figure appears in the book
+"Statistics, Data Mining, and Machine Learning in Astronomy", by
+Ivezic, Connolly, Vanderplas, and Gray (2013).
+
+Running this code requires astroML, a lightweight python package which
+can be quickly installed using `pip install astroML`.
+See http://astroML.github.com for more information.  AstroML will
+automatically download and cache the required dataset to $HOME/astroML_data.
+
+Figure Caption
+--------------
+The three panels of this figure show a hierarchical clustering of a subset
+of galaxies from the Sloan Digital Sky Survey (SDSS).  This region is known
+as the "SDSS Great Wall", and contains an extended cluster of several thousand
+galaxies approximately 300Mpc (about 1 billion light years) from earth.  The
+top panel shows the positions of over 8,000 galaxies projected to a 2D plane
+with Earth at the point (0, 0).  The middle panel shows a dendrogram
+representation of a Euclidean Minimum Spanning Tree (MST) over the galaxy
+locations.  By eliminating edges of a MST which are greater than a given
+length, we can measure the amount of clustering at that scale: this is one
+version of a class of models known as Hierarchical Clustering.  The bottom
+panel shows the results of this clustering approach for an edge cutoff of
+3.5Mpc, along with a Gaussian Mixture Model fit to the distribution within
+each cluster.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -13,14 +38,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from scipy import sparse
-from sklearn.neighbors import kneighbors_graph
 from sklearn.mixture import GMM
 
 from astroML.clustering import HierarchicalClustering, get_graph_segments
 from astroML.datasets import fetch_great_wall
-from astroML.cosmology import Cosmology
-
-from scipy.sparse.csgraph import minimum_spanning_tree, connected_components
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
@@ -41,11 +62,13 @@ ymin, ymax = (-300, 200)
 # Compute the MST clustering model
 n_neighbors = 10
 edge_cutoff = 0.9
-cluster_cutoff = 30
+cluster_cutoff = 10
 model = HierarchicalClustering(n_neighbors=10,
-                               edge_cutoff=0.9,
-                               min_cluster_size=30)
+                               edge_cutoff=edge_cutoff,
+                               min_cluster_size=cluster_cutoff)
 model.fit(X)
+print " scale: %2g Mpc" % np.percentile(model.full_tree_.data,
+                                        100 * edge_cutoff)
 
 n_components = model.n_components_
 labels = model.labels_
@@ -67,10 +90,12 @@ density = np.zeros(Xgrid.shape[0])
 
 for i in range(n_components):
     ind = (labels == i)
-    gmm = GMM(4).fit(X[ind])
+    Npts = ind.sum()
+    Nclusters = min(12, Npts / 5)
+
+    gmm = GMM(Nclusters).fit(X[ind])
     dens = np.exp(gmm.score(Xgrid))
-    dens /= dens.max()
-    density += dens
+    density += dens / dens.max()
 
 density = density.reshape((Ny, Nx))
 
@@ -84,25 +109,23 @@ ax.scatter(X[:, 1], X[:, 0], s=1, lw=0, c='k')
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
 ax.xaxis.set_major_formatter(plt.NullFormatter())
-ax.set_ylabel(r'$x\ {\rm (Mpc)}$')
+ax.set_ylabel('(Mpc)')
 
 ax = fig.add_subplot(312, aspect='equal')
-ax.plot(T_y, T_x, c='k', lw=1)
+ax.plot(T_y, T_x, c='k', lw=0.5)
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
 ax.xaxis.set_major_formatter(plt.NullFormatter())
-ax.set_ylabel(r'$x\ {\rm (Mpc)}$')
+ax.set_ylabel('(Mpc)')
 
 ax = fig.add_subplot(313, aspect='equal')
-ax.plot(T_trunc_y, T_trunc_x, c='k', lw=1)
-#ax.scatter(X[clusters, 1], X[clusters, 0], c=labels[clusters], lw=0)
-
-ax.imshow(density.T, origin='lower', cmap=plt.cm.binary,
+ax.plot(T_trunc_y, T_trunc_x, c='k', lw=0.5)
+ax.imshow(density.T, origin='lower', cmap=plt.cm.hot_r,
           extent=[ymin, ymax, xmin, xmax])
 
 ax.set_xlim(ymin, ymax)
 ax.set_ylim(xmin, xmax)
-ax.set_xlabel(r'$y\ {\rm (Mpc)}$')
-ax.set_ylabel(r'$x\ {\rm (Mpc)}$')
+ax.set_xlabel('(Mpc)')
+ax.set_ylabel('(Mpc)')
 
 plt.show()

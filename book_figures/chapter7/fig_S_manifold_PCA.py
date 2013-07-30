@@ -63,7 +63,7 @@ try:
     ax1 = fig.add_subplot(221, projection='3d',
                           xticks=[], yticks=[], zticks=[])
     ax1.scatter(X[:, 0], X[:, 1], X[:, 2], c=color,
-                cmap=plt.cm.jet, s=9, lw=1)
+                cmap=plt.cm.jet, s=9, lw=0)
     ax1.view_init(11, -73)
 
 except:

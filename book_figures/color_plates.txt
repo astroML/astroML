@@ -1,0 +1,14 @@
+# List the figures in color panels
+
+chapter1/fig_SSPP_metallicity.py
+chapter1/fig_moving_objects_multicolor.py
+chapter1/fig_healpix_ex.py
+chapter6/fig_great_wall_MST.py
+chapter7/fig_S_manifold_PCA.py
+chapter7/fig_PCA_components.py
+chapter7/fig_spec_LLE.py
+chapter9/fig_ROC_curve.py
+chapter9/fig_star_quasar_ROC.py
+chapter10/fig_wavelet_PSD.py
+chapter10/fig_LINEAR_clustering.py
+appendix/fig_sdss_filters.py
