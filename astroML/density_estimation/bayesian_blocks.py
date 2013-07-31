@@ -41,7 +41,7 @@ class FitnessFunc(object):
 
     def p0_prior(self, N, Ntot):
         # eq. 21 from Scargle 2012
-        return 4 - 73.53 * self.p0 * (N ** -0.478)
+        return 4 - np.log(73.53 * self.p0 * (N ** -0.478))
 
     def gamma_prior(self, N, Ntot):
         """Basic prior, parametrized by gamma (eq. 3 in Scargle 2012)"""
@@ -80,7 +80,7 @@ class Events(FitnessFunc):
             return self.gamma_prior(N, Ntot)
         else:
             # eq. 21 from Scargle 2012
-            return 4 - 73.53 * self.p0 * (N ** -0.478)
+            return 4 - np.log(73.53 * self.p0 * (N ** -0.478))
 
 
 class RegularEvents(FitnessFunc):
