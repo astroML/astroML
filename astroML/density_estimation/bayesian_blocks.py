@@ -80,7 +80,7 @@ class Events(FitnessFunc):
             return self.gamma_prior(N, Ntot)
         else:
             # eq. 21 from Scargle 2012
-            return 4 - 73.53 * self.p0 * (N ** -0.478)
+            return 4 - np.log(73.53 * self.p0 * (N ** -0.478))
 
 
 class RegularEvents(FitnessFunc):
