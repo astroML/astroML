@@ -110,7 +110,8 @@ fig.subplots_adjust(left=0.1, right=0.95, bottom=0.15, top=0.9, wspace=0.25)
 
 # First axis shows the data
 ax1 = fig.add_subplot(121)
-im = ax1.scatter(X_test[:, 0], X_test[:, 1], c=y_test, s=4, lw=0,
+im = ax1.scatter(X_test[:, 0], X_test[:, 1], c=y_test, s=4,
+                 linewidths=0, edgecolors='none',
                  cmap=plt.cm.binary)
 im.set_clim(-0.5, 1)
 ax1.set_xlim(-0.5, 3.0)
