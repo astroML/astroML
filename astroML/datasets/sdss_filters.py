@@ -6,7 +6,7 @@ import numpy as np
 from astroML.datasets import get_data_home
 
 # Info on vega spectrum: http://www.stsci.edu/hst/observatory/cdbs/calspec.html
-VEGA_URL = 'ftp://ftp.stsci.edu/cdbs/current_calspec/1732526_nic_002.ascii'
+VEGA_URL = 'ftp://ftp.stsci.edu/cdbs/current_calspec/ascii_files/1732526_nic_002.ascii'
 FILTER_URL = 'http://www.sdss.org/dr7/instruments/imager/filters/%s.dat'
 
 
