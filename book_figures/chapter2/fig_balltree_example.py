@@ -1,6 +1,7 @@
 """
 Ball Tree Example
 -----------------
+Figure 2.5.
 
 This example creates a simple Ball tree partition of a two-dimensional
 parameter space, and plots a visualization of the result.

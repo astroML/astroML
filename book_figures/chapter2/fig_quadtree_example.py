@@ -1,6 +1,7 @@
 """
 Quad Tree Example
 -----------------
+Figure 2.3.
 
 This example creates a simple quad-tree partition of a two-dimensional
 parameter space, and plots a visualization of the result.

@@ -1,7 +1,11 @@
 """
 Sort Algorithm Scaling
 ----------------------
-This example times and plots the scaling of sort algorithms
+Figure 2.2.
+
+The scaling of the quicksort algorithm. Plotted for comparison are
+lines showing O(N) and O(N log N) scaling. The quicksort algorithm falls along
+the O(N log N) line, as expected.
 """
 # Author: Jake VanderPlas
 # License: BSD

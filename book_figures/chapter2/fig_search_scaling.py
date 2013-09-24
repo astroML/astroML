@@ -1,8 +1,12 @@
 """
 Search Algorithm Scaling
 ------------------------
+Figure 2.1.
 
-This example times and plots the scaling of sorting algorithms.
+The scaling of two methods to search for an item in an ordered list: a linear
+method which performs a comparison on all N items, and a binary search which
+uses a more sophisticated algorithm. The theoretical scalings are shown by
+dashed lines.
 """
 # Author: Jake VanderPlas
 # License: BSD

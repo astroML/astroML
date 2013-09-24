@@ -1,6 +1,7 @@
 """
 KD Tree Example
 ---------------
+Figure 2.4.
 
 This example creates a simple KD-tree partition of a two-dimensional
 parameter space, and plots a visualization of the result.
