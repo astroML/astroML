@@ -1,8 +1,15 @@
 """
 Stellar Parameters Hess Diagram
 -------------------------------
-This example shows how to create Hess diagrams of the Segue Stellar Parameters
-Pipeline (SSPP) data to show multiple features on a single plot.
+Figure 1.11.
+
+A Hess diagram of the number per pixel (left) and [Fe/H] metallicity (center,
+right) of SEGUE Stellar Parameters Pipeline stars. In the center and right
+panels, contours representing the number density are overplotted for
+comparison. These two panels show identical data, but compare a grayscale
+and multicolor plotting scheme. This is an example of a situation in which
+multiple colors are very helpful in distinguishing close metallicity levels.
+This is the same data as shown in figure 1.5.
 """
 # Author: Jake VanderPlas
 # License: BSD

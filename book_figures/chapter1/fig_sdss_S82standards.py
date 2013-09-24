@@ -1,8 +1,13 @@
 """
 SDSS Stripe 82 Standard Stars
 -----------------------------
-This example shows how to plot a color-color diagram for the SDSS Stripe 82
-standard stars
+Figure 1.6.
+
+The g-r vs. r-i color-color diagram for the first 10,000 entries in the
+Stripe 82 Standard Star Catalog. The region with the highest point density
+is dominated by main sequence stars. The thin extension toward the lower-left
+corner is dominated by the so-called blue horizontal branch stars and white
+dwarf stars.
 """
 # Author: Jake VanderPlas
 # License: BSD

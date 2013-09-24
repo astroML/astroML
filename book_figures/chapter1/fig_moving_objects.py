@@ -1,8 +1,14 @@
 """
 SDSS Moving Object Data
 -----------------------
-This example shows how to fetch the moving object (i.e. asteroid) data from
-Stripe 82 and to plot some measures of the orbital dynamics.
+Figure 1.8.
+
+The orbital semimajor axis vs. the orbital inclination angle diagram for the
+first 10,000 catalog entries from the SDSS Moving Object Catalog (after
+applying several quality cuts). The gaps at approximately 2.5, 2.8, and 3.3 AU
+are called the Kirkwood gaps and are due to orbital resonances with Jupiter.
+The several distinct clumps are called asteroid families and represent remnants
+from collisions of larger asteroids.
 """
 # Author: Jake VanderPlas
 # License: BSD

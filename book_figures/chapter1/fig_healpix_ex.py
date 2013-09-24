@@ -1,8 +1,16 @@
 """
 Example of HealPix pixellization
 --------------------------------
-This uses HEALpy, the python wrapper for HEALpix, to plot the HEALPix
-pixellization of the sky.
+Figure 1.15.
+
+The top panel shows HEALPix pixels in nested order. The 12 fundamental sky
+divisions can be seen, as well as the hierarchical nature of the smaller
+pixels. This shows a pixelization with nside = 4, that is, each of the 12
+large regions has 4 x 4 pixels, for a total of 192 pixels. The lower panel
+shows a seven-year co-add of raw WMAP data, plotted using the HEALPix
+projection using the HealPy package. This particular realization has
+nside = 512, for a total of 3,145,728 pixels. The pixels are roughly
+6.8 arcminutes on a side.
 """
 # Author: Jake VanderPlas
 # License: BSD

@@ -1,10 +1,15 @@
 """
 SDSS Stripe 82 Moving Object Catalog
 ------------------------------------
+Figure 1.12.
 
-This plot demonstrates how to fetch data from the SDSS Moving object catalog,
-and plot using a multicolor plot similar to that used in figures 3-4 of
-Parker et al 2008.
+A multicolor scatter plot of the properties of asteroids from the SDSS Moving
+Object Catalog (cf. figure 1.8). The left panel shows observational markers
+of the chemical properties of the asteroids: two colors a* and i-z. The
+right panel shows the orbital parameters: semimajor axis a vs. the sine of
+the inclination. The color of points in the right panel reflects their
+position in the left panel.  This plot is similar to that used in
+figures 3-4 of Parker et al 2008.
 """
 # Author: Jake VanderPlas
 # License: BSD

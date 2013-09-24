@@ -1,8 +1,11 @@
 """
 SDSS DR7 Quasars
 ----------------
-This example shows how to fetch the SDSS quasar photometric data, and to
-plot the relationship between redshift and color.
+Figure 1.4.
+
+The r-i color vs. redshift diagram for the first 10,000 entries from the
+SDSS Data Release 7 Quasar Catalog. The color variation is due to emission
+lines entering and exiting the r and i band wavelength windows.
 """
 # Author: Jake VanderPlas
 # License: BSD

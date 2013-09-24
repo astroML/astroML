@@ -1,8 +1,13 @@
 """
 SDSS Imaging
 ============
-This example shows how to load the magnitude data from the SDSS imaging
-catalog, and plot colors and magnitudes of the stars and galaxies.
+Figure 1.1
+
+The r vs. g-r color-magnitude diagrams and the r-i vs. g-r color-color
+diagrams for galaxies (left column) and stars (right column) from the SDSS
+imaging catalog. Only the first 5000 entries for each subset are shown in
+order to minimize the blending of points (various more sophisticated
+visualization methods are discussed in Section 1.6).
 """
 # Author: Jake VanderPlas
 # License: BSD

@@ -1,10 +1,12 @@
 """
 Spherical Projections
 ---------------------
+Figure 1.14.
 
-Example of plotting several spherical projections available in matplotlib.
-Note that the matplotlib basemap toolkit has some much more sophisticated
-tools for this sort of plot.
+Four common full-sky projections. The shaded ellipses represent the distortion
+across the sky: each is projected from a circle of radius 10 degrees on the
+sphere. The extent to which these are distorted and/or magnified shows the
+distortion inherent to the mapping.
 """
 # Author: Jake VanderPlas
 # License: BSD

@@ -1,8 +1,16 @@
 """
 SDSS Spectroscopic Galaxy Sample
 --------------------------------
-This example shows how to fetch photometric data from the SDSS spectroscopic
-sample and plot a simple color-magnitude diagram.
+Figure 1.3.
+
+The r vs. u-r color-magnitude diagram for the first 10,000 entries in the
+catalog of spectroscopically observed galaxies from the Sloan Digital Sky
+Survey (SDSS). Note two "clouds" of points with different morphologies
+separated by u-r ~ 2.3. The abrupt decrease of the point density for
+r > 17.7 (the bottom of the diagram) is due to the selection function for
+the spectroscopic galaxy sample from SDSS. This example shows how to fetch
+photometric data from the SDSS spectroscopic sample and plot a simple
+color-magnitude diagram.
 """
 # Author: Jake VanderPlas
 # License: BSD

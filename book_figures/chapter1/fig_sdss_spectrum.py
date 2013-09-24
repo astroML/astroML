@@ -1,8 +1,12 @@
 """
 SDSS Spectrum Example
 ---------------------
-This example shows how to fetch and plot a spectrum from the SDSS database
-using the plate, MJD, and fiber numbers.
+Figure 1.2.
+
+An example of an SDSS spectrum (the specific flux plotted as a function of
+wavelength) loaded from the SDSS SQL server in real time using Python tools
+provided here (this spectrum is uniquely described by SDSS parameters
+plate=1615, fiber=513, and mjd=53166).
 """
 # Author: Jake VanderPlas
 # License: BSD

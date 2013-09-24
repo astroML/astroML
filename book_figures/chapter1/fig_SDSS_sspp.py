@@ -1,9 +1,18 @@
 """
 SDSS Segue Stellar Parameter Pipeline Data
 ------------------------------------------
-This example shows how to fetch the data from the Segue Stellar Parameter
-Pipeline (SSPP), and plot the temperature and surface gravity of a selection
-of stars.
+Figure 1.5.
+
+The surface gravity vs. effective temperature plot for the first 10,000 entries
+from the catalog of stars with SDSS spectra. The rich substructure reflects
+both stellar physics and the SDSS selection criteria for spectroscopic
+follow-up. The plume of points centered on Teff ~ 5300 K and log g ~ 3 is
+dominated by red giant stars, and the locus of points with Teff < 6500 K and
+log g > 4.5 is dominated by main sequence stars. Stars to the left from the
+main sequence locus are dominated by the so-called blue horizontal branch
+stars. The axes are plotted backward for ease of comparison with the classical
+Hertzsprung-Russell diagram: the luminosity of a star approximately increases
+upward in this diagram.
 """
 # Author: Jake VanderPlas
 # License: BSD

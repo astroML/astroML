@@ -1,8 +1,10 @@
 """
 SDSS Stripe 82 Standard Stars
 -----------------------------
-This example shows how to use a combination scatter and contour plot to
-more effectively show very dense scatter plots.
+Figure 1.9.
+
+Scatter plot with contours over dense regions.This is a color-color diagram
+of the entire set of SDSS Stripe 82 standard stars; cf. figure 1.6.
 """
 # Author: Jake VanderPlas
 # License: BSD

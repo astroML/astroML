@@ -1,8 +1,12 @@
 """
 Phased LINEAR Light Curve
 -------------------------
-Plot the colors, magnitudes, and periods of the LINEAR variable stars,
-as well as the phased light curve of a single LINEAR object.
+Figure1.7.
+
+An example of the type of data available in the LINEAR dataset.  The scatter
+plots show the g-r and r-i colors, and the variability period determined using
+a Lomb-Scargle periodogram (for details see chapter 10). The upper-right panel
+shows a phased light curve for one of the over 7000 objects.
 """
 # Author: Jake VanderPlas
 # License: BSD

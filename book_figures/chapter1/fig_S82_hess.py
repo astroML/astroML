@@ -1,8 +1,11 @@
 """
 SDSS Stripe 82 Hess Diagram
 ---------------------------
-This example shows how to create a hess diagram of the SDSS Stripe 82 data,
-using the 2D histogram function in numpy.
+Figure 1.10.
+
+A Hess diagram of the r-i vs. g-r colors for the entire set of SDSS Stripe 82
+standard stars. The pixels are colored with a logarithmic scaling;
+cf. figures 1.6 and 1.9.
 """
 # Author: Jake VanderPlas
 # License: BSD

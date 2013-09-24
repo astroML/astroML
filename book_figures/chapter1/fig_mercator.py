@@ -1,10 +1,12 @@
 """
 Mercator Projection
 -------------------
+Figure1.13.
 
-Example of plotting coordinates in the Mercator projection. Note that
-the matplotlib basemap toolkit has some much more sophisticated
-tools for this sort of plot.
+The Mercator projection. Shown are the projections of circles of constant
+radius 10 degrees across the sky. Note that the area is not preserved by the
+Mercator projection: the projection increases the size of finite regions on
+the sphere, with a magnitude which increases at high latitudes.
 """
 # Author: Jake VanderPlas
 # License: BSD
