@@ -1,8 +1,13 @@
-"""
+r"""
 Kurtosis and Skew
 -----------------
+Figure 3.6.
 
-This figure visualizes the kurtosis and skew of several distributions
+An example of distributions with different skewness
+:math:`\Sigma` (top panel) and kurtosis K (bottom panel). The modified
+Gaussian in the upper panel is a normal distribution multiplied by a
+Gram-Charlier series (see eq. 4.70), with a0 = 2, a1 = 1, and a2 = 0.5.
+The log-normal has :math:`\sigma = 1.2`.
 """
 # Author: Jake VanderPlas
 # License: BSD

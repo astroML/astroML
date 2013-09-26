@@ -1,8 +1,11 @@
 """
 Bivariate Gaussian
 ------------------
-This demonstrates how to draw a random sample from a correlated bivariate
-gaussian distribution.
+Figure 3.22.
+
+An example of data generated from a bivariate Gaussian distribution. The
+shaded pixels are a Hess diagram showing the density of points at each
+position.
 """
 # Author: Jake VanderPlas
 # License: BSD

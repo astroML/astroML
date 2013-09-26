@@ -1,7 +1,9 @@
 """
 Sum of Probabilities
 --------------------
-Diagram of a sum of probabilities
+Figure 3.1.
+
+A representation of the sum of probabilities shown in eq.3.1.
 """
 # Author: Jake VanderPlas
 # License: BSD

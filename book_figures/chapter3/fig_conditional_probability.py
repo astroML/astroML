@@ -1,8 +1,13 @@
 """
 Joint and Conditional Probabilities
 -----------------------------------
+Figure 3.2.
 
-Visualization of the relationship between joint and conditional probabilities.
+An example of a two-dimensional probability distribution. The color-coded
+panel shows p(x, y). The two panels to the left and below show marginal
+distributions in x and y (see eq. 3.8). The three panels to the right show
+the conditional probability distributions p(x|y) (see eq. 3.7) for three
+different values of y (as marked in the left panel).
 """
 # Author: Jake VanderPlas
 # License: BSD

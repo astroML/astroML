@@ -1,6 +1,7 @@
 """
 Example of a Beta distribution
 ------------------------------
+Figure 3.17.
 
 This shows an example of a beta distribution with various parameters.
 We'll generate the distribution using::

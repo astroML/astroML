@@ -1,8 +1,11 @@
 """
 Flux Errors
 -----------
+Figure 3.5.
 
-Show how the transformation of distributions affects flux vs. magnitude errors
+An example of Gaussian flux errors becoming non-Gaussian magnitude errors.
+The dotted line shows the location of the mean flux; note that this is not
+coincident with the peak of the magnitude distribution.
 """
 # Author: Jake VanderPlas
 # License: BSD

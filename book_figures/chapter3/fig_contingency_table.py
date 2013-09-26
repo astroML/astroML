@@ -1,6 +1,9 @@
 """
 A 2x2 Contingency Table
 -----------------------
+Figure 3.3.
+
+A contingency table showing p(T|D).
 """
 # Author: Jake VanderPlas
 # License: BSD

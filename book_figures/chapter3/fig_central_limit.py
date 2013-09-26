@@ -1,10 +1,17 @@
-"""
+r"""
 Example of central limit theorem
 --------------------------------
+Figure 3.20.
 
-This figure shows how adding ``N`` uniformly distributed variables together
-leads to a Gaussian distribution as ``N`` becomes large.  For ``N = 10``,
-the result is nearly indistinguishable from Gaussian
+An illustration of the central limit theorem. The histogram in each panel shows
+the distribution of the mean value of N random variables drawn from the (0, 1)
+range (a uniform distribution with :math:`\mu = 0.5` and W = 1; see eq. 3.39).
+The distribution for N = 2 has a triangular shape and as N increases it becomes
+increasingly similar to a Gaussian, in agreement with the central limit
+theorem. The predicted normal distribution with :math:`\mu = 0.5` and
+:math:`\sigma = 1/ \sqrt{12 N}` is shown by the line. Already for N = 10,
+the "observed" distribution is essentially the same as the predicted
+distribution.
 """
 # Author: Jake VanderPlas
 # License: BSD

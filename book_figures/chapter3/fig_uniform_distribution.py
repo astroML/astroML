@@ -1,6 +1,7 @@
 """
 Example of a uniform distribution
 ---------------------------------
+Figure 3.7.
 
 This shows an example of a uniform distribution with various parameters.
 We'll generate the distribution using::

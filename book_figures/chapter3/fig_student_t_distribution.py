@@ -1,6 +1,7 @@
 """
 Example of Student's t distribution
 -----------------------------------
+Figure 3.15.
 
 This shows an example of Student's t distribution with various parameters.
 We'll generate the distribution using::

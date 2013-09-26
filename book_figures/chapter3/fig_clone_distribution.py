@@ -1,9 +1,24 @@
 r"""
-Random Number Generation
-------------------------
+Random Values from an Empirical Distribution
+--------------------------------------------
+Figure 3.25.
 
-This example shows how to clone a measured 1-dimensional distribution
-using :class:`astroML.density_estimation.EmpiricalDistribution`
+A demonstration of how to empirically clone a distribution, using a spline
+interpolation to approximate the inverse of the observed cumulative
+distribution. This allows us to nonparametrically select new random samples
+approximating an observed distribution. First the list of points is sorted,
+and the rank of each point is used to approximate the cumulative distribution
+(upper right). Flipping the axes gives the inverse cumulative distribution on
+a regular grid (lower left). After performing a cubic spline fit to the inverse
+distribution, a uniformly sampled x value maps to a y value which approximates
+the observed pdf. The lower-right panel shows the result. The K-S test
+(see section 4.7.2) indicates that the samples are consistent with being
+drawn from the same distribution. This method, while fast and effective,
+cannot be easily extended to multiple dimensions.
+
+This example uses the routine
+:class:`astroML.density_estimation.EmpiricalDistribution`
+to clone the distribution
 """
 # Author: Jake VanderPlas
 # License: BSD

@@ -1,9 +1,18 @@
 r"""
 Convergence of mean for uniformly distributed values
 ----------------------------------------------------
+Figure 3.21.
 
-This example shows how the mean :math:`\mu` can be computed for a uniform
-distribution in two ways:
+A comparison of the sample-size dependence of two estimators for the location
+parameter of a uniform distribution, with the sample size ranging from
+N = 100 to N =10,000. The estimator in the top panel is the sample mean,
+and the estimator in the bottom panel is the mean value of two extreme values.
+The theoretical 1-, 2-, and 3-sigma contours are shown for comparison. When
+using the sample mean to estimate the location parameter, the uncertainty
+decreases proportionally to 1/ N, and when using the mean of two extreme
+values as 1/N. Note different vertical scales for the two panels.
+
+The two methods of estimating the mean :math:`\mu` are:
 
 - :math:`\bar\mu = \mathrm{mean}(x)`, with an error that scales as
   :math:`1/\sqrt{N}`.

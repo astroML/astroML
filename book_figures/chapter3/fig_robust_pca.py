@@ -1,10 +1,19 @@
-"""
+r"""
 Bivariate Gaussian: Robust Parameter Estimation
 -----------------------------------------------
+Figure 3.23.
 
-In this example, we generate a bivariate normal distribution of
-points with and without noise, and show how robust and non-robust
-statistics perform in estimating the distribution parameters.
+An example of computing the components of a bivariate Gaussian using a sample
+with 1000 data values (points), with two levels of contamination. The core of
+the distribution is a bivariate Gaussian with
+:math:`(\mu_x, \mu_y, \sigma_1, \sigma_2, \alpha) = (10, 10, 2, 1, 45^\odot)`
+The "contaminating" subsample contributes 5% (left) and 15% (right) of points
+centered on the same :math:`(\mu_x, \mu_y)`,
+and with :math:`\sigma_1 = \sigma_2 = 5`.
+Ellipses show the 1- and 3-sigma contours. The solid lines correspond to the
+input distribution. The thin dotted lines show the nonrobust estimate, and the
+dashed lines show the robust estimate of the best-fit distribution parameters
+(see Section 3.5.3 for details).
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -23,9 +32,9 @@ from astroML.stats.random import bivariate_normal
 # percent sign needs to be escaped if usetex is activated
 import matplotlib
 if matplotlib.rcParams.get('text.usetex'):
-    pct = '\%'
+    pct = r'\%'
 else:
-    pct = '%'
+    pct = r'%'
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.

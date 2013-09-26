@@ -1,6 +1,7 @@
 """
 Example of Fisher's F distribution
 ------------------------------------
+Figure 3.16.
 
 This shows an example of Fisher's F distribution with various parameters.
 We'll generate the distribution using::

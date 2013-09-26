@@ -1,6 +1,7 @@
 """
 Example of a Binomial distribution
 ----------------------------------
+Figure 3.9.
 
 This shows an example of a binomial distribution with various parameters.
 We'll generate the distribution using::

@@ -1,6 +1,7 @@
-"""
+r"""
 Example of a chi-squared distribution
 ---------------------------------------
+Figure 3.14.
 
 This shows an example of a :math:`\chi^2` distribution with various parameters.
 We'll generate the distribution using::

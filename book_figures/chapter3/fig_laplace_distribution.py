@@ -1,6 +1,7 @@
 """
 Example of a Laplace distribution
 ----------------------------------
+Figure 3.13.
 
 This shows an example of a Laplace distribution with various parameters.
 We'll generate the distribution using::

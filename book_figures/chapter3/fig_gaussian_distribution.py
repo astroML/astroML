@@ -1,6 +1,7 @@
 """
 Example of a Gaussian distribution
 ----------------------------------
+Figure 3.8.
 
 This shows an example of a gaussian distribution with various parameters.
 We'll generate the distribution using::

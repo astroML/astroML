@@ -1,6 +1,7 @@
 """
 Example of a Cauchy distribution
 --------------------------------
+Figure 3.11.
 
 This shows an example of a Cauchy distribution with various parameters.
 We'll generate the distribution using::

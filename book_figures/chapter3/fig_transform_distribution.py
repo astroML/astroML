@@ -1,8 +1,13 @@
-"""
+r"""
 Transformation of Distribution
 ------------------------------
+Figure 3.4.
 
-This figure shows the transformation of a distribution
+An example of transforming a uniform distribution. In the left panel, x
+is sampled from a uniform distribution of unit width centered on x = 0.5
+(:math:`\mu` = 0 and W = 1; see Section 3.3.1). In the right panel,
+the distribution is transformed via y = exp(x). The form of the resulting
+pdf is computed from eq. 3.20.
 """
 # Author: Jake VanderPlas
 # License: BSD

@@ -1,6 +1,7 @@
 """
 Example of a Poisson distribution
 ----------------------------------
+Figure 3.10.
 
 This shows an example of a Poisson distribution with various parameters.
 We'll generate the distribution using::

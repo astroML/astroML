@@ -1,9 +1,18 @@
-"""
+r"""
 Median and Mean for Cauchy distribution
 ---------------------------------------
+Figure 3.12.
 
-This plot shows graphically that mean-based statistics are not robust for
-the Cauchy distribution.  Median-based statistics should be used instead.
+The bottom panel shows a sample of N points drawn from a Cauchy distribution
+with :math:`\mu = 0` and :math:`\gamma=2`. The top panel shows the sample
+median, sample mean, and two robust estimates of the location parameter
+(see text) as a function of the sample size (only points to the left from
+a given sample size are used). Note that the sample mean is not a good
+estimator of the distribution's location parameter. Though the mean appears
+to converge as N increases, this is deceiving: because of the large tails
+in the Cauchy distribution, there is always a high likelihood of a far-flung
+point affecting the sample mean. This behavior is markedly different from a
+Gaussian distribution where the probability of such "outliers" is much smaller.
 """
 # Author: Jake VanderPlas
 # License: BSD

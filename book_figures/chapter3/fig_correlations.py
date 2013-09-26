@@ -1,8 +1,12 @@
 """
 Correlation estimates
 ---------------------
-This shows the distribution of Pearson-r, Spearman-r, and Kendall-tau
-estimators for a bivariate gaussian distribution
+Figure 3.24.
+
+Bootstrap estimates of the distribution of Pearson's, Spearman's, and Kendall's
+correlation coefficients based on 2000 resamplings of the 1000 points shown
+in figure 3.23. The true values are shown by the dashed lines. It is clear
+that Pearson's correlation coefficient is not robust to contamination.
 """
 # Author: Jake VanderPlas
 # License: BSD
