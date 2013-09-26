@@ -1,11 +1,15 @@
 """
 Example of classification
---------------------------------
+-------------------------
+Figure 4.5.
 
-This figure shows a schematic of the boundary choice in a classification
-problem, where sources S are being selected from backgrounds B.  This
-particular choice is one that strives for completeness (no missed sources)
-at the expense of contamination (misclassified background sources).
+An example of a simple classification problem between two Gaussian
+distributions. Given a value of x, we need to assign that measurement to one
+of the two distributions (background vs. source). The cut at xc = 120 leads
+to very few Type II errors (i.e., false negatives: points from the distribution
+hS with x < xc being classified as background), but this comes at the cost of
+a significant number of Type I errors (i.e., false positives: points from the
+distribution :math:`h_B` with x > xc being classified as sources).
 """
 # Author: Jake VanderPlas
 # License: BSD

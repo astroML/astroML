@@ -1,10 +1,17 @@
-"""
+r"""
 Jackknife Calculations of Error on Mean
 ---------------------------------------
+Figure 4.4.
 
-This plot shows the results of a jackknife estimation of the error of the
-mean of a gaussian distribution, calculated in two different ways.
-The jackknife fails for the median, as with all rank-based statistics.
+The jackknife uncertainty estimates for the width of a Gaussian distribution.
+This example uses the same data as figure 4.3. The upper panel shows a
+histogram of the widths determined using the sample standard deviation, and
+using the interquartile range. The lower panel shows the corrected jackknife
+estimates (eqs. 4.33 and 4.35) for the two methods. The gray lines show the
+theoretical results, given by eq. 3.35 for :math:`\sigma` and eq. 3.37 for
+:math:`\sigma_G`. The result for :math:`\sigma` matches the theoretical
+result almost exactly, but note the failure of the jackknife to correctly
+estimate :math:`\sigma_G` (see the text for a discussion of this result).
 """
 # Author: Jake VanderPlas
 # License: BSD

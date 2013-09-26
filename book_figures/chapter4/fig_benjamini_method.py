@@ -1,9 +1,17 @@
-"""
+r"""
 Example of Benjamini & Hochberg Method
 --------------------------------------
+Figure 4.6.
 
-This shows a diagram of the Benjamini & Hochberg method for
-selecting the cutoff for best type I/type II error results.
+Illustration of the Benjamini and Hochberg method for 106 points drawn from
+the distribution shown in figure 4.5. The solid line shows the cumulative
+distribution of observed p values, normalized by the sample size. The dashed
+lines show the cutoff for various limits on contamination rate
+:math:`\varepsilon` computed using eq. 4.44 (the accepted measurements are
+those with p smaller than that corresponding to the intersection of solid and
+dashed curves). The dotted line shows how the distribution would look in the
+absence of sources. The value of the cumulative distribution at p = 0.5 is
+0.55, and yields a correction factor :math:`\lambda = 1.11` (see eq. 4.46).
 """
 # Author: Jake VanderPlas
 # License: BSD

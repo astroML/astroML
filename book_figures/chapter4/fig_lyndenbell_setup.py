@@ -1,7 +1,12 @@
 """
 Lynden-Bell C- setup
 --------------------
-This diagram shows a schematic of the Lynden-Bell C- method.
+Figure 4.8.
+
+Illustration for the definition of a truncated data set, and for the comparable
+or associated subset used by the Lynden-Bell C- method. The sample is limited
+by x < xmax and y < ymax(x) (light-shaded area). Associated sets Ji and Jk are
+shown by the dark-shaded area.
 """
 # Author: Jake VanderPlas
 # License: BSD

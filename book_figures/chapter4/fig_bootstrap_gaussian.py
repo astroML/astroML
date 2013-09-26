@@ -1,9 +1,15 @@
-"""
+r"""
 Bootstrap Calculations of Error on Mean
 ---------------------------------------
+Figure 4.3.
 
-This plot shows the results of a bootstrap estimation of the error of the
-mean of a gaussian distribution, calculated in two different ways.
+The bootstrap uncertainty estimates for the sample standard deviation
+:math:`\sigma` (dashed line; see eq. 3.32) and :math:`\sigma_G` (solid line;
+see eq. 3.36). The sample consists of N = 1000 values drawn from a Gaussian
+distribution with :math:`\mu = 0` and :math:`\sigma = 1`. The bootstrap
+estimates are based on 10,000 samples. The thin lines show Gaussians with
+the widths determined as :math:`s / \sqrt{2(N - 1)}` (eq. 3.35) for
+:math:`\sigma` and :math:`1.06 s / \sqrt{N}` (eq. 3.37) for :math:`\sigma_G`.
 """
 # Author: Jake VanderPlas
 # License: BSD

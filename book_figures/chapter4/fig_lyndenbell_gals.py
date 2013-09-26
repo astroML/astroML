@@ -1,11 +1,18 @@
 """
 Lynden-Bell Luminosity function
 -------------------------------
+Figure 4.10.
 
-This shows the use of Lynden-Bell's C- method for computing the luminosity
-function and redshift distribution from an observed sample of galaxies.
-
-We work with x=Magnitude, y=redshift.
+An example of computing the luminosity function for two u-r color-selected
+subsamples of SDSS galaxies using Lynden-Bell's C- method. The galaxies are
+selected from the SDSS spectroscopic sample, with redshift in the range
+0.08 < z < 0.12 and flux limited to r < 17.7. The left panels show the
+distribution of sources as a function of redshift and absolute magnitude. The
+distribution p(z, M) = rho(z) Phi(m) is obtained using Lynden-Bell's method,
+with errors determined by 20 bootstrap resamples. The results are shown in the
+right panels. For the redshift distribution, we multiply the result by z^2 for
+clarity. Note that the most luminous galaxies belong to the photometrically
+red subsample, as discernible in the bottom-right panel.
 """
 # Author: Jake VanderPlas
 # License: BSD

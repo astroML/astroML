@@ -1,7 +1,17 @@
 """
 1D Gaussian Mixture Example
 ---------------------------
-This example shows a 1D version of Gaussian Mixture Models
+Figure 4.2.
+
+Example of a one-dimensional Gaussian mixture model with three components.
+The left panel shows a histogram of the data, along with the best-fit model
+for a mixture with three components. The center panel shows the model selection
+criteria AIC (see Section 4.3) and BIC (see Section 5.4) as a function of the
+number of components. Both are minimized for a three-component model. The
+right panel shows the probability that a given point is drawn from each class
+as a function of its position. For a given x value, the vertical extent of
+each region is proportional to that probability. Note that extreme values
+are most likely to belong to class 1.
 """
 # Author: Jake VanderPlas
 # License: BSD

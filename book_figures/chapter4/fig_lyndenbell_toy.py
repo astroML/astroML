@@ -1,9 +1,16 @@
 """
 Luminosity function code on toy data
 ------------------------------------
+Figure 4.9.
 
-This shows an example of computing the distribution from truncated
-data using Lynden-Bell's C- method
+An example of using Lynden-Bell's C- method to estimate a bivariate
+distribution from a truncated sample. The lines in the left panel show the true
+one-dimensional distributions of x and y (truncated Gaussian distributions).
+The two-dimensional distribution is assumed to be separable; see eq. 4.85.
+A realization of the distribution is shown in the right panel, with a
+truncation given by the solid line. The points in the left panel are computed
+from the truncated data set using the C- method, with error bars from 20
+bootstrap resamples.
 """
 # Author: Jake VanderPlas
 # License: BSD

@@ -1,12 +1,20 @@
-"""
+r"""
 Evaluating a model fit with chi-square
 --------------------------------------
-This example shows a visualization of how :math:`\chi^2_{dof}`
-reflects the goodness-of-fit of a model to data.
-Low :math:`\chi^2_{dof}` means that errors are overestimated.
-High :math:`\chi^2_{dof}` means either that the model is incorrect, or
-that the errors are underestimated.
-The example is simulated measurements of the luminosity of a star.
+Figure 4.1.
+
+The use of the :math:`\chi^2` statistic for evaluating the goodness of fit.
+The data here are a series of observations of the luminosity of a star, with
+known error bars. Our model assumes that the brightness of the star does not
+vary; that is, all the scatter in the data is due to measurement error.
+:math:`\chi^2_{\rm dof} \approx 1` indicates that the model fits the data
+well (upper-left panel). :math:`\chi^2_{\rm dof}` much smaller than 1
+(upper-right panel) is an indication that the errors are overestimated.
+:math:`\chi^2_{\rm dof}` much larger than 1 is an indication either that the
+errors are underestimated (lower-left panel) or that the model is not a good
+description of the data (lower-right panel). In this last case, it is clear
+from the data that the star's luminosity is varying with time: this situation
+is be treated more fully in chapter 10.
 """
 # Author: Jake VanderPlas
 # License: BSD

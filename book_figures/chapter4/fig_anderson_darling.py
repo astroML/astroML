@@ -1,9 +1,14 @@
 """
 Gaussianity Tests
 -----------------
+Figure 4.7.
 
-This example uses scipy.stats tools to create a few distributions, and
-compare them to gaussian using the following statistical measures:
+The results of the Anderson-Darling test, the Kolmogorov-Smirnov test, and the
+Shapiro-Wilk test when applied to a sample of 10,000 values drawn from a normal
+distribution (upper panel) and from a combination of two Gaussian distributions
+(lower panel).
+
+The functions are available in the ``scipy`` package:
 
 - The Anderson-Darling test (``scipy.stats.anderson``)
 - The Kolmogorov-Smirnov test (``scipy.stats.kstest``)
