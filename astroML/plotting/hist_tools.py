@@ -1,3 +1,5 @@
+import warnings
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -37,6 +39,10 @@ def hist(x, bins=10, range=None, *args, **kwargs):
     **kwargs :
         other keyword arguments are described in pylab.hist().
     """
+    if isinstance(bins, str) and "weights" in kwargs:
+        warnings.warn("weights argument is not supported: it will be ignored.")
+        kwargs.pop('weights')
+
     x = np.asarray(x)
 
     if 'ax' in kwargs:
