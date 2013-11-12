@@ -90,8 +90,8 @@ def fetch_imaging_sample(data_home=None, download_if_missing=True):
           p.modelMag_r < 22.5
         --- the end of query
     """
-    # pyfits is an optional dependency: don't import globally
-    import pyfits
+    # fits is an optional dependency: don't import globally
+    from astropy.io import fits
 
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
@@ -107,5 +107,5 @@ def fetch_imaging_sample(data_home=None, download_if_missing=True):
         fitsdata = download_with_progress_bar(DATA_URL)
         open(archive_file, 'wb').write(fitsdata)
 
-    hdulist = pyfits.open(archive_file)
+    hdulist = fits.open(archive_file)
     return np.asarray(hdulist[1].data)
