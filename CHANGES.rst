@@ -1,6 +1,8 @@
-0.1
+0.2
 ===
-*Initial release, October 2012*
+- Documentation and example updates
+- Moved from using ``pyfits`` to using ``astropy.io.fits``
+- Fix the prior for the Bayesian Blocks algorithm
 
 0.1.1
 =====
@@ -11,3 +13,7 @@
 - Performance improvement in ``freedman_bin_width``
 - Fix setup issue when sklearn is not installed
 - Enhancements to ``devectorize_axes`` function
+
+0.1
+===
+*Initial release, October 2012*

@@ -61,7 +61,7 @@ class SDSSfits(object):
     -----
     This class only provides access to a subset of the information available
     in the sdss spectra fits file.  The raw fits data can be accessed using
-    the pyfits object directly.  This can be found in the attribute
+    the fits object directly.  This can be found in the attribute
     ``hdulist``.  For details, please refer to the data description:
     http://www.sdss.org/dr7/dm/flatFiles/spSpec.html
     """
@@ -77,15 +77,15 @@ class SDSSfits(object):
             self._load_fits_file(source)
 
     def _load_fits_url(self, url):
-        # pyfits is an optional dependency: don't import globally
-        import pyfits
+        # fits is an optional dependency: don't import globally
+        from astropy.io import fits
         buffer = download_with_progress_bar(url, return_buffer=True)
-        self._initialize(pyfits.open(buffer))
+        self._initialize(fits.open(buffer))
 
     def _load_fits_file(self, file_or_buffer):
-        # pyfits is an optional dependency: don't import globally
-        import pyfits
-        self._initialize(pyfits.open(file_or_buffer))
+        # fits is an optional dependency: don't import globally
+        from astropy.io import fits
+        self._initialize(fits.open(file_or_buffer))
 
     def _initialize(self, hdulist):
         data = hdulist[0].data

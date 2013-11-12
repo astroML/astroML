@@ -101,11 +101,10 @@ The core ``astroML`` package requires the following:
 - Scipy_ >= 0.7
 - Scikit-learn_ >= 0.10
 - Matplotlib_ >= 0.99
-- PyFITS_ >= 3.0.
-  PyFITS is a python reader for Flexible Image Transport
-  System (FITS) files, based on cfitsio.  Several of the dataset loaders
-  require pyfits.
-
+- AstroPy_ > 0.2.5
+  AstroPy is required to read Flexible Image Transport
+  System (FITS) files, which are used by several datasets.
+  
 This configuration matches the Ubuntu 10.04 LTS release from April 2010,
 with the addition of scikit-learn.
 
@@ -221,7 +220,7 @@ Code Contribution
 .. _Scipy: http://www.scipy.org
 .. _Scikit-learn: http://scikit-learn.org
 .. _Matplotlib: http://matplotlib.org
-.. _PyFITS: http://www.stsci.edu/institute/software_hardware/pyfits
+.. _AstroPy: http://www.astropy.org/
 .. _PyMC: http://pymc-devs.github.com/pymc/
 .. _HEALPy: https://github.com/healpy/healpy>
 .. _Git: http://git-scm.com/

@@ -104,8 +104,8 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
     >>> print data['dec'][:2]  # first two DEC values
     [-1.04175591 -0.64250112]
     """
-    # pyfits is an optional dependency: don't import globally
-    import pyfits
+    # fits is an optional dependency: don't import globally
+    from astropy.io import fits
 
     data_home = get_data_home(data_home)
     if not os.path.exists(data_home):
@@ -121,7 +121,7 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
         fitsdata = download_with_progress_bar(DATA_URL)
         open(archive_file, 'wb').write(fitsdata)
 
-    hdulist = pyfits.open(archive_file)
+    hdulist = fits.open(archive_file)
 
     data = np.asarray(hdulist[1].data)
 
