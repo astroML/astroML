@@ -1,10 +1,12 @@
 """
 Plot the Outlier Probability
 ----------------------------
-This example shows for two points the posterior of g1, the value which
-indicates whether the point is an outlier.  If g1=1, then the point is
-"good", while if g1=0, then the point is "bad" according to the Bayesian
-formalism.
+Figure 5.18
+
+The marginal probability for g_i for the "good" and "bad" points shown in
+figure 5.17. The solid curves show the marginalized probability: that is,
+eq. 5.100 is integrated over mu. The dashed curves show the probability
+conditioned on :math:`\mu = \mu_0`, the MAP estimate of :math:`\mu` (eq. 5.102)
 """
 # Author: Jake VanderPlas
 # License: BSD

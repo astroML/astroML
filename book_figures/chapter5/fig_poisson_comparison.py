@@ -1,9 +1,14 @@
 """
 Poisson Statistics with arbitrarily small bins
 ----------------------------------------------
-This figure compares the binned and non-binned approach to regression
-in the Poissonian context.  As expected, when the number of bins becomes
-very large, the non-binned and binned cases lead to similar results.
+Figure 5.16
+
+The comparison of the continuous method (figure 5.14) and the binned method
+(figure 5.15) on the same data set. In the limit of a large number of bins,
+most bins register only zero or one count, and the binned Poisson statistic
+gives nearly the same marginalized distribution for a as the continuous
+statistic. For as few as two bins, the constraint on the slope is only
+slightly biased.
 """
 # Author: Jake VanderPlas
 # License: BSD

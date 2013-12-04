@@ -1,9 +1,14 @@
 """
 Log-likelihood for Uniform Distribution
 ---------------------------------------
+Figure 5.12
 
-This plot shows the Likelihood as a function of the mean :math:`\mu` and the
-width :math:`W` when the posterior is assumed to be uniform.
+An illustration of the logarithm of the posterior probability distribution
+:math:`L(\mu, W)` (see eq. 5.77) for N = 100, :math:`\mu = 5`, and W = 10.
+The maximum of L is renormalized to 0, and color coded on a scale from -5 to 0,
+as shown in the legend. The bottom panel shows the marginal posterior for
+:math:`\mu` (see eq. 5.79), and the left panel shows the marginal posterior
+for W (see eq. 5.80).
 """
 # Author: Jake VanderPlas
 # License: BSD

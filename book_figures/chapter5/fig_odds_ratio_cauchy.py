@@ -1,6 +1,12 @@
 """
 Odds Ratio for Cauchy vs Gaussian
 ---------------------------------
+Figure 5.19
+
+The Cauchy vs. Gaussian model odds ratio for a data set drawn from a Cauchy
+distribution (mu = 0, gamma = 2) as a function of the number of points used
+to perform the calculation. Note the sharp increase in the odds ratio when
+points falling far from the mean are added.
 """
 # Author: Jake VanderPlas
 # License: BSD

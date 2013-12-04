@@ -1,8 +1,10 @@
 """
 Histogram for Double-gaussian model test
 ----------------------------------------
-This shows the dataset used for the double gaussian model testing
-in the following figure.
+Figure 5.23
+
+A sample of 200 points drawn from a Gaussian mixture model used to illustrate
+model selection with MCMC.
 """
 # Author: Jake VanderPlas
 # License: BSD

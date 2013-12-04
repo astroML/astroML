@@ -1,9 +1,11 @@
 """
 Plot the posterior of mu vs g1 with outliers
 --------------------------------------------
-This plot shows an example of dealing with outliers in a Bayesian fashion.
-Here we plot the posterior marginalized over all parameters except the
-mean, and the probability of a particular point being an outlier.
+Figure 5.17
+
+The marginal joint distribution between mu and g_i, as given by eq. 5.100.
+The left panel shows a point identified as bad (:math:`\hat{g_i|} = 0`),
+while the right panel shows a point identified as good(:math:`\hat{g_i|} = 1`).
 """
 # Author: Jake VanderPlas
 # License: BSD

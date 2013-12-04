@@ -1,11 +1,17 @@
 """
 Gaussian Distribution with Gaussian Errors
 ------------------------------------------
+Figure 5.8
 
-This plot shows the marginalized posteriors and bootstrap estimates of
-the mean :math:`\mu` and the
-error :math:`\sigma` when the posterior is assumed to be gaussian, and the
-points have heteroscedatic gaussian errors.
+The solid lines show marginalized posterior pdfs for :math:`\mu` (left) and
+:math:`\sigma` (right) for a Gaussian distribution with heteroscedastic
+Gaussian measurement errors (i.e., integrals over :math:`\sigma` and
+:math:`\mu` for the two-dimensional distribution shown in figure 5.7). For
+comparison, the dashed histograms show the distributions of approximate
+estimates for :math:`\mu` and :math:`\sigma` (the median and given by eq. 5.68,
+respectively) for 10,000 bootstrap resamples of the same data set. The true
+values of :math:`\mu` and :math:`\sigma` are indicated by the vertical dotted
+lines.
 """
 # Author: Jake VanderPlas
 # License: BSD

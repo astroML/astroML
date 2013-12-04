@@ -1,9 +1,15 @@
 """
 Log-likelihood for Cauchy Distribution
 --------------------------------------
+Figure 5.10
 
-This plot shows the Likelihood as a function of the mean :math:`\mu` and the
-error :math:`\gamma` when the posterior is assumed to be a Cauchy distribution.
+An illustration of the logarithm of posterior probability distribution for
+:math:`\mu` and :math:`\gamma`, :math:`L(\mu,\gamma)` (see eq. 5.75) for
+N = 10 (the sample is generated using the Cauchy distribution with
+:math:`\mu = 0` and :math:`\gamma = 2`). The maximum of L is renormalized
+to 0, and color coded as shown in the legend. The contours enclose the regions
+that contain 0.683, 0.955 and 0.997 of the cumulative (integrated) posterior
+probability.
 """
 # Author: Jake VanderPlas
 # License: BSD

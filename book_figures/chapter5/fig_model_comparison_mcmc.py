@@ -1,10 +1,12 @@
 """
 MCMC Model Comparison
 ---------------------
-This example uses Bayesian MCMC to select between two models for a dataset.
-The dataset is a mixture of two gaussian distributions, and two MCMC models
-are fit: one with a single gaussian, one with two gaussians of different
-widths.
+Figure 5.24
+
+The top-right panel shows the posterior pdf for mu and sigma for a single
+Gaussian fit to the data shown in figure 5.23. The remaining panels show the
+projections of the five-dimensional pdf for a Gaussian mixture model with
+two components. Contours are based on a 10,000 point MCMC chain.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -21,8 +23,6 @@ from scipy.stats import norm
 from sklearn.neighbors import BallTree
 from astroML.density_estimation import GaussianMixture1D
 from astroML.plotting import plot_mcmc
-from astroML.decorators import pickle_results
-
 # hack to fix an import issue in older versions of pymc
 import scipy
 scipy.derivative = scipy.misc.derivative
@@ -176,8 +176,6 @@ model2 = dict(M2_mu1=M2_mu1, M2_mu2=M2_mu2,
 
 #------------------------------------------------------------
 # Set up MCMC sampling
-#   We'll save the results, because the calculation takes a while
-@pickle_results('model_comparison_traces.pkl')
 def compute_MCMC_models(Niter=10000, burn=1000, rseed=0):
     pymc.numpy.random.seed(rseed)
 

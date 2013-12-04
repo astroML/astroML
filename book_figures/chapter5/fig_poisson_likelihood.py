@@ -1,10 +1,16 @@
 """
 Binned Regression: Poisson vs Gaussian
 --------------------------------------
-This example explores performing binned regression using a likelihood
-approach based on either a Gaussian or Poisson model.  As the average
-number of points in a bin becomes small, the Gaussian approximation
-breaks down.
+Figure 5.15
+
+The left panels show data sets with 50 points, binned in 5 bins (upper panels)
+and 40 bins (lower panels). The curves show the input distribution (solid), the
+Poisson solution (dashed), and the Gaussian solution (dotted). The right panels
+show 1-sigma, 2-sigma, and 3-sigma likelihood contours for eqs. 5.91 (dark
+lines) and 5.90 (light lines). With 5 bins (top row) there are enough counts
+in each bin so that the Gaussian and Poisson predictions are very similar. As
+the number of bins is increased, the counts decrease and the Gaussian
+approximation becomes biased.
 """
 # Author: Jake VanderPlas
 # License: BSD

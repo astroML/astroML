@@ -1,9 +1,14 @@
 """
 Posterior for Cauchy Distribution
 ---------------------------------
+Figure 5.11
 
-This plot shows the posterior distributions for :math:`\mu` and
-:math:`\gamma` for a cauchy distribution
+The solid lines show the posterior pdf :math:`p(\mu|{x_i},I)` (top-left panel)
+and the posterior pdf :math:`p(\gamma|{x_i},I)` (top-right panel) for the
+two-dimensional pdf from figure 5.10. The dashed lines show the distribution
+of approximate estimates of :math:`\mu` and :math:`\gamma` based on the median
+and interquartile range. The bottom panels show the corresponding cumulative
+distributions.
 """
 # Author: Jake VanderPlas
 # License: BSD

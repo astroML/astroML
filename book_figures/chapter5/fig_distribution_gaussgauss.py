@@ -1,8 +1,15 @@
 """
 Gaussian/Gaussian distribution
 ------------------------------
-This shows the resulting observed distribution when points drawn from a
-gaussian also have gaussian error bars
+Figure 5.6
+
+The distribution of 106 points drawn from :math:`\mathcal{N}(0,1)` and sampled
+with heteroscedastic Gaussian errors with widths, :math:`e_i`, uniformly
+distributed between 0 and 3. A linear superposition of these Gaussian
+distributions with widths equal to :math:`\sqrt{1 + e_i^2} results in a
+non-Gaussian distribution. The best-fit Gaussians centered on the sample
+median with widths equal to sample standard deviation and quartile-based
+:math:`\sigma_G` (eq.3.36) are shown for comparison.
 """
 # Author: Jake VanderPlas
 # License: BSD

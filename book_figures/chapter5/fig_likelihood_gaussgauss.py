@@ -1,10 +1,17 @@
 """
 Gaussian Distribution with Gaussian Errors
 ------------------------------------------
+Figure 5.7
 
-This plot shows the Likelihood as a function of the mean :math:`\mu` and the
-error :math:`\sigma` when the posterior is assumed to be gaussian, and the
-points have heteroscedatic gaussian errors.
+The logarithm of the posterior probability density function for :math:`\mu`
+and :math:`\sigma`, :math:`L_p(\mu,\sigma)`, for a Gaussian distribution with
+heteroscedastic Gaussian measurement errors (sampled uniformly from the 0-3
+interval), given by eq. 5.64. The input values are :math:`\mu = 1` and
+:math:`\sigma = 1`, and a randomly generated sample has 10 points. Note that
+the posterior pdf is not symmetric with respect to the :math:`\mu = 1` line,
+and that the outermost contour, which encloses the region that contains 0.997
+of the cumulative (integrated) posterior probability, allows solutions with
+:math:`\sigma = 0`.
 """
 # Author: Jake VanderPlas
 # License: BSD

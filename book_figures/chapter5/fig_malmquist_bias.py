@@ -1,11 +1,18 @@
 """
 Malmquist Bias Example
 ----------------------
-This figure demonstrates the Malmquist bias, whereby observational cuts in
-noisy data can lead to sets of observations which are statistically biased.
-The left panel shows the true distribution, and the observed (noisy)
-distribution.  The right panel shows the biased distribution of observed
-values.
+Figure 5.2
+
+An illustration of the bias in a subsample selected using measurements with
+finite errors, when the population distribution is a steep function. The
+sample is drawn from the distribution :math:`p(x) \propto 10^{0.6x}`, shown
+by the solid line in the left panel, and convolved with heteroscedastic errors
+with widths in the range :math:`0.5 < \sigma < 1.5`. When a subsample is
+selected using "measured" values, as illustrated in the left panel, the
+distribution of differences between the "observed" and true values is biased,
+as shown by the histogram in the right panel. The distribution is biased
+because more objects with larger true x are scattered into the subsample
+from the right side, than from the left side where the true x are smaller.
 """
 # Author: Jake VanderPlas
 # License: BSD

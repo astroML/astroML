@@ -1,9 +1,11 @@
 """
 Distribution Representation Comparison
 --------------------------------------
-This figure compares the representations of distributions from two
-methods: a fixed-width histogram with Knuth's method, and a variable-width
-histogram using Bayesian Blocks.
+Figure 5.21
+
+Comparison of Knuth's histogram and a Bayesian blocks histogram. The adaptive
+bin widths of the Bayesian blocks histogram yield a better representation of
+the underlying data, especially with fewer points.
 """
 # Author: Jake VanderPlas
 # License: BSD

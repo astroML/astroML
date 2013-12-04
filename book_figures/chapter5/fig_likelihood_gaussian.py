@@ -1,9 +1,14 @@
 """
 Log-likelihood for Gaussian Distribution
 ----------------------------------------
-
-This plot shows the Likelihood as a function of the mean :math:`\mu` and the
-error :math:`\sigma` when the posterior is assumed to be gaussian.
+Figure5.4
+An illustration of the logarithm of the posterior probability density
+function for :math:`\mu` and :math:`\sigma`, :math:`L_p(\mu,\sigma)`
+(see eq. 5.58) for data drawn from a Gaussian distribution and N = 10, x = 1,
+and V = 4. The maximum of :math:`L_p` is renormalized to 0, and color coded as
+shown in the legend. The maximum value of :math:`L_p` is at :math:`\mu_0 = 1.0`
+and :math:`\sigma_0 = 1.8`. The contours enclose the regions that contain
+0.683, 0.955, and 0.997 of the cumulative (integrated) posterior probability.
 """
 # Author: Jake VanderPlas
 # License: BSD

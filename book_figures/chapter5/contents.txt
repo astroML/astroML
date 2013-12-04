@@ -14,7 +14,6 @@ fig_likelihood_gausslin.py
 fig_poisson_continuous.py
 fig_poisson_likelihood.py
 fig_poisson_comparison.py
-fig_outlier_distribution.py
 fig_outlier_likelihood.py
 fig_outlier_marginalized.py
 fig_odds_ratio_cauchy.py
@@ -25,3 +24,5 @@ fig_model_comparison_hist.py
 fig_model_comparison_mcmc.py
 fig_gaussgauss_mcmc.py
 fig_signal_background.py
+
+#fig_outlier_distribution.py

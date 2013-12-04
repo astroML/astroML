@@ -1,16 +1,15 @@
 """
-Coin Odds Ratio
----------------
+Coin Toss Odds Ratio
+--------------------
+Figure 5.1
 
-This figure shows the odds ratio for a coin flip.  The curves show the
-odds ratio between model :math:`M_1`, in which the probability of landing
-heads is known to be :math:`b^*`, and model :math:`M_2`, where the probability
-of landing heads is unknown.
-
-Here we plot the odds ratio between the models, :math:`O_{21}`, as a function
-of :math:`k` heads observed :math:`n` coin tosses.  Comparing the panels, it
-is clear that, as expected, observing more tosses gives better constraints
-on models via the odds ratio.
+Odds ratio for two models, :math:`O_{21}`, describing coin tosses (eq. 5.26).
+Out of N tosses (left: N = 10; right: N = 20), k tosses are heads. Model 2 is
+a one-parameter model with the heads probability determined from data
+(:math:`b^0 = k/N`), and model 1 claims an a priori known heads probability
+equal to :math:`b_*`.The results are shown for two values of :math:`b_*`,
+as indicated in the legend. Note that the odds ratio is minimized and below 1
+(model 1 wins) when :math:`k = b_* N`.
 """
 # Author: Jake VanderPlas
 # License: BSD

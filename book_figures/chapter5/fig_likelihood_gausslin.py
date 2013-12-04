@@ -1,10 +1,19 @@
 """
 Log-likelihood for Gaussian plus linear background
 --------------------------------------------------
+Figure 5.13
 
-This plot shows the Likelihood as a function of the error :math:`\sigma`
-and the amplotude :math:`A` when the posterior is assumed to be a Gaussian
-with a linear background.
+An illustration of the logarithm of the posterior probability density function
+:math:`L(\sigma,A)` (see eq. 5.85) for data generated using N = 200,
+:math:`\mu=5`, :math:`\sigma = 1`, and A = 0.5, with the background strength
+(1 - A)/W = 0.05 in the interval 0 < x < W, W = 10.
+The maximum of :math:`L(\sigma, A)` is renormalized to 0, and color coded on
+a scale -5 to 0, as shown in the legend. The contours enclose the regions that
+contain 0.683, 0.955, and 0.997 of the cumulative (integrated) posterior
+probability. Note the covariance between A and :math:`\sigma`. The histogram
+in the bottom panel shows the distribution of data values used to construct
+the posterior pdf in the top panel, and the probability density function
+from which the data were drawn as the solid line.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -93,7 +102,7 @@ ax.contour(sigma, A, convert_to_stdev(logL),
 ax2 = plt.subplot(212)
 ax2.yaxis.set_major_locator(plt.MultipleLocator(0.1))
 ax2.plot(x, fracA * dist1.pdf(x) + (1. - fracA) * dist2.pdf(x), '-k')
-ax2.hist(xi, 30, normed=True, histtype='stepfilled', fc='black', alpha=0.5)
+ax2.hist(xi, 30, normed=True, histtype='stepfilled', fc='gray', alpha=0.5)
 
 ax2.set_ylim(0, 0.301)
 ax2.set_xlim(-1, 11)

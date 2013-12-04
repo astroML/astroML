@@ -1,10 +1,14 @@
 """
 Gaussian Distribution with Gaussian Errors
 ------------------------------------------
+Figure 5.25
 
-This plot shows the Likelihood as a function of the mean :math:`\mu` and the
-error :math:`\sigma` when the posterior is assumed to be gaussian, and the
-points have heteroscedatic gaussian errors.
+The posterior pdf for mu and sigma for a Gaussian distribution with
+heteroscedastic errors. This is the same data set as used in figure 5.7, but
+here each measurement error is assumed unknown, treated as a model parameter
+with a scale-invariant prior, and marginalized over to obtain the distribution
+of mu and sigma shown by contours. For comparison, the posterior pdf from
+figure 5.7 is shown by shaded contours.
 """
 # Author: Jake VanderPlas
 # License: BSD

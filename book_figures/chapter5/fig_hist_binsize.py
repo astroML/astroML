@@ -1,9 +1,13 @@
 """
 Selection of Histogram bin size
 -------------------------------
+Figure 5.20
 
-This shows an example of selecting histogram bin size using Scott's rule,
-the Freedman-Diaconis rule, and Knuth's rule.
+The results of Scott's rule, the Freedman-Diaconis rule, and Knuth's rule for
+selecting the optimal bin width for a histogram. These histograms are based
+on 5000 points drawn from the shown pdfs. On the left is a simple normal
+distribution. On the right is a Laplacian distribution at the center, with
+two small Gaussian peaks added in the wings.
 """
 # Author: Jake VanderPlas
 # License: BSD

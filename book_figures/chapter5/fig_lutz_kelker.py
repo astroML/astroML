@@ -1,8 +1,22 @@
 """
 Eddington-Malmquist & Lutz-Kelker Biases
 ----------------------------------------
-These plots show the magnitude biases that result from the Eddington-Malmquist
-and Lutz-Kelker Biases.
+Figure 5.3
+
+An illustration of the Eddington-Malmquist (left) and Lutz-Kelker (right)
+biases for mock data sets that simulate upcoming LSST and Gaia surveys
+(see text). The left panel shows a bias in photometric calibration when using
+pairs of measurements of the same stars with realistic photometric error
+distributions. Depending on the adopted faint limit (x-axis), the median
+difference between two measurements (dashed line) is biased when this limit
+is too close to the 5-sigma data limit (corresponding to errors of 0.2 mag);
+in this example the 5-sigma magnitude limit is set to 24. The solid line shows
+the assumed random measurement errors - if the number of stars in the sample
+is large, the random error for magnitude difference may become much smaller
+than the bias. The right panel shows the bias in absolute magnitude for
+samples calibrated using trigonometric parallax measurements with relative
+errors :math:`\sigma_\pi / \pi`, and two hypothetical parallax distributions
+given by eq. 5.41 and p = 2, 4.
 """
 # Author: Jake VanderPlas
 # License: BSD

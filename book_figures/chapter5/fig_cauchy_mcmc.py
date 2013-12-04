@@ -1,9 +1,14 @@
 """
 MCMC for the Cauchy distribution
 --------------------------------
+Figure 5.22
 
-This example shows how to use pyMC to sample the likelihood for the
-parameters of a Cauchy distribution
+Markov chain monte carlo (MCMC) estimates of the posterior pdf for parameters
+describing the Cauchy distribution. The data are the same as those used in
+figure 5.10: the dashed curves in the top-right panel show the results of
+direct computation on a regular grid from that diagram. The solid curves are
+the corresponding MCMC estimates using 10,000 sample points. The left and the
+bottom panels show marginalized distributions.
 """
 # Author: Jake VanderPlas
 # License: BSD

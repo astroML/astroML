@@ -1,10 +1,14 @@
 """
 Binomial Posterior
 ------------------
+Figure 5.9
 
-This figure shows the posterior for the estimation of the parameter :math:`b`
-from a sampled binomial distribution, and over-plots the gaussian
-approximation to this posterior.
+The solid line in the left panel shows the posterior pdf p(b|k, N) described by
+eq. 5.71, for k = 4 and N = 10. The dashed line shows a Gaussian approximation
+described in Section 3.3.3. The right panel shows the corresponding cumulative
+distributions. A value of 0.1 is marginally likely according to the Gaussian
+approximation (p_approx(< 0.1) ~ 0.03) but strongly rejected by the true
+distribution (p_true(< 0.1) ~ 0.003).
 """
 # Author: Jake VanderPlas
 # License: BSD
