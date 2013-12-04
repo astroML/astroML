@@ -1,8 +1,14 @@
 """
 Angular Correlation Function
 ----------------------------
-Compute the angular correlation functions for the spectroscopic galaxies
-in the Sloan Digital Sky Survey.
+Figure 6.17
+
+The two-point correlation function of SDSS spectroscopic galaxies in the range
+0.08 < z < 0.12, with m < 17.7. This is the same sample for which the
+luminosity function is computed in figure 4.10. Errors are estimated using ten
+bootstrap samples. Dotted lines are added to guide the eye and correspond to a
+power law proportional to :math:`\theta^{-0.8}`. Note that the red galaxies
+(left panel) are clustered more strongly than the blue galaxies (right panel).
 """
 # Author: Jake VanderPlas
 # License: BSD

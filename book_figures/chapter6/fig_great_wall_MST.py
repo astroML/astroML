@@ -1,18 +1,22 @@
 """
 Euclidean Minimum Spanning Tree
 -------------------------------
+Figure 6.15
+
+An approximate Euclidean minimum spanning tree over the two-dimensional
+projection of the SDSS Great Wall. The upper panel shows the input points, and
+the middle panel shows the dendrogram connecting them. The lower panel shows
+clustering based on this dendrogram, created by removing the largest 10% of the
+graph edges, and keeping the remaining connected clusters with 30 or more
+members.
+
+Additional information
+~~~~~~~~~~~~~~~~~~~~~~
 This figure is based on the data presented in Figure 1 of Cowan & Ivezic
 (2008). A similar figure appears in the book
 "Statistics, Data Mining, and Machine Learning in Astronomy", by
 Ivezic, Connolly, Vanderplas, and Gray (2013).
 
-Running this code requires astroML, a lightweight python package which
-can be quickly installed using `pip install astroML`.
-See http://astroML.github.com for more information.  AstroML will
-automatically download and cache the required dataset to $HOME/astroML_data.
-
-Figure Caption
---------------
 The three panels of this figure show a hierarchical clustering of a subset
 of galaxies from the Sloan Digital Sky Survey (SDSS).  This region is known
 as the "SDSS Great Wall", and contains an extended cluster of several thousand

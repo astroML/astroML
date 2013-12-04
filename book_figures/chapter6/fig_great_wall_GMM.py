@@ -1,8 +1,12 @@
 """
 Mixture Model of SDSS Great Wall
 --------------------------------
-This figure uses a Gaussian Mixture Model to estimate the density of the
-SDSS great wall.
+Figure 6.7
+
+A two-dimensional mixture of 100 Gaussians (bottom) used to estimate the number
+density distribution of galaxies within the SDSS Great Wall (top). Compare to
+figures 6.3 and 6.4, where the density for the same distribution is computed
+using both kernel density and nearest-neighbor-based estimates.
 """
 # Author: Jake VanderPlas
 # License: BSD

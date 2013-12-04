@@ -1,8 +1,12 @@
 """
 EM example: K-means
 -------------------
-This shows an example of K-means clustering on the SDSS Segue Stellar
-Parameters Pipeline data
+Figure 6.13
+
+The K-means analysis of the stellar metallicity data used in figure 6.6. Note
+how the background distribution "pulls" the cluster centers away from the locus
+where one would place them by eye. This is why more sophisticated models like
+GMM are often better in practice.
 """
 # Author: Jake VanderPlas
 # License: BSD

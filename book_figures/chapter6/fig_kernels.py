@@ -1,7 +1,11 @@
 """
 Example Kernels
 ---------------
-Plot three One-dimensional kernels: the Gaussian, Exponential, and Top-Hat
+Figure 6.2
+
+A comparison of the three kernels used for density estimation in figure 6.3:
+the Gaussian kernel (eq. 6.2), the top-hat kernel (eq. 6.3), and the
+exponential kernel (eq. 6.4).
 """
 # Author: Jake VanderPlas
 # License: BSD

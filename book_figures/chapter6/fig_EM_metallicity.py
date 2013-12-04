@@ -1,8 +1,15 @@
 """
 EM example: Gaussian Mixture Models
 -----------------------------------
-This shows a gaussian mixture model of the metallicity data from the
-SDSS Segue Stellar Parameters Pipeline.
+Figure 6.6
+
+A two-dimensional mixture of Gaussians for the stellar metallicity data. The
+left panel shows the number density of stars as a function of two measures of
+their chemical composition: metallicity ([Fe/H]) and alpha-element abundance
+([alpha/Fe]). The right panel shows the density estimated using mixtures of
+Gaussians together with the positions and covariances (2-sigma levels) of
+those Gaussians. The center panel compares the information criteria AIC
+and BIC (see Sections 4.3.2 and 5.4.3).
 """
 # Author: Jake VanderPlas
 # License: BSD

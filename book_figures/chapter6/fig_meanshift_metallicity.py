@@ -1,8 +1,13 @@
 """
 Mean Shift Example
 ------------------
-This shows an example of the Mean Shift clustering algorithm on the data
-from the SDSS Segue Stellar Parameters Pipeline
+Figure 6.14
+
+Mean-shift clustering on the metallicity datas et used in figures 6.6 and 6.13.
+The method finds two clusters associated with local maxima of the distribution
+(interior of the circles). Points outside the circles have been determined to
+lie in the background. The mean shift does not attempt to model correlation
+in the clusters: that is, the resulting clusters are axis aligned.
 """
 # Author: Jake VanderPlas
 # License: BSD

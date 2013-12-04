@@ -1,7 +1,16 @@
 """
 Great Wall Density
 ------------------
-Comparison of density estimation techniques on the SDSS great wall
+Figure 6.4
+
+Density estimation for galaxies within the SDSS "Great Wall." The upper-left
+panel shows points that are galaxies, projected by their spatial locations
+onto the equatorial plane (declination ~ 0 degrees). The remaining panels
+show estimates of the density of these points using kernel density estimation
+(with a Gaussian kernel with width 5Mpc), a K-nearest-neighbor estimator
+(eq. 6.15) optimized for a small-scale structure (with K = 5), and a
+K-nearest-neighbor estimator optimized for a large-scale structure
+(with K = 40).
 """
 # Author: Jake VanderPlas
 # License: BSD

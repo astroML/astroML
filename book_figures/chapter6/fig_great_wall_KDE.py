@@ -1,8 +1,15 @@
 """
 Great Wall KDE
 --------------
-Comparison of different kernels for Kernel Density Estimation of the
-SDSS great wall.
+Figure 6.3
+
+Kernel density estimation for galaxies within the SDSS "Great Wall." The
+top-left panel shows points that are galaxies, projected by their spatial
+locations (right ascension and distance determined from redshift measurement)
+onto the equatorial plane (declination ~ 0 degrees). The remaining panels show
+estimates of the density of these points using kernel density estimation with
+a Gaussian kernel (upper right), a top-hat kernel (lower left), and an
+exponential kernel (lower right). Compare also to figure 6.4.
 """
 # Author: Jake VanderPlas
 # License: BSD

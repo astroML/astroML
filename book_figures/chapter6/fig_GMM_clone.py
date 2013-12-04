@@ -1,8 +1,12 @@
 """
 Cloning a Distribution with Gaussian Mixtures
 ---------------------------------------------
-This figure shows how to clone an N-dimensional distribution using
-Gaussian Mixture Models.
+Figure 6.10
+
+Cloning a two-dimensional distribution. The left panel shows 1000 observed
+points. The center panel shows a ten-component Gaussian mixture model fit to
+the data (two components dominate over other eight). The third panel shows
+5000 points drawn from the model in the second panel.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -69,7 +73,7 @@ ax.yaxis.set_major_formatter(plt.NullFormatter())
 
 # next plot the cloned distribution
 ax = fig.add_subplot(133, aspect='equal')
-ax.plot(X_new[:, 0], X_new[:, 1], '.k', ms=2)
+ax.plot(X_new[:, 0], X_new[:, 1], '.k', alpha=0.3, ms=2)
 
 ax.set_title("Cloned Distribution")
 ax.yaxis.set_major_formatter(plt.NullFormatter())

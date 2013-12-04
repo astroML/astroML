@@ -1,10 +1,17 @@
 """
 Extreme Deconvolution of Stellar Data
 -------------------------------------
-This figure demonstrates the use of Extreme Deconvolution on real stellar
-data.  We compare the single-epoch photometry from SDSS to the multi-epoch
-photometry from stripe 82.  The extreme deconvolution recovers the
-underlying non-noisy distribution.
+Figure 6.12
+
+Extreme deconvolution applied to stellar data from SDSS Stripe 82. The top
+panels compare the color distributions for a high signal-to-noise sample of
+standard stars (left) with lower signal-to-noise, single epoch, data (right).
+The middle panels show the results of applying extreme deconvolution to the
+single epoch data. The bottom panel compares the distributions of a color
+measured perpendicularly to the locus (the so-called w color is defined
+following Ivezic et al 2004). The distribution of colors from the extreme
+deconvolution of the noisy data recovers the tight distribution of the high
+signal-to-noise data.
 """
 # Author: Jake VanderPlas
 # License: BSD

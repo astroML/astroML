@@ -1,6 +1,10 @@
 """
 Diagramatic Description of n-point Correlations
 -----------------------------------------------
+Figure 6.16
+
+An example of n-tuple configurations for the two-point, three-point,
+and four-point correlation functions (reproduced from WSAS).
 """
 # Author: Jake VanderPlas
 # License: BSD

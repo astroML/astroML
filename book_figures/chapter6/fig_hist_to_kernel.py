@@ -1,11 +1,19 @@
 """
 Histogram vs Kernel Density Estimation
 --------------------------------------
-These figures show how histograms are related to kernel density estimation.
-The first figure shows how histograms with the same binwidth but different
-bin locations can lead to very different ideas of what the data looks like.
-The second figure shows how the histogram idea leads to the concept of
-Kernel Density Estimation (KDE).
+Figure 6.1
+
+Density estimation using histograms and kernels. The top panels show two
+histogram representations of the same data (shown by plus signs in the bottom
+of each panel) using the same bin width, but with the bin centers of the
+histograms offset by 0.25. The middle-left panel shows an adaptive histogram
+where each bin is centered on an individual point and these bins can overlap.
+This adaptive representation preserves the bimodality of the data. The
+remaining panels show kernel density estimation using Gaussian kernels with
+different bandwidths, increasing from the middle-right panel to the
+bottom-right, and with the largest bandwidth in the bottom-left panel. The
+trade-off of variance for bias becomes apparent as the bandwidth of the
+kernels increases.
 """
 # Author: Jake VanderPlas
 # License: BSD

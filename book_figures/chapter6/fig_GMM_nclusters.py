@@ -1,8 +1,15 @@
 """
 Number of Clusters for Gaussian Mixtures
 ----------------------------------------
-This figure shows the BIC-optimized number of clusters for
-a Gaussian mixture model with several sizes of data.
+Figure 6.9
+
+The BIC-optimized number of components in a Gaussian mixture model as a
+function of the sample size. All three samples (with 100, 1000, and 10,000
+points) are drawn from the same distribution: two narrow foreground Gaussians
+and two wide background Gaussians. The top-right panel shows the BIC as a
+function of the number of components in the mixture. The remaining panels show
+the distribution of points in the sample and the 1, 2, and 3 standard deviation
+contours of the best-fit mixture model.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -79,7 +86,7 @@ for Npts, ax, ls in zip([100, 1000, 10000], ax_list, linestyles):
     log_dens = clf.score(Xgrid).reshape((70, 70))
 
     # scatter the points
-    ax.plot(X[:, 0], X[:, 1], '.', c='gray', ms=1, zorder=1)
+    ax.plot(X[:, 0], X[:, 1], ',k', alpha=0.3, zorder=1)
 
     # plot the components
     for i in range(clf.n_components):

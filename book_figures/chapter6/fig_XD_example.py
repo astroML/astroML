@@ -1,7 +1,14 @@
 """
 Extreme Deconvolution example
 -----------------------------
-This demonstrates extreme deconvolution on a toy dataset.
+Figure 6.11
+
+An example of extreme deconvolution showing a simulated two-dimensional
+distribution of points, where the positions are subject to errors. The top two
+panels show the distributions with small (left) and large (right) errors. The
+bottom panels show the densities derived from the noisy sample (top-right
+panel) using extreme deconvolution; the resulting distribution closely matches
+that shown in the top-left panel.
 """
 # Author: Jake VanderPlas
 # License: BSD

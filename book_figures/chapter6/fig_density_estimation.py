@@ -1,6 +1,14 @@
 """
 Comparison of 1D Density Estimators
 -----------------------------------
+Figure 6.5
+
+A comparison of different density estimation methods for two simulated
+one-dimensional data sets (cf. figure 5.21). The generating distribution is
+same in both cases and shown as the dotted line; the samples include 500
+(top panel) and 5000 (bottom panel) data points (illustrated by vertical bars
+at the bottom of each panel). Density estimators are Bayesian blocks
+(Section 5.7.2), KDE (Section 6.1.1) and the nearest-neighbor method (eq. 6.15).
 """
 # Author: Jake VanderPlas
 # License: BSD
