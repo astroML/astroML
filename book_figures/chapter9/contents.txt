@@ -9,7 +9,7 @@ fig_rrlyrae_logreg.py
 fig_svm_diagram.py
 fig_rrlyrae_svm.py
 fig_rrlyrae_kernelsvm.py
-fig_rrlyrae_tree.py
+fig_rrlyrae_treevis.py
 fig_rrlyrae_decisiontree.py
 fig_photoz_tree.py
 fig_photoz_forest.py
