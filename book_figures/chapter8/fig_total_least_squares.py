@@ -1,8 +1,13 @@
 """
 Total Least Squares Figure
 --------------------------
-This shows an example of fitting a line to data with errors in both variables.
-The implementation follows Hogg et al 2010 (arXiv:1008.4686)
+Figure 8.6
+
+A linear fit to data with correlated errors in x and y. In the literature, this
+is often referred to as total least squares or errors-in-variables fitting. The
+left panel shows the lines of best fit; the right panel shows the likelihood
+contours in slope/intercept space. The points are the same set used for the
+examples in Hogg, Bovy & Lang 2010.
 """
 # Author: Jake VanderPlas
 # License: BSD

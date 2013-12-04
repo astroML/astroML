@@ -1,7 +1,17 @@
 """
 Regularized Regression Example
 ------------------------------
-This performs regularized regression on a gaussian basis function model.
+Figure 8.4
+
+Regularized regression for the same sample as Fig. 8.2. Here we use Gaussian
+basis function regression with a Gaussian of width sigma = 0.2 centered at 100
+regular intervals between 0 < z < 2. The lower panels show the best-fit weights
+as a function of basis function position. The left column shows the results
+with no regularization: the basis function weights w are on the order of 108,
+and overfitting is evident. The middle column shows ridge regression (L2
+regularization) with alpha = 0.005, and the right column shows LASSO regression
+(L1 regularization) with alpha = 0.005. All three methods are fit without the
+bias term (intercept).
 """
 # Author: Jake VanderPlas
 # License: BSD

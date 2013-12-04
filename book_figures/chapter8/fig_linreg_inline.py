@@ -1,8 +1,15 @@
 """
 Inline Bayesian Linear Regression
 ---------------------------------
-This figure shows a schematic of how Bayesian ideas can be used for a
-linear regression problem with (asymmetric) errors in the data.
+Figure 8.1
+
+An example showing the online nature of Bayesian regression. The upper panel
+shows the four points used in regression, drawn from the line
+y = theta_1 x + theta_2 with theta_1 = 1 and theta_2 = 0. The lower panel shows
+the posterior pdf in the (theta_1, theta_2) plane as each point is added in
+sequence. For clarity, the implied dark regions for sigma > 3 have been
+removed. The fourth point is an upper-limit measurement of y, and the resulting
+posterior cuts off half the parameter space.
 """
 # Author: Jake VanderPlas
 # License: BSD

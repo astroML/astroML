@@ -1,7 +1,9 @@
 """
-Huber Functional Form
----------------------
-This plots the form of the huber loss function :math:`\Phi(t)`.
+Huber Loss Function
+-------------------
+Figure 8.7
+
+The Huber loss function for various values of c.
 """
 # Author: Jake VanderPlas
 # License: BSD

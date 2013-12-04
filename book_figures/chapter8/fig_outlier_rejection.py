@@ -1,8 +1,18 @@
 """
 Perform Outlier Rejection with MCMC
 -----------------------------------
-This follows the formalism in Hogg et al 2010,
-"Data Analysis Recipies: Fitting a model to data"
+Figure 8.9
+
+Bayesian outlier detection for the same data as shown in figure 8.8. The
+top-left panel shows the data, with the fits from each model. The top-right
+panel shows the 1-sigma and 2-sigma contours for the slope and intercept with
+no outlier correction: the resulting fit (shown by the dotted line) is clearly
+highly affected by the presence of outliers. The bottom-left panel shows the
+marginalized 1-sigma and 2-sigma contours for a mixture model (eq. 8.67). The
+bottom-right panel shows the marginalized 1-sigma and 2-sigma contours for a
+model in which points are identified individually as "good" or "bad"
+(eq. 8.68). The points which are identified by this method as bad with a
+probability greater than 68% are circled in the first panel.
 """
 # Author: Jake VanderPlas
 # License: BSD

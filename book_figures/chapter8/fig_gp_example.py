@@ -1,8 +1,15 @@
 """
 Gaussian Process Example
 ------------------------
-This shows an example of Gaussian Process Regression, as well as some panels
-that help describe what it does.
+Figure 8.10
+
+An example of Gaussian process regression. The upper-left panel shows three
+functions drawn from an unconstrained Gaussian process with squared-exponential
+covari- ance of bandwidth h = 1.0. The upper-right panel adds two constraints,
+and shows the 2-sigma contours of the constrained function space. The
+lower-left panel shows the function space constrained by the points with error
+bars. The lower-right panel shows the function space constrained by 20 noisy
+points drawn from f(x) = cos(x).
 """
 # Author: Jake VanderPlas
 # License: BSD

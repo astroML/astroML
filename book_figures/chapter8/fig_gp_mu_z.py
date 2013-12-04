@@ -1,7 +1,11 @@
 """
 Cosmology Regression Example
 ----------------------------
-This example uses Gaussian Process Regression to fit cosmological distance data
+Figure 8.11
+
+A Gaussian process regression analysis of the simulated supernova sample used
+in figure 8.2. This uses a squared-exponential covariance model, with bandwidth
+learned through cross-validation.
 """
 # Author: Jake VanderPlas
 # License: BSD

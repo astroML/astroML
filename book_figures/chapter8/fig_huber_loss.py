@@ -1,12 +1,13 @@
 """
 Huber Loss Function
 -------------------
-This example shows how to perform robust regression using the Huber
-loss function.
+Figure 8.8
 
-Note that sklearn.linear_model.SGDRegressor has a Huber Loss Function
-built-in; here we will not use this, because it cannot account for
-heteroscedastic errors.
+An example of fitting a simple linear model to data which includes outliers
+(data is from table 1 of Hogg et al 2010). A comparison of linear regression
+using the squared-loss function (equivalent to ordinary least-squares
+regression) and the Huber loss function, with c = 1 (i.e., beyond 1 standard
+deviation, the loss becomes linear).
 """
 # Author: Jake VanderPlas
 # License: BSD

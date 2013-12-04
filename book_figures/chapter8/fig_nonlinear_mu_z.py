@@ -1,6 +1,13 @@
 """
 Nonlinear cosmology fit to mu vs z
 ----------------------------------
+Figure 8.5
+
+Cosmology fit to the standard cosmological integral. Errors in mu are a factor
+of ten smaller than for the sample used in figure 8.2. Contours are 1-sigma,
+2-sigma, and 3-sigma for the posterior (uniform prior in :math:`\Omega_M` and
+:math:`\Omega_\Lambda`). The dashed line shows flat cosmology. The dotted lines
+show the input values.
 """
 # Author: Jake VanderPlas
 # License: BSD

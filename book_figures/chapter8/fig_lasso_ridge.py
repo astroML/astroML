@@ -1,7 +1,15 @@
 """
 Ridge and Lasso: Geometric Interpretation
 -----------------------------------------
-This displays a schematic diagram of ridge regression and lasso regression.
+Figure 8.3
+
+A geometric interpretation of regularization. The right panel shows L1
+regularization (LASSO regression) and the left panel L2 regularization
+(ridge regularization). The ellipses indicate the posterior distribution for
+no prior or regularization. The solid lines show the constraints due to
+regularization (limiting theta^2 for ridge regression and |theta| for LASSO
+regression). The corners of the L1 regularization create more opportunities
+for the solution to have zeros for some of the weights.
 """
 # Author: Jake VanderPlas
 # License: BSD
