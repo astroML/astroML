@@ -1,8 +1,11 @@
 """
 LDA Classification of photometry
 --------------------------------
-LDA photometric classification of rr-lyrae stars.  This uses averaged
-photometry from the rr-lyrae catalog and stripe 82 standards catalogs.
+Figure 9.4
+
+The linear discriminant boundary for RR Lyrae stars (see caption of figure 9.3
+for details). With all four colors, LDA achieves a completeness of 0.672 and a
+contamination of 0.806.
 """
 # Author: Jake VanderPlas
 # License: BSD

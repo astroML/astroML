@@ -1,9 +1,14 @@
 """
 K-neighbors Classification of photometry
 ----------------------------------------
-K-nearest-neighbor photometric classification of rr-lyrae stars.
-This uses averaged photometry from the rr-lyrae catalog and stripe 82
-standards catalogs.
+Figure 9.7
+
+K-nearest-neighbor classification for RR Lyrae stars (see caption of figure 9.3
+for details). Here the left panel shows the decision boundary for the model
+based on K = 10 neighbors, and the right panel shows the completeness and
+contamination for both K = 1 and K = 10. With all four colors and K = 10,
+K-neighbors classification achieves a completeness of 0.533 and a contamination
+of 0.240.
 """
 # Author: Jake VanderPlas
 # License: BSD

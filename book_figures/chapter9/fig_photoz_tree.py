@@ -1,9 +1,14 @@
 """
 Photometric Redshifts by Decision Trees
 ---------------------------------------
-This plot shows a decision tree regression for computing photometric redshifts,
-and uses learning curves as cross validation to choose the optimal tree
-depth.
+Figure 9.14
+
+Photometric redshift estimation using decision-tree regression. The data is
+described in Section 1.5.5. The training set consists of u, g , r, i, z
+magnitudes of 60,000 galaxies from the SDSS spectroscopic sample.
+Cross-validation is performed on an additional 6000 galaxies. The left panel
+shows training error and cross-validation error as a function of the maximum
+depth of the tree. For a number of nodes N > 13, overfitting is evident.
 """
 # Author: Jake VanderPlas
 # License: BSD

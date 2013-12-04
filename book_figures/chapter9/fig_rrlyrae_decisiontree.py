@@ -1,9 +1,11 @@
 """
 Decision Tree Classification of photometry
 ------------------------------------------
-Decision Tree photometric classification of rr-lyrae stars.  This uses averaged
-photometry from the rr-lyrae catalog and stripe 82 standards catalogs.  The
-results show the axis-aligned nature of the basic decision tree algorithm
+Figure 9.13
+
+Decision tree applied to the RR Lyrae data (see caption of figure 9.3 for
+details). This example uses tree depths of 7 and 12. With all four colors,this
+decision tree achieves a completeness of 0.569 and a contamination of 0.386.
 """
 # Author: Jake VanderPlas
 # License: BSD

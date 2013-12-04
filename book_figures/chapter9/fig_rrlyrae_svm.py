@@ -1,8 +1,11 @@
 """
 SVM Classification of photometry
 --------------------------------
-SVM photometric classification of rr-lyrae stars.  This uses averaged
-photometry from the rr-lyrae catalog and stripe 82 standards catalogs.
+Figure 9.10
+
+SVM applied to the RR Lyrae data (see caption of figure 9.3 for details). With
+all four colors, SVM achieves a completeness of 1.0 and a contamination of
+0.854.
 """
 # Author: Jake VanderPlas
 # License: BSD

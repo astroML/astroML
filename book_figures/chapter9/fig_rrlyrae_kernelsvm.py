@@ -1,8 +1,11 @@
 """
 Kernel SVM Classification of photometry
 ---------------------------------------
-Kernel SVM photometric classification of rr-lyrae stars.  This uses averaged
-photometry from the rr-lyrae catalog and stripe 82 standards catalogs.
+Figure 9.11
+
+Kernel SVM applied to the RR Lyrae data (see caption of figure 9.3 for
+details). This example uses a Gaussian kernel with gamma = 20. With all four
+colors, kernel SVM achieves a completeness of 1.0 and a contamination of 0.852.
 """
 # Author: Jake VanderPlas
 # License: BSD

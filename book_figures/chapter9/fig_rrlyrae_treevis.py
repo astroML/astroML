@@ -1,8 +1,12 @@
 """
 Decision Tree for RR Lyrae Classification
 -----------------------------------------
-This uses a decision tree to photometrically classify RR Lyrae variables,
-and plots a visualization of the first several levels of the tree.
+Figure 9.12
+
+The decision tree for RR Lyrae classification. The numbers in each node are the
+statistics of the training sample of ~70,000 objects. The cross-validation
+statistics are shown in the bottom-left corner of the figure. See also
+figure 9.13.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -17,6 +21,12 @@ from matplotlib import pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
 from astroML.datasets import fetch_rrlyrae_combined
 from astroML.utils import split_samples
+
+import sklearn
+from distutils.version import StrictVersion
+if StrictVersion(sklearn.__version__) >= StrictVersion('0.14'):
+    raise ValueError("Newer versions of scikit-learn's tree module "
+                     "are not supported")
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.

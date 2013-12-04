@@ -1,8 +1,13 @@
 """
 Star/Quasar Classification ROC Curves
 -------------------------------------
-This script uses several methods to photometrically classify stars
-and quasars, and plot the ROC curve for these objects.
+Figure 9.18
+
+The left panel shows data used in color-based photometric classification of
+stars and quasars. Stars are indicated by gray points, while quasars are
+indicated by black points. The right panel shows ROC curves for quasar
+identification based on u - g , g - r , r - i , and i - z colors. Labels
+are the same as those in Figure 9.17.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -25,7 +30,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from astroML.classification import GMMBayes
 
-from astroML.decorators import pickle_results
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
@@ -72,7 +76,6 @@ y[:Nqso] = 1
 
 #------------------------------------------------------------
 # Compute fits for all the classifiers
-@pickle_results('star_quasar_ROC.pkl')
 def compute_results(*args):
     names = []
     probs = []

@@ -1,6 +1,12 @@
 """
 Photometric Redshifts by Random Forests
 ---------------------------------------
+Figure 9.15
+
+Photometric redshift estimation using random forest regression, with ten random
+trees. Comparison to figure 9.14 shows that random forests correct for the
+overfitting evident in very deep decision trees. Here the optimal depth is 20
+or above, and a much better cross-validation error is achieved.
 """
 # Author: Jake VanderPlas
 # License: BSD

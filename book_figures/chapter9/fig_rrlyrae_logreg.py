@@ -1,9 +1,11 @@
 """
 Logistic Regression of photometry
 ---------------------------------
-Logistic Regression for photometric classification of rr-lyrae stars.
-This uses averaged photometry from the rr-lyrae catalog and stripe 82
-standards catalogs.
+Figure 9.8
+
+Logistic regression for RR Lyrae stars (see caption of figure 9.3 for details).
+With all four colors, logistic regression achieves a completeness of 0.993 and
+a contamination of 0.838.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -50,8 +52,7 @@ predictions = []
 Ncolors = np.arange(1, X.shape[1] + 1)
 
 for nc in Ncolors:
-    clf = LogisticRegression(class_weight=dict([(i, np.sum(y_train == i))
-                                                for i in (0, 1)]))
+    clf = LogisticRegression(class_weight='auto')
     clf.fit(X_train[:, :nc], y_train)
     y_pred = clf.predict(X_test[:, :nc])
 

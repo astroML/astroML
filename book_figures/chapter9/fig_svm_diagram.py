@@ -1,7 +1,10 @@
 """
 SVM Diagram
 -----------
-This shows a diagram of how support vector machines perform classification
+Figure 9.9
+
+Illustration of SVM. The region between the dashed lines is the margin, and
+the points which the dashed lines touch are called the support vectors.
 """
 # Author: Jake VanderPlas
 # License: BSD

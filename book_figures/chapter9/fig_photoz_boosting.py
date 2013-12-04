@@ -1,6 +1,15 @@
 """
 Photometric Redshifts by Random Forests
 ---------------------------------------
+Figure 9.16
+
+Photometric redshift estimation using gradient-boosted decision trees, with 100
+boosting steps. As with random forests (figure 9.15), boosting allows for
+improved results over the single tree case (figure 9.14). Note, however, that
+the computational cost of boosted decision trees is such that it is
+computationally prohibitive to use very deep trees. By stringing together a
+large number of very naive estimators, boosted trees improve on the
+underfitting of each individual estimator.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -54,8 +63,13 @@ def compute_photoz_forest(N_boosts):
     z_fit_best = None
 
     for i, Nb in enumerate(N_boosts):
-        clf = GradientBoostingRegressor(n_estimators=Nb, learn_rate=0.1,
-                                        max_depth=3, random_state=0)
+        try:
+            # older versions of scikit-learn
+            clf = GradientBoostingRegressor(n_estimators=Nb, learn_rate=0.1,
+                                            max_depth=3, random_state=0)
+        except TypeError:
+            clf = GradientBoostingRegressor(n_estimators=Nb, learning_rate=0.1,
+                                            max_depth=3, random_state=0)
         clf.fit(mag_train, z_train)
 
         z_fit_train = clf.predict(mag_train)

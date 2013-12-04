@@ -1,9 +1,18 @@
 """
 Gaussian Naive Bayes Classification of photometry
 -------------------------------------------------
-Gaussian Naive Bayes photometric classification of rr-lyrae stars.
-This uses averaged photometry from the rr-lyrae catalog and stripe
-82 standards catalogs.
+Figure 9.3
+
+Gaussian naive Bayes classification method used to separate variable RR Lyrae
+stars from nonvariable main sequence stars. In the left panel, the light gray
+points show non- variable sources, while the dark points show variable sources.
+The classification boundary is shown by the black line, and the classification
+probability is shown by the shaded background. In the right panel, we show the
+completeness and contamination as a function of the number of features used in
+the fit. For the single feature, u - g is used. For two features, u - g and
+g = r areused. For three features, u - g, g - r, and r- i are used. It is
+evident that the g - r color is the best discriminator. With all four colors,
+naive Bayes attains a completeness of 0.876 and a contamination of 0.790.
 """
 # Author: Jake VanderPlas
 # License: BSD

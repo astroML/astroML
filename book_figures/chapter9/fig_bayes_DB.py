@@ -1,7 +1,9 @@
 """
 Bayes Decision Boundary
 -----------------------
-This figure plots a schematic of a decision boundary for classification
+Figure 9.1
+
+An illustration of a decision boundary between two Gaussian distributions.
 """
 # Author: Jake VanderPlas
 # License: BSD

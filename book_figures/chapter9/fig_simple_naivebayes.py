@@ -1,8 +1,14 @@
 """
 Simple Gaussian Naive Bayes Classification
 ------------------------------------------
-This shows a simple Gaussian Naive Bayes decision boundary for some
-simulated data
+Figure 9.2
+
+A decision boundary computed for a simple data set using Gaussian naive Bayes
+classification. The line shows the decision boundary, which corresponds to the
+curve where a new point has equal posterior probability of being part of each
+class. In such a simple case, it is possible to find a classification with
+perfect completeness and contamination. This is rarely the case in the real
+world.
 """
 # Author: Jake VanderPlas
 # License: BSD

@@ -1,9 +1,14 @@
 """
 Gausian Mixture Bayes Classification of photometry
 --------------------------------------------------
-GMM mixture modesl for bayesian photometric classification of rr-lyrae stars.
-This uses averaged photometry from the rr-lyrae catalog and stripe 82
-standards catalogs.
+Figure 9.6
+
+Gaussian mixture Bayes classifier for RR Lyrae stars (see caption of figure 9.3
+for details). Here the left panel shows the decision boundary for the
+three-component model, and the right panel shows the completeness and
+contamination for both a one-component and three-component mixture model. With
+all four colors and a three-component model, GMM Bayes achieves a completeness
+of 0.686 and a contamination of 0.236.
 """
 # Author: Jake VanderPlas
 # License: BSD
