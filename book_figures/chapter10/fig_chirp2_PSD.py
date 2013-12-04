@@ -1,7 +1,13 @@
 """
-Chirp PSD
----------
-Compute the time/frequency power spectral density of the chirp signal
+Chirp wavelet PSD
+-----------------
+Figure 10.28
+
+A wavelet PSD of the ten-parameter chirp signal similar to that analyzed in
+figure 10.27. Here, the signal with an amplitude of A = 0.8 is sampled in
+4096 evenly spaced bins, and with Gaussian noise with sigma = 1. The
+two-dimensional wavelet PSD easily recovers the increase of characteristic
+chirp frequency with time.
 """
 # Author: Jake VanderPlas
 # License: BSD

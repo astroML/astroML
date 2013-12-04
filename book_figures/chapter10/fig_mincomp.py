@@ -1,7 +1,14 @@
 """
 Example of Minimum Component Filtering
 --------------------------------------
-As explained in Wall & Jenkins, as well as Wall 1997, A&A 122:371
+Figure 10.13
+
+A minimum component filter applied to the spectrum of a white dwarf from SDSS
+data set (mjd= 52199, plate=659, fiber=381). The upper panel shows a portion
+of the input spectrum, along with the continuum computed via the minimum
+component filtering procedure described in Section 10.2.5 (see figure 10.12).
+The lower panel shows the PSD for both the input spectrum and the filtered
+result.
 """
 # Author: Jake VanderPlas
 # License: BSD

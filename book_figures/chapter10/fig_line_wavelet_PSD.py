@@ -1,8 +1,13 @@
 """
 Wavelet transform of a Noisy Spike
 ----------------------------------
-Plot the wavelet transform (spectrogram) of a noisy spike.  A similar plot
-can be obtained using the built-in function matplotlib.mlab.specgram.
+Figure 10.8
+
+Localized frequency analysis using the wavelet transform. The upper panel shows
+the input signal, which consists of a Gaussian spike in the presence of white
+(Gaussian) noise (see figure 10.10). The middle panel shows an example wavelet.
+The lower panel shows the power spectral density as a function of the frequency
+f0 and the time t0, for Q = 0.3.
 """
 # Author: Jake VanderPlas
 # License: BSD

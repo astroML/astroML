@@ -1,6 +1,18 @@
 """
-Phased LINEAR Light Curve
--------------------------
+Lomb-Scargle Aliasing
+---------------------
+Figure 10.18
+
+Analysis of a light curve where the standard Lomb-Scargle periodogram fails to
+find the correct period (the same star as in the top-left panel in figure
+10.17). The two top panels show the periodograms (left) and phased light curves
+(right) for the truncated Fourier series model with M = 1 and M = 6 terms.
+Phased light curves are computed using the incorrect aliased period favored by
+the M = 1 model. The correct period is favored by the M = 6 model but
+unrecognized by the M = 1 model (bottom-left panel). The phased light curve
+constructed with the correct period is shown in the bottom-right panel. This
+case demonstrates that the Lomb-Scargle periodogram may easily fail when the
+signal shape significantly differs from a single sinusoid.
 """
 # Author: Jake VanderPlas
 # License: BSD

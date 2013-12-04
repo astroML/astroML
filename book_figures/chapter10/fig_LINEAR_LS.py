@@ -1,6 +1,12 @@
 """
 Phased LINEAR Light Curve
 -------------------------
+Figure 10.17
+
+Phased light curves for six of the periodic objects from the LINEAR data set.
+The lines show the best fit to the phased light curve using the first four
+terms of the Fourier expansion (eq. 10.68), with the omega_0 selected using the
+Lomb-Scargle periodogram.
 """
 # Author: Jake VanderPlas
 # License: BSD

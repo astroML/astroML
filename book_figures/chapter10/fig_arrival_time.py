@@ -1,7 +1,14 @@
 """
 Arrival Time Analysis
 ---------------------
-This plot shows the results of an MCMC model to periodic arrival time data
+Figure 10.24
+
+Modeling time-dependent flux based on arrival time data. The top-right panel
+shows the rate r(t) = r0[1 + a sin(omega t + phi)], along with the locations
+of the 104 detected photons. The remaining panels show the model contours
+calculated via MCMC; dotted lines indicate the input parameters. The likelihood
+used is from eq. 10.83. Note the strong covariance between phi and omega in
+the bottom-right panel.
 """
 # Author: Jake VanderPlas
 # License: BSD

@@ -1,6 +1,26 @@
 """
 Clustering of LINEAR data
 -------------------------
+Figure 10.20
+~~~~~~~~~~~~
+Unsupervised clustering analysis of periodic variable stars from the LINEAR
+data set. The top row shows clusters derived using two attributes (g - i and
+log P) and a mixture of 12 Gaussians. The colorized symbols mark the five most
+significant clusters. The bottom row shows analogous diagrams for clustering
+based on seven attributes (colors u - g, g - i, i - K, and J - K; log P,
+light-curve amplitude, and light-curve skewness), and a mixture of 15
+Gaussians. See figure 10.21 for data projections in the space of other
+attributes for the latter case.
+
+
+Figure 10.21
+~~~~~~~~~~~~
+Unsupervised clustering analysis of periodic variable stars from the LINEAR
+data set. Clusters are derived using seven attributes (colors u - g, g - i,
+i - K, and J - K; log P , light-curve amplitude, and light-curve skewness),
+and a mixture of 15 Gaussians. The log P vs. g - i diagram and log P vs.
+light-curve amplitude diagram for the same clusters are shown in the lower
+panels of figure 10.20.
 """
 # Author: Jake VanderPlas
 # License: BSD

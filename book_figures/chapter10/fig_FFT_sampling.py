@@ -1,8 +1,18 @@
 """
 The effect of Sampling
 ----------------------
-This figure shows the effect of sampling on a light curve.  We show the
-data and window function in both temporal space and frequency space.
+Figure 10.4
+
+An illustration of the impact of a sampling window function of resulting PSD.
+The top-left panel shows a simulated data set with 40 points drawn from the
+function y(t|P) = sin(t) (i.e., f = 1/(2pi) ~ 0.16). The sampling is random,
+and illustrated by the vertical lines in the bottom-left panel. The PSD of
+sampling times, or spectral window, is shown in the bottom-right panel. The
+PSD computed for the data set from the top-left panel is shown in the top-right
+panel; it is equal to a convolution of the single peak (shaded in gray) with
+the window PSD shown in the bottom-right panel (e.g., the peak at f ~ 0.42 in
+the top-right panel can be traced to a peak at f ~ 0.26 in the bottom-right
+panel).
 """
 # Author: Jake VanderPlas
 # License: BSD

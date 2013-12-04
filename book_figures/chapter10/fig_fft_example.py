@@ -1,8 +1,18 @@
 """
 Fast Fourier Transform Example
 ------------------------------
-This shows an example of finding the period of regularly-spaced data using
-a fast fourier transform.
+Figure 10.5
+
+The discrete Fourier transform (bottom panel) for two noisy data sets shown in
+the top panel. For 512 evenly sampled times t (dt = 0.977), points are drawn
+from h(t) = a + sin(t)G(t), where G(t) is a Gaussian N(mu = 0,sigma = 10).
+Gaussian noise with sigma = 0.05 (top data set) and 0.005 (bottom data set)
+is added to signal h(t). The value of the offset a is 0.15 and 0, respectively.
+The discrete Fourier transform is computed as described in Section 10.2.3.
+For both noise realizations, the correct frequency f = (2pi)-1 ~ 0.159 is
+easily discernible in the bottom panel. Note that the height of peaks is the
+same for both noise realizations. The large value of |H(f = 0)| for data
+with larger noise is due to the vertical offset.
 """
 # Author: Jake VanderPlas
 # License: BSD

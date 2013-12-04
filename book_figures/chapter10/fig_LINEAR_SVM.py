@@ -1,6 +1,15 @@
 """
 SVM classification of LINEAR data
 ---------------------------------
+Figure 10.23
+
+Supervised classification of periodic variable stars from the LINEAR data set
+using a support vector machines method. The training sample includes five
+input classes. The top row shows clusters derived using two attributes
+(g - i and log P) and the bottom row shows analogous diagrams for
+classification based on seven attributes (colors u - g, g - i, i - K, and
+J - K; log P, light-curve amplitude, and light-curve skewness).
+See table 10.3 for the classification performance.
 """
 # Author: Jake VanderPlas
 # License: BSD

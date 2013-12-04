@@ -1,6 +1,17 @@
 """
 Plot a Diagram explaining a Convolution
 ---------------------------------------
+Figure 10.2
+
+A schematic of how the convolution of two functions works. The top-left panel
+shows simulated data (black line); this time series is convolved with a top-hat
+function (gray boxes); see eq. 10.8. The top-right panels show the Fourier
+transform of the data and the window function. These can be multiplied together
+(bottom-right panel) and inverse transformed to find the convolution
+(bottom-left panel), which amounts to integrating the data over copies of the
+window at all locations. The result in the bottom-left panel can be viewed as
+the signal shown in the top-left panel smoothed with the window (top-hat)
+function.
 """
 # Author: Jake VanderPlas
 # License: BSD

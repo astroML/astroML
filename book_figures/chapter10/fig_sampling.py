@@ -1,9 +1,24 @@
 """
 The effect of Sampling
 ----------------------
-This figure shows the effect of sampling on a light curve.  We generate data
-from a single sinusoid with a sampling rate equivalent to one of the LINEAR
-light curves, and show the observed power and the window function power
+Figure 10.14
+
+An illustration of the impact of measurement errors on the Lomb-Scargle power
+(cf. figure 10.4). The top-left panel shows a simulated data set with 40 points
+drawn from the function y(t|P) = sin(t) (i.e., f = 1/(2pi) ~ 0.16) with random
+sampling. Heteroscedastic Gaussian noise is added to the observations, with a
+width drawn from a uniform distribution with 0.1 < sigma < 0.2 (this error
+level is negligible compared to the amplitude of variation). The spectral
+window function (PSD of sampling times) is shown in the bottom-left panel.
+The PSD (:math:`P_{LS}`) computed for the data set from the top-left panel is
+shown in the top-right panel; it is equal to a convolution of the single peak
+(shaded in gray) with the window PSD shown in the bottom-left panel (e.g., the
+peak at f ~ 0.42 in the top-right panel can be traced to a peak at f ~ 0.26 in
+the bottom-left panel). The bottom-right panel shows the PSD for a data set
+with errors increased by a factor of 10. Note that the peak f ~ 0.16 is now
+much shorter, in agreement with eq. 10.47. In addition, errors now exceed the
+amplitude of variation and the data PSD is no longer a simple convolution of
+a single peak and the spectral window.
 """
 # Author: Jake VanderPlas
 # License: BSD

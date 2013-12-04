@@ -1,8 +1,13 @@
 """
 Generating Power-law Light Curves
 ---------------------------------
-This shows how to generate power-law light-curves using the Timmer & Koenig
-method.
+Figure 10.29
+
+Examples of stochastic time series generated from power-law PSDs
+(left: 1/ f; right: 1/f^2) using the method from [1]. The top panels show the
+generated data, while the bottom panels show the corresponding PSD (dashed
+lines: input PSD; solid lines: determined from time series shown in the top
+panels).
 
 References
 ~~~~~~~~~~

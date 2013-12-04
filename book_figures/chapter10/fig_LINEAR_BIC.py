@@ -1,6 +1,14 @@
 """
 BIC for LINEAR light curve
 --------------------------
+Figure 10.19
+
+BIC as a function of the number of frequency components for the light curve
+shown in figure 10.18. BIC for the two prominent frequency peaks is shown. The
+inset panel details the area near the maximum. For both frequencies, the BIC
+peaks at between 10 and 15 terms; note that a high value of BIC is achieved
+already with 6 components. Comparing the two, the longer period model (bottom
+panel) is much more significant.
 """
 # Author: Jake VanderPlas
 # License: BSD

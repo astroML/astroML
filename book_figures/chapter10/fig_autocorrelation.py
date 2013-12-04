@@ -1,7 +1,14 @@
 """
 Autocorrelation Function
 ------------------------
-Compute and plot the auto-correlation function for simulated Quasar data
+Figure 10.30
+
+Example of the autocorrelation function for a stochastic process. The top panel
+shows a simulated light curve generated using a damped random walk model
+(Section 10.5.4). The bottom panel shows the corresponding autocorrelation
+function computed using Edelson and Krolik's DCF method and the Scargle method.
+The solid line shows the input autocorrelation function used to generate the
+light curve.
 """
 # Author: Jake VanderPlas
 # License: BSD

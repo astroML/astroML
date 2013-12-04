@@ -1,8 +1,13 @@
 """
 Wavelet transform of Gaussian Noise
 -----------------------------------
-Plot the wavelet transform (spectrogram) of a Gaussian spike.  A similar plot
-can be obtained using the built-in function matplotlib.mlab.specgram.
+
+Figure 10.7
+
+Localized frequency analysis using the wavelet transform. The upper panel shows
+the input signal, which consists of localized Gaussian noise. The middle panel
+shows an example wavelet. The lower panel shows the power spectral density as a
+function of the frequency f0 and the time t0, for Q = 1.0.
 """
 # Author: Jake VanderPlas
 # License: BSD

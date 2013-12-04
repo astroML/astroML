@@ -1,8 +1,17 @@
 """
 The effect of Sampling
 ----------------------
-This figure shows the effect of sampling on a light curve.  We show the
-data and window function in both temporal space and frequency space.
+Figure 10.3
+
+A visualization of aliasing in the Fourier transform. In each set of four
+panels, the top-left panel shows a signal and a regular sampling function, the
+top-right panel shows the Fourier transform of the signal and sampling
+function, the bottom-left panel shows the sampled data, and the bottom-right
+panel shows the convolution of the Fourier-space representations (cf. figure
+10.2). In the top four panels, the data is well sampled, and there is little
+to no aliasing. In the bottom panels, the data is not well sampled (the spacing
+between two data points is larger) which leads to aliasing, as seen in the
+overlap of the convolved Fourier transforms (figure adapted from Greg05).
 """
 # Author: Jake VanderPlas
 # License: BSD

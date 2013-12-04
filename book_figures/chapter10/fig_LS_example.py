@@ -1,6 +1,19 @@
 """
 Example of Lomb-Scargle Algorithm
 ---------------------------------
+Figure 10.15
+
+Example of a Lomb-Scargle periodogram. The data include 30 points drawn from
+the function y(t|P) = 10 + sin(2pi t/P) with P = 0.3. Heteroscedastic Gaussian
+noise is added to the observations, with a width drawn from a uniform
+distribution with 0.5 < sigma < 1.0. Data are shown in the top panel and the
+resulting Lomb-Scargle periodogram is shown in the bottom panel. The arrow
+marks the location of the true period. The dotted lines show the 1% and 5%
+significance levels for the highest peak, determined by 1000 bootstrap 
+resamplings (see Section 10.3.2). The change in BIC compared to a nonvarying
+source (eq. 10.55) is shown on the right y-axis. The maximum power corresponds
+to a delta-BIC = 26.1,indicating the presence of a periodic signal.
+Bootstrapping indicates the period is detected at ~ 5% significance.
 """
 # Author: Jake VanderPlas
 # License: BSD

@@ -1,6 +1,13 @@
 """
 Matched Filter Chirp Search
 ---------------------------
+Figure 10.26
+
+A matched filter search for a chirp signal in time series data. A simulated
+data set generated from a model of the form y = b0+Asin[omega t + beta t^2],
+with homoscedastic Gaussian errors with sigma = 2, is shown in the top-right
+panel. The posterior pdf for the four model parameters is determined using
+MCMC and shown in the other panels.
 """
 # Author: Jake VanderPlas
 # License: BSD

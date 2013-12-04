@@ -1,8 +1,16 @@
 """
 Wiener Filter Example
 ---------------------
-Example of filtering a noisy signal using the Wiener filter and the
-Savitzky-Golay filter.
+Figure 10.10
+
+An example of data filtering using a Wiener filter. The upper-left panel shows
+noisy input data (200 evenly spaced points) with a narrow Gaussian peak
+centered at x = 20. The bottom panels show the input (left) and Wiener-filtered
+(right) power spectral density (PSD) distributions. The two curves in the
+bottom-left panel represent two-component fit to PSD given by eq. 10.20. The
+upper-right panel shows the result of the Wiener filtering on the input: the
+Gaussian peak is clearly seen. For comparison, we also plot the result of a
+fourth-order Savitzky-Golay filter with a window size of lambda = 10.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -47,7 +55,7 @@ h_smooth, PSD, P_S, P_N, Phi = wiener_filter(t, hN, return_PSDs=True)
 
 #------------------------------------------------------------
 # Use the Savitzky-Golay filter to filter the values
-h_sg = savitzky_golay(hN, window_size=201, order=4)
+h_sg = savitzky_golay(hN, window_size=201, order=4, use_fft=False)
 
 #------------------------------------------------------------
 # Plot the results

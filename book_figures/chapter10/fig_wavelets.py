@@ -1,7 +1,10 @@
 """
 Examples of Wavelets
 --------------------
-This figure shows some examples of wavelets used in the wavelet transforms.
+Figure 10.9
+
+Wavelets for several values of wavelet parameters Q and f0. Solid lines show
+the real part and dashed lines show the imaginary part (see eq. 10.16).
 """
 # Author: Jake VanderPlas
 # License: BSD

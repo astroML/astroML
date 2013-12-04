@@ -1,6 +1,11 @@
 """
 Matched Filter Chirp Search
 ---------------------------
+Figure 10.27
+
+A ten-parameter chirp model (see eq. 10.87) fit to a time series. Seven of the
+parameters can be considered nuisance parameters, and we marginalize over
+them in the likelihood contours shown here.
 """
 # Author: Jake VanderPlas
 # License: BSD

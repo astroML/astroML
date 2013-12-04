@@ -1,8 +1,14 @@
 """
-Wiener Filter / KDE Connection
-------------------------------
-This shows the connection between a Wiener filter and
-Kernel Density Estimation.
+Wiener Filter / kernel smooting Connection
+------------------------------------------
+Figure 10.11
+
+The left panel shows the inverse Fourier transform of the Wiener filter Phi(f)
+applied in figure 10.10. By the convolution theorem, the Wiener-filtered result
+is equivalent to the convolution of the unfiltered signal with the kernel shown
+above, and thus Wiener filtering and kernel smoothing are directly related.
+The right panel shows the data smoothed by this kernel, which is equivalent
+to the Wiener filter smoothing in figure 10.10.
 """
 # Author: Jake VanderPlas
 # License: BSD
