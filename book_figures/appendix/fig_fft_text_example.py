@@ -1,8 +1,10 @@
 """
 Example of a Fourier Transform
 ------------------------------
-This figure shows an example of a continuous Fourier Transform approximated
-using the discrete FFT
+Figure E.1
+
+An example of approximating the continuous Fourier transform of a function
+using the fast Fourier transform.
 """
 # Author: Jake VanderPlas
 # License: BSD

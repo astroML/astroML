@@ -1,5 +1,8 @@
 fig_broadcast_visual.py
 fig_plotting_examples.py
+fig_plotting_examples.py
+fig_plotting_examples.py
+fig_plotting_examples.py
 fig_sdss_filters.py
 fig_fft_text_example.py
 

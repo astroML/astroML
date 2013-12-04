@@ -1,7 +1,11 @@
 """
 Broadcast Visualization
 -----------------------
-This figure visualizes numpy broadcasting rules for three cases
+Figure A.1
+
+A visualization of NumPy array broadcasting. Note that the extra memory
+indicated by the dotted boxes is never allocated, but it can be convenient
+to think about the operations as if it is.
 """
 # Author: Jake VanderPlas
 # License: BSD

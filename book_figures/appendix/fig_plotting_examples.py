@@ -1,8 +1,9 @@
 """
 Examples of Plotting with Matplotlib
 ------------------------------------
+Figures A.2, A.3, A.4, A.5
 
-This file generates the example plots from the Appendix
+These scripts generate the output of the plotting examples in the appendix.
 """
 # Author: Jake VanderPlas
 # License: BSD
