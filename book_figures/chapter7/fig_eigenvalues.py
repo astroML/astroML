@@ -1,7 +1,14 @@
 """
 SDSS Eigenvalues
 ----------------
-Plot the PCA eigenvalues from 4000 SDSS spectra.
+Figure 7.5
+
+The eigenvalues for the PCA decomposition of the SDSS spectra described in
+Section 7.3.2. The top panel shows the decrease in eigenvalue as a function
+of the number of eigenvectors, with a break in the distribution at ten
+eigenvectors. The lower panel shows the cumulative sum of eigenvalues
+normalized to unity. 94% of the variance in the SDSS spectra can be captured
+using the first ten eigenvectors.
 """
 # Author: Jake VanderPlas
 # License: BSD

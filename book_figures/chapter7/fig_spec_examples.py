@@ -1,7 +1,14 @@
 """
 SDSS spectra Examples
 ---------------------
-Plot 15 random SDSS spectra from the sample
+Figure 7.1
+
+A sample of 15 galaxy spectra selected from the SDSS spectroscopic data set
+(see Section 1.5.5). These spectra span a range of galaxy types, from
+star-forming to passive galaxies. Each spectrum has been shifted to its rest
+frame and covers the wavelength interval 3000-8000 Angstroms. The specific
+fluxes, :math:`F_\lambda(\lambda)`, on the ordinate axes have an arbitrary
+scaling.
 """
 # Author: Jake VanderPlas
 # License: BSD

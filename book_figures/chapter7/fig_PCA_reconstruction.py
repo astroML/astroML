@@ -1,8 +1,13 @@
 """
 SDSS Reconstruction from Eigenspectra
 -------------------------------------
-This example shows the input galaxy spectra, which have missing masked
-regions, and the reconstruction & interpolation using PCA
+Figure 7.7
+
+The principal component vectors defined for the SDSS spectra can be used to
+interpolate across or reconstruct missing data. Examples of three masked
+spectral regions are shown comparing the reconstruction of the input spectrum
+(black line) using the mean and the first ten eigenspectra (blue line) The gray
+bands represent the masked region of the spectrum.
 """
 # Author: Jake VanderPlas
 # License: BSD

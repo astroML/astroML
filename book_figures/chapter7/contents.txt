@@ -1,12 +1,11 @@
 fig_spec_examples.py
 fig_PCA_rotation.py
 fig_svd_visual.py
+fig_spec_decompositions.py
 fig_eigenvalues.py
 fig_spec_reconstruction.py
 fig_PCA_reconstruction.py
-fig_spec_decompositions.py
 fig_S_manifold_PCA.py
-fig_PCA_components.py
-fig_spec_LLE.py
+fig_PCA_LLE.py
 
 #fig_volume_ratio.py

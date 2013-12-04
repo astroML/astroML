@@ -1,8 +1,13 @@
 """
 Scematic Diagram of PCA
 -----------------------
-This figure shows how PCA can be viewed as a rotation of an N-dimensional
-ellipse.
+Figure 7.2
+
+A distribution of points drawn from a bivariate Gaussian and centered on the
+origin of x and y. PCA defines a rotation such that the new axes (x' and y')
+are aligned along the directions of maximal variance (the principal components)
+with zero covariance. This is equivalent to minimizing the square of the
+perpendicular distances between the points and the principal components.
 """
 # Author: Jake VanderPlas
 # License: BSD

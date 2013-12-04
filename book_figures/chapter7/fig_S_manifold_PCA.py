@@ -1,8 +1,14 @@
 """
 Comparison of PCA and Manifold Learning
 ---------------------------------------
-This script generates a nonlinear S-shaped dataset
-and compares the projections of PCA, LLE, and IsoMap.
+Figure 7.8
+
+A comparison of PCA and manifold learning. The top-left panel shows an example
+S-shaped data set (a two-dimensional manifold in a three-dimensional space).
+PCA identifies three principal components within the data. Projection onto the
+first two PCA components results in a mixing of the colors along the manifold.
+Manifold learning (LLE and IsoMap) preserves the local structure when
+projecting the data, preventing the mixing of the colors.
 """
 # Author: Jake VanderPlas
 # License: BSD

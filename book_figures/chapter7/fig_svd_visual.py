@@ -1,8 +1,17 @@
 """
 Plot a visual representation of an SVD
 --------------------------------------
-This shows a visualization of the matrix multiplication in a singular
-value decomposition.
+Figure 7.3
+
+Singular value decomposition (SVD) can factorize an N x K matrix into
+:math:`U \Sigma V^T`. There are different conventions for computing the SVD
+in the literature, and this figure illustrates the convention used in this
+text. The matrix of singular values :math:`\Sigma` is always a square matrix
+of size [R x R] where R = min(N, K). The shape of the resulting U and V
+matrices depends on whether N or K is larger. The columns of the matrix U are
+called the left-singular vectors, and the columns of the matrix V are called
+the right-singular vectors. The columns are orthonormal bases, and satisfy
+:math:`U^T U = V^T V = I`.
 """
 # Author: Jake VanderPlas
 # License: BSD

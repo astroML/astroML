@@ -1,7 +1,15 @@
 """
 SDSS spectra Decompositions
 ---------------------------
-Comparison of PCA, ICA, and NMF decompositions of SDSS spectra
+Figure 7.4
+
+A comparison of the decomposition of SDSS spectra using PCA (left panel -
+see Section 7.3.1), ICA (middle panel - see Section 7.6) and NMF (right panel
+- see Section 7.4). The rank of the component increases from top to bottom. For
+the ICA and PCA the first component is the mean spectrum (NMF does not require
+mean subtraction). All of these techniques isolate a common set of spectral
+features (identifying features associated with the continuum and line
+emission). The ordering of the spectral components is technique dependent.
 """
 # Author: Jake VanderPlas
 # License: BSD
