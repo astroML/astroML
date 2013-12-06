@@ -93,13 +93,13 @@ def savitzky_golay(y, window_size, order, deriv=0,
     y = np.concatenate((firstvals, y, lastvals))
 
     if use_fft:
-        return signal.fftconvolve(m, y, mode='valid')
+        return signal.fftconvolve(y, m, mode='valid')
     else:
-        return np.convolve(m, y, mode='valid')
+        return np.convolve(y, m, mode='valid')
 
 
-def wiener_filter(t, h, signal='gaussian', noise='flat',
-                  return_PSDs=False):
+def wiener_filter(t, h, signal='gaussian', noise='flat', return_PSDs=False,
+                  signal_params=None, noise_params=None):
     """Compute a Wiener-filtered time-series
 
     Parameters
@@ -114,6 +114,14 @@ def wiener_filter(t, h, signal='gaussian', noise='flat',
         currently only 'flat' is supported
     return_PSDs : bool (optional)
         if True, then return (PSD, P_S, P_N)
+    signal_guess : tuple (optional)
+        A starting guess at the parameters for the signal.  If not specified,
+        a suitable guess will be estimated from the data itself. (see Notes
+        below)
+    noise_guess : tuple (optional)
+        A starting guess at the parameters for the noise.  If not specified,
+        a suitable guess will be estimated from the data itself. (see Notes
+        below)
 
     Returns
     -------
@@ -133,16 +141,31 @@ def wiener_filter(t, h, signal='gaussian', noise='flat',
     This entire operation is equivalent to a kernel smoothing by a
     kernel whose Fourier transform is Phi.
 
+    Choosing Signal/Noise Parameters
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    the arguments ``signal_guess`` and ``noise_guess`` specify the initial
+    guess for the characteristics of signal and noise used in the minimization.
+    They are generally expected to be tuples, and the meaning varies depending
+    on the form of signal and noise used.  For ``gaussian``, the params are
+    (amplitude, width).  For ``flat``, the params are (amplitude,).
+
     See Also
     --------
     scipy.signal.wiener : a static (non-adaptive) wiener filter
     """
+    # Validate signal
     if signal != 'gaussian':
         raise ValueError("only signal='gaussian' is supported")
+    if signal_params is not None and len(signal_params) != 2:
+        raise ValueError("signal_params should be length 2")
 
+    # Validate noise
     if noise != 'flat':
         raise ValueError("only noise='flat' is supported")
+    if noise_params is not None and len(noise_params) != 1:
+        raise ValueError("noise_params should be length 1")
 
+    # Validate t and hd
     t = np.asarray(t)
     h = np.asarray(h)
 
@@ -157,19 +180,35 @@ def wiener_filter(t, h, signal='gaussian', noise='flat',
     H = fftpack.fft(h)
     PSD = abs(H) ** 2
 
+    # fit signal/noise params if necessary
+    if signal_params is None:
+        amp_guess = np.max(PSD[1:])
+        width_guess = np.min(np.abs(f[PSD[1:] < np.mean(PSD[1:])]))
+        signal_params = (amp_guess, width_guess)
+    if noise_params is None:
+        noise_params = (np.mean(PSD[1:]),)
+
     # Set up the Wiener filter:
     #  fit a model to the PSD: sum of signal form and noise form
-    signal = lambda x, A, width: A * np.exp(-0.5 * (x / width) ** 2)
-    noise = lambda x, n: n * np.ones(x.shape)
 
-    min_func = lambda v: np.sum((PSD - signal(f, v[0], v[1])
-                                 - noise(f, v[2])) ** 2)
-    v0 = [5000, 0.1, 10]
+    def signal(x, A, width):
+        width = abs(width) + 1E-99  # prevent divide-by-zero errors
+        return A * np.exp(-0.5 * (x / width) ** 2)
+
+    def noise(x, n):
+        return n * np.ones(x.shape)
+
+    # use [1:] here to remove the zero-frequency term: we don't want to
+    # fit to this for data with an offset.
+    min_func = lambda v: np.sum((PSD[1:] - signal(f[1:], v[0], v[1])
+                                 - noise(f[1:], v[2])) ** 2)
+    v0 = tuple(signal_params) + tuple(noise_params)
     v = optimize.fmin(min_func, v0)
 
     P_S = signal(f, v[0], v[1])
     P_N = noise(f, v[2])
     Phi = P_S / (P_S + P_N)
+    Phi[0] = 1  # correct for DC offset
 
     # Use Phi to filter and smooth the values
     h_smooth = fftpack.ifft(Phi * H)
