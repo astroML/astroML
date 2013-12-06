@@ -22,12 +22,6 @@ from sklearn.tree import DecisionTreeClassifier
 from astroML.datasets import fetch_rrlyrae_combined
 from astroML.utils import split_samples
 
-import sklearn
-from distutils.version import StrictVersion
-if StrictVersion(sklearn.__version__) >= StrictVersion('0.14'):
-    raise ValueError("Newer versions of scikit-learn's tree module "
-                     "are not supported")
-
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
 # Note that with usetex=True, fonts are rendered with LaTeX.  This may
@@ -84,7 +78,13 @@ def visualize_tree(T, data, classes, labels=None, levels=5,
         # old versions of sklearn
         T_children = np.vstack([T.tree_.children_left,
                                 T.tree_.children_right]).T
-    T_nsamples = T.tree_.n_samples
+    try:
+        # version < 0.14
+        T_nsamples = T.tree_.n_samples
+    except AttributeError:
+        # version 0.14+
+        T_nsamples = T.tree_.n_node_samples
+
     T_feature = T.tree_.feature
     T_threshold = T.tree_.threshold
 
