@@ -103,8 +103,9 @@ visualizing astronomical datasets.
 
 
 .. image:: _static/text_cover.png
-   :width: 100 px
+   :width: 90 px
    :align: right
+   :target: http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687/
 
 
 The goal of astroML is to provide a community repository for fast Python
@@ -115,8 +116,9 @@ We hope this package will be useful to researchers and students of
 astronomy. The astroML project was started in 2012 to accompany the book
 **Statistics, Data Mining, and Machine Learning in Astronomy** by
 Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray,
-to be published in late 2013. The table of contents is available
-here: :download:`here(pdf) <documents/DMbookTOC.pdf>`.
+published by Princeton University Press. The table of contents is available
+here: :download:`here(pdf) <documents/DMbookTOC.pdf>`, or you can view the
+book on `Amazon <http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687/>`_.
 
 .. include:: includes/big_toc_css.rst
 

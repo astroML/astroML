@@ -398,7 +398,7 @@ class ExampleBuilder:
         elif len(figlist) == 1:
             imlist = ("\n"
                        ".. image:: %s\n"
-                       "    :width: 100%%\n"
+                       "    :scale: 100\n"
                        "    :align: center\n" % figlist[0])
              
         else:
@@ -406,7 +406,8 @@ class ExampleBuilder:
             for fig in figlist:
                 imlist += ('\n\n'
                            '.. image:: %s\n'
-                           '    :scale: 50\n\n' % fig)                  
+                           '    :align: center\n'
+                           '    :scale: 100\n\n' % fig)                  
         
         return imlist
 
@@ -425,6 +426,7 @@ class ExampleBuilder:
 
             contents += (".. figure:: ./%s\n"
                          "    :target: ./%s\n"
+                         "    :align: center\n"
                          "\n"
                          "    :ref:`%s`\n\n" % (rel_thumb,
                                                 rel_html,
