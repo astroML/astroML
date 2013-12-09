@@ -3,17 +3,17 @@ Tools for density estimation
 
 See also:
 - sklearn.mixture.gmm : gaussian mixture models
+- sklearn.neighbors.KernelDensity : Kernel Density Estimation (version 0.14+)
 - astroML.density_estimation.XDGMM : extreme deconvolution
 - scipy.spatial.gaussian_kde : a gaussian KDE implementation
 """
+import warnings
 import numpy as np
 from scipy import special
 from sklearn.metrics import pairwise_kernels, pairwise_distances
 from sklearn.neighbors import BallTree
 
-# TODO: - add more kernels,
-#         e.g. http://en.wikipedia.org/wiki/Kernel_%28statistics%29
-#       - tree-based evaluation
+# TODO:
 #       - KDE with errors (chp 6.1.2)
 
 
@@ -24,6 +24,11 @@ def n_volume(r, n):
 
 class KDE(object):
     """Kernel Density Estimate
+
+    .. note:: Deprecated in astroML 0.2
+          Scikit-learn version 0.14 added a KernelDensity estimator class
+          which has much better performance than this class.
+          The ``KDE`` class will be removed in astroML version 0.3.
 
     Parameters
     ----------
@@ -66,6 +71,10 @@ class KDE(object):
     - scipy.spatial.gaussian_kde : a gaussian KDE implementation
     """
     def __init__(self, metric='gaussian', h=None, **kwargs):
+        warnings.warn("The KDE class is deprecated as of version 0.2 and will "
+                      "be removed in version 0.3. Upgrade to scikit-learn "
+                      "version >0.14 and use sklearn.neighbors.KernelDensity "
+                      "instead.")
         self.metric = metric
         self.kwargs = kwargs
         self.h = h

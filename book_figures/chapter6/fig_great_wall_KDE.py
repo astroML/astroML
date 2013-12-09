@@ -27,7 +27,20 @@ from scipy.spatial import cKDTree
 from scipy.stats import gaussian_kde
 
 from astroML.datasets import fetch_great_wall
-from astroML.density_estimation import KDE
+
+# Scikit-learn 0.14 added sklearn.neighbors.KernelDensity, which is a very
+# fast kernel density estimator based on a KD Tree.  We'll use this if
+# available (and raise a warning if it isn't).
+try:
+    from sklearn.neighbors import KernelDensity
+    use_sklearn_KDE = True
+except:
+    import warnings
+    warnings.warn("KDE will be removed in astroML version 0.3.  Please "
+                  "upgrade to scikit-learn 0.14+ and use "
+                  "sklearn.neighbors.KernelDensity.", DeprecationWarning)
+    from astroML.density_estimation import KDE
+    use_sklearn_KDE = False
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
@@ -53,14 +66,31 @@ ymin, ymax = (-300, 200)
 Xgrid = np.vstack(map(np.ravel, np.meshgrid(np.linspace(xmin, xmax, Nx),
                                             np.linspace(ymin, ymax, Ny)))).T
 
-kde1 = KDE(metric='gaussian', h=5)
-dens1 = kde1.fit(X).eval(Xgrid).reshape((Ny, Nx))
+kernels = ['gaussian', 'tophat', 'exponential']
+dens = []
 
-kde2 = KDE(metric='tophat', h=5)
-dens2 = kde2.fit(X).eval(Xgrid).reshape((Ny, Nx))
+if use_sklearn_KDE:
+    kde1 = KernelDensity(5, kernel='gaussian')
+    log_dens1 = kde1.fit(X).score_samples(Xgrid)
+    dens1 = X.shape[0] * np.exp(log_dens1).reshape((Ny, Nx))
 
-kde3 = KDE(metric='exponential', h=5)
-dens3 = kde3.fit(X).eval(Xgrid).reshape((Ny, Nx))
+    kde2 = KernelDensity(5, kernel='tophat')
+    log_dens2 = kde2.fit(X).score_samples(Xgrid)
+    dens2 = X.shape[0] * np.exp(log_dens2).reshape((Ny, Nx))
+
+    kde3 = KernelDensity(5, kernel='exponential')
+    log_dens3 = kde3.fit(X).score_samples(Xgrid)
+    dens3 = X.shape[0] * np.exp(log_dens3).reshape((Ny, Nx))
+
+else:
+    kde1 = KDE(metric='gaussian', h=5)
+    dens1 = kde1.fit(X).eval(Xgrid).reshape((Ny, Nx))
+
+    kde2 = KDE(metric='tophat', h=5)
+    dens2 = kde2.fit(X).eval(Xgrid).reshape((Ny, Nx))
+
+    kde3 = KDE(metric='exponential', h=5)
+    dens3 = kde3.fit(X).eval(Xgrid).reshape((Ny, Nx))
 
 #------------------------------------------------------------
 # Plot the results
@@ -87,9 +117,10 @@ ax2.text(0.95, 0.9, "Gaussian $(h=5)$", ha='right', va='top',
 ax3 = plt.subplot(223, aspect='equal')
 ax3.imshow(dens2.T, origin='lower', norm=LogNorm(),
            extent=(ymin, ymax, xmin, xmax), cmap=plt.cm.binary)
-ax3.text(0.95, 0.9, "top-hat $(h=10)$", ha='right', va='top',
+ax3.text(0.95, 0.9, "top-hat $(h=5)$", ha='right', va='top',
          transform=ax3.transAxes,
          bbox=dict(boxstyle='round', ec='k', fc='w'))
+ax3.images[0].set_clim(0.01, 0.8)
 
 # Fourth plot: exponential kernel
 ax4 = plt.subplot(224, aspect='equal')

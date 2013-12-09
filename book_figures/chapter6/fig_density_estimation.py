@@ -21,8 +21,22 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy import stats
 
-from astroML.density_estimation import KDE, KNeighborsDensity
+from astroML.density_estimation import KNeighborsDensity
 from astroML.plotting import hist
+
+# Scikit-learn 0.14 added sklearn.neighbors.KernelDensity, which is a very
+# fast kernel density estimator based on a KD Tree.  We'll use this if
+# available (and raise a warning if it isn't).
+try:
+    from sklearn.neighbors import KernelDensity
+    use_sklearn_KDE = True
+except:
+    import warnings
+    warnings.warn("KDE will be removed in astroML version 0.3.  Please "
+                  "upgrade to scikit-learn 0.14+ and use "
+                  "sklearn.neighbors.KernelDensity.", DeprecationWarning)
+    from astroML.density_estimation import KDE
+    use_sklearn_KDE = False
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
@@ -64,8 +78,13 @@ for N, k, subplot in zip(N_values, k_values, subplots):
     t = np.linspace(-10, 30, 1000)
 
     # Compute density with KDE
-    kde = KDE('gaussian', h=0.1).fit(xN[:, None])
-    dens_kde = kde.eval(t[:, None]) / N
+    if use_sklearn_KDE:
+        kde = KernelDensity(0.1, kernel='gaussian')
+        kde.fit(xN[:, None])
+        dens_kde = np.exp(kde.score_samples(t[:, None]))
+    else:
+        kde = KDE('gaussian', h=0.1).fit(xN[:, None])
+        dens_kde = kde.eval(t[:, None]) / N
 
     # Compute density with Bayesian nearest neighbors
     nbrs = KNeighborsDensity('bayesian', n_neighbors=k).fit(xN[:, None])
