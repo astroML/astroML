@@ -179,7 +179,7 @@ paper:
 You may also reference the accompanying textbook:
 
 - Statistics, Data Mining, and Machine Learning for Astronomy,
-  Ivezic *et al*, 2013
+  Ivezic *et al*, 2014
 
   Bibtex entry::
 
@@ -189,7 +189,7 @@ You may also reference the accompanying textbook:
                 and {Vanderplas}, J.T. and {Gray}, A.},
         publisher={Princeton University Press},
         location={Princeton, NJ},
-        year={2013}
+        year={2014}
        }
 
 

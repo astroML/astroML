@@ -1,11 +1,11 @@
-"""
+r"""
 SDSS Filters
 ------------
 Figure C.1
 
 The five SDSS filters, showing the total transmission taking into account
 atmospheric transmission and instrumental effects such as CCD efficiency.
-Shown for reference is the spectrum (:math:`F_\lambda(\lamdba)`) of a star
+Shown for reference is the spectrum (:math:`F_\lambda`) of a star
 similar to Vega (alpha-Lyr), which for many years was used as a reference
 flux for magnitude calibration.
 """
