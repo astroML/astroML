@@ -105,7 +105,6 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
     >>> print u_g[:5]
     [-22.23500061   1.34900093   1.43799973   2.08200073 -23.03800011]
 
-
     References
     ----------
     Ivesic et al. ApJ 134:973 (2007)

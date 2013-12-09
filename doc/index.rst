@@ -27,9 +27,9 @@ AstroML: Machine Learning and Data Mining for Astronomy
        :height: 150
        :target: examples/datasets/plot_moving_objects.html
 
-    .. |banner6| image:: book_figures/images/chapter7/fig_spec_LLE_1.png
+    .. |banner6| image:: book_figures/images/chapter7/fig_PCA_LLE_2.png
        :height: 150
-       :target: book_figures/chapter7/fig_spec_LLE.html
+       :target: book_figures/chapter7/fig_PCA_LLE.html
 
     .. |banner7| image:: examples/images/datasets/plot_nasa_atlas_1.png
        :height: 150
