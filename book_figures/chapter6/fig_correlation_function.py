@@ -1,6 +1,6 @@
 """
-Angular Correlation Function
-----------------------------
+Angular Two-point Correlation Function
+--------------------------------------
 Figure 6.17
 
 The two-point correlation function of SDSS spectroscopic galaxies in the range

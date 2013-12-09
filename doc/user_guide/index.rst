@@ -21,6 +21,7 @@
    datasets
    density_estimation
    clustering
+   correlation_functions
    dimensionality
    regression
    classification
