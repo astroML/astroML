@@ -155,7 +155,8 @@ $(document).ready(function(){
         <h3>News</h3>
 	<p>November 2013: astroML 0.2 has been released!  Get the source on
 	    <a href="http://github.com/astroML/astroML">Github</a></p>
-	<p>Our <a href="{{pathto('index')}}#citing-astroml">
+	<!-- hard-coded link here because pathto() adds an extra # -->
+	<p>Our <a href="/index.html#citing-astroml">
 	    Introduction to astroML paper</a> received the CIDU 2012
 	  best paper award.</p>
         {% endif %}
@@ -178,7 +179,9 @@ $(document).ready(function(){
 
     <h3>Citing</h3>
     <p>If you use the software, please consider
-    <a href="{{pathto('index')}}#citing-astroml">citing astroML</a>.</p>
+
+    <!-- hard-coded link here because pathto() adds an extra # -->
+    <a href="/index.html#citing-astroml">citing astroML</a>.</p>
 
 
         {% if pagename == 'index' %}
