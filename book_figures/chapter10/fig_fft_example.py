@@ -11,7 +11,7 @@ is added to signal h(t). The value of the offset a is 0.15 and 0, respectively.
 The discrete Fourier transform is computed as described in Section 10.2.3.
 For both noise realizations, the correct frequency f = (2pi)-1 ~ 0.159 is
 easily discernible in the bottom panel. Note that the height of peaks is the
-same for both noise realizations. The large value of |H(f = 0)| for data
+same for both noise realizations. The large value of abs(H(f = 0)) for data
 with larger noise is due to the vertical offset.
 """
 # Author: Jake VanderPlas
