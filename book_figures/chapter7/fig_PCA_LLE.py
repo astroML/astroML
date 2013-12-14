@@ -51,6 +51,8 @@ formatter = plt.FuncFormatter(lambda t, *args: cdict[int(np.round(t))])
 data = fetch_sdss_corrected_spectra()
 coeffs_PCA = data['coeffs']
 c_PCA = data['lineindex_cln']
+spec = sdss_corrected_spectra.reconstruct_spectra(data)
+color = data['lineindex_cln']
 
 
 #------------------------------------------------------------
