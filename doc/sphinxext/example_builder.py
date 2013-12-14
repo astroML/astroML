@@ -147,7 +147,7 @@ class ExecFile(object):
 
     def save_figures(self, fmt, thumb_fmt=None, scale=0.2,
                      max_width=200, max_height=150,
-                     interpolation='bilinear'):
+                     interpolation='bilinear', **savefig_kwds):
         from matplotlib import colors
 
         figlist = []
@@ -160,9 +160,10 @@ class ExecFile(object):
             if colors.colorConverter.to_rgb(fig.get_facecolor()) == (0, 0, 0):
                 fig.savefig(figfile,
                             facecolor='k',
-                            edgecolor='none')
+                            edgecolor='none',
+                            **savefig_kwds)
             else:
-                fig.savefig(figfile)
+                fig.savefig(figfile, **savefig_kwds)
             plt.close(fig)
 
             if thumb_fmt is not None:

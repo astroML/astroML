@@ -26,7 +26,8 @@ RA *= np.pi / 180
 DEC *= np.pi / 180
 
 ax = plt.axes(projection='mollweide')
-plt.scatter(RA, DEC, s=1, lw=0, c=data['Z'], cmap=plt.cm.copper)
+plt.scatter(RA, DEC, s=1, c=data['Z'], cmap=plt.cm.copper,
+            edgecolors='none', linewidths=0)
 plt.grid(True)
 
 plt.title('NASA Atlas Galaxy Locations')
