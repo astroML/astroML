@@ -1,4 +1,4 @@
-"""
+r"""
 Angular Two-point Correlation Function
 --------------------------------------
 Figure 6.17
