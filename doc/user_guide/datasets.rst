@@ -55,7 +55,7 @@ and `z`.  A visualization of the range of these filters is shown below:
 
 SDSS Spectra
 ~~~~~~~~~~~~
-The SDSS spectroscopic data is available in a database, indexed by three
+The SDSS spectroscopic data is available as individual FITS files, indexed by three
 numbers: the plate, date, and fiber number.  The :func:`fetch_sdss_spectrum`
 takes a plate, mjd, and fiber, and downloads the spectrum to disk.  The
 spectral data can be visualized as follows:
@@ -73,9 +73,9 @@ result.
 
 SDSS Photometry
 ~~~~~~~~~~~~~~~
-Similarly to the spectroscopic data, the photometric data can be accessed
-directly using the SQL interface to the Database Archive Server.  astroML
-contains a function which accesses this data directly using a python SQL
+The photometric data can be accessed directly using the SQL interface to the
+SDSS Catalog Archive Server (CAS).
+astroML contains a function which accesses this data directly using a Python SQL
 query tool.  The function is called :func:`fetch_sdss_galaxy_colors` and
 can be used as a template for making custom data sets available with a
 simple Python command.  Some of the results are visualized below:
