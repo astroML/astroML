@@ -26,7 +26,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	
+
 	$(".toggle_container").hide();
 
 	$(".toggle_trigger").click(function(){
@@ -60,7 +60,7 @@ $(document).ready(function(){
 {%- endif %}
 
 {% block header %}
-    <div class="header-wrapper"
+    <div class="header-wrapper">
       <div class="header">
         {%- if logo %}
           <p class="logo"><a href="{{ pathto(master_doc) }}">
@@ -110,7 +110,7 @@ $(document).ready(function(){
 	<div class="rellink">
 	<a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags|e }}"
 	    {{ accesskey(rellink[2]) }}>{{ rellink[3]|capitalize }}
-	    <br>
+	    <br/>
 	    <span class="smallrellink">
 	    {{ rellink[1]|striptags|truncate(16, killwords=True) }}
 	    </span>
@@ -135,7 +135,7 @@ $(document).ready(function(){
 	<div class="rellink">
 	<a href="{{ parents[-1].link|e }}" title="{{ parents[-1].title|striptags }}" >
 	Up
-	<br>
+	<br/>
 	<span class="smallrellink">
 	{{ parents[-1].title|striptags|truncate(16, killwords=True) }}
 	</span>
@@ -150,7 +150,8 @@ $(document).ready(function(){
     </div>
     <p style="text-align: center">This documentation is
     for {{project}} <strong>version {{ release|e }}</strong>
-    <!-- &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p> -->
+    <!-- &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a> -->
+    </p>
         {% else %}
         <h3>News</h3>
 	<p>November 2013: astroML 0.2 has been released!  Get the source on
@@ -171,7 +172,7 @@ $(document).ready(function(){
 	<h3>Links</h3>
 	<p><a href="https://groups.google.com/forum/#!forum/astroml-general">astroML Mailing List</a></p>
 	<p><a href="http://github.com/astroML/astroML/issues">GitHub Issue Tracker</a></p>
-	
+
 	<h3>Videos</h3>
 	<p><a href="http://pyvideo.org/video/1218/astroml-data-mining-and-machine-learning-for-ast">Scipy 2012</a> (15 minute talk)</p>
 	<p><a href="http://pyvideo.org/video/2035/opening-up-astronomy-with-python-and-astroml-sci">Scipy 2013</a> (20 minute talk)</p>
@@ -214,7 +215,7 @@ $(document).ready(function(){
 {%- block footer %}
     <div class="footer">
         <p style="text-align: center">This documentation is relative
-        to {{project}} version {{ release|e }}<p>
+        to {{project}} version {{ release|e }}<br/>
 
     {%- if show_copyright %}
       {%- if hasdoc('copyright') %}
@@ -233,7 +234,7 @@ $(document).ready(function(){
     <span style="padding-left: 5ex;">
     <a href="{{ pathto('_sources/' + sourcename, true)|e }}"
 	    rel="nofollow">{{ _('Show this page source') }}</a>
-    </span>
+    </span></p>
     {%- endif %}
     </div>
 {%- endblock %}

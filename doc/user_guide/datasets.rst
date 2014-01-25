@@ -21,8 +21,8 @@ data sets more convenient, astroML contains routines which download the
 data from their locations on the web, and cache the results to disk for
 future use.
 
-For example, the :func:`fetch_sdss_spectrum` function queries the SDSS
-database using an SQL query, and retrieves the data.  The file is stored
+For example, the :func:`fetch_sdss_spectrum` function
+retrieves a data file from the SDSS data server.  The file is stored
 to disk in a location that can be defined by the user.  The default location
 is ``~/astroML_data``, and this default can be overridden by setting the
 ``ASTROML_DATA`` environment variable.  Any subsequent time the same function
@@ -55,7 +55,7 @@ and `z`.  A visualization of the range of these filters is shown below:
 
 SDSS Spectra
 ~~~~~~~~~~~~
-The SDSS spectroscopic data is available in a database, indexed by three
+The SDSS spectroscopic data is available as individual FITS files, indexed by three
 numbers: the plate, date, and fiber number.  The :func:`fetch_sdss_spectrum`
 takes a plate, mjd, and fiber, and downloads the spectrum to disk.  The
 spectral data can be visualized as follows:
@@ -73,9 +73,9 @@ result.
 
 SDSS Photometry
 ~~~~~~~~~~~~~~~
-Similarly to the spectroscopic data, the photometric data can be accessed
-directly using the SQL interface to the Database Archive Server.  astroML
-contains a function which accesses this data directly using a python SQL
+The photometric data can be accessed directly using the SQL interface to the
+SDSS Catalog Archive Server (CAS).
+astroML contains a function which accesses this data directly using a Python SQL
 query tool.  The function is called :func:`fetch_sdss_galaxy_colors` and
 can be used as a template for making custom data sets available with a
 simple Python command.  Some of the results are visualized below:
@@ -318,7 +318,7 @@ The `Lincoln Near Earth Asteroid Research <http://www.ll.mit.edu/mission/space/l
 and track near-earth asteroids.  Its archive contains several million images of
 the sky, and its combination of sensitivity and sky coverage has made it a
 valuable resource to study time-domain astronomy, including variable stars.
-astroML has two functions relating to the LINEAR sample: 
+astroML has two functions relating to the LINEAR sample:
 :func:`fetch_LINEAR_sample` fetches light curves for over 7000 variable stars.
 :func:`fetch_LINEAR_geneva` contains well-calibrated periods for a majority
 of these.  Phased light curves for six of the LINEAR objects can be seen in
@@ -342,7 +342,7 @@ with a very complicated noise frequency structure: this structure must be
 understood to a high degree.  astroML contains two loaders for LIGO-related
 datasets.  :func:`fetch_LIGO_large` fetches a large sample of LIGO data,
 useful for characterizing the background noise of the survey.
-:func:`fetch_LIGO_bigdog` contains the data associated with the 
+:func:`fetch_LIGO_bigdog` contains the data associated with the
 `Big Dog Event <http://www.ligo.org/news/blind-injection.php>`_, a
 blind-injection test designed to measure the response of the instrument and
 the survey team to a potential signal.  The figure below shows an example of
@@ -376,7 +376,7 @@ raw WMAP data:
 .. centered:: |WMAP1| |WMAP2|
 
 healpy also has some routines for computing fast spherical harmonic transforms.
-A rigorous treatment involves correcting for the mask pattern seen in the 
+A rigorous treatment involves correcting for the mask pattern seen in the
 right image.  Neglecting this correction, a simple power spectral analysis
 can be performed using the tools in healpy:
 

@@ -1,6 +1,6 @@
 """
 Tools to perform a SQL queries to an online server.
-Default values are provided for http://cas.sdss.
+Default values are provided for http://cas.sdss.org
 """
 import urllib
 
