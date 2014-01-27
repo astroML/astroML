@@ -94,31 +94,48 @@ AstroML is a Python module for machine learning and data mining built on
 `numpy <http://numpy.scipy.org>`_,
 `scipy <http://scipy.org>`_,
 `scikit-learn <http://scikit-learn.org>`_,
-and `matplotlib <http://matplotlib.org>`_,
+`matplotlib <http://matplotlib.org>`_,
+and `astropy <http://astropy.org>`_,
 and distributed under the 3-clause BSD license.
 It contains a growing library of statistical and machine learning
-routines for analyzing astronomical data in python, loaders for several open
+routines for analyzing astronomical data in Python, loaders for several open
 astronomical datasets, and a large suite of examples of analyzing and
 visualizing astronomical datasets.
-
-
-.. image:: _static/text_cover.png
-   :width: 90 px
-   :align: right
-   :target: http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687/
-
 
 The goal of astroML is to provide a community repository for fast Python
 implementations of common tools and routines used for statistical
 data analysis in astronomy and astrophysics, to provide a uniform and
 easy-to-use interface to freely available astronomical datasets.
 We hope this package will be useful to researchers and students of
-astronomy. The astroML project was started in 2012 to accompany the book
+astronomy.  If you have an example you'd like to share, we are happy to
+accept a contribution via a GitHub
+`Pull Request <https://help.github.com/articles/using-pull-requests>`_:
+the code repository can be found at
+`http://github.com/astroML/astroML <http://github.com/astroML/astroML>`_.
+
+Textbook
+=========
+
+.. image:: _static/text_cover.png
+   :width: 90 px
+   :align: right
+   :target: http://press.princeton.edu/titles/10159.html
+
+The astroML project was started in 2012 to accompany the book
 **Statistics, Data Mining, and Machine Learning in Astronomy** by
 Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray,
-published by Princeton University Press. The table of contents is available
-here: :download:`here(pdf) <documents/DMbookTOC.pdf>`, or you can view the
-book on `Amazon <http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687/>`_.
+published by
+`Princeton University Press <http://press.princeton.edu/titles/10159.html>`_.
+The table of contents is available
+:download:`here(pdf) <documents/DMbookTOC.pdf>`,
+or you can preview or purchase the book on
+`Amazon <http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687/>`_.
+
+Did you find a mistake or typo in the book? We maintain an up-to-date
+`listing of errata <https://github.com/astroml/text_errata>`_
+in the text which you can view on GitHub. If you find a mistake
+which is not yet noted on that page, please let us know via email or GitHub
+pull request!
 
 .. include:: includes/big_toc_css.rst
 
