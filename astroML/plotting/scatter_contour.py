@@ -62,20 +62,23 @@ def scatter_contour(x, y,
     # the filled contour below.
     outline = ax.contour(H.T, levels[i_min:i_min + 1],
                          linewidths=0, extent=extent)
-    outer_poly = outline.allsegs[0][0]
 
     ax.contourf(H.T, levels, extent=extent, **contour_args)
     X = np.hstack([x[:, None], y[:, None]])
 
-    try:
-        # this works in newer matplotlib versions
-        from matplotlib.path import Path
-        points_inside = Path(outer_poly).contains_points(X)
-    except:
-        # this works in older matplotlib versions
-        import matplotlib.nxutils as nx
-        points_inside = nx.points_inside_poly(X, outer_poly)
+    if len(outline.allsegs[0]) > 0:
+        outer_poly = outline.allsegs[0][0]
+        try:
+            # this works in newer matplotlib versions
+            from matplotlib.path import Path
+            points_inside = Path(outer_poly).contains_points(X)
+        except:
+            # this works in older matplotlib versions
+            import matplotlib.nxutils as nx
+            points_inside = nx.points_inside_poly(X, outer_poly)
 
-    Xplot = X[~points_inside]
+        Xplot = X[~points_inside]
+    else:
+        Xplot = X
 
     ax.plot(Xplot[:, 0], Xplot[:, 1], zorder=1, **plot_args)

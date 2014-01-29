@@ -15,7 +15,6 @@ from matplotlib import pyplot as plt
 from sklearn.neighbors import KNeighborsRegressor
 
 from astroML.datasets import fetch_sdss_galaxy_colors
-from astroML.plotting import scatter_contour
 
 #------------------------------------------------------------
 # Download data
