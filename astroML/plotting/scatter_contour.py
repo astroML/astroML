@@ -6,9 +6,10 @@ def scatter_contour(x, y,
                     levels=10,
                     threshold=100,
                     log_counts=False,
-                    histogram2d_args={},
-                    plot_args={},
-                    contour_args={},
+                    histogram2d_args=None,
+                    plot_args=None,
+                    contour_args=None,
+                    filled_contour=True,
                     ax=None):
     """Scatter plot with contour over dense regions
 
@@ -26,15 +27,33 @@ def scatter_contour(x, y,
         keyword arguments passed to numpy.histogram2d
         see doc string of numpy.histogram2d for more information
     plot_args : dict
-        keyword arguments passed to pylab.scatter
-        see doc string of pylab.scatter for more information
-    contourf_args : dict
-        keyword arguments passed to pylab.contourf
+        keyword arguments passed to plt.plot.  By default it will use
+        dict(marker='.', linestyle='none').
+        see doc string of pylab.plot for more information
+    contour_args : dict
+        keyword arguments passed to plt.contourf or plt.contour
         see doc string of pylab.contourf for more information
+    filled_contour : bool
+        If True (default) use filled contours. Otherwise, use contour outlines.
     ax : pylab.Axes instance
         the axes on which to plot.  If not specified, the current
         axes will be used
     """
+    x = np.asarray(x)
+    y = np.asarray(y)
+
+    default_plot_args = dict(marker='.', linestyle='none')
+
+    if plot_args is not None:
+        default_plot_args.update(plot_args)
+    plot_args = default_plot_args
+
+    if histogram2d_args is None:
+        histogram2d_args = {}
+
+    if contour_args is None:
+        contour_args = {}
+
     if ax is None:
         ax = plt.gca()
 
@@ -59,11 +78,15 @@ def scatter_contour(x, y,
     # draw a zero-width line: this gives us the outer polygon to
     # reduce the number of points we draw
     # somewhat hackish... we could probably get the same info from
-    # the filled contour below.
+    # the full contour plot below.
     outline = ax.contour(H.T, levels[i_min:i_min + 1],
                          linewidths=0, extent=extent)
 
-    ax.contourf(H.T, levels, extent=extent, **contour_args)
+    if filled_contour:
+        ax.contourf(H.T, levels, extent=extent, **contour_args)
+    else:
+        ax.contour(H.T, levels, extent=extent, **contour_args)
+
     X = np.hstack([x[:, None], y[:, None]])
 
     if len(outline.allsegs[0]) > 0:
