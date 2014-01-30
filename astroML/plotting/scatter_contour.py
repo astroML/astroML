@@ -38,6 +38,12 @@ def scatter_contour(x, y,
     ax : pylab.Axes instance
         the axes on which to plot.  If not specified, the current
         axes will be used
+
+    Returns
+    -------
+    points, contours :
+       points is the return value of ax.plot()
+       contours is the return value of ax.contour or ax.contourf
     """
     x = np.asarray(x)
     y = np.asarray(y)
@@ -83,9 +89,9 @@ def scatter_contour(x, y,
                          linewidths=0, extent=extent)
 
     if filled_contour:
-        ax.contourf(H.T, levels, extent=extent, **contour_args)
+        contours = ax.contourf(H.T, levels, extent=extent, **contour_args)
     else:
-        ax.contour(H.T, levels, extent=extent, **contour_args)
+        contours = ax.contour(H.T, levels, extent=extent, **contour_args)
 
     X = np.hstack([x[:, None], y[:, None]])
 
@@ -104,4 +110,6 @@ def scatter_contour(x, y,
     else:
         Xplot = X
 
-    ax.plot(Xplot[:, 0], Xplot[:, 1], zorder=1, **plot_args)
+    points = ax.plot(Xplot[:, 0], Xplot[:, 1], zorder=1, **plot_args)
+
+    return points, contours
