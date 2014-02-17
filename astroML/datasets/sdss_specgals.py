@@ -24,12 +24,12 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
 
     Returns
     -------
-    data : recarray, shape = (327260,)
+    data : numpy.ndarray, shape = (661598,)
         record array containing pipeline parameters
 
     Notes
     -----
-    These were compiled from the SDSS database using the following SQL query::
+    These were compiled from the SDSS-III database (DR8 Context) using the following SQL query::
 
         SELECT
           A.ra, A.dec, S.mjd, S.plate, S.fiberID, --- basic identifiers
@@ -37,9 +37,9 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
           S.z, S.zErr, S.rChi2, S.velDisp, S.velDispErr,
           --- some useful imaging parameters
           G.extinction_r, G.petroMag_r, G.psfMag_r, G.psfMagErr_r,
-          G.modelMag_u, modelMagErr_u, G.modelMag_g, modelMagErr_g,
-          G.modelMag_r, modelMagErr_r, G.modelMag_i, modelMagErr_i,
-          G.modelMag_z, modelMagErr_z, G.petroR50_r, G.petroR90_r,
+          G.modelMag_u, G.modelMagErr_u, G.modelMag_g, G.modelMagErr_g,
+          G.modelMag_r, G.modelMagErr_r, G.modelMag_i, G.modelMagErr_i,
+          G.modelMag_z, G.modelMagErr_z, G.petroR50_r, G.petroR90_r,
           --- line fluxes for BPT diagram and other derived spec. parameters
           GSL.nii_6584_flux, GSL.nii_6584_flux_err, GSL.h_alpha_flux,
           GSL.h_alpha_flux_err, GSL.oiii_5007_flux, GSL.oiii_5007_flux_err,
@@ -75,8 +75,8 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
     >>> data = fetch_sdss_specgals()
     >>> data.shape  # number of objects in dataset
     (661598,)
-    >>> data.names[:5]  # first five column names
-    ['ra', 'dec', 'mjd', 'plate', 'fiberID']
+    >>> print data.dtype.names[:5]  # first five column names
+    ('ra', 'dec', 'mjd', 'plate', 'fiberID')
     >>> print data['ra'][:3]  # first three RA values
     [ 146.71419105  146.74414186  146.62857334]
     >>> print data['dec'][:3]  #  first three declination values
