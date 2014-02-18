@@ -222,7 +222,10 @@ def fetch_great_wall(data_home=None, download_if_missing=True, dr9=False,
     from scipy.interpolate import interp1d
     from ..cosmology import Cosmology
 
-    data = fetch_sdss_specgals(data_home, download_if_missing)
+    if dr9:
+        data = fetch_sdss_dr9_specgals(data_home, download_if_missing)
+    else:
+        data = fetch_sdss_specgals(data_home, download_if_missing)
 
     # cut to the part of the sky with the "great wall"
     data = data[(data['dec'] > -7) & (data['dec'] < 7)]
