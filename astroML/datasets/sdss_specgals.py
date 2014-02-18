@@ -139,8 +139,9 @@ def fetch_sdss_dr9_specgals(data_home=None, download_if_missing=True):
           GSL.h_beta_flux, GSL.h_beta_flux_err, GSL.h_delta_flux,
           GSL.h_delta_flux_err, GSX.d4000, GSX.d4000_err, GSE.bptclass,
           GSE.lgm_tot_p50, GSE.sfr_tot_p50, G.objID, GSI.specObjID
-        INTO mydb.SDSSspecgalsDR8 FROM SpecObj AS S CROSS APPLY
-          dbo.fGetNearestObjEQ(S.ra, S.dec, 0.06) AS N
+        INTO mydb.SDSSspecgalsDR8astromDR9
+        FROM SpecObj AS S
+          CROSS APPLY dbo.fGetNearestObjEQ(S.ra, S.dec, 0.06) AS N
           JOIN Galaxy       AS G   ON N.objID = G.objID
           JOIN AstromDR9    AS A   ON N.objID = A.objID
           JOIN GalSpecInfo  AS GSI ON GSI.specObjID = S.specObjID
