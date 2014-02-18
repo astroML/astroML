@@ -104,6 +104,9 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
 
 def fetch_sdss_dr9_specgals(data_home=None, download_if_missing=True):
     """Loader for SDSS Galaxies with spectral information and with DR9 astrometry corrections.
+    This retrieves the same data as fetch_sdss_specgals, but with RA and Dec
+    corrected with DR9 astrometry.  You should prefer this function over
+    fetch_sdss_specgals if you care about precision astrometry.
 
     Parameters
     ----------
