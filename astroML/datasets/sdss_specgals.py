@@ -32,31 +32,30 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
     These were compiled from the SDSS-III database (DR8 Context) using the following SQL query::
 
         SELECT
-          A.ra, A.dec, S.mjd, S.plate, S.fiberID, --- basic identifiers
+          G.ra, G.dec, S.mjd, S.plate, S.fiberID, --- basic identifiers
           --- basic spectral data
           S.z, S.zErr, S.rChi2, S.velDisp, S.velDispErr,
           --- some useful imaging parameters
           G.extinction_r, G.petroMag_r, G.psfMag_r, G.psfMagErr_r,
-          G.modelMag_u, G.modelMagErr_u, G.modelMag_g, G.modelMagErr_g,
-          G.modelMag_r, G.modelMagErr_r, G.modelMag_i, G.modelMagErr_i,
-          G.modelMag_z, G.modelMagErr_z, G.petroR50_r, G.petroR90_r,
+          G.modelMag_u, modelMagErr_u, G.modelMag_g, modelMagErr_g,
+          G.modelMag_r, modelMagErr_r, G.modelMag_i, modelMagErr_i,
+          G.modelMag_z, modelMagErr_z, G.petroR50_r, G.petroR90_r,
           --- line fluxes for BPT diagram and other derived spec. parameters
           GSL.nii_6584_flux, GSL.nii_6584_flux_err, GSL.h_alpha_flux,
           GSL.h_alpha_flux_err, GSL.oiii_5007_flux, GSL.oiii_5007_flux_err,
           GSL.h_beta_flux, GSL.h_beta_flux_err, GSL.h_delta_flux,
           GSL.h_delta_flux_err, GSX.d4000, GSX.d4000_err, GSE.bptclass,
           GSE.lgm_tot_p50, GSE.sfr_tot_p50, G.objID, GSI.specObjID
-        INTO mydb.SDSSspecgalsDR8 FROM SpecObj AS S CROSS APPLY
-          dbo.fGetNearestObjEQ(S.ra, S.dec, 0.06) AS N
-          JOIN Galaxy       AS G   ON N.objID = G.objID
-          JOIN AstromDR9    AS A   ON N.objID = A.objID
-          JOIN GalSpecInfo  AS GSI ON GSI.specObjID = S.specObjID
-          JOIN GalSpecLine  AS GSL ON GSL.specObjID = S.specObjID
-          JOIN GalSpecIndx  AS GSX ON GSX.specObjID = S.specObjID
-          JOIN GalSpecExtra AS GSE ON GSE.specObjID = S.specObjID
-        WHERE
+        INTO mydb.SDSSspecgalsDR8 FROM SpecObj S CROSS APPLY
+          dbo.fGetNearestObjEQ(S.ra, S.dec, 0.06) N, Galaxy G,
+          GalSpecInfo GSI, GalSpecLine GSL, GalSpecIndx GSX, GalSpecExtra GSE
+        WHERE N.objID = G.objID
+          AND GSI.specObjID = S.specObjID
+          AND GSL.specObjID = S.specObjID
+          AND GSX.specObjID = S.specObjID
+          AND GSE.specObjID = S.specObjID
           --- add some quality cuts to get rid of obviously bad measurements
-          (G.petroMag_r > 10 AND G.petroMag_r < 18)
+          AND (G.petroMag_r > 10 AND G.petroMag_r < 18)
           AND (G.modelMag_u-G.modelMag_r) > 0
           AND (G.modelMag_u-G.modelMag_r) < 6
           AND (G.modelMag_u > 10 AND G.modelMag_u < 25)
