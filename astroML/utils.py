@@ -12,9 +12,10 @@ except:
         allowing individual elements to have successive repeats.
         combinations_with_replacement('ABC', 2) --> AA AB AC BB BC CC
         """
+        from itertools import product
         pool = tuple(iterable)
         n = len(pool)
-        for indices in itertools.product(range(n), repeat=r):
+        for indices in product(range(n), repeat=r):
             if sorted(indices) == list(indices):
                 yield tuple(pool[i] for i in indices)
 
