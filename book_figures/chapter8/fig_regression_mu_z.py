@@ -4,7 +4,7 @@ Cosmology Regression Example
 Figure 8.2
 
 Various regression fits to the distance modulus vs. redshift relation for a
-simulated set of 100 supernovas, selected from a distribution
+simulated set of 100 supernovae, selected from a distribution
 :math:`p(z) \propto (z/z_0)^2 \exp[(z/z_0)^{1.5}]` with :math:`z_0 = 0.3`.
 Gaussian basis functions have 15 Gaussians evenly spaced between z = 0 and 2,
 with widths of 0.14. Kernel regression uses a Gaussian kernel with width 0.1.
@@ -20,10 +20,21 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import lognorm
 
-from astroML.cosmology import Cosmology
 from astroML.datasets import generate_mu_z
 from astroML.linear_model import LinearRegression, PolynomialRegression,\
     BasisFunctionRegression, NadarayaWatson
+
+# Use astropy cosmology if possible, built in if not
+try:
+    import astropy
+    ver = astropy.__version__.split('.')
+    if int(ver[0]) == 0 and int(ver[1]) < 3:
+        raise ImportError("Insufficient astropy version; using builtin")
+    from astropy.cosmology import FlatLambdaCDM
+    cosmo = FlatLambdaCDM(71, 0.27, Tcmb0=0)
+except ImportError:
+    from astroML.cosmology import Cosmology
+    cosmo = Cosmology()
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
@@ -34,12 +45,15 @@ from astroML.plotting import setup_text_plots
 setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
-# Generate data
-z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0)
-
-cosmo = Cosmology()
+z_sample, mu_sample, dmu = generate_mu_z(size=100, random_state=0)
 z = np.linspace(0.01, 2, 1000)
-mu_true = np.asarray(map(cosmo.mu, z))
+
+try:
+    # Astropy
+    mu_true = cosmo.distmod(z).value
+except AttributeError:
+    # Built in
+    mu_true = np.asarray(map(cosmo.mu, z))
 
 #------------------------------------------------------------
 # Define our classifiers

@@ -3,6 +3,8 @@ from scipy import integrate
 import pylab as pl
 
 
+import warnings
+
 class Cosmology(object):
     """Class to enable simple cosmological calculations.
 
@@ -22,6 +24,7 @@ class Cosmology(object):
     [1] http://roban.github.com/CosmoloPy/
     """
     def __init__(self, omegaM=0.27, omegaL=0.73, h=0.71):
+        warnings.warn("deprecated", DeprecationWarning)
         self.omegaM = omegaM
         self.omegaL = omegaL
         self.omegaK = 1. - omegaM - omegaL

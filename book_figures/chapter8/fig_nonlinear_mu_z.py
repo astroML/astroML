@@ -20,7 +20,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from astroML.datasets import generate_mu_z
-from astroML.cosmology import Cosmology
 from astroML.plotting.mcmc import convert_to_stdev
 from astroML.decorators import pickle_results
 
@@ -34,7 +33,7 @@ setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Generate the data
-z_sample, mu_sample, dmu = generate_mu_z(100, z0=0.3,
+z_sample, mu_sample, dmu = generate_mu_z(size=100, z0=0.3,
                                          dmu_0=0.05, dmu_1=0.004,
                                          random_state=1)
 
@@ -42,10 +41,26 @@ z_sample, mu_sample, dmu = generate_mu_z(100, z0=0.3,
 #------------------------------------------------------------
 # define a log likelihood in terms of the parameters
 #  beta = [omegaM, omegaL]
-def compute_logL(beta):
-    cosmo = Cosmology(omegaM=beta[0], omegaL=beta[1])
-    mu_pred = np.array(map(cosmo.mu, z_sample))
-    return - np.sum(0.5 * ((mu_sample - mu_pred) / dmu) ** 2)
+# Use astropy cosmology if possible, built in if not
+#  It is -much- faster to define the right function based on
+#   the import rather than put the try/except loop in the function.
+#   Throwing exceptions is not cheap!
+try:
+    import astropy
+    ver = astropy.__version__.split('.')
+    if int(ver[0]) == 0 and int(ver[1]) < 3:
+        raise ImportError("Insufficient astropy version; using builtin")
+    from astropy.cosmology import LambdaCDM
+    def compute_logL(beta):
+        cosmo = LambdaCDM(71.0, beta[0], beta[1], Tcmb0=0)
+        mu_pred = cosmo.distmod(z_sample).value
+        return - np.sum(0.5 * ((mu_sample - mu_pred) / dmu) ** 2)
+except ImportError:
+    from astroML.cosmology import Cosmology
+    def compute_logL(beta):
+        cosmo = Cosmology(omegaM=beta[0], omegaL=beta[1])
+        mu_pred = np.array(map(cosmo.mu, z_sample))
+        return - np.sum(0.5 * ((mu_sample - mu_pred) / dmu) ** 2)
 
 
 #------------------------------------------------------------
@@ -78,10 +93,16 @@ ax = fig.add_subplot(121)
 whr = np.where(res == np.max(res))
 omegaM_best = omegaM[whr[0][0]]
 omegaL_best = omegaL[whr[1][0]]
-cosmo = Cosmology(omegaM=omegaM_best, omegaL=omegaL_best)
-
 z_fit = np.linspace(0.04, 2, 100)
-mu_fit = np.asarray(map(cosmo.mu, z_fit))
+
+try:
+    # Astropy
+    cosmo = LambdaCDM(71.0, omegaM_best, omegaL_best, Tcmb0=0)
+    mu_fit = cosmo.distmod(z_fit).value
+except NameError:
+    # Built in
+    cosmo = Cosmology(omegaM=omegaM_best, omegaL=omegaL_best)
+    mu_fit = np.asarray(map(cosmo.mu, z_fit))
 
 ax.plot(z_fit, mu_fit, '-k')
 ax.errorbar(z_sample, mu_sample, dmu, fmt='.k', ecolor='gray')

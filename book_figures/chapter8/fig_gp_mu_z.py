@@ -19,8 +19,18 @@ from matplotlib import pyplot as plt
 
 from sklearn.gaussian_process import GaussianProcess
 
-from astroML.cosmology import Cosmology
 from astroML.datasets import generate_mu_z
+
+# Use astropy cosmology if possible, built in if not
+try:
+    import astropy.cosmology
+    ver = astropy.__version__.split('.')
+    if int(ver[0]) == 0 and int(ver[1]) < 3:
+        raise ImportError("Insufficient astropy version; using builtin")
+    cosmo = astropy.cosmology.FlatLambdaCDM(71.0, 0.27, Tcmb0=0)
+except ImportError:
+    from astroML.cosmology import Cosmology
+    cosmo = Cosmology()
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
@@ -32,11 +42,14 @@ setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Generate data
-z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0)
-
-cosmo = Cosmology()
+z_sample, mu_sample, dmu = generate_mu_z(size=100, random_state=0)
 z = np.linspace(0.01, 2, 1000)
-mu_true = np.asarray(map(cosmo.mu, z))
+try:
+    # Astropy
+    mu_true = cosmo.distmod(z).value
+except AttributeError:
+    # Built in
+    mu_true = np.asarray(map(cosmo.mu, z))
 
 #------------------------------------------------------------
 # fit the data
