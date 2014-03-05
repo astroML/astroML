@@ -39,28 +39,20 @@ z_sample, mu_sample, dmu = generate_mu_z(size=100, z0=0.3,
 
 
 #------------------------------------------------------------
+# define a function to compute the model predictued mu values
+#  from beta = [omegaM, omegaL]
+def compute_mu(beta, z):
+    from astropy.cosmology import LambdaCDM
+    cosmo = LambdaCDM(71.0, beta[0], beta[1], Tcmb0=0)
+    return cosmo.distmod(z).value
+
+
+#------------------------------------------------------------
 # define a log likelihood in terms of the parameters
 #  beta = [omegaM, omegaL]
-# Use astropy cosmology if possible, built in if not
-#  It is -much- faster to define the right function based on
-#   the import rather than put the try/except loop in the function.
-#   Throwing exceptions is not cheap!
-try:
-    import astropy
-    ver = astropy.__version__.split('.')
-    if int(ver[0]) == 0 and int(ver[1]) < 3:
-        raise ImportError("Insufficient astropy version; using builtin")
-    from astropy.cosmology import LambdaCDM
-    def compute_logL(beta):
-        cosmo = LambdaCDM(71.0, beta[0], beta[1], Tcmb0=0)
-        mu_pred = cosmo.distmod(z_sample).value
-        return - np.sum(0.5 * ((mu_sample - mu_pred) / dmu) ** 2)
-except ImportError:
-    from astroML.cosmology import Cosmology
-    def compute_logL(beta):
-        cosmo = Cosmology(omegaM=beta[0], omegaL=beta[1])
-        mu_pred = np.array(map(cosmo.mu, z_sample))
-        return - np.sum(0.5 * ((mu_sample - mu_pred) / dmu) ** 2)
+def compute_logL(beta):
+    mu_pred = compute_mu(beta, z_sample)
+    return - np.sum(0.5 * ((mu_sample - mu_pred) / dmu) ** 2)
 
 
 #------------------------------------------------------------
@@ -94,15 +86,7 @@ whr = np.where(res == np.max(res))
 omegaM_best = omegaM[whr[0][0]]
 omegaL_best = omegaL[whr[1][0]]
 z_fit = np.linspace(0.04, 2, 100)
-
-try:
-    # Astropy
-    cosmo = LambdaCDM(71.0, omegaM_best, omegaL_best, Tcmb0=0)
-    mu_fit = cosmo.distmod(z_fit).value
-except NameError:
-    # Built in
-    cosmo = Cosmology(omegaM=omegaM_best, omegaL=omegaL_best)
-    mu_fit = np.asarray(map(cosmo.mu, z_fit))
+mu_fit = compute_mu([omegaM_best, omegaL_best], z_fit)
 
 ax.plot(z_fit, mu_fit, '-k')
 ax.errorbar(z_sample, mu_sample, dmu, fmt='.k', ecolor='gray')

@@ -29,16 +29,8 @@ from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from astroML.datasets import generate_mu_z
 
 # Use astropy cosmology if possible, built in if not
-try:
-    import astropy
-    ver = astropy.__version__.split('.')
-    if int(ver[0]) == 0 and int(ver[1]) < 3:
-        raise ImportError("Insufficient astropy version; using builtin")
-    from astropy.cosmology import FlatLambdaCDM
-    cosmo = FlatLambdaCDM(71, 0.27, Tcmb0=0)
-except ImportError:
-    from astroML.cosmology import Cosmology
-    cosmo = Cosmology()
+from astropy.cosmology import FlatLambdaCDM
+cosmo = FlatLambdaCDM(71, 0.27, Tcmb0=0)
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
@@ -55,12 +47,8 @@ np.random.seed(0)
 z_sample, mu_sample, dmu = generate_mu_z(size=100, random_state=0)
 
 z = np.linspace(0.01, 2, 1000)
-try:
-    # Astropy
-    mu = cosmo.distmod(z).value
-except AttributeError:
-    # Built in
-    mu = np.asarray(map(cosmo.mu, z))
+mu = cosmo.distmod(z).value
+
 
 #------------------------------------------------------------
 # Manually convert data to a gaussian basis

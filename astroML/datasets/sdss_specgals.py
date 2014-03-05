@@ -230,7 +230,7 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
 
 
 def fetch_great_wall(data_home=None, download_if_missing=True,
-                     xlim=(-375, -175), ylim=(-300, 200)):
+                     xlim=(-375, -175), ylim=(-300, 200), cosmo=None):
     """Get the 2D SDSS "Great Wall" distribution, following Cowan et al 2008
 
     Parameters
@@ -248,6 +248,10 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
         used for the plots in Cowan 2008.  If set to None, no cuts will
         be performed.
 
+    cosmo : astropy.cosmology instance specifying cosmology
+        to use when generating the sample.  If not provided,
+        a Flat Lambda CDM model with h=0.732, Omega_m=0.27 is used.
+
     Returns
     -------
     data : ndarray, shape = (Ngals, 2)
@@ -257,19 +261,10 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
     from scipy.interpolate import interp1d
 
     # We need some cosmological information to compute the r-band
-    #  absolute magnitudes.  Use astropy.cosmology if available,
-    #  fall back on the astroML version if not.  This gets a bit hacky
-    #  because they don't quite have the same interfact
-    try:
-        import astropy
-        ver = astropy.__version__.split('.')
-        if int(ver[0]) == 0 and int(ver[1]) < 3:
-            raise ImportError("Insufficient astropy version; using builtin")
-        from astropy.cosmology import FlatLambdaCDM
-        cosmo = FlatLambdaCDM(73.2, 0.27, Tcmb0=0)
-    except ImportError:
-        from ..cosmology import Cosmology
-        cosmo = Cosmology(omegaM=0.27, omegaL=0.73, h=0.732)
+    #  absolute magnitudes.
+    if cosmo is None:
+        import astropy.cosmology
+        cosmo = astropy.cosmology.FlatLambdaCDM(73.2, 0.27, Tcmb0=0)
 
     data = fetch_sdss_specgals(data_home, download_if_missing)
 
@@ -283,12 +278,7 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
 
     # first sample the distance modulus on a grid
     zgrid = np.linspace(min(data['z']), max(data['z']), 100)
-    try:
-        # Astropy
-        mugrid = cosmo.distmod(z).value
-    except AttributeError:
-        # Built in
-        mugrid = np.array([cosmo.mu(z) for z in zgrid])
+    mugrid = cosmo.distmod(z).value
     f = interp1d(zgrid, mugrid)
     mu = f(data['z'])
 
@@ -298,12 +288,7 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
 
     # compute distances in the equatorial plane
     # first sample comoving distance
-    try:
-        # Astropy
-        Dcgrid = cosmo.comoving_distance(z).value
-    except AttributeError:
-        # Built in
-        Dcgrid = np.array([cosmo.Dc(z) for z in zgrid])
+    Dcgrid = cosmo.comoving_distance(z).value
     f = interp1d(zgrid, Dcgrid)
     dist = f(data['z'])
 
