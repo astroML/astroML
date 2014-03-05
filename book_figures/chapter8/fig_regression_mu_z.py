@@ -4,7 +4,7 @@ Cosmology Regression Example
 Figure 8.2
 
 Various regression fits to the distance modulus vs. redshift relation for a
-simulated set of 100 supernovae, selected from a distribution
+simulated set of 100 supernovas, selected from a distribution
 :math:`p(z) \propto (z/z_0)^2 \exp[(z/z_0)^{1.5}]` with :math:`z_0 = 0.3`.
 Gaussian basis functions have 15 Gaussians evenly spaced between z = 0 and 2,
 with widths of 0.14. Kernel regression uses a Gaussian kernel with width 0.1.

@@ -28,7 +28,6 @@ from sklearn.linear_model import LinearRegression, Ridge, Lasso
 
 from astroML.datasets import generate_mu_z
 
-# Use astropy cosmology if possible, built in if not
 from astropy.cosmology import FlatLambdaCDM
 cosmo = FlatLambdaCDM(71, 0.27, Tcmb0=0)
 

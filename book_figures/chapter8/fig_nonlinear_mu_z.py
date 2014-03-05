@@ -18,6 +18,7 @@ show the input values.
 #    https://groups.google.com/forum/#!forum/astroml-general
 import numpy as np
 from matplotlib import pyplot as plt
+from astropy.cosmology import LambdaCDM
 
 from astroML.datasets import generate_mu_z
 from astroML.plotting.mcmc import convert_to_stdev
@@ -42,7 +43,6 @@ z_sample, mu_sample, dmu = generate_mu_z(size=100, z0=0.3,
 # define a function to compute the model predictued mu values
 #  from beta = [omegaM, omegaL]
 def compute_mu(beta, z):
-    from astropy.cosmology import LambdaCDM
     cosmo = LambdaCDM(71.0, beta[0], beta[1], Tcmb0=0)
     return cosmo.distmod(z).value
 
