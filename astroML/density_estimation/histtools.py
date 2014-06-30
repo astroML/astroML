@@ -169,6 +169,10 @@ class KnuthF(object):
             smaller values indicate a better fit.
         """
         M = int(M)
+
+        if M <= 0:
+            return np.inf
+
         bins = self.bins(M)
         nk, bins = np.histogram(self.data, bins)
 
