@@ -8,6 +8,7 @@ from tools import download_with_progress_bar
 DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
             "DMbook/data/SDSSspecgalsDR8.fit")
 
+DR9_DATA_URL = "http://cosmo.nyu.edu/~bw55/SDSSspecgalsDR8astromDR9_weaver.fit"
 
 def fetch_sdss_specgals(data_home=None, download_if_missing=True):
     """Loader for SDSS Galaxies with spectral information
@@ -24,12 +25,12 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
 
     Returns
     -------
-    data : recarray, shape = (327260,)
+    data : numpy.ndarray, shape = (661598,)
         record array containing pipeline parameters
 
     Notes
     -----
-    These were compiled from the SDSS database using the following SQL query::
+    These were compiled from the SDSS-III database (DR8 Context) using the following SQL query::
 
         SELECT
           G.ra, G.dec, S.mjd, S.plate, S.fiberID, --- basic identifiers
@@ -74,8 +75,8 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
     >>> data = fetch_sdss_specgals()
     >>> data.shape  # number of objects in dataset
     (661598,)
-    >>> data.names[:5]  # first five column names
-    ['ra', 'dec', 'mjd', 'plate', 'fiberID']
+    >>> print data.dtype.names[:5]  # first five column names
+    ('ra', 'dec', 'mjd', 'plate', 'fiberID')
     >>> print data['ra'][:3]  # first three RA values
     [ 146.71419105  146.74414186  146.62857334]
     >>> print data['dec'][:3]  #  first three declination values
@@ -101,8 +102,100 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
     hdulist = fits.open(archive_file)
     return np.asarray(hdulist[1].data)
 
+def fetch_sdss_dr9_specgals(data_home=None, download_if_missing=True):
+    """Loader for SDSS Galaxies with spectral information and with DR9 astrometry corrections.
+    This retrieves the same data as fetch_sdss_specgals, but with RA and Dec
+    corrected with DR9 astrometry.  You should prefer this function over
+    fetch_sdss_specgals if you care about precision astrometry.
 
-def fetch_great_wall(data_home=None, download_if_missing=True,
+    Parameters
+    ----------
+    data_home : optional, default=None
+        Specify another download and cache folder for the datasets. By default
+        all scikit learn data is stored in '~/astroML_data' subfolders.
+
+    download_if_missing : optional, default=True
+        If False, raise a IOError if the data is not locally available
+        instead of trying to download the data from the source site.
+
+    Returns
+    -------
+    data : numpy.ndarray, shape = (661598,)
+        record array containing pipeline parameters
+
+    Notes
+    -----
+    These were compiled from the SDSS-III database (DR8 Context) using the following SQL query::
+
+        SELECT
+          A.ra, A.dec, S.mjd, S.plate, S.fiberID, --- basic identifiers
+          --- basic spectral data
+          S.z, S.zErr, S.rChi2, S.velDisp, S.velDispErr,
+          --- some useful imaging parameters
+          G.extinction_r, G.petroMag_r, G.psfMag_r, G.psfMagErr_r,
+          G.modelMag_u, G.modelMagErr_u, G.modelMag_g, G.modelMagErr_g,
+          G.modelMag_r, G.modelMagErr_r, G.modelMag_i, G.modelMagErr_i,
+          G.modelMag_z, G.modelMagErr_z, G.petroR50_r, G.petroR90_r,
+          --- line fluxes for BPT diagram and other derived spec. parameters
+          GSL.nii_6584_flux, GSL.nii_6584_flux_err, GSL.h_alpha_flux,
+          GSL.h_alpha_flux_err, GSL.oiii_5007_flux, GSL.oiii_5007_flux_err,
+          GSL.h_beta_flux, GSL.h_beta_flux_err, GSL.h_delta_flux,
+          GSL.h_delta_flux_err, GSX.d4000, GSX.d4000_err, GSE.bptclass,
+          GSE.lgm_tot_p50, GSE.sfr_tot_p50, G.objID, GSI.specObjID
+        INTO mydb.SDSSspecgalsDR8astromDR9
+        FROM SpecObj AS S
+          CROSS APPLY dbo.fGetNearestObjEQ(S.ra, S.dec, 0.06) AS N
+          JOIN Galaxy       AS G   ON N.objID = G.objID
+          JOIN AstromDR9    AS A   ON N.objID = A.objID
+          JOIN GalSpecInfo  AS GSI ON GSI.specObjID = S.specObjID
+          JOIN GalSpecLine  AS GSL ON GSL.specObjID = S.specObjID
+          JOIN GalSpecIndx  AS GSX ON GSX.specObjID = S.specObjID
+          JOIN GalSpecExtra AS GSE ON GSE.specObjID = S.specObjID
+        WHERE
+          --- add some quality cuts to get rid of obviously bad measurements
+          (G.petroMag_r > 10 AND G.petroMag_r < 18)
+          AND (G.modelMag_u-G.modelMag_r) > 0
+          AND (G.modelMag_u-G.modelMag_r) < 6
+          AND (G.modelMag_u > 10 AND G.modelMag_u < 25)
+          AND (G.modelMag_g > 10 AND G.modelMag_g < 25)
+          AND (G.modelMag_r > 10 AND G.modelMag_r < 25)
+          AND (G.modelMag_i > 10 AND G.modelMag_i < 25)
+          AND (G.modelMag_z > 10 AND G.modelMag_z < 25)
+          AND S.rChi2 < 2
+          AND (S.zErr > 0 AND S.zErr < 0.01)
+          AND S.z > 0.02
+          --- end of query ---
+
+    The data is not ordered in the same way as in fetch_sdss_specgals.
+
+    Examples
+    --------
+    >>> from astroML.datasets import fetch_sdss_specgals
+    >>> data = fetch_sdss_specgals()
+    >>> data.shape  # number of objects in dataset
+    (661598,)
+    """
+    # fits is an optional dependency: don't import globally
+    from astropy.io import fits
+
+    data_home = get_data_home(data_home)
+    if not os.path.exists(data_home):
+        os.makedirs(data_home)
+
+    archive_file = os.path.join(data_home, os.path.basename(DR9_DATA_URL))
+
+    if not os.path.exists(archive_file):
+        if not download_if_missing:
+            raise IOError('data not present on disk. '
+                          'set download_if_missing=True to download')
+
+        fitsdata = download_with_progress_bar(DATA_URL)
+        open(archive_file, 'wb').write(fitsdata)
+
+    hdulist = fits.open(archive_file)
+    return np.asarray(hdulist[1].data)
+
+def fetch_great_wall(data_home=None, download_if_missing=True, dr9=False,
                      xlim=(-375, -175), ylim=(-300, 200)):
     """Get the 2D SDSS "Great Wall" distribution, following Cowan et al 2008
 
@@ -115,6 +208,9 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available
         instead of trying to download the data from the source site.
+
+    dr9 : optional, default=False
+        If True, use DR9 astrometry instead of DR8.
 
     xlim, ylim : tuples or None
         the limits in Mpc of the data: default values are the same as that
@@ -130,7 +226,10 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
     from scipy.interpolate import interp1d
     from ..cosmology import Cosmology
 
-    data = fetch_sdss_specgals(data_home, download_if_missing)
+    if dr9:
+        data = fetch_sdss_dr9_specgals(data_home, download_if_missing)
+    else:
+        data = fetch_sdss_specgals(data_home, download_if_missing)
 
     # cut to the part of the sky with the "great wall"
     data = data[(data['dec'] > -7) & (data['dec'] < 7)]
