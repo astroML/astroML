@@ -50,14 +50,9 @@ extensions = ['gen_rst', 'gen_figure_rst', 'gen_paper_rst',
               'sphinx.ext.pngmath', 'sphinx.ext.viewcode',
               'sphinx.ext.autosummary']
 
-try:
-    import numpy_ext.numpydoc
-    extensions.append('numpy_ext.numpydoc')
-    # With older versions of sphinx, this causes a crash
-    autosummary_generate=True
-except:
-    # Older version of sphinx
-    extensions.append('numpy_ext_old.numpydoc')
+import numpy_ext.numpydoc
+extensions.append('numpy_ext.numpydoc')
+autosummary_generate=True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
