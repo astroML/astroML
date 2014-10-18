@@ -43,6 +43,8 @@ setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Generate the random distribution
+np.random.seed(0)
+
 N = (10 ** np.linspace(2, 4, 1000)).astype(int)
 mu = 0
 W = 2

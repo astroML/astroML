@@ -56,6 +56,7 @@ i_bg = ~i_sig
 x[i_sig] = signal.rvs(np.sum(i_sig))
 x[i_bg] = background.rvs(np.sum(i_bg))
 
+
 #----------------------------------------------------------------------
 # Set up MCMC sampling
 A = pymc.Uniform('A', 0, 1, value=0.5)

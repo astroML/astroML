@@ -79,6 +79,7 @@ a = data['aprime']
 sini = data['sin_iprime']
 
 # dither: magnitudes are recorded only to +/- 0.01
+np.random.seed(0)
 mag_a += -0.005 + 0.01 * np.random.random(size=mag_a.shape)
 mag_i += -0.005 + 0.01 * np.random.random(size=mag_i.shape)
 mag_z += -0.005 + 0.01 * np.random.random(size=mag_z.shape)
