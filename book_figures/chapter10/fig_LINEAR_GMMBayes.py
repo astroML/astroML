@@ -72,7 +72,8 @@ def compute_SVM_results(i_train, i_test, n_components=5):
         ytrain = y[i][i_train]
         ytest = y[i][i_test]
 
-        clf = GMMBayes(n_components, min_covar=1E-5, covariance_type='full')
+        clf = GMMBayes(n_components, min_covar=1E-5, covariance_type='full',
+                       random_state=0)
         clf.fit(Xtrain, ytrain)
         y_pred = clf.predict(Xtest)
 

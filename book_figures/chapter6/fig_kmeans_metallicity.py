@@ -49,7 +49,7 @@ H, FeH_bins, alphFe_bins = np.histogram2d(data['FeH'], data['alphFe'], 50)
 # Compute the KMeans clustering
 n_clusters = 4
 
-scaler = preprocessing.Scaler()
+scaler = preprocessing.StandardScaler()
 clf = KMeans(n_clusters)
 clf.fit(scaler.fit_transform(X))
 

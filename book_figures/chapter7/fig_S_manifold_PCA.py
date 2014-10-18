@@ -52,7 +52,8 @@ X[:, 2] *= 0.5
 pca = decomposition.PCA(out_dim)
 Y_pca = pca.fit_transform(X)
 
-lle = manifold.LocallyLinearEmbedding(n_neighbors, out_dim, method='modified')
+lle = manifold.LocallyLinearEmbedding(n_neighbors, out_dim, method='modified',
+                                      random_state=0, eigen_solver='dense')
 Y_lle = lle.fit_transform(X)
 
 iso = manifold.Isomap(n_neighbors, out_dim)

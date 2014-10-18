@@ -41,6 +41,7 @@ def chirp(t, T, A, phi, omega, beta):
 def background(t, b0, b1, Omega1, Omega2):
     return b0 + b1 * np.sin(Omega1 * t) * np.sin(Omega2 * t)
 
+np.random.seed(42)
 N = 4096
 t = np.linspace(-50, 50, N)
 h_true = chirp(t, -20, 0.8, 0, 0.2, 0.02)

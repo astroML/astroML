@@ -97,7 +97,7 @@ for i in range(n_components):
     Npts = ind.sum()
     Nclusters = min(12, Npts / 5)
 
-    gmm = GMM(Nclusters).fit(X[ind])
+    gmm = GMM(Nclusters, random_state=0).fit(X[ind])
     dens = np.exp(gmm.score(Xgrid))
     density += dens / dens.max()
 

@@ -59,6 +59,7 @@ def mag_errors(m_true, m5=24.0, fGamma=0.039):
 
 #----------------------------------------------------------------------
 # Compute the Eddington-Malmquist bias & scatter
+np.random.seed(42)
 
 mtrue = generate_magnitudes(1E6, m_min=20, m_max=25)
 photomErr = mag_errors(mtrue)
