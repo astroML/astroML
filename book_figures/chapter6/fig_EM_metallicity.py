@@ -79,11 +79,11 @@ alphFe_bins = 51
 H, FeH_bins, alphFe_bins = np.histogram2d(data['FeH'], data['alphFe'],
                                           (FeH_bins, alphFe_bins))
 
-Xgrid = np.array(map(np.ravel,
-                     np.meshgrid(0.5 * (FeH_bins[:-1]
-                                        + FeH_bins[1:]),
-                                 0.5 * (alphFe_bins[:-1]
-                                        + alphFe_bins[1:])))).T
+Xgrid = np.array(list(map(np.ravel,
+                          np.meshgrid(0.5 * (FeH_bins[:-1]
+                                             + FeH_bins[1:]),
+                                      0.5 * (alphFe_bins[:-1]
+                                             + alphFe_bins[1:]))))).T
 log_dens = gmm_best.score(Xgrid).reshape((51, 51))
 
 #------------------------------------------------------------

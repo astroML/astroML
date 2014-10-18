@@ -47,7 +47,7 @@ z_sample, mu_sample, dmu = generate_mu_z(100, z0=0.3,
 #  beta = [omegaM, omegaL]
 def compute_logL(beta):
     cosmo = Cosmology(omegaM=beta[0], omegaL=beta[1])
-    mu_pred = np.array(map(cosmo.mu, z_sample))
+    mu_pred = np.array(list(map(cosmo.mu, z_sample)))
     return - np.sum(0.5 * ((mu_sample - mu_pred) / dmu) ** 2)
 
 

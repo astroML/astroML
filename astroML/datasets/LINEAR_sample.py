@@ -57,7 +57,8 @@ class LINEARdata(object):
         self.targets.dtype.names = target_names
 
         self.dataF = tarfile.open(data_file)
-        self.ids = np.array(map(self._name_to_id, self.dataF.getnames()))
+        self.ids = np.array(list(map(self._name_to_id, self.dataF.getnames())))
+        print(self.ids)
 
         # rearrange targets so lists are in the same order
         self.targets = self.targets[self.targets['objectID'].argsort()]
