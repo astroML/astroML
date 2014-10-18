@@ -10,8 +10,10 @@ a long time to run (~30 minutes for 4000 spectra).
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
+from __future__ import print_function, division
+
 import sys
-from urllib2 import HTTPError
+from astroML.py3k_compat import HTTPError
 import numpy as np
 from astroML.datasets import fetch_sdss_spectrum
 from astroML.datasets.tools import query_plate_mjd_fiber, TARGET_GALAXY
@@ -47,7 +49,7 @@ def fetch_and_shift_spectra(n_spectra,
 
     # Calculate new wavelength coefficients
     new_coeff0 = loglam_start
-    new_coeff1 = (loglam_end - loglam_start) / float(Nlam)
+    new_coeff1 = (loglam_end - loglam_start) / Nlam
 
     # Now download all the needed spectra, and resample to a common
     #  wavelength bin.
@@ -62,7 +64,7 @@ def fetch_and_shift_spectra(n_spectra,
             spec = fetch_sdss_spectrum(plate[i], mjd[i], fiber[i])
         except HTTPError:
             num_skipped += 1
-            print "%i, %i, %i not found" % (plate[i], mjd[i], fiber[i])
+            print("%i, %i, %i not found" % (plate[i], mjd[i], fiber[i]))
             i += 1
             continue
 
@@ -70,7 +72,7 @@ def fetch_and_shift_spectra(n_spectra,
 
         if np.all(spec_rebin.spectrum == 0):
             num_skipped += 1
-            print "%i, %i, %i is all zero" % (plate[i], mjd[i], fiber[i])
+            print("%i, %i, %i is all zero" % (plate[i], mjd[i], fiber[i]))
             continue
 
         spec_cln[i] = spec.spec_cln
@@ -88,9 +90,9 @@ def fetch_and_shift_spectra(n_spectra,
     sys.stdout.write('\n')
 
     N = i
-    print "   %i spectra skipped" % num_skipped
-    print "   %i spectra processed" % N
-    print "saving to %s" % outfile
+    print("   %i spectra skipped" % num_skipped)
+    print("   %i spectra processed" % N)
+    print("saving to %s" % outfile)
 
     np.savez(outfile,
              spectra=spectra[:N],

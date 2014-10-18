@@ -1,9 +1,12 @@
+from __future__ import print_function, division
+
 import os
-from tools import download_with_progress_bar
 from gzip import GzipFile
-from cStringIO import StringIO
 
 import numpy as np
+
+from .tools import download_with_progress_bar
+from ..py3k_compat import StringIO
 from . import get_data_home
 
 DATA_URL = ('http://www.astro.washington.edu/users/ivezic/'
@@ -102,7 +105,7 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
     --------
     >>> data = fetch_sdss_S82standards()
     >>> u_g = data['mmed_u'] - data['mmed_g']
-    >>> print u_g[:5]
+    >>> print(u_g[:5])
     [-22.23500061   1.34900093   1.43799973   2.08200073 -23.03800011]
 
     References
@@ -128,12 +131,12 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        print ("downloading cross-matched SDSS/2MASS dataset from %s to %s"
-               % (data_url, data_home))
+        print("downloading cross-matched SDSS/2MASS dataset from %s to %s"
+              % (data_url, data_home))
 
         zipped_buf = download_with_progress_bar(data_url, return_buffer=True)
         gzf = GzipFile(fileobj=zipped_buf, mode='rb')
-        print "uncompressing file..."
+        print("uncompressing file...")
         extracted_buf = StringIO(gzf.read())
         data = np.loadtxt(extracted_buf, **kwargs)
         np.save(archive_file, data)

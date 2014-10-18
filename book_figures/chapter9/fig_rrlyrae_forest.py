@@ -11,6 +11,9 @@ photometry from the rr-lyrae catalog and stripe 82 standards catalogs.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -140,8 +143,8 @@ contamination = fp * 1. / (tp + fp)
 completeness[np.isnan(completeness)] = 0
 contamination[np.isnan(contamination)] = 0
 
-print "completeness", completeness
-print "contamination", contamination
+print("completeness", completeness)
+print("contamination", contamination)
 
 #----------------------------------------------------------------------
 # plot the results

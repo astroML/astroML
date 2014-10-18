@@ -9,6 +9,9 @@ Photometric Redshifts by Random Forests
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import itertools
 
 import numpy as np
@@ -74,14 +77,14 @@ plt.subplots_adjust(wspace=0.1,
 ax = plt.subplot(121)
 z_fit = DecisionTreeRegressor(max_depth=10).fit(mag_train,
                                                 z_train).predict(mag_test)
-print "one tree: rms =", np.sqrt(np.mean((z_test - z_fit) ** 2))
+print("one tree: rms =", np.sqrt(np.mean((z_test - z_fit) ** 2)))
 plot_results(z_test, z_fit, plotlabel="Decision Tree")
 
 ax = plt.subplot(122)
 z_fit = RandomForestRegressor(n_estimators=10,
                               max_depth=15).fit(mag_train,
                                                 z_train).predict(mag_test)
-print "ten trees: rms =", np.sqrt(np.mean((z_test - z_fit) ** 2))
+print("ten trees: rms =", np.sqrt(np.mean((z_test - z_fit) ** 2)))
 plot_results(z_test, z_fit, plotlabel="Random Forest\nof 10 trees",
              ylabel=False)
 

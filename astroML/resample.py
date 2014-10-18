@@ -148,9 +148,9 @@ def jackknife(data, user_statistic, kwargs=None,
                                    * stat_jackknife.T) ** 2, 0))
 
     if return_raw_distribution:
-        results = zip(stat_corrected, sigma_stat, stat_jackknife)
+        results = tuple(zip(stat_corrected, sigma_stat, stat_jackknife))
     else:
-        results = zip(stat_corrected, sigma_stat)
+        results = tuple(zip(stat_corrected, sigma_stat))
 
     if ndim == 1:
         return results[0]

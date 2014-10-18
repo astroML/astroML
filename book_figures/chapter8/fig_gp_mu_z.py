@@ -14,6 +14,9 @@ learned through cross-validation.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -51,7 +54,7 @@ gp = GaussianProcess(corr='squared_exponential', theta0=1e-1,
 gp.fit(z_sample[:, None], mu_sample)
 y_pred, MSE = gp.predict(z_fit[:, None], eval_MSE=True)
 sigma = np.sqrt(MSE)
-print gp.theta_
+print("theta:", gp.theta_)
 
 
 #------------------------------------------------------------

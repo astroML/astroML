@@ -1,11 +1,11 @@
 import os
-from cStringIO import StringIO
 import tarfile
 
 import numpy as np
 
 from . import get_data_home
-from tools import download_with_progress_bar
+from .tools import download_with_progress_bar
+
 DATA_URL = ("http://www.astro.washington.edu/users/bsesar/"
             "S82_RRLyr/RRLyr_ugriz_templates.tar.gz")
 

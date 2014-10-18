@@ -1,11 +1,11 @@
 import os
-from cStringIO import StringIO
+from ..py3k_compat import StringIO
 import tarfile
 
 import numpy as np
 
 from . import get_data_home
-from tools import download_with_progress_bar
+from .tools import download_with_progress_bar
 
 TARGETLIST_URL = ("http://www.astro.washington.edu/users/ivezic/"
                   "linear/allDataFinal/allLINEARfinal_targets.dat")

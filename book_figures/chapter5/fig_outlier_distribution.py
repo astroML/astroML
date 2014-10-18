@@ -14,6 +14,8 @@ estimators of the mean and standard deviation.
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
 
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import norm, anderson
@@ -43,7 +45,7 @@ x = np.hstack((np.random.normal(0, sigma1, Npts - N_out),
 #------------------------------------------------------------
 # Compute anderson-darling test
 A2, sig, crit = anderson(x)
-print "anderson-darling A^2 = %.1f" % A2
+print("anderson-darling A^2 = {0:.1f}".format(A2))
 
 #------------------------------------------------------------
 # Compute non-robust and robust point statistics

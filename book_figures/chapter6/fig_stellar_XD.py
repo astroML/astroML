@@ -20,6 +20,9 @@ signal-to-noise data.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -94,12 +97,12 @@ Xlocs = np.hstack((data_noisy['ra'][:, np.newaxis],
 Ylocs = np.hstack((data_stacked['RA'][:, np.newaxis],
                    data_stacked['DEC'][:, np.newaxis]))
 
-print "number of noisy points:  ", Xlocs.shape
-print "number of stacked points:", Ylocs.shape
+print("number of noisy points:  ", Xlocs.shape)
+print("number of stacked points:", Ylocs.shape)
 
 # find all points within 0.9 arcsec.  This cutoff was selected
 # by plotting a histogram of the log(distances).
-dist, ind = crossmatch(Xlocs, Ylocs, max_distance=0.9 / 3600.)
+dist, ind = crossmatch(Xlocs, Ylocs, max_distance=0.9 / 3600)
 
 noisy_mask = (~np.isinf(dist))
 stacked_mask = ind[noisy_mask]
@@ -115,7 +118,7 @@ Yerr = Yerr[stacked_mask]
 
 # double-check that our cross-match succeeded
 assert X.shape == Y.shape
-print "size after crossmatch:", X.shape
+print("size after crossmatch:", X.shape)
 
 
 #----------------------------------------------------------------------

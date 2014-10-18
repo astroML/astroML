@@ -18,6 +18,8 @@ probability.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import cauchy
@@ -62,13 +64,14 @@ logL -= logL.max()
 # Find the max and print some information
 i, j = np.where(logL >= np.max(logL))
 
-print "mu from likelihood:", mu[j]
-print "gamma from likelihood:", gamma[i]
-print
+print("mu from likelihood:", mu[j])
+print("gamma from likelihood:", gamma[i])
+print()
 
 med, sigG = median_sigmaG(xi)
-print "mu from median", med
-print "gamma from quartiles:", sigG / 1.483  # Equation 3.54
+print("mu from median", med)
+print("gamma from quartiles:", sigG / 1.483)  # Equation 3.54
+print()
 
 #------------------------------------------------------------
 # Plot the results

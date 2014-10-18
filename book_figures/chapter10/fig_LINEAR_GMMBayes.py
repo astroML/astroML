@@ -18,6 +18,8 @@ See table 10.2 for the classification performance.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 from astroML.classification import GMMBayes
@@ -156,7 +158,7 @@ import sys
 if len(sys.argv) > 1 and sys.argv[1] == '--save':
     filename = 'cluster_labels_gmm.dat'
 
-    print "Saving cluster labels to %s" % filename
+    print("Saving cluster labels to", filename)
 
     from astroML.datasets.LINEAR_sample import ARCHIVE_DTYPE
     new_data = np.zeros(len(data),

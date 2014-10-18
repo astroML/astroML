@@ -2,6 +2,9 @@
 Example Builder:
 a tool for creating automated example pages in sphinx documentation
 """
+
+from __future__ import print_function
+
 import sys
 import os
 import traceback
@@ -154,7 +157,7 @@ class ExecFile(object):
 
         for fig in self.figlist:
             figfile = fmt % fig.number
-            print "saving", figfile
+            print("saving", figfile)
             
             # if black background, save with black background as well.
             if colors.colorConverter.to_rgb(fig.get_facecolor()) == (0, 0, 0):
@@ -223,7 +226,7 @@ class ExecFile(object):
         and matplotlib figures
         """
         dirname, fname = os.path.split(self.filename)
-        print 'plotting %s' % fname
+        print('plotting %s' % fname)
         
         # close any currently open figures
         plt.close('all')
@@ -250,17 +253,17 @@ class ExecFile(object):
                                   key = lambda fig: fig.number)
 
         except:
-            print 80*'_'
-            print '%s is not compiling:' % fname
+            print(80 * '_')
+            print('%s is not compiling:' % fname)
             traceback.print_exc()
-            print 80*'_'
+            print(80 * '_')
         finally:
             # change back to original directory, and reset sys.stdout
             sys.stdout = self.stdout
             os.chdir(cwd)
             ncol = gc.collect()
             if self.print_output and (ncol > 0):
-                print "\n > collected %i unreachable objects" % ncol
+                print("\n > collected %i unreachable objects" % ncol)
 
 
 class ExampleBuilder:

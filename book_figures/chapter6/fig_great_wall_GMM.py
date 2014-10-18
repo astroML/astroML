@@ -15,6 +15,9 @@ using both kernel density and nearest-neighbor-based estimates.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -43,7 +46,7 @@ def compute_GMM(n_clusters, n_iter=1000, min_covar=3, covariance_type='full'):
     clf = GMM(n_clusters, covariance_type=covariance_type,
               n_iter=n_iter, min_covar=min_covar)
     clf.fit(X)
-    print "converged:", clf.converged_
+    print("converged:", clf.converged_)
     return clf
 
 #------------------------------------------------------------

@@ -14,6 +14,9 @@ all four colors, SVM achieves a completeness of 1.0 and a contamination of
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -76,8 +79,8 @@ classifiers, predictions = compute_SVM(Ncolors)
 
 completeness, contamination = completeness_contamination(predictions, y_test)
 
-print "completeness", completeness
-print "contamination", contamination
+print("completeness", completeness)
+print("contamination", contamination)
 
 #------------------------------------------------------------
 # compute the decision boundary

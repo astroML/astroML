@@ -21,6 +21,8 @@ The functions are available in the ``scipy`` package:
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function, division
+
 import numpy as np
 from scipy import stats
 from matplotlib import pyplot as plt
@@ -72,16 +74,16 @@ for i in range(2):
     Z1 = 1.3 * abs(mu - median) / sigma * np.sqrt(N)
     Z2 = 1.1 * abs(sigma / sigmaG - 1) * np.sqrt(N)
 
-    print 70 * '_'
-    print "  Kolmogorov-Smirnov test: D = %.2g  p = %.2g" % (D, pD)
-    print "  Anderson-Darling test: A^2 = %.2g" % A2
-    print "    significance  | critical value "
-    print "    --------------|----------------"
+    print(70 * '_')
+    print("  Kolmogorov-Smirnov test: D = %.2g  p = %.2g" % (D, pD))
+    print("  Anderson-Darling test: A^2 = %.2g" % A2)
+    print("    significance  | critical value ")
+    print("    --------------|----------------")
     for j in range(len(sig)):
-        print "    %.2f          | %.1f%%" % (sig[j], crit[j])
-    print "  Shapiro-Wilk test: W = %.2g p = %.2g" % (W, pW)
-    print "  Z_1 = %.1f" % Z1
-    print "  Z_2 = %.1f" % Z2
+        print("    {0:.2f}          | {1:.1f}%".format(sig[j], crit[j]))
+    print("  Shapiro-Wilk test: W = %.2g p = %.2g" % (W, pW))
+    print("  Z_1 = %.1f" % Z1)
+    print("  Z_2 = %.1f" % Z2)
 
     # plot a histogram
     ax.hist(vals[i], bins=50, normed=True, histtype='stepfilled', alpha=0.5)

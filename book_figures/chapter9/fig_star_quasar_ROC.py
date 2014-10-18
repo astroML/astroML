@@ -16,6 +16,9 @@ are the same as those in Figure 9.17.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -81,7 +84,7 @@ def compute_results(*args):
     probs = []
 
     for classifier, kwargs in args:
-        print classifier.__name__
+        print(classifier.__name__)
         model = classifier(**kwargs)
         model.fit(X, y)
         y_prob = model.predict_proba(X_test)

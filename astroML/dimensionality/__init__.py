@@ -1,1 +1,1 @@
-from iterative_pca import iterative_pca
+from .iterative_pca import iterative_pca

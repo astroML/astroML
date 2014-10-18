@@ -18,6 +18,8 @@ points drawn from f(x) = cos(x).
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.gaussian_process import GaussianProcess
@@ -85,7 +87,7 @@ f3, MSE3 = gp3.predict(x[:, None], eval_MSE=True)
 f3_err = np.sqrt(MSE3)
 
 # we have fit for the `h` parameter: print the result here:
-print "best-fit theta =", gp3.theta_[0, 0]
+print("best-fit theta =", gp3.theta_[0, 0])
 
 
 #------------------------------------------------------------

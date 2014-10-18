@@ -16,6 +16,9 @@ in the clusters: that is, the resulting clusters are axis aligned.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Ellipse
@@ -63,9 +66,9 @@ ms.fit(X_scaled)
 
 labels_unique = np.unique(ms.labels_)
 n_clusters = len(labels_unique[labels_unique >= 0])
-print labels_unique
-print bandwidth
-print "number of estimated clusters : %d" % n_clusters
+print(labels_unique)
+print(bandwidth)
+print("number of estimated clusters :", n_clusters)
 
 #------------------------------------------------------------
 # Plot the results

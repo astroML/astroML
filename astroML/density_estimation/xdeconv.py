@@ -7,6 +7,8 @@ http://arxiv.org/pdf/0905.2979v2.pdf
 Arbitrary mixing matrices R are not yet implemented: currently, this only
 works with R = I.
 """
+from __future__ import print_function, division
+
 from time import time
 
 import numpy as np
@@ -85,8 +87,8 @@ class XDGMM(object):
             t1 = time()
 
             if self.verbose:
-                print "%i: log(L) = %.5g" % (i + 1, logL_next)
-                print "    (%.2g sec)" % (t1 - t0)
+                print("%i: log(L) = %.5g" % (i + 1, logL_next))
+                print("    (%.2g sec)" % (t1 - t0))
 
             if logL_next < logL + self.tol:
                 break

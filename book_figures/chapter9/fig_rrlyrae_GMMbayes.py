@@ -17,6 +17,9 @@ of 0.686 and a contamination of 0.236.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -82,8 +85,8 @@ classifiers, predictions = compute_GMMbayes(Ncolors, Ncomp)
 
 completeness, contamination = completeness_contamination(predictions, y_test)
 
-print "completeness", completeness
-print "contamination", contamination
+print("completeness", completeness)
+print("contamination", contamination)
 
 #------------------------------------------------------------
 # Compute the decision boundary

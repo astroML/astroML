@@ -4,13 +4,15 @@ SDSS DR7 Quasar Dataset Loader.
 This implements a loader for the DR7 quasar dataset, located at
 http://www.sdss.org/dr7/products/value added/qsocat_dr7.html
 """
+from __future__ import print_function, division
 
 import os
-from tools import download_with_progress_bar
 from gzip import GzipFile
-from cStringIO import StringIO
 
 import numpy as np
+
+from .tools import download_with_progress_bar
+from ..py3k_compat import StringIO
 from . import get_data_home
 
 DATA_URL = 'http://das.sdss.org/va/qsocat/dr7qso.dat.gz'
@@ -99,8 +101,8 @@ def fetch_dr7_quasar(data_home=None, download_if_missing=True):
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        print ("downloading DR7 quasar dataset from %s to %s"
-               % (DATA_URL, data_home))
+        print("downloading DR7 quasar dataset from %s to %s"
+              % (DATA_URL, data_home))
 
         zipped_buf = download_with_progress_bar(DATA_URL, return_buffer=True)
         gzf = GzipFile(fileobj=zipped_buf, mode='rb')

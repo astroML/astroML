@@ -16,6 +16,9 @@ deviation, the loss becomes linear).
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -60,8 +63,8 @@ beta0 = (2, 30)
 beta_squared = optimize.fmin(f_squared, beta0)
 beta_huber = optimize.fmin(f_huber, beta0)
 
-print beta_squared
-print beta_huber
+print(beta_squared)
+print(beta_huber)
 
 #------------------------------------------------------------
 # Plot the results

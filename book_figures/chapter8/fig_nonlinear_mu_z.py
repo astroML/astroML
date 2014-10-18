@@ -16,6 +16,9 @@ show the input values.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -58,7 +61,6 @@ def compute_mu_z_nonlinear(Nbins=50):
     logL = np.empty((Nbins, Nbins))
 
     for i in range(len(omegaM)):
-        #print '%i / %i' % (i + 1, len(omegaM))
         for j in range(len(omegaL)):
             logL[i, j] = compute_logL([omegaM[i], omegaL[j]])
 

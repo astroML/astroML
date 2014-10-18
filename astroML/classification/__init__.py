@@ -1,1 +1,1 @@
-from gmm_bayes import GMMBayes
+from .gmm_bayes import GMMBayes

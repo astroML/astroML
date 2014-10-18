@@ -1,5 +1,7 @@
+from __future__ import print_function
+
 import os
-import cPickle
+from . import py3k_compat as pickle
 import numpy as np
 
 
@@ -47,7 +49,7 @@ def pickle_results(filename=None, verbose=True):
 
         def new_f(*args, **kwargs):
             try:
-                D = cPickle.load(open(filename, 'r'))
+                D = pickle.load(open(filename, 'rb'))
                 cache_exists = True
             except:
                 D = {}
@@ -75,22 +77,25 @@ def pickle_results(filename=None, verbose=True):
             if (type(D) == dict and D.get('funcname') == f.__name__
                     and args_match and kwargs_match):
                 if verbose:
-                    print ("@pickle_results: using precomputed "
-                           "results from '%s'" % filename)
+                    print("@pickle_results: using precomputed "
+                          "results from '%s'" % filename)
                 retval = D['retval']
 
             else:
                 if verbose:
-                    print ("@pickle_results: computing results "
-                           "and saving to '%s'" % filename)
+                    print("@pickle_results: computing results "
+                          "and saving to '%s'" % filename)
                     if cache_exists:
-                        print "  warning: cache file '%s' exists" % filename
-                        print "    - args match:   %s" % args_match
-                        print "    - kwargs match: %s" % kwargs_match
+                        print("  warning: cache file '%s' exists" % filename)
+                        print("    - args match:   %s" % args_match)
+                        print("    - kwargs match: %s" % kwargs_match)
                 retval = f(*args, **kwargs)
-                cPickle.dump(dict(funcname=f.__name__, retval=retval,
-                                  args=args, kwargs=kwargs),
-                             open(filename, 'w'))
+
+                funcdict = dict(funcname=f.__name__, retval=retval,
+                                args=args, kwargs=kwargs)
+                with open(filename, 'wb') as outfile:
+                    pickle.dump(funcdict, outfile)
+
             return retval
         return new_f
     return pickle_func

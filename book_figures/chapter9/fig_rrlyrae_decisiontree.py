@@ -14,6 +14,9 @@ decision tree achieves a completeness of 0.569 and a contamination of 0.386.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -66,8 +69,8 @@ for depth in depths:
 
 completeness, contamination = completeness_contamination(predictions, y_test)
 
-print "completeness", completeness
-print "contamination", contamination
+print("completeness", completeness)
+print("contamination", contamination)
 
 #------------------------------------------------------------
 # compute the decision boundary

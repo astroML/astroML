@@ -1,3 +1,5 @@
+from __future__ import print_function, division
+
 import numpy as np
 from numpy.testing import assert_allclose, run_module_suite
 
@@ -36,8 +38,6 @@ def test_bootstrap_results():
                              random_state=0)
 
     mu, sigma = mean_sigma(distribution)
-
-    print mu, sigma
 
     assert_allclose([mu, sigma], [0.08139846, 0.10465327])
 

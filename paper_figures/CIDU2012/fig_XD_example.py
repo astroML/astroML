@@ -7,7 +7,6 @@ This demonstrates extreme deconvolution on a toy dataset.
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
 import os
-import cPickle
 
 import numpy as np
 from matplotlib import pyplot as plt

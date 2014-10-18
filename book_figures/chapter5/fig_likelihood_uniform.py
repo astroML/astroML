@@ -17,6 +17,8 @@ for W (see eq. 5.80).
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -98,6 +100,6 @@ ax2.set_ylabel(r'$W$')
 ax2.set_xlim(ax2.get_xlim()[::-1])  # reverse x axis
 ax2.set_ylim(9.7, 10.7)
 
-print "data extent:", min(x), max(x)
+print("data extent:", min(x), max(x))
 
 plt.show()
