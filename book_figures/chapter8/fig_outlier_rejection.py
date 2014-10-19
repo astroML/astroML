@@ -116,6 +116,11 @@ def sigmab(log_sigmab=log_sigmab):
 # set up the expression for likelihood
 def mixture_likelihood(yi, model, dyi, Pb, Yb, sigmab):
     """Equation 17 of Hogg 2010"""
+    if (Pb < 0) or (Pb > 1):
+        raise ValueError("Pb out of range. This is a bug in PyMC: try "
+                         "re-running the script (and see "
+                         "https://github.com/pymc-devs/pymc/issues/629")
+
     Vi = dyi ** 2
     Vb = sigmab ** 2
 
@@ -213,7 +218,6 @@ linestyles = [':', '--', '-']
 labels = ['no outlier correction\n(dotted fit)',
           'mixture model\n(dashed fit)',
           'outlier rejection\n(solid fit)']
-
 
 x = np.linspace(0, 350, 10)
 

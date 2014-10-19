@@ -44,7 +44,7 @@ X = fetch_great_wall()
 @pickle_results('great_wall_GMM.pkl')
 def compute_GMM(n_clusters, n_iter=1000, min_covar=3, covariance_type='full'):
     clf = GMM(n_clusters, covariance_type=covariance_type,
-              n_iter=n_iter, min_covar=min_covar)
+              n_iter=n_iter, min_covar=min_covar, random_state=0)
     clf.fit(X)
     print("converged:", clf.converged_)
     return clf

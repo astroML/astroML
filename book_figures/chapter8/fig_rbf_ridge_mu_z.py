@@ -45,7 +45,7 @@ z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0)
 cosmo = Cosmology()
 
 z = np.linspace(0.01, 2, 1000)
-mu = np.asarray(map(cosmo.mu, z))
+mu = np.asarray([cosmo.mu(zi) for zi in z])
 
 
 #------------------------------------------------------------

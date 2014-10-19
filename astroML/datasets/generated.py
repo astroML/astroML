@@ -39,7 +39,7 @@ def generate_mu_z(size=1000, z0=0.3, dmu_0=0.1, dmu_1=0.02,
                                  random_state=random_state)
 
     z_sample = zdist.rvs(size)
-    mu_sample = np.asarray(map(cosmo.mu, np.ravel(z_sample))).reshape(size)
+    mu_sample = np.reshape([cosmo.mu(z) for z in z_sample.ravel()], size)
     dmu = dmu_0 + dmu_1 * mu_sample
     mu_sample = random_state.normal(mu_sample, dmu)
 

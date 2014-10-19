@@ -9,6 +9,8 @@ Plot the band power of the LIGO big dog event
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -28,7 +30,7 @@ def multiple_power_spectrum(t, x, window_size=10000, step_size=1000):
     assert x.shape == t.shape
     assert x.ndim == 1
     assert len(x) > window_size
-    N_steps = (len(x) - window_size) / step_size
+    N_steps = (len(x) - window_size) // step_size
 
     indices = np.arange(window_size) + step_size * np.arange(N_steps)[:, None]
     X = x[indices].astype(complex)
