@@ -42,7 +42,7 @@ def generate_power_law(N, dt, beta, generate_complex=False, random_state=None):
     else:
         omega = domega * np.arange(Npos + 1)
 
-    x_fft = np.empty(len(omega), dtype=complex)
+    x_fft = np.zeros(len(omega), dtype=complex)
     x_fft.real[1:] = random_state.normal(0, 1, len(omega) - 1)
     x_fft.imag[1:] = random_state.normal(0, 1, len(omega) - 1)
 

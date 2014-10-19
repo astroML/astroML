@@ -139,7 +139,7 @@ ax.set_ylabel('$r(t)$')
 # Plot the actual data
 ax = fig.add_axes([0.5, 0.7, 0.45, 0.04], yticks=[])
 t_obs = t[obs > 0]
-ax.scatter(t_obs, np.random.random(len(t_obs)),
+ax.scatter(t_obs, np.random.RandomState(0).rand(len(t_obs)),
            marker='+', color='k')
 ax.set_xlim(t[0], t[-1])
 ax.set_ylim(-0.3, 1.3)
