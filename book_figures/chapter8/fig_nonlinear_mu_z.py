@@ -16,6 +16,9 @@ show the input values.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -44,7 +47,7 @@ z_sample, mu_sample, dmu = generate_mu_z(100, z0=0.3,
 #  beta = [omegaM, omegaL]
 def compute_logL(beta):
     cosmo = Cosmology(omegaM=beta[0], omegaL=beta[1])
-    mu_pred = np.array(map(cosmo.mu, z_sample))
+    mu_pred = np.array([cosmo.mu(z) for z in z_sample])
     return - np.sum(0.5 * ((mu_sample - mu_pred) / dmu) ** 2)
 
 
@@ -58,7 +61,6 @@ def compute_mu_z_nonlinear(Nbins=50):
     logL = np.empty((Nbins, Nbins))
 
     for i in range(len(omegaM)):
-        #print '%i / %i' % (i + 1, len(omegaM))
         for j in range(len(omegaL)):
             logL[i, j] = compute_logL([omegaM[i], omegaL[j]])
 
@@ -81,7 +83,7 @@ omegaL_best = omegaL[whr[1][0]]
 cosmo = Cosmology(omegaM=omegaM_best, omegaL=omegaL_best)
 
 z_fit = np.linspace(0.04, 2, 100)
-mu_fit = np.asarray(map(cosmo.mu, z_fit))
+mu_fit = np.asarray([cosmo.mu(z) for z in z_fit])
 
 ax.plot(z_fit, mu_fit, '-k')
 ax.errorbar(z_sample, mu_sample, dmu, fmt='.k', ecolor='gray')

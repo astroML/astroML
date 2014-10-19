@@ -15,6 +15,8 @@ points falling far from the mean are added.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import cauchy, norm
@@ -103,10 +105,10 @@ xi = cauchy(mu, gamma).rvs(100)
  (I_cauchy, err_cauchy),
  (O_CG, err_O_CG)) = calculate_odds_ratio(xi[:10])
 
-print "Results for first 10 points:"
-print "  L(M = Cauchy) = %.2e +/- %.2e" % (I_cauchy, err_cauchy)
-print "  L(M = Gauss)  = %.2e +/- %.2e" % (I_gauss, err_gauss)
-print "  O_{CG} = %.3g +/- %.3g" % (O_CG, err_O_CG)
+print("Results for first 10 points:")
+print("  L(M = Cauchy) = %.2e +/- %.2e" % (I_cauchy, err_cauchy))
+print("  L(M = Gauss)  = %.2e +/- %.2e" % (I_gauss, err_gauss))
+print("  O_{CG} = %.3g +/- %.3g" % (O_CG, err_O_CG))
 
 #------------------------------------------------------------
 # calculate the results as a function of number of points

@@ -65,8 +65,9 @@ for mu, ls in zip(mu_values, linestyles):
     dist = poisson(mu)
     x = np.arange(-1, 200)
 
-    plt.plot(x, dist.pmf(x), ls=ls, color='black',
-             label=r'$\mu=%i$' % mu, linestyle='steps-mid')
+    plt.plot(x, dist.pmf(x), color='black',
+             linestyle='steps-mid' + ls,
+             label=r'$\mu=%i$' % mu)
 
 plt.xlim(-0.5, 30)
 plt.ylim(0, 0.4)

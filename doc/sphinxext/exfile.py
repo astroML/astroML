@@ -3,6 +3,8 @@ Execfile is a tool that enables open a python script, extracting the
 file-level docstring, executing the file, and saving the resulting
 matplotlib figures.
 """
+from __future__ import print_function, division
+
 import sys
 import os
 import traceback
@@ -32,7 +34,7 @@ class ExecFile(object):
         from matplotlib import colors
         for fig in self.figlist:
             figfile = fmt % fig.number
-            print "saving", figfile
+            print("saving", figfile)
             
             # if black background, save with black background as well.
             if colors.colorConverter.to_rgb(fig.get_facecolor()) == (0, 0, 0):
@@ -89,7 +91,7 @@ class ExecFile(object):
         and matplotlib figures
         """
         dirname, fname = os.path.split(self.filename)
-        print 'plotting %s' % fname
+        print('plotting %s' % fname)
         
         # close any currently open figures
         plt.close('all')
@@ -105,9 +107,9 @@ class ExecFile(object):
             sys.stdout = self
 
             # execute the file
-            execfile(os.path.basename(self.filename), {'pl' : plt,
-                                                       'plt' : plt,
-                                                       'pylab' : plt})
+            with open(os.path.basename(self.filename)) as f:
+                code = compile(f.read(), "somefile.py", 'exec')
+                exec(code, {'pl' : plt, 'plt' : plt, 'pylab' : plt})
 
             fig_mgr_list = matplotlib._pylab_helpers.Gcf.get_all_fig_managers()
             self.figlist = [manager.canvas.figure for manager in fig_mgr_list]
@@ -116,15 +118,15 @@ class ExecFile(object):
                                   key = lambda fig: fig.number)
 
         except:
-            print 80*'_'
-            print '%s is not compiling:' % fname
+            print(80 * '_')
+            print('{0} is not compiling:'.format(fname)
             traceback.print_exc()
-            print 80*'_'
+            print(80 * '_')
         finally:
             # change back to original directory, and reset sys.stdout
             sys.stdout = self.stdout
             os.chdir(cwd)
             ncol = gc.collect()
             if self.print_output and (ncol > 0):
-                print "\n > collected %i unreachable objects" % ncol
+                print("\n > collected {0} unreachable objects".format(ncol))
 

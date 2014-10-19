@@ -18,6 +18,9 @@ and BIC (see Sections 4.3.2 and 5.4.3).
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import norm
@@ -53,7 +56,7 @@ N = np.arange(1, 14)
 def compute_GMM(N, covariance_type='full', n_iter=1000):
     models = [None for n in N]
     for i in range(len(N)):
-        print N[i]
+        print(N[i])
         models[i] = GMM(n_components=N[i], n_iter=n_iter,
                         covariance_type=covariance_type)
         models[i].fit(X)
@@ -66,8 +69,8 @@ BIC = [m.bic(X) for m in models]
 
 i_best = np.argmin(BIC)
 gmm_best = models[i_best]
-print "best fit converged:", gmm_best.converged_
-print "BIC: n_components =  %i" % N[i_best]
+print("best fit converged:", gmm_best.converged_)
+print("BIC: n_components =  %i" % N[i_best])
 
 #------------------------------------------------------------
 # compute 2D density
@@ -76,11 +79,11 @@ alphFe_bins = 51
 H, FeH_bins, alphFe_bins = np.histogram2d(data['FeH'], data['alphFe'],
                                           (FeH_bins, alphFe_bins))
 
-Xgrid = np.array(map(np.ravel,
-                     np.meshgrid(0.5 * (FeH_bins[:-1]
-                                        + FeH_bins[1:]),
-                                 0.5 * (alphFe_bins[:-1]
-                                        + alphFe_bins[1:])))).T
+Xgrid = np.array(list(map(np.ravel,
+                          np.meshgrid(0.5 * (FeH_bins[:-1]
+                                             + FeH_bins[1:]),
+                                      0.5 * (alphFe_bins[:-1]
+                                             + alphFe_bins[1:]))))).T
 log_dens = gmm_best.score(Xgrid).reshape((51, 51))
 
 #------------------------------------------------------------

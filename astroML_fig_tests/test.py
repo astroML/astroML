@@ -29,8 +29,9 @@ KNOWN_FAILURES = [
     'book_figures/chapter5/fig_model_comparison_mcmc.py',
     'book_figures/chapter5/fig_gaussgauss_mcmc.py',
     'book_figures/chapter8/fig_outlier_rejection.py',
-
-    
+    'book_figures/chapter10/fig_arrival_time.py',
+    'book_figures/chapter10/fig_matchedfilt_burst.py',
+    'book_figures/chapter10/fig_matchedfilt_chirp2.py',
 ]
 
 
@@ -62,7 +63,9 @@ def check_figure(filename, tol=1E-3):
     plt.close('all')
 
     with set_cwd(dirname):
-        execfile(fname, {'pl' : plt, 'plt' : plt, 'pylab' : plt})
+        with open(fname) as f:
+            code = compile(f.read(), "somefile.py", 'exec')
+            exec(code, {'pl' : plt, 'plt' : plt, 'pylab' : plt})
 
     for fignum in plt.get_fignums():
         fig = plt.figure(fignum)
@@ -82,7 +85,7 @@ def check_figure(filename, tol=1E-3):
                 raise ImageComparisonFailure(err)
 
 
-def test_book_figures(tol=5E-3):
+def test_book_figures(tol=0.1):
     cwd = os.getcwd()
 
     for chapter in os.listdir('book_figures'):

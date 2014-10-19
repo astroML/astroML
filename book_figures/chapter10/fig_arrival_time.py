@@ -18,6 +18,8 @@ the bottom-right panel.
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
 
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -62,7 +64,7 @@ r = rate_func(t, r0_true, a_true, omega_true, phi_true)
 # randomly sample photon arrivals from the rate
 x = np.random.random(t.shape)
 obs = (x < r * Dt).astype(int)
-print "Number of observed photons:", np.sum(obs)
+print("Number of observed photons:", np.sum(obs))
 
 #----------------------------------------------------------------------
 # Set up our MCMC model
@@ -137,7 +139,7 @@ ax.set_ylabel('$r(t)$')
 # Plot the actual data
 ax = fig.add_axes([0.5, 0.7, 0.45, 0.04], yticks=[])
 t_obs = t[obs > 0]
-ax.scatter(t_obs, np.random.random(len(t_obs)),
+ax.scatter(t_obs, np.random.RandomState(0).rand(len(t_obs)),
            marker='+', color='k')
 ax.set_xlim(t[0], t[-1])
 ax.set_ylim(-0.3, 1.3)

@@ -1,14 +1,15 @@
 """
 Fetch the LIGO BigDog time-domain dataset
 """
+from __future__ import print_function, division
 
 import os
-from cStringIO import StringIO
+from ..py3k_compat import StringIO
 from gzip import GzipFile
 import numpy as np
 
 from . import get_data_home
-from tools import download_with_progress_bar
+from .tools import download_with_progress_bar
 
 DATA_URL_LARGE = ('http://www.astro.washington.edu/users/ivezic/'
                   'DMbook/LIGO/hoft.968653908-968655956.H1.dat.gz')
@@ -52,13 +53,13 @@ def fetch_LIGO_large(data_home=None, download_if_missing=True):
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        print ("downloading LIGO bigdog data from %s to %s"
-               % (DATA_URL_LARGE, local_file))
+        print("downloading LIGO bigdog data from %s to %s"
+              % (DATA_URL_LARGE, local_file))
 
         zipped_buf = download_with_progress_bar(DATA_URL_LARGE,
                                                 return_buffer=True)
         gzf = GzipFile(fileobj=zipped_buf, mode='rb')
-        print "uncompressing file..."
+        print("uncompressing file...")
         extracted_buf = StringIO(gzf.read())
         data = np.loadtxt(extracted_buf)
         np.save(local_file, data)
@@ -89,11 +90,11 @@ def fetch_LIGO_bigdog(data_home=None, download_if_missing=True):
     --------
     >>> from astroML.datasets import fetch_LIGO_bigdog
     >>> data = fetch_LIGO_bigdog()
-    >>> print data.dtype.names
+    >>> print(data.dtype.names)
     ('t', 'Hanford', 'Livingston', 'Virgo')
-    >>> print data['t'][:3]
+    >>> print(data['t'][:3])
     [  0.00000000e+00   6.10400000e-05   1.22070000e-04]
-    >>> print data['Hanford'][:3]
+    >>> print(data['Hanford'][:3])
     [  1.26329846e-17   1.26846778e-17   1.19187381e-17]
     """
     data_home = get_data_home(data_home)
@@ -110,8 +111,8 @@ def fetch_LIGO_bigdog(data_home=None, download_if_missing=True):
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        print ("downloading LIGO bigdog data from %s to %s"
-               % (DATA_URL, local_file))
+        print("downloading LIGO bigdog data from %s to %s"
+              % (DATA_URL, local_file))
 
         buffer = download_with_progress_bar(DATA_URL, return_buffer=True)
         data = np.loadtxt(buffer, skiprows=2,

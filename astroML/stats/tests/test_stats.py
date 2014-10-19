@@ -1,3 +1,5 @@
+from __future__ import print_function, division
+
 import numpy as np
 from numpy.testing import (assert_array_almost_equal, assert_array_equal,
                            assert_equal, assert_allclose)
@@ -99,8 +101,6 @@ def check_median_sigmaG_approx(a, axis, keepdims, atol=0.15):
     med, sigmaG = median_sigmaG(a, axis=axis, keepdims=keepdims)
     mu, sigma = mean_sigma(a, axis=axis, ddof=1, keepdims=keepdims)
 
-    print np.max(abs(med - mu))
-    print np.max(abs(sigmaG - sigma))
     assert_allclose(med, mu, atol=atol)
     assert_allclose(sigmaG, sigma, atol=atol)
 

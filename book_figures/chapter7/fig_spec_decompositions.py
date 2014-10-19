@@ -51,21 +51,21 @@ def compute_PCA_ICA_NMF(n_components=5):
     spec_mean = spectra.mean(0)
 
     # PCA: use randomized PCA for speed
-    pca = RandomizedPCA(n_components - 1)
+    pca = RandomizedPCA(n_components - 1, random_state=0)
     pca.fit(spectra)
     pca_comp = np.vstack([spec_mean,
                           pca.components_])
 
     # ICA treats sequential observations as related.  Because of this, we need
     # to fit with the transpose of the spectra
-    ica = FastICA(n_components - 1)
+    ica = FastICA(n_components - 1, random_state=0)
     ica.fit(spectra.T)
     ica_comp = np.vstack([spec_mean,
                           ica.transform(spectra.T).T])
 
     # NMF requires all elements of the input to be greater than zero
     spectra[spectra < 0] = 0
-    nmf = NMF(n_components)
+    nmf = NMF(n_components, random_state=0)
     nmf.fit(spectra)
     nmf_comp = nmf.components_
 
@@ -91,14 +91,15 @@ for i, comp in enumerate(decompositions):
         if j < n_components - 1:
             ax.xaxis.set_major_formatter(plt.NullFormatter())
         else:
+            ax.xaxis.set_major_locator(
+                plt.FixedLocator(list(range(3000, 7999, 1000))))
             ax.set_xlabel(r'wavelength ${\rm (\AA)}$')
 
         ax.plot(wavelengths, comp[j], '-k', lw=1)
 
         # plot zero line
-        xlim = [3000, 7999]
+        xlim = [3000, 8000]
         ax.plot(xlim, [0, 0], '-', c='gray', lw=1)
-        ax.set_xlim(xlim)
 
         if j == 0:
             ax.set_title(titles[i])
@@ -120,7 +121,9 @@ for i, comp in enumerate(decompositions):
         # adjust y limits
         ylim = plt.ylim()
         dy = 0.05 * (ylim[1] - ylim[0])
+
         ax.set_ylim(ylim[0] - dy, ylim[1] + 4 * dy)
+        ax.set_xlim(xlim)
 
 
 plt.show()

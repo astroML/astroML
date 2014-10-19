@@ -14,6 +14,9 @@ learned through cross-validation.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -36,7 +39,7 @@ z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0)
 
 cosmo = Cosmology()
 z = np.linspace(0.01, 2, 1000)
-mu_true = np.asarray(map(cosmo.mu, z))
+mu_true = np.asarray([cosmo.mu(zi) for zi in z])
 
 #------------------------------------------------------------
 # fit the data
@@ -51,7 +54,7 @@ gp = GaussianProcess(corr='squared_exponential', theta0=1e-1,
 gp.fit(z_sample[:, None], mu_sample)
 y_pred, MSE = gp.predict(z_fit[:, None], eval_MSE=True)
 sigma = np.sqrt(MSE)
-print gp.theta_
+print("theta:", gp.theta_)
 
 
 #------------------------------------------------------------

@@ -1,9 +1,11 @@
+from __future__ import print_function
+
 import os
 
 import numpy as np
 
 from . import get_data_home
-from tools import download_with_progress_bar
+from .tools import download_with_progress_bar
 
 DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
             "DMbook/data/SDSSssppDR9_rerun122.fit")
@@ -97,11 +99,11 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
     >>> data = fetch_sdss_sspp()
     >>> data.shape  # number of objects in dataset
     (327260,)
-    >>> print data.names[:5]  # names of the first five columns
+    >>> print(data.names[:5])  # names of the first five columns
     ['ra', 'dec', 'Ar', 'upsf', 'uErr']
-    >>> print data['ra'][:2]  # first two RA values
+    >>> print(data['ra'][:2])  # first two RA values
     [ 49.62750244  40.27209091]
-    >>> print data['dec'][:2]  # first two DEC values
+    >>> print(data['dec'][:2])  # first two DEC values
     [-1.04175591 -0.64250112]
     """
     # fits is an optional dependency: don't import globally

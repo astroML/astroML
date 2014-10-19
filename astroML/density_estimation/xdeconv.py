@@ -7,13 +7,15 @@ http://arxiv.org/pdf/0905.2979v2.pdf
 Arbitrary mixing matrices R are not yet implemented: currently, this only
 works with R = I.
 """
+from __future__ import print_function, division
+
 from time import time
 
 import numpy as np
 from scipy import linalg
 
 from sklearn.mixture import GMM
-from astroML.utils import logsumexp, log_multivariate_gaussian
+from ..utils import logsumexp, log_multivariate_gaussian, check_random_state
 
 
 class XDGMM(object):
@@ -34,11 +36,13 @@ class XDGMM(object):
     -----
     This implementation follows Bovy et al. arXiv 0905.2979
     """
-    def __init__(self, n_components, n_iter=100, tol=1E-5, verbose=False):
+    def __init__(self, n_components, n_iter=100, tol=1E-5, verbose=False,
+                 random_state = None):
         self.n_components = n_components
         self.n_iter = n_iter
         self.tol = tol
         self.verbose = verbose
+        self.random_state = random_state
 
         # model parameters: these are set by the fit() method
         self.V = None
@@ -71,7 +75,8 @@ class XDGMM(object):
 
         # initialize components via a few steps of GMM
         # this doesn't take into account errors, but is a fast first-guess
-        gmm = GMM(self.n_components, n_iter=10, covariance_type='full').fit(X)
+        gmm = GMM(self.n_components, n_iter=10, covariance_type='full',
+                  random_state=self.random_state).fit(X)
         self.mu = gmm.means_
         self.alpha = gmm.weights_
         self.V = gmm.covars_
@@ -85,8 +90,8 @@ class XDGMM(object):
             t1 = time()
 
             if self.verbose:
-                print "%i: log(L) = %.5g" % (i + 1, logL_next)
-                print "    (%.2g sec)" % (t1 - t0)
+                print("%i: log(L) = %.5g" % (i + 1, logL_next))
+                print("    (%.2g sec)" % (t1 - t0))
 
             if logL_next < logL + self.tol:
                 break
@@ -194,7 +199,10 @@ class XDGMM(object):
         tmp *= q[:, :, np.newaxis, np.newaxis]
         self.V = tmp.sum(0) / qj[:, np.newaxis, np.newaxis]
 
-    def sample(self, size=1):
+    def sample(self, size=1, random_state=None):
+        if random_state is None:
+            random_state = self.random_state
+        rng = check_random_state(random_state)
         shape = tuple(np.atleast_1d(size)) + (self.mu.shape[1],)
         npts = np.prod(size)
 

@@ -27,6 +27,8 @@ to clone the distribution
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy import stats, interpolate
@@ -57,7 +59,7 @@ x_cloned = EmpiricalDistribution(x).rvs(Nclone)
 
 # compute the KS test to check if they're the same
 D, p = stats.ks_2samp(x, x_cloned)
-print "KS test: D = %.2g; p = %.2g" % (D, p)
+print("KS test: D = %.2g; p = %.2g" % (D, p))
 
 #------------------------------------------------------------
 # For the sake of this example, we need to calculate some

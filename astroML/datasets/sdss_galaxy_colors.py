@@ -1,3 +1,5 @@
+from __future__ import print_function, division
+
 import os
 
 import numpy as np
@@ -65,10 +67,10 @@ def fetch_sdss_galaxy_colors(data_home=None, download_if_missing=True):
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        print "querying for %i objects" % NOBJECTS
-        print query_text
+        print("querying for %i objects" % NOBJECTS)
+        print(query_text)
         output = sql_query(query_text)
-        print "finished."
+        print("finished.")
 
         data = np.loadtxt(output, delimiter=',',
                           skiprows=1, dtype=GAL_COLORS_DTYPE)

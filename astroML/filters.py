@@ -51,8 +51,8 @@ def savitzky_golay(y, window_size, order, deriv=0,
     >>> np.random.seed(0)
     >>> y_noisy = y + np.random.normal(0, 0.05, t.shape)
     >>> y_smooth = savitzky_golay(y, window_size=31, order=4)
-    >>> print np.rms(y_noisy - y)
-    >>> print np.rms(y_smooth - y)
+    >>> print(np.rms(y_noisy - y))
+    >>> print(np.rms(y_smooth - y))
 
     References
     ----------
@@ -67,7 +67,7 @@ def savitzky_golay(y, window_size, order, deriv=0,
     try:
         window_size = np.abs(np.int(window_size))
         order = np.abs(np.int(order))
-    except ValueError, msg:
+    except ValueError:
         raise ValueError("window_size and order have to be of type int")
 
     if window_size % 2 != 1 or window_size < 1:

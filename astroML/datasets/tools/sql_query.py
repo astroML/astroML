@@ -2,7 +2,7 @@
 Tools to perform a SQL queries to an online server.
 Default values are provided for http://cas.sdss.org
 """
-import urllib
+from ...py3k_compat import urlencode, urlopen
 
 PUBLIC_URL = 'http://cas.sdss.org/public/en/tools/search/x_sql.asp'
 DEFAULT_FMT = 'csv'
@@ -33,5 +33,5 @@ def sql_query(sql_str, url=PUBLIC_URL, format='csv'):
         results of the query
     """
     sql_str = remove_sql_comments(sql_str)
-    params = urllib.urlencode(dict(cmd=sql_str, format=format))
-    return urllib.urlopen(url + '?%s' % params)
+    params = urlencode(dict(cmd=sql_str, format=format))
+    return urlopen(url + '?%s' % params)

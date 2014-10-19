@@ -18,6 +18,9 @@ contours of the best-fit mixture model.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import norm
@@ -76,7 +79,8 @@ for Npts, ax, ls in zip([100, 1000, 10000], ax_list, linestyles):
     clfs = [GMM(N, n_iter=500).fit(X)
             for N in Nclusters]
     BICs = np.array([clf.bic(X) for clf in clfs])
-    print "%i points convergence:" % Npts, [clf.converged_ for clf in clfs]
+    print("{0} points convergence:".format(Npts),
+          [clf.converged_ for clf in clfs])
 
     # plot the BIC
     ax_list[3].plot(Nclusters, BICs / Npts, ls, c='k',

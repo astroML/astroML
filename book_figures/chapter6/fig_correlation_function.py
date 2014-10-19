@@ -17,6 +17,9 @@ power law proportional to :math:`\theta^{-0.8}`. Note that the red galaxies
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -57,9 +60,9 @@ flag_blue = ~flag_red
 data_red = data[flag_red]
 data_blue = data[flag_blue]
 
-print "data size:"
-print "  red gals: ", len(data_red)
-print "  blue gals:", len(data_blue)
+print("data size:")
+print("  red gals: ", len(data_red))
+print("  blue gals:", len(data_blue))
 
 
 #------------------------------------------------------------
@@ -69,7 +72,7 @@ print "  blue gals:", len(data_blue)
 @pickle_results("correlation_functions.pkl")
 def compute_results(Nbins=16, Nbootstraps=10,  method='landy-szalay', rseed=0):
     np.random.seed(rseed)
-    bins = 10 ** np.linspace(np.log10(1. / 60.), np.log10(6), 16)
+    bins = 10 ** np.linspace(np.log10(1 / 60.), np.log10(6), 16)
 
     results = [bins]
     for D in [data_red, data_blue]:

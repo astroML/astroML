@@ -135,7 +135,7 @@ ax1.plot(mu, pmu, '-b')
 ax1.plot(mu, pmu2, ':m')
 ax1.plot(mu, pmu_norm, '--r')
 ax1.scatter(mu_bins[1:] - 0.5 * mu_dbin, mu_hist,
-            color='k', facecolor='none')
+            edgecolor='k', facecolor='none')
 
 ax1.set_xlabel(r'$\mu$')
 ax1.set_ylabel(r'$p(\mu|x,I)$')
@@ -144,7 +144,7 @@ ax2 = plt.subplot(223, sharex=ax1)
 ax2.plot(mu, pmu.cumsum() * dmu, '-b')
 ax2.plot(mu, pmu_norm.cumsum() * dmu, '--r')
 ax2.scatter(mu_bins[1:] - 0.5 * mu_dbin, mu_hist.cumsum() * mu_dbin,
-            color='k', facecolor='none')
+            edgecolor='k', facecolor='none')
 ax2.set_xlim(-3, 5)
 
 ax2.set_xlabel(r'$\mu$')
@@ -156,7 +156,7 @@ ax3.plot(sig, psig, '-b')
 ax3.plot(sig, psig2, ':m')
 ax3.plot(sig, psig_norm, '--r')
 ax3.scatter(sig_bins[1:] - 0.5 * sig_dbin, sig_hist,
-            color='k', facecolor='none')
+            edgecolor='k', facecolor='none')
 ax3.set_ylim(1E-4, 2)
 
 ax3.set_xlabel(r'$\sigma$')
@@ -166,7 +166,7 @@ ax4 = plt.subplot(224, sharex=ax3, sharey=ax2)
 ax4.plot(sig, psig.cumsum() * dsig, '-b')
 ax4.plot(sig, psig_norm.cumsum() * dsig, '--r')
 ax4.scatter(sig_bins[1:] - 0.5 * sig_dbin, sig_hist.cumsum() * sig_dbin,
-            color='k', facecolor='none')
+            edgecolor='k', facecolor='none')
 ax4.set_ylim(0, 1.05)
 ax4.set_xlim(0, 5)
 

@@ -15,6 +15,8 @@ Lomb-Scargle periodogram.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -43,7 +45,7 @@ def compute_best_frequencies(ids, n_eval=10000, n_retry=5, generalized=True):
     results = {}
     for i in ids:
         t, y, dy = data[i].T
-        print " - computing power for %i (%i points)" % (i, len(t))
+        print(" - computing power for {0} ({1} points)".format(i, len(t)))
         kwargs = dict(generalized=generalized)
         omega, power = search_frequencies(t, y, dy, n_eval=n_eval,
                                           n_retry=n_retry,
@@ -64,7 +66,7 @@ for i in range(6):
     t, y, dy = data[ids[i]].T
     omega, power = results[ids[i]]
     omega_best = omega[np.argmax(power)]
-    print " - omega_0 = %.10g" % omega_best
+    print(" - omega_0 = %.10g" % omega_best)
 
     # do a fit to the first 4 Fourier components
     mtf = MultiTermFit(omega_best, 4)

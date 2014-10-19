@@ -38,6 +38,9 @@ each cluster.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -71,8 +74,8 @@ model = HierarchicalClustering(n_neighbors=10,
                                edge_cutoff=edge_cutoff,
                                min_cluster_size=cluster_cutoff)
 model.fit(X)
-print " scale: %2g Mpc" % np.percentile(model.full_tree_.data,
-                                        100 * edge_cutoff)
+print(" scale: %2g Mpc" % np.percentile(model.full_tree_.data,
+                                        100 * edge_cutoff))
 
 n_components = model.n_components_
 labels = model.labels_
@@ -95,7 +98,7 @@ density = np.zeros(Xgrid.shape[0])
 for i in range(n_components):
     ind = (labels == i)
     Npts = ind.sum()
-    Nclusters = min(12, Npts / 5)
+    Nclusters = min(12, Npts // 5)
 
     gmm = GMM(Nclusters, random_state=0).fit(X[ind])
     dens = np.exp(gmm.score(Xgrid))

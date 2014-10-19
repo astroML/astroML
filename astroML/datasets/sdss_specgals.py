@@ -1,9 +1,11 @@
+from __future__ import print_function, division
+
 import os
 
 import numpy as np
 
 from . import get_data_home
-from tools import download_with_progress_bar
+from .tools import download_with_progress_bar
 
 DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
             "DMbook/data/SDSSspecgalsDR8.fit")
@@ -76,9 +78,9 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
     (661598,)
     >>> data.names[:5]  # first five column names
     ['ra', 'dec', 'mjd', 'plate', 'fiberID']
-    >>> print data['ra'][:3]  # first three RA values
+    >>> print(data['ra'][:3])  # first three RA values
     [ 146.71419105  146.74414186  146.62857334]
-    >>> print data['dec'][:3]  #  first three declination values
+    >>> print(data['dec'][:3])  #  first three declination values
     [-1.04127639 -0.6522198  -0.7651468 ]
     """
     # fits is an optional dependency: don't import globally

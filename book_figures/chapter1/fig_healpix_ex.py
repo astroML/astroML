@@ -19,6 +19,9 @@ nside = 512, for a total of 3,145,728 pixels. The pixels are roughly
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 # warning: due to a bug in healpy, importing it before pylab can cause
@@ -41,7 +44,7 @@ setup_text_plots(fontsize=8, usetex=True)
 # Prepare the healpix pixels
 NSIDE = 4
 m = np.arange(hp.nside2npix(NSIDE))
-print "number of pixels:", len(m)
+print("number of pixels:", len(m))
 
 # Plot the pixelization
 fig = plt.figure(1, figsize=(5, 3.75))

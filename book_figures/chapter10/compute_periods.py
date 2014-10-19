@@ -2,6 +2,8 @@
 Compute periods for the LINEAR data
 -----------------------------------
 """
+from __future__ import print_function
+
 from time import time
 import numpy as np
 from astroML.datasets import fetch_LINEAR_sample
@@ -32,11 +34,11 @@ with con:
         res = cur.fetchall()
 
         if len(res) > 0:
-            print res[0]
+            print(res[0])
 
         else:
-            print ("computing period for id = %i (%i / %i)"
-                   % (id, count + 1, len(data.ids)))
+            print("computing period for id = {0} ({1} / {2})"
+                  "".format(id, count + 1, len(data.ids))))
 
             lc = data[id]
 
@@ -48,7 +50,7 @@ with con:
                                               LS_kwargs=dict(n_terms=5))
             omega_best = omega[np.argmax(power)]
             t1 = time()
-            print " - execution time: %.2g sec" % (t1 - t0)
+            print(" - execution time: %.2g sec" % (t1 - t0))
 
             # insert value and commit to disk
             cur.execute("INSERT INTO Periods VALUES(%i, %f)"
@@ -58,4 +60,4 @@ with con:
     con.close()
 
     #cur.execute("SELECT * from Periods")
-    #print cur.fetchall()
+    #print(cur.fetchall())

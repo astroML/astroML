@@ -21,6 +21,8 @@ red subsample, as discernible in the bottom-right panel.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function, division
+
 import os
 import numpy as np
 from matplotlib import pyplot as plt
@@ -63,8 +65,8 @@ data_blue = data[flag_blue]
 # truncate sample (optional: speeds up computation)
 #data_red = data_red[::10]
 #data_blue = data_blue[::10]
-print data_red.size, "red galaxies"
-print data_blue.size, "blue galaxies"
+print(data_red.size, "red galaxies")
+print(data_blue.size, "blue galaxies")
 
 #------------------------------------------------------------
 # Distance Modulus calculation:
@@ -93,8 +95,8 @@ def compute_luminosity_function(z, m, M, m_max, archive_file):
     zmax = z_mu(m_max - M)
 
     if not os.path.exists(archive_file):
-        print ("- computing bootstrapped luminosity function ",
-               "for %i points" % len(z))
+        print("- computing bootstrapped luminosity function ",
+              "for {0} points".format(len(z)))
 
         zbins = np.linspace(0.08, 0.12, 21)
         Mbins = np.linspace(-24, -20.2, 21)
@@ -106,7 +108,7 @@ def compute_luminosity_function(z, m, M, m_max, archive_file):
                  zbins=zbins, dist_z=dist_z, err_z=err_z,
                  Mbins=Mbins, dist_M=dist_M, err_M=err_M)
     else:
-        print "- using precomputed bootstrapped luminosity function results"
+        print("- using precomputed bootstrapped luminosity function results")
         archive = np.load(archive_file)
         zbins = archive['zbins']
         dist_z = archive['dist_z']

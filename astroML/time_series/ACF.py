@@ -1,6 +1,8 @@
 """
 Auto-correlation functions
 """
+from __future__ import division
+
 import numpy as np
 from scipy import fftpack
 from .periodogram import lomb_scargle
@@ -60,7 +62,7 @@ def ACF_scargle(t, y, dy, n_omega=2 ** 10, omega_max=100):
     ACF = fftpack.fftshift(rho / rhoW) / np.sqrt(2)
     N = len(ACF)
     dt = 2 * np.pi / N / (omega[1] - omega[0])
-    t = dt * (np.arange(N) - N / 2)
+    t = dt * (np.arange(N) - N // 2)
 
     return ACF, t
 

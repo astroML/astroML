@@ -1,9 +1,11 @@
+from __future__ import print_function, division
+
 import os
 
 import numpy as np
 
 from . import get_data_home
-from tools import download_with_progress_bar
+from .tools import download_with_progress_bar
 
 DATA_URL = ("http://www.astro.washington.edu/users/"
             "ivezic/DMbook/data/imagingSample_20sqdeg.fit")
@@ -35,11 +37,11 @@ def fetch_imaging_sample(data_home=None, download_if_missing=True):
     >>> data = fetch_imaging_sample()
     >>> data.shape  # number of objects in dataset
     (330753,)
-    >>> print data.names[:5]  # names of the first five columns
+    >>> print(data.names[:5])  # names of the first five columns
     ['ra', 'dec', 'run', 'rExtSFD', 'uRaw']
-    >>> print data['ra'][:2]
+    >>> print(data['ra'][:2])
     [ 0.265165  0.265413]
-    >>> print data['dec'][:2]
+    >>> print(data['dec'][:2])
     [-0.444861 -0.62201 ]
 
     Notes

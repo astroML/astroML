@@ -1,9 +1,11 @@
-import os
-from tools import download_with_progress_bar
-from cStringIO import StringIO
-from gzip import GzipFile
+from __future__ import print_function, division
 
+import os
+from gzip import GzipFile
 import numpy as np
+
+from .tools import download_with_progress_bar
+from ..py3k_compat import StringIO
 from . import get_data_home
 
 DATA_URL = 'http://www.astro.washington.edu/users/ivezic/sdssmoc/ADR3.dat.gz'
@@ -104,10 +106,10 @@ def fetch_moving_objects(data_home=None, download_if_missing=True,
     Examples
     --------
     >>> data = fetch_moving_objects()
-    >>> print len(data)  # number of objects
+    >>> print(len(data))  # number of objects
     104686
     >>> u_g = data['mag_u'] - data['mag_g']
-    >>> print u_g[:5]  # first five u-g colors of the dataset
+    >>> print(u_g[:5])  # first five u-g colors of the dataset
     [ 1.48999977  1.80000114  1.78000069  1.65000153  2.01000023]
     """
     data_home = get_data_home(data_home)
@@ -121,12 +123,12 @@ def fetch_moving_objects(data_home=None, download_if_missing=True,
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        print ("downloading moving object catalog from %s to %s"
-               % (DATA_URL, data_home))
+        print("downloading moving object catalog from %s to %s"
+              % (DATA_URL, data_home))
 
         zipped_buf = download_with_progress_bar(DATA_URL, return_buffer=True)
         gzf = GzipFile(fileobj=zipped_buf, mode='rb')
-        print "uncompressing file..."
+        print("uncompressing file...")
         extracted_buf = StringIO(gzf.read())
         data = np.loadtxt(extracted_buf, dtype=ADR4_dtype)
 

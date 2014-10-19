@@ -18,6 +18,9 @@ results in better segregation of spectral types with fewer dimensions.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 from sklearn import manifold, neighbors
@@ -64,7 +67,7 @@ def compute_spec_LLE(n_neighbors=10, out_dim=3):
                                           method='modified',
                                           eigen_solver='dense')
     Y_LLE = LLE.fit_transform(spec)
-    print " - finished LLE projection"
+    print(" - finished LLE projection")
 
     # remove outliers for the plot
     BT = neighbors.BallTree(Y_LLE)
@@ -73,7 +76,7 @@ def compute_spec_LLE(n_neighbors=10, out_dim=3):
     dist_to_n -= dist_to_n.mean()
     std = np.std(dist_to_n)
     flag = (dist_to_n > 0.25 * std)
-    print " - removing %i outliers for plot" % flag.sum()
+    print(" - removing {0} outliers for plot".format(flag.sum()))
 
     return Y_LLE[~flag], color[~flag]
 

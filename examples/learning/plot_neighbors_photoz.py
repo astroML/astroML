@@ -14,6 +14,8 @@ the SDSS CASjobs server for the colors of the 50,000 galaxies.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -41,7 +43,7 @@ X[:, 3] = data['i'] - data['z']
 z = data['redshift']
 
 # divide into training and testing data
-Ntrain = N / 2
+Ntrain = N // 2
 Xtrain = X[:Ntrain]
 ztrain = z[:Ntrain]
 
@@ -54,7 +56,7 @@ zpred = knn.fit(Xtrain, ztrain).predict(Xtest)
 axis_lim = np.array([-0.1, 2.5])
 
 rms = np.sqrt(np.mean((ztest - zpred) ** 2))
-print "RMS error = %.2g" % rms
+print("RMS error = %.2g" % rms)
 
 ax = plt.axes()
 plt.scatter(ztest, zpred, c='k', lw=0, s=4)

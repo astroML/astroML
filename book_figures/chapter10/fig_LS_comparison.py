@@ -12,6 +12,8 @@ along with the multi-term results.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -32,11 +34,6 @@ id, period = 18525697, 17.05
 
 data = fetch_LINEAR_sample()
 t, y, dy = data[id].T
-
-#omega, power = search_frequencies(t, y, dy)
-#period = omega[np.argmax(power)]
-#print period
-#exit()
 
 omega = np.linspace(period, period + 0.1, 1000)
 fig = plt.figure(figsize=(5, 3.75))

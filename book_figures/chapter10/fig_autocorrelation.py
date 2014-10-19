@@ -58,7 +58,7 @@ y_obs = np.random.normal(y, dy)
 #------------------------------------------------------------
 # compute ACF via scargle method
 C_S, t_S = ACF_scargle(t, y_obs, dy,
-                       n_omega=2 ** 12, omega_max=np.pi / 5.0)
+                       n_omega=2. ** 12, omega_max=np.pi / 5.0)
 
 ind = (t_S >= 0) & (t_S <= 500)
 t_S = t_S[ind]

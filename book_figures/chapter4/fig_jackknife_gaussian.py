@@ -20,6 +20,8 @@ estimate :math:`\sigma_G` (see the text for a discussion of this result).
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function, division
+
 import numpy as np
 from scipy.stats import norm
 from matplotlib import pyplot as plt
@@ -59,12 +61,12 @@ mu2, sigma_mu2, mu2_raw = jackknife(data, sigmaG,
                                     return_raw_distribution=True)
 pdf2_theory = norm(data.std(), 1.06 / np.sqrt(m))
 pdf2_jackknife = norm(mu2, sigma_mu2)
-print mu2, sigma_mu2
+print(mu2, sigma_mu2)
 
 #------------------------------------------------------------
 # plot the results
-print "mu_1 mean: %.2f +- %.2f" % (mu1, sigma_mu1)
-print "mu_2 mean: %.2f +- %.2f" % (mu2, sigma_mu2)
+print("mu_1 mean: %.2f +- %.2f" % (mu1, sigma_mu1))
+print("mu_2 mean: %.2f +- %.2f" % (mu2, sigma_mu2))
 
 fig = plt.figure(figsize=(5, 2))
 fig.subplots_adjust(left=0.11, right=0.95, bottom=0.2, top=0.9,

@@ -1,3 +1,5 @@
+from __future__ import print_function, division
+
 import os
 
 import numpy as np
@@ -48,7 +50,7 @@ def fetch_sdss_spectrum(plate, mjd, fiber, data_home=None,
         buf = download_with_progress_bar(target_url, return_buffer=True)
 
         if cache_to_disk:
-            print "caching to %s" % target_file
+            print("caching to %s" % target_file)
             if not os.path.exists(os.path.dirname(target_file)):
                 os.makedirs(os.path.dirname(target_file))
             fhandler = open(target_file, 'wb')

@@ -8,12 +8,13 @@ http://www.nsatlas.org/data
 This function fetches a ~50MB subset of that data.  This subset is created
 using the code that can be found at examples/datasets/truncate_nsa_data.py
 """
+from __future__ import print_function, division
+
 import os
-import urllib2
 
 import numpy as np
 
-from tools import download_with_progress_bar
+from .tools import download_with_progress_bar
 from . import get_data_home
 
 
@@ -60,8 +61,8 @@ def fetch_nasa_atlas(data_home=None,
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        print ("downloading NASA atlas data from %s to %s"
-               % (DATA_URL, data_home))
+        print("downloading NASA atlas data from %s to %s"
+              % (DATA_URL, data_home))
 
         buf = download_with_progress_bar(DATA_URL, return_buffer=True)
         data = np.load(buf)

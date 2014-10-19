@@ -15,6 +15,9 @@ figure 9.13.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -191,12 +194,12 @@ tn = np.sum((y_test == 0) & (y_out == 0))
 fp = np.sum((y_test == 0) & (y_out == 1))
 tp = np.sum((y_test == 1) & (y_out == 1))
 
-print "----------------------------------------------------------------"
-print ("partial training set: (%i non-variable, %i RR Lyrae)"
-       % (np.sum(y_train == 0), np.sum(y_train == 1)))
-print "positive = RR Lyrae, negative = non-variable"
-print "false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp))
-print "false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn))
+print("----------------------------------------------------------------")
+print("partial training set: (%i non-variable, %i RR Lyrae)"
+      % (np.sum(y_train == 0), np.sum(y_train == 1)))
+print("positive = RR Lyrae, negative = non-variable")
+print("false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp)))
+print("false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn)))
 
 #------------------------------------------------------------
 # Plot the results
@@ -243,11 +246,11 @@ tn = np.sum((y_test == 0) & (y_out == 0))
 fp = np.sum((y_test == 0) & (y_out == 1))
 tp = np.sum((y_test == 1) & (y_out == 1))
 
-print "----------------------------------------------------------------"
-print ("full training set: (%i non-variables, %i RR Lyraes)"
-       % (np.sum(y_train == 0), np.sum(y_train == 1)))
-print "positive = RR Lyrae, negative = non-variables"
-print "false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp))
-print "false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn))
+print("----------------------------------------------------------------")
+print("full training set: (%i non-variables, %i RR Lyraes)"
+      % (np.sum(y_train == 0), np.sum(y_train == 1)))
+print("positive = RR Lyrae, negative = non-variables")
+print("false positives: %i (%.1f%%)" % (fp, fp * 100. / (fp + tp)))
+print("false negatives: %i (%.1f%%)" % (fn, fn * 100. / (fn + tn)))
 
 plt.show()

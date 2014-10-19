@@ -8,7 +8,7 @@ from matplotlib import image
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.transforms import Bbox
 from matplotlib.patches import Ellipse
-from cStringIO import StringIO
+from ..py3k_compat import BytesIO
 
 
 def devectorize_axes(ax=None, dpi=None, transparent=True):
@@ -71,12 +71,12 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
 
     # convert canvas to PNG
     extents = ax.bbox.extents / fig.dpi
-    sio = StringIO()
-    plt.savefig(sio, format='png', dpi=dpi,
+    output = BytesIO()
+    plt.savefig(output, format='png', dpi=dpi,
                 transparent=transparent,
                 bbox_inches=Bbox([extents[:2], extents[2:]]))
-    sio.reset()
-    im = image.imread(sio)
+    output.seek(0)
+    im = image.imread(output)
 
     # clear everything on axis (but not text)
     ax.lines = []

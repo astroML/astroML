@@ -17,6 +17,9 @@ and GMM Bayes classification (GMMB).
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+
+from __future__ import print_function
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -55,7 +58,7 @@ def compute_models(*args):
     names = []
     probs = []
     for classifier, kwargs in args:
-        print classifier.__name__
+        print(classifier.__name__)
         clf = classifier(**kwargs)
         clf.fit(X_train, y_train)
         y_probs = clf.predict_proba(X_test)[:, 1]

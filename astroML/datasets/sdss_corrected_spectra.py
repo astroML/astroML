@@ -1,7 +1,9 @@
+from __future__ import print_function, division
+
 import os
-from tools import download_with_progress_bar
 import numpy as np
 from . import get_data_home
+from .tools import download_with_progress_bar
 
 DATA_URL = 'http://www.astro.washington.edu/users/vanderplas/spec4000.npz'
 ARCHIVE_FILE = 'spec4000.npz'
@@ -96,8 +98,8 @@ def fetch_sdss_corrected_spectra(data_home=None,
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        print ("downloading PCA-processed SDSS spectra from %s to %s"
-               % (DATA_URL, data_home))
+        print("downloading PCA-processed SDSS spectra from %s to %s"
+              % (DATA_URL, data_home))
 
         buf = download_with_progress_bar(DATA_URL, return_buffer=True)
         data = np.load(buf)

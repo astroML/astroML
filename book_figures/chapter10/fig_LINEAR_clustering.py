@@ -29,6 +29,8 @@ panels of figure 10.20.
 #   For more information, see http://astroML.github.com
 #   To report a bug or issue, use the following forum:
 #    https://groups.google.com/forum/#!forum/astroml-general
+from __future__ import print_function, division
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -74,14 +76,14 @@ def compute_GMM_results(components, attributes):
         clfs_i = []
 
         for comp in components:
-            print "  - %i component fit" % comp
+            print("  - {0} component fit".format(comp))
             clf = GMM(comp, covariance_type='full',
                       random_state=0, n_iter=500)
             clf.fit(X)
             clfs_i.append(clf)
 
             if not clf.converged_:
-                print "           NOT CONVERGED!"
+                print("           NOT CONVERGED!")
 
         clfs.append(clfs_i)
     return clfs
@@ -101,7 +103,7 @@ for i in range(2):
     BIC = [c.bic(X) for c in clfs[i]]
     i_best = np.argmin(BIC)
 
-    print "number of components:", components[i_best]
+    print("number of components:", components[i_best])
 
     clf = clfs[i][i_best]
     n_components = clf.n_components
@@ -198,21 +200,21 @@ for i in range(2):
 
     #------------------------------
     # print table of means and medians directly to LaTeX format
-    print r"\begin{tabular}{|l|lllllll|}"
-    print r"   \hline"
+    print(r"\begin{tabular}{|l|lllllll|}")
+    print(r"   \hline")
     for j in range(7):
-        print '   &', labels[j],
-    print r"\\"
-    print r"   \hline"
+        print('   &', labels[j], end=" ")
+    print(r"\\")
+    print(r"   \hline")
 
     for j in range(Nclusters):
-        print "   %i " % (j + 1),
+        print("   {0} ".format(j + 1), end=' ')
         for k in range(7):
-            print " & $%.2f \pm %.2f$ " % (means[j, k], stdevs[j, k]),
-        print r"\\"
+            print(" & $%.2f \pm %.2f$ " % (means[j, k], stdevs[j, k]), end=' ')
+        print(r"\\")
 
-    print r"\hline"
-    print r"\end{tabular}"
+    print(r"\hline")
+    print(r"\end{tabular}")
 
 #------------------------------------------------------------
 # Second figure
@@ -247,7 +249,7 @@ import sys
 if len(sys.argv) > 1 and sys.argv[1] == '--save':
     filename = 'cluster_labels.dat'
 
-    print "Saving cluster labels to %s" % filename
+    print("Saving cluster labels to", filename)
 
     from astroML.datasets.LINEAR_sample import ARCHIVE_DTYPE
     new_data = np.zeros(len(data),
