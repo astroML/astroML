@@ -54,7 +54,7 @@ def fetch_sdss_filter(fname, data_home=None, download_if_missing=True):
 
         print("downloading from %s" % url)
         F = urlopen(url)
-        open(archive_file, 'w').write(F.read())
+        open(archive_file, 'wb').write(F.read())
 
     F = open(archive_file)
 
@@ -95,8 +95,8 @@ def fetch_vega_spectrum(data_home=None, download_if_missing=True):
 
         print("downnloading from %s" % VEGA_URL)
         F = urlopen(VEGA_URL)
-        open(archive_name, 'w').write(F.read())
+        open(archive_name, 'wb').write(F.read())
 
-    F = open(archive_name)
+    F = open(archive_name, 'r')
 
     return np.loadtxt(F, unpack=True)
