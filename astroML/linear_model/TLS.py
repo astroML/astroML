@@ -45,7 +45,7 @@ def TLS_logL(v, X, dX):
     # eq. 31
     if dX.ndim == 2:
         # diagonal covariance
-        Sig2 = np.sum((v_hat * dX) ** 2, 1)
+        Sig2 = np.sum(dX * v_hat ** 2, 1)
     else:
         # full covariance
         Sig2 = np.dot(np.dot(v_hat, dX), v_hat)
