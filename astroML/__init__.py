@@ -1,5 +1,5 @@
 __version__ = '0.3-git'
-__bibtex__ = """@INPROCEEDINGS{astroML,
+__citation__ = """@INPROCEEDINGS{astroML,
  author={{Vanderplas}, J.T. and {Connolly}, A.J.
          and {Ivezi{\'c}}, {\v Z}. and {Gray}, A.},
  booktitle={Conference on Intelligent Data Understanding (CIDU)},

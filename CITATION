@@ -1,0 +1,38 @@
+If you make use of any of these datasets, tools, or examples in a scientific
+publication, please consider citing astroML.  You may reference the following
+paper:
+
+- Introduction to astroML: Machine learning for astrophysics
+
+  http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6382200&tag=1
+
+Bibtex entry:
+
+@INPROCEEDINGS{astroML,
+  author={{Vanderplas}, J.T. and {Connolly}, A.J.
+          and {Ivezi{\'c}}, {\v Z}. and {Gray}, A.},
+  booktitle={Conference on Intelligent Data Understanding (CIDU)},
+  title={Introduction to astroML: Machine learning for astrophysics},
+  month={oct.},
+  pages={47 -54},
+  doi={10.1109/CIDU.2012.6382200},
+  year={2012}
+}
+
+You may also reference the accompanying textbook:
+
+
+Statistics, Data Mining, and Machine Learning for Astronomy
+http://press.princeton.edu/titles/10159.html
+
+Bibtex entry:
+
+@BOOK{astroMLText,
+  title={Statistics, Data Mining and Machine Learning in Astronomy},
+  author={{Ivezi{\'c}}, {\v Z}. and {Connolly}, A.J.
+          and {Vanderplas}, J.T. and {Gray}, A.},
+  publisher={Princeton University Press},
+  location={Princeton, NJ},
+  year={2014}
+}
+
