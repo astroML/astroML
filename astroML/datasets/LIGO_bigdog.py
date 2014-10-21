@@ -4,7 +4,7 @@ Fetch the LIGO BigDog time-domain dataset
 from __future__ import print_function, division
 
 import os
-from ..py3k_compat import StringIO
+from ..py3k_compat import BytesIO
 from gzip import GzipFile
 import numpy as np
 
@@ -60,7 +60,7 @@ def fetch_LIGO_large(data_home=None, download_if_missing=True):
                                                 return_buffer=True)
         gzf = GzipFile(fileobj=zipped_buf, mode='rb')
         print("uncompressing file...")
-        extracted_buf = StringIO(gzf.read())
+        extracted_buf = BytesIO(gzf.read())
         data = np.loadtxt(extracted_buf)
         np.save(local_file, data)
 

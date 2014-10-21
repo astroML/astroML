@@ -55,7 +55,7 @@ def fetch_sdss_spectrum(plate, mjd, fiber, data_home=None,
                 os.makedirs(os.path.dirname(target_file))
             fhandler = open(target_file, 'wb')
             fhandler.write(buf.read())
-            buf.reset()
+            buf.seek(0)
     else:
         buf = target_file
 

@@ -5,7 +5,7 @@ from gzip import GzipFile
 import numpy as np
 
 from .tools import download_with_progress_bar
-from ..py3k_compat import StringIO
+from ..py3k_compat import BytesIO
 from . import get_data_home
 
 DATA_URL = 'http://www.astro.washington.edu/users/ivezic/sdssmoc/ADR3.dat.gz'
@@ -129,7 +129,7 @@ def fetch_moving_objects(data_home=None, download_if_missing=True,
         zipped_buf = download_with_progress_bar(DATA_URL, return_buffer=True)
         gzf = GzipFile(fileobj=zipped_buf, mode='rb')
         print("uncompressing file...")
-        extracted_buf = StringIO(gzf.read())
+        extracted_buf = BytesIO(gzf.read())
         data = np.loadtxt(extracted_buf, dtype=ADR4_dtype)
 
         # Select unique sources with known orbital elements

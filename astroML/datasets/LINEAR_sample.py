@@ -1,5 +1,5 @@
 import os
-from ..py3k_compat import StringIO
+from ..py3k_compat import BytesIO
 import tarfile
 
 import numpy as np
@@ -199,7 +199,7 @@ def fetch_LINEAR_geneva(data_home=None, download_if_missing=True):
                           'set download_if_missing=True to download')
 
         databuffer = download_with_progress_bar(GENEVA_URL)
-        data = np.loadtxt(StringIO(databuffer), dtype=ARCHIVE_DTYPE)
+        data = np.loadtxt(BytesIO(databuffer), dtype=ARCHIVE_DTYPE)
         np.save(archive_file, data)
     else:
         data = np.load(archive_file)

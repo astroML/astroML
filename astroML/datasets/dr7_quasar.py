@@ -12,7 +12,7 @@ from gzip import GzipFile
 import numpy as np
 
 from .tools import download_with_progress_bar
-from ..py3k_compat import StringIO
+from ..py3k_compat import BytesIO
 from . import get_data_home
 
 DATA_URL = 'http://das.sdss.org/va/qsocat/dr7qso.dat.gz'
@@ -106,7 +106,7 @@ def fetch_dr7_quasar(data_home=None, download_if_missing=True):
 
         zipped_buf = download_with_progress_bar(DATA_URL, return_buffer=True)
         gzf = GzipFile(fileobj=zipped_buf, mode='rb')
-        extracted_buf = StringIO(gzf.read())
+        extracted_buf = BytesIO(gzf.read())
         data = np.loadtxt(extracted_buf,
                           skiprows=SKIP_ROWS,
                           usecols=COLUMN_NUMBERS,

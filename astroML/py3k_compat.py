@@ -17,6 +17,14 @@ else:
     from urllib2 import HTTPError
     from urllib import urlencode
 
+def url_content_length(fhandle):
+    if py3k:
+        length = dict(fhandle.info())['Content-Length']
+    else:
+        length = fhandle.info().getheader('Content-Length')
+    return int(length.strip())
+
+
 #----------------------------------------------------------------------
 # pickle stuff
 if py3k:

@@ -31,6 +31,7 @@ KNOWN_FAILURES = [
     'book_figures/chapter8/fig_outlier_rejection.py',
     'book_figures/chapter10/fig_arrival_time.py',
     'book_figures/chapter10/fig_matchedfilt_burst.py',
+    'book_figures/chapter10/fig_matchedfilt_chirp.py',
     'book_figures/chapter10/fig_matchedfilt_chirp2.py',
 ]
 

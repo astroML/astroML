@@ -6,7 +6,7 @@ from gzip import GzipFile
 import numpy as np
 
 from .tools import download_with_progress_bar
-from ..py3k_compat import StringIO
+from ..py3k_compat import BytesIO
 from . import get_data_home
 
 DATA_URL = ('http://www.astro.washington.edu/users/ivezic/'
@@ -137,7 +137,7 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
         zipped_buf = download_with_progress_bar(data_url, return_buffer=True)
         gzf = GzipFile(fileobj=zipped_buf, mode='rb')
         print("uncompressing file...")
-        extracted_buf = StringIO(gzf.read())
+        extracted_buf = BytesIO(gzf.read())
         data = np.loadtxt(extracted_buf, **kwargs)
         np.save(archive_file, data)
 
