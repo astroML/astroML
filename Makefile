@@ -8,10 +8,10 @@ VERSION = 0.2-git
 all: build install test
 
 build:
-	$(PYTHON) setup_addons.py build
+	$(PYTHON) setup.py build
 
 install:
-	$(PYTHON) setup_addons.py install
+	$(PYTHON) setup.py install
 
 clean:
 	$(PYTHON) setup.py clean
