@@ -12,6 +12,12 @@ and overfitting is evident. The middle column shows ridge regression (L2
 regularization) with alpha = 0.005, and the right column shows LASSO regression
 (L1 regularization) with alpha = 0.005. All three methods are fit without the
 bias term (intercept).
+
+Changes from Published Version
+++++++++++++++++++++++++++++++
+Note that this figure has been changed slightly from its published version:
+the original version of the figure did not take into account data errors. The
+update (as of astroML version 0.3) correctly takes into account data errors.
 """
 # Author: Jake VanderPlas
 # License: BSD
@@ -24,7 +30,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.stats import lognorm
 
-from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from astroML.linear_model import LinearRegression
 
 from astroML.cosmology import Cosmology
 from astroML.datasets import generate_mu_z
@@ -65,14 +71,15 @@ fig.subplots_adjust(left=0.1, right=0.95,
                     bottom=0.1, top=0.95,
                     hspace=0.15, wspace=0.2)
 
-classifier = [LinearRegression, Ridge, Lasso]
+regularization = ['none', 'l2', 'l1']
 kwargs = [dict(), dict(alpha=0.005), dict(alpha=0.001)]
 labels = ['Linear Regression', 'Ridge Regression', 'Lasso Regression']
 
 for i in range(3):
-    clf = classifier[i](fit_intercept=True, **kwargs[i])
-    clf.fit(X, mu_sample)
-    w = clf.coef_
+    clf = LinearRegression(regularization=regularization[i],
+                           fit_intercept=True, kwds=kwargs[i])
+    clf.fit(X, mu_sample, dmu)
+    w = clf.coef_[1:]
     fit = clf.predict(gaussian_basis(z[:, None], centers, widths))
 
     # plot fit

@@ -6,6 +6,42 @@ from astroML.linear_model import \
     LinearRegression, PolynomialRegression, BasisFunctionRegression
 
 
+def test_error_transform_diag(N=20, rseed=0):
+    rng = np.random.RandomState(rseed)
+    X = rng.rand(N, 2)
+    yerr = 0.05 * (1 + rng.rand(N))
+    y = (X[:, 0] ** 2 + X[:, 1]) + yerr * rng.randn(N)
+    Sigma = np.eye(N) * yerr ** 2
+
+    X1, y1 = LinearRegression._scale_by_error(X, y, yerr)
+    X2, y2 = LinearRegression._scale_by_error(X, y, Sigma)
+
+    assert_allclose(X1, X2)
+    assert_allclose(y1, y2)
+
+
+def test_error_transform_full(N=20, rseed=0):
+    rng = np.random.RandomState(rseed)
+    X = rng.rand(N, 2)
+
+    # generate a pos-definite error matrix
+    Sigma = 0.05 * rng.randn(N, N)
+    u, s, v = np.linalg.svd(Sigma)
+    Sigma = np.dot(u * s, u.T)
+
+    # draw y from this error distribution
+    y = (X[:, 0] ** 2 + X[:, 1])
+    y = rng.multivariate_normal(y, Sigma)
+
+    X2, y2 = LinearRegression._scale_by_error(X, y, Sigma)
+
+    # check that the form entering the chi^2 is correct
+    assert_allclose(np.dot(X2.T, X2),
+                    np.dot(X.T, np.linalg.solve(Sigma, X)))
+    assert_allclose(np.dot(y2, y2),
+                    np.dot(y, np.linalg.solve(Sigma, y)))
+
+
 def test_LinearRegression_simple():
     """
     Test a simple linear regression

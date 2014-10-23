@@ -119,7 +119,7 @@ def mixture_likelihood(yi, model, dyi, Pb, Yb, sigmab):
     if (Pb < 0) or (Pb > 1):
         raise ValueError("Pb out of range. This is a bug in PyMC: try "
                          "re-running the script (and see "
-                         "https://github.com/pymc-devs/pymc/issues/629")
+                         "https://github.com/pymc-devs/pymc/issues/629)")
 
     Vi = dyi ** 2
     Vb = sigmab ** 2
