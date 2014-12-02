@@ -62,7 +62,7 @@ def hist(x, bins=10, range=None, *args, **kwargs):
     if bins in ['blocks']:
         bins = bayesian_blocks(x)
     elif bins in ['knuth', 'knuths']:
-        dx, bins = knuth_bin_width(x, True)
+        dx, bins = knuth_bin_width(x, True, disp=False)
     elif bins in ['scott', 'scotts']:
         dx, bins = scotts_bin_width(x, True)
     elif bins in ['freedman', 'freedmans']:
