@@ -1,4 +1,4 @@
-from matplotlib import pyplot as plt
+import numpy as np
 
 
 def plot_tissot_ellipse(longitude, latitude, radius, ax=None, **kwargs):
@@ -19,7 +19,8 @@ def plot_tissot_ellipse(longitude, latitude, radius, ax=None, **kwargs):
     ----------------
     other keyword arguments will be passed to matplotlib.patches.Ellipse.
     """
-    import numpy as np
+    # Import here so that testing with Agg will work
+    from matplotlib import pyplot as plt
     from matplotlib.patches import Ellipse
 
     if ax is None:

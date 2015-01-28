@@ -1,4 +1,3 @@
-from matplotlib import pyplot as plt
 import numpy as np
 
 
@@ -63,6 +62,9 @@ def plot_mcmc(traces, labels=None, limits=None, true_values=None,
     axes_list : list of matplotlib.Axes instances
         the list of axes created by the routine
     """
+    # Import here so that testing with Agg will work
+    from matplotlib import pyplot as plt
+
     if fig is None:
         fig = plt.figure(figsize=(8, 8))
 

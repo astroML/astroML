@@ -1,5 +1,4 @@
 import numpy as np
-from matplotlib import pyplot as plt
 
 
 def scatter_contour(x, y,
@@ -61,6 +60,8 @@ def scatter_contour(x, y,
         contour_args = {}
 
     if ax is None:
+        # Import here so that testing with Agg will work
+        from matplotlib import pyplot as plt
         ax = plt.gca()
 
     H, xbins, ybins = np.histogram2d(x, y, **histogram2d_args)

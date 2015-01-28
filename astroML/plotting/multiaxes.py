@@ -3,8 +3,6 @@ Multi-panel plotting
 """
 from copy import deepcopy
 import numpy as np
-from matplotlib import pyplot as plt
-from matplotlib import rcParams
 
 
 class MultiAxes(object):
@@ -49,6 +47,8 @@ class MultiAxes(object):
                  left=None, bottom=None,
                  right=None, top=None,
                  wspace=None, hspace=None):
+        # Import here so that testing with Agg will work
+        from matplotlib import pyplot as plt
         if fig is None:
             fig = plt.gcf()
         self.fig = fig
@@ -66,6 +66,8 @@ class MultiAxes(object):
         self.axes = self._draw_panels()
 
     def _update(self, s, val):
+        # Import here so that testing with Agg will work
+        from matplotlib import rcParams
         if val is None:
             val = getattr(self, s, None)
             if val is None:
@@ -82,6 +84,8 @@ class MultiAxes(object):
         return data
 
     def _draw_panels(self):
+        # Import here so that testing with Agg will work
+        from matplotlib import pyplot as plt
         if self.top <= self.bottom:
             raise ValueError('top must be larger than bottom')
         if self.right <= self.left:
@@ -177,6 +181,8 @@ class MultiAxes(object):
             a single Locator instance, then each axes will be given the
             same locator.
         """
+        # Import here so that testing with Agg will work
+        from matplotlib import pyplot as plt
         if isinstance(locators, plt.Locator):
             locators = [deepcopy(locators) for i in range(self.ndim)]
         elif len(locators) != self.ndim:
@@ -199,6 +205,8 @@ class MultiAxes(object):
             a single Formatter instance, then each axes will be given the
             same locator.
         """
+        # Import here so that testing with Agg will work
+        from matplotlib import pyplot as plt
         if isinstance(formatters, plt.Formatter):
             formatters = [deepcopy(formatters) for i in range(self.ndim)]
         elif len(formatters) != self.ndim:
@@ -293,18 +301,3 @@ class MultiAxes(object):
 
                 ax.set_xlim(xbins[0], xbins[-1])
                 ax.set_ylim(ybins[0], ybins[-1])
-
-if __name__ == '__main__':
-    ma = MultiAxes(4, hspace=0, wspace=0)
-    data = np.random.normal(0.5, 0.2, (4, 1000))
-    data += np.arange(4)[:, None]
-    labels = ['x1', 'x2', 'x3', 'x4']
-    locators = [plt.MultipleLocator(0.2) for i in range(4)]
-
-    #ma.scatter(data, c=np.random.random(1000), s=1, lw=0)
-    ma.density(data, bins=20)
-
-    ma.set_labels(labels)
-    ma.set_locators(locators)
-
-    plt.show()
