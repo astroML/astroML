@@ -1,5 +1,12 @@
 .. -*- mode: rst -*-
 
+.. image:: https://travis-ci.org/astroML/astroML.png?branch=master
+   :target: https://travis-ci.org/astroML/astroML/
+.. image:: https://pypip.in/v/astroML/badge.png
+   :target: https://pypi.python.org/pypi/astroML
+.. image:: https://pypip.in/d/astroML/badge.png
+   :target: https://pypi.python.org/pypi/astroML
+
 ============================================
 AstroML: Machine Learning code for Astronomy
 ============================================
