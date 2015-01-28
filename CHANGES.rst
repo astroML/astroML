@@ -1,3 +1,10 @@
+0.3
+===
+- Add support for Python 3
+- Add continuous integration via Travis
+- Bug: correctly account for errors in Ridge/Lasso regression
+- Add figure tests in ``compare_images.py``
+
 0.2
 ===
 - Documentation and example updates
