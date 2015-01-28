@@ -11,7 +11,7 @@ install:
   - conda create -n testenv --yes python=$TRAVIS_PYTHON_VERSION
   - source activate testenv
   - conda install --yes $DEPS
-  - pip install healpy astroML_addons
+  - pip install astroML_addons
   - python setup.py install
 
 before_install:
