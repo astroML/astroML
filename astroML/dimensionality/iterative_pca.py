@@ -1,7 +1,6 @@
 import sys
 
 import numpy as np
-import pylab as pl
 
 from scipy.linalg import solve
 

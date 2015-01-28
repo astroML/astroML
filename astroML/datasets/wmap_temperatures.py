@@ -1,10 +1,6 @@
 import os
 import numpy as np
 
-# because of a bug in healpy, pylab must be imported before healpy is
-# or else a segmentation fault can result.
-import pylab as pl
-
 from . import get_data_home
 from .tools import download_with_progress_bar
 
@@ -36,6 +32,9 @@ def fetch_wmap_temperatures(masked=False, data_home=None,
     data : np.ndarray or np.ma.MaskedArray
         record array containing (masked) temperature data
     """
+    # because of a bug in healpy, pylab must be imported before healpy is
+    # or else a segmentation fault can result.
+    import pylab
     import healpy as hp
 
     data_home = get_data_home(data_home)

@@ -1,6 +1,5 @@
 import numpy as np
 from scipy import integrate
-import pylab as pl
 
 
 class Cosmology(object):
