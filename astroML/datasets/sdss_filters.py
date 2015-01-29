@@ -9,7 +9,7 @@ from ..py3k_compat import urlopen
 
 # Info on vega spectrum: http://www.stsci.edu/hst/observatory/cdbs/calspec.html
 VEGA_URL = 'http://www.astro.washington.edu/users/ivezic/DMbook/data/1732526_nic_002.ascii'
-FILTER_URL = 'http://www.sdss.org/dr7/instruments/imager/filters/%s.dat'
+FILTER_URL = 'http://classic.sdss.org/dr7/instruments/imager/filters/%s.dat'
 
 
 def fetch_sdss_filter(fname, data_home=None, download_if_missing=True):
