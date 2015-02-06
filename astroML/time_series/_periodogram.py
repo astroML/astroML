@@ -97,13 +97,9 @@ def lomb_scargle(t, y, dy, omega, generalized=True,
         S2 -= (2 * S * C)
         C2 -= (C * C - S * S)
 
-    tan_2omega_tau = S2 / C2
-    tau = np.arctan(tan_2omega_tau)
-    tau *= 0.5
-    tau /= omega
-
     # compute components needed for the fit
-    omega_t_tau = omega * (t - tau)
+    tan_2omega_tau = S2 / C2
+    omega_t_tau = omega * t - 0.5 * np.arctan(tan_2omega_tau)
 
     sin_omega_t_tau = np.sin(omega_t_tau)
     cos_omega_t_tau = np.cos(omega_t_tau)
