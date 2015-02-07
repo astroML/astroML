@@ -1,11 +1,15 @@
 .. -*- mode: rst -*-
 
-.. image:: https://travis-ci.org/astroML/astroML.png?branch=master
-   :target: https://travis-ci.org/astroML/astroML/
-.. image:: https://pypip.in/v/astroML/badge.png
-   :target: https://pypi.python.org/pypi/astroML
-.. image:: https://pypip.in/d/astroML/badge.png
-   :target: https://pypi.python.org/pypi/astroML
+.. image:: http://img.shields.io/badge/arXiv-1411.5039-orange.svg?style=flat
+        :target: http://arxiv.org/abs/1411.5039
+.. image:: http://img.shields.io/travis/astroML/astroML/master.svg?style=flat
+        :target: https://travis-ci.org/astroML/astroML/
+.. image:: http://img.shields.io/pypi/v/astroML.svg?style=flat
+        :target: https://pypi.python.org/pypi/astroML
+.. image:: http://img.shields.io/pypi/dm/astroML.svg?style=flat
+        :target: https://pypi.python.org/pypi/astroML
+.. image:: http://img.shields.io/badge/license-BSD-blue.svg?style=flat
+        :target: https://github.com/astroml/astroml/blob/master/LICENSE
 
 ============================================
 AstroML: Machine Learning code for Astronomy
