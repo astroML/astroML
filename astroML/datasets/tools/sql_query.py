@@ -4,7 +4,7 @@ Default values are provided for http://cas.sdss.org
 """
 from ...py3k_compat import urlencode, urlopen
 
-PUBLIC_URL = 'http://cas.sdss.org/public/en/tools/search/x_sql.asp'
+PUBLIC_URL = 'http://cas.sdss.org/public/en/tools/search/x_sql.aspx'
 DEFAULT_FMT = 'csv'
 
 
