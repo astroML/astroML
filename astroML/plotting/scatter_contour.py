@@ -47,11 +47,16 @@ def scatter_contour(x, y,
     x = np.asarray(x)
     y = np.asarray(y)
 
-    default_plot_args = dict(marker='.', linestyle='none')
+    default_contour_args = dict(zorder=2)
+    default_plot_args = dict(marker='.', linestyle='none', zorder=1)
 
     if plot_args is not None:
         default_plot_args.update(plot_args)
     plot_args = default_plot_args
+
+    if contour_args is not None:
+        default_contour_args.update(contour_args)
+    contour_args = default_contour_args
 
     if histogram2d_args is None:
         histogram2d_args = {}
@@ -65,9 +70,6 @@ def scatter_contour(x, y,
         ax = plt.gca()
 
     H, xbins, ybins = np.histogram2d(x, y, **histogram2d_args)
-
-    Nx = len(xbins)
-    Ny = len(ybins)
 
     if log_counts:
         H = np.log10(1 + H)
@@ -87,7 +89,8 @@ def scatter_contour(x, y,
     # somewhat hackish... we could probably get the same info from
     # the full contour plot below.
     outline = ax.contour(H.T, levels[i_min:i_min + 1],
-                         linewidths=0, extent=extent)
+                         linewidths=0, extent=extent,
+                         alpha=0)
 
     if filled_contour:
         contours = ax.contourf(H.T, levels, extent=extent, **contour_args)
@@ -111,6 +114,6 @@ def scatter_contour(x, y,
     else:
         Xplot = X
 
-    points = ax.plot(Xplot[:, 0], Xplot[:, 1], zorder=1, **plot_args)
+    points = ax.plot(Xplot[:, 0], Xplot[:, 1], **plot_args)
 
     return points, contours
