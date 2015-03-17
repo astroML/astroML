@@ -89,7 +89,8 @@ def scatter_contour(x, y,
     # somewhat hackish... we could probably get the same info from
     # the full contour plot below.
     outline = ax.contour(H.T, levels[i_min:i_min + 1],
-                         linewidths=0, extent=extent)
+                         linewidths=0, extent=extent,
+                         alpha=0)
 
     if filled_contour:
         contours = ax.contourf(H.T, levels, extent=extent, **contour_args)
