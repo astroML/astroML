@@ -71,9 +71,6 @@ def scatter_contour(x, y,
 
     H, xbins, ybins = np.histogram2d(x, y, **histogram2d_args)
 
-    Nx = len(xbins)
-    Ny = len(ybins)
-
     if log_counts:
         H = np.log10(1 + H)
         threshold = np.log10(1 + threshold)
