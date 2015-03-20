@@ -126,7 +126,7 @@ class XDGMM(object):
         Xerr = Xerr[:, np.newaxis, :, :]
         T = Xerr + self.V
 
-        return log_multivariate_gaussian(X, self.mu, T)
+        return log_multivariate_gaussian(X, self.mu, T) + np.log(self.alpha)
 
     def logL(self, X, Xerr):
         """Compute the log-likelihood of data given the model
