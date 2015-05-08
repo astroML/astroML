@@ -1,6 +1,6 @@
 import numpy as np
+import warnings
 from astroML.utils import check_random_state
-
 
 def bootstrap(data, n_bootstraps, user_statistic, kwargs=None,
               pass_indices=False, random_state=None):
@@ -9,7 +9,7 @@ def bootstrap(data, n_bootstraps, user_statistic, kwargs=None,
     Parameters
     ----------
     data : array_like
-        A 1-dimensional data array of size n_samples
+        An n-dimensional data array of size n_samples by n_attributes
     n_bootstraps : integer
         the number of bootstrap samples to compute.  Note that internally,
         two arrays of size (n_bootstraps, n_samples) will be allocated.
@@ -38,24 +38,25 @@ def bootstrap(data, n_bootstraps, user_statistic, kwargs=None,
         kwargs = {}
 
     rng = check_random_state(random_state)
-
     data = np.asarray(data)
-    n_samples = data.size
-
     if data.ndim != 1:
-        raise ValueError("bootstrap expects 1-dimensional data")
+        n_samples = data.shape[0]
+        warnings.warn("bootstrap data are n-dimensional: assuming ordered n_samples by n_attributes")
+    else:
+        n_samples = data.size
 
     # Generate random indices with repetition
     ind = rng.randint(n_samples, size=(n_bootstraps, n_samples))
-
+    data = data[ind].reshape(-1, data[ind].shape[-1])
     # Call the function
     if pass_indices:
         stat_bootstrap = user_statistic(ind, **kwargs)
     else:
-        stat_bootstrap = user_statistic(data[ind], **kwargs)
+        stat_bootstrap = user_statistic(data, **kwargs)
 
     # compute the statistic on the data
     return stat_bootstrap
+
 
 
 def jackknife(data, user_statistic, kwargs=None,
