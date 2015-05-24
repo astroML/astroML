@@ -1,4 +1,7 @@
-from distutils.core import setup
+import ez_setup
+ez_setup.use_setuptools()
+
+from setuptools import setup
 
 DESCRIPTION = "tools for machine learning and data mining in Astronomy"
 LONG_DESCRIPTION = open('README.rst').read()
@@ -44,6 +47,13 @@ setup(name=NAME,
                 'astroML.stats',
                 'astroML.stats.tests',
             ],
+      install_requires=['numpy',
+                        'scikit-learn',
+                        'matplotlib',
+                        'scipy',
+                        'astropy'
+            ],
+      tests_require=['nose'],
       classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',

@@ -60,9 +60,9 @@ Important Links
 Installation
 ============
 
-This package uses distutils, which is the default way of installing python
-modules.  **Before installation, make sure your system meets the prerequisites
-listed in Dependencies, listed below.**
+This package uses setuptools, which is the default way of installing python
+modules.  **The prerequisites listed in Dependencies, below, will be installed
+if they are not already present on your system.**
 
 Core
 ----
@@ -114,7 +114,7 @@ The core ``astroML`` package requires the following:
 - AstroPy_ > 0.2.5
   AstroPy is required to read Flexible Image Transport
   System (FITS) files, which are used by several datasets.
-  
+
 This configuration matches the Ubuntu 10.04 LTS release from April 2010,
 with the addition of scikit-learn.
 
