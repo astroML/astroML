@@ -22,9 +22,10 @@ def test_generate_RW():
     t = np.arange(0., 1E2)
     tau = 300
     z = 2.0
-    xmean = np.random.random(1)*200 - 100
+    rng = np.random.RandomState(0)
+    xmean = rng.rand(1)*200 - 100
     N = len(t)
-    y = generate_damped_RW(t, tau=tau, z=z, xmean=xmean)
+    y = generate_damped_RW(t, tau=tau, z=z, xmean=xmean, random_state=rng)
 
     assert_(len(generate_damped_RW(t)) == N)
     assert_almost_equal(np.mean(y), xmean, 0)
