@@ -18,18 +18,20 @@ def test_lomb_scargle():
     y2 = np.sin(w*t)
     dy2 = np.random.normal(0, 1, size=len(y2))
     y2 = y2 + dy2
-    significance = None
+
+    def check_lomb_scargle(generalized, subtract_mean, significance=None):
+        p1 = lomb_scargle_addon(t, y1, dy1, omegas,
+                                generalized=generalized,
+                                subtract_mean=subtract_mean,
+                                significance=significance)
+        p2 = lomb_scargle_native(t, y1, dy1, omegas,
+                                 generalized=generalized,
+                                 subtract_mean=subtract_mean,
+                                 significance=significance)
+        assert_allclose(p1, p2)
 
     omegas = np.linspace(0.5, 2.5, 100)*w
     # test that for high S/N addon and native produce same results
     for generalized in [True, False]:
         for subtract_mean in [True, False]:
-            p1 = lomb_scargle_addon(t, y1, dy1, omegas,
-                                    generalized=generalized,
-                                    subtract_mean=subtract_mean,
-                                    significance=significance)
-            p2 = lomb_scargle_native(t, y1, dy1, omegas,
-                                     generalized=generalized,
-                                     subtract_mean=subtract_mean,
-                                     significance=significance)
-            assert_allclose(p1, p2)
+            yield check_lomb_scargle, generalized, subtract_mean
