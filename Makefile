@@ -32,6 +32,6 @@ test-figures:
 test-coverage:
 	rm -rf coverage .coverage
 	$(NOSETESTS) -s --with-coverage --cover-html --cover-html-dir=coverage \
-	--cover-package=sklearn astroML
+	--cover-package=astroML astroML
 
 test: test-code
