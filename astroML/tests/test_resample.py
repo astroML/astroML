@@ -56,6 +56,15 @@ def test_bootstrap_multiple():
     assert_allclose(res[0], dist_mean)
     assert_allclose(res[1], dist_std)
 
+def test_bootstrap_covar():
+    np.random.seed(0)
+    mean = [0.,0.]
+    covar = [[10.,3.],[3.,20.]]
+    x = np.random.multivariate_normal(mean, covar, 1000)
+
+    dist_cov = bootstrap(x, 10000, np.cov, kwargs=dict(rowvar=0), random_state=0)
+    assert_allclose(covar[0][0], dist_cov[0][0], atol=2.*0.4)
+
 
 def test_bootstrap_pass_indices():
     np.random.seed(0)
