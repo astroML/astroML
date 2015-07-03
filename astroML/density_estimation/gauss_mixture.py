@@ -31,10 +31,16 @@ class GaussianMixture1D(object):
 
     def pdf(self, x):
         """Compute probability distribution"""
-        logprob, responsibilities = self._gmm.eval(x)
+        # logprob, responsibilities = self._gmm.eval(x)
+        if len(x.shape) == 1:
+            x = x.reshape((x.shape[0], 1))
+        logprob, responsibilities = self._gmm.score_samples(x)
         return np.exp(logprob)
 
     def pdf_individual(self, x):
         """Compute probability distribution of each component"""
-        logprob, responsibilities = self._gmm.eval(x)
+        # logprob, responsibilities = self._gmm.eval(x)
+        if len(x.shape) == 1:
+            x = x.reshape((x.shape[0], 1))
+        logprob, responsibilities = self._gmm.score_samples(x)
         return responsibilities * np.exp(logprob[:, np.newaxis])
