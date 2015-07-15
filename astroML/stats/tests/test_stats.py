@@ -5,7 +5,7 @@ from numpy.testing import (assert_array_almost_equal, assert_array_equal,
                            assert_equal, assert_allclose)
 from astroML.stats import (mean_sigma, median_sigmaG, sigmaG,
                            fit_bivariate_normal)
-from astroML.stats.random import bivariate_normal
+from astroML.stats.random import bivariate_normal, trunc_exp, linear
 
 
 #---------------------------------------------------------------------------
@@ -133,8 +133,62 @@ def check_fit_bivariate_normal(sigma1, sigma2, mu, alpha, N=1000):
     assert_allclose(sigma1_fit, sigma1, rtol=rtol)
     assert_allclose(sigma2_fit, sigma2, rtol=rtol)
 
+
 def test_fit_bivariate_normal(sigma1=2.0, sigma2=1.0, N=1000):
     np.random.seed(0)
     mu = [10, 10]
     for alpha in np.linspace(-np.pi / 2, np.pi / 2, 7):
         yield check_fit_bivariate_normal, sigma1, sigma2, mu, alpha, N
+
+
+#------------------------------------------------------
+# Check truncated exponential and linear functions
+def test_trunc_exp():
+    x = np.linspace(0, 10, 100)
+    k = 0.25
+    xlim = [3, 5]
+    # replaced with from astroML.stats.random import trunc_exp
+    # trunc_exp = trunc_exp_gen(name="trunc_exp", shapes='a, b, k')
+    myfunc = trunc_exp(xlim[0], xlim[1], k)
+    y = myfunc.pdf(x)
+    zeros = np.zeros(len(y))
+
+    # Test that the function is zero outside of defined limits
+    assert_array_equal(y[x < xlim[0]], zeros[x < xlim[0]])
+    assert_array_equal(y[x > xlim[1]], zeros[x > xlim[1]])
+    inlims = (x < xlim[1]) & (x > xlim[0])
+    C = k / (np.exp(k * xlim[1]) - np.exp(k * xlim[0]))
+
+    # Test that within defined limits, function is exponential
+    assert_array_equal(y[inlims], C*np.exp(k * x[inlims]))
+
+    # Test that the PDF integrates to just about 1
+    dx = x[1] - x[0]
+    integral = np.sum(y * dx)
+    assert np.round(integral, 1) == 1
+
+
+# Check the linear generator
+def test_linear_gen():
+    x = np.linspace(-10, 10, 200)
+    c = -0.5
+    xlim = [-2.4, 6.]
+    # replaced with from astroML.stats.random import linear
+    # linear = linear_gen(name="linear", shapes="a, b, c")
+    y = linear.pdf(x, xlim[0], xlim[1], c)
+    zeros = np.zeros(len(y))
+
+    # Test that the function is zero outside of defined limits
+    assert_array_equal(y[x < xlim[0]], zeros[x < xlim[0]])
+    assert_array_equal(y[x > xlim[1]], zeros[x > xlim[1]])
+    inlims = (x < xlim[1]) & (x > xlim[0])
+    d = 1. / (xlim[1] - xlim[0]) - 0.5 * c * (xlim[1] + xlim[0])
+    inlims = (x < xlim[1]) & (x > xlim[0])
+
+    # Test that within defined limits, function is linear
+    assert_array_equal(y[inlims], c*x[inlims] + d)
+
+    # Test that the PDF integrates to about 1
+    dx = x[1] - x[0]
+    integral = np.sum(y * dx)
+    assert np.round(integral, 1) == 1
