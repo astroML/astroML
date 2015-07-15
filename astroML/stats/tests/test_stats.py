@@ -5,7 +5,7 @@ from numpy.testing import (assert_array_almost_equal, assert_array_equal,
                            assert_equal, assert_allclose)
 from astroML.stats import (mean_sigma, median_sigmaG, sigmaG,
                            fit_bivariate_normal)
-from astroML.stats.random import bivariate_normal, trunc_exp_gen, linear_gen
+from astroML.stats.random import bivariate_normal, trunc_exp, linear
 
 
 #---------------------------------------------------------------------------
@@ -147,7 +147,8 @@ def test_trunc_exp():
     x = np.linspace(0, 10, 100)
     k = 0.25
     xlim = [3, 5]
-    trunc_exp = trunc_exp_gen(name="trunc_exp", shapes='a, b, k')
+    # replaced with from astroML.stats.random import trunc_exp
+    # trunc_exp = trunc_exp_gen(name="trunc_exp", shapes='a, b, k')
     myfunc = trunc_exp(xlim[0], xlim[1], k)
     y = myfunc.pdf(x)
     zeros = np.zeros(len(y))
@@ -172,7 +173,8 @@ def test_linear_gen():
     x = np.linspace(-10, 10, 200)
     c = -0.5
     xlim = [-2.4, 6.]
-    linear = linear_gen(name="linear", shapes="a, b, c")
+    # replaced with from astroML.stats.random import linear
+    # linear = linear_gen(name="linear", shapes="a, b, c")
     y = linear.pdf(x, xlim[0], xlim[1], c)
     zeros = np.zeros(len(y))
 
