@@ -12,7 +12,8 @@ from scipy.stats import lognorm
 
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
 
-from astroML.cosmology import Cosmology
+# from astroML.cosmology import Cosmology
+from astropy.cosmology import FlatLambdaCDM as Cosmology
 from astroML.datasets import generate_mu_z
 from astroML.density_estimation import FunctionDistribution
 
@@ -20,11 +21,14 @@ from astroML.density_estimation import FunctionDistribution
 # generate data
 np.random.seed(0)
 
-z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0)
-cosmo = Cosmology()
+# z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0)
+# cosmo = Cosmology()
+z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0, Om0=0.27, H0=71)
+cosmo = Cosmology(Om0=0.27, H0=71)
 
 z = np.linspace(0.01, 2, 1000)
-mu = np.asarray(map(cosmo.mu, z))
+# mu = np.asarray(map(cosmo.mu, z))
+mu = np.asarray(cosmo.distmod(z).value)
 
 
 #------------------------------------------------------------

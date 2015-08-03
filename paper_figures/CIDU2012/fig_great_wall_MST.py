@@ -18,7 +18,8 @@ except:
                      "for minimum spanning tree")
 
 from astroML.datasets import fetch_great_wall
-from astroML.cosmology import Cosmology
+# Not replacing Cosmology because it's never used here
+# from astroML.cosmology import Cosmology
 
 #------------------------------------------------------------
 # get data

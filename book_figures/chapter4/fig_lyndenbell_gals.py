@@ -30,7 +30,8 @@ from matplotlib import pyplot as plt
 from scipy import interpolate, stats
 
 from astroML.lumfunc import binned_Cminus, bootstrap_Cminus
-from astroML.cosmology import Cosmology
+# from astroML.cosmology import Cosmology
+from astropy.cosmology import FlatLambdaCDM as Cosmology
 from astroML.datasets import fetch_sdss_specgals
 
 #----------------------------------------------------------------------
@@ -74,9 +75,11 @@ print(data_blue.size, "blue galaxies")
 #  where z is redshift and mu is distance modulus.
 #  We'll accomplish this using the cosmology class and
 #  scipy's cubic spline interpolation.
-cosmo = Cosmology()
+# cosmo = Cosmology()
+cosmo = Cosmology(Om0=0.27, H0=71)
 z_sample = np.linspace(0.01, 1.5, 100)
-mu_sample = [cosmo.mu(z) for z in z_sample]
+# mu_sample = [cosmo.mu(z) for z in z_sample]
+mu_sample = cosmo.distmod(z_sample).value
 mu_z = interpolate.interp1d(z_sample, mu_sample)
 z_mu = interpolate.interp1d(mu_sample, z_sample)
 
