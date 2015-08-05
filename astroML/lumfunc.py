@@ -98,7 +98,7 @@ def Cminus(x, y, xmax, ymax):
     return Nx, Ny, cuml_x, cuml_y
 
 
-def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False):
+def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False, get_cumulative=False):
     """Compute the binned distributions using the Cminus method
 
     Parameters
@@ -118,11 +118,16 @@ def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False):
     normalize : boolean
         if true, then returned distributions are normalized.  Default
         is False.
+    get_cumulative : boolean
+        if true, then cumulative distributions are returned in addition
+        to the standard distributions. Default is False.
 
     Returns
     -------
-    dist_x, dist_y : ndarrays
+    dist_x, dist_y: ndarrays
         distributions of size Nbins_x and Nbins_y
+    Icumx_mid, Icumy_mid: ndarrays 
+        cumuluative distributions of size Nbins_x and Nbins_y
     """
     Nx, Ny, cuml_x, cuml_y = Cminus(x, y, xmax, ymax)
 
@@ -131,6 +136,8 @@ def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False):
     x_sort = np.sort(x)
     y_sort = np.sort(y)
 
+    # Note that I?_edges is the interpolated array of
+    # values corresponding to the cumulative distribution
     Ix_edges = _sorted_interpolate(x_sort, cuml_x, xbins)
     Iy_edges = _sorted_interpolate(y_sort, cuml_y, ybins)
 
@@ -151,11 +158,20 @@ def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False):
         x_dist /= len(x)
         y_dist /= len(y)
 
-    return x_dist, y_dist
+    if get_cumulative:
+        # Find the interpolated midpoints for those same
+        # stated bin boundaries
+        Icumx_mid = _sorted_interpolate(x_sort, cuml_x, 0.5*(xbins[1:] + xbins[:-1]))
+        Icumy_mid = _sorted_interpolate(y_sort, cuml_y, 0.5*(xbins[1:] + ybins[:-1]))
+
+        return x_dist, y_dist, Icumx_mid, Icumy_mid
+    else:
+        return x_dist, y_dist
+
 
 
 def bootstrap_Cminus(x, y, xmax, ymax, xbins, ybins,
-                     Nbootstraps=10, normalize=False):
+                     Nbootstraps=10, normalize=False, get_cumulative=False):
     """
     Compute the binned distributions using the Cminus method, with
     bootstrapped estimates of the errors
@@ -179,23 +195,42 @@ def bootstrap_Cminus(x, y, xmax, ymax, xbins, ybins,
     normalize : boolean
         if true, then returned distributions are normalized.  Default
         is False.
+    get_cumulative : boolean
+        if true, then cumulative distributions are returned in addition
+        to the standard distributions. Default is False.
 
     Returns
     -------
     dist_x, err_x, dist_y, err_y : ndarrays
         distributions of size Nbins_x and Nbins_y
+    cuml_x, cuml_y : ndarrays
+        distributions the size Nbins_x and Nbins_y
     """
     x, y, xmax, ymax = map(np.asarray, (x, y, xmax, ymax))
 
     x_dist = np.zeros((Nbootstraps, len(xbins) - 1))
     y_dist = np.zeros((Nbootstraps, len(ybins) - 1))
+    cuml_x = np.zeros((Nbootstraps, len(xbins) - 1))
+    cuml_y = np.zeros((Nbootstraps, len(ybins) - 1))
 
-    for i in range(Nbootstraps):
-        ind = np.random.randint(0, len(x), len(x))
-        x_dist[i], y_dist[i] = binned_Cminus(x[ind], y[ind],
-                                             xmax[ind], ymax[ind],
-                                             xbins, ybins,
-                                             normalize=normalize)
+    if get_cumulative:
+        for i in range(Nbootstraps):
+            ind = np.random.randint(0, len(x), len(x))
+            x_dist[i], y_dist[i], cuml_x[i], cuml_y[i] = binned_Cminus(x[ind], y[ind],
+                                                 xmax[ind], ymax[ind],
+                                                 xbins, ybins,
+                                                 normalize=normalize, get_cumulative=get_cumulative)
 
-    return (x_dist.mean(0), x_dist.std(0, ddof=1),
-            y_dist.mean(0), y_dist.std(0, ddof=1))
+        return (x_dist.mean(0), cuml_x.mean(0), x_dist.std(0, ddof=1),
+                y_dist.mean(0), cuml_y.mean(0), y_dist.std(0, ddof=1))
+
+    else:
+        for i in range(Nbootstraps):
+            ind = np.random.randint(0, len(x), len(x))
+            x_dist[i], y_dist[i] = binned_Cminus(x[ind], y[ind],
+                                                 xmax[ind], ymax[ind],
+                                                 xbins, ybins,
+                                                 normalize=normalize)
+
+        return (x_dist.mean(0), x_dist.std(0, ddof=1),
+                y_dist.mean(0), y_dist.std(0, ddof=1))
