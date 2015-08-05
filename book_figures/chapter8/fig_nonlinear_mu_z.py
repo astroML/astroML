@@ -23,7 +23,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from astroML.datasets import generate_mu_z
-# from astroML.cosmology import Cosmology
 from astropy.cosmology import FlatLambdaCDM as Cosmology
 from astroML.plotting.mcmc import convert_to_stdev
 from astroML.decorators import pickle_results
@@ -38,9 +37,6 @@ setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Generate the data
-# z_sample, mu_sample, dmu = generate_mu_z(100, z0=0.3,
-#                                          dmu_0=0.05, dmu_1=0.004,
-#                                          random_state=1)
 z_sample, mu_sample, dmu = generate_mu_z(100, z0=0.3,
                                          dmu_0=0.05, dmu_1=0.004,
                                          random_state=1, Om0=0.27, H0=71)
@@ -86,11 +82,9 @@ ax = fig.add_subplot(121)
 whr = np.where(res == np.max(res))
 omegaM_best = omegaM[whr[0][0]]
 omegaL_best = omegaL[whr[1][0]]
-# cosmo = Cosmology(omegaM=omegaM_best, omegaL=omegaL_best)
 cosmo = Cosmology(Om0=omegaM_best, H0=71)
 
 z_fit = np.linspace(0.04, 2, 100)
-# mu_fit = np.asarray([cosmo.mu(z) for z in z_fit])
 mu_fit = np.asarray(cosmo.distmod(z_fit).value)
 
 ax.plot(z_fit, mu_fit, '-k')

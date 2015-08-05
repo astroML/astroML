@@ -36,13 +36,10 @@ setup_text_plots(fontsize=8, usetex=True)
 
 #------------------------------------------------------------
 # Generate data
-# z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0)
 z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0, Om0=0.27, H0=71)
 
-# cosmo = Cosmology()
 cosmo = Cosmology(Om0=0.27, H0=71)
 z = np.linspace(0.01, 2, 1000)
-# mu_true = np.asarray([cosmo.mu(zi) for zi in z])
 mu_true = np.asarray(cosmo.distmod(z).value)
 
 #------------------------------------------------------------

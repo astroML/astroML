@@ -32,7 +32,6 @@ from scipy.stats import lognorm
 
 from astroML.linear_model import LinearRegression
 
-# from astroML.cosmology import Cosmology
 from astropy.cosmology import FlatLambdaCDM as Cosmology
 from astroML.datasets import generate_mu_z
 
@@ -48,13 +47,10 @@ setup_text_plots(fontsize=8, usetex=True)
 # generate data
 np.random.seed(0)
 
-# z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0)
-# cosmo = Cosmology()
 z_sample, mu_sample, dmu = generate_mu_z(100, random_state=0, Om0=0.27, H0=71)
 cosmo = Cosmology(Om0=0.27, H0=71)
 
 z = np.linspace(0.01, 2, 1000)
-# mu = np.asarray([cosmo.mu(zi) for zi in z])
 mu = np.asarray(cosmo.distmod(z).value)
 
 

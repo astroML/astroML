@@ -130,7 +130,6 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
     """
     # local imports so we don't need dependencies for loading module
     from scipy.interpolate import interp1d
-    # from ..cosmology import Cosmology
     from astropy.cosmology import FlatLambdaCDM as Cosmology
 
     data = fetch_sdss_specgals(data_home, download_if_missing)
@@ -144,12 +143,10 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
     data = data[(z > 0.01) & (z < 0.12)]
 
     # use redshift to compute absolute r-band magnitude
-    # cosmo = Cosmology(omegaM=0.27, omegaL=0.73, h=0.732)
     cosmo = Cosmology(Om0=0.27, H0=73.2)
 
     # first sample the distance modulus on a grid
     zgrid = np.linspace(min(data['z']), max(data['z']), 100)
-    # mugrid = np.array([cosmo.mu(z) for z in zgrid])
     mugrid = np.array(cosmo.distmod(zgrid).value)
     f = interp1d(zgrid, mugrid)
     mu = f(data['z'])
@@ -160,7 +157,6 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
 
     # compute distances in the equatorial plane
     # first sample comoving distance
-    # Dcgrid = np.array([cosmo.Dc(z) for z in zgrid])
     Dcgrid = np.array(cosmo.comoving_distance(zgrid).value)
     f = interp1d(zgrid, Dcgrid)
     dist = f(data['z'])
