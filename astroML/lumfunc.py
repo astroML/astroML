@@ -98,7 +98,7 @@ def Cminus(x, y, xmax, ymax):
     return Nx, Ny, cuml_x, cuml_y
 
 
-def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False, get_cumulative=False):
+def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False, return_cumulative=False):
     """Compute the binned distributions using the Cminus method
 
     Parameters
@@ -118,7 +118,7 @@ def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False, get_cumulativ
     normalize : boolean
         if true, then returned distributions are normalized.  Default
         is False.
-    get_cumulative : boolean
+    return_cumulative : boolean
         if true, then cumulative distributions are returned in addition
         to the standard distributions. Default is False.
 
@@ -127,7 +127,8 @@ def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False, get_cumulativ
     dist_x, dist_y: ndarrays
         distributions of size Nbins_x and Nbins_y
     Icumx_mid, Icumy_mid: ndarrays 
-        cumuluative distributions of size Nbins_x and Nbins_y
+        cumuluative distributions of size Nbins_x and Nbins_y. Returned
+        only if return_cumulative is True.
     """
     Nx, Ny, cuml_x, cuml_y = Cminus(x, y, xmax, ymax)
 
@@ -158,7 +159,7 @@ def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False, get_cumulativ
         x_dist /= len(x)
         y_dist /= len(y)
 
-    if get_cumulative:
+    if return_cumulative:
         # Find the interpolated midpoints for those same
         # stated bin boundaries
         Icumx_mid = _sorted_interpolate(x_sort, cuml_x, 0.5*(xbins[1:] + xbins[:-1]))
@@ -171,7 +172,7 @@ def binned_Cminus(x, y, xmax, ymax, xbins, ybins, normalize=False, get_cumulativ
 
 
 def bootstrap_Cminus(x, y, xmax, ymax, xbins, ybins,
-                     Nbootstraps=10, normalize=False, get_cumulative=False):
+                     Nbootstraps=10, normalize=False, return_cumulative=False):
     """
     Compute the binned distributions using the Cminus method, with
     bootstrapped estimates of the errors
@@ -195,7 +196,7 @@ def bootstrap_Cminus(x, y, xmax, ymax, xbins, ybins,
     normalize : boolean
         if true, then returned distributions are normalized.  Default
         is False.
-    get_cumulative : boolean
+    return_cumulative : boolean
         if true, then cumulative distributions are returned in addition
         to the standard distributions. Default is False.
 
@@ -204,7 +205,8 @@ def bootstrap_Cminus(x, y, xmax, ymax, xbins, ybins,
     dist_x, err_x, dist_y, err_y : ndarrays
         distributions of size Nbins_x and Nbins_y
     cuml_x, cuml_y : ndarrays
-        distributions the size Nbins_x and Nbins_y
+        distributions the size Nbins_x and Nbins_y. Returned
+        only if return_cumulative is True.
     """
     x, y, xmax, ymax = map(np.asarray, (x, y, xmax, ymax))
 
@@ -213,24 +215,19 @@ def bootstrap_Cminus(x, y, xmax, ymax, xbins, ybins,
     cuml_x = np.zeros((Nbootstraps, len(xbins) - 1))
     cuml_y = np.zeros((Nbootstraps, len(ybins) - 1))
 
-    if get_cumulative:
-        for i in range(Nbootstraps):
-            ind = np.random.randint(0, len(x), len(x))
-            x_dist[i], y_dist[i], cuml_x[i], cuml_y[i] = binned_Cminus(x[ind], y[ind],
-                                                 xmax[ind], ymax[ind],
-                                                 xbins, ybins,
-                                                 normalize=normalize, get_cumulative=get_cumulative)
-
-        return (x_dist.mean(0), cuml_x.mean(0), x_dist.std(0, ddof=1),
-                y_dist.mean(0), cuml_y.mean(0), y_dist.std(0, ddof=1))
-
-    else:
-        for i in range(Nbootstraps):
-            ind = np.random.randint(0, len(x), len(x))
-            x_dist[i], y_dist[i] = binned_Cminus(x[ind], y[ind],
-                                                 xmax[ind], ymax[ind],
-                                                 xbins, ybins,
-                                                 normalize=normalize)
+    
+    for i in range(Nbootstraps):
+        ind = np.random.randint(0, len(x), len(x))
+        result = binned_Cminus(x[ind], y[ind], xmax[ind], ymax[ind],
+                               xbins, ybins, normalize=normalize, 
+                               return_cumulative=return_cumulative)
+        x_dist[i], y_dist[i] = result[:2]
+        if return_cumulative:
+            cuml_x[i], cuml_y[i] = result[2:]
 
         return (x_dist.mean(0), x_dist.std(0, ddof=1),
-                y_dist.mean(0), y_dist.std(0, ddof=1))
+                y_dist.mean(0), y_dist.std(0, ddof=1),
+                cuml_x.mean(0), cuml_y.mean(0))
+    return (x_dist.mean(0), x_dist.std(0, ddof=1),
+            y_dist.mean(0), y_dist.std(0, ddof=1))
+
