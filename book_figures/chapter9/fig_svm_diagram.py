@@ -44,6 +44,7 @@ y = np.hstack([np.zeros(N1), np.ones(N2)])
 
 #------------------------------------------------------------
 # Perform an SVM classification
+print('Now perform SVM classification')
 clf = svm.SVC(kernel='linear')
 clf.fit(X, y)
 
