@@ -1,5 +1,8 @@
 language: python
 
+# Setting sudo to false opts in to Travis-CI container-based builds.
+sudo: false
+
 python:
   - 2.6
   - 2.7
