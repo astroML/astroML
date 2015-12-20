@@ -11,14 +11,7 @@ SPECCLASS = ['UNKNOWN', 'STAR', 'GALAXY', 'QSO',
 
 NOBJECTS = 50000
 
-GAL_COLORS_DTYPE = [('u', float),
-                    ('g', float),
-                    ('r', float),
-                    ('i', float),
-                    ('z', float),
-                    ('specClass', int),
-                    ('redshift', float),
-                    ('redshift_err', float)]
+GAL_COLORS_NAMES = ['u', 'g','r', 'i', 'z', 'specClass', 'redshift', 'redshift_err']
 
 ARCHIVE_FILE = 'sdss_galaxy_colors.npy'
 
@@ -52,15 +45,16 @@ def fetch_sdss_galaxy_colors(data_home=None, download_if_missing=True):
 
     query_text = ('\n'.join(
             ("SELECT TOP %i" % NOBJECTS,
-             "   p.u, p.g, p.r, p.i, p.z, s.specClass, s.z, s.zerr",
+             "   p.u, p.g, p.r, p.i, p.z, s.class, s.z, s.zerr",
              "FROM PhotoObj AS p",
              "   JOIN SpecObj AS s ON s.bestobjid = p.objid",
              "WHERE ",
              "   p.u BETWEEN 0 AND 19.6",
              "   AND p.g BETWEEN 0 AND 20",
-             "   AND s.specClass > 1 -- not UNKNOWN or STAR",
-             "   AND s.specClass <> 5 -- not SKY",
-             "   AND s.specClass <> 6 -- not STAR_LATE")))
+             "   AND s.class <> 'UNKNOWN'",
+             "   AND s.class <> 'STAR'",
+             "   AND s.class <> 'SKY'",
+             "   AND s.class <> 'STAR_LATE'")))
 
     if not os.path.exists(archive_file):
         if not download_if_missing:
@@ -72,8 +66,8 @@ def fetch_sdss_galaxy_colors(data_home=None, download_if_missing=True):
         output = sql_query(query_text)
         print("finished.")
 
-        data = np.loadtxt(output, delimiter=',',
-                          skiprows=1, dtype=GAL_COLORS_DTYPE)
+        data = np.genfromtxt(output, delimiter=',',
+                          skip_header=2, names=GAL_COLORS_NAMES, dtype=None)
         np.save(archive_file, data)
 
     else:
