@@ -17,7 +17,7 @@ AstroML: Machine Learning for Astronomy
 
 AstroML is a Python module for machine learning and data mining
 built on numpy, scipy, scikit-learn, and matplotlib,
-and distributed under the 3-Clause BSD license.
+and distributed under the BSD license.
 It contains a growing library of statistical and machine learning
 routines for analyzing astronomical data in python, loaders for several open
 astronomical datasets, and a large suite of examples of analyzing and
