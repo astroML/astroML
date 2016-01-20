@@ -5,7 +5,7 @@ import numpy as np
 from . import get_data_home
 from .tools import download_with_progress_bar
 
-DATA_URL = 'http://www.astro.washington.edu/users/vanderplas/spec4000.npz'
+DATA_URL = 'http://staff.washington.edu/jakevdp/spec4000.npz'
 ARCHIVE_FILE = 'spec4000.npz'
 
 
