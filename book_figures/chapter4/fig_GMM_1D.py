@@ -1,5 +1,5 @@
 """
-1.D Gaussian Mixture Example
+1D Gaussian Mixture Example
 ---------------------------
 Figure 4.2.
 
