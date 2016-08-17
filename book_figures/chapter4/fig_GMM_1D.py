@@ -81,8 +81,10 @@ fig.subplots_adjust(left=0.12, right=0.97,
 ax = fig.add_subplot(131)
 M_best = models[np.argmin(AIC)]
 
-x = np.linspace(-6, 6, 1000)
-logprob, responsibilities = M_best.eval(x)
+x = np.linspace(-6, 6, 1000)[:, np.newaxis]
+logprob = M_best.score(x)
+responsibilities = M_best.predict_proba(x)
+
 pdf = np.exp(logprob)
 pdf_individual = responsibilities * pdf[:, np.newaxis]
 
@@ -108,12 +110,13 @@ ax.legend(loc=2)
 ax = fig.add_subplot(133)
 
 p = M_best.predict_proba(x)
+
 p = p[:, (1, 0, 2)]  # rearrange order so the plot looks better
 p = p.cumsum(1).T
 
-ax.fill_between(x, 0, p[0], color='gray', alpha=0.3)
-ax.fill_between(x, p[0], p[1], color='gray', alpha=0.5)
-ax.fill_between(x, p[1], 1, color='gray', alpha=0.7)
+ax.fill_between(x[:, 0], 0, p[0], color='gray', alpha=0.3)
+ax.fill_between(x[:, 0], p[0], p[1], color='gray', alpha=0.5)
+ax.fill_between(x[:, 0], p[1], 1, color='gray', alpha=0.7)
 ax.set_xlim(-6, 6)
 ax.set_ylim(0, 1)
 ax.set_xlabel('$x$')
