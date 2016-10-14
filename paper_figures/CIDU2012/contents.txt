@@ -1,6 +1,0 @@
-fig_rbf_ridge_mu_z.py
-fig_XD_example.py
-fig_spec_examples.py
-fig_spec_decompositions.py
-fig_LS_sg_comparison.py
-fig_great_wall_MST.py

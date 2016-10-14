@@ -1,5 +1,0 @@
-fig_search_scaling.py
-fig_sort_scaling.py
-fig_quadtree_example.py
-fig_kdtree_example.py
-fig_balltree_example.py
