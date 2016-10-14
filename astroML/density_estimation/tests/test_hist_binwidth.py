@@ -1,3 +1,5 @@
+from __future__ import division
+
 import numpy as np
 from numpy.testing import assert_allclose, assert_
 from astroML.density_estimation import \
@@ -18,8 +20,8 @@ def test_freedman_bin_width(N=10000, rseed=0):
     delta = freedman_bin_width(X)
 
     indices = np.argsort(X)
-    i25 = indices[N / 4 - 1]
-    i75 = indices[(3 * N) / 4 - 1]
+    i25 = indices[N // 4 - 1]
+    i75 = indices[(3 * N) // 4 - 1]
 
     assert_allclose(delta, 2 * (X[i75] - X[i25]) / N ** (1. / 3))
 

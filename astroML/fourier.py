@@ -1,3 +1,5 @@
+from __future__ import division
+
 import numpy as np
 
 try:
@@ -47,9 +49,9 @@ def FT_continuous(t, h, axis=-1, method=1):
 
     Dt = t[1] - t[0]
     Df = 1. / (N * Dt)
-    t0 = t[N / 2]
+    t0 = t[N // 2]
 
-    f = Df * (np.arange(N) - N / 2)
+    f = Df * (np.arange(N) - N // 2)
 
     shape = np.ones(h.ndim, dtype=int)
     shape[axis] = N
@@ -178,21 +180,21 @@ def PSD_continuous(t, h, axis=-1, method=1):
         # use FT_continuous
         f, Hf = FT_continuous(t, h, axis)
         Hf = np.rollaxis(Hf, ax)
-        f = -f[N / 2::-1]
-        PSD = abs(Hf[N / 2::-1]) ** 2
-        PSD[:-1] += abs(Hf[N / 2:]) ** 2
+        f = -f[N // 2::-1]
+        PSD = abs(Hf[N // 2::-1]) ** 2
+        PSD[:-1] += abs(Hf[N // 2:]) ** 2
         PSD = np.rollaxis(PSD, 0, ax + 1)
     else:
         # A faster way to do it is with fftshift
         # take advantage of the fact that phases go away
         Dt = t[1] - t[0]
         Df = 1. / (N * Dt)
-        f = Df * np.arange(N / 2 + 1)
+        f = Df * np.arange(N // 2 + 1)
         Hf = fft(h, axis=axis)
         Hf = np.rollaxis(Hf, ax)
-        PSD = abs(Hf[:N / 2 + 1]) ** 2
+        PSD = abs(Hf[:N // 2 + 1]) ** 2
         PSD[-1] = 0
-        PSD[1:] += abs(Hf[N / 2:][::-1]) ** 2
+        PSD[1:] += abs(Hf[N // 2:][::-1]) ** 2
         PSD[0] *= 2
         PSD = Dt ** 2 * np.rollaxis(PSD, 0, ax + 1)
 
