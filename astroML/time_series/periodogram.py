@@ -1,13 +1,74 @@
 import numpy as np
 from ..utils import check_random_state
 
-try:
-    from astroML_addons.periodogram import lomb_scargle
-except ImportError:
-    import warnings
-    warnings.warn("Using slow version of lomb_scargle. Install astroML_addons "
-                  "to use an optimized version")
-    from astroML.time_series._periodogram import lomb_scargle
+from astropy.stats import LombScargle
+
+
+def lomb_scargle(t, y, dy, omega, generalized=True,
+                 subtract_mean=True, significance=None):
+    """
+    (Generalized) Lomb-Scargle Periodogram with Floating Mean
+
+    Parameters
+    ----------
+    t : array_like
+        sequence of times
+    y : array_like
+        sequence of observations
+    dy : array_like
+        sequence of observational errors
+    omega : array_like
+        frequencies at which to evaluate p(omega)
+    generalized : bool
+        if True (default) use generalized lomb-scargle method
+        otherwise, use classic lomb-scargle.
+    subtract_mean : bool
+        if True (default) subtract the sample mean from the data before
+        computing the periodogram.  Only referenced if generalized is False
+    significance : None or float or ndarray
+        if specified, then this is a list of significances to compute
+        for the results.
+
+    Returns
+    -------
+    p : array_like
+        Lomb-Scargle power associated with each frequency omega
+    z : array_like
+        if significance is specified, this gives the levels corresponding
+        to the desired significance (using the Scargle 1982 formalism)
+
+    Notes
+    -----
+    The algorithm is based on reference [1]_.  The result for generalized=False
+    is given by equation 4 of this work, while the result for generalized=True
+    is given by equation 20.
+
+    Note that the normalization used in this reference is different from that
+    used in other places in the literature (e.g. [2]_).  For a discussion of
+    normalization and false-alarm probability, see [1]_.
+
+    To recover the normalization used in Scargle [3]_, the results should
+    be multiplied by (N - 1) / 2 where N is the number of data points.
+
+    References
+    ----------
+    .. [1] M. Zechmeister and M. Kurster, A&A 496, 577-584 (2009)
+    .. [2] W. Press et al, Numerical Recipies in C (2002)
+    .. [3] Scargle, J.D. 1982, ApJ 263:835-853
+    """
+    # delegate to astropy's Lomb-Scargle
+    ls = LombScargle(t, y, dy, fit_mean=generalized, center_data=subtract_mean)
+    frequency = np.asarray(omega) / (2 * np.pi)
+    p_omega = ls.power(frequency, method='cython')
+
+    if significance is not None:
+        N = t.size
+        M = 2 * N
+        z = (-2.0 / (N - 1.)
+             * np.log(1 - (1 - np.asarray(significance)) ** (1. / M)))
+        return p_omega, z
+    else:
+        return p_omega
 
 
 def lomb_scargle_bootstrap(t, y, dy, omega,
@@ -137,45 +198,10 @@ def multiterm_periodogram(t, y, dy, omega, n_terms=3):
         P = 1. - chi2 / chi2_0
         where chi2_0 is the chi-square for a simple mean fit to the data
     """
-    # TODO: this is a slow implementation.  A Lomb-Scargle-type implementation
-    #       could be faster.  It would also gain from cythonization and the
-    #       use of trig identities to compute higher-order sines & cosines.
-
-    t = np.asarray(t)
-    y = np.array(y, copy=True)
-    dy = np.asarray(dy)
-
-    assert t.ndim == 1
-    assert y.ndim == 1
-    assert dy.ndim == 1
-    assert t.shape == y.shape
-    assert y.shape == dy.shape
-
-    omega = np.asarray(omega)
-    shape = omega.shape
-    omega = omega.ravel()
-
-    # compute chi2_0, the chi2 for a simple fit to the mean
-    mu = np.sum(y / dy ** 2) / np.sum(1. / dy ** 2)
-    chi2_0 = np.sum(((y - mu) / dy) ** 2)
-    chi2 = np.zeros(omega.shape)
-
-    X = np.empty((y.shape[0], 1 + 2 * n_terms), dtype=float)
-    y /= dy
-
-    dy_inv = 1. / dy[:, None]
-
-    for i, omega_i in enumerate(omega):
-        X[:, 0] = 1
-        for m in range(1, n_terms + 1):
-            X[:, 2 * m - 1] = np.sin(m * omega_i * t)
-            X[:, 2 * m] = np.cos(m * omega_i * t)
-
-        X *= dy_inv
-
-        M, chi2[i], rank, s = np.linalg.lstsq(X, y)
-
-    return 1. - chi2.reshape(shape) / chi2_0
+    # TODO: deprecate this
+    ls = LombScargle(t, y, dy, nterms=n_terms)
+    frequency = np.asarray(omega) / (2 * np.pi)
+    return ls.power(frequency)
 
 
 def search_frequencies(t, y, dy,
