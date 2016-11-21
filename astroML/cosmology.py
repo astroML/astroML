@@ -50,7 +50,8 @@ class Cosmology(object):
         if z == 0:
             return 0
         else:
-            f = lambda z: 1.0 / self._hinv(z)
+            def f(z):
+                return 1.0 / self._hinv(z)
             I = integrate.quad(f, 0, z)
             return self.Dh * I[0]
 
