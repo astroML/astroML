@@ -200,8 +200,9 @@ def wiener_filter(t, h, signal='gaussian', noise='flat', return_PSDs=False,
 
     # use [1:] here to remove the zero-frequency term: we don't want to
     # fit to this for data with an offset.
-    min_func = lambda v: np.sum((PSD[1:] - signal(f[1:], v[0], v[1])
-                                 - noise(f[1:], v[2])) ** 2)
+    def min_func(v):
+        np.sum((PSD[1:] - signal(f[1:], v[0], v[1])
+               - noise(f[1:], v[2])) ** 2)
     v0 = tuple(signal_params) + tuple(noise_params)
     v = optimize.fmin(min_func, v0)
 
