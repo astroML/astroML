@@ -325,9 +325,9 @@ def bayesian_blocks(t, x=None, sigma=None,
     best = np.zeros(N, dtype=float)
     last = np.zeros(N, dtype=int)
 
-    #-----------------------------------------------------------------
+    # -----------------------------------------------------------------
     # Start with first data cell; add one cell at each iteration
-    #-----------------------------------------------------------------
+    # -----------------------------------------------------------------
     for R in range(N):
         # Compute fit_vec : fitness of putative last block (end at R)
         kwds = {}
@@ -362,9 +362,9 @@ def bayesian_blocks(t, x=None, sigma=None,
         last[R] = i_max
         best[R] = A_R[i_max]
 
-    #-----------------------------------------------------------------
+    # -----------------------------------------------------------------
     # Now find changepoints by iteratively peeling off the last block
-    #-----------------------------------------------------------------
+    # -----------------------------------------------------------------
     change_points = np.zeros(N, dtype=int)
     i_cp = N
     ind = N
