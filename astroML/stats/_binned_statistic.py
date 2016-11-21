@@ -294,7 +294,6 @@ def binned_statistic_dd(sample, values, statistic='mean',
     # Using digitize, values that fall on an edge are put in the right bin.
     # For the rightmost bin, we want values equal to the right
     # edge to be counted in the last bin, and not as an outlier.
-    outliers = np.zeros(N, int)
     for i in np.arange(D):
         # Rounding precision
         decimal = int(-np.log10(dedges[i].min())) + 6
@@ -306,7 +305,6 @@ def binned_statistic_dd(sample, values, statistic='mean',
 
     # Compute the sample indices in the flattened statistic matrix.
     ni = nbin.argsort()
-    shape = []
     xy = np.zeros(N, int)
     for i in np.arange(0, D - 1):
         xy += Ncount[ni[i]] * nbin[ni[i + 1:]].prod()
