@@ -1,7 +1,7 @@
 import numpy as np
 from numpy.testing import assert_allclose
 from astroML.fourier import\
-    FT_continuous, IFT_continuous, PSD_continuous, sinegauss, sinegauss_FT
+    FT_continuous, IFT_continuous, PSD_continuous
 
 
 def check_wavelets(t0, f0, Q, t):
