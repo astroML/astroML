@@ -11,7 +11,8 @@ SPECCLASS = ['UNKNOWN', 'STAR', 'GALAXY', 'QSO',
 
 NOBJECTS = 50000
 
-GAL_COLORS_NAMES = ['u', 'g','r', 'i', 'z', 'specClass', 'redshift', 'redshift_err']
+GAL_COLORS_NAMES = ['u', 'g', 'r', 'i', 'z',
+                    'specClass', 'redshift', 'redshift_err']
 
 ARCHIVE_FILE = 'sdss_galaxy_colors.npy'
 
@@ -67,7 +68,7 @@ def fetch_sdss_galaxy_colors(data_home=None, download_if_missing=True):
         print("finished.")
 
         data = np.genfromtxt(output, delimiter=',',
-                          skip_header=2, names=GAL_COLORS_NAMES, dtype=None)
+                             skip_header=2, names=GAL_COLORS_NAMES, dtype=None)
         np.save(archive_file, data)
 
     else:
