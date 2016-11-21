@@ -112,6 +112,7 @@ class KDE(object):
             metric='tophat', and will be unnormalized otherwise.
         """
         X = np.atleast_2d(X)
+        dens = None
         if X.ndim != 2:
             raise ValueError('X must be two-dimensional')
 
