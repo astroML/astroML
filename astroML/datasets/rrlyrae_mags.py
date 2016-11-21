@@ -94,14 +94,14 @@ def fetch_rrlyrae_combined(data_home=None, download_if_missing=True):
         a shape (n_samples,) array of labels.  1 indicates an RR Lyrae,
         0 indicates a background star.
     """
-    #----------------------------------------------------------------------
+    # ----------------------------------------------------------------------
     # Load data
     kwds = dict(data_home=data_home,
                 download_if_missing=download_if_missing)
     rrlyrae = fetch_rrlyrae_mags(**kwds)
     standards = fetch_sdss_S82standards(**kwds)
 
-    #------------------------------------------------------------
+    # ------------------------------------------------------------
     # perform color cuts on standard stars
     # these come from eqns 1-4 of Sesar et al 2010, ApJ 708:717
 
@@ -115,7 +115,7 @@ def fetch_rrlyrae_combined(data_home=None, download_if_missing=True):
                           (r_i > -0.15) & (r_i < 0.22) &
                           (i_z > -0.21) & (i_z < 0.25)]
 
-    #----------------------------------------------------------------------
+    # ----------------------------------------------------------------------
     # get magnitudes and colors; split into train and test sets
 
     mags_rr = np.vstack([rrlyrae[f + 'mag'] for f in 'ugriz'])
