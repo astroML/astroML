@@ -226,7 +226,6 @@ def completeness_contamination(predicted, true):
     matches = (predicted == true)
 
     tp = np.sum(matches & (true != 0), -1)
-    tn = np.sum(matches & (true == 0), -1)
     fp = np.sum(~matches & (true == 0), -1)
     fn = np.sum(~matches & (true != 0), -1)
 
