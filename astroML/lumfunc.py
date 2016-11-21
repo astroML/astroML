@@ -79,7 +79,7 @@ def Cminus(x, y, xmax, ymax):
     # renormalize
     cuml_y *= Nall / cuml_y[-1]
 
-    #now the x direction
+    # now the x direction
     i_sort = np.argsort(x)
     x = x[i_sort]
     y = y[i_sort]
