@@ -2,6 +2,7 @@ import numpy as np
 import warnings
 from astroML.utils import check_random_state
 
+
 def bootstrap(data, n_bootstraps, user_statistic, kwargs=None,
               pass_indices=False, random_state=None):
     """Compute bootstraped statistics of a dataset.
@@ -41,7 +42,8 @@ def bootstrap(data, n_bootstraps, user_statistic, kwargs=None,
     data = np.asarray(data)
     if data.ndim != 1:
         n_samples = data.shape[0]
-        warnings.warn("bootstrap data are n-dimensional: assuming ordered n_samples by n_attributes")
+        warnings.warn("bootstrap data are n-dimensional: assuming ordered "
+                      "n_samples by n_attributes")
     else:
         n_samples = data.size
 
@@ -56,7 +58,6 @@ def bootstrap(data, n_bootstraps, user_statistic, kwargs=None,
 
     # compute the statistic on the data
     return stat_bootstrap
-
 
 
 def jackknife(data, user_statistic, kwargs=None,
