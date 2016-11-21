@@ -228,7 +228,6 @@ def knuth_bin_width(data, return_bins=False, disp=True):
     """
     knuthF = KnuthF(data)
     dx0, bins0 = freedman_bin_width(data, True)
-    M0 = len(bins0) - 1
     M = optimize.fmin(knuthF, len(bins0), disp=disp)[0]
     bins = knuthF.bins(M)
     dx = bins[1] - bins[0]
