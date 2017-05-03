@@ -102,8 +102,8 @@ def freedman_bin_width(data, return_bins=False):
         raise ValueError("data should have more than three entries")
 
     dsorted = np.sort(data)
-    v25 = dsorted[n // 4 - 1]
-    v75 = dsorted[(3 * n) // 4 - 1]
+    v25 = dsorted[int(n // 4 - 1)]
+    v75 = dsorted[int((3 * n) // 4 - 1)]
 
     dx = 2 * (v75 - v25) * 1. / (n ** (1. / 3))
 
