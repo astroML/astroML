@@ -53,6 +53,8 @@ class GMMBayes(BaseNB):
         n_comp = np.zeros(len(self.classes_), dtype=int) + self.n_components
 
         for i, y_i in enumerate(unique_y):
+
+            #updated GMM() with GaussinMixture()
             self.gmms_[i] = GaussianMixture(n_comp[i], **self.kwargs).fit(X[y == y_i])
             self.class_prior_[i] = np.float(np.sum(y == y_i)) / n_samples
 
@@ -60,7 +62,8 @@ class GMMBayes(BaseNB):
 
     def _joint_log_likelihood(self, X):
 
+        #tranform output
         X = np.asarray(np.atleast_2d(X))
         logprobs = np.vstack([g.score_samples(X) for g in self.gmms_])
-        print((logprobs.T + np.log(self.class_prior_)).shape)
+
         return logprobs.T + np.log(self.class_prior_)
