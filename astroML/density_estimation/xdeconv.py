@@ -14,7 +14,8 @@ from time import time
 import numpy as np
 from scipy import linalg
 
-from sklearn.mixture import GMM
+#from sklearn.mixture import GMM
+from sklearn.mixture import GaussianMixture as GMM
 from ..utils import logsumexp, log_multivariate_gaussian, check_random_state
 
 
@@ -27,7 +28,7 @@ class XDGMM(object):
     ----------
     n_components: integer
         number of gaussian components to fit to the data
-    n_iter: integer (optional)
+    max_iter: integer (optional)
         number of EM iterations to perform (default=100)
     tol: float (optional)
         stopping criterion for EM iterations (default=1E-5)
@@ -36,10 +37,10 @@ class XDGMM(object):
     -----
     This implementation follows Bovy et al. arXiv 0905.2979
     """
-    def __init__(self, n_components, n_iter=100, tol=1E-5, verbose=False,
+    def __init__(self, n_components, max_iter=100, tol=1E-5, verbose=False,
                  random_state = None):
         self.n_components = n_components
-        self.n_iter = n_iter
+        self.max_iter = max_iter
         self.tol = tol
         self.verbose = verbose
         self.random_state = random_state
@@ -75,15 +76,15 @@ class XDGMM(object):
 
         # initialize components via a few steps of GMM
         # this doesn't take into account errors, but is a fast first-guess
-        gmm = GMM(self.n_components, n_iter=10, covariance_type='full',
+        gmm = GMM(self.n_components, max_iter=10, covariance_type='full',
                   random_state=self.random_state).fit(X)
         self.mu = gmm.means_
         self.alpha = gmm.weights_
-        self.V = gmm.covars_
+        self.V = gmm.covariances_
 
         logL = self.logL(X, Xerr)
 
-        for i in range(self.n_iter):
+        for i in range(self.max_iter):
             t0 = time()
             self._EMstep(X, Xerr)
             logL_next = self.logL(X, Xerr)
