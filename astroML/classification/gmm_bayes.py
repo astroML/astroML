@@ -20,7 +20,7 @@ class GMMBayes(BaseNB):
     n_components : int or list
         number of components to use in the gmm.  If specified as a list, it
         must match the number of class labels
-    other keywords are passed directly to GMM
+    other keywords are passed directly to GaussianMixture
     """
     def __init__(self, n_components=1, **kwargs):
         self.n_components = np.atleast_1d(n_components)
