@@ -239,7 +239,7 @@ def knuth_bin_width(data, return_bins=False, disp=True):
         return dx
 
 
-def histogram(a, bins=10, range=None, **kwargs):
+def histogram(a, bins=10, x_range=None, **kwargs):
     """Enhanced histogram
 
     This is a histogram function that enables the use of more sophisticated
@@ -259,7 +259,7 @@ def histogram(a, bins=10, range=None, **kwargs):
         'scotts' : use Scott's rule to determine bins
         'freedman' : use the Freedman-diaconis rule to determine bins
 
-    range : tuple or None (optional)
+    x_range : tuple or None (optional)
         the minimum and maximum range for the histogram.  If not specified,
         it will be (x.min(), x.max())
 
@@ -282,19 +282,20 @@ def histogram(a, bins=10, range=None, **kwargs):
 
     # if range is specified, we need to truncate the data for
     # the bin-finding routines
-    if (range is not None and (bins in ['blocks', 'knuth',
-                                        'scotts', 'freedman'])):
-        a = a[(a >= range[0]) & (a <= range[1])]
+    if (x_range is not None and (bins in ['blocks', 'knuth',
+                                          'scotts', 'freedman'])):
+        a = a[(a >= x_range[0]) & (a <= x_range[1])]
 
-    if bins == 'blocks':
-        bins = bayesian_blocks(a)
-    elif bins == 'knuth':
-        da, bins = knuth_bin_width(a, True)
-    elif bins == 'scotts':
-        da, bins = scotts_bin_width(a, True)
-    elif bins == 'freedman':
-        da, bins = freedman_bin_width(a, True)
-    elif isinstance(bins, str):
-        raise ValueError("unrecognized bin code: '%s'" % bins)
+    if isinstance(bins, str):
+        if bins == 'blocks':
+            bins = bayesian_blocks(a)
+        elif bins == 'knuth':
+            da, bins = knuth_bin_width(a, True)
+        elif bins == 'scotts':
+            da, bins = scotts_bin_width(a, True)
+        elif bins == 'freedman':
+            da, bins = freedman_bin_width(a, True)
+        else:
+            raise ValueError("unrecognized bin code: '%s'" % bins)
 
-    return np.histogram(a, bins, range, **kwargs)
+    return np.histogram(a, bins, x_range, **kwargs)
