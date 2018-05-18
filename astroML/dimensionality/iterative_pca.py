@@ -42,6 +42,7 @@ def iterative_pca(X, M, n_ev=5, n_iter=15, norm=None, full_output=False):
     coeffs: ndarray, size = (n_samples, n_ev)
         coefficients used to reconstruct X
     """
+    np.seterr(divide='ignore', invalid='ignore')  # ignore divide by 0 errors
     X = np.asarray(X, dtype=np.float)
     M = np.asarray(M, dtype=np.bool)
 
@@ -133,7 +134,7 @@ def iterative_pca(X, M, n_ev=5, n_iter=15, norm=None, full_output=False):
     # un-normalize X_recons
     norms = np.zeros(n_samples)
     for i in range(n_samples):
-        ratio_i = X[i][notM[i]] / X_recons[i][notM[i]]
+        ratio_i = X[i, notM[i]] / X_recons[i, notM[i]]
         norms[i] = ratio_i[~np.isnan(ratio_i)][0]
         X_recons[i] *= norms[i]
 
