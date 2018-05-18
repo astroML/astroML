@@ -64,8 +64,8 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
 
     _xax = ax.xaxis.get_visible()
     _yax = ax.yaxis.get_visible()
-    _patch = ax.axesPatch.get_visible()
-    ax.axesPatch.set_visible(False)
+    _patch = ax.patch.visible
+    ax.patch.set_visible(False)
     ax.xaxis.set_visible(False)
     ax.yaxis.set_visible(False)
 
