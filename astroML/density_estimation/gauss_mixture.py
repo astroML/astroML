@@ -25,7 +25,6 @@ class GaussianMixture1D(object):
         means = means.reshape(-1, 1)
         precisions = np.array([1/s/s for s in sigmas])
         weights = weights / weights.sum()
-        print('The weights are {}'.format(weights))
         self._gmm = GaussianMixture(len(means),
                                     weights_init=weights,
                                     means_init=means,
