@@ -35,6 +35,7 @@ def test_1D_density():
 
 
 def test_gaussian1d():
+    epsilon = 1e-6  # some fudge factor for numeric integration
     x = np.linspace(-6, 10, 1E3)
     means = np.array([-1.5, 0.0, 2.3])
     sigmas = np.array([1, 0.25, 3.8])
@@ -46,4 +47,4 @@ def test_gaussian1d():
     dx = x[1] - x[0]
     integral = np.sum(y*dx)
 
-    assert np.round(integral, 1) == 1
+    assert integral + epsilon >= 1.  # test that we are close to 1
