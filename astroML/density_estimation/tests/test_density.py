@@ -45,6 +45,7 @@ def test_gaussian1d():
     y = gauss.pdf(x)
 
     dx = x[1] - x[0]
-    integral = np.sum(y*dx)
+    integral = dx/2 * np.sum(y)
+    print('The integral value is {}'.format(integral))
 
-    assert integral + epsilon >= 1.  # test that we are close to 1
+    assert np.round(integral, 0) == 1  # make sure integral is close to 1
