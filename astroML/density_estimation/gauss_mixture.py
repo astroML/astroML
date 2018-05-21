@@ -23,7 +23,7 @@ class GaussianMixture1D(object):
         if not isinstance(means, np.ndarray):
             means = np.array(means)
         means = means.reshape(-1, 1)
-        precisions = np.array([1/s/s for s in sigmas])
+        precisions = np.array([1/s for s in sigmas])  # spherical this should be 1/sigma
         weights = weights.astype(float) / weights.sum()
         self._gmm = GaussianMixture(len(means),
                                     weights_init=weights,
