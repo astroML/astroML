@@ -183,7 +183,7 @@ def wiener_filter(t, h, signal='gaussian', noise='flat', return_PSDs=False,
     # fit signal/noise params if necessary
     if signal_params is None:
         amp_guess = np.max(PSD[1:])
-        width_guess = np.min(np.abs(f[PSD[1:] < np.mean(PSD[1:])]))
+        width_guess = np.min(np.abs(f[PSD < np.mean(PSD)]))
         signal_params = (amp_guess, width_guess)
     if noise_params is None:
         noise_params = (np.mean(PSD[1:]),)
