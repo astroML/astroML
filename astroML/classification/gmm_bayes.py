@@ -54,7 +54,7 @@ class GMMBayes(BaseNB):
 
         for i, y_i in enumerate(unique_y):
 
-            #updated GMM() with GaussinMixture()
+            #updated GMM() with GaussianMixture()
             self.gmms_[i] = GaussianMixture(n_comp[i], **self.kwargs).fit(X[y == y_i])
             self.class_prior_[i] = np.float(np.sum(y == y_i)) / n_samples
 
