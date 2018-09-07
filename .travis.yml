@@ -1,36 +1,40 @@
-language: python
+language: generic
 
 # Setting sudo to false opts in to Travis-CI container-based builds.
 sudo: false
 
-python:
-  - 2.7
-  - 3.4
-  - 3.5
-  - 3.6
-  - 3.7
+os: linux
 
 env:
-  - DEPS="numpy scipy scikit-learn astropy nose matplotlib pymc"
+    global:
+        # The following versions are the 'default' for tests, unless
+        # overridden underneath. They are defined here in order to save having
+        # to repeat them for all configurations.
+        - PYTHON_VERSION=3.6
+        - NUMPY_VERSON=stable
+        - ASTROPY_VERSION=stable
+        - CONDA_DEPENDENCIES='scipy scikit-learn<0.19 nose matplotlib pymc'
+        - PIP_DEPENDENCIES='astroML_addons'
+
+matrix:
+    fast_finish: true
+
+    include:
+        - env: PYTHON_VERSION=3.7
+
+        - env: NUMPY_VERSION=1.14
+
+        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.13
+
+        - env: PYTHON_VERSION=3.4
+
+        - env: PYTHON_VERSION=2.7
+
 
 install:
-  - conda create -n testenv --yes python=$TRAVIS_PYTHON_VERSION
-  - source activate testenv
-  - conda install --yes $DEPS
-  - pip install astroML_addons
-  - python setup.py install
-
-before_install:
-  # then install python version to test
-  # http://conda.pydata.org/docs/travis.html#the-travis-yml-file
-  - wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  # miniconda is not always up-to-date with conda.
-  - conda update -q conda
-  - conda info -a
+    - git clone git://github.com/astropy/ci-helpers.git
+    - source ci-helpers/travis/setup_conda.sh
+    - python setup.py install
 
 script:
-  - nosetests astroML
+    - nosetests astroML
