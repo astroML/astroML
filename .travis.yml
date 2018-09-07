@@ -5,6 +5,14 @@ sudo: false
 
 os: linux
 
+# The apt packages below are needed for sphinx builds. A full list of
+# packages that can be included can be found here:
+# https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
+addons:
+    apt:
+        packages:
+            - gfortran
+
 env:
     global:
         # The following versions are the 'default' for tests, unless
@@ -15,6 +23,7 @@ env:
         - ASTROPY_VERSION=stable
         - CONDA_DEPENDENCIES='scipy scikit-learn<0.19 nose matplotlib pymc'
         - PIP_DEPENDENCIES='astroML_addons'
+        - DEBUG=true
 
 matrix:
     fast_finish: true
