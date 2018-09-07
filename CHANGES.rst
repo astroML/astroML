@@ -1,3 +1,8 @@
+0.3.1
+=====
+- The book and paper figures has been moved out to their separate
+  repository (``astroML_figures``).
+
 0.3
 ===
 - Add support for Python 3
