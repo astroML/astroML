@@ -1,6 +1,6 @@
 """
-SDSS Stripe 82 Moving Object Catalog
-------------------------------------
+SDSS Moving Object Catalog
+--------------------------
 
 This plot demonstrates how to fetch data from the SDSS Moving object catalog,
 and plot using a multicolor plot similar to that used in figures 3-4 of [1]_
