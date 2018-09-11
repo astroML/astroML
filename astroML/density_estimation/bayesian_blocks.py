@@ -70,7 +70,7 @@ class Events(FitnessFunc):
     ----------
     p0 : float
         False alarm probability, used to compute the prior on N
-        (see eq. 21 of Scargle 2012).  Default prior is for p0 = 0.
+        (see eq. 21 of Scargle 2012).  Default prior is for p0 = 0.05.
     gamma : float or None
         If specified, then use this gamma to compute the general prior form,
         p ~ gamma^N.  If gamma is specified, p0 is ignored.
