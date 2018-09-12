@@ -15,11 +15,8 @@ addons:
 
 env:
     global:
-        # The following versions are the 'default' for tests, unless
-        # overridden underneath. They are defined here in order to save having
-        # to repeat them for all configurations.
         - PYTHON_VERSION=3.6
-        - NUMPY_VERSON=stable
+        - NUMPY_VERSION=1.12
         - ASTROPY_VERSION=stable
         - CONDA_DEPENDENCIES='scipy scikit-learn<0.19 nose matplotlib pymc'
         - PIP_DEPENDENCIES='astroML_addons'
@@ -29,16 +26,13 @@ matrix:
     fast_finish: true
 
     include:
-        - env: PYTHON_VERSION=3.7
+        - env: NUMPY_VERSION=1.11
 
-        - env: NUMPY_VERSION=1.14
+        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.10
 
-        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.13
-
-        - env: PYTHON_VERSION=3.4
+        - env: PYTHON_VERSION=3.4 NUMPY_VERSION=1.9
 
         - env: PYTHON_VERSION=2.7
-
 
 install:
     - git clone git://github.com/astropy/ci-helpers.git
