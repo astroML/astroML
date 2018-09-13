@@ -16,7 +16,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from astroML.datasets import fetch_great_wall
-from astroML.density_estimation import KDE, KNeighborsDensity
+from astroML.density_estimation import KNeighborsDensity
 
 #------------------------------------------------------------
 # Fetch the great wall data

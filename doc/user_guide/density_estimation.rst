@@ -99,12 +99,11 @@ References
 
 Kernel Density Estimation
 -------------------------
-Kernel Density estimation is a non-parametric density estimation technique
-which can be very powerful.  It is implemented in astroML using the object
-:class:`astroML.density_estimation.KDE`, though this estimator is deprecated
-in favor of :class:`sklearn.neighbors.KernelDensity`, which was added in
-Scikit-learn version 0.14.
-See :ref:`book_fig_chapter6_fig_great_wall` ,
+Kernel Density estimation (KDE) is a non-parametric density estimation
+technique which can be very powerful.  The estimator has been deprecated and
+removed from astroML in favor of :class:`sklearn.neighbors.KernelDensity`,
+which was added in Scikit-learn version 0.14.  See
+:ref:`book_fig_chapter6_fig_great_wall` ,
 :ref:`book_fig_chapter6_fig_great_wall_KDE` or
 :ref:`book_fig_chapter6_fig_density_estimation` for examples of how kernel
 density estimation is used.
