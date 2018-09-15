@@ -1,4 +1,4 @@
-from .density_estimation import KDE, KNeighborsDensity
+from .density_estimation import KNeighborsDensity
 from .xdeconv import XDGMM
 from .bayesian_blocks import bayesian_blocks
 from .histtools import\

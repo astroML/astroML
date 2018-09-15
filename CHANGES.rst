@@ -1,7 +1,24 @@
+0.4
+===
+
+New Features
+------------
+
+Bug Fixes
+---------
+
+API Changes and Other Changes
+-----------------------------
+
+- Removed deprecated KDE class. [#119]
+
+
 0.3.1
 =====
+
 - The book and paper figures has been moved out to their separate
   repository (``astroML_figures``).
+
 
 0.3
 ===

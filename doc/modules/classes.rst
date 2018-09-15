@@ -67,7 +67,6 @@ Density Estimation
    :template: class.rst
 
    density_estimation.XDGMM
-   density_estimation.KDE
    density_estimation.KNeighborsDensity
    density_estimation.EmpiricalDistribution
    density_estimation.FunctionDistribution
@@ -158,7 +157,7 @@ Periodic Time Series
 .. autosummary::
    :toctree: generated/
    :template: function.rst
-   
+
    time_series.lomb_scargle
    time_series.lomb_scargle_bootstrap
    time_series.multiterm_periodogram
@@ -186,7 +185,7 @@ Aperiodic Time Series
    time_series.generate_power_law
    time_series.generate_damped_RW
 
-   
+
 Statistical Functions: :mod:`astroML.stats`
 ===========================================
 
@@ -210,8 +209,8 @@ Statistical Functions: :mod:`astroML.stats`
    stats.bivariate_normal
    stats.trunc_exp
    stats.linear
-   
-   
+
+
 Dimensionality Reduction: :mod:`astroML.dimensionality`
 =======================================================
 
