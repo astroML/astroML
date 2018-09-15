@@ -20,3 +20,6 @@ book_figures/*/*.pkl
 
 # Vim temporaries
 .*.sw[op]
+
+# PyCharm
+.idea
