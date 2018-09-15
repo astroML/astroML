@@ -1,36 +1,43 @@
-language: python
+language: generic
 
 # Setting sudo to false opts in to Travis-CI container-based builds.
 sudo: false
 
-python:
-  - 2.7
-  - 3.4
-  - 3.5
-  - 3.6
-  - 3.7
+os: linux
+
+# The apt packages below are needed for sphinx builds. A full list of
+# packages that can be included can be found here:
+# https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
+addons:
+    apt:
+        packages:
+            - gfortran
 
 env:
-  - DEPS="numpy scipy scikit-learn astropy nose matplotlib pymc"
+    global:
+        - PYTHON_VERSION=3.6
+        - NUMPY_VERSION=1.12
+        - ASTROPY_VERSION=stable
+        - CONDA_DEPENDENCIES='scipy scikit-learn<0.19 nose matplotlib pymc'
+        - PIP_DEPENDENCIES='astroML_addons'
+        - DEBUG=true
+
+matrix:
+    fast_finish: true
+
+    include:
+        - env: NUMPY_VERSION=1.11
+
+        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.10
+
+        - env: PYTHON_VERSION=3.4 NUMPY_VERSION=1.9
+
+        - env: PYTHON_VERSION=2.7
 
 install:
-  - conda create -n testenv --yes python=$TRAVIS_PYTHON_VERSION
-  - source activate testenv
-  - conda install --yes $DEPS
-  - pip install astroML_addons
-  - python setup.py install
-
-before_install:
-  # then install python version to test
-  # http://conda.pydata.org/docs/travis.html#the-travis-yml-file
-  - wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  # miniconda is not always up-to-date with conda.
-  - conda update -q conda
-  - conda info -a
+    - git clone git://github.com/astropy/ci-helpers.git
+    - source ci-helpers/travis/setup_conda.sh
+    - python setup.py install
 
 script:
-  - nosetests astroML
+    - nosetests astroML
