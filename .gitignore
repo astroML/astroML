@@ -23,3 +23,7 @@ book_figures/*/*.pkl
 
 # PyCharm
 .idea
+
+# pyenv
+.python-version
+
