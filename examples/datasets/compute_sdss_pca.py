@@ -73,6 +73,7 @@ def fetch_and_shift_spectra(n_spectra,
         if np.all(spec_rebin.spectrum == 0):
             num_skipped += 1
             print("%i, %i, %i is all zero" % (plate[i], mjd[i], fiber[i]))
+            i += 1
             continue
 
         spec_cln[i] = spec.spec_cln
