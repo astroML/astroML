@@ -33,7 +33,7 @@ class GaussianMixture1D(object):
 
     def pdf(self, x):
         """Compute probability distribution"""
-        # logprob, responsibilities = self._gmm.eval(x)
+
         if x.ndim == 1:
             x = x[:, np.newaxis]
         logprob = self._gmm.score_samples(x)
@@ -41,7 +41,7 @@ class GaussianMixture1D(object):
 
     def pdf_individual(self, x):
         """Compute probability distribution of each component"""
-        # logprob, responsibilities = self._gmm.eval(x)
+
         if x.ndim == 1:
             x = x[:, np.newaxis]
         logprob = self._gmm.score_samples(x)

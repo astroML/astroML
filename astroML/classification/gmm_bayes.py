@@ -4,23 +4,29 @@ GMM Bayes
 This implements generative classification based on mixtures of gaussians
 to model the probability density of each class.
 """
+
+import warnings
 import numpy as np
+
 from sklearn.naive_bayes import BaseNB
 from sklearn.mixture import GaussianMixture
 
 
 class GMMBayes(BaseNB):
-    """GMM Bayes Classifier
+    """GaussianMixture Bayes Classifier
+
     This is a generalization to the Naive Bayes classifier: rather than
     modeling the distribution of each class with axis-aligned gaussians,
     GMMBayes models the distribution of each class with mixtures of
     gaussians.  This can lead to better classification in some cases.
+
     Parameters
     ----------
     n_components : int or list
-        number of components to use in the gmm.  If specified as a list, it
-        must match the number of class labels
-    other keywords are passed directly to GaussianMixture
+        number of components to use in the GaussianMixture. If specified as
+        a list, it must match the number of class labels. Default is 1.
+    **kwargs : dict, optional
+        other keywords are passed directly to GaussianMixture
     """
 
     def __init__(self, n_components=1, **kwargs):
@@ -53,7 +59,6 @@ class GMMBayes(BaseNB):
 
         for i, y_i in enumerate(unique_y):
             if n_comp[i] > X[y == y_i].shape[0]:
-                import warnings
                 warnstr = ("Expected n_samples >= n_components but got "
                            "n_samples={0}, n_components={1}, "
                            "n_components set to {0}.")
@@ -66,7 +71,6 @@ class GMMBayes(BaseNB):
 
     def _joint_log_likelihood(self, X):
 
-        #tranform output
         X = np.asarray(np.atleast_2d(X))
         logprobs = np.array([g.score_samples(X) for g in self.gmms_]).T
         return logprobs + np.log(self.class_prior_)

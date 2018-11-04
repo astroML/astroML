@@ -14,8 +14,7 @@ from time import time
 import numpy as np
 from scipy import linalg
 
-#from sklearn.mixture import GMM
-from sklearn.mixture import GaussianMixture as GMM
+from sklearn.mixture import GaussianMixture
 from ..utils import logsumexp, log_multivariate_gaussian, check_random_state
 
 
@@ -74,10 +73,11 @@ class XDGMM(object):
         # assume full covariances of data
         assert Xerr.shape == (n_samples, n_features, n_features)
 
-        # initialize components via a few steps of GMM
+        # initialize components via a few steps of GaussianMixture
         # this doesn't take into account errors, but is a fast first-guess
-        gmm = GMM(self.n_components, max_iter=10, covariance_type='full',
-                  random_state=self.random_state).fit(X)
+        gmm = GaussianMixture(self.n_components, max_iter=10,
+                              covariance_type='full',
+                              random_state=self.random_state).fit(X)
         self.mu = gmm.means_
         self.alpha = gmm.weights_
         self.V = gmm.covariances_
