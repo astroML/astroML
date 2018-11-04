@@ -5,12 +5,11 @@ import numpy as np
 
 from scipy import sparse
 from sklearn.neighbors import kneighbors_graph
-from sklearn.mixture import GMM
 
 try:
-    from scipy.sparse.csgraph import \
-        minimum_spanning_tree, connected_components
-except:
+    from scipy.sparse.csgraph import (
+        minimum_spanning_tree, connected_components)
+except ImportError:
     raise ValueError("scipy v0.11 or greater required "
                      "for minimum spanning tree")
 
@@ -175,8 +174,6 @@ def get_graph_segments(X, G):
     X = np.asarray(X)
     if (X.ndim != 2) or (X.shape[1] != 2):
         raise ValueError('shape of X should be (n_samples, 2)')
-
-    n_samples = X.shape[0]
 
     G = sparse.coo_matrix(G)
     A = X[G.row].T
