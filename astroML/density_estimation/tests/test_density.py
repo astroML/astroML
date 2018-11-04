@@ -30,7 +30,6 @@ def test_1D_density():
 
 
 def test_gaussian1d():
-    epsilon = 1e-6  # some fudge factor for numeric integration
     x = np.linspace(-6, 10, 1E3)
     means = np.array([-1.5, 0.0, 2.3])
     sigmas = np.array([1, 0.25, 3.8])
@@ -39,7 +38,10 @@ def test_gaussian1d():
     gauss = GaussianMixture1D(means=means, sigmas=sigmas, weights=weights)
     y = gauss.pdf(x)
 
+    # Check whether sampling works
+    gauss.sample(10)
+
     dx = x[1] - x[0]
     integral = np.sum(y*dx)
 
-    assert integral + epsilon >= 1.  # test that we are close to 1
+    assert_allclose(integral, 1., atol=0.02)
