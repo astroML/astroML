@@ -78,12 +78,12 @@ The core ``astroML`` package requires the following:
 - Python_ version 2.6-2.7 and 3.3+
 - Numpy_ >= 1.4
 - Scipy_ >= 0.7
-- Scikit-learn_ >= 0.10
+- Scikit-learn_ >= 0.18
 - Matplotlib_ >= 0.99
 - AstroPy_ > 0.2.5
   AstroPy is required to read Flexible Image Transport
   System (FITS) files, which are used by several datasets.
-  
+
 This configuration matches the Ubuntu 10.04 LTS release from April 2010,
 with the addition of scikit-learn.
 
