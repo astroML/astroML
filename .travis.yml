@@ -26,11 +26,15 @@ matrix:
     fast_finish: true
 
     include:
-        - env: NUMPY_VERSION=1.11
+        - env: NUMPY_VERSION=1.15 PYTHON_VERSION=3.7
 
-        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.10
+        - env: NUMPY_VERSION=1.14 PYTHON_VERSION=3.7
 
-        - env: PYTHON_VERSION=3.4 NUMPY_VERSION=1.9
+        - env: NUMPY_VERSION=1.13
+
+        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.11
+
+        - env: PYTHON_VERSION=3.4 NUMPY_VERSION=1.10 SCIKIT_LEARN_VERSION=0.18
 
         - env: PYTHON_VERSION=2.7
 
