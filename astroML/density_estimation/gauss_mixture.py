@@ -16,12 +16,14 @@ class GaussianMixture1D(object):
         weight of component distributions (default = 1)
     """
     def __init__(self, means=0, sigmas=1, weights=1):
-        components = len(means)
+        data = np.array([t for t in np.broadcast(means, sigmas, weights)])
+
+        components = data.shape[0]
         self._gmm = GaussianMixture(components, covariance_type='spherical')
 
-        self._gmm.weights_ = weights / weights.sum()
-        self._gmm.means_ = means.reshape(-1, 1)
-        self._gmm.covariances_ = sigmas ** 2
+        self._gmm.means_ = data[:, :1]
+        self._gmm.weights_ = data[:, 2] / data[:, 2].sum()
+        self._gmm.covariances_ = data[:, 1] ** 2
 
         self._gmm.precisions_cholesky_ = 1 / np.sqrt(self._gmm.covariances_)
 
