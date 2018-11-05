@@ -12,6 +12,8 @@ API Changes and Other Changes
 
 - Removed deprecated KDE class. [#119]
 
+- Switched to use the updated scikit-learn API for GaussianMixture. This
+  change depends on scikit-learn 0.18+. [#125]
 
 0.3.1
 =====
