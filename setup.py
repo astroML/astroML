@@ -14,7 +14,7 @@ LICENSE = 'BSD'
 import astroML
 VERSION = astroML.__version__
 
-install_requires = ['scikit-learn>=0.10',
+install_requires = ['scikit-learn>=0.18',
                     'numpy>=1.4',
                     'scipy>=0.7',
                     'matplotlib>=0.99',

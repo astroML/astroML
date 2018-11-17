@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.mixture import GMM
+from sklearn.mixture import GaussianMixture
 
 
 class GaussianMixture1D(object):
@@ -18,12 +18,16 @@ class GaussianMixture1D(object):
     def __init__(self, means=0, sigmas=1, weights=1):
         data = np.array([t for t in np.broadcast(means, sigmas, weights)])
 
-        self._gmm = GMM(data.shape[0])
-        self._gmm.fit = None  # disable fit method for safety
+        components = data.shape[0]
+        self._gmm = GaussianMixture(components, covariance_type='spherical')
 
         self._gmm.means_ = data[:, :1]
-        self._gmm.covars_ = data[:, 1:2] ** 2
-        self._gmm.weights = data[:, 2] / data[:, 2].sum()
+        self._gmm.weights_ = data[:, 2] / data[:, 2].sum()
+        self._gmm.covariances_ = data[:, 1] ** 2
+
+        self._gmm.precisions_cholesky_ = 1 / np.sqrt(self._gmm.covariances_)
+
+        self._gmm.fit = None  # disable fit method for safety
 
     def sample(self, size):
         """Random sample"""
@@ -31,16 +35,17 @@ class GaussianMixture1D(object):
 
     def pdf(self, x):
         """Compute probability distribution"""
-        # logprob, responsibilities = self._gmm.eval(x)
+
         if x.ndim == 1:
             x = x[:, np.newaxis]
-        logprob, responsibilities = self._gmm.score_samples(x)
+        logprob = self._gmm.score_samples(x)
         return np.exp(logprob)
 
     def pdf_individual(self, x):
         """Compute probability distribution of each component"""
-        # logprob, responsibilities = self._gmm.eval(x)
+
         if x.ndim == 1:
             x = x[:, np.newaxis]
-        logprob, responsibilities = self._gmm.score_samples(x)
+        logprob = self._gmm.score_samples(x)
+        responsibilities = self._gmm.predict_proba(x)
         return responsibilities * np.exp(logprob[:, np.newaxis])

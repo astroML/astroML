@@ -27,3 +27,5 @@ book_figures/*/*.pkl
 # pyenv
 .python-version
 
+.coverage
+.pytest_cache

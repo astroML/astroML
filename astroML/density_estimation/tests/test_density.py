@@ -38,7 +38,10 @@ def test_gaussian1d():
     gauss = GaussianMixture1D(means=means, sigmas=sigmas, weights=weights)
     y = gauss.pdf(x)
 
+    # Check whether sampling works
+    gauss.sample(10)
+
     dx = x[1] - x[0]
     integral = np.sum(y*dx)
 
-    assert np.round(integral, 1) == 1
+    assert_allclose(integral, 1., atol=0.02)
