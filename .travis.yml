@@ -20,6 +20,7 @@ env:
         - CONDA_DEPENDENCIES='scipy scikit-learn matplotlib pymc'
         - PIP_DEPENDENCIES='astroML_addons'
         - DEBUG=true
+        - PYTEST_VERSION='<4'
 
 matrix:
     fast_finish: true
