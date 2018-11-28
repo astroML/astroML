@@ -64,8 +64,8 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
 
     _xax = ax.xaxis.get_visible()
     _yax = ax.yaxis.get_visible()
-    _patch = ax.axesPatch.get_visible()
-    ax.axesPatch.set_visible(False)
+    _patch = ax.patch.get_visible()
+    ax.patch.set_visible(False)
     ax.xaxis.set_visible(False)
     ax.yaxis.set_visible(False)
 
@@ -94,7 +94,7 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
         ax.spines[k].set_visible(_sp[k])
     for t, v in zip(ax.texts, _txt_vis):
         t.set_visible(v)
-    ax.axesPatch.set_visible(_patch)
+    ax.patch.set_visible(_patch)
     ax.xaxis.set_visible(_xax)
     ax.yaxis.set_visible(_yax)
 
