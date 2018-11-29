@@ -253,15 +253,16 @@ def histogram(a, bins=10, range=None, **kwargs):
                                         'scotts', 'freedman'])):
         a = a[(a >= range[0]) & (a <= range[1])]
 
-    if bins == 'blocks':
-        bins = astropy_stats.bayesian_blocks(a)
-    elif bins == 'knuth':
-        da, bins = astropy_stats.knuth_bin_width(a, True)
-    elif bins == 'scotts':
-        da, bins = astropy_stats.scott_bin_width(a, True)
-    elif bins == 'freedman':
-        da, bins = astropy_stats.freedman_bin_width(a, True)
-    elif isinstance(bins, str):
-        raise ValueError("unrecognized bin code: '%s'" % bins)
+    if isinstance(bins, str):
+        if bins == 'blocks':
+            bins = astropy_stats.bayesian_blocks(a)
+        elif bins == 'knuth':
+            da, bins = astropy_stats.knuth_bin_width(a, True)
+        elif bins == 'scotts':
+            da, bins = astropy_stats.scott_bin_width(a, True)
+        elif bins == 'freedman':
+            da, bins = astropy_stats.freedman_bin_width(a, True)
+        else:
+            raise ValueError("unrecognized bin code: '{}'".format(bins))
 
     return np.histogram(a, bins, range, **kwargs)
