@@ -6,7 +6,7 @@ try:
 except ImportError:
     # When using astropy 2.0
     from astropy.tests.pytest_plugins import (pytest_report_header,
-                                              PYTEST_HEADER_MODUULES,
+                                              PYTEST_HEADER_MODULES,
                                               TESTED_VERSIONS)
 
 try:
