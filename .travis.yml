@@ -17,9 +17,10 @@ env:
     global:
         - PYTHON_VERSION=3.7
         - ASTROPY_VERSION=stable
-        - CONDA_DEPENDENCIES='scipy scikit-learn nose matplotlib pymc'
+        - CONDA_DEPENDENCIES='scipy scikit-learn matplotlib pymc'
         - PIP_DEPENDENCIES='astroML_addons'
         - DEBUG=true
+        - PYTEST_VERSION='<4'
 
 matrix:
     fast_finish: true
@@ -37,7 +38,7 @@ matrix:
 
         - env: PYTHON_VERSION=3.4 NUMPY_VERSION=1.10 SCIKIT_LEARN_VERSION=0.18
 
-        - env: PYTHON_VERSION=3.4 CONDA_DEPENDENCIES='scipy matplotlib nose pymc' NUMPY_VERSION=1.9
+        - env: PYTHON_VERSION=3.4 CONDA_DEPENDENCIES='scipy matplotlib pymc' NUMPY_VERSION=1.9
                PIP_DEPENDENCIES='astropy==2.0.9 scikit-learn==0.18'
 
         - env: PYTHON_VERSION=2.7
@@ -48,4 +49,4 @@ install:
     - python setup.py install
 
 script:
-    - nosetests astroML
+    - pytest astroML
