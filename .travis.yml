@@ -28,15 +28,16 @@ matrix:
     include:
         - env: NUMPY_VERSION=1.15
 
-        - env: NUMPY_VERSION=1.14
+          env: NUMPY_VERSION=1.14
 
         - env: PYTHON_VERSION=3.6 NUMPY_VERSION=1.13
 
         - env: PYTHON_VERSION=3.6 NUMPY_VERSION=1.12
 
-        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.11
+        - os: osx
+          env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.11
 
-        - env: PYTHON_VERSION=3.4 NUMPY_VERSION=1.10 SCIKIT_LEARN_VERSION=0.18
+        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.10 SCIKIT_LEARN_VERSION=0.18
 
         - env: PYTHON_VERSION=3.4 CONDA_DEPENDENCIES='scipy matplotlib pymc' NUMPY_VERSION=1.9
                PIP_DEPENDENCIES='astropy==2.0.9 scikit-learn==0.18'
