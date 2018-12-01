@@ -1,22 +1,19 @@
+import pytest
 import numpy as np
 from numpy.testing import assert_allclose
 from astroML.fourier import\
     FT_continuous, IFT_continuous, PSD_continuous, sinegauss, sinegauss_FT
 
 
-def check_wavelets(t0, f0, Q, t):
+@pytest.mark.parametrize('t0', [-1, 0, 1])
+@pytest.mark.parametrize('f0', [1, 2])
+@pytest.mark.parametrize('Q', [1, 2])
+def test_wavelets(t0, f0, Q):
+    t = np.linspace(-10, 10, 10000)
     h = sinegauss(t, t0, f0, Q)
     f, H = FT_continuous(t, h)
     H2 = sinegauss_FT(f, t0, f0, Q)
     assert_allclose(H, H2, atol=1E-8)
-
-
-def test_wavelets():
-    t = np.linspace(-10, 10, 10000)
-    for t0 in (-1, 0, 1):
-        for f0 in (1, 2):
-            for Q in (1, 2):
-                yield (check_wavelets, t0, f0, Q, t)
 
 
 def sinegauss(t, t0, f0, a):
@@ -43,49 +40,37 @@ def sinegauss_PSD(f, t0, f0, a):
     return Pf + Pmf
 
 
-def check_FT_continuous(a, t0, f0, method, t):
+@pytest.mark.parametrize('a', [1, 2])
+@pytest.mark.parametrize('t0', [-2, 0, 2])
+@pytest.mark.parametrize('f0', [-1, 0, 1])
+@pytest.mark.parametrize('method', [1, 2])
+def test_FT_continuous(a, t0, f0, method):
+    t = np.linspace(-9, 10, 10000)
     h = sinegauss(t, t0, f0, a)
     f, H = FT_continuous(t, h, method=method)
     assert_allclose(H, sinegauss_FT(f, t0, f0, a), atol=1E-12)
 
 
-def test_FT_continuous():
+@pytest.mark.parametrize('a', [1, 2])
+@pytest.mark.parametrize('t0', [-2, 0, 2])
+@pytest.mark.parametrize('f0', [-1, 0, 1])
+@pytest.mark.parametrize('method', [1, 2])
+def test_PSD_continuous(a, t0, f0, method):
     t = np.linspace(-9, 10, 10000)
-    for a in (1, 2):
-        for t0 in (-2, 0, 2):
-            for f0 in (-1, 0, 1):
-                for method in (1, 2):
-                    yield (check_FT_continuous, a, t0, f0, method, t)
-
-
-def check_PSD_continuous(a, t0, f0, method, t):
     h = sinegauss(t, t0, f0, a)
     f, P = PSD_continuous(t, h, method=method)
     assert_allclose(P, sinegauss_PSD(f, t0, f0, a), atol=1E-12)
 
 
-def test_PSD_continuous():
-    t = np.linspace(-9, 10, 10000)
-    for a in (1, 2):
-        for t0 in (-2, 0, 2):
-            for f0 in (-1, 0, 1):
-                for method in (1, 2):
-                    yield (check_PSD_continuous, a, t0, f0, method, t)
-
-
-def check_IFT_continuous(a, t0, f0, method, f):
+@pytest.mark.parametrize('a', [1, 2])
+@pytest.mark.parametrize('t0', [-2, 0, 2])
+@pytest.mark.parametrize('f0', [-1, 0, 1])
+@pytest.mark.parametrize('method', [1, 2])
+def check_IFT_continuous(a, t0, f0, method):
+    f = np.linspace(-9, 10, 10000)
     H = sinegauss_FT(f, t0, f0, a)
     t, h = IFT_continuous(f, H, method=method)
     assert_allclose(h, sinegauss(t, t0, f0, a), atol=1E-12)
-
-
-def test_IFT_continuous():
-    f = np.linspace(-9, 10, 10000)
-    for a in (1, 2):
-        for t0 in (-2, 0, 2):
-            for f0 in (-1, 0, 1):
-                for method in (1, 2):
-                    yield (check_IFT_continuous, a, t0, f0, method, f)
 
 
 def test_IFT_FT():

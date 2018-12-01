@@ -1,21 +1,18 @@
+import pytest
 import numpy as np
 from numpy.testing import assert_, assert_almost_equal
 from astroML.time_series import generate_power_law, generate_damped_RW
 
 
-def check_generate_args(N, dt, beta, generate_complex):
+@pytest.mark.parametrize("N", [10, 11])
+@pytest.mark.parametrize("generate_complex", [True, False])
+def test_generate_args(N, generate_complex):
+    dt = 0.1
+    beta = 2
     x = generate_power_law(N, dt, beta, generate_complex)
 
     assert_(bool(generate_complex) == np.iscomplexobj(x))
     assert_(len(x) == N)
-
-
-def test_generate_args():
-    dt = 0.1
-    beta = 2
-    for N in [10, 11]:
-        for generate_complex in [True, False]:
-            yield (check_generate_args, N, dt, beta, generate_complex)
 
 
 def test_generate_RW():

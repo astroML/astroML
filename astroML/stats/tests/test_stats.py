@@ -1,8 +1,9 @@
 from __future__ import print_function, division
 
+import pytest
 import numpy as np
 from numpy.testing import (assert_array_almost_equal, assert_array_equal,
-                           assert_equal, assert_allclose)
+                           assert_allclose)
 from astroML.stats import (mean_sigma, median_sigmaG, sigmaG,
                            fit_bivariate_normal)
 from astroML.stats.random import bivariate_normal, trunc_exp, linear
@@ -10,7 +11,13 @@ from astroML.stats.random import bivariate_normal, trunc_exp, linear
 
 #---------------------------------------------------------------------------
 # Check that mean_sigma() returns the same values as np.mean() and np.std()
-def check_mean_sigma(a, axis=None, ddof=0):
+@pytest.mark.parametrize("a_shape", [(4, ), (4, 5), (4, 5, 6)])
+@pytest.mark.parametrize("axis", [None, 0])
+@pytest.mark.parametrize("ddof", [0, 1])
+def test_mean_sigma(a_shape, axis, ddof):
+    np.random.seed(0)
+
+    a = np.random.random(a_shape)
     mu1, sigma1 = mean_sigma(a, axis=axis,
                              ddof=ddof)
 
@@ -21,21 +28,14 @@ def check_mean_sigma(a, axis=None, ddof=0):
     assert_array_almost_equal(sigma1, sigma2)
 
 
-def test_mean_sigma():
-    np.random.seed(0)
-
-    for shape in [(4, ), (4, 5), (4, 5, 6)]:
-        a = np.random.random(shape)
-        for axis in (None, 0):
-            for ddof in (0, 1):
-                yield (check_mean_sigma, a, axis, ddof)
-
-
 #---------------------------------------------------------------------------
 # Check that the keepdims argument works as expected
 #  we'll later compare median_sigmaG to these results, so that
 #  is effectively tested as well.
-def check_mean_sigma_keepdims(a, axis):
+@pytest.mark.parametrize("axis", [None, 0, 1, 2])
+def test_mean_sigma_keepdims(axis):
+    np.random.seed(0)
+    a = np.random.random((4, 5, 6))
     mu1, sigma1 = mean_sigma(a, axis, keepdims=False)
     mu2, sigma2 = mean_sigma(a, axis, keepdims=True)
 
@@ -46,17 +46,14 @@ def check_mean_sigma_keepdims(a, axis):
     assert_array_equal(np.broadcast(a, sigma2).shape, a.shape)
 
 
-def test_mean_sigma_keepdims():
-    np.random.seed(0)
-    a = np.random.random((4, 5, 6))
-    for axis in [None, 0, 1, 2]:
-        yield (check_mean_sigma_keepdims, a, axis)
-
-
 #---------------------------------------------------------------------------
 # Check that median_sigmaG matches the values computed using np.percentile
 # and np.median
-def check_median_sigmaG(a, axis):
+@pytest.mark.parametrize("axis", [None, 0, 1, 2])
+def test_median_sigmaG(axis):
+    np.random.seed(0)
+    a = np.random.random((20, 40, 60))
+
     from scipy.special import erfinv
     factor = 1. / (2 * np.sqrt(2) * erfinv(0.5))
 
@@ -69,14 +66,11 @@ def check_median_sigmaG(a, axis):
     assert_array_almost_equal(sigmaG1, sigmaG2)
 
 
-def test_median_sigmaG():
+@pytest.mark.parametrize("axis", [None, 0, 1, 2])
+def test_sigmaG(axis):
     np.random.seed(0)
     a = np.random.random((20, 40, 60))
-    for axis in [None, 0, 1, 2]:
-        yield (check_median_sigmaG, a, axis)
 
-
-def check_sigmaG(a, axis):
     from scipy.special import erfinv
     factor = 1. / (2 * np.sqrt(2) * erfinv(0.5))
 
@@ -87,17 +81,15 @@ def check_sigmaG(a, axis):
     assert_array_almost_equal(sigmaG1, sigmaG2)
 
 
-def test_sigmaG():
-    np.random.seed(0)
-    a = np.random.random((20, 40, 60))
-    for axis in [None, 0, 1, 2]:
-        yield (check_sigmaG, a, axis)
-
-
 #---------------------------------------------------------------------------
 # Check that median_sigmaG() is a good approximation of mean_sigma()
 # for normally-distributed data.
-def check_median_sigmaG_approx(a, axis, keepdims, atol=0.15):
+@pytest.mark.parametrize('axis', [None, 1])
+@pytest.mark.parametrize('keepdims', [True, False])
+def test_median_sigmaG_approx(axis, keepdims, atol=0.02):
+    np.random.seed(0)
+    a = np.random.normal(0, 1, size=(10, 10000))
+
     med, sigmaG = median_sigmaG(a, axis=axis, keepdims=keepdims)
     mu, sigma = mean_sigma(a, axis=axis, ddof=1, keepdims=keepdims)
 
@@ -105,17 +97,17 @@ def check_median_sigmaG_approx(a, axis, keepdims, atol=0.15):
     assert_allclose(sigmaG, sigma, atol=atol)
 
 
-def test_median_sigmaG_approx():
-    np.random.seed(0)
-    a = np.random.normal(0, 1, size=(10, 10000))
-    for axis in (None, 1):
-        for keepdims in (True, False):
-            yield (check_median_sigmaG_approx, a, axis, keepdims, 0.02)
-
-
 #---------------------------------------------------------------------------
 # Check the bivariate normal fit
-def check_fit_bivariate_normal(sigma1, sigma2, mu, alpha, N=1000):
+
+@pytest.mark.parametrize("alpha", np.linspace(-np.pi / 2, np.pi / 2, 7))
+def test_fit_bivariate_normal(alpha):
+    mu = [10, 10]
+
+    sigma1 = 2.0
+    sigma2 = 1.0
+    N = 1000
+
     # poisson stats
     rtol = 2 * np.sqrt(N) / N
 
@@ -132,13 +124,6 @@ def check_fit_bivariate_normal(sigma1, sigma2, mu, alpha, N=1000):
     assert_allclose(mu, mu_fit, rtol=rtol)
     assert_allclose(sigma1_fit, sigma1, rtol=rtol)
     assert_allclose(sigma2_fit, sigma2, rtol=rtol)
-
-
-def test_fit_bivariate_normal(sigma1=2.0, sigma2=1.0, N=1000):
-    np.random.seed(0)
-    mu = [10, 10]
-    for alpha in np.linspace(-np.pi / 2, np.pi / 2, 7):
-        yield check_fit_bivariate_normal, sigma1, sigma2, mu, alpha, N
 
 
 #------------------------------------------------------
