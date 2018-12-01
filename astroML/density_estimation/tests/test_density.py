@@ -1,20 +1,19 @@
 """
 Test density estimation techniques
 """
+import pytest
 import numpy as np
 from numpy.testing import assert_allclose
 from scipy.stats import norm
 from astroML.density_estimation import KNeighborsDensity, GaussianMixture1D
 
 
-def check_1D_density(clf, X, X2, true_dens, atol):
-    clf.fit(X)
-    dens = clf.eval(X2)
-
-    assert_allclose(dens, true_dens, atol=atol)
+classifiers = [KNeighborsDensity(method='simple', n_neighbors=250),
+               KNeighborsDensity(method='bayesian', n_neighbors=250)]
 
 
-def test_1D_density():
+@pytest.mark.parametrize("clf", classifiers)
+def test_1D_density(clf, atol=100):
     np.random.seed(0)
     dist = norm(0, 1)
 
@@ -22,11 +21,10 @@ def test_1D_density():
     X2 = np.linspace(-5, 5, 10).reshape((10, 1))
     true_dens = dist.pdf(X2[:, 0]) * X.shape[0]
 
-    classifiers = [KNeighborsDensity(method='simple', n_neighbors=250),
-                   KNeighborsDensity(method='bayesian', n_neighbors=250)]
+    clf.fit(X)
+    dens = clf.eval(X2)
 
-    for clf in classifiers:
-        yield (check_1D_density, clf, X, X2, true_dens, 100)
+    assert_allclose(dens, true_dens, atol=atol)
 
 
 def test_gaussian1d():
