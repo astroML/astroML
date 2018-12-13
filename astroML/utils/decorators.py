@@ -1,7 +1,7 @@
 from __future__ import print_function
 
 import os
-from . import py3k_compat as pickle
+import astroML.py3k_compat as pickle
 import numpy as np
 
 
