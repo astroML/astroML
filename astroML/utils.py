@@ -2,24 +2,6 @@ import numpy as np
 from scipy import linalg
 
 
-try:
-    # exists in python 2.7+
-    from itertools import combinations_with_replacement
-except:
-    def combinations_with_replacement(iterable, r):
-        """
-        Return successive r-length combinations of elements in the iterable
-        allowing individual elements to have successive repeats.
-        combinations_with_replacement('ABC', 2) --> AA AB AC BB BC CC
-        """
-        from itertools import product
-        pool = tuple(iterable)
-        n = len(pool)
-        for indices in product(range(n), repeat=r):
-            if sorted(indices) == list(indices):
-                yield tuple(pool[i] for i in indices)
-
-
 def logsumexp(arr, axis=None):
     """Computes the sum of arr assuming arr is in the log domain.
 
