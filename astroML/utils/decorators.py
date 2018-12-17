@@ -1,8 +1,22 @@
 from __future__ import print_function
 
-import os
-import astroML.py3k_compat as pickle
+import types
+import warnings
+import functools
+from distutils.version import LooseVersion
+
 import numpy as np
+import astropy
+
+import astroML.py3k_compat as pickle
+from astroML.utils.exceptions import AstroMLDeprecationWarning
+
+# We use functionality of the deprecated decorator from astropy that was
+# added in v2.0.10 LTS and v3.1
+ASTROPY_LT_31 = (LooseVersion(astropy.__version__) < LooseVersion("2.0.10") or
+                 (astropy.__version__[0] == 3 and LooseVersion(astropy.__version__) < LooseVersion("3.1")))
+
+__all__ = ['pickle_results', 'deprecated']
 
 
 def pickle_results(filename=None, verbose=True):
@@ -99,3 +113,24 @@ def pickle_results(filename=None, verbose=True):
             return retval
         return new_f
     return pickle_func
+
+
+if not ASTROPY_LT_31:
+    from astropy.utils.decorators import deprecated
+else:
+    def deprecated(since, message='', alternative=None, **kwargs):
+        def deprecate_function(func, message=message, since=since,
+                               alternative=alternative):
+            if message == '':
+                message = ('Function {} has been deprecated since {}.'
+                           .format(func.__name__, since))
+                if alternative is not None:
+                    message += '\n Use {} instead.'.format(alternative)
+
+            @functools.wraps(func)
+            def deprecated_func(*args, **kwargs):
+                warnings.warn(message, AstroMLDeprecationWarning)
+                return func(*args, **kwargs)
+            return deprecated_func
+
+        return deprecate_function
