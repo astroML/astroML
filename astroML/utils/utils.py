@@ -2,6 +2,10 @@ import numpy as np
 from scipy import linalg
 
 
+__all__ = ['logsumexp', 'log_multivariate_gaussian', 'check_random_state',
+           'split_samples', 'completeness_contamination', 'convert_2D_cov']
+
+
 def logsumexp(arr, axis=None):
     """Computes the sum of arr assuming arr is in the log domain.
 
