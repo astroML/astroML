@@ -1,5 +1,5 @@
 import os
-from astroML.decorators import pickle_results
+from astroML.utils.decorators import pickle_results
 
 
 def test_pickle_results():
