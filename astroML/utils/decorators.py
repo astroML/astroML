@@ -119,6 +119,7 @@ if not ASTROPY_LT_31:
     from astropy.utils.decorators import deprecated
 else:
     def deprecated(since, message='', alternative=None, **kwargs):
+
         def deprecate_function(func, message=message, since=since,
                                alternative=alternative):
             if message == '':
@@ -133,4 +134,22 @@ else:
                 return func(*args, **kwargs)
             return deprecated_func
 
-        return deprecate_function
+        def deprecate_class(cls, message=message, since=since,
+                            alternative=alternative):
+            if message == '':
+                message = ('Class {} has been deprecated since {}.'
+                           .format(cls.__name__, since))
+                if alternative is not None:
+                    message += '\n Use {} instead.'.format(alternative)
+
+            cls.__init__ = deprecate_function(cls.__init__, message=message)
+
+            return cls
+
+        def deprecate(obj):
+            if isinstance(obj, type):
+                return deprecate_class(obj)
+            else:
+                return deprecate_function(obj)
+
+        return deprecate
