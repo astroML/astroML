@@ -25,11 +25,9 @@ def test_freedman_bin_width(N=10000, rseed=0):
     with catch_warnings(AstroMLDeprecationWarning):
         delta = freedman_bin_width(X)
 
-    indices = np.argsort(X)
-    i25 = indices[N // 4 - 1]
-    i75 = indices[(3 * N) // 4 - 1]
+    v25, v75 = np.percentile(X, [25, 75])
 
-    assert_allclose(delta, 2 * (X[i75] - X[i25]) / N ** (1. / 3))
+    assert_allclose(delta, 2 * (v75 - v25) / N ** (1. / 3))
 
 
 def test_knuth_bin_width(N=10000, rseed=0):
