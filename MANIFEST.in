@@ -1,7 +1,5 @@
 include *.rst
 include *.py
 recursive-include examples *.py *.rst
-recursive-include book_figures *.py *.rst
-recursive-include paper_figures *.py *.rst
 recursive-include astroML *.py
 include LICENSE
