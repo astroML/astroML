@@ -2,11 +2,15 @@ import warnings
 
 import numpy as np
 
-from astroML.density_estimation import\
-    scotts_bin_width, freedman_bin_width,\
-    knuth_bin_width, bayesian_blocks
+from astropy.stats import (scott_bin_width, freedman_bin_width,
+                           knuth_bin_width, bayesian_blocks)
+
+from astroML.utils import deprecated
+from astroML.utils.exceptions import AstroMLDeprecationWarning
 
 
+@deprecated('0.4', alternative='astropy.visualization.hist',
+            warning_type=AstroMLDeprecationWarning)
 def hist(x, bins=10, range=None, *args, **kwargs):
     """Enhanced histogram
 
@@ -65,7 +69,7 @@ def hist(x, bins=10, range=None, *args, **kwargs):
     elif bins in ['knuth', 'knuths']:
         dx, bins = knuth_bin_width(x, True, disp=False)
     elif bins in ['scott', 'scotts']:
-        dx, bins = scotts_bin_width(x, True)
+        dx, bins = scott_bin_width(x, True)
     elif bins in ['freedman', 'freedmans']:
         dx, bins = freedman_bin_width(x, True)
     elif isinstance(bins, str):
