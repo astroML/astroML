@@ -13,6 +13,7 @@ import tokenize
 import gc
 import shutil
 import glob
+import warnings
 
 import matplotlib
 matplotlib.use('Agg') #don't display plots
@@ -597,9 +598,8 @@ def read_contents(contents_file, check_for_missing=True):
         list of filenames from the contents
     """
     if not os.path.exists(contents_file):
-        import warning
-        warnings.warn("Contents file not found in %s. "
-                      "Skipping directory" % path)
+        warnings.warn("Contents file not found in {}. "
+                      "Skipping directory".format(contents_file))
         return []
 
     if check_for_missing:
