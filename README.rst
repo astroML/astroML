@@ -80,7 +80,7 @@ The core ``astroML`` package requires the following:
 - Scipy_ >= 0.7
 - Scikit-learn_ >= 0.18
 - Matplotlib_ >= 0.99
-- AstroPy_ > 0.2.5
+- AstroPy_ >= 1.1
   AstroPy is required to read Flexible Image Transport
   System (FITS) files, which are used by several datasets.
 

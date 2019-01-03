@@ -4,11 +4,16 @@ from __future__ import division
 Tools for working with distributions
 """
 import numpy as np
-from astroML.density_estimation import bayesian_blocks
 from scipy.special import gammaln
-from scipy import optimize
+
+from astropy import stats as astropy_stats
+
+from astroML.utils import deprecated
+from astroML.utils.exceptions import AstroMLDeprecationWarning
 
 
+@deprecated('0.4', alternative='astropy.stats.scott_bin_width',
+            warning_type=AstroMLDeprecationWarning)
 def scotts_bin_width(data, return_bins=False):
     r"""Return the optimal histogram bin width using Scott's rule:
 
@@ -42,24 +47,11 @@ def scotts_bin_width(data, return_bins=False):
     freedman_bin_width
     astroML.plotting.hist
     """
-    data = np.asarray(data)
-    if data.ndim != 1:
-        raise ValueError("data should be one-dimensional")
-
-    n = data.size
-    sigma = np.std(data)
-
-    dx = 3.5 * sigma * 1. / (n ** (1. / 3))
-
-    if return_bins:
-        Nbins = np.ceil((data.max() - data.min()) * 1. / dx)
-        Nbins = max(1, Nbins)
-        bins = data.min() + dx * np.arange(Nbins + 1)
-        return dx, bins
-    else:
-        return dx
+    return astropy_stats.scott_bin_width(data, return_bins)
 
 
+@deprecated('0.4', alternative='astropy.stats.freedman_bin_width',
+            warning_type=AstroMLDeprecationWarning)
 def freedman_bin_width(data, return_bins=False):
     r"""Return the optimal histogram bin width using the Freedman-Diaconis rule
 
@@ -93,29 +85,10 @@ def freedman_bin_width(data, return_bins=False):
     scotts_bin_width
     astroML.plotting.hist
     """
-    data = np.asarray(data)
-    if data.ndim != 1:
-        raise ValueError("data should be one-dimensional")
-
-    n = data.size
-    if n < 4:
-        raise ValueError("data should have more than three entries")
-
-    dsorted = np.sort(data)
-    v25 = dsorted[int(n // 4 - 1)]
-    v75 = dsorted[int((3 * n) // 4 - 1)]
-
-    dx = 2 * (v75 - v25) * 1. / (n ** (1. / 3))
-
-    if return_bins:
-        Nbins = np.ceil((dsorted[-1] - dsorted[0]) * 1. / dx)
-        Nbins = max(1, Nbins)
-        bins = dsorted[0] + dx * np.arange(Nbins + 1)
-        return dx, bins
-    else:
-        return dx
+    return astropy_stats.freedman_bin_width(data, return_bins)
 
 
+@deprecated('0.4', warning_type=AstroMLDeprecationWarning)
 class KnuthF(object):
     r"""Class which implements the function minimized by knuth_bin_width
 
@@ -185,6 +158,8 @@ class KnuthF(object):
                  + np.sum(gammaln(nk + 0.5)))
 
 
+@deprecated('0.4', alternative='astropy.stats.knuth_bin_width',
+            warning_type=AstroMLDeprecationWarning)
 def knuth_bin_width(data, return_bins=False, disp=True):
     r"""Return the optimal histogram bin width using Knuth's rule [1]_
 
@@ -226,19 +201,11 @@ def knuth_bin_width(data, return_bins=False, disp=True):
     freedman_bin_width
     scotts_bin_width
     """
-    knuthF = KnuthF(data)
-    dx0, bins0 = freedman_bin_width(data, True)
-    M0 = len(bins0) - 1
-    M = optimize.fmin(knuthF, len(bins0), disp=disp)[0]
-    bins = knuthF.bins(M)
-    dx = bins[1] - bins[0]
-
-    if return_bins:
-        return dx, bins
-    else:
-        return dx
+    return astropy_stats.knuth_bin_width(data, return_bins)
 
 
+@deprecated('0.4', alternative='astropy.stats.histogram',
+            warning_type=AstroMLDeprecationWarning)
 def histogram(a, bins=10, range=None, **kwargs):
     """Enhanced histogram
 
@@ -287,13 +254,13 @@ def histogram(a, bins=10, range=None, **kwargs):
         a = a[(a >= range[0]) & (a <= range[1])]
 
     if bins == 'blocks':
-        bins = bayesian_blocks(a)
+        bins = astropy_stats.bayesian_blocks(a)
     elif bins == 'knuth':
-        da, bins = knuth_bin_width(a, True)
+        da, bins = astropy_stats.knuth_bin_width(a, True)
     elif bins == 'scotts':
-        da, bins = scotts_bin_width(a, True)
+        da, bins = astropy_stats.scott_bin_width(a, True)
     elif bins == 'freedman':
-        da, bins = freedman_bin_width(a, True)
+        da, bins = astropy_stats.freedman_bin_width(a, True)
     elif isinstance(bins, str):
         raise ValueError("unrecognized bin code: '%s'" % bins)
 

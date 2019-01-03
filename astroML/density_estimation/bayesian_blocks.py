@@ -13,7 +13,12 @@ References
 import numpy as np
 # TODO: implement other fitness functions from appendix B of Scargle 2012
 
+from astroML.utils import deprecated
+from astroML.utils.exceptions import AstroMLDeprecationWarning
 
+
+@deprecated('0.4', alternative='astropy.stats.FitnessFunc',
+            warning_type=AstroMLDeprecationWarning)
 class FitnessFunc(object):
     """Base class for fitness functions
 
@@ -63,6 +68,8 @@ class FitnessFunc(object):
             return self.fitness.__code__.co_varnames[1:]
 
 
+@deprecated('0.4', alternative='astropy.stats.Events',
+            warning_type=AstroMLDeprecationWarning)
 class Events(FitnessFunc):
     """Fitness for binned or unbinned events
 
@@ -87,6 +94,8 @@ class Events(FitnessFunc):
             return 4 - np.log(73.53 * self.p0 * (N ** -0.478))
 
 
+@deprecated('0.4', alternative='astropy.stats.RegularEvents',
+            warning_type=AstroMLDeprecationWarning)
 class RegularEvents(FitnessFunc):
     """Fitness for regular events
 
@@ -129,6 +138,8 @@ class RegularEvents(FitnessFunc):
         return N_k * np.log(N_over_M) + (M_k - N_k) * np.log(one_m_NM)
 
 
+@deprecated('0.4', alternative='astropy.stats.PointMeasures',
+            warning_type=AstroMLDeprecationWarning)
 class PointMeasures(FitnessFunc):
     """Fitness for point measures
 
@@ -157,6 +168,8 @@ class PointMeasures(FitnessFunc):
             return 1.32 + 0.577 * np.log10(N)
 
 
+@deprecated('0.4', alternative='astropy.stats.bayesian_blocks',
+            warning_type=AstroMLDeprecationWarning)
 def bayesian_blocks(t, x=None, sigma=None,
                     fitness='events', **kwargs):
     """Bayesian Blocks Implementation
