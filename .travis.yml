@@ -17,7 +17,7 @@ env:
         - NUMPY_VERSION=stable
         - CONDA_DEPENDENCIES='scipy scikit-learn matplotlib pymc'
         - PIP_DEPENDENCIES='astroML_addons'
-        - DEBUG=true
+        - DEBUG=True
         - PYTEST_VERSION='<4'
         - SCRIPT_CMD='pytest astroML'
 
