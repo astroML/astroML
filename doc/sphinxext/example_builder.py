@@ -13,6 +13,7 @@ import tokenize
 import gc
 import shutil
 import glob
+import warnings
 
 import matplotlib
 matplotlib.use('Agg') #don't display plots
@@ -158,7 +159,7 @@ class ExecFile(object):
         for fig in self.figlist:
             figfile = fmt % fig.number
             print("saving", figfile)
-            
+
             # if black background, save with black background as well.
             if colors.colorConverter.to_rgb(fig.get_facecolor()) == (0, 0, 0):
                 fig.savefig(figfile,
@@ -179,7 +180,6 @@ class ExecFile(object):
             figlist.append(figfile)
 
         return figlist
-                
 
     def write(self, s):
         if self.print_output:
@@ -201,7 +201,11 @@ class ExecFile(object):
 
         docstring = ''
         first_par = ''
-        tokens = tokenize.generate_tokens(lines.__iter__().next)
+
+        if sys.version_info[0] >= 3:
+            tokens = tokenize.generate_tokens(lines.__iter__().__next__)
+        else:
+            tokens = tokenize.generate_tokens(lines.__iter__().next)
         for tok_type, tok_content, _, (erow, _), _ in tokens:
             tok_type = token.tok_name[tok_type]
             if tok_type in ('NEWLINE', 'COMMENT', 'NL', 'INDENT', 'DEDENT'):
@@ -227,7 +231,7 @@ class ExecFile(object):
         """
         dirname, fname = os.path.split(self.filename)
         print('plotting %s' % fname)
-        
+
         # close any currently open figures
         plt.close('all')
 
@@ -248,7 +252,7 @@ class ExecFile(object):
 
             fig_mgr_list = matplotlib._pylab_helpers.Gcf.get_all_fig_managers()
             self.figlist = [manager.canvas.figure for manager in fig_mgr_list]
-            
+
             self.figlist = sorted(self.figlist,
                                   key = lambda fig: fig.number)
 
@@ -306,10 +310,10 @@ class ExampleBuilder:
             self.template_index = DEFAULT_INDEX_TEMPLATE
         else:
             self.template_index = template_index
-    
+
     def read_contents(self, path, check_for_missing=True):
         """Read contents file
-        
+
         A contents file is a list of filenames within the directory,
         with comments marked by '#' in the normal way.
 
@@ -331,7 +335,7 @@ class ExampleBuilder:
 
     #============================================================
     # Directory parser:
-    # 
+    #
     #  This takes a path *relative to source_dir* and parses the
     #  contents, returning two lists: `scripts` & `subdirs`.  `scripts`
     #  should contain all executable scripts, and `subdirs` should contain
@@ -404,15 +408,15 @@ class ExampleBuilder:
                        ".. image:: %s\n"
                        "    :scale: 100\n"
                        "    :align: center\n" % figlist[0])
-             
+
         else:
             imlist = "\n.. rst-class:: horizontal\n"
             for fig in figlist:
                 imlist += ('\n\n'
                            '.. image:: %s\n'
                            '    :align: center\n'
-                           '    :scale: 100\n\n' % fig)                  
-        
+                           '    :scale: 100\n\n' % fig)
+
         return imlist
 
     def figure_contents(self, path, filelist):
@@ -443,11 +447,11 @@ class ExampleBuilder:
         subdir_contents = ("\n\n"
                            ".. toctree::\n"
                            "   :maxdepth: 2\n\n")
-        
+
         for subdir in subdirs:
             index = os.path.splitext(self.rst_index_filename(subdir))[0]
             subdir_contents += '   %s\n' % os.path.relpath(index, path)
-           
+
         subdir_contents += '\n'
         return subdir_contents
 
@@ -456,7 +460,7 @@ class ExampleBuilder:
 
         This will also call generate_example_rst() for every python
         file in the directory
-        
+
         Parameters
         ----------
         path : str
@@ -532,20 +536,20 @@ class ExampleBuilder:
             run_example = self.execute_files
 
         EF = ExecFile(example_file, execute=run_example)
-        
+
         if run_example:
             # make sure directories exist
             for f in (stdout_file, image_file, thumb_file, rst_file, py_file):
                 d, f = os.path.split(f)
                 if not os.path.exists(d):
                     os.makedirs(d)
-            
+
             # write output
             open(stdout_file, 'w').write(EF.output)
 
             # save all figures & thumbnails
             figure_list = EF.save_figures(image_file, thumb_file)
-            
+
             # if no figures are created, we need to make a
             # blank thumb file
             if len(figure_list) == 0:
@@ -594,9 +598,8 @@ def read_contents(contents_file, check_for_missing=True):
         list of filenames from the contents
     """
     if not os.path.exists(contents_file):
-        import warning
-        warnings.warn("Contents file not found in %s. "
-                      "Skipping directory" % path)
+        warnings.warn("Contents file not found in {}. "
+                      "Skipping directory".format(contents_file))
         return []
 
     if check_for_missing:

@@ -47,7 +47,7 @@ except:
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['gen_rst', 'gen_figure_rst', 'gen_paper_rst',
               'sphinx.ext.autodoc', 'sphinx.ext.doctest',
-              'sphinx.ext.pngmath', 'sphinx.ext.viewcode',
+              'sphinx.ext.imgmath', 'sphinx.ext.viewcode',
               'sphinx.ext.autosummary']
 
 import numpy_ext.numpydoc
