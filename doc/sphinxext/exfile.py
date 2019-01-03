@@ -35,7 +35,7 @@ class ExecFile(object):
         for fig in self.figlist:
             figfile = fmt % fig.number
             print("saving", figfile)
-            
+
             # if black background, save with black background as well.
             if colors.colorConverter.to_rgb(fig.get_facecolor()) == (0, 0, 0):
                 fig.savefig(figfile,
@@ -92,7 +92,7 @@ class ExecFile(object):
         """
         dirname, fname = os.path.split(self.filename)
         print('plotting %s' % fname)
-        
+
         # close any currently open figures
         plt.close('all')
 
@@ -113,13 +113,13 @@ class ExecFile(object):
 
             fig_mgr_list = matplotlib._pylab_helpers.Gcf.get_all_fig_managers()
             self.figlist = [manager.canvas.figure for manager in fig_mgr_list]
-            
+
             self.figlist = sorted(self.figlist,
                                   key = lambda fig: fig.number)
 
         except:
             print(80 * '_')
-            print('{0} is not compiling:'.format(fname)
+            print('{0} is not compiling:'.format(fname))
             traceback.print_exc()
             print(80 * '_')
         finally:
@@ -129,4 +129,3 @@ class ExecFile(object):
             ncol = gc.collect()
             if self.print_output and (ncol > 0):
                 print("\n > collected {0} unreachable objects".format(ncol))
-
