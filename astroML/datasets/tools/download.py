@@ -40,7 +40,7 @@ def download_with_progress_bar(data_url, return_buffer=False):
 
     fhandle = urlopen(data_url)
     content_length = url_content_length(fhandle)
-    
+
     chunk_size = content_length // num_units
 
     print("Downloading %s" % data_url)

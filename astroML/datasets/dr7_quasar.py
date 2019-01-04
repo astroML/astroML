@@ -19,7 +19,7 @@ DATA_URL = 'http://das.sdss.org/va/qsocat/dr7qso.dat.gz'
 
 ARCHIVE_FILE = 'dr7_quasar.npy'
 
-#column numbers for extraction
+# column numbers for extraction
 DR7_DTYPE = [('sdssID', 'a14'),
              ('RA', 'f8'),
              ('dec', 'f8'),

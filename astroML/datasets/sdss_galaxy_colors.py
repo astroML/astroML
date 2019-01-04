@@ -11,7 +11,8 @@ SPECCLASS = ['UNKNOWN', 'STAR', 'GALAXY', 'QSO',
 
 NOBJECTS = 50000
 
-GAL_COLORS_NAMES = ['u', 'g','r', 'i', 'z', 'specClass', 'redshift', 'redshift_err']
+GAL_COLORS_NAMES = ['u', 'g', 'r', 'i', 'z', 'specClass',
+                    'redshift', 'redshift_err']
 
 ARCHIVE_FILE = 'sdss_galaxy_colors.npy'
 
@@ -41,18 +42,17 @@ def fetch_sdss_galaxy_colors(data_home=None, download_if_missing=True):
 
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 
-    query_text = ('\n'.join(
-            ("SELECT TOP %i" % NOBJECTS,
-             "   p.u, p.g, p.r, p.i, p.z, s.class, s.z, s.zerr",
-             "FROM PhotoObj AS p",
-             "   JOIN SpecObj AS s ON s.bestobjid = p.objid",
-             "WHERE ",
-             "   p.u BETWEEN 0 AND 19.6",
-             "   AND p.g BETWEEN 0 AND 20",
-             "   AND s.class <> 'UNKNOWN'",
-             "   AND s.class <> 'STAR'",
-             "   AND s.class <> 'SKY'",
-             "   AND s.class <> 'STAR_LATE'")))
+    query_text = ('\n'.join(("SELECT TOP %i" % NOBJECTS,
+                             "  p.u, p.g, p.r, p.i, p.z, s.class, s.z, s.zerr",
+                             "FROM PhotoObj AS p",
+                             "  JOIN SpecObj AS s ON s.bestobjid = p.objid",
+                             "WHERE ",
+                             "  p.u BETWEEN 0 AND 19.6",
+                             "  AND p.g BETWEEN 0 AND 20",
+                             "  AND s.class <> 'UNKNOWN'",
+                             "  AND s.class <> 'STAR'",
+                             "  AND s.class <> 'SKY'",
+                             "  AND s.class <> 'STAR_LATE'")))
 
     if not os.path.exists(archive_file):
         if not download_if_missing:
@@ -65,7 +65,7 @@ def fetch_sdss_galaxy_colors(data_home=None, download_if_missing=True):
         print("finished.")
 
         data = np.genfromtxt(output, delimiter=',',
-                          skip_header=2, names=GAL_COLORS_NAMES, dtype=None)
+                             skip_header=2, names=GAL_COLORS_NAMES, dtype=None)
         np.save(archive_file, data)
 
     else:

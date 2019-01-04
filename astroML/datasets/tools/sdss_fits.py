@@ -64,6 +64,7 @@ class SDSSfits(object):
     ``hdulist``.  For details, please refer to the data description:
     http://www.sdss.org/dr7/dm/flatFiles/spSpec.html
     """
+
     def __init__(self, source=None):
         if source is None:
             pass
@@ -350,7 +351,7 @@ class SDSSfits(object):
                 return 4, (I_Ha, log_OIII_Hb)
 
 
-#----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 # Empirical fits from Kewley et al 2001
 def log_OIII_Hb_NII(log_NII_Ha, eps=0):
     return 1.19 + eps + 0.61 / (log_NII_Ha - eps - 0.47)
