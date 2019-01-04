@@ -19,7 +19,7 @@ DATA_URL = 'http://das.sdss.org/va/qsocat/dr7qso.dat.gz'
 
 ARCHIVE_FILE = 'dr7_quasar.npy'
 
-#column numbers for extraction
+# column numbers for extraction
 DR7_DTYPE = [('sdssID', 'a14'),
              ('RA', 'f8'),
              ('dec', 'f8'),
@@ -91,8 +91,6 @@ def fetch_dr7_quasar(data_home=None, download_if_missing=True):
     http://www.sdss.org/dr7/products/value_added/qsocat_dr7.html
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 

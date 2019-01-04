@@ -110,8 +110,6 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
     from astropy.io import fits
 
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, os.path.basename(DATA_URL))
 

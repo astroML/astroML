@@ -6,8 +6,8 @@ import numpy as np
 from . import get_data_home
 from .tools import download_with_progress_bar
 
-DATA_URL = ("http://www.astro.washington.edu/users/bsesar/"
-            "S82_RRLyr/RRLyr_ugriz_templates.tar.gz")
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+            "RRLyr_ugriz_templates.tar.gz")
 
 
 def fetch_rrlyrae_templates(data_home=None, download_if_missing=True):
@@ -31,8 +31,6 @@ def fetch_rrlyrae_templates(data_home=None, download_if_missing=True):
         record array containing the templates
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     data_file = os.path.join(data_home, os.path.basename(DATA_URL))
 

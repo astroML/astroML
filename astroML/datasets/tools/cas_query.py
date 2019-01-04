@@ -61,12 +61,12 @@ def query_plate_mjd_fiber(n_spectra,
     Primtarget flag values can be found at
     http://cas.sdss.org/dr7/en/help/browser/enum.asp?n=PrimTarget
     """
-    query_text = '\n'.join((
-            "SELECT TOP %(n_spectra)i ",
-            "    plate, mjd, fiberid ",
-            "FROM specObj ",
-            "WHERE ((PrimTarget & %(primtarget)i) > 0) ",
-            "       AND (z > %(zmin)f) AND (z <= %(zmax)f) ")) % locals()
+    query_text = '\n'.join(("SELECT TOP %(n_spectra)i ",
+                            "  plate, mjd, fiberid ",
+                            "FROM specObj ",
+                            "WHERE ((PrimTarget & %(primtarget)i) > 0) ",
+                            "       AND (z > %(zmin)f)",
+                            "       AND (z <= %(zmax)f) ")) % locals()
 
     output = sql_query(query_text).readlines()
     keys = output[0]
@@ -76,7 +76,7 @@ def query_plate_mjd_fiber(n_spectra,
     for i, line in enumerate(output[1:]):
         try:
             res[i] = map(int, line.strip().split(','))
-        except:
+        except BaseException:
             raise ValueError('\n'.join(output))
 
     ntot = i + 1

@@ -38,8 +38,6 @@ def fetch_wmap_temperatures(masked=False, data_home=None,
     import healpy as hp
 
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     data_file = os.path.join(data_home, os.path.basename(DATA_URL))
     mask_file = os.path.join(data_home, os.path.basename(MASK_URL))

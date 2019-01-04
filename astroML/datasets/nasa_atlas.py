@@ -51,8 +51,6 @@ def fetch_nasa_atlas(data_home=None,
         http://www.nsatlas.org/data
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 

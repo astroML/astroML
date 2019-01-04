@@ -5,8 +5,8 @@ import numpy as np
 from . import get_data_home
 from .tools import download_with_progress_bar
 
-DATA_URL = 'http://staff.washington.edu/jakevdp/spec4000.npz'
-ARCHIVE_FILE = 'spec4000.npz'
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+            "spec4000.npz")
 
 
 def reconstruct_spectra(data):
@@ -88,12 +88,10 @@ def fetch_sdss_corrected_spectra(data_home=None,
     examples/datasets/compute_sdss_pca.py
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
-    archive_file = os.path.join(data_home, ARCHIVE_FILE)
+    data_file = os.path.join(data_home, os.path.basename(DATA_URL))
 
-    if not os.path.exists(archive_file):
+    if not os.path.exists(data_file):
         if not download_if_missing:
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
@@ -101,13 +99,9 @@ def fetch_sdss_corrected_spectra(data_home=None,
         print("downloading PCA-processed SDSS spectra from %s to %s"
               % (DATA_URL, data_home))
 
-        buf = download_with_progress_bar(DATA_URL, return_buffer=True)
-        data = np.load(buf)
+        databuffer = download_with_progress_bar(DATA_URL)
+        open(data_file, 'wb').write(databuffer)
 
-        data_dict = dict([(key, data[key]) for key in data.files])
-        np.savez(archive_file, **data_dict)
-
-    else:
-        data = np.load(archive_file)
+    data = np.load(data_file)
 
     return data

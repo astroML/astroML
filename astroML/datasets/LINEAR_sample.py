@@ -13,18 +13,18 @@ DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
             "linear/allDataFinal/allLINEARfinal_dat.tar.gz")
 
 # old version of the data
-#GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
+# GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
 #              "DMbook/data/LINEARattributes.dat"
 #GENEVA_ARCHIVE = 'LINEARattributes.npy'
-#ARCHIVE_DTYPE = [(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
+# ARCHIVE_DTYPE = [(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
 #                                     'JK', 'logP', 'amp', 'skew')]
 
 GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
               "DMbook/data/LINEARattributesFinalApr2013.dat")
 GENEVA_ARCHIVE = 'LINEARattributesFinalApr2013.npy'
 ARCHIVE_DTYPE = ([(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
-                                     'JK', 'logP', 'amp', 'skew',
-                                     'kurt', 'magMed', 'nObs')]
+                                      'JK', 'logP', 'amp', 'skew',
+                                      'kurt', 'magMed', 'nObs')]
                  + [('LCtype', 'i4'), ('LINEARobjectID', '|S20')])
 
 
@@ -106,7 +106,7 @@ class LINEARdata(object):
         i = np.where(self.targets['objectID'] == id)[0]
         try:
             val = self.targets[param][i[0]]
-        except:
+        except BaseException:
             raise KeyError(id)
 
         return val
@@ -114,7 +114,7 @@ class LINEARdata(object):
     def __getitem__(self, id):
         try:
             lc = np.loadtxt(self.dataF.extractfile(self._id_to_name(id)))
-        except:
+        except BaseException:
             raise KeyError(id)
 
         return lc
@@ -140,8 +140,6 @@ def fetch_LINEAR_sample(data_home=None, download_if_missing=True):
         curves.
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     targetlist_file = os.path.join(data_home, os.path.basename(TARGETLIST_URL))
     data_file = os.path.join(data_home, os.path.basename(DATA_URL))
@@ -187,8 +185,6 @@ def fetch_LINEAR_geneva(data_home=None, download_if_missing=True):
         data on 7000+ LINEAR stars from the Geneva catalog
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, GENEVA_ARCHIVE)
 
