@@ -40,8 +40,6 @@ def fetch_LIGO_large(data_home=None, download_if_missing=True):
         dt is the time spacing between measurements in seconds.
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     local_file = os.path.join(data_home, LOCAL_FILE_LARGE)
 
@@ -98,8 +96,6 @@ def fetch_LIGO_bigdog(data_home=None, download_if_missing=True):
     [  1.26329846e-17   1.26846778e-17   1.19187381e-17]
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     local_file = os.path.join(data_home, LOCAL_FILE)
 

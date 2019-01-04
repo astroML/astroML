@@ -113,8 +113,6 @@ def fetch_moving_objects(data_home=None, download_if_missing=True,
     [ 1.48999977  1.80000114  1.78000069  1.65000153  2.01000023]
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 

@@ -91,8 +91,6 @@ def fetch_dr7_quasar(data_home=None, download_if_missing=True):
     http://www.sdss.org/dr7/products/value_added/qsocat_dr7.html
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 

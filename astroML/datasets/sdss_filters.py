@@ -42,8 +42,6 @@ def fetch_sdss_filter(fname, data_home=None, download_if_missing=True):
     url = FILTER_URL % fname
 
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, '%s.dat' % fname)
 
@@ -83,8 +81,6 @@ def fetch_vega_spectrum(data_home=None, download_if_missing=True):
         data[1] is the array of fluxes in Jy (F_nu, not F_lambda)
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_name = os.path.join(data_home, VEGA_URL.split('/')[-1])
 

@@ -89,8 +89,6 @@ def fetch_sdss_corrected_spectra(data_home=None,
     examples/datasets/compute_sdss_pca.py
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 

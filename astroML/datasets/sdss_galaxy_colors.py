@@ -38,8 +38,6 @@ def fetch_sdss_galaxy_colors(data_home=None, download_if_missing=True):
         record array containing magnitudes and redshift for each galaxy
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, ARCHIVE_FILE)
 

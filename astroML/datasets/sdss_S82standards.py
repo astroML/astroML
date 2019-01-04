@@ -113,8 +113,6 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
     Ivesic et al. ApJ 134:973 (2007)
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     if crossmatch_2mass:
         archive_file = os.path.join(data_home, ARCHIVE_FILE_2MASS)

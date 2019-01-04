@@ -140,8 +140,6 @@ def fetch_LINEAR_sample(data_home=None, download_if_missing=True):
         curves.
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     targetlist_file = os.path.join(data_home, os.path.basename(TARGETLIST_URL))
     data_file = os.path.join(data_home, os.path.basename(DATA_URL))
@@ -187,8 +185,6 @@ def fetch_LINEAR_geneva(data_home=None, download_if_missing=True):
         data on 7000+ LINEAR stars from the Geneva catalog
     """
     data_home = get_data_home(data_home)
-    if not os.path.exists(data_home):
-        os.makedirs(data_home)
 
     archive_file = os.path.join(data_home, GENEVA_ARCHIVE)
 
