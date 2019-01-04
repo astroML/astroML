@@ -5,7 +5,8 @@ import numpy as np
 from . import get_data_home
 from .tools import download_with_progress_bar
 
-DATA_URL = 'http://staff.washington.edu/jakevdp/spec4000.npz'
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+            "spec4000.npz")
 ARCHIVE_FILE = 'spec4000.npz'
 
 
