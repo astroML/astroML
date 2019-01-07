@@ -1,11 +1,5 @@
-0.4
-===
-
-New Features
-------------
-
-Bug Fixes
----------
+0.4rc1 (2019-01-07)
+===================
 
 API Changes and Other Changes
 -----------------------------
@@ -15,8 +9,7 @@ API Changes and Other Changes
 - Switched to use the updated scikit-learn API for GaussianMixture. This
   change depends on scikit-learn 0.18+. [#125]
 
-0.3.1
-=====
+- Minimum required astropy version is now 1.1. [#142]
 
 - The book and paper figures has been moved out to their separate
   repository (``astroML_figures``).
