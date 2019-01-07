@@ -67,12 +67,12 @@ def hist(x, bins=10, range=None, *args, **kwargs):
     if bins in ['blocks']:
         bins = bayesian_blocks(x)
     elif bins in ['knuth', 'knuths']:
-        dx, bins = knuth_bin_width(x, True, disp=False)
+        dx, bins = knuth_bin_width(x, True)
     elif bins in ['scott', 'scotts']:
         dx, bins = scott_bin_width(x, True)
     elif bins in ['freedman', 'freedmans']:
         dx, bins = freedman_bin_width(x, True)
     elif isinstance(bins, str):
-        raise ValueError("unrecognized bin code: '%s'" % bins)
+        raise ValueError("unrecognized bin code: '{}'".format(bins))
 
     return ax.hist(x, bins, range, **kwargs)
