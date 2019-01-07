@@ -66,9 +66,9 @@ plt.plot(axis_lim, axis_lim - rms, ':k')
 plt.xlim(axis_lim)
 plt.ylim(axis_lim)
 
-plt.text(0.99, 0.02, "RMS error = %.2g" % rms,
+plt.text(0.98, 0.02, "RMS error = %.2g" % rms,
          ha='right', va='bottom', transform=ax.transAxes,
-         bbox=dict(ec='w', fc='w'), fontsize=16)
+         bbox=dict(ec='w', fc='w'), fontsize=12)
 
 plt.title('Photo-z: Nearest Neigbor Regression')
 plt.xlabel(r'$\mathrm{z_{spec}}$', fontsize=14)

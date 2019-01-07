@@ -131,8 +131,8 @@ def spec_iterative_pca(outfile, n_ev=10, n_iter=20, norm='L2'):
     input_dict['norms'] = res[4]
     input_dict['coeffs'] = res[5]
 
-    np.savez(outfile,
-             **input_dict)
+    np.savez(outfile, **input_dict)
+
 
 if __name__ == '__main__':
     fetch_and_shift_spectra(4000, 'spec4000.npz')
