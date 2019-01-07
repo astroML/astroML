@@ -34,7 +34,6 @@ def fetch_wmap_temperatures(masked=False, data_home=None,
     """
     # because of a bug in healpy, pylab must be imported before healpy is
     # or else a segmentation fault can result.
-    import pylab
     import healpy as hp
 
     data_home = get_data_home(data_home)
@@ -57,7 +56,7 @@ def fetch_wmap_temperatures(masked=False, data_home=None,
                 raise IOError('mask data not present on disk. '
                               'set download_if_missing=True to download')
             mask_buffer = download_with_progress_bar(MASK_URL)
-            open(mask_file, 'w').write(mask_buffer)
+            open(mask_file, 'wb').write(mask_buffer)
 
         mask = hp.read_map(mask_file)
 

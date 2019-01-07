@@ -10,6 +10,8 @@ sample.
 import numpy as np
 from matplotlib import pyplot as plt
 
+from astropy.visualization import hist
+
 from astroML.datasets import fetch_sdss_specgals
 
 data = fetch_sdss_specgals()
@@ -27,7 +29,6 @@ DEC *= np.pi / 180
 
 ax = plt.axes(projection='mollweide')
 
-ax = plt.axes()
 ax.grid()
 plt.scatter(RA, DEC, s=1, lw=0, c=data['z'], cmap=plt.cm.copper,
             vmin=0, vmax=0.4)
@@ -59,7 +60,6 @@ plt.ylabel('rPetrosian')
 
 #------------------------------------------------------------
 # plot a histogram of the redshift
-from astroML.plotting import hist
 
 plt.figure()
 hist(data['z'], bins='knuth',

@@ -16,7 +16,7 @@ approaches infinity.
 #    https://groups.google.com/forum/#!forum/astroml-general
 import numpy as np
 from matplotlib import pyplot as plt
-from scipy.special import gamma, gammaln
+from scipy.special import gammaln
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
@@ -26,7 +26,7 @@ from scipy.special import gamma, gammaln
 from astroML.plotting import setup_text_plots
 setup_text_plots(fontsize=8, usetex=True)
 
-dims = np.arange(0, 51)
+dims = np.arange(1, 51)
 
 # log of volume of a sphere with r = 1
 log_V_sphere = (np.log(2) + 0.5 * dims * np.log(np.pi)
@@ -43,7 +43,7 @@ ax.semilogy(dims, np.exp(log_V_cube), '-k',
 ax.semilogy(dims, np.exp(log_V_sphere), '--k',
             label='inscribed unit hypersphere')
 
-ax.set_xlim(0, 50)
+ax.set_xlim(1, 50)
 ax.set_ylim(1E-13, 1E15)
 
 ax.set_xlabel('Number of Dimensions')

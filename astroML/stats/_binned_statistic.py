@@ -353,7 +353,7 @@ def binned_statistic_dd(sample, values, statistic='mean',
 
     # Remove outliers (indices 0 and -1 for each dimension).
     core = D * [slice(1, -1)]
-    result = result[core]
+    result = result[tuple(core)]
 
     if (result.shape != nbin - 2).any():
         raise RuntimeError('Internal Shape Error')

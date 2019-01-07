@@ -13,6 +13,7 @@ References
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
 import numpy as np
+import matplotlib
 from matplotlib import pyplot as plt
 from astroML.datasets import fetch_moving_objects
 from astroML.plotting.tools import devectorize_axes
@@ -20,7 +21,12 @@ from astroML.plotting.tools import devectorize_axes
 
 def black_bg_subplot(*args, **kwargs):
     """Create a subplot with black background"""
-    kwargs['axisbg'] = 'k'
+
+    if int(matplotlib.__version__[0]) >= 2:
+        kwargs['facecolor'] = 'k'
+    else:
+        kwargs['axisbg'] = 'k'
+
     ax = plt.subplot(*args, **kwargs)
 
     # set ticks and labels to white

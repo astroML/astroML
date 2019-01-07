@@ -12,6 +12,8 @@ of the detector.  The particular data used here is the injected
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
+from __future__ import division
+
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy import fftpack
@@ -39,7 +41,7 @@ fmax = 2060
 # compute PSD using simple FFT
 N = len(data)
 df = 1. / (N * dt)
-PSD = abs(dt * fftpack.fft(data)[:N / 2]) ** 2
+PSD = abs(dt * fftpack.fft(data)[:N // 2]) ** 2
 f = df * np.arange(N / 2)
 
 cutoff = ((f >= fmin) & (f <= fmax))

@@ -1,13 +1,11 @@
 from __future__ import print_function, division
 
 import os
+import sys
 
 import numpy as np
 from . import get_data_home
 from .tools import sql_query
-
-SPECCLASS = ['UNKNOWN', 'STAR', 'GALAXY', 'QSO',
-             'HIZ_QSO', 'SKY', 'STAR_LATE', 'GAL_EM']
 
 NOBJECTS = 50000
 
@@ -64,8 +62,13 @@ def fetch_sdss_galaxy_colors(data_home=None, download_if_missing=True):
         output = sql_query(query_text)
         print("finished.")
 
-        data = np.genfromtxt(output, delimiter=',',
-                             skip_header=2, names=GAL_COLORS_NAMES, dtype=None)
+        kwargs = {'delimiter': ',', 'skip_header': 2,
+                  'names': GAL_COLORS_NAMES, 'dtype': None}
+
+        if sys.version_info[0] >= 3:
+            kwargs['encoding'] = 'ascii'
+
+        data = np.genfromtxt(output, **kwargs)
         np.save(archive_file, data)
 
     else:

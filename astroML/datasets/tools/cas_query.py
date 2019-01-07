@@ -72,12 +72,12 @@ def query_plate_mjd_fiber(n_spectra,
     keys = output[0]
 
     res = np.zeros((n_spectra, 3), dtype=int)
-
-    for i, line in enumerate(output[1:]):
+    for i, line in enumerate(output[2:]):
         try:
-            res[i] = map(int, line.strip().split(','))
+            res[i] = line.decode().strip().split(',')
         except BaseException:
-            raise ValueError('\n'.join(output))
+            assert 0
+            raise ValueError(b'\n'.join(output))
 
     ntot = i + 1
 

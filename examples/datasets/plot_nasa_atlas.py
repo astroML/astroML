@@ -10,6 +10,8 @@ This shows some visualizations of the data from the NASA SDSS Atlas
 import numpy as np
 from matplotlib import pyplot as plt
 
+from astropy.visualization import hist
+
 from astroML.datasets import fetch_nasa_atlas
 
 data = fetch_nasa_atlas()
@@ -58,7 +60,6 @@ plt.ylabel('r')
 
 #------------------------------------------------------------
 # plot a histogram of the redshift
-from astroML.plotting import hist
 
 plt.figure()
 hist(data['Z'], bins='knuth',
