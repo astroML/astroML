@@ -14,9 +14,10 @@ from time import time
 import numpy as np
 from matplotlib import pyplot as plt
 
+from astropy.visualization import hist
+
 from astroML.datasets import fetch_imaging_sample, fetch_sdss_S82standards
 from astroML.crossmatch import crossmatch_angular
-from astroML.plotting import hist
 
 # get imaging data
 image_data = fetch_imaging_sample()
