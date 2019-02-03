@@ -1,4 +1,4 @@
-language: generic
+language: minimal
 
 # Setting sudo to false opts in to Travis-CI container-based builds.
 sudo: false
@@ -9,6 +9,9 @@ addons:
     apt:
         packages:
             - gfortran
+            - texlive-latex-extra
+            - dvipng
+            - texlive-fonts-recommended
 
 env:
     global:
