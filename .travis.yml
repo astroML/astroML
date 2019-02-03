@@ -11,6 +11,7 @@ addons:
             - gfortran
             - texlive-latex-extra
             - dvipng
+            - texlive-fonts-recommended
 
 env:
     global:
