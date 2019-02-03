@@ -203,7 +203,7 @@ def wiener_filter(t, h, signal='gaussian', noise='flat', return_PSDs=False,
     min_func = lambda v: np.sum((PSD[1:] - signal(f[1:], v[0], v[1])
                                  - noise(f[1:], v[2])) ** 2)
     v0 = tuple(signal_params) + tuple(noise_params)
-    v = optimize.fmin(min_func, v0, disp=False)
+    v = optimize.minimize(min_func, v0, method='Nelder-Mead')['x']
 
     P_S = signal(f, v[0], v[1])
     P_N = noise(f, v[2])
