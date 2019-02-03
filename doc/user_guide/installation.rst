@@ -110,7 +110,7 @@ The core ``astroML`` package requires the following:
 
 - `Python <http://python.org>`_ version 2.7 or 3.3+
 - `Numpy <http://numpy.scipy.org/>`_ >= 1.4
-- `Scipy <http://www.scipy.org/>`_ >= 0.7
+- `Scipy <http://www.scipy.org/>`_ >= 0.11
 - `scikit-learn <http://scikit-learn.org/>`_ >= 0.18
 - `matplotlib <http://matplotlib.org/>`_ >= 0.99
 - `astropy <http://www.astropy.org/>`_ >= 1.1
@@ -131,8 +131,6 @@ Optional Dependencies
 Several of the example scripts require specialized or upgraded packages.  These
 requirements are listed at the top of the example scripts.
 
-- `scipy version 0.11 <http://www.scipy.org>`_ added a sparse graph submodule.
-  The minimum spanning tree example requires scipy >= 0.11
 - `pyMC <http://pymc-devs.github.com/pymc/>`_
   provides a nice interface for Markov-Chain Monte Carlo.  Several examples
   use pyMC for exploration of high-dimensional spaces.  The examples
