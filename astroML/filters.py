@@ -273,7 +273,7 @@ def min_component_filter(x, y, feature_mask, p=1, fcut=None, Q=None):
     XX = x[:, None] ** np.arange(p + 1)
 
     # compute least-squares fit to non-masked data
-    beta = np.linalg.lstsq(XX[~feature_mask], y[~feature_mask])[0]
+    beta = np.linalg.lstsq(XX[~feature_mask], y[~feature_mask], rcond=None)[0]
 
     # subtract polynomial fit and mask the data
     y_mask = y - np.dot(XX, beta)
