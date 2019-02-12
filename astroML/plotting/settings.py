@@ -22,3 +22,4 @@ def setup_text_plots(fontsize=8, usetex=True):
         matplotlib.rc('scatter.edgecolors', 'b')
     matplotlib.rc('grid', linestyle=':')
     matplotlib.rc('errorbar', capsize=3)
+    matplotlib.rc('image', cmap='viridis')
