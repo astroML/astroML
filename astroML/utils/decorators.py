@@ -13,8 +13,9 @@ from astroML.utils.exceptions import AstroMLDeprecationWarning
 
 # We use functionality of the deprecated decorator from astropy that was
 # added in v2.0.10 LTS and v3.1
-ASTROPY_LT_31 = (LooseVersion(astropy.__version__) < LooseVersion("2.0.10") or
-                 (astropy.__version__[0] == 3 and LooseVersion(astropy.__version__) < LooseVersion("3.1")))
+av = astropy.__version__
+ASTROPY_LT_31 = (LooseVersion(av) < LooseVersion("2.0.10") or
+                 (LooseVersion("3.0") <= LooseVersion(av) and LooseVersion(av) < LooseVersion("3.1")))
 
 __all__ = ['pickle_results', 'deprecated']
 
