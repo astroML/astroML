@@ -1,10 +1,12 @@
 import numpy as np
 from scipy import integrate
 
+from astroML.utils import deprecated
+from astroML.utils.exceptions import AstroMLDeprecationWarning
 
-import warnings
 
-
+@deprecated('0.4', alternative='astropy.cosmology',
+            warning_type=AstroMLDeprecationWarning)
 class Cosmology(object):
     """Class to enable simple cosmological calculations.
 
@@ -24,7 +26,6 @@ class Cosmology(object):
     [1] http://roban.github.com/CosmoloPy/
     """
     def __init__(self, omegaM=0.27, omegaL=0.73, h=0.71):
-        warnings.warn("deprecated; use astropy.cosmology", DeprecationWarning)
         self.omegaM = omegaM
         self.omegaL = omegaL
         self.omegaK = 1. - omegaM - omegaL
