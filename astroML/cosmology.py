@@ -1,7 +1,12 @@
 import numpy as np
 from scipy import integrate
 
+from astroML.utils import deprecated
+from astroML.utils.exceptions import AstroMLDeprecationWarning
 
+
+@deprecated('0.4', alternative='astropy.cosmology',
+            warning_type=AstroMLDeprecationWarning)
 class Cosmology(object):
     """Class to enable simple cosmological calculations.
 

@@ -103,7 +103,7 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
 
 
 def fetch_great_wall(data_home=None, download_if_missing=True,
-                     xlim=(-375, -175), ylim=(-300, 200)):
+                     xlim=(-375, -175), ylim=(-300, 200), cosmo=None):
     """Get the 2D SDSS "Great Wall" distribution, following Cowan et al 2008
 
     Parameters
@@ -121,6 +121,10 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
         used for the plots in Cowan 2008.  If set to None, no cuts will
         be performed.
 
+    cosmo : astropy.cosmology instance specifying cosmology
+        to use when generating the sample.  If not provided,
+        a Flat Lambda CDM model with h=0.732, Omega_m=0.27 is used.
+
     Returns
     -------
     data : ndarray, shape = (Ngals, 2)
@@ -128,7 +132,12 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
     """
     # local imports so we don't need dependencies for loading module
     from scipy.interpolate import interp1d
-    from ..cosmology import Cosmology
+
+    # We need some cosmological information to compute the r-band
+    #  absolute magnitudes.
+    if cosmo is None:
+        import astropy.cosmology
+        cosmo = astropy.cosmology.FlatLambdaCDM(73.2, 0.27, Tcmb0=0)
 
     data = fetch_sdss_specgals(data_home, download_if_missing)
 
@@ -140,12 +149,9 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
     z = data['z']
     data = data[(z > 0.01) & (z < 0.12)]
 
-    # use redshift to compute absolute r-band magnitude
-    cosmo = Cosmology(omegaM=0.27, omegaL=0.73, h=0.732)
-
     # first sample the distance modulus on a grid
     zgrid = np.linspace(min(data['z']), max(data['z']), 100)
-    mugrid = np.array([cosmo.mu(z) for z in zgrid])
+    mugrid = cosmo.distmod(zgrid).value
     f = interp1d(zgrid, mugrid)
     mu = f(data['z'])
 
@@ -155,7 +161,7 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
 
     # compute distances in the equatorial plane
     # first sample comoving distance
-    Dcgrid = np.array([cosmo.Dc(z) for z in zgrid])
+    Dcgrid = cosmo.comoving_distance(z).value
     f = interp1d(zgrid, Dcgrid)
     dist = f(data['z'])
 
