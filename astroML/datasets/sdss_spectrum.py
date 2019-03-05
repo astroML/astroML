@@ -2,8 +2,6 @@ from __future__ import print_function, division
 
 import os
 
-import numpy as np
-
 from .tools import get_data_home, download_with_progress_bar,\
     SDSSfits, sdss_fits_url, sdss_fits_filename
 

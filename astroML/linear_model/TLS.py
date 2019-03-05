@@ -1,5 +1,4 @@
 import numpy as np
-from scipy import optimize
 
 
 def TLS_logL(v, X, dX):

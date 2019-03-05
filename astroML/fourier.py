@@ -4,9 +4,9 @@ import numpy as np
 
 try:
     # use scipy if available: it's faster
-    from scipy.fftpack import fft, ifft, fftshift, ifftshift
-except:
-    from numpy.fft import fft, ifft, fftshift, ifftshift
+    from scipy.fftpack import fft, ifft, fftshift
+except ImportError:
+    from numpy.fft import fft, ifft, fftshift
 
 
 def FT_continuous(t, h, axis=-1, method=1):
