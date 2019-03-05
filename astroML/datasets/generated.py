@@ -1,4 +1,6 @@
 import numpy as np
+from astropy.cosmology import FlatLambdaCDM
+
 from ..density_estimation import FunctionDistribution
 from ..utils import check_random_state
 
@@ -28,17 +30,16 @@ def generate_mu_z(size=1000, z0=0.3, dmu_0=0.1, dmu_1=0.02,
 
     cosmo : astropy.cosmology instance specifying cosmology
         to use when generating the sample.  If not provided,
-        a Flat Lambda CDM model with h=0.71, Omega_m=0.27 is used.
+        a Flat Lambda CDM model with H0=71, Om0=0.27, Tcmb=0 is used.
 
     Returns
     -------
     z, mu, dmu : ndarrays
-        arrays of shape `size`
+        arrays of shape ``size``
     """
 
     if cosmo is None:
-        import astropy.cosmology
-        cosmo = astropy.cosmology.FlatLambdaCDM(71, 0.27, Tcmb0=0)
+        cosmo = FlatLambdaCDM(H0=71, Om0=0.27, Tcmb0=0)
 
     random_state = check_random_state(random_state)
     zdist = FunctionDistribution(redshift_distribution, func_args=dict(z0=z0),
@@ -46,7 +47,7 @@ def generate_mu_z(size=1000, z0=0.3, dmu_0=0.1, dmu_1=0.02,
                                  random_state=random_state)
 
     z_sample = zdist.rvs(size)
-    mu_sample = cosmo.distmod(np.ravel(z_sample)).value.reshape(size)
+    mu_sample = cosmo.distmod(z_sample)
 
     dmu = dmu_0 + dmu_1 * mu_sample
     mu_sample = random_state.normal(mu_sample, dmu)

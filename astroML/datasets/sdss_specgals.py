@@ -3,6 +3,7 @@ from __future__ import print_function, division
 import os
 
 import numpy as np
+from astropy.cosmology import FlatLambdaCDM
 
 from . import get_data_home
 from .tools import download_with_progress_bar
@@ -121,9 +122,9 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
         used for the plots in Cowan 2008.  If set to None, no cuts will
         be performed.
 
-    cosmo : astropy.cosmology instance specifying cosmology
+    cosmo : `astropy.cosmology` instance specifying cosmology
         to use when generating the sample.  If not provided,
-        a Flat Lambda CDM model with h=0.732, Omega_m=0.27 is used.
+        a Flat Lambda CDM model with H0=73.2, Om0=0.27, Tcmb0=0 is used.
 
     Returns
     -------
@@ -136,8 +137,7 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
     # We need some cosmological information to compute the r-band
     #  absolute magnitudes.
     if cosmo is None:
-        import astropy.cosmology
-        cosmo = astropy.cosmology.FlatLambdaCDM(73.2, 0.27, Tcmb0=0)
+        cosmo = FlatLambdaCDM(H0=73.2, Om0=0.27, Tcmb0=0)
 
     data = fetch_sdss_specgals(data_home, download_if_missing)
 
