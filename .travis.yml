@@ -18,8 +18,8 @@ env:
         - PYTHON_VERSION=3.7
         - ASTROPY_VERSION=stable
         - NUMPY_VERSION=stable
-        - CONDA_DEPENDENCIES='scipy scikit-learn matplotlib pymc'
-        - PIP_DEPENDENCIES='astroML_addons'
+        - CONDA_DEPENDENCIES='scipy scikit-learn matplotlib'
+        - PIP_DEPENDENCIES='https://github.com/astropy/pytest-doctestplus/archive/master.zip'
         - DEBUG=True
         - PYTEST_VERSION='<4'
         - SCRIPT_CMD='pytest astroML'
@@ -28,24 +28,22 @@ matrix:
     fast_finish: true
 
     include:
+        - env: NUMPY_VERSION=1.16
+
         - env: NUMPY_VERSION=1.15
 
-        - env: NUMPY_VERSION=1.14
+        - env: PYTHON_VERSION=3.6 NUMPY_VERSION=1.14
 
         - env: PYTHON_VERSION=3.6 NUMPY_VERSION=1.13
 
-        - env: PYTHON_VERSION=3.6 NUMPY_VERSION=1.12
+        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.12 ASTROPY_VERSION=3.0
 
-        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.11 ASTROPY_VERSION=3.0
+        - env: PYTHON_VERSION=2.7 NUMPY_VERSION=1.11 SCIKIT_LEARN_VERSION=0.18
 
-        - env: PYTHON_VERSION=3.4 NUMPY_VERSION=1.10 SCIKIT_LEARN_VERSION=0.18
+        - env: PYTHON_VERSION=3.4 CONDA_DEPENDENCIES='scipy matplotlib' NUMPY_VERSION=1.10 ASTROPY_VERSION=2.0.9
+               PIP_DEPENDENCIES='scikit-learn==0.18 https://github.com/astropy/pytest-doctestplus/archive/master.zip'
 
-        - env: PYTHON_VERSION=3.4 CONDA_DEPENDENCIES='scipy matplotlib pymc' NUMPY_VERSION=1.9
-               PIP_DEPENDENCIES='astropy==2.0.9 scikit-learn==0.18'
-
-        - env: PYTHON_VERSION=2.7
-
-        - env: PYTHON_VERSION=3.6 SCRIPT_CMD='make -C doc html' PIP_DEPENDENCIES='sphinx astroML_addons'
+        - env: PYTHON_VERSION=3.6 SCRIPT_CMD='make -C doc html' PIP_DEPENDENCIES='sphinx'
 
 install:
     - git clone git://github.com/astropy/ci-helpers.git
