@@ -48,11 +48,7 @@ def savitzky_golay(y, window_size, order, deriv=0,
     --------
     >>> t = np.linspace(-4, 4, 500)
     >>> y = np.exp(-t ** 2)
-    >>> np.random.seed(0)
-    >>> y_noisy = y + np.random.normal(0, 0.05, t.shape)
     >>> y_smooth = savitzky_golay(y, window_size=31, order=4)
-    >>> print(np.rms(y_noisy - y))
-    >>> print(np.rms(y_smooth - y))
 
     References
     ----------

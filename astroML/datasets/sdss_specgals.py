@@ -73,11 +73,11 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
     Examples
     --------
     >>> from astroML.datasets import fetch_sdss_specgals
-    >>> data = fetch_sdss_specgals()
+    >>> data = fetch_sdss_specgals()  # doctest: +IGNORE_OUTPUT
     >>> data.shape  # number of objects in dataset
     (661598,)
-    >>> data.names[:5]  # first five column names
-    ['ra', 'dec', 'mjd', 'plate', 'fiberID']
+    >>> data.dtype.names[:5]  # first five column names
+    ('ra', 'dec', 'mjd', 'plate', 'fiberID')
     >>> print(data['ra'][:3])  # first three RA values
     [ 146.71419105  146.74414186  146.62857334]
     >>> print(data['dec'][:3])  #  first three declination values

@@ -1,5 +1,3 @@
-import os
-
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy import interpolate
@@ -37,12 +35,13 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
     --------
     The code can be used in the following way::
 
-        import matplotlib.pyplot as plt
-        fig, ax = plt.subplots()
-        x, y = np.random.random((2, 10000))
-        ax.scatter(x, y)
-        devectorize_axes(ax)
-        plt.savefig('devectorized.pdf')
+    >>> import matplotlib.pyplot as plt
+    >>> import numpy as np
+    >>> from astroML.plotting.tools import devectorize_axes
+    >>> fig, ax = plt.subplots()
+    >>> x, y = np.random.random((2, 10000))
+    >>> ax.scatter(x, y)   # doctest: +IGNORE_OUTPUT
+    >>> devectorize_axes(ax)   # doctest: +IGNORE_OUTPUT
 
     The resulting figure will be much smaller than the vectorized version.
     """
@@ -109,17 +108,17 @@ def discretize_cmap(cmap, N):
 
     Parameters
     ----------
-        cmap: colormap instance, eg. cm.jet.
-        N: Number of colors.
+    cmap : colormap instance, eg. cm.jet.
+    N : Number of colors.
 
     Returns
     -------
-        cmap_d: discretized colormap
+    cmap_d : discretized colormap
 
     Example
     -------
-        >>> x = resize(arange(100), (5,100))
-        >>> djet = cmap_discretize(cm.jet, 5)
+    >>> from matplotlib import cm
+    >>> djet = discretize_cmap(cm.jet, 5)
     """
 
     cdict = cmap._segmentdata.copy()

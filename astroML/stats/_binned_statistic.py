@@ -66,8 +66,8 @@ def binned_statistic(x, values, statistic='mean',
 
     Examples
     --------
-    >>> binned_statistic([1,2,1], bins=[0,1,2,3], 'count')
-    (array([0, 2, 1]), array([0, 1, 2, 3]))\
+    >>> binned_statistic([1, 2, 1], [2, 5, 3], bins=[0, 1, 2, 3], statistic='count')
+    (array([0., 2., 1.]), array([0., 1., 2., 3.]))
 
     See Also
     --------

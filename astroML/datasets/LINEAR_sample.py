@@ -41,7 +41,7 @@ class LINEARdata(object):
 
     Example
     -------
-    >>> data = fetch_LINEAR_sample()
+    >>> data = fetch_LINEAR_sample()  # doctest: +IGNORE_OUTPUT
     >>> lightcurve = data[data.ids[0]]
     """
     @staticmethod

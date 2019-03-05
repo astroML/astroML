@@ -87,7 +87,7 @@ def fetch_LIGO_bigdog(data_home=None, download_if_missing=True):
     Examples
     --------
     >>> from astroML.datasets import fetch_LIGO_bigdog
-    >>> data = fetch_LIGO_bigdog()
+    >>> data = fetch_LIGO_bigdog()  # doctest: +IGNORE_OUTPUT
     >>> print(data.dtype.names)
     ('t', 'Hanford', 'Livingston', 'Virgo')
     >>> print(data['t'][:3])

@@ -1,6 +1,5 @@
 from __future__ import print_function
 
-import types
 import warnings
 import functools
 from distutils.version import LooseVersion
@@ -53,10 +52,6 @@ def pickle_results(filename=None, verbose=True):
     >>> f(4)
     @pickle_results: using precomputed results from 'tmp.pkl'
     16
-    >>> f(6)
-    @pickle_results: computing results and saving to 'tmp.pkl'
-    36
-    >>> import os; os.remove('tmp.pkl')
     """
     def pickle_func(f, filename=filename, verbose=verbose):
         if filename is None:
