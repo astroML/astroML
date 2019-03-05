@@ -21,3 +21,11 @@ def setup_text_plots(fontsize=8, usetex=True):
         # New in mpl 3.1
         matplotlib.rc('scatter.edgecolors', 'b')
     matplotlib.rc('grid', linestyle=':')
+    matplotlib.rc('errorbar', capsize=3)
+    matplotlib.rc('image', cmap='viridis')
+    matplotlib.rc('axes', xmargin=0)
+    matplotlib.rc('axes', ymargin=0)
+    matplotlib.rc('xtick', direction='in')
+    matplotlib.rc('ytick', direction='in')
+    matplotlib.rc('xtick', top=True)
+    matplotlib.rc('ytick', right=True)
