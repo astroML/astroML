@@ -96,15 +96,15 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
     Examples
     --------
     >>> from astroML.datasets import fetch_sdss_sspp
-    >>> data = fetch_sdss_sspp()
+    >>> data = fetch_sdss_sspp()  # doctest: +IGNORE_OUTPUT
     >>> data.shape  # number of objects in dataset
     (327260,)
-    >>> print(data.names[:5])  # names of the first five columns
-    ['ra', 'dec', 'Ar', 'upsf', 'uErr']
-    >>> print(data['ra'][:2])  # first two RA values
-    [ 49.62750244  40.27209091]
-    >>> print(data['dec'][:2])  # first two DEC values
-    [-1.04175591 -0.64250112]
+    >>> print(data.dtype.names[:5])  # names of the first five columns
+    ('ra', 'dec', 'Ar', 'upsf', 'uErr')
+    >>> print(data['ra'][:1])  # first RA value
+    [49.6275024]
+    >>> print(data['dec'][:1])  # first DEC value
+    [-1.04175591]
     """
     # fits is an optional dependency: don't import globally
     from astropy.io import fits

@@ -105,12 +105,13 @@ def fetch_moving_objects(data_home=None, download_if_missing=True,
 
     Examples
     --------
-    >>> data = fetch_moving_objects()
+    >>> from astroML.datasets import fetch_moving_objects
+    >>> data = fetch_moving_objects()  # doctest: +IGNORE_OUTPUT
     >>> print(len(data))  # number of objects
-    104686
+    43424
     >>> u_g = data['mag_u'] - data['mag_g']
     >>> print(u_g[:5])  # first five u-g colors of the dataset
-    [ 1.48999977  1.80000114  1.78000069  1.65000153  2.01000023]
+    [1.4899998 1.7800007 1.6500015 2.0100002 1.8199997]
     """
     data_home = get_data_home(data_home)
 

@@ -228,8 +228,8 @@ def bayesian_blocks(t, x=None, sigma=None,
     >>> dt = 0.01
     >>> t = dt * np.arange(1000)
     >>> x = np.zeros(len(t))
-    >>> x[np.random.randint(0, len(t), len(t) / 10)] = 1
-    >>> bins = bayesian_blocks(t, fitness='regular_events', dt=dt, gamma=0.9)
+    >>> x[np.random.randint(0, len(t), int(len(t) / 10))] = 1
+    >>> bins = bayesian_blocks(t, x, fitness='regular_events', dt=dt, gamma=0.9)
 
     Measured point data with errors:
 
@@ -237,7 +237,7 @@ def bayesian_blocks(t, x=None, sigma=None,
     >>> x = np.exp(-0.5 * (t - 50) ** 2)
     >>> sigma = 0.1
     >>> x_obs = np.random.normal(x, sigma)
-    >>> bins = bayesian_blocks(t, fitness='measures')
+    >>> bins = bayesian_blocks(t, x=x_obs, fitness='measures')
 
     References
     ----------

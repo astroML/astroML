@@ -103,10 +103,10 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
 
     Examples
     --------
-    >>> data = fetch_sdss_S82standards()
+    >>> data = fetch_sdss_S82standards()  # doctest: +IGNORE_OUTPUT
     >>> u_g = data['mmed_u'] - data['mmed_g']
-    >>> print(u_g[:5])
-    [-22.23500061   1.34900093   1.43799973   2.08200073 -23.03800011]
+    >>> print(u_g[:4])
+    [-22.23500061   1.34900093   1.43799973   2.08200073]
 
     References
     ----------

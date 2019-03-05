@@ -33,15 +33,9 @@ def fetch_rrlyrae_mags(data_home=None, download_if_missing=True):
     Examples
     --------
     >>> from astroML.datasets import fetch_rrlyrae_mags
-    >>> data = fetch_rrlyrae_mags()
+    >>> data = fetch_rrlyrae_mags()  # doctest: +IGNORE_OUTPUT
     >>> data.shape  # number of objects in dataset
     (483,)
-    >>> print(data.names[:5])  # names of the first five columns
-    ['ra', 'dec', 'run', 'rExtSFD', 'uRaw']
-    >>> print(data['ra'][:2])
-    [ 0.265165  0.265413]
-    >>> print(data['dec'][:2])
-    [-0.444861 -0.62201 ]
 
     Notes
     -----
