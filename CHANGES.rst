@@ -1,4 +1,4 @@
-0.4rc1 (2019-01-07)
+0.4rc2 (2019-03-05)
 ===================
 
 API Changes and Other Changes
@@ -10,6 +10,12 @@ API Changes and Other Changes
   change depends on scikit-learn 0.18+. [#125]
 
 - Minimum required astropy version is now 1.1. [#142]
+
+- Deprecated ``astroML.cosmology.Cosmology()`` in favour of
+  ``astropy.cosmology``. [#121]
+
+- New utils subpackage, including deprecated decorator and new warning
+  types. ``astroML.decorators`` has been moved to this subpackage. [#141]
 
 - The book and paper figures has been moved out to their separate
   repository (``astroML_figures``).
