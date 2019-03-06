@@ -3,7 +3,12 @@ from ..utils import check_random_state
 
 from astropy.stats import LombScargle
 
+from ..utils.decorators import deprecated
+from ..utils.exceptions import AstroMLDeprecationWarning
 
+
+@deprecated('0.4', alternative='astropy.stats.LombScargle',
+            warning_type=AstroMLDeprecationWarning)
 def lomb_scargle(t, y, dy, omega, generalized=True,
                  subtract_mean=True, significance=None):
     """
@@ -71,6 +76,8 @@ def lomb_scargle(t, y, dy, omega, generalized=True,
         return p_omega
 
 
+@deprecated('0.4', alternative='astropy.stats.LombScargle.false_alarm_probability',
+            warning_type=AstroMLDeprecationWarning)
 def lomb_scargle_bootstrap(t, y, dy, omega,
                            generalized=True, subtract_mean=True,
                            N_bootstraps=100, random_state=None):
@@ -175,6 +182,8 @@ def lomb_scargle_BIC(P, y, dy, n_harmonics=1):
     return np.sum(((y - mu) / dy) ** 2) * P - (2 * n_harmonics + 1) * np.log(N)
 
 
+@deprecated('0.4', alternative='astropy.stats.LombScargle',
+            warning_type=AstroMLDeprecationWarning)
 def multiterm_periodogram(t, y, dy, omega, n_terms=3):
     """Perform a multiterm periodogram at each omega
 
