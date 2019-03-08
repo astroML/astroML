@@ -2,7 +2,8 @@
 Tools to perform a SQL queries to an online server.
 Default values are provided for http://cas.sdss.org
 """
-from ...py3k_compat import urlencode, urlopen
+from urllib.request import urlopen
+from urllib.parse import urlencode
 
 PUBLIC_URL = 'http://cas.sdss.org/public/en/tools/search/x_sql.aspx'
 DEFAULT_FMT = 'csv'

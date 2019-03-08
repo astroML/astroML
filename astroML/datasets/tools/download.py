@@ -1,8 +1,8 @@
 from __future__ import print_function, division
 
 import sys
-
-from ...py3k_compat import urlopen, BytesIO, url_content_length
+from io import BytesIO
+from urllib.request import urlopen
 
 
 def bytes_to_string(nbytes):
@@ -19,6 +19,11 @@ def bytes_to_string(nbytes):
 
     nbytes /= 1024.
     return '%.1fGb' % nbytes
+
+
+def url_content_length(fhandle):
+    length = dict(fhandle.info())['Content-Length']
+    return int(length.strip())
 
 
 def download_with_progress_bar(data_url, return_buffer=False):

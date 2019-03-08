@@ -2,11 +2,11 @@ import matplotlib
 matplotlib.use('Agg')  # don't display plots
 
 import numpy as np
+from io import BytesIO
 from numpy.testing import assert_
 from matplotlib import image
 import matplotlib.pyplot as plt
 
-from astroML.py3k_compat import BytesIO
 from astroML.plotting.tools import devectorize_axes
 
 

@@ -8,11 +8,11 @@ from __future__ import print_function, division
 
 import os
 from gzip import GzipFile
+from io import BytesIO
 
 import numpy as np
 
 from .tools import download_with_progress_bar
-from ..py3k_compat import BytesIO
 from . import get_data_home
 
 DATA_URL = 'http://das.sdss.org/va/qsocat/dr7qso.dat.gz'

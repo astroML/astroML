@@ -4,7 +4,7 @@ Fetch the LIGO BigDog time-domain dataset
 from __future__ import print_function, division
 
 import os
-from ..py3k_compat import BytesIO
+from io import BytesIO
 from gzip import GzipFile
 import numpy as np
 

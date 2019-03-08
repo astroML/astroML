@@ -13,7 +13,7 @@ a long time to run (~30 minutes for 4000 spectra).
 from __future__ import print_function, division
 
 import sys
-from astroML.py3k_compat import HTTPError
+from urllib.error import HTTPError
 import numpy as np
 from astroML.datasets import fetch_sdss_spectrum
 from astroML.datasets.tools import query_plate_mjd_fiber, TARGET_GALAXY
