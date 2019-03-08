@@ -7,8 +7,6 @@ http://arxiv.org/pdf/0905.2979v2.pdf
 Arbitrary mixing matrices R are not yet implemented: currently, this only
 works with R = I.
 """
-from __future__ import print_function, division
-
 from time import time
 
 import numpy as np

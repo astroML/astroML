@@ -1,5 +1,3 @@
-from __future__ import print_function, division
-
 import os
 from gzip import GzipFile
 from io import BytesIO

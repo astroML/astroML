@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import warnings
 import functools
 from distutils.version import LooseVersion

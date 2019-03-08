@@ -1,5 +1,3 @@
-from __future__ import division
-
 """
 Tools for working with distributions
 """

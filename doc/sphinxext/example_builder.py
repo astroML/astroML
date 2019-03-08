@@ -3,8 +3,6 @@ Example Builder:
 a tool for creating automated example pages in sphinx documentation
 """
 
-from __future__ import print_function
-
 import sys
 import os
 import traceback

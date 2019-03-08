@@ -1,8 +1,6 @@
 """
 Fetch the LIGO BigDog time-domain dataset
 """
-from __future__ import print_function, division
-
 import os
 from io import BytesIO
 from gzip import GzipFile

@@ -10,8 +10,6 @@ a long time to run (~30 minutes for 4000 spectra).
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
-from __future__ import print_function, division
-
 import sys
 from urllib.error import HTTPError
 import numpy as np

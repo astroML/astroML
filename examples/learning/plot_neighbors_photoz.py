@@ -14,8 +14,6 @@ the SDSS CASjobs server for the colors of the 50,000 galaxies.
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
-from __future__ import print_function, division
-
 import numpy as np
 from matplotlib import pyplot as plt
 

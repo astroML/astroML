@@ -1,5 +1,3 @@
-from __future__ import print_function, division
-
 import sys
 from io import BytesIO
 from urllib.request import urlopen

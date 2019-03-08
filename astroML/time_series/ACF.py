@@ -1,8 +1,6 @@
 """
 Auto-correlation functions
 """
-from __future__ import division
-
 import numpy as np
 from scipy import fftpack
 from .periodogram import lomb_scargle

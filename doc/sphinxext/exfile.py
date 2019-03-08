@@ -3,8 +3,6 @@ Execfile is a tool that enables open a python script, extracting the
 file-level docstring, executing the file, and saving the resulting
 matplotlib figures.
 """
-from __future__ import print_function, division
-
 import sys
 import os
 import traceback

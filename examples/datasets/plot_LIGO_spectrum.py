@@ -12,8 +12,6 @@ of the detector.  The particular data used here is the injected
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
-from __future__ import division
-
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy import fftpack
