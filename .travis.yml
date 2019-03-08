@@ -38,9 +38,6 @@ matrix:
 
         - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.12 ASTROPY_VERSION=3.0
 
-        - env: PYTHON_VERSION=3.4 CONDA_DEPENDENCIES='scipy matplotlib' NUMPY_VERSION=1.10 ASTROPY_VERSION=2.0.9
-               PIP_DEPENDENCIES='scikit-learn==0.18 https://github.com/astropy/pytest-doctestplus/archive/master.zip'
-
         - env: PYTHON_VERSION=3.6 SCRIPT_CMD='make -C doc html' PIP_DEPENDENCIES='sphinx'
 
 install:
