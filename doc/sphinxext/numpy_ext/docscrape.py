@@ -10,7 +10,6 @@ import pydoc
 from warnings import warn
 import collections
 import copy
-import sys
 
 
 def strip_blank_lines(l):
@@ -516,10 +515,7 @@ class FunctionDoc(NumpyDocString):
                     signature = str(inspect.signature(func))
                 except (AttributeError, ValueError):
                     # try to read signature, backward compat for older Python
-                    if sys.version_info[0] >= 3:
-                        argspec = inspect.getfullargspec(func)
-                    else:
-                        argspec = inspect.getargspec(func)
+                    argspec = inspect.getfullargspec(func)
                     signature = inspect.formatargspec(*argspec)
                 signature = '%s%s' % (func_name, signature.replace('*', '\*'))
             except TypeError:

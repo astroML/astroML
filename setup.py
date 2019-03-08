@@ -8,7 +8,7 @@ AUTHOR_EMAIL = "vanderplas@astro.washington.edu"
 MAINTAINER = "Jake VanderPlas"
 MAINTAINER_EMAIL = "vanderplas@astro.washington.edu"
 URL = 'http://astroML.github.com'
-DOWNLOAD_URL = 'http://github.com/astroML/astroML'
+DOWNLOAD_URL = 'https://github.com/astroML/astroML'
 LICENSE = 'BSD'
 
 import astroML
@@ -61,8 +61,9 @@ setup(name=NAME,
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3 :: Only',
         'Topic :: Scientific/Engineering :: Astronomy'],
      )

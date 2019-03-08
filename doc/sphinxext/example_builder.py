@@ -202,10 +202,7 @@ class ExecFile(object):
         docstring = ''
         first_par = ''
 
-        if sys.version_info[0] >= 3:
-            tokens = tokenize.generate_tokens(lines.__iter__().__next__)
-        else:
-            tokens = tokenize.generate_tokens(lines.__iter__().next)
+        tokens = tokenize.generate_tokens(lines.__iter__().__next__)
         for tok_type, tok_content, _, (erow, _), _ in tokens:
             tok_type = token.tok_name[tok_type]
             if tok_type in ('NEWLINE', 'COMMENT', 'NL', 'INDENT', 'DEDENT'):

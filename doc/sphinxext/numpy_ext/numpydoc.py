@@ -18,7 +18,6 @@ It will:
 """
 from __future__ import division, absolute_import, print_function
 
-import sys
 import re
 import pydoc
 import inspect
@@ -35,11 +34,6 @@ if sphinx.__version__ < '1.0.1':
 from .docscrape_sphinx import get_doc_object, SphinxDocString
 from . import __version__
 
-if sys.version_info[0] >= 3:
-    sixu = lambda s: s
-else:
-    sixu = lambda s: unicode(s, 'unicode_escape')
-
 
 HASH_LEN = 12
 
@@ -50,7 +44,7 @@ def rename_references(app, what, name, obj, options, lines):
     references = set()
     for line in lines:
         line = line.strip()
-        m = re.match(sixu('^.. \\[(%s)\\]') % app.config.numpydoc_citation_re,
+        m = re.match('^.. \\[(%s)\\]' % app.config.numpydoc_citation_re,
                      line, re.I)
         if m:
             references.add(m.group(1))
@@ -64,10 +58,10 @@ def rename_references(app, what, name, obj, options, lines):
         for r in references:
             new_r = prefix + '-' + r
             for i, line in enumerate(lines):
-                lines[i] = lines[i].replace(sixu('[%s]_') % r,
-                                            sixu('[%s]_') % new_r)
-                lines[i] = lines[i].replace(sixu('.. [%s]') % r,
-                                            sixu('.. [%s]') % new_r)
+                lines[i] = lines[i].replace('[%s]_' % r,
+                                            '[%s]_' % new_r)
+                lines[i] = lines[i].replace('.. [%s]' % r,
+                                            '.. [%s]' % new_r)
 
 
 def _ascend(node, cls):
@@ -117,29 +111,26 @@ def mangle_docstrings(app, what, name, obj, options, lines):
            app.config.numpydoc_show_inherited_class_members,
            'class_members_toctree': app.config.numpydoc_class_members_toctree}
 
-    u_NL = sixu('\n')
+    u_NL = '\n'
     if what == 'module':
         # Strip top title
         pattern = '^\\s*[#*=]{4,}\\n[a-z0-9 -]+\\n[#*=]{4,}\\s*'
-        title_re = re.compile(sixu(pattern), re.I | re.S)
-        lines[:] = title_re.sub(sixu(''), u_NL.join(lines)).split(u_NL)
+        title_re = re.compile(pattern, re.I | re.S)
+        lines[:] = title_re.sub('', u_NL.join(lines)).split(u_NL)
     else:
         doc = get_doc_object(obj, what, u_NL.join(lines), config=cfg,
                              builder=app.builder)
-        if sys.version_info[0] >= 3:
-            doc = str(doc)
-        else:
-            doc = unicode(doc)
+        doc = str(doc)
         lines[:] = doc.split(u_NL)
 
     if (app.config.numpydoc_edit_link and hasattr(obj, '__name__') and
             obj.__name__):
         if hasattr(obj, '__module__'):
-            v = dict(full_name=sixu("%s.%s") % (obj.__module__, obj.__name__))
+            v = dict(full_name="%s.%s" % (obj.__module__, obj.__name__))
         else:
             v = dict(full_name=obj.__name__)
-        lines += [sixu(''), sixu('.. htmlonly::'), sixu('')]
-        lines += [sixu('    %s') % x for x in
+        lines += ['', '.. htmlonly::', '']
+        lines += ['    %s' % x for x in
                   (app.config.numpydoc_edit_link % v).split("\n")]
 
     # call function to replace reference numbers so that there are no
@@ -165,8 +156,8 @@ def mangle_signature(app, what, name, obj, options, sig, retann):
     doc = SphinxDocString(pydoc.getdoc(obj))
     sig = doc['Signature'] or getattr(obj, '__text_signature__', None)
     if sig:
-        sig = re.sub(sixu("^[^(]*"), sixu(""), sig)
-        return sig, sixu('')
+        sig = re.sub("^[^(]*", "", sig)
+        return sig, ''
 
 
 def setup(app, get_doc_object_=get_doc_object):
