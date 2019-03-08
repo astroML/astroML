@@ -14,7 +14,7 @@ except ImportError:
                      "for minimum spanning tree")
 
 
-class HierarchicalClustering(object):
+class HierarchicalClustering:
     """Hierarchical Clustering via Approximate Euclidean Minimum Spanning Tree
 
     Parameters

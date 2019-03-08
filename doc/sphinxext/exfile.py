@@ -16,7 +16,7 @@ import matplotlib
 matplotlib.use('Agg') #don't display plots
 import pylab as plt
 
-class ExecFile(object):
+class ExecFile:
     """Execute the file and store the output, docstring, and
     sequence of matplotlib figures
     """
@@ -119,7 +119,7 @@ class ExecFile(object):
 
         except:
             print(80 * '_')
-            print('{0} is not compiling:'.format(fname))
+            print('{} is not compiling:'.format(fname))
             traceback.print_exc()
             print(80 * '_')
         finally:
@@ -128,4 +128,4 @@ class ExecFile(object):
             os.chdir(cwd)
             ncol = gc.collect()
             if self.print_output and (ncol > 0):
-                print("\n > collected {0} unreachable objects".format(ncol))
+                print("\n > collected {} unreachable objects".format(ncol))

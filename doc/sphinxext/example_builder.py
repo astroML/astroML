@@ -135,7 +135,7 @@ def create_thumbnail(infile, thumbfile, scale=0.2,
     return fig
 
 
-class ExecFile(object):
+class ExecFile:
     """Execute the file and store the output, docstring, and
     sequence of matplotlib figures
     """

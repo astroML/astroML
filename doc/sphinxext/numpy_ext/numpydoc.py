@@ -126,7 +126,7 @@ def mangle_docstrings(app, what, name, obj, options, lines):
     if (app.config.numpydoc_edit_link and hasattr(obj, '__name__') and
             obj.__name__):
         if hasattr(obj, '__module__'):
-            v = dict(full_name="%s.%s" % (obj.__module__, obj.__name__))
+            v = dict(full_name="{}.{}".format(obj.__module__, obj.__name__))
         else:
             v = dict(full_name=obj.__name__)
         lines += ['', '.. htmlonly::', '']
@@ -197,11 +197,11 @@ from sphinx.domains.c import CDomain
 from sphinx.domains.python import PythonDomain
 
 
-class ManglingDomainBase(object):
+class ManglingDomainBase:
     directive_mangling_map = {}
 
     def __init__(self, *a, **kw):
-        super(ManglingDomainBase, self).__init__(*a, **kw)
+        super().__init__(*a, **kw)
         self.wrap_mangling_directives()
 
     def wrap_mangling_directives(self):

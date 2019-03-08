@@ -18,7 +18,7 @@ from sklearn.mixture import GaussianMixture
 from ..utils import logsumexp, log_multivariate_gaussian, check_random_state
 
 
-class XDGMM(object):
+class XDGMM:
     """Extreme Deconvolution
 
     Fit an extreme deconvolution (XD) model to the data

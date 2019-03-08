@@ -70,8 +70,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'astroML'
-copyright = u'2012, Jake Vanderplas'
+project = 'astroML'
+copyright = '2012, Jake Vanderplas'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -214,8 +214,8 @@ htmlhelp_basename = 'astroMLdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'astroML.tex', u'astroML Documentation',
-   u'Jake Vanderplas', 'manual'),
+  ('index', 'astroML.tex', 'astroML Documentation',
+   'Jake Vanderplas', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -247,6 +247,6 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'astroML', u'astroML Documentation',
-     [u'Jake Vanderplas'], 1)
+    ('index', 'astroML', 'astroML Documentation',
+     ['Jake Vanderplas'], 1)
 ]

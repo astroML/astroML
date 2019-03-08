@@ -10,7 +10,7 @@ except ImportError:
 
 
 def FT_continuous(t, h, axis=-1, method=1):
-    """Approximate a continuous 1D Fourier Transform with sampled data.
+    r"""Approximate a continuous 1D Fourier Transform with sampled data.
 
     This function uses the Fast Fourier Transform to approximate
     the continuous fourier transform of a sampled function, using
@@ -133,7 +133,7 @@ def IFT_continuous(f, H, axis=-1, method=1):
 
 
 def PSD_continuous(t, h, axis=-1, method=1):
-    """Approximate a continuous 1D Power Spectral Density of sampled data.
+    r"""Approximate a continuous 1D Power Spectral Density of sampled data.
 
     This function uses the Fast Fourier Transform to approximate
     the continuous fourier transform of a sampled function, using

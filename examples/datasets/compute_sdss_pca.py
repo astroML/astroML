@@ -121,7 +121,7 @@ def spec_iterative_pca(outfile, n_ev=10, n_iter=20, norm='L2'):
                         n_ev=n_ev, n_iter=n_iter, norm=norm,
                         full_output=True)
 
-    input_dict = dict([(key, data_in[key]) for key in data_in.files])
+    input_dict = {key: data_in[key] for key in data_in.files}
 
     # don't save the reconstructed spectrum: this can easily
     # be recomputed from the other parameters.

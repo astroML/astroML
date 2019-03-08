@@ -61,8 +61,8 @@ def download_with_progress_bar(data_url, return_buffer=False):
             buf.write(next_chunk)
             s = ('[' + nchunks * '='
                  + (num_units - 1 - nchunks) * ' '
-                 + ']  %s / %s   \r' % (bytes_to_string(buf.tell()),
-                                        content_length_str))
+                 + ']  {} / {}   \r'.format(bytes_to_string(buf.tell()),
+                                            content_length_str))
         else:
             sys.stdout.write('\n')
             break

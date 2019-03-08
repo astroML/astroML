@@ -21,7 +21,7 @@ def strip_blank_lines(l):
     return l
 
 
-class Reader(object):
+class Reader:
     """A line-based string reader.
 
     """
@@ -101,7 +101,7 @@ class ParseError(Exception):
     def __str__(self):
         message = self.args[0]
         if hasattr(self, 'docstring'):
-            message = "%s in %r" % (message, self.docstring)
+            message = "{} in {!r}".format(message, self.docstring)
         return message
 
 
@@ -316,7 +316,7 @@ class NumpyDocString(collections.Mapping):
         while True:
             summary = self._doc.read_to_next_empty_line()
             summary_str = " ".join([s.strip() for s in summary]).strip()
-            if re.compile('^([\w., ]+=)?\s*[\w\.]+\(.*\)$').match(summary_str):
+            if re.compile(r'^([\w., ]+=)?\s*[\w\.]+\(.*\)$').match(summary_str):
                 self['Signature'] = summary_str
                 if not self._is_at_section():
                     continue
@@ -333,7 +333,7 @@ class NumpyDocString(collections.Mapping):
         self._parse_summary()
 
         sections = list(self._read_sections())
-        section_names = set([section for section, content in sections])
+        section_names = {section for section, content in sections}
 
         has_returns = 'Returns' in section_names
         has_yields = 'Yields' in section_names
@@ -388,7 +388,7 @@ class NumpyDocString(collections.Mapping):
 
     def _str_signature(self):
         if self['Signature']:
-            return [self['Signature'].replace('*', '\*')] + ['']
+            return [self['Signature'].replace('*', r'\*')] + ['']
         else:
             return ['']
 
@@ -410,7 +410,7 @@ class NumpyDocString(collections.Mapping):
             out += self._str_header(name)
             for param, param_type, desc in self[name]:
                 if param_type:
-                    out += ['%s : %s' % (param, param_type)]
+                    out += ['{} : {}'.format(param, param_type)]
                 else:
                     out += [param]
                 if desc and ''.join(desc).strip():
@@ -434,9 +434,9 @@ class NumpyDocString(collections.Mapping):
         last_had_desc = True
         for func, desc, role in self['See Also']:
             if role:
-                link = ':%s:`%s`' % (role, func)
+                link = ':{}:`{}`'.format(role, func)
             elif func_role:
-                link = ':%s:`%s`' % (func_role, func)
+                link = ':{}:`{}`'.format(func_role, func)
             else:
                 link = "`%s`_" % func
             if desc or last_had_desc:
@@ -459,7 +459,7 @@ class NumpyDocString(collections.Mapping):
         for section, references in idx.items():
             if section == 'default':
                 continue
-            out += ['   :%s: %s' % (section, ', '.join(references))]
+            out += ['   :{}: {}'.format(section, ', '.join(references))]
         return out
 
     def __str__(self, func_role=''):
@@ -517,7 +517,7 @@ class FunctionDoc(NumpyDocString):
                     # try to read signature, backward compat for older Python
                     argspec = inspect.getfullargspec(func)
                     signature = inspect.formatargspec(*argspec)
-                signature = '%s%s' % (func_name, signature.replace('*', '\*'))
+                signature = '{}{}'.format(func_name, signature.replace('*', r'\*'))
             except TypeError:
                 signature = '%s()' % func_name
             self['Signature'] = signature
@@ -534,7 +534,7 @@ class FunctionDoc(NumpyDocString):
         out = ''
 
         func, func_name = self.get_func()
-        signature = self['Signature'].replace('*', '\*')
+        signature = self['Signature'].replace('*', r'\*')
 
         roles = {'func': 'function',
                  'meth': 'method'}
@@ -542,10 +542,10 @@ class FunctionDoc(NumpyDocString):
         if self._role:
             if self._role not in roles:
                 print("Warning: invalid role %s" % self._role)
-            out += '.. %s:: %s\n    \n\n' % (roles.get(self._role, ''),
-                                             func_name)
+            out += '.. {}:: {}\n    \n\n'.format(roles.get(self._role, ''),
+                                                 func_name)
 
-        out += super(FunctionDoc, self).__str__(func_role=self._role)
+        out += super().__str__(func_role=self._role)
         return out
 
 

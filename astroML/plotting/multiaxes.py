@@ -5,7 +5,7 @@ from copy import deepcopy
 import numpy as np
 
 
-class MultiAxes(object):
+class MultiAxes:
     """Visualize Multiple-dimensional data
 
     This class enables the visualization of multi-dimensional data, using
