@@ -1,8 +1,5 @@
 language: minimal
 
-# Setting sudo to false opts in to Travis-CI container-based builds.
-sudo: false
-
 os: linux
 
 addons:
