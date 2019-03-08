@@ -55,6 +55,7 @@ setup(name=NAME,
                 'astroML.utils',
                 'astroML.utils.tests',
             ],
+      python_requires='>=3.5',
       classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
