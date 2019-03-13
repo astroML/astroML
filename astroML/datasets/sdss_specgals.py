@@ -161,7 +161,7 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
 
     # compute distances in the equatorial plane
     # first sample comoving distance
-    Dcgrid = cosmo.comoving_distance(z).value
+    Dcgrid = cosmo.comoving_distance(zgrid).value
     f = interp1d(zgrid, Dcgrid)
     dist = f(data['z'])
 
