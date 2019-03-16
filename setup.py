@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 DESCRIPTION = "tools for machine learning and data mining in Astronomy"
 LONG_DESCRIPTION = open('README.rst').read()
