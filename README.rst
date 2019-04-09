@@ -32,6 +32,7 @@ Important Links
 ===============
 - HTML documentation: http://www.astroML.org
 - Core source-code repository: http://github.com/astroML/astroML
+- Figure source-code repository: http://github.com/astroML/astroML-figures
 - Issue Tracker: http://github.com/astroML/astroML/issues
 - Mailing List: https://groups.google.com/forum/#!forum/astroml-general
 
@@ -48,6 +49,11 @@ Core
 To install the core ``astroML`` package in your home directory, use::
 
   pip install astroML
+
+A conda package for astroML is also available either on the conda-forge or
+on the astropy conda channels::
+
+  conda install -c astropy astroML
 
 The core package is pure python, so installation should be straightforward
 on most systems.  To install from source, use::
@@ -73,30 +79,21 @@ will list their optional dependencies at the top of the file.
 
 Core Dependencies
 -----------------
-The core ``astroML`` package requires the following:
+The core ``astroML`` package requires the following (some of the
+functionality might work with older versions):
 
-- Python_ version 2.7 and 3.3+
-- Numpy_ >= 1.4
+- Python_ version 2.7 and 3.4+
+- Numpy_ >= 1.8
 - Scipy_ >= 0.11
 - Scikit-learn_ >= 0.18
-- Matplotlib_ >= 0.99
-- AstroPy_ >= 1.1
-  AstroPy is required to read Flexible Image Transport
-  System (FITS) files, which are used by several datasets.
+- Matplotlib_ >= 2.1.1
+- AstroPy_ >= 1.2
 
-This configuration matches the Ubuntu 10.04 LTS release from April 2010,
-with the addition of scikit-learn.
-
-To run unit tests, you will also need nose >= 0.10
 
 Optional Dependencies
 ---------------------
 Several of the example scripts require specialized or upgraded packages.
 These requirements are listed at the top of the particular scripts
-
-- PyMC_ provides a nice interface for Markov-Chain Monte Carlo. Several astroML
-  examples use pyMC for exploration of high-dimensional spaces. The examples
-  were written with pymc version 2.2
 
 - HEALPy_ provides an interface to
   the HEALPix pixelization scheme, as well as fast spherical harmonic
@@ -141,14 +138,19 @@ usefulness of the method on an astronomical dataset (preferably making use
 of the loaders in ``astroML.datasets``).  These example scripts are in the
 ``examples`` subdirectory of the main source repository.
 
-.. _Numpy Documentation Guide: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
+.. _Numpy Documentation Guide: https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard
 
 Authors
 =======
 
 Package Author
 --------------
-* Jake Vanderplas <vanderplas@astro.washington.edu> http://jakevdp.github.com
+* Jake Vanderplas https://github.com/jakevdp
+  http://jakevdp.github.com
+
+Maintainer
+----------
+* Brigitta Sipocz https://github.com/bsipocz
 
 Code Contribution
 -----------------
@@ -156,13 +158,12 @@ Code Contribution
 * Julian Taylor http://github.com/juliantaylor
 
 
-.. _Python: http://www.python.org
-.. _Numpy: http://www.numpy.org
-.. _Scipy: http://www.scipy.org
-.. _Scikit-learn: http://scikit-learn.org
-.. _Matplotlib: http://matplotlib.org
+.. _Python: https://www.python.org
+.. _Numpy: https://www.numpy.org
+.. _Scipy: https://www.scipy.org
+.. _Scikit-learn: https://scikit-learn.org
+.. _Matplotlib: https://matplotlib.org
 .. _AstroPy: http://www.astropy.org/
-.. _PyMC: http://pymc-devs.github.com/pymc/
-.. _HEALPy: https://github.com/healpy/healpy>
-.. _Git: http://git-scm.com/
-.. _GitHub: http://www.github.com
+.. _HEALPy: https://github.com/healpy/healpy
+.. _Git: https://git-scm.com/
+.. _GitHub: https://www.github.com

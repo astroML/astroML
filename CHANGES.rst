@@ -13,7 +13,7 @@ API Changes and Other Changes
 - Switched to use the updated scikit-learn API for GaussianMixture. This
   change depends on scikit-learn 0.18+. [#125]
 
-- Minimum required astropy version is now 1.1. [#142]
+- Minimum required astropy version is now 1.2. [#173]
 
 - Deprecated ``astroML.cosmology.Cosmology()`` in favour of
   ``astropy.cosmology``. [#121]
