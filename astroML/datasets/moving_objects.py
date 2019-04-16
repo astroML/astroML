@@ -8,7 +8,8 @@ from .tools import download_with_progress_bar
 from ..py3k_compat import BytesIO
 from . import get_data_home
 
-DATA_URL = 'http://www.astro.washington.edu/users/ivezic/sdssmoc/ADR3.dat.gz'
+DATA_URL = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+            'ADR3.dat.gz')
 
 ARCHIVE_FILE = 'moving_objects.npy'
 
@@ -82,7 +83,7 @@ def fetch_moving_objects(data_home=None, download_if_missing=True,
     ----------
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available

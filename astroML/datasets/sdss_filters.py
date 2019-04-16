@@ -8,7 +8,8 @@ from astroML.datasets import get_data_home
 from ..py3k_compat import urlopen
 
 # Info on vega spectrum: http://www.stsci.edu/hst/observatory/cdbs/calspec.html
-VEGA_URL = 'http://www.astro.washington.edu/users/ivezic/DMbook/data/1732526_nic_002.ascii'
+VEGA_URL = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+            '1732526_nic_002.ascii')
 FILTER_URL = 'http://classic.sdss.org/dr7/instruments/imager/filters/%s.dat'
 
 
@@ -21,7 +22,7 @@ def fetch_sdss_filter(fname, data_home=None, download_if_missing=True):
         filter name: must be one of 'ugriz'
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available
@@ -68,7 +69,7 @@ def fetch_vega_spectrum(data_home=None, download_if_missing=True):
         filter name: must be one of 'ugriz'
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available

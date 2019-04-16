@@ -9,10 +9,10 @@ from .tools import download_with_progress_bar
 from ..py3k_compat import BytesIO
 from . import get_data_home
 
-DATA_URL = ('http://www.astro.washington.edu/users/ivezic/'
-            'sdss/catalogs/stripe82calibStars_v2.6.dat.gz')
-DATA_URL_2MASS = ('http://www.astro.washington.edu/users/ivezic/'
-                  'sdss/catalogs/stripe82calibStars_2MASS_v2.6.dat.gz')
+DATA_URL = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+            'stripe82calibStars_v2.6.dat.gz')
+DATA_URL_2MASS = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+                  'stripe82calibStars_2MASS_v2.6.dat.gz')
 
 ARCHIVE_FILE = 'sdss_S82standards.npy'
 ARCHIVE_FILE_2MASS = 'sdss_S82standards_2mass.npy'
@@ -51,7 +51,7 @@ def fetch_sdss_S82standards(data_home=None, download_if_missing=True,
     ----------
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : bool, optional, default=True
         If False, raise a IOError if the data is not locally available
