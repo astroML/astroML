@@ -22,7 +22,7 @@ def fetch_sdss_filter(fname, data_home=None, download_if_missing=True):
         filter name: must be one of 'ugriz'
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available
@@ -69,7 +69,7 @@ def fetch_vega_spectrum(data_home=None, download_if_missing=True):
         filter name: must be one of 'ugriz'
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available

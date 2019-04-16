@@ -21,8 +21,7 @@ def fetch_wmap_temperatures(masked=False, data_home=None,
         If False, then return the raw temperature array
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
-
+        all astroML data is stored in '~/astroML_data'.
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available
         instead of trying to download the data from the source site.

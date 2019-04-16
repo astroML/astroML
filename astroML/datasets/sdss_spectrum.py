@@ -24,11 +24,11 @@ def fetch_sdss_spectrum(plate, mjd, fiber, data_home=None,
     ----------------
     data_home: string (optional)
         directory in which to cache downloaded fits files.  If not
-        specified, it will be set to ~/astroML_data
+        specified, it will be set to ~/astroML_data.
     download_if_missing: boolean (default = True)
-        download the fits file if it is not cached locally
+        download the fits file if it is not cached locally.
     cache_to_disk: boolean (default = True)
-        cache downloaded file to data_home
+        cache downloaded file to data_home.
 
     Returns
     -------
