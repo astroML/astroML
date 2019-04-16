@@ -3,14 +3,13 @@ from __future__ import print_function, division
 import os
 
 import numpy as np
+from astropy.table import Table
 
 from . import get_data_home
-from .tools import download_with_progress_bar
 
-DATA_URL = ("http://www.astro.washington.edu/users/"
-            "ivezic/DMbook/data/imagingSample_20sqdeg.fit")
-DATA_URL = ("http://www.astro.washington.edu/users/"
-            "ivezic/DMbook/data/sgSDSSimagingSample.fit")
+
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+            "sgSDSSimagingSample.fit.gz")
 
 
 def fetch_imaging_sample(data_home=None, download_if_missing=True):
@@ -92,9 +91,6 @@ def fetch_imaging_sample(data_home=None, download_if_missing=True):
           p.modelMag_r < 22.5
         --- the end of query
     """
-    # fits is an optional dependency: don't import globally
-    from astropy.io import fits
-
     data_home = get_data_home(data_home)
 
     archive_file = os.path.join(data_home, os.path.basename(DATA_URL))
@@ -104,8 +100,9 @@ def fetch_imaging_sample(data_home=None, download_if_missing=True):
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        fitsdata = download_with_progress_bar(DATA_URL)
-        open(archive_file, 'wb').write(fitsdata)
+        data = Table.read(DATA_URL)
+        data.write(archive_file)
+    else:
+        data = Table.read(archive_file)
 
-    hdulist = fits.open(archive_file)
-    return np.asarray(hdulist[1].data)
+    return np.asarray(data)

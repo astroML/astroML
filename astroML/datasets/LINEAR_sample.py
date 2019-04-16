@@ -1,26 +1,18 @@
 import os
-from ..py3k_compat import BytesIO
 import tarfile
 
 import numpy as np
+from astropy.table import Table
 
 from . import get_data_home
 from .tools import download_with_progress_bar
 
-TARGETLIST_URL = ("http://www.astro.washington.edu/users/ivezic/"
-                  "linear/allDataFinal/allLINEARfinal_targets.dat")
-DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
-            "linear/allDataFinal/allLINEARfinal_dat.tar.gz")
-
-# old version of the data
-# GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
-#              "DMbook/data/LINEARattributes.dat"
-#GENEVA_ARCHIVE = 'LINEARattributes.npy'
-# ARCHIVE_DTYPE = [(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
-#                                     'JK', 'logP', 'amp', 'skew')]
-
-GENEVA_URL = ("http://www.astro.washington.edu/users/ivezic/"
-              "DMbook/data/LINEARattributesFinalApr2013.dat")
+TARGETLIST_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+                  "allLINEARfinal_targets.dat.gz")
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+            "allLINEARfinal_dat.tar.gz")
+GENEVA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+              "LINEARattributesFinalApr2013.dat.gz")
 GENEVA_ARCHIVE = 'LINEARattributesFinalApr2013.npy'
 ARCHIVE_DTYPE = ([(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
                                       'JK', 'logP', 'amp', 'skew',
@@ -193,8 +185,8 @@ def fetch_LINEAR_geneva(data_home=None, download_if_missing=True):
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        databuffer = download_with_progress_bar(GENEVA_URL)
-        data = np.loadtxt(BytesIO(databuffer), dtype=ARCHIVE_DTYPE)
+        data = Table.read(GENEVA_URL, format='ascii', header_start=19)
+        data = data.as_array()
         np.save(archive_file, data)
     else:
         data = np.load(archive_file)

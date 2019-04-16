@@ -8,7 +8,8 @@ from .tools import download_with_progress_bar
 from ..py3k_compat import BytesIO
 from . import get_data_home
 
-DATA_URL = 'http://www.astro.washington.edu/users/ivezic/sdssmoc/ADR3.dat.gz'
+DATA_URL = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+            'ADR3.dat.gz')
 
 ARCHIVE_FILE = 'moving_objects.npy'
 

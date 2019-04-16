@@ -8,8 +8,8 @@ from . import get_data_home
 from . import fetch_sdss_S82standards
 from .tools import download_with_progress_bar
 
-DATA_URL = ("http://www.astro.washington.edu/users/"
-            "ivezic/DMbook/data/RRLyrae.fit")
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+            "RRLyrae.fit")
 
 
 def fetch_rrlyrae_mags(data_home=None, download_if_missing=True):

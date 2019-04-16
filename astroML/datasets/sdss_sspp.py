@@ -3,12 +3,13 @@ from __future__ import print_function
 import os
 
 import numpy as np
+from astropy.table import Table
 
 from . import get_data_home
-from .tools import download_with_progress_bar
 
-DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
-            "DMbook/data/SDSSssppDR9_rerun122.fit")
+
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+            "SDSSssppDR9_rerun122.fit.gz")
 
 
 def compute_distances(data):
@@ -106,9 +107,6 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
     >>> print(data['dec'][:1])  # first DEC value
     [-1.04175591]
     """
-    # fits is an optional dependency: don't import globally
-    from astropy.io import fits
-
     data_home = get_data_home(data_home)
 
     archive_file = os.path.join(data_home, os.path.basename(DATA_URL))
@@ -118,12 +116,10 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        fitsdata = download_with_progress_bar(DATA_URL)
-        open(archive_file, 'wb').write(fitsdata)
-
-    hdulist = fits.open(archive_file)
-
-    data = np.asarray(hdulist[1].data)
+        data = Table.read(DATA_URL)
+        data.write(archive_file)
+    else:
+        data = Table.read(archive_file)
 
     if cleaned:
         # -1.1 < FeH < 0.1
@@ -150,4 +146,4 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
         # abs(radVel) < 100 km/s
         data = data[(abs(data['radVel']) < 100)]
 
-    return data
+    return np.asarray(data)
