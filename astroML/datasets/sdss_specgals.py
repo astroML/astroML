@@ -4,12 +4,15 @@ import os
 
 import numpy as np
 from astropy.cosmology import FlatLambdaCDM
+from astropy.table import Table, vstack
 
 from . import get_data_home
-from .tools import download_with_progress_bar
 
-DATA_URL = ("http://www.astro.washington.edu/users/ivezic/"
-            "DMbook/data/SDSSspecgalsDR8.fit")
+# We store the data in two parts to comply with GitHub 100Mb file size limit
+DATA_URL1 = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+             "SDSSspecgalsDR8_1.fit.gz")
+DATA_URL2 = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+             "SDSSspecgalsDR8_2.fit.gz")
 
 
 def fetch_sdss_specgals(data_home=None, download_if_missing=True):
@@ -19,7 +22,7 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
     ----------
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available
@@ -27,7 +30,7 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
 
     Returns
     -------
-    data : recarray, shape = (327260,)
+    data : recarray, shape = (661598,)
         record array containing pipeline parameters
 
     Notes
@@ -84,23 +87,27 @@ def fetch_sdss_specgals(data_home=None, download_if_missing=True):
     >>> print(data['dec'][:3])  #  first three declination values
     [-1.04127639 -0.6522198  -0.7651468 ]
     """
-    # fits is an optional dependency: don't import globally
-    from astropy.io import fits
 
     data_home = get_data_home(data_home)
 
-    archive_file = os.path.join(data_home, os.path.basename(DATA_URL))
+    archive_file1 = os.path.join(data_home, os.path.basename(DATA_URL1))
+    archive_file2 = os.path.join(data_home, os.path.basename(DATA_URL2))
 
-    if not os.path.exists(archive_file):
+    if not (os.path.exists(archive_file1) and os.path.exists(archive_file2)):
         if not download_if_missing:
             raise IOError('data not present on disk. '
                           'set download_if_missing=True to download')
 
-        fitsdata = download_with_progress_bar(DATA_URL)
-        open(archive_file, 'wb').write(fitsdata)
+        for url, name in zip([DATA_URL1, DATA_URL2],
+                             [archive_file1, archive_file2]):
+            data = Table.read(url)
+            data.write(name)
 
-    hdulist = fits.open(archive_file)
-    return np.asarray(hdulist[1].data)
+    data1 = Table.read(archive_file1)
+    data2 = Table.read(archive_file2)
+
+    data = vstack([data1, data2])
+    return np.asarray(data)
 
 
 def fetch_great_wall(data_home=None, download_if_missing=True,
@@ -111,7 +118,7 @@ def fetch_great_wall(data_home=None, download_if_missing=True,
     ----------
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available

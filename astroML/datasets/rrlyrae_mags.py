@@ -8,8 +8,8 @@ from . import get_data_home
 from . import fetch_sdss_S82standards
 from .tools import download_with_progress_bar
 
-DATA_URL = ("http://www.astro.washington.edu/users/"
-            "ivezic/DMbook/data/RRLyrae.fit")
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+            "RRLyrae.fit")
 
 
 def fetch_rrlyrae_mags(data_home=None, download_if_missing=True):
@@ -19,7 +19,7 @@ def fetch_rrlyrae_mags(data_home=None, download_if_missing=True):
     ----------
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available
@@ -71,7 +71,7 @@ def fetch_rrlyrae_combined(data_home=None, download_if_missing=True):
     ----------
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available

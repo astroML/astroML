@@ -11,8 +11,8 @@ import numpy as np
 from . import get_data_home
 from .tools import download_with_progress_bar
 
-DATA_URL_LARGE = ('http://www.astro.washington.edu/users/ivezic/'
-                  'DMbook/LIGO/hoft.968653908-968655956.H1.dat.gz')
+DATA_URL_LARGE = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+                  'hoft.968653908-968655956.H1.dat.gz')
 LOCAL_FILE_LARGE = 'LIGO_large.npy'
 
 DATA_URL = 'http://www.ligo.org/science/GW100916/HLV-strain.txt'
@@ -26,7 +26,7 @@ def fetch_LIGO_large(data_home=None, download_if_missing=True):
     ----------
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available
@@ -72,7 +72,7 @@ def fetch_LIGO_bigdog(data_home=None, download_if_missing=True):
     ----------
     data_home : optional, default=None
         Specify another download and cache folder for the datasets. By default
-        all scikit learn data is stored in '~/astroML_data' subfolders.
+        all astroML data is stored in '~/astroML_data'.
 
     download_if_missing : optional, default=True
         If False, raise a IOError if the data is not locally available
