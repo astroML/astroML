@@ -1,6 +1,8 @@
 """Tests of the GMM Bayes classifier"""
 import numpy as np
 from numpy.testing import assert_allclose
+import pytest
+import warnings
 from astroML.classification import GMMBayes
 
 
@@ -32,3 +34,42 @@ def test_gmm2d():
 
         predicted = clf.predict(X)
         assert_allclose(y, predicted)
+
+
+def test_incompatible_shapes_exception():
+    X = np.random.normal(0, 1, size=(100, 2))
+    y = np.zeros(99)
+
+    ncm = 1
+    clf = GMMBayes(ncm)
+
+    with pytest.raises(Exception) as e:
+        assert clf.fit(X, y)
+
+    assert str(e.value) == "X and y have incompatible shapes"
+
+
+def test_incompatible_number_of_components_exception():
+    X = np.random.normal(0, 1, size=(100, 2))
+    y = np.zeros(100)
+
+    ncm = [1, 2, 3]
+    clf = GMMBayes(ncm)
+
+    with pytest.raises(Exception) as e:
+        assert clf.fit(X, y)
+
+    assert str(e.value) == ("n_components must be compatible with "
+                             "the number of classes")
+
+
+def test_too_many_components_warning():
+    X = np.random.normal(0, 1, size=(3, 2))
+    y = np.zeros(3)
+
+    ncm = 5
+    clf = GMMBayes(ncm)
+
+    with pytest.warns(UserWarning, match="Expected n_samples >= "
+                                         "n_components but got "):
+        clf.fit(X, y)

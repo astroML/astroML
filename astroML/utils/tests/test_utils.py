@@ -1,7 +1,7 @@
 import numpy as np
 
-from numpy.testing import assert_array_almost_equal
-from astroML.utils import logsumexp, log_multivariate_gaussian, convert_2D_cov
+from numpy.testing import assert_array_almost_equal, assert_allclose
+from astroML.utils import logsumexp, log_multivariate_gaussian, convert_2D_cov, completeness_contamination, split_samples
 
 
 def positive_definite_matrix(N, M=None):
@@ -81,3 +81,37 @@ def test_2D_cov():
     cov = convert_2D_cov(s1, s2, alpha)
     assert_array_almost_equal([s1, s2, alpha],
                               convert_2D_cov(cov))
+
+
+def test_completeness_contamination():
+    completeness, contamination = \
+                    completeness_contamination(np.ones(100), np.ones(100))
+
+    assert_allclose(completeness, 1)
+    assert_allclose(contamination, 0)
+
+    completeness, contamination = \
+                    completeness_contamination(np.zeros(100), np.zeros(100))
+
+    assert_allclose(completeness, 0)
+    assert_allclose(contamination, 0)
+
+    completeness, contamination = \
+                completeness_contamination(
+                    np.concatenate((np.ones(50), np.zeros(50))),
+                    np.concatenate((np.ones(25), np.zeros(50), np.ones(25)))
+                )
+
+    assert_allclose(completeness, 0.5)
+    assert_allclose(contamination, 0.5)
+
+
+def test_split_samples():
+    X = np.arange(100.)
+    y = np.arange(100.)
+
+    X_divisions, y_divisions = split_samples(X, y)
+
+    assert (len(X_divisions[0]) == len(y_divisions[0]) == 75)
+    assert (len(X_divisions[1]) == len(y_divisions[1]) == 25)
+    assert (len(set(X_divisions[0]) | set(X_divisions[1])) == 100)
