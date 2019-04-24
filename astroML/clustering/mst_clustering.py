@@ -4,6 +4,7 @@ Minimum Spanning Tree Clustering
 import numpy as np
 
 from scipy import sparse
+from sklearn.base import BaseEstimator
 from sklearn.neighbors import kneighbors_graph
 
 try:
@@ -14,7 +15,7 @@ except ImportError:
                      "for minimum spanning tree")
 
 
-class HierarchicalClustering:
+class HierarchicalClustering(BaseEstimator):
     """Hierarchical Clustering via Approximate Euclidean Minimum Spanning Tree
 
     Parameters

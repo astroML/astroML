@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.base import BaseEstimator
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression, Lasso, Ridge
 
@@ -39,7 +40,7 @@ def gaussian_basis(X, mu, sigma):
     return Xg
 
 
-class LinearRegression:
+class LinearRegression(BaseEstimator):
     """Simple Linear Regression with errors in y
 
     This is a stripped-down version of sklearn.linear_model.LinearRegression
