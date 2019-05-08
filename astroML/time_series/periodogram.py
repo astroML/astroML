@@ -1,7 +1,11 @@
 import numpy as np
 from ..utils import check_random_state
 
-from astropy.stats import LombScargle
+try:
+    # astropy.timeseries is new in v3.2
+    from astropy.timeseries import LombScargle
+except ImportError:
+    from astropy.stats import LombScargle
 
 from ..utils.decorators import deprecated
 from ..utils.exceptions import AstroMLDeprecationWarning
