@@ -15,7 +15,7 @@ GENEVA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
               "LINEARattributesFinalApr2013.dat.gz")
 GENEVA_ARCHIVE = 'LINEARattributesFinalApr2013.npy'
 ARCHIVE_DTYPE = ([(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',
-                                      'JK', 'logP', 'amp', 'skew',
+                                      'JK', 'logP', 'Ampl', 'skew',
                                       'kurt', 'magMed', 'nObs')]
                  + [('LCtype', 'i4'), ('LINEARobjectID', '|S20')])
 
