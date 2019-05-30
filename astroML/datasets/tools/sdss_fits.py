@@ -47,7 +47,7 @@ spec_cln_dict = ['SPEC_UNKNOWN',
                  'GAL_EM']  # emission line galaxy
 
 
-class SDSSfits(object):
+class SDSSfits:
     """A class to open and interact with fits files from SDSS
 
     Parameters

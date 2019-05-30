@@ -1,5 +1,3 @@
-from __future__ import print_function, division
-
 import os
 
 from .tools import get_data_home, download_with_progress_bar,\

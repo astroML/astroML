@@ -32,7 +32,7 @@ for i in range(5):
     if i < 4:
         ax.xaxis.set_major_formatter(plt.NullFormatter())
     else:
-        ax.set_xlabel('wavelength $(\AA)$')
+        ax.set_xlabel(r'wavelength $(\AA)$')
 
     ax.yaxis.set_major_formatter(plt.NullFormatter())
     ax.set_ylabel('flux')

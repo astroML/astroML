@@ -19,7 +19,7 @@ from astroML.utils.exceptions import AstroMLDeprecationWarning
 
 @deprecated('0.4', alternative='astropy.stats.FitnessFunc',
             warning_type=AstroMLDeprecationWarning)
-class FitnessFunc(object):
+class FitnessFunc:
     """Base class for fitness functions
 
     Each fitness function class has the following:

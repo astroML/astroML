@@ -1,5 +1,3 @@
-from __future__ import print_function, division
-
 import numpy as np
 from numpy.testing import assert_allclose, run_module_suite
 

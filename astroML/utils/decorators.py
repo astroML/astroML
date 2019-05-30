@@ -1,13 +1,11 @@
-from __future__ import print_function
-
 import warnings
 import functools
 from distutils.version import LooseVersion
 
 import numpy as np
 import astropy
+import pickle
 
-import astroML.py3k_compat as pickle
 from astroML.utils.exceptions import AstroMLDeprecationWarning
 
 # We use functionality of the deprecated decorator from astropy that was

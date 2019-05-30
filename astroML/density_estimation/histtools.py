@@ -1,5 +1,3 @@
-from __future__ import division
-
 """
 Tools for working with distributions
 """
@@ -89,7 +87,7 @@ def freedman_bin_width(data, return_bins=False):
 
 
 @deprecated('0.4', warning_type=AstroMLDeprecationWarning)
-class KnuthF(object):
+class KnuthF:
     r"""Class which implements the function minimized by knuth_bin_width
 
     Parameters

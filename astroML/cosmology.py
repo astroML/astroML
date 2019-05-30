@@ -7,7 +7,7 @@ from astroML.utils.exceptions import AstroMLDeprecationWarning
 
 @deprecated('0.4', alternative='astropy.cosmology',
             warning_type=AstroMLDeprecationWarning)
-class Cosmology(object):
+class Cosmology:
     """Class to enable simple cosmological calculations.
 
     For a more full-featured cosmology package, see CosmoloPy [1]_

@@ -1,7 +1,4 @@
-from __future__ import print_function, division
-
 import os
-import sys
 
 import numpy as np
 from . import get_data_home
@@ -63,10 +60,9 @@ def fetch_sdss_galaxy_colors(data_home=None, download_if_missing=True):
         print("finished.")
 
         kwargs = {'delimiter': ',', 'skip_header': 2,
-                  'names': GAL_COLORS_NAMES, 'dtype': None}
-
-        if sys.version_info[0] >= 3:
-            kwargs['encoding'] = 'ascii'
+                  'names': GAL_COLORS_NAMES, 'dtype': None,
+                  'encoding': 'ascii',
+                  }
 
         data = np.genfromtxt(output, **kwargs)
         np.save(archive_file, data)

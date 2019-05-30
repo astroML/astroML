@@ -1,7 +1,7 @@
 1.0 (unreleased)
 ----------------
 
-- No changes yet
+- Removed suppport for Python versions <3.5. [#174]
 
 
 

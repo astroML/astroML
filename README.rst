@@ -82,7 +82,7 @@ Core Dependencies
 The core ``astroML`` package requires the following (some of the
 functionality might work with older versions):
 
-- Python_ version 2.7 and 3.4+
+- Python_ version 3.5+
 - Numpy_ >= 1.8
 - Scipy_ >= 0.11
 - Scikit-learn_ >= 0.18

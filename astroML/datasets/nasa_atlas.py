@@ -8,8 +8,6 @@ http://www.nsatlas.org/data
 This function fetches a ~50MB subset of that data.  This subset is created
 using the code that can be found at examples/datasets/truncate_nsa_data.py
 """
-from __future__ import print_function, division
-
 import os
 
 import numpy as np

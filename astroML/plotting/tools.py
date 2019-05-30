@@ -1,4 +1,5 @@
 import numpy as np
+from io import BytesIO
 from matplotlib import pyplot as plt
 from scipy import interpolate
 
@@ -6,7 +7,6 @@ from matplotlib import image
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.transforms import Bbox
 from matplotlib.patches import Ellipse
-from ..py3k_compat import BytesIO
 
 
 def devectorize_axes(ax=None, dpi=None, transparent=True):

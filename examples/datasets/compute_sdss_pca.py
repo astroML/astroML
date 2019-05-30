@@ -10,10 +10,8 @@ a long time to run (~30 minutes for 4000 spectra).
 # Author: Jake VanderPlas <vanderplas@astro.washington.edu>
 # License: BSD
 #   The figure is an example from astroML: see http://astroML.github.com
-from __future__ import print_function, division
-
 import sys
-from astroML.py3k_compat import HTTPError
+from urllib.error import HTTPError
 import numpy as np
 from astroML.datasets import fetch_sdss_spectrum
 from astroML.datasets.tools import query_plate_mjd_fiber, TARGET_GALAXY
@@ -121,7 +119,7 @@ def spec_iterative_pca(outfile, n_ev=10, n_iter=20, norm='L2'):
                         n_ev=n_ev, n_iter=n_iter, norm=norm,
                         full_output=True)
 
-    input_dict = dict([(key, data_in[key]) for key in data_in.files])
+    input_dict = {key: data_in[key] for key in data_in.files}
 
     # don't save the reconstructed spectrum: this can easily
     # be recomputed from the other parameters.

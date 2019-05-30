@@ -39,7 +39,7 @@ def gaussian_basis(X, mu, sigma):
     return Xg
 
 
-class LinearRegression(object):
+class LinearRegression:
     """Simple Linear Regression with errors in y
 
     This is a stripped-down version of sklearn.linear_model.LinearRegression
@@ -67,7 +67,7 @@ class LinearRegression(object):
 
     def __init__(self, fit_intercept=True, regularization='none', kwds=None):
         if regularization.lower() not in ['l1', 'l2', 'none']:
-            raise ValueError("regularization='{0}' not recognized"
+            raise ValueError("regularization='{}' not recognized"
                              "".format(regularization))
         self.fit_intercept = fit_intercept
         self.regularization = regularization
@@ -112,7 +112,7 @@ class LinearRegression(object):
     def _choose_regressor(self):
         model = self._regressors.get(self.regularization.lower(), None)
         if model is None:
-            raise ValueError("regularization='{0}' unrecognized"
+            raise ValueError("regularization='{}' unrecognized"
                              "".format(self.regularization))
         return model
 

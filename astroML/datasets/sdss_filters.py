@@ -1,11 +1,9 @@
-from __future__ import print_function, division
-
 import os
 
 import numpy as np
+from urllib.request import urlopen
 
 from astroML.datasets import get_data_home
-from ..py3k_compat import urlopen
 
 # Info on vega spectrum: http://www.stsci.edu/hst/observatory/cdbs/calspec.html
 VEGA_URL = ('https://github.com/astroML/astroML-data/raw/master/datasets/'

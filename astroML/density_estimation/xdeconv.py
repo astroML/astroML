@@ -7,8 +7,6 @@ http://arxiv.org/pdf/0905.2979v2.pdf
 Arbitrary mixing matrices R are not yet implemented: currently, this only
 works with R = I.
 """
-from __future__ import print_function, division
-
 from time import time
 
 import numpy as np
@@ -18,7 +16,7 @@ from sklearn.mixture import GaussianMixture
 from ..utils import logsumexp, log_multivariate_gaussian, check_random_state
 
 
-class XDGMM(object):
+class XDGMM:
     """Extreme Deconvolution
 
     Fit an extreme deconvolution (XD) model to the data

@@ -1,6 +1,3 @@
-from __future__ import division, absolute_import, print_function
-
-import sys
 import re
 import inspect
 import textwrap
@@ -14,11 +11,6 @@ import sphinx
 from sphinx.jinja2glue import BuiltinTemplateLoader
 
 from .docscrape import NumpyDocString, FunctionDoc, ClassDoc
-
-if sys.version_info[0] >= 3:
-    sixu = lambda s: s
-else:
-    sixu = lambda s: unicode(s, 'unicode_escape')
 
 
 IMPORT_MATPLOTLIB_RE = r'\b(import +matplotlib|from +matplotlib +import)\b'
@@ -150,12 +142,12 @@ class SphinxDocString(NumpyDocString):
             link_prefix = ''
 
         # Referenced object has a docstring
-        display_param = ':obj:`%s <%s%s>`' % (param,
-                                              link_prefix,
-                                              param)
+        display_param = ':obj:`{} <{}{}>`'.format(param,
+                                                  link_prefix,
+                                                  param)
         if obj_doc:
             # Overwrite desc. Take summary logic of autosummary
-            desc = re.split('\n\s*\n', obj_doc.strip(), 1)[0]
+            desc = re.split('\n\\s*\n', obj_doc.strip(), 1)[0]
             # XXX: Should this have DOTALL?
             #      It does not in autosummary
             m = re.search(r"^([A-Z].*?\.)(?:\s|$)",
@@ -196,8 +188,8 @@ class SphinxDocString(NumpyDocString):
                                                           fake_autosummary)
 
                 if param_type:
-                    out += self._str_indent(['%s : %s' % (display_param,
-                                                          param_type)])
+                    out += self._str_indent(['{} : {}'.format(display_param,
+                                                              param_type)])
                 else:
                     out += self._str_indent([display_param])
                 if desc and self.use_blockquotes:
@@ -246,7 +238,7 @@ class SphinxDocString(NumpyDocString):
 
                 if param_obj and pydoc.getdoc(param_obj):
                     # Referenced object has a docstring
-                    autosum += ["   %s%s" % (prefix, param)]
+                    autosum += ["   {}{}".format(prefix, param)]
                 else:
                     others.append((param, param_type, desc))
 
@@ -258,13 +250,13 @@ class SphinxDocString(NumpyDocString):
 
             if others:
                 maxlen_0 = max(3, max([len(x[0]) + 4 for x in others]))
-                hdr = sixu("=") * maxlen_0 + sixu("  ") + sixu("=") * 10
-                fmt = sixu('%%%ds  %%s  ') % (maxlen_0,)
+                hdr = "=" * maxlen_0 + "  " + "=" * 10
+                fmt = '%%%ds  %%s  ' % (maxlen_0,)
                 out += ['', '', hdr]
                 for param, param_type, desc in others:
-                    desc = sixu(" ").join(x.strip() for x in desc).strip()
+                    desc = " ".join(x.strip() for x in desc).strip()
                     if param_type:
-                        desc = "(%s) %s" % (param_type, desc)
+                        desc = "({}) {}".format(param_type, desc)
                     out += [fmt % ("**" + param.strip() + "**", desc)]
                 out += [hdr]
             out += ['']
@@ -282,7 +274,7 @@ class SphinxDocString(NumpyDocString):
     def _str_see_also(self, func_role):
         out = []
         if self['See Also']:
-            see_also = super(SphinxDocString, self)._str_see_also(func_role)
+            see_also = super()._str_see_also(func_role)
             out = ['.. seealso::', '']
             out += self._str_indent(see_also[2:])
         return out
@@ -308,7 +300,7 @@ class SphinxDocString(NumpyDocString):
             elif section == 'refguide':
                 out += ['   single: %s' % (', '.join(references))]
             else:
-                out += ['   %s: %s' % (section, ','.join(references))]
+                out += ['   {}: {}'.format(section, ','.join(references))]
         out += ['']
         return out
 
@@ -369,7 +361,7 @@ class SphinxDocString(NumpyDocString):
                                                fake_autosummary=True),
             'methods': self._str_member_list('Methods'),
         }
-        ns = dict((k, '\n'.join(v)) for k, v in ns.items())
+        ns = {k: '\n'.join(v) for k, v in ns.items()}
 
         rendered = self.template.render(**ns)
         return '\n'.join(self._str_indent(rendered.split('\n'), indent))
