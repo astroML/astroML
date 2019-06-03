@@ -1,5 +1,5 @@
 import numpy as np
-from ..utils import check_random_state
+from sklearn.utils import check_random_state
 
 
 def generate_power_law(N, dt, beta, generate_complex=False, random_state=None):

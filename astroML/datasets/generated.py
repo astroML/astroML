@@ -2,7 +2,7 @@ import numpy as np
 from astropy.cosmology import FlatLambdaCDM
 
 from ..density_estimation import FunctionDistribution
-from ..utils import check_random_state
+from sklearn.utils import check_random_state
 
 
 def redshift_distribution(z, z0):

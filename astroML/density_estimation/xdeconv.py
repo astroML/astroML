@@ -13,7 +13,8 @@ import numpy as np
 from scipy import linalg
 
 from sklearn.mixture import GaussianMixture
-from ..utils import logsumexp, log_multivariate_gaussian, check_random_state
+from sklearn.utils import check_random_state
+from ..utils import logsumexp, log_multivariate_gaussian
 
 
 class XDGMM:

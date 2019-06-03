@@ -1,6 +1,7 @@
 import numpy as np
 import warnings
-from astroML.utils import check_random_state
+from sklearn.utils import check_random_state
+
 
 def bootstrap(data, n_bootstraps, user_statistic, kwargs=None,
               pass_indices=False, random_state=None):
