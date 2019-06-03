@@ -63,7 +63,7 @@ class GMMBayes(BaseNB):
                            "n_samples={0}, n_components={1}, "
                            "n_components set to {0}.")
                 warnings.warn(warnstr.format(X[y == y_i].shape[0], n_comp[i]))
-                n_comp[i] = y_i
+                n_comp[i] = X[y == y_i].shape[0]
             self.gmms_[i] = GaussianMixture(n_comp[i], **self.kwargs).fit(X[y == y_i])
             self.class_prior_[i] = np.float(np.sum(y == y_i)) / n_samples
 

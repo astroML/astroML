@@ -26,6 +26,7 @@ estimates) over the SDSS spectroscopic galaxies within the redshift range
 The correlation function interface is very straightforward.  We'll construct
 some random data in two dimensions and compute the two-point correlation here:
 
+    >>> import numpy as np
     >>> from astroML.correlation import two_point
     >>> np.random.seed(0)
     >>> X = np.random.random((5000, 2))
@@ -38,6 +39,7 @@ For uniformly-distributed data, the correlation function is zero (that is,
 there is no excess over a uniformly-distributed background).  If we wish to
 find the error on the result, this can be done via a bootstrap approach:
 
+    >>> import numpy as np
     >>> from astroML.correlation import bootstrap_two_point
     >>> corr, dcorr = bootstrap_two_point(X, bins, Nbootstrap=5)
     >>> np.allclose(corr, 0, atol=2 * dcorr)
