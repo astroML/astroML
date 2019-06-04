@@ -4,39 +4,19 @@ from sklearn.utils import check_random_state as sk_check_random_state
 from astroML.utils.decorators import deprecated
 from astroML.utils.exceptions import AstroMLDeprecationWarning
 
+try:  # SciPy >= 0.19
+    from scipy.special import logsumexp as scipy_logsumexp
+except ImportError:
+    from scipy.misc import logsumexp as scipy_logsumexp
 
 __all__ = ['logsumexp', 'log_multivariate_gaussian', 'check_random_state',
            'split_samples', 'completeness_contamination', 'convert_2D_cov']
 
 
+@deprecated('1.0', alternative='scipy.special.logsumexp',
+            warning_type=AstroMLDeprecationWarning)
 def logsumexp(arr, axis=None):
-    """Computes the sum of arr assuming arr is in the log domain.
-
-    Returns log(sum(exp(arr))) while minimizing the possibility of
-    over/underflow.
-
-    Examples
-    --------
-
-    >>> import numpy as np
-    >>> a = np.arange(10)
-    >>> np.log(np.sum(np.exp(a)))
-    9.4586297444267107
-    >>> logsumexp(a)
-    9.4586297444267107
-    """
-    # if axis is specified, roll axis to 0 so that broadcasting works below
-    if axis is not None:
-        arr = np.rollaxis(arr, axis)
-        axis = 0
-
-    # Use the max to normalize, as with the log this is what accumulates
-    # the fewest errors
-    vmax = arr.max(axis=axis)
-    out = np.log(np.sum(np.exp(arr - vmax), axis=axis))
-    out += vmax
-
-    return out
+    return scipy_logsumexp(arr, axis)
 
 
 def log_multivariate_gaussian(x, mu, V, Vinv=None, method=1):
