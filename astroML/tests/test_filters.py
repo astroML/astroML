@@ -1,12 +1,16 @@
+import pytest
+
 import numpy as np
 from numpy.testing import assert_allclose
 from astroML.filters import savitzky_golay, wiener_filter
+from astroML.utils.exceptions import AstroMLDeprecationWarning
 
 
 def test_savitzky_golay():
     y = np.zeros(100)
     y[::2] = 1
-    f = savitzky_golay(y, window_size=3, order=1)
+    with pytest.warns(AstroMLDeprecationWarning):
+        f = savitzky_golay(y, window_size=3, order=1)
     assert_allclose(f, (2 - y) / 3.)
 
 
@@ -15,8 +19,9 @@ def test_savitzky_golay_fft():
 
     for width in [3, 5]:
         for order in range(width - 1):
-            f1 = savitzky_golay(y, width, order, use_fft=False)
-            f2 = savitzky_golay(y, width, order, use_fft=True)
+            with pytest.warns(AstroMLDeprecationWarning):
+                f1 = savitzky_golay(y, width, order, use_fft=False)
+                f2 = savitzky_golay(y, width, order, use_fft=True)
             assert_allclose(f1, f2)
 
 
