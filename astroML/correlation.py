@@ -2,19 +2,10 @@
 Tools for computing two-point correlation functions.
 """
 
-import warnings
 import numpy as np
-from sklearn.neighbors import BallTree
-from .utils import check_random_state
 
-# Check if scikit-learn's two-point functionality is available.
-# This was added in scikit-learn version 0.14
-try:
-    from sklearn.neighbors import KDTree
-    sklearn_has_two_point = True
-except ImportError:
-    import warnings
-    sklearn_has_two_point = False
+from sklearn.neighbors import KDTree
+from .utils import check_random_state
 
 
 def uniform_sphere(RAlim, DEClim, size=1):
@@ -125,31 +116,12 @@ def two_point(data, bins, method='standard',
 
     factor = len(data_R) * 1. / len(data)
 
-    if sklearn_has_two_point:
-        # Fast two-point correlation functions added in scikit-learn v. 0.14
-        KDT_D = KDTree(data)
-        KDT_R = KDTree(data_R)
+    # Fast two-point correlation functions added in scikit-learn v. 0.14
+    KDT_D = KDTree(data)
+    KDT_R = KDTree(data_R)
 
-        counts_DD = KDT_D.two_point_correlation(data, bins)
-        counts_RR = KDT_R.two_point_correlation(data_R, bins)
-
-    else:
-        warnings.warn("Version 0.3 of astroML will require scikit-learn "
-                      "version 0.14 or higher for correlation function "
-                      "calculations. Upgrade to sklearn 0.14+ now for much "
-                      "faster correlation function calculations.")
-
-        BT_D = BallTree(data)
-        BT_R = BallTree(data_R)
-
-        counts_DD = np.zeros(Nbins + 1)
-        counts_RR = np.zeros(Nbins + 1)
-
-        for i in range(Nbins + 1):
-            counts_DD[i] = np.sum(BT_D.query_radius(data, bins[i],
-                                                    count_only=True))
-            counts_RR[i] = np.sum(BT_R.query_radius(data_R, bins[i],
-                                                    count_only=True))
+    counts_DD = KDT_D.two_point_correlation(data, bins)
+    counts_RR = KDT_R.two_point_correlation(data_R, bins)
 
     DD = np.diff(counts_DD)
     RR = np.diff(counts_RR)
@@ -161,13 +133,8 @@ def two_point(data, bins, method='standard',
     if method == 'standard':
         corr = factor ** 2 * DD / RR - 1
     elif method == 'landy-szalay':
-        if sklearn_has_two_point:
-            counts_DR = KDT_R.two_point_correlation(data, bins)
-        else:
-            counts_DR = np.zeros(Nbins + 1)
-            for i in range(Nbins + 1):
-                counts_DR[i] = np.sum(BT_R.query_radius(data, bins[i],
-                                                        count_only=True))
+        counts_DR = KDT_R.two_point_correlation(data, bins)
+
         DR = np.diff(counts_DR)
 
         corr = (factor ** 2 * DD - 2 * factor * DR + RR) / RR
