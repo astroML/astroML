@@ -3,6 +3,11 @@
 
 - Removed suppport for Python versions <3.5. [#174]
 
+- Deprecated function ``savitzky_golay`` in favour of the scipy
+  implementation. [#193]
+
+- Deprecated functions ``check_random_state`` and ``logsumexp`` in favour of
+  their equivalent in scikit-learn and scipy, respectively. [#190]
 
 
 0.4 (2019-03-06)
