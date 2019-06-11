@@ -1,10 +1,14 @@
 import numpy as np
 from scipy import optimize, fftpack, signal
 
+from astroML.utils.decorators import deprecated
+from astroML.utils.exceptions import AstroMLDeprecationWarning
 
 # Note: there is a scipy PR to include an improved SG filter within the
 # scipy.signal submodule.  It should replace this when it's finished.
 # see http://github.com/scipy/scipy/pull/304
+@deprecated('1.0', alternative='scipy.signal.savgol_filter',
+            warning_type=AstroMLDeprecationWarning)
 def savitzky_golay(y, window_size, order, deriv=0,
                    use_fft=True):
     r"""Smooth (and optionally differentiate) data with a Savitzky-Golay filter
