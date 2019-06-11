@@ -76,7 +76,6 @@ def query_plate_mjd_fiber(n_spectra,
         try:
             res[i] = line.decode().strip().split(',')
         except BaseException:
-            assert 0
             raise ValueError(b'\n'.join(output))
 
     ntot = i + 1
