@@ -1,5 +1,5 @@
 import numpy as np
-from ..utils import check_random_state
+from sklearn.utils import check_random_state
 
 try:
     # astropy.timeseries is new in v3.2

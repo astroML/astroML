@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import interpolate
-from ..utils import check_random_state
+from sklearn.utils import check_random_state
 
 
 class FunctionDistribution:

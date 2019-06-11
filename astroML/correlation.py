@@ -5,7 +5,7 @@ Tools for computing two-point correlation functions.
 import numpy as np
 
 from sklearn.neighbors import KDTree
-from .utils import check_random_state
+from sklearn.utils import check_random_state
 
 
 def uniform_sphere(RAlim, DEClim, size=1):

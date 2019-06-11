@@ -1,39 +1,22 @@
 import numpy as np
 from scipy import linalg
+from sklearn.utils import check_random_state as sk_check_random_state
+from astroML.utils.decorators import deprecated
+from astroML.utils.exceptions import AstroMLDeprecationWarning
 
+try:  # SciPy >= 0.19
+    from scipy.special import logsumexp as scipy_logsumexp
+except ImportError:
+    from scipy.misc import logsumexp as scipy_logsumexp
 
 __all__ = ['logsumexp', 'log_multivariate_gaussian', 'check_random_state',
            'split_samples', 'completeness_contamination', 'convert_2D_cov']
 
 
+@deprecated('1.0', alternative='scipy.special.logsumexp',
+            warning_type=AstroMLDeprecationWarning)
 def logsumexp(arr, axis=None):
-    """Computes the sum of arr assuming arr is in the log domain.
-
-    Returns log(sum(exp(arr))) while minimizing the possibility of
-    over/underflow.
-
-    Examples
-    --------
-
-    >>> import numpy as np
-    >>> a = np.arange(10)
-    >>> np.log(np.sum(np.exp(a)))
-    9.4586297444267107
-    >>> logsumexp(a)
-    9.4586297444267107
-    """
-    # if axis is specified, roll axis to 0 so that broadcasting works below
-    if axis is not None:
-        arr = np.rollaxis(arr, axis)
-        axis = 0
-
-    # Use the max to normalize, as with the log this is what accumulates
-    # the fewest errors
-    vmax = arr.max(axis=axis)
-    out = np.log(np.sum(np.exp(arr - vmax), axis=axis))
-    out += vmax
-
-    return out
+    return scipy_logsumexp(arr, axis)
 
 
 def log_multivariate_gaussian(x, mu, V, Vinv=None, method=1):
@@ -128,23 +111,10 @@ def log_multivariate_gaussian(x, mu, V, Vinv=None, method=1):
     return -0.5 * ndim * np.log(2 * np.pi) - 0.5 * (logdet + xVIx)
 
 
-# From scikit-learn utilities:
+@deprecated('1.0', alternative='sklearn.utils.check_random_state',
+            warning_type=AstroMLDeprecationWarning)
 def check_random_state(seed):
-    """Turn seed into a np.random.RandomState instance
-
-    If seed is None, return the RandomState singleton used by np.random.
-    If seed is an int, return a new RandomState instance seeded with seed.
-    If seed is already a RandomState instance, return it.
-    Otherwise raise ValueError.
-    """
-    if seed is None or seed is np.random:
-        return np.random.mtrand._rand
-    if isinstance(seed, (int, np.integer)):
-        return np.random.RandomState(seed)
-    if isinstance(seed, np.random.RandomState):
-        return seed
-    raise ValueError('%r cannot be used to seed a numpy.random.RandomState'
-                     ' instance' % seed)
+    return sk_check_random_state(seed)
 
 
 def split_samples(X, y, fractions=[0.75, 0.25], random_state=None):
@@ -174,7 +144,7 @@ def split_samples(X, y, fractions=[0.75, 0.25], random_state=None):
     N = np.concatenate([[0], fractions.astype(int)])
     N[-1] = n_samples  # in case of roundoff errors
 
-    random_state = check_random_state(random_state)
+    random_state = sk_check_random_state(random_state)
     indices = np.arange(len(y))
     random_state.shuffle(indices)
 

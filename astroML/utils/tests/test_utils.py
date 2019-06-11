@@ -1,7 +1,7 @@
 import numpy as np
 
 from numpy.testing import assert_array_almost_equal, assert_allclose
-from astroML.utils import logsumexp, log_multivariate_gaussian, convert_2D_cov, completeness_contamination, split_samples
+from astroML.utils import log_multivariate_gaussian, convert_2D_cov, completeness_contamination, split_samples
 
 
 def positive_definite_matrix(N, M=None):
@@ -14,17 +14,6 @@ def positive_definite_matrix(N, M=None):
         for i in range(M):
             V[i] = np.dot(V[i], V[i].T)
     return V
-
-
-def test_logsumexp():
-    np.random.seed(0)
-    X = np.random.random((100, 100))
-
-    for axis in (None, 0, 1):
-        np_result = np.log(np.sum(np.exp(X), axis=axis))
-        aML_result = logsumexp(X, axis=axis)
-
-        assert_array_almost_equal(np_result, aML_result)
 
 
 def test_log_multivariate_gaussian_methods():

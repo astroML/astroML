@@ -11,9 +11,15 @@ from time import time
 
 import numpy as np
 from scipy import linalg
+try:  # SciPy >= 0.19
+    from scipy.special import logsumexp as logsumexp
+except ImportError:
+    from scipy.misc import logsumexp as logsumexp
 
 from sklearn.mixture import GaussianMixture
-from ..utils import logsumexp, log_multivariate_gaussian, check_random_state
+from sklearn.utils import check_random_state
+
+from ..utils import log_multivariate_gaussian
 
 
 class XDGMM:
