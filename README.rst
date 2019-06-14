@@ -138,7 +138,7 @@ usefulness of the method on an astronomical dataset (preferably making use
 of the loaders in ``astroML.datasets``).  These example scripts are in the
 ``examples`` subdirectory of the main source repository.
 
-.. _Numpy Documentation Guide: https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard
+.. _Numpy Documentation Guide: https://numpydoc.readthedocs.io/en/latest/format.html
 
 Authors
 =======
