@@ -7,17 +7,12 @@ The astroML project is split into two components.  The core ``astroML``
 library is
 written in python only, and is designed to be very easy to install for
 any users, even those who don't have a working C or fortran compiler.
-A companion library, ``astroML_addons``, can be optionally installed for
-increased performance on certain algorithms.  Every algorithm
-in ``astroML_addons`` exists in the core ``astroML`` implementation, but the
-``astroML_addons`` library contains faster and more efficient implementations.
-Furthermore, if ``astroML_addons`` is installed on your system, the core
-``astroML`` library will import and use the faster routines by default.
 
 
 Important Links
 ---------------
 - Source-code repository: http://github.com/astroML/astroML
+- Source-code for book figures: http://github.com/astroML/astroML-figures/
 - HTML documentation: http://astroML.github.com
 - Python Package Index: http://pypi.python.org/pypi/astroML/
 
@@ -34,12 +29,18 @@ will affect the ability to execute code and examples.  Next, use the ``pip``
 command to install the packages::
 
   pip install astroML
-  pip install astroML_addons
 
 (For information about ``pip``, see http://pypi.python.org/pypi/pip)
-The first package is python-only, and should install easily on any system.  The
-second package requires a working C compliler.  ``astroML_addons`` provides
-optional faster implementations of some routines.
+The first package is python-only, and should install easily on any system.
+
+Conda
+~~~~~
+AstroML is also available as a conda package via the conda-forge or astropy
+channels.
+To install with conda, use the following command::
+
+  conda install -c astropy astroML
+
 
 From Source
 ~~~~~~~~~~~
@@ -51,17 +52,14 @@ are filled: lacking some
 of these dependencies will not affect installation, but will affect the
 ability to execute the code and examples
 
-Both the astroML and astroML_addons packages are installed using python's
+The astroML package is installed using python's
 distutils.  The generic commands for installation are as follows::
 
   python setup.py build
   python setup.py install
 
-The first line builds the source (i.e. for astroML_addons, this compiles the
-C code used in the package).  The second line
-installs the package so that you can use it from Python.  The default
-install location is in your ``site_packages`` or ``dist_packages`` directory
-in your default python path.
+The default install location is in your ``site_packages`` or
+``dist_packages`` directory in your default python path.
 
 If you are on a machine without write access to the default installation
 location, the location can be specified when installing.  For example,
@@ -70,39 +68,20 @@ you can specify an arbitrary directory for installation using::
   python setup.py install --prefix='/some/path'
 
 
-Core
-++++
-The core astroML package is pure python, so the build phase is trivial.  The
-installation script is ``setup.py``, and the code can be installed as follows::
-
-    python setup.py build
-    python setup.py install
-
-
-Addons
-++++++
-The ``astroML_addons`` package requires a working C/C++ compiler for
-installation.  It can be installed using::
-
-    python setup_addons.py build
-    python setup_addons.py install
-
 Testing
 ~~~~~~~
-After installation, unit tests can be run using the
-`nose <https://nose.readthedocs.org/en/latest/>`_ testing framework, either
-by typing ``nosetests astroML``, or by typing ``make test`` in the source
-directory.  The latter will also run doc tests on the user guide.
+After installation, unit tests can be run using the `pytest
+<https://pytest.org>`_ testing framework, by typing ``pytest astroML``
 
 .. _astroML_dependencies:
 
 Dependencies
 ------------
-There are three levels of dependencies in astroML.  *Core* dependencies are
-required for the core ``astroML`` package.  *Add-on* dependencies are required
-for the performance ``astroML_addons``.  *Optional* dependencies are required
-to run some (but not all) of the example scripts.  Individual example scripts
-will list their optional dependencies at the top of the file.
+There are two levels of dependencies in astroML.  *Core* dependencies are
+required for the core ``astroML`` package.  *Optional* dependencies are
+required to run some (but not all) of the example scripts.  Individual
+example scripts will list their optional dependencies at the top of the
+file.
 
 Core Dependencies
 ~~~~~~~~~~~~~~~~~
@@ -114,27 +93,18 @@ The core ``astroML`` package requires the following:
 - `scikit-learn <http://scikit-learn.org/>`_ >= 0.18
 - `matplotlib <http://matplotlib.org/>`_ >= 0.99
 - `astropy <http://www.astropy.org/>`_ >= 1.1
-  AstroPy is required to read Flexible Image Transport
-  System (FITS) files, which are used by several datasets.
 
-This configuration matches the Ubuntu 10.04 LTS release from April 2010,
-with the addition of scikit-learn.
-
-To run unit tests, you will also need nose >= 0.10
-
-Add-on Dependencies
-~~~~~~~~~~~~~~~~~~~
-The fast code in ``astroML_performance`` requires a working C/C++ compiler.
+To run unit tests, you will also need pytest.
 
 Optional Dependencies
 ~~~~~~~~~~~~~~~~~~~~~
 Several of the example scripts require specialized or upgraded packages.  These
 requirements are listed at the top of the example scripts.
 
-- `pyMC <http://pymc-devs.github.com/pymc/>`_
+- `pyMC3 https://docs.pymc.io/`_
   provides a nice interface for Markov-Chain Monte Carlo.  Several examples
-  use pyMC for exploration of high-dimensional spaces.  The examples
-  were written with pymc version 2.2
+  use pyMC3 for exploration of high-dimensional spaces.
+
 - `healpy <https://github.com/healpy/healpy>`_ provides an interface to
   the HEALPix pixelization scheme, as well as fast spherical harmonic
   transforms.

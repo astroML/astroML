@@ -20,7 +20,8 @@ astroML makes use of the large collection of well-tested routines available
 in `numpy <http://numpy.scipy.org>`_,
 `scipy <http://scipy.org>`_,
 `scikit-learn <http://scikit-learn.org>`_,
-`matplotlib <http://matplotlib.org>`_, and other packages.
+`matplotlib <http://matplotlib.org>`_,
+`astropy <http://astropy.org>`_, and other packages.
 
 astroML strives to bring the astronomical community closer to the ideals of
 `Reproducible Research <http://reproducibleresearch.net/index.php/Main_Page>`_,
