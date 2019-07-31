@@ -4,7 +4,7 @@
  *
  * Sphinx stylesheet
  *
- * Based on that of scikit-learn (in turn based on nature.css)
+ * Based on that of scikit-learn (in turn based on nature.css) and astropy.org
  *
  */
 /* @import url("minimalist.css") /\* google custom search  *\/ */
@@ -40,15 +40,11 @@ ul.horizontal, ul.horizontal li {
 
 
 div.header {
-    /* for the logo to correctly expand when showing results
-       but remain cut when not */
-    overflow: hidden;
+    /* Don't leave a fixed height. It won't allow the header to expand when search results and dropdowns appear. */
 }
 
 
 p.logo {
-    margin-top: auto;
-    margin-left: 20px;
     float: left;
     margin: 0 0 0 20px;
     height: 50px;
@@ -101,7 +97,7 @@ div.navbar ul li a:hover {
 }
 
 .search_form {
-    margin-top: -23px;
+    margin-top: -32px;
     z-index: -1;
 }
 
@@ -537,4 +533,43 @@ th.field-name {
 .toggle_container {
     margin-top: 0px;
     padding-top: 1px;
+}
+
+/*--- Dropdown styles ---------------------------------------------------------*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4EACC5; /*#ff9c34;*/
+    min-width: 160px;
+    width: 100%;
+    height: 100%
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 0px 16px;
+    z-index: 10;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.dropdown-content a {
+display: block;
+}
+
+.dropdown:after {
+    content: "";
+    position: absolute;
+    right: -13px;
+    top: 9px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
 }

@@ -73,11 +73,19 @@ $(document).ready(function(){
           <div class="navbar">
           <ul>
             <li><a href="{{pathto(master_doc)}}">Home</a></li>
-	    <li><a href="{{pathto('user_guide/index')}}">User Guide</a></li>
-            <li><a href="{{pathto('book_figures/index')}}">Book Figures</a></li>
-            <li><a href="{{pathto('book_figures_1ed/index')}}">Book Figures,
-            1st edition</a></li>
-            <li><a href="{{pathto('examples/index')}}">Examples Plots</a></li>
+	        <li><a href="{{pathto('user_guide/index')}}">User Guide</a></li>
+            <li>
+              <div class="dropdown">
+                <a href="{{pathto('book_figures/index')}}">Book Figures</a>
+                <div class="dropdown-content">
+                  <ul>
+                    <li><a href="{{pathto('book_figures/index')}}">2nd edition</a></li>
+                    <li><a href="{{pathto('book_figures_1ed/index')}}">1st edition</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li><a href="{{pathto('examples/index')}}">Example Plots</a></li>
        </ul>
 
 <!-- Google custom search.  Javascript that enables this is in the header above -->
