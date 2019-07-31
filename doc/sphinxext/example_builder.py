@@ -14,7 +14,7 @@ import glob
 import warnings
 
 import matplotlib
-matplotlib.use('Agg') #don't display plots
+matplotlib.use('Agg')  # don't display plots
 
 # set some font properties
 matplotlib.rc('text', usetex=True)
@@ -107,13 +107,13 @@ def create_thumbnail(infile, thumbfile, scale=0.2,
 
     extension = extout.lower()
 
-    if extension=='.png':
+    if extension == '.png':
         from matplotlib.backends.backend_agg \
             import FigureCanvasAgg as FigureCanvas
-    elif extension=='.pdf':
+    elif extension == '.pdf':
         from matplotlib.backends.backend_pdf \
             import FigureCanvasPDF as FigureCanvas
-    elif extension=='.svg':
+    elif extension == '.svg':
         from matplotlib.backends.backend_svg \
             import FigureCanvasSVG as FigureCanvas
     else:
@@ -123,7 +123,7 @@ def create_thumbnail(infile, thumbfile, scale=0.2,
     fig = Figure(figsize=(width, height), dpi=dpi)
     canvas = FigureCanvas(fig)
 
-    ax = fig.add_axes([0,0,1,1], aspect='auto',
+    ax = fig.add_axes([0, 0, 1, 1], aspect='auto',
                       frameon=False, xticks=[], yticks=[])
 
     basename, ext = os.path.splitext(basename)
@@ -218,7 +218,6 @@ class ExecFile:
         self.docstring = docstring
         self.short_desc = first_par
         self.end_line = erow + 1 + start_row
-
 
     def execute_file(self):
         """Execute the file, catching standard output
@@ -328,7 +327,7 @@ class ExampleBuilder:
         contents_file = os.path.join(contents_dir, self.contents_file)
         return read_contents(contents_file, check_for_missing)
 
-    #============================================================
+    # ============================================================
     # Directory parser:
     #
     #  This takes a path *relative to source_dir* and parses the
@@ -347,7 +346,7 @@ class ExampleBuilder:
 
         return subdirs, scripts
 
-    #======================================================================
+    # ======================================================================
     # Path Definitions
     #
     #  Each of these takes an example path *relative to source_dir* and
@@ -372,7 +371,6 @@ class ExampleBuilder:
         return os.path.join(self.rst_dir, filename + '.rst')
 
     def html_filename(self, example_path):
-        rst_filename = self.rst_filename(example_path)
         filename, ext = os.path.splitext(example_path)
         return filename + '.html'
 
@@ -389,7 +387,7 @@ class ExampleBuilder:
             tag = 'root'
         return '_'.join([self.sphinx_tag_base, tag])
 
-    #============================================================
+    # ============================================================
     # RST generation scripts
     def run(self):
         self.generate_dir_rst('')
@@ -400,9 +398,9 @@ class ExampleBuilder:
 
         elif len(figlist) == 1:
             imlist = ("\n"
-                       ".. image:: %s\n"
-                       "    :scale: 100\n"
-                       "    :align: center\n" % figlist[0])
+                      ".. image:: %s\n"
+                      "    :scale: 100\n"
+                      "    :align: center\n" % figlist[0])
 
         else:
             imlist = "\n.. rst-class:: horizontal\n"
@@ -415,9 +413,9 @@ class ExampleBuilder:
         return imlist
 
     def figure_contents(self, path, filelist):
-        toctree =  ("\n\n"
-                    ".. toctree::\n"
-                    "   :hidden:\n\n")
+        toctree = ("\n\n"
+                   ".. toctree::\n"
+                   "   :hidden:\n\n")
         contents = "\n\n"
 
         for f in filelist:

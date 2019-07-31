@@ -11,7 +11,7 @@ RST_TEMPLATE = """
 %(image_list)s
 
 .. raw:: html
-    
+
     <div class="toggle_trigger"><a href="#">
 
 **Code output:**
@@ -46,22 +46,22 @@ RST_TEMPLATE = """
 :download:`[download source: %(fname)s] <%(fname)s>`
 
 .. raw:: html
-    
+
     </div>
 
 """
 
+
 def main(app):
     target_dir = os.path.join(app.builder.srcdir, 'book_figures')
-    source_dir = os.path.abspath(app.builder.srcdir +  '/../' + 'book_figures')
+    book_figures_path = os.environ.get('BOOK_FIGURES_PATH', '../book_figures')
+    source_dir = os.path.abspath(book_figures_path)
 
     try:
         plot_gallery = eval(app.builder.config.plot_gallery)
     except TypeError:
         plot_gallery = bool(app.builder.config.plot_gallery)
 
-    if not os.path.exists(source_dir):
-        os.makedirs(source_dir)
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
 
@@ -73,7 +73,7 @@ def main(app):
                         sphinx_tag_base='book_fig',
                         template_example=RST_TEMPLATE)
     EB.run()
-                            
+
 
 def setup(app):
     app.connect('builder-inited', main)
