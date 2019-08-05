@@ -33,8 +33,8 @@ class LINEARdata:
 
     Example
     -------
-    >>> data = fetch_LINEAR_sample()  # doctest: +IGNORE_OUTPUT
-    >>> lightcurve = data[data.ids[0]]
+    >>> data = fetch_LINEAR_sample()  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
+    >>> lightcurve = data[data.ids[0]]  # doctest: +REMOTE_DATA
     """
     @staticmethod
     def _name_to_id(name):

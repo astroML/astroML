@@ -70,9 +70,9 @@ def fetch_dr7_quasar(data_home=None, download_if_missing=True):
     Examples
     --------
     >>> from astroML.datasets import fetch_dr7_quasar
-    >>> data = fetch_dr7_quasar()  # doctest: +IGNORE_OUTPUT
-    >>> u_g = data['mag_u'] - data['mag_g']
-    >>> u_g[:3]  # first three u-g colors
+    >>> data = fetch_dr7_quasar()  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
+    >>> u_g = data['mag_u'] - data['mag_g']  # doctest: +REMOTE_DATA
+    >>> u_g[:3]  # first three u-g colors  # doctest: +REMOTE_DATA
     array([-0.07699966,  0.03600121,  0.10900116], dtype=float32)
 
     Notes

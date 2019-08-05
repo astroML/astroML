@@ -85,12 +85,12 @@ def fetch_LIGO_bigdog(data_home=None, download_if_missing=True):
     Examples
     --------
     >>> from astroML.datasets import fetch_LIGO_bigdog
-    >>> data = fetch_LIGO_bigdog()  # doctest: +IGNORE_OUTPUT
-    >>> print(data.dtype.names)
+    >>> data = fetch_LIGO_bigdog()  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
+    >>> print(data.dtype.names)  # doctest: +REMOTE_DATA
     ('t', 'Hanford', 'Livingston', 'Virgo')
-    >>> print(data['t'][:3])
+    >>> print(data['t'][:3])  # doctest: +REMOTE_DATA
     [  0.00000000e+00   6.10400000e-05   1.22070000e-04]
-    >>> print(data['Hanford'][:3])
+    >>> print(data['Hanford'][:3])  # doctest: +REMOTE_DATA
     [  1.26329846e-17   1.26846778e-17   1.19187381e-17]
     """
     data_home = get_data_home(data_home)
