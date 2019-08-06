@@ -95,14 +95,18 @@ def fetch_sdss_sspp(data_home=None, download_if_missing=True, cleaned=False):
     Examples
     --------
     >>> from astroML.datasets import fetch_sdss_sspp
-    >>> data = fetch_sdss_sspp()  # doctest: +IGNORE_OUTPUT
-    >>> data.shape  # number of objects in dataset
+    >>> data = fetch_sdss_sspp()  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
+    >>> # number of objects in dataset
+    >>> data.shape  # doctest: +REMOTE_DATA
     (327260,)
-    >>> print(data.dtype.names[:5])  # names of the first five columns
+    >>> # names of the first five columns
+    >>> print(data.dtype.names[:5])  # doctest: +REMOTE_DATA
     ('ra', 'dec', 'Ar', 'upsf', 'uErr')
-    >>> print(data['ra'][:1])  # first RA value
+    >>> # first RA value
+    >>> print(data['ra'][:1])  # doctest: +REMOTE_DATA
     [49.6275024]
-    >>> print(data['dec'][:1])  # first DEC value
+    >>> # first DEC value
+    >>> print(data['dec'][:1])  # doctest: +REMOTE_DATA
     [-1.04175591]
     """
     data_home = get_data_home(data_home)

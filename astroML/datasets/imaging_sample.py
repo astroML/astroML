@@ -31,14 +31,16 @@ def fetch_imaging_sample(data_home=None, download_if_missing=True):
     Examples
     --------
     >>> from astroML.datasets import fetch_imaging_sample
-    >>> data = fetch_imaging_sample()  # doctest: +IGNORE_OUTPUT
-    >>> data.shape  # number of objects in dataset
+    >>> data = fetch_imaging_sample()  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
+    >>> # number of objects in dataset
+    >>> data.shape  # doctest: +REMOTE_DATA
     (330753,)
-    >>> print(data.dtype.names[:5])  # names of the first five columns
+    >>> # names of the first five columns
+    >>> print(data.dtype.names[:5])  # doctest: +REMOTE_DATA
     ('ra', 'dec', 'run', 'rExtSFD', 'uRaw')
-    >>> print(data['ra'][:2])
+    >>> print(data['ra'][:2])  # doctest: +REMOTE_DATA
     [0.358174 0.358382]
-    >>> print(data['dec'][:2])
+    >>> print(data['dec'][:2])  # doctest: +REMOTE_DATA
     [-0.508718 -0.551157]
 
     Notes
