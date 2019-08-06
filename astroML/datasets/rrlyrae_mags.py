@@ -33,8 +33,9 @@ def fetch_rrlyrae_mags(data_home=None, download_if_missing=True):
     Examples
     --------
     >>> from astroML.datasets import fetch_rrlyrae_mags
-    >>> data = fetch_rrlyrae_mags()  # doctest: +IGNORE_OUTPUT
-    >>> data.shape  # number of objects in dataset
+    >>> data = fetch_rrlyrae_mags()  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
+    >>> # number of objects in dataset
+    >>> data.shape  # doctest: +REMOTE_DATA
     (483,)
 
     Notes
