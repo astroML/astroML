@@ -9,6 +9,11 @@ except ImportError:
                                               PYTEST_HEADER_MODULES,
                                               TESTED_VERSIONS)
 
+from astropy.tests.helper import enable_deprecations_as_exceptions
+
+
+enable_deprecations_as_exceptions()
+
 try:
     PYTEST_HEADER_MODULES['Cython'] = 'Cython'
     PYTEST_HEADER_MODULES['Astropy'] = 'astropy'
