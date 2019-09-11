@@ -1,0 +1,39 @@
+astroML workshop at the 235th Meeting of the American Astronomical Society
+==========================================================================
+
+Monday, 6 January 2020 | 13:00 -- 17:00
+---------------------------------------
+
+This workshop will introduce the astronomical community to the 2nd edition
+of the book **Statistics, Data Mining, and Machine Learning in Astronomy**
+and the associated software package **astroML**. The goal is to introduce
+participants to a variety of statistical and machine learning tools
+available within the open source astroML library. The format will be
+interactive, including short presentations on different machine learning
+methodologies followed by instructor-guided, Jupyter notebook based
+tutorials. In these tutorial sessions participants will be able to try out
+the tools and to ask questions from expert users and developers.
+
+Our primary focus will be on the new material and applications in the 2nd
+edition of the book. These include:
+
+* Traditional machine learning techniques for density estimation,
+
+* Approximate Bayesian computation,
+
+* Hierarchical Bayesian models,
+
+* Autoencoders as tools for data compression,
+
+* Deep learning and convolutional neural networks.
+
+In each tutorial example applications will be based on astronomical use cases
+and data sets. At the end of the workshop we will present a roadmap for future
+developments in astroML.
+
+This workshop is suitable for those with existing Python knowledge, including
+familiarity with the core packages in the numerical Python ecosystem such as
+numpy, scipy, scikit-learn, and matplotlib.
+
+
+Registration is open at the `website of the meeting <https://aas.org/meetings/aas235>`__.
