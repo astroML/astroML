@@ -18,7 +18,7 @@ install_requires = ['scikit-learn>=0.18',
                     'numpy>=1.4',
                     'scipy>=0.11',
                     'matplotlib>=0.99',
-                    'astropy>=1.1']
+                    'astropy>=1.2']
 
 setup(name=NAME,
       version=VERSION,
@@ -64,5 +64,7 @@ setup(name=NAME,
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Scientific/Engineering :: Astronomy'],
      )

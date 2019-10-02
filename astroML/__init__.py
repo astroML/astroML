@@ -1,4 +1,4 @@
-__version__ = '0.4.post1'
+__version__ = '0.4.1'
 
 __citation__ = """@INPROCEEDINGS{astroML,
  author={{Vanderplas}, J.T. and {Connolly}, A.J.
