@@ -82,7 +82,7 @@ AstroML: Machine Learning and Data Mining for Astronomy
 .. only:: html
 
  .. sidebar:: Downloads
-    
+
     * Released Versions: `Python Package Index <http://pypi.python.org/pypi/astroML/>`_
 
     * Bleeding-edge Source: `github <https://github.com/astroML/astroML>`_
@@ -116,20 +116,24 @@ the code repository can be found at
 Textbook
 =========
 
-.. image:: _static/text_cover.png
-   :width: 90 px
+.. image:: _static/text_cover_2nd.png
+   :width: 150 px
    :align: right
-   :target: http://press.princeton.edu/titles/10159.html
+   :target: https://press.princeton.edu/books/hardcover/9780691198309/statistics-data-mining-and-machine-learning-in-astronomy
 
-The astroML project was started in 2012 to accompany the book
-**Statistics, Data Mining, and Machine Learning in Astronomy** by
-Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray,
-published by
-`Princeton University Press <http://press.princeton.edu/titles/10159.html>`_.
-The table of contents is available
-:download:`here(pdf) <documents/DMbookTOC.pdf>`,
+
+The astroML project was started in 2012 to accompany the book **Statistics,
+Data Mining, and Machine Learning in Astronomy**, by Željko Ivezić, Andrew
+Connolly, Jacob Vanderplas, and Alex Gray, published by `Princeton University Press
+<https://press.princeton.edu/books/hardcover/9780691198309/statistics-data-mining-and-machine-learning-in-astronomy>`__. The
+table of contents is available :download:`here(pdf) <documents/DMbookTOC.pdf>`,
 or you can preview or purchase the book on
-`Amazon <http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687/>`_.
+`Amazon <https://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691198306/>`__.
+
+A second edition is published in December 2019. This updated edition features
+new sections on deep learning methods, hierarchical Bayes modeling, and
+approximate Bayesian computation. The chapters have been revised throughout
+and the astroML code has been brought completely up to date.
 
 Did you find a mistake or typo in the book? We maintain an up-to-date
 `listing of errata <https://github.com/astroml/text_errata>`_
@@ -208,5 +212,3 @@ You may also reference the accompanying textbook:
         location={Princeton, NJ},
         year={2014}
        }
-
-

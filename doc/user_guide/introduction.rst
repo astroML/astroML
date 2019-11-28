@@ -33,16 +33,29 @@ check, and extend the results.
 Textbook
 --------
 
-.. image:: ../_static/text_cover.png
+.. figure:: ../_static/text_cover_2nd.png
+     :width: 150 px
+     :align: right
+     :target: http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691198306/
+
+.. figure:: ../_static/text_cover.png
      :width: 150 px
      :align: right
      :target: http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687/
 
+
 The astroML package is used to create all of the examples and figures in the
 book **Statistics, Data Mining, and Machine Learning in Astronomy**,
-by Zeljko Ivezic, Andrew Connolly, Jacob Vanderplas, and Alex Gray,
+by Željko Ivezić, Andrew Connolly, Jacob Vanderplas, and Alex Gray,
 published by Princeton University Press
-(`view on Amazon <http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691151687/>`_).
+(`view on Amazon
+<http://www.amazon.com/Statistics-Mining-Machine-Learning-Astronomy/dp/0691198306/>`_). A
+second edition is published in December 2019. This updated edition features
+new sections on deep learning methods, hierarchical Bayes modeling, and
+approximate Bayesian computation. The chapters have been revised throughout
+and the astroML code has been brought completely up to date.
+
+
 These figures can be seen in the :ref:`book_fig_root` section, along with
 the full Python scripts used to generate them.
 
