@@ -36,4 +36,8 @@ familiarity with the core packages in the numerical Python ecosystem such as
 numpy, scipy, scikit-learn, and matplotlib.
 
 
-Registration is open at the `website of the meeting <https://aas.org/meetings/aas235>`__.
+Registration is now closed at the `website of the meeting <https://aas.org/meetings/aas235>`__.
+
+The updated edition of the book `Statistics, Data Mining, and Machine Learning in
+Astronomy <https://press.princeton.edu/books/hardcover/9780691198309/statistics-data-mining-and-machine-learning-in-astronomy>`__ is available for review or purchase at the Princeton University
+Press booth (#512) during the meeting.
