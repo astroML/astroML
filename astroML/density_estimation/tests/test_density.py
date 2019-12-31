@@ -28,7 +28,7 @@ def test_1D_density(clf, atol=100):
 
 
 def test_gaussian1d():
-    x = np.linspace(-6, 10, 1E3)
+    x = np.linspace(-6, 10, 1000)
     means = np.array([-1.5, 0.0, 2.3])
     sigmas = np.array([1, 0.25, 3.8])
     weights = np.array([1, 1, 1])
