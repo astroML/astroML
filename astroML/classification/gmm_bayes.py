@@ -10,6 +10,7 @@ import numpy as np
 
 from sklearn.naive_bayes import BaseNB
 from sklearn.mixture import GaussianMixture
+from sklearn.utils import check_array
 
 
 class GMMBayes(BaseNB):
@@ -34,7 +35,7 @@ class GMMBayes(BaseNB):
         self.kwargs = kwargs
 
     def fit(self, X, y):
-        X = np.asarray(X)
+        X = self._check_X(X)
         y = np.asarray(y)
 
         n_samples, n_features = X.shape
@@ -74,3 +75,6 @@ class GMMBayes(BaseNB):
         X = np.asarray(np.atleast_2d(X))
         logprobs = np.array([g.score_samples(X) for g in self.gmms_]).T
         return logprobs + np.log(self.class_prior_)
+
+    def _check_X(self, X):
+        return check_array(X)
