@@ -16,6 +16,7 @@ env:
         - NUMPY_VERSION=1.18
         - CONDA_DEPENDENCIES='scipy scikit-learn matplotlib'
         - PIP_DEPENDENCIES='pytest-doctestplus>=0.3 pytest-remotedata pytest-astropy-header'
+        - PIP_ALL_DEPENDENCIES='scipy scikit-learn matplotlib pytest-astropy'
         - DEBUG=True
         - SCRIPT_CMD='pytest astroML'
 
@@ -31,11 +32,12 @@ matrix:
 
         - env: PYTHON_VERSION=3.6 NUMPY_VERSION=1.13
 
-        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.12 ASTROPY_VERSION=3.0
+        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.12 ASTROPY_VERSION=3.0 PIP_DEPENDENCIES='scipy==1.0.* scikit-learn matplotlib pytest-astropy'
+               CONDA_DEPENDENCIES=''
 
         - env: PYTHON_VERSION=3.6 SCRIPT_CMD='make -C doc html' PIP_DEPENDENCIES='sphinx'
 
-        - env: PYTHON_VERSION=3.8 PIP_DEPENDENCIES="scipy scikit-learn matplotlib pytest-astropy"
+        - env: PYTHON_VERSION=3.8 PIP_DEPENDENCIES=$PIP_ALL_DEPENDENCIES
                CONDA_DEPENDENCIES=""
 
 install:
