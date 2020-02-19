@@ -32,7 +32,8 @@ matrix:
 
         - env: PYTHON_VERSION=3.6 NUMPY_VERSION=1.13
 
-        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.12 ASTROPY_VERSION=3.0 PIP_DEPENDENCIES='scipy==1.0.* scikit-learn matplotlib pytest-astropy'
+        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.12 ASTROPY_VERSION=3.0
+               PIP_DEPENDENCIES='scipy==1.0.* scikit-learn matplotlib pytest-astropy'
                CONDA_DEPENDENCIES='' PYTEST_VERSION=">4"
 
         - env: PYTHON_VERSION=3.6 SCRIPT_CMD='make -C doc html' PIP_DEPENDENCIES='sphinx'
@@ -40,8 +41,9 @@ matrix:
         - env: PYTHON_VERSION=3.8 PIP_DEPENDENCIES=$PIP_ALL_DEPENDENCIES
                CONDA_DEPENDENCIES=""
 
-   allow_failures:
-        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.12 ASTROPY_VERSION=3.0 PIP_DEPENDENCIES='scipy==1.0.* scikit-learn matplotlib pytest-astropy'
+    allow_failures:
+        - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.12 ASTROPY_VERSION=3.0
+               PIP_DEPENDENCIES='scipy==1.0.* scikit-learn matplotlib pytest-astropy'
                CONDA_DEPENDENCIES='' PYTEST_VERSION=">4"
 
 install:
