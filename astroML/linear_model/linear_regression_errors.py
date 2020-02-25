@@ -10,12 +10,15 @@ __all__ = ['LinearRegressionwithErrors']
 
 class LinearRegressionwithErrors(LinearRegression):
 
+    def __init__(self, fit_intercept=False, regularization='none', kwds=None):
+        super().__init__(fit_intercept, regularization, kwds)
+
     def fit(self, X, y, y_error=1, x_error=None, *,
-            sample_kwargs={'step'='auto', 'draws': 1000, 'target_accept': 0.9}):
+            sample_kwargs={'draws': 1000, 'target_accept': 0.9}):
 
         kwds = {}
-        #if self.kwds is not None:
-        #    kwds.update(self.kwds)
+        if self.kwds is not None:
+            kwds.update(self.kwds)
         kwds['fit_intercept'] = False
         model = self._choose_regressor()
         self.clf_ = model(**kwds)
