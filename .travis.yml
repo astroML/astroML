@@ -15,8 +15,8 @@ env:
         - ASTROPY_VERSION=stable
         - NUMPY_VERSION=1.18
         - CONDA_DEPENDENCIES='scipy scikit-learn matplotlib'
-        - PIP_DEPENDENCIES='pytest-doctestplus>=0.3 pytest-remotedata pytest-astropy-header'
-        - PIP_ALL_DEPENDENCIES='scipy scikit-learn matplotlib pytest-astropy'
+        - PIP_DEPENDENCIES='pytest-doctestplus>=0.3 pytest-remotedata pytest-astropy-header pymc3'
+        - PIP_ALL_DEPENDENCIES='scipy scikit-learn matplotlib pytest-astropy pymc3'
         - DEBUG=True
         - SCRIPT_CMD='pytest astroML'
 
@@ -30,8 +30,8 @@ jobs:
 
         # Use minimum version for everything
         - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.13 ASTROPY_VERSION=''
-               PIP_DEPENDENCIES='scipy==0.18 scikit-learn==0.18 matplotlib==3.0 pytest-astropy astropy==3.0'
-               CONDA_DEPENDENCIES='' PYTEST_VERSION=">4"
+               PIP_DEPENDENCIES='scipy==0.18 scikit-learn==0.18 matplotlib==3.0 pytest-astropy astropy==3.0 pymc3'
+               CONDA_DEPENDENCIES=''
 
         - env: PYTHON_VERSION=3.6 SCRIPT_CMD='make -C doc html' PIP_DEPENDENCIES='sphinx'
 
