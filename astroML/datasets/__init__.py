@@ -22,3 +22,4 @@ from .generated import generate_mu_z
 from .hogg2010test import fetch_hogg2010test
 from .rrlyrae_templates import fetch_rrlyrae_templates
 from .sdss_filters import fetch_sdss_filter, fetch_vega_spectrum
+from .kelly2007test import simulation_kelly
