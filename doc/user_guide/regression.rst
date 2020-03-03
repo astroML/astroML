@@ -215,5 +215,5 @@ Now plot the regression:
 .. container:: binder-badge
 
   .. image:: https://mybinder.org/badge_logo.svg
-    :target: https://mybinder.org/v2/gh/bsipocz/astroml.github.com/notebooks_regression?filepath=notebooks/astroml_regression_example.ipynb>
+    :target: https://mybinder.org/v2/gh/bsipocz/astroml.github.com/notebooks_regression?filepath=notebooks/astroml_regression_example.ipynb
     :width: 150 px
