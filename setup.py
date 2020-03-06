@@ -5,8 +5,8 @@ LONG_DESCRIPTION = open('README.rst').read()
 NAME = "astroML"
 AUTHOR = "Jake VanderPlas"
 AUTHOR_EMAIL = "vanderplas@astro.washington.edu"
-MAINTAINER = "Jake VanderPlas"
-MAINTAINER_EMAIL = "vanderplas@astro.washington.edu"
+MAINTAINER = "Brigitta Sipocz"
+MAINTAINER_EMAIL = "brigitta.sipocz@gmail.com"
 URL = 'http://astroML.github.com'
 DOWNLOAD_URL = 'https://github.com/astroML/astroML'
 LICENSE = 'BSD'
@@ -20,7 +20,20 @@ install_requires = ['scikit-learn>=0.18',
                     'matplotlib>=3.0',
                     'astropy>=3.0']
 
-setup(name=NAME,
+
+from setuptools import setup
+from setuptools.command.install import install
+
+
+class CustomInstallCommand(install):
+    """Customized setuptools install command - prints a friendly greeting."""
+    def run(self):
+        install.run(self)
+        print("Hello, developer, how are you? :)")
+
+
+setup(cmdclass={'install': CustomInstallCommand,},
+      name=NAME,
       version=VERSION,
       description=DESCRIPTION,
       long_description=LONG_DESCRIPTION,
