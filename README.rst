@@ -4,15 +4,15 @@
 AstroML: Machine Learning for Astronomy
 =======================================
 
-.. image:: http://img.shields.io/badge/arXiv-1411.5039-orange.svg?style=flat
-        :target: http://arxiv.org/abs/1411.5039
-.. image:: http://img.shields.io/travis/astroML/astroML/master.svg?style=flat
+.. image:: https://img.shields.io/badge/arXiv-1411.5039-orange.svg?style=flat
+        :target: https://arxiv.org/abs/1411.5039
+.. image:: https://img.shields.io/travis/astroML/astroML/master.svg?style=flat
         :target: https://travis-ci.org/astroML/astroML/
-.. image:: http://img.shields.io/pypi/v/astroML.svg?style=flat
+.. image:: https://img.shields.io/pypi/v/astroML.svg?style=flat
         :target: https://pypi.python.org/pypi/astroML
-.. image:: http://img.shields.io/pypi/dm/astroML.svg?style=flat
+.. image:: https://img.shields.io/pypi/dm/astroML.svg?style=flat
         :target: https://pypi.python.org/pypi/astroML
-.. image:: http://img.shields.io/badge/license-BSD-blue.svg?style=flat
+.. image:: https://img.shields.io/badge/license-BSD-blue.svg?style=flat
         :target: https://github.com/astroml/astroml/blob/master/LICENSE
 
 AstroML is a Python module for machine learning and data mining
@@ -30,10 +30,10 @@ Zeljko Ivezic, Andrew Connolly, Jacob VanderPlas, and Alex Gray.
 
 Important Links
 ===============
-- HTML documentation: http://www.astroML.org
-- Core source-code repository: http://github.com/astroML/astroML
-- Figure source-code repository: http://github.com/astroML/astroML-figures
-- Issue Tracker: http://github.com/astroML/astroML/issues
+- HTML documentation: https://www.astroML.org
+- Core source-code repository: https://github.com/astroML/astroML
+- Figure source-code repository: https://github.com/astroML/astroML-figures
+- Issue Tracker: https://github.com/astroML/astroML/issues
 - Mailing List: https://groups.google.com/forum/#!forum/astroml-general
 
 
