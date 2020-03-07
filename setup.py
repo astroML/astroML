@@ -23,16 +23,34 @@ install_requires = ['scikit-learn>=0.18',
 
 from setuptools import setup
 from setuptools.command.install import install
+from setuptools.command.develop import develop
+from setuptools.command.egg_info import egg_info
+
+
+class CustomDevelopCommand(develop):
+    """Customized setuptools install command - prints a friendly greeting."""
+    def run(self):
+        develop.run(self)
+        print("Hello, developer, how are your develop? :)")
+
+
+class CustomEggInfoCommand(egg_info):
+    """Customized setuptools install command - prints a friendly greeting."""
+    def run(self):
+        egg_info.run(self)
+        print("Hello, developer, how are your egg_info? :)")
 
 
 class CustomInstallCommand(install):
     """Customized setuptools install command - prints a friendly greeting."""
     def run(self):
         install.run(self)
-        print("Hello, developer, how are you? :)")
+        print("Hello, developer, how are your install? :)")
 
 
-setup(cmdclass={'install': CustomInstallCommand,},
+setup(cmdclass={'install': CustomInstallCommand,
+                'develop': CustomDevelopCommand,
+                'egg_info': CustomEggInfoCommand},
       name=NAME,
       version=VERSION,
       description=DESCRIPTION,
