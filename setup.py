@@ -28,23 +28,26 @@ from setuptools.command.egg_info import egg_info
 
 
 class CustomDevelopCommand(develop):
-    """Customized setuptools install command - prints a friendly greeting."""
+    """Customized setuptools develop command to trigger theano compilation."""
     def run(self):
         develop.run(self)
+        from astroML.linear_model import LinearRegressionwithErrors
         print("Hello, developer, how are your develop? :)")
 
 
 class CustomEggInfoCommand(egg_info):
-    """Customized setuptools install command - prints a friendly greeting."""
+    """Customized setuptools egg_info command to trigger theano compilation."""
     def run(self):
         egg_info.run(self)
+        from astroML.linear_model import LinearRegressionwithErrors
         print("Hello, developer, how are your egg_info? :)")
 
 
 class CustomInstallCommand(install):
-    """Customized setuptools install command - prints a friendly greeting."""
+    """Customized setuptools install command to trigger theano compilation."""
     def run(self):
         install.run(self)
+        from astroML.linear_model import LinearRegressionwithErrors
         print("Hello, developer, how are your install? :)")
 
 
