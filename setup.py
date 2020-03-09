@@ -15,10 +15,10 @@ import astroML
 VERSION = astroML.__version__
 
 install_requires = ['scikit-learn>=0.18',
-                    'numpy>=1.4',
-                    'scipy>=0.11',
-                    'matplotlib>=0.99',
-                    'astropy>=1.1']
+                    'numpy>=1.13',
+                    'scipy>=0.14',
+                    'matplotlib>=3.0',
+                    'astropy>=3.0']
 
 setup(name=NAME,
       version=VERSION,
