@@ -44,14 +44,14 @@ class CustomEggInfoCommand(egg_info):
     """Customized setuptools egg_info command to trigger theano compilation."""
     def run(self):
         egg_info.run(self)
-        trigger_theano()
+#        trigger_theano()
 
 
 class CustomInstallCommand(install):
     """Customized setuptools install command to trigger theano compilation."""
     def run(self):
         install.run(self)
-#        trigger_theano()
+        trigger_theano()
 
 
 setup(cmdclass={'install': CustomInstallCommand,
