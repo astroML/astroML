@@ -1,4 +1,8 @@
 from setuptools import setup
+from setuptools.command.install import install
+from setuptools.command.develop import develop
+from setuptools.command.egg_info import egg_info
+
 
 DESCRIPTION = "tools for machine learning and data mining in Astronomy"
 LONG_DESCRIPTION = open('README.rst').read()
@@ -21,34 +25,41 @@ install_requires = ['scikit-learn>=0.18',
                     'astropy>=3.0']
 
 
-from setuptools import setup
-from setuptools.command.install import install
-from setuptools.command.develop import develop
-from setuptools.command.egg_info import egg_info
+def trigger_theano():
+    try:
+        import pymc3 as pm
+        print("Run small regression example to trigger theano builds, if pymc3 is available.")
+        import numpy as np
+        from astroML.linear_model import LinearRegressionwithErrors
+        lr = LinearRegressionwithErrors()
+        x = np.arange(10)
+        y = np.arange(10) * 2 + 1
+        x_err = np.ones(10) * 0.1
+        y_err = np.ones(10) * 0.1
+        lr.fit(x, y, y_err, x_err)
+    except (ImportError, RuntimeError):
+        pass
 
 
 class CustomDevelopCommand(develop):
     """Customized setuptools develop command to trigger theano compilation."""
     def run(self):
         develop.run(self)
-        from astroML.linear_model import LinearRegressionwithErrors
-        print("Hello, developer, how are your develop? :)")
+        trigger_theano()
 
 
 class CustomEggInfoCommand(egg_info):
     """Customized setuptools egg_info command to trigger theano compilation."""
     def run(self):
         egg_info.run(self)
-        from astroML.linear_model import LinearRegressionwithErrors
-        print("Hello, developer, how are your egg_info? :)")
+        trigger_theano()
 
 
 class CustomInstallCommand(install):
     """Customized setuptools install command to trigger theano compilation."""
     def run(self):
         install.run(self)
-        from astroML.linear_model import LinearRegressionwithErrors
-        print("Hello, developer, how are your install? :)")
+        trigger_theano()
 
 
 setup(cmdclass={'install': CustomInstallCommand,
