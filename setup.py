@@ -1,6 +1,5 @@
 from setuptools import setup
 from setuptools.command.install import install
-from setuptools.command.develop import develop
 from setuptools.command.egg_info import egg_info
 
 
@@ -34,18 +33,11 @@ def trigger_theano():
         lr = LinearRegressionwithErrors()
         x = np.arange(10)
         y = np.arange(10) * 2 + 1
-        x_err = np.ones(10) * 0.1
-        y_err = np.ones(10) * 0.1
+        x_err = np.ones(10) * 0.01
+        y_err = np.ones(10) * 0.01
         lr.fit(x, y, y_err, x_err)
     except (ImportError, RuntimeError):
         pass
-
-
-class CustomDevelopCommand(develop):
-    """Customized setuptools develop command to trigger theano compilation."""
-    def run(self):
-        develop.run(self)
-        trigger_theano()
 
 
 class CustomEggInfoCommand(egg_info):
@@ -59,11 +51,10 @@ class CustomInstallCommand(install):
     """Customized setuptools install command to trigger theano compilation."""
     def run(self):
         install.run(self)
-        trigger_theano()
+#        trigger_theano()
 
 
 setup(cmdclass={'install': CustomInstallCommand,
-                'develop': CustomDevelopCommand,
                 'egg_info': CustomEggInfoCommand},
       name=NAME,
       version=VERSION,
