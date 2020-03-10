@@ -89,7 +89,7 @@ The core ``astroML`` package requires the following:
 
 - `Python <http://python.org>`_ version 3.5+
 - `Numpy <http://numpy.scipy.org/>`_ >= 1.13
-- `Scipy <http://www.scipy.org/>`_ >= 0.14
+- `Scipy <http://www.scipy.org/>`_ >= 0.16
 - `scikit-learn <http://scikit-learn.org/>`_ >= 0.18
 - `matplotlib <http://matplotlib.org/>`_ >= 3.0
 - `astropy <http://www.astropy.org/>`_ >= 3.0

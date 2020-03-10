@@ -30,7 +30,7 @@ jobs:
 
         # Use minimum version for everything
         - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.13 ASTROPY_VERSION=''
-               PIP_DEPENDENCIES='scipy==0.14 scikit-learn==0.18 matplotlib==3.0 pytest-astropy astropy==3.0'
+               PIP_DEPENDENCIES='scipy==0.16 scikit-learn==0.18 matplotlib==3.0 pytest-astropy astropy==3.0'
                CONDA_DEPENDENCIES='' PYTEST_VERSION=">4"
 
         - env: PYTHON_VERSION=3.6 SCRIPT_CMD='make -C doc html' PIP_DEPENDENCIES='sphinx'
