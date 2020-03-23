@@ -1,9 +1,17 @@
+import pytest
+
 import numpy as np
 from numpy.testing import assert_allclose
 
 from sklearn.linear_model import LinearRegression as skLinearRegression
 from astroML.linear_model import \
     LinearRegression, PolynomialRegression, BasisFunctionRegression
+
+try:
+    import pymc3 as pm
+    HAS_PYMC3 = True
+except ImportError:
+    HAS_PYMC3 = False
 
 
 def test_error_transform_diag(N=20, rseed=0):
@@ -110,3 +118,24 @@ def test_BasisfunctionRegression_simple():
     y_true = clf.predict(x)
 
     assert_allclose(y, y_true, atol=1E-10)
+
+
+@pytest.mark.skipif('not HAS_PYMC3')
+def test_LinearRegressionwithErrors():
+    """
+    Test for small errors agrees with fit with y errors only
+    """
+
+    from astroML.linear_model import LinearRegressionwithErrors
+
+    np.random.seed(0)
+    X = np.random.random(10) + 1
+    dy = np.random.random(10) * 0.1
+    y = X * 2 + 1 + (dy - 0.05)
+    dx = np.random.random(10) * 0.01
+    X = X + (dx - 0.005)
+
+    clf1 = LinearRegression().fit(X[:, None], y, dy)
+    clf2 = LinearRegressionwithErrors().fit(np.atleast_2d(X), y, dy, dx)
+
+    assert_allclose(clf1.coef_, clf2.coef_, 0.2)

@@ -1,6 +1,9 @@
 1.0 (unreleased)
 ================
 
+- Added LinearRegressionwithErrors to handle errors in both dependent and
+  independent variables using pymc3. [#206]
+
 - Removed suppport for Python versions <3.5. [#174]
 
 - Deprecated function ``savitzky_golay`` in favour of the scipy
