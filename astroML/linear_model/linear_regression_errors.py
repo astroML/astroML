@@ -25,7 +25,8 @@ class LinearRegressionwithErrors(LinearRegression):
 
         self.fit_intercept = False
 
-        x_error = np.atleast_2d(x_error)
+        if x_error is not None:
+            x_error = np.atleast_2d(x_error)
         with pm.Model():
             # slope and intercept of eta-ksi relation
             slope = pm.Flat('slope', shape=(X.shape[0], ))
