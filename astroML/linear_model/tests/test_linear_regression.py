@@ -1,9 +1,17 @@
+import pytest
+
 import numpy as np
 from numpy.testing import assert_allclose
 
 from sklearn.linear_model import LinearRegression as skLinearRegression
 from astroML.linear_model import \
     LinearRegression, PolynomialRegression, BasisFunctionRegression
+
+try:
+    import pymc3 as pm
+    HAS_PYMC3 = True
+except ImportError:
+    HAS_PYMC3 = False
 
 
 def test_error_transform_diag(N=20, rseed=0):
@@ -112,6 +120,7 @@ def test_BasisfunctionRegression_simple():
     assert_allclose(y, y_true, atol=1E-10)
 
 
+@pytest.mark.skipif('not HAS_PYMC3')
 def test_LinearRegressionwithErrors():
     """
     Test for small errors agrees with fit with y errors only

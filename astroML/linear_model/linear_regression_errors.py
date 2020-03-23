@@ -1,6 +1,11 @@
 import numpy as np
-import pymc3 as pm
-import theano.tensor as tt
+
+try:
+    import pymc3 as pm
+    import theano.tensor as tt
+except ImportError:
+    raise ImportError('LinearRegressionwithErrors requires PyMC3 to be installed.')
+
 
 from astroML.linear_model import LinearRegression
 
