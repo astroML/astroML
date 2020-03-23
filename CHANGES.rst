@@ -1,5 +1,5 @@
-1.0 (unreleased)
-================
+1.0a1 (2020-03-23)
+==================
 
 - Added LinearRegressionwithErrors to handle errors in both dependent and
   independent variables using pymc3. [#206]
