@@ -4,3 +4,4 @@ from .mcmc import plot_mcmc
 from .ellipse import plot_tissot_ellipse
 from .multiaxes import MultiAxes
 from .settings import setup_text_plots
+from .regression import plot_regressions, plot_regression_from_trace
