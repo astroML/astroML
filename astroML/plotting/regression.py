@@ -15,53 +15,34 @@ def get_m_b(beta):
 def plot_regressions(ksi, eta, x, y, sigma_x, sigma_y, add_regression_lines=False,
                      alpha_in=1, beta_in=0.5, basis='linear'):
 
-    # True regression line
-    x0 = np.arange(np.min(ksi) - 0.5, np.max(ksi) + 0.5)
-
-    # TODO: do properly with .predict()
-    if basis == 'linear':
-        y0 = alpha_in + x0 * beta_in
-    elif basis == 'poly':
-        y0 = alpha_in + beta_in[0] * x0 + beta_in[1] * x0 * x0 + beta_in[2] * x0 * x0 * x0
-
-    figure = plt.figure(figsize=(15, 6))
-    #ax = figure.add_subplot(121)
-    #ax.scatter(ksi, eta)
-    #ax.set_xlabel(r'$\xi$')
-    #ax.set_ylabel(r'$\eta$')
-
-    #ax.plot(x0, y0, color='orange')
-    #ax.set_xlim(-4, 4)
-    #ax.set_ylim(-3, 3)
-
-    ax = figure.add_subplot(122)
+    figure = plt.figure(figsize=(8, 6))
+    ax = figure.add_subplot(111)
     ax.scatter(x, y, alpha=0.5)
     ax.errorbar(x, y, xerr=sigma_x, yerr=sigma_y, alpha=0.3, ls='')
     ax.set_xlabel('x')
     ax.set_ylabel('y')
 
-    # Redo truth for second panel
-    x0 = np.linspace(-10, 10, 40)
-    # TODO: do properly with .predict()
-    if basis == 'linear':
-        y0 = alpha_in + x0 * beta_in
-    elif basis == 'poly':
-        y0 = alpha_in + beta_in[0] * x0 + beta_in[1] * x0 * x0 + beta_in[2] * x0 * x0 * x0
+    x0 = np.linspace(np.min(x) - 0.5, np.max(x) + 0.5, 20)
 
-    ax.plot(x0, y0, color='black', label='True')
-    ax.set_xlim(-12, 12)
-    ax.set_ylim(-5, 7)
-    #ax.plot([-4, 4, 4, -4, -4], [-3, -3, 3, 3, -3], color='k', alpha=0.5)
+    # True regression line
+
+    if alpha_in is not None and beta_in is not None:
+        if basis == 'linear':
+            y0 = alpha_in + x0 * beta_in
+        elif basis == 'poly':
+            y0 = alpha_in + beta_in[0] * x0 + beta_in[1] * x0 * x0 + beta_in[2] * x0 * x0 * x0
+
+        ax.plot(x0, y0, color='black', label='True regression')
+    else:
+        y0 = None
 
     if add_regression_lines:
-        x0 = np.arange(-10, 10)
-        y0 = np.arange(-4, 6)
-        for label, data, *target in [['no err', x, y, 1],
-                                     ['y err', x, y, sigma_y],
-                                     ['x err', y, x, sigma_x]]:
+        for label, data, *target in [['fit no errors', x, y, 1],
+                                     ['fit y errors only', x, y, sigma_y],
+                                     ['fit x errors only', y, x, sigma_x]]:
             linreg = LinearRegression()
             linreg.fit(data[:, None], *target)
-            if label == 'x err':
+            if label == 'fit x errors only' and y0 is not None:
                 x_fit = linreg.predict(y0[:, None])
                 ax.plot(x_fit, y0, label=label)
             else:
@@ -78,9 +59,10 @@ def plot_regressions(ksi, eta, x, y, sigma_x, sigma_y, add_regression_lines=Fals
         beta_fit = optimize.fmin(min_func, x0=[-1, 1])
         m_fit, b_fit = get_m_b(beta_fit)
         x_fit = np.linspace(-10, 10, 20)
-
         ax.plot(x_fit, m_fit * x_fit + b_fit, label='TLS')
 
+    ax.set_xlim(np.min(x)-0.5, np.max(x)+0.5)
+    ax.set_ylim(np.min(y)-0.5, np.max(y)+0.5)
     ax.legend()
 
 
