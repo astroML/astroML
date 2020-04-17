@@ -16,13 +16,14 @@ try:  # SciPy >= 0.19
 except ImportError:
     from scipy.misc import logsumexp as logsumexp
 
+from sklearn.base import BaseEstimator
 from sklearn.mixture import GaussianMixture
 from sklearn.utils import check_random_state
 
 from ..utils import log_multivariate_gaussian
 
 
-class XDGMM:
+class XDGMM(BaseEstimator):
     """Extreme Deconvolution
 
     Fit an extreme deconvolution (XD) model to the data

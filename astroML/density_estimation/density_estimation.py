@@ -9,6 +9,7 @@ See also:
 """
 import numpy as np
 from scipy import special
+from sklearn.base import BaseEstimator
 from sklearn.neighbors import BallTree
 
 
@@ -17,7 +18,7 @@ def n_volume(r, n):
     return np.pi ** (0.5 * n) / special.gamma(0.5 * n + 1) * (r ** n)
 
 
-class KNeighborsDensity:
+class KNeighborsDensity(BaseEstimator):
     """K-neighbors density estimation
 
     Parameters
