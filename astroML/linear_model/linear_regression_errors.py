@@ -42,18 +42,18 @@ class LinearRegressionwithErrors(LinearRegression):
             # standard deviation of Gaussian that ksi are drawn from (assumed mean zero)
             tau = pm.HalfFlat('tau', shape=(X.shape[0],))
             # intrinsic ksi
-            mu = pm.Normal('mu', mu=0, sd=tau, shape=(X.shape[0],))
+            mu = pm.Normal('mu', mu=0, sigma=tau, shape=(X.shape[0],))
 
             # Some wizzarding with the dimensions all around.
             ksi = pm.Normal('ksi', mu=mu, tau=tau, shape=X.T.shape)
 
             # intrinsic eta-ksi linear relation + intrinsic scatter
             eta = pm.Normal('eta', mu=(tt.dot(slope.T, ksi.T) + inter),
-                            sd=int_std, shape=y.shape)
+                            sigma=int_std, shape=y.shape)
 
             # observed xi, yi
-            x = pm.Normal('xi', mu=ksi.T, sd=x_error, observed=X, shape=X.shape)
-            y = pm.Normal('yi', mu=eta, sd=y_error, observed=y, shape=y.shape)
+            x = pm.Normal('xi', mu=ksi.T, sigma=x_error, observed=X, shape=X.shape)
+            y = pm.Normal('yi', mu=eta, sigma=y_error, observed=y, shape=y.shape)
 
             self.trace = pm.sample(**sample_kwargs)
 
