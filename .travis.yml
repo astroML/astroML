@@ -28,9 +28,10 @@ jobs:
 
         - env: NUMPY_VERSION=1.16
 
-        # Use minimum version for everything
+        # Use minimum version for everything. Pandas is a pymc3 dependency, we only list it to limit
+        # its version to avoid clashes with our other minimum dependencies.
         - env: PYTHON_VERSION=3.5 NUMPY_VERSION=1.13 ASTROPY_VERSION=''
-               PIP_DEPENDENCIES='scipy==0.18 scikit-learn==0.18 matplotlib==3.0 pytest-doctestplus pytest-astropy-header astropy==3.0 pymc3 cftime<1.1.1.1'
+               PIP_DEPENDENCIES='scipy==0.18 scikit-learn==0.18 matplotlib==3.0 pytest-doctestplus pytest-astropy-header astropy==3.0 pymc3==3.7 pandas==0.24 cftime<1.1.1.1'
                CONDA_DEPENDENCIES=''
 
         - env: PYTHON_VERSION=3.6 SCRIPT_CMD='make -C doc html' PIP_DEPENDENCIES='sphinx<3.1' NUMPY_VERSION=1.17
