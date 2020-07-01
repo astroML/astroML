@@ -13,6 +13,7 @@
 
 import sys
 import os
+import matplotlib.sphinxext.plot_directive
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -49,7 +50,8 @@ except:
 extensions = ['gen_rst', 'gen_figure_rst', 'gen_paper_rst',
               'sphinx.ext.autodoc', 'sphinx.ext.doctest',
               'sphinx.ext.imgmath', 'sphinx.ext.viewcode',
-              'sphinx.ext.autosummary']
+              'sphinx.ext.autosummary', 'sphinx.ext.mathjax',
+              matplotlib.sphinxext.plot_directive.__name__]
 
 import numpy_ext.numpydoc
 extensions.append('numpy_ext.numpydoc')
