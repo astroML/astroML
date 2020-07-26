@@ -9,6 +9,8 @@ def scatter_contour(x, y,
                     plot_args=None,
                     contour_args=None,
                     filled_contour=True,
+                    xerr=None,
+                    yerr=None,
                     ax=None):
     """Scatter plot with contour over dense regions
 
@@ -34,6 +36,20 @@ def scatter_contour(x, y,
         see doc string of pylab.contourf for more information
     filled_contour : bool
         If True (default) use filled contours. Otherwise, use contour outlines.
+    xerr, yerr : arrays
+        errors in x and and y dimensions. shape(N,) or shape(2, N); optional. From
+        matplotlib documentation (https://matplotlib.org/api/_as_gen/matplotlib.pyplot.errorbar.html):
+
+        "The errorbar sizes:
+
+            scalar: Symmetric +/- values for all data points.
+            shape(N,): Symmetric +/-values for each data point.
+            shape(2, N): Separate - and + values for each bar. z
+                First row contains the lower errors, the second 
+                row contains the upper errors.
+            None: No errorbar.
+            Note that all error arrays should have positive values."
+
     ax : pylab.Axes instance
         the axes on which to plot.  If not specified, the current
         axes will be used
@@ -97,14 +113,24 @@ def scatter_contour(x, y,
     else:
         contours = ax.contour(H.T, levels, extent=extent, **contour_args)
 
-    X = np.hstack([x[:, None], y[:, None]])
+    
+    # TODO: if only xerr or yerr
+    # TODO: if different xerr for above, below.
+        # check size of array before doing the hstack
+        
+    if xerr and yerr:
+        X = np.hstack([x[:, None], y[:, None], xerr[0][:, None], 
+                       xerr[1][:, None], yerr[0][:, None],
+                      yerr[1][:, None]])
+    else:
+        X = np.hstack([x[:, None], y[:, None]])
 
     if len(outline.allsegs[0]) > 0:
         outer_poly = outline.allsegs[0][0]
         try:
             # this works in newer matplotlib versions
             from matplotlib.path import Path
-            points_inside = Path(outer_poly).contains_points(X)
+            points_inside = Path(outer_poly).contains_points(X[:, :2])
         except:
             # this works in older matplotlib versions
             import matplotlib.nxutils as nx
@@ -113,7 +139,13 @@ def scatter_contour(x, y,
         Xplot = X[~points_inside]
     else:
         Xplot = X
-
-    points = ax.plot(Xplot[:, 0], Xplot[:, 1], **plot_args)
+    
+        
+    if xerr and yerr:
+        points = ax.errorbar(Xplot[:, 0], Xplot[:, 1], 
+                             xerr=[Xplot[:, 2], Xplot[:, 3]], 
+                                   yerr=[Xplot[:, 4], Xplot[:, 4]], **plot_args)
+    else:
+        points = ax.plot(Xplot[:, 0], Xplot[:, 1], **plot_args)
 
     return points, contours
