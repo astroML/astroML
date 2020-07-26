@@ -140,7 +140,7 @@ def scatter_contour(x, y,
         elif not np.shape(arr):   # if a scalar value has been provided
             coerced_arr = arr * np.ones((2, len(x)))
 
-        elif len(np.shape(arr)):
+        elif len(np.shape(arr)) == 1:
             coerced_arr = np.array([arr, arr])
 
         elif np.shape(arr)[0] > 2 and len(np.shape(arr)) > 1:
