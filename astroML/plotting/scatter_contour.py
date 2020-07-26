@@ -134,16 +134,16 @@ def scatter_contour(x, y,
         coerced_arr : array
             coerced array
         """
-        if not arr:  # if no errorbars are provided
+        if arr is None:  # if no errorbars are provided
             coerced_arr = np.zeros((2, len(x)))
 
         elif not np.shape(arr):   # if a scalar value has been provided
             coerced_arr = arr * np.ones((2, len(x)))
 
-        elif np.shape(arr)[0] == 1:
-            coerced_arr = [arr, arr]
+        elif len(np.shape(arr)):
+            coerced_arr = np.array([arr, arr])
 
-        elif np.shape(arr)[0] > 2:
+        elif np.shape(arr)[0] > 2 and len(np.shape(arr)) > 1:
             raise ShapeError('Check shape of errorbars')
 
         else:
