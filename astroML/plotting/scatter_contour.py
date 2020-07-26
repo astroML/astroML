@@ -1,5 +1,8 @@
 import numpy as np
 
+class ShapeError(Error):
+    pass
+
 
 def scatter_contour(x, y,
                     levels=10,
