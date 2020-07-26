@@ -64,6 +64,39 @@ def scatter_contour(x, y,
        points is the return value of ax.plot()
        contours is the return value of ax.contour or ax.contourf
     """
+
+    def coerce_error_array(arr):
+        """Ensures errorbar arrays are of the correct shape
+
+        Parameters
+        ----------
+        
+        arr : array or value
+            Errorbar object to be coerced into a form that 
+            can be passed to the hstack call.
+        
+        Returns
+        -------
+        coerced_arr : array
+            coerced array
+        """
+        if arr is None:  # if no errorbars are provided
+            coerced_arr = np.zeros((2, len(x)))
+
+        elif not np.shape(arr):   # if a scalar value has been provided
+            coerced_arr = arr * np.ones((2, len(x)))
+
+        elif len(np.shape(arr)) == 1:
+            coerced_arr = np.array([arr, arr])
+
+        elif np.shape(arr)[0] > 2 and len(np.shape(arr)) > 1:
+            raise ShapeError('Check shape of errorbars')
+
+        else:
+            coerced_arr = arr
+
+        return coerced_arr
+        
     x = np.asarray(x)
     y = np.asarray(y)
 
@@ -117,38 +150,6 @@ def scatter_contour(x, y,
         contours = ax.contourf(H.T, levels, extent=extent, **contour_args)
     else:
         contours = ax.contour(H.T, levels, extent=extent, **contour_args)
-
-    def coerce_error_array(arr):
-        """Ensures errorbar arrays are of the correct shape
-
-        Parameters
-        ----------
-        
-        arr : array or value
-            Errorbar object to be coerced into a form that 
-            can be passed to the hstack call.
-        
-        Returns
-        -------
-        coerced_arr : array
-            coerced array
-        """
-        if arr is None:  # if no errorbars are provided
-            coerced_arr = np.zeros((2, len(x)))
-
-        elif not np.shape(arr):   # if a scalar value has been provided
-            coerced_arr = arr * np.ones((2, len(x)))
-
-        elif len(np.shape(arr)) == 1:
-            coerced_arr = np.array([arr, arr])
-
-        elif np.shape(arr)[0] > 2 and len(np.shape(arr)) > 1:
-            raise ShapeError('Check shape of errorbars')
-
-        else:
-            coerced_arr = arr
-
-        return coerced_arr
 
 
     xerr, yerr = coerce_error_array(xerr), coerce_error_array(yerr)
