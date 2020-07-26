@@ -113,17 +113,31 @@ def scatter_contour(x, y,
     else:
         contours = ax.contour(H.T, levels, extent=extent, **contour_args)
 
-    
-    # TODO: if only xerr or yerr
-    # TODO: if different xerr for above, below.
-        # check size of array before doing the hstack
-        
-    if xerr and yerr:
-        X = np.hstack([x[:, None], y[:, None], xerr[0][:, None], 
-                       xerr[1][:, None], yerr[0][:, None],
-                      yerr[1][:, None]])
-    else:
-        X = np.hstack([x[:, None], y[:, None]])
+    def coerce_error_array(arr):
+        """
+        Ensures arrays are of the correct shape. Before being sent to hstack.
+
+        """
+        if not arr:  # if no errorbars are provided
+            arr = np.zeros(len(x))
+
+        elif not np.shape(arr):   # if a scalar value has been provided
+            arr = arr * np.ones_like(x)
+
+        elif np.shape(arr)[0] == 1:
+            arr = [arr, arr]
+
+        elif np.shape(arr)[0] > 2:
+            raise ShapeError('Check shape of errorbars')
+
+        return arr
+
+
+    xerr, yerr = coerce_error_array(xerr), coerce_error_array(yerr)
+
+    X = np.hstack([x[:, None], y[:, None], xerr[0][:, None], 
+                   xerr[1][:, None], yerr[0][:, None],
+                  yerr[1][:, None]])
 
     if len(outline.allsegs[0]) > 0:
         outer_poly = outline.allsegs[0][0]
@@ -141,11 +155,8 @@ def scatter_contour(x, y,
         Xplot = X
     
         
-    if xerr and yerr:
-        points = ax.errorbar(Xplot[:, 0], Xplot[:, 1], 
-                             xerr=[Xplot[:, 2], Xplot[:, 3]], 
-                                   yerr=[Xplot[:, 4], Xplot[:, 4]], **plot_args)
-    else:
-        points = ax.plot(Xplot[:, 0], Xplot[:, 1], **plot_args)
+    points = ax.errorbar(Xplot[:, 0], Xplot[:, 1], 
+                         xerr=[Xplot[:, 2], Xplot[:, 3]], 
+                               yerr=[Xplot[:, 4], Xplot[:, 4]], **plot_args)
 
     return points, contours
