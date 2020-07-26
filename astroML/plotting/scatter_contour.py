@@ -1,6 +1,6 @@
 import numpy as np
 
-class ShapeError(Error):
+class ShapeError(ValueError):
     pass
 
 
@@ -131,13 +131,13 @@ def scatter_contour(x, y,
         Returns
         -------
         coerced_arr : array
-            coerced arrays 
+            coerced array
         """
         if not arr:  # if no errorbars are provided
-            coerced_arr = np.zeros(len(x))
+            coerced_arr = np.zeros((2, len(x)))
 
         elif not np.shape(arr):   # if a scalar value has been provided
-            coerced_arr = arr * np.ones_like(x)
+            coerced_arr = arr * np.ones((2, len(x)))
 
         elif np.shape(arr)[0] == 1:
             coerced_arr = [arr, arr]
@@ -172,9 +172,10 @@ def scatter_contour(x, y,
     else:
         Xplot = X
     
-        
+    
     points = ax.errorbar(Xplot[:, 0], Xplot[:, 1], 
                          xerr=[Xplot[:, 2], Xplot[:, 3]], 
-                               yerr=[Xplot[:, 4], Xplot[:, 4]], **plot_args)
+                               yerr=[Xplot[:, 4], Xplot[:, 5]], 
+                               **plot_args)
 
     return points, contours
