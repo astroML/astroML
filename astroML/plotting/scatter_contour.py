@@ -68,7 +68,8 @@ def scatter_contour(x, y,
     y = np.asarray(y)
 
     default_contour_args = dict(zorder=2)
-    default_plot_args = dict(marker='.', linestyle='none', zorder=1)
+    default_plot_args = dict(marker='.', linestyle='none', zorder=1,
+                            capsize=0)
 
     if plot_args is not None:
         default_plot_args.update(plot_args)
