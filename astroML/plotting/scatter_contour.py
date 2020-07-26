@@ -39,9 +39,10 @@ def scatter_contour(x, y,
         see doc string of pylab.contourf for more information
     filled_contour : bool
         If True (default) use filled contours. Otherwise, use contour outlines.
-    xerr, yerr : arrays
-        errors in x and and y dimensions. shape(N,) or shape(2, N); optional. From
-        matplotlib documentation (https://matplotlib.org/api/_as_gen/matplotlib.pyplot.errorbar.html):
+    xerr, yerr : arrays pr values (optional)
+        errors in x and and y dimensions. shape(N,) or shape(2, N). From
+        matplotlib documentation 
+        (https://matplotlib.org/api/_as_gen/matplotlib.pyplot.errorbar.html):
 
         "The errorbar sizes:
 
@@ -118,22 +119,36 @@ def scatter_contour(x, y,
 
     def coerce_error_array(arr):
         """
-        Ensures arrays are of the correct shape. Before being sent to hstack.
+        Ensures errorbar arrays are of the correct shape
 
+        Parameters
+        ----------
+        
+        arr : array or value
+            Errorbar object to be coerced into a form that can be passed 
+            to the hstack call.
+        
+        Returns
+        -------
+        coerced_arr : array
+            coerced arrays 
         """
         if not arr:  # if no errorbars are provided
-            arr = np.zeros(len(x))
+            coerced_arr = np.zeros(len(x))
 
         elif not np.shape(arr):   # if a scalar value has been provided
-            arr = arr * np.ones_like(x)
+            coerced_arr = arr * np.ones_like(x)
 
         elif np.shape(arr)[0] == 1:
-            arr = [arr, arr]
+            coerced_arr = [arr, arr]
 
         elif np.shape(arr)[0] > 2:
             raise ShapeError('Check shape of errorbars')
 
-        return arr
+        else:
+            coerced_arr = arr
+
+        return coerced_arr
 
 
     xerr, yerr = coerce_error_array(xerr), coerce_error_array(yerr)
