@@ -69,7 +69,7 @@ def scatter_contour(x, y,
 
     default_contour_args = dict(zorder=2)
     default_plot_args = dict(marker='.', linestyle='none', zorder=1,
-                            capsize=0)
+                             capsize=0)
 
     if plot_args is not None:
         default_plot_args.update(plot_args)
@@ -119,15 +119,14 @@ def scatter_contour(x, y,
         contours = ax.contour(H.T, levels, extent=extent, **contour_args)
 
     def coerce_error_array(arr):
-        """
-        Ensures errorbar arrays are of the correct shape
+        """Ensures errorbar arrays are of the correct shape
 
         Parameters
         ----------
         
         arr : array or value
-            Errorbar object to be coerced into a form that can be passed 
-            to the hstack call.
+            Errorbar object to be coerced into a form that 
+            can be passed to the hstack call.
         
         Returns
         -------
@@ -176,7 +175,7 @@ def scatter_contour(x, y,
     
     points = ax.errorbar(Xplot[:, 0], Xplot[:, 1], 
                          xerr=[Xplot[:, 2], Xplot[:, 3]], 
-                               yerr=[Xplot[:, 4], Xplot[:, 5]], 
-                               **plot_args)
+                         yerr=[Xplot[:, 4], Xplot[:, 5]], 
+                         **plot_args)
 
     return points, contours
