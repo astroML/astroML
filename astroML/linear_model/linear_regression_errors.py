@@ -67,6 +67,6 @@ class LinearRegressionwithErrors(LinearRegression):
             # choose the maximum posterior slope and intercept
             slope_best = [edges[i][w[i][0]] for i in range(len(edges) - 1)]
             intercept_best = edges[-1][w[-1][0]]
-            self.clf_.coef_ = np.array([intercept_best, slope_best])
+            self.clf_.coef_ = np.array([intercept_best, *slope_best])
 
         return self
