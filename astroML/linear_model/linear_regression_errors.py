@@ -57,17 +57,16 @@ class LinearRegressionwithErrors(LinearRegression):
 
             self.trace = pm.sample(**sample_kwargs)
 
-            # TODO big: make it optional to choose a way to define best
+            # TODO: make it optional to choose a way to define best
 
-            # TODO quick: use np.histogramdd
-            H2D, bins1, bins2 = np.histogram2d(self.trace['slope'][:, 0],
-                                               self.trace['inter'], bins=50)
+            HND, edges = np.histogramdd(np.hstack((self.trace['slope'],
+                                                   self.trace['inter'][:, None])), bins=50)
 
-            w = np.where(H2D == H2D.max())
+            w = np.where(HND == HND.max())
 
             # choose the maximum posterior slope and intercept
-            slope_best = bins1[w[0][0]]
-            intercept_best = bins2[w[1][0]]
-            self.clf_.coef_ = np.array([intercept_best, slope_best])
+            slope_best = [edges[i][w[i][0]] for i in range(len(edges) - 1)]
+            intercept_best = edges[-1][w[-1][0]]
+            self.clf_.coef_ = np.array([intercept_best, *slope_best])
 
         return self

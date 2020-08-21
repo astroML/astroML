@@ -17,33 +17,62 @@ class simulation_dist(rv_continuous):
 
 
 def simulation_kelly(size=50, low=-10, high=10, alpha=1, beta=0.5,
-                     epsilon=(0, 0.75), scalex=1, scaley=1, multidim=1):
+                     epsilon=(0, 0.75), scalex=1, scaley=1, multidim=1,
+                     ksi=None, eta=None):
     """
     Data simulator from Kelly 2007
 
     Parameters
     ==========
-    size
-    low
-    high
-    alpha
-    beta
-    epsilon
-    scalex
-    scaley
-    multidim
+    size : int
+        Number of datapoints to be generated
+    alpha : float
+        Regression coefficient defined in eq 1
+    beta : float
+        Regression coefficient defined in eq 1
+    epsilon : tupple of floats
+        Mean and standard deviation of normally distributed intrinsic scatter
+    scalex : float
+        Scale parameter for x measurement errors
+    scaley : float
+        Scale parameter for y measurement errors
+    multidim : int
+        Dimension of multivariate data
+    ksi : array
+        If both ``ksi`` and ``eta`` are not None, use them to generate the measured
+        ``xi`` and ``yi`` values and their measurement errors using the scale parameters.
+    eta : array
+        If both ``ksi`` and ``eta`` are not None, use them to generate the measured
+        ``xi`` and ``yi`` values and their measurement errors using the scale parameters.
+    low : float
+        Lower bound of the support of the distribution (see eq. 110 in Kelly 2007).
+    high : float
+        Upper bound of the support of the distribution (see eq. 110 in Kelly 2007).
+
+    Returns
+    =======
+    ksi
+    eta
+    xi
+    yi
+    xi_error
+    yi_error
+    alpha_in
+    beta_in
+
+    Notes
+    =====
 
     """
     eps = np.random.normal(epsilon[0], scale=epsilon[1], size=size)
-    dist = simulation_dist(a=low, b=high)
-
-    # I'm sorry about ksi, but it's less ambigous than having
-    # xi for greek and xi for vector x_i
-    ksi = dist.rvs(size=(multidim, size))
-
-    # eq 1
     beta = np.atleast_1d(beta)
-    eta = alpha + np.dot(beta, ksi) + eps
+
+    if ksi is None and eta is None:
+        dist = simulation_dist(a=low, b=high)
+        ksi = dist.rvs(size=(multidim, size))
+
+        # eq 1
+        eta = alpha + np.dot(beta, ksi) + eps
 
     tau = np.var(ksi)
 
