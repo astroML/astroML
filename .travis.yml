@@ -15,7 +15,7 @@ env:
         - ASTROPY_VERSION=stable
         - NUMPY_VERSION=1.19
         - CONDA_DEPENDENCIES='scipy scikit-learn matplotlib'
-        - PIP_DEPENDENCIES='pytest-doctestplus>=0.8 pytest-remotedata pytest-astropy-header pymc3'
+        - PIP_DEPENDENCIES='pytest-doctestplus>=0.8 pytest-remotedata pytest-astropy-header'
         - PIP_ALL_DEPENDENCIES='scipy scikit-learn matplotlib pytest-doctestplus>=0.8 pymc3'
         - DEBUG=True
         - SCRIPT_CMD='pytest astroML'
