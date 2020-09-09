@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from scipy import optimize
-from astroML.linear_model import TLS_logL, LinearRegression, LinearRegressionwithErrors
+from astroML.linear_model import TLS_logL, LinearRegression
 
 
 # TLS:
