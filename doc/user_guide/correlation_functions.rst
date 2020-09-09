@@ -19,7 +19,7 @@ estimates) over the SDSS spectroscopic galaxies within the redshift range
 0.08 < z < 0.12:
 
 .. image:: ../book_figures/images/chapter6/fig_correlation_function_1.png
-   :target: ../book_figures/chapter6/fig_correlation_function.py
+   :target: ../book_figures/chapter6/fig_correlation_function.html
    :align: center
    :scale: 100
 
