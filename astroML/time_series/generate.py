@@ -34,7 +34,7 @@ def generate_power_law(N, dt, beta, generate_complex=False, random_state=None):
     N = int(N)
 
     Npos = int(N / 2)
-    Nneg = int((N - 1) / 2)
+    # Nneg = int((N - 1) / 2)
     domega = (2 * np.pi / dt / N)
 
     if generate_complex:

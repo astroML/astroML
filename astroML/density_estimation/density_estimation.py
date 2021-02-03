@@ -95,6 +95,9 @@ class KNeighborsDensity(BaseEstimator):
         k = float(self.n_neighbors)
         ndim = X.shape[1]
 
+        # I hope assert is good here given that we only recognize the two methods
+        # and this should have been an error long time ago in all other cases.
+        assert self.method in ["simple", "bayesian"]
         if self.method == 'simple':
             return k / n_volume(dist[:, -1], ndim)
 
@@ -104,5 +107,3 @@ class KNeighborsDensity(BaseEstimator):
                     / (dist ** ndim).sum(1))
         else:
             raise ValueError("Unrecognized method '%s'" % self.method)
-
-        return dens

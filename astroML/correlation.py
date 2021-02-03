@@ -102,7 +102,6 @@ def two_point(data, bins, method='standard',
         raise ValueError("data should be 1D or 2D")
 
     n_samples, n_features = data.shape
-    Nbins = len(bins) - 1
 
     # shuffle all but one axis to get background distribution
     if data_R is None:
@@ -251,9 +250,6 @@ def two_point_angular(ra, dec, bins, method='standard', random_state=None):
         raise ValueError('ra and dec must be 1-dimensional '
                          'arrays of the same length')
 
-    n_features = len(ra)
-    Nbins = len(bins) - 1
-
     # draw a random sample with N points
     ra_R, dec_R = uniform_sphere((min(ra), max(ra)),
                                  (min(dec), max(dec)),
@@ -318,8 +314,6 @@ def bootstrap_two_point_angular(ra, dec, bins, method='standard',
         raise ValueError('ra and dec must be 1-dimensional '
                          'arrays of the same length')
 
-    n_features = len(ra)
-    Nbins = len(bins) - 1
     data = np.asarray(ra_dec_to_xyz(ra, dec), order='F').T
 
     # convert spherical bins to cartesian bins

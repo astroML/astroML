@@ -1,7 +1,10 @@
 import numpy as np
 
 from numpy.testing import assert_array_almost_equal, assert_allclose
-from astroML.utils import log_multivariate_gaussian, convert_2D_cov, completeness_contamination, split_samples
+from astroML.utils import (log_multivariate_gaussian,
+                           convert_2D_cov,
+                           completeness_contamination,
+                           split_samples)
 
 
 def positive_definite_matrix(N, M=None):
@@ -73,23 +76,22 @@ def test_2D_cov():
 
 
 def test_completeness_contamination():
-    completeness, contamination = \
-                    completeness_contamination(np.ones(100), np.ones(100))
+    completeness, contamination = completeness_contamination(np.ones(100),
+                                                             np.ones(100))
 
     assert_allclose(completeness, 1)
     assert_allclose(contamination, 0)
 
-    completeness, contamination = \
-                    completeness_contamination(np.zeros(100), np.zeros(100))
+    completeness, contamination = completeness_contamination(np.zeros(100),
+                                                             np.zeros(100))
 
     assert_allclose(completeness, 0)
     assert_allclose(contamination, 0)
 
-    completeness, contamination = \
-                completeness_contamination(
-                    np.concatenate((np.ones(50), np.zeros(50))),
-                    np.concatenate((np.ones(25), np.zeros(50), np.ones(25)))
-                )
+    completeness, contamination = completeness_contamination(
+        np.concatenate((np.ones(50), np.zeros(50))),
+        np.concatenate((np.ones(25), np.zeros(50), np.ones(25)))
+    )
 
     assert_allclose(completeness, 0.5)
     assert_allclose(contamination, 0.5)

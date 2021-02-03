@@ -4,6 +4,7 @@ from scipy import optimize, fftpack, signal
 from astroML.utils.decorators import deprecated
 from astroML.utils.exceptions import AstroMLDeprecationWarning
 
+
 # Note: there is a scipy PR to include an improved SG filter within the
 # scipy.signal submodule.  It should replace this when it's finished.
 # see http://github.com/scipy/scipy/pull/304
@@ -200,8 +201,8 @@ def wiener_filter(t, h, signal='gaussian', noise='flat', return_PSDs=False,
 
     # use [1:] here to remove the zero-frequency term: we don't want to
     # fit to this for data with an offset.
-    min_func = lambda v: np.sum((PSD[1:] - signal(f[1:], v[0], v[1])
-                                 - noise(f[1:], v[2])) ** 2)
+    def min_func(v): np.sum((PSD[1:] - signal(f[1:], v[0], v[1])
+                             - noise(f[1:], v[2])) ** 2)
     v0 = tuple(signal_params) + tuple(noise_params)
     v = optimize.minimize(min_func, v0, method='Nelder-Mead')['x']
 

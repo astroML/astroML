@@ -4,8 +4,8 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression, Lasso, Ridge
 
 
-#------------------------------------------------------------
-# Basis functions
+# ------------------------------------------------------------
+#  Basis functions
 def gaussian_basis(X, mu, sigma):
     """Gaussian Basis function
 
@@ -28,7 +28,6 @@ def gaussian_basis(X, mu, sigma):
     sigma = np.atleast_2d(sigma)
 
     n_samples, n_features = X.shape
-    n_bases = mu.shape[0]
 
     if mu.shape[1] != n_features:
         raise ValueError('shape of mu must match shape of X')
@@ -62,9 +61,9 @@ class LinearRegression(BaseEstimator):
     sklearn.linear_model.LinearRegression.
     The difference is that here errors are
     """
-    _regressors = {'none' : LinearRegression,
-                   'l1' : Lasso,
-                   'l2' : Ridge}
+    _regressors = {'none': LinearRegression,
+                   'l1': Lasso,
+                   'l2': Ridge}
 
     def __init__(self, fit_intercept=True, regularization='none', kwds=None):
         if regularization.lower() not in ['l1', 'l2', 'none']:

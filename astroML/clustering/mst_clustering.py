@@ -147,9 +147,9 @@ class HierarchicalClustering(BaseEstimator):
             n_components = labels.max() + 1
 
         # eliminate links in T_trunc which are not clusters
-        I = sparse.eye(len(labels), len(labels))
-        I.data[0, labels < 0] = 0
-        T_trunc = I * T_trunc * I
+        Eye = sparse.eye(len(labels), len(labels))
+        Eye.data[0, labels < 0] = 0
+        T_trunc = Eye * T_trunc * Eye
 
         return n_components, labels, T_trunc
 

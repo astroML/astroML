@@ -7,8 +7,8 @@ from astroML.stats import (mean_sigma, median_sigmaG, sigmaG,
 from astroML.stats.random import bivariate_normal, trunc_exp, linear
 
 
-#---------------------------------------------------------------------------
-# Check that mean_sigma() returns the same values as np.mean() and np.std()
+# ---------------------------------------------------------------------------
+#  Check that mean_sigma() returns the same values as np.mean() and np.std()
 @pytest.mark.parametrize("a_shape", [(4, ), (4, 5), (4, 5, 6)])
 @pytest.mark.parametrize("axis", [None, 0])
 @pytest.mark.parametrize("ddof", [0, 1])
@@ -26,10 +26,10 @@ def test_mean_sigma(a_shape, axis, ddof):
     assert_array_almost_equal(sigma1, sigma2)
 
 
-#---------------------------------------------------------------------------
-# Check that the keepdims argument works as expected
-#  we'll later compare median_sigmaG to these results, so that
-#  is effectively tested as well.
+# ---------------------------------------------------------------------------
+#  Check that the keepdims argument works as expected
+#   we'll later compare median_sigmaG to these results, so that
+#   is effectively tested as well.
 @pytest.mark.parametrize("axis", [None, 0, 1, 2])
 def test_mean_sigma_keepdims(axis):
     np.random.seed(0)
@@ -44,9 +44,9 @@ def test_mean_sigma_keepdims(axis):
     assert_array_equal(np.broadcast(a, sigma2).shape, a.shape)
 
 
-#---------------------------------------------------------------------------
-# Check that median_sigmaG matches the values computed using np.percentile
-# and np.median
+# ---------------------------------------------------------------------------
+#  Check that median_sigmaG matches the values computed using np.percentile
+#  and np.median
 @pytest.mark.parametrize("axis", [None, 0, 1, 2])
 def test_median_sigmaG(axis):
     np.random.seed(0)
@@ -79,9 +79,9 @@ def test_sigmaG(axis):
     assert_array_almost_equal(sigmaG1, sigmaG2)
 
 
-#---------------------------------------------------------------------------
-# Check that median_sigmaG() is a good approximation of mean_sigma()
-# for normally-distributed data.
+# ---------------------------------------------------------------------------
+#  Check that median_sigmaG() is a good approximation of mean_sigma()
+#  for normally-distributed data.
 @pytest.mark.parametrize('axis', [None, 1])
 @pytest.mark.parametrize('keepdims', [True, False])
 def test_median_sigmaG_approx(axis, keepdims, atol=0.02):
@@ -95,8 +95,8 @@ def test_median_sigmaG_approx(axis, keepdims, atol=0.02):
     assert_allclose(sigmaG, sigma, atol=atol)
 
 
-#---------------------------------------------------------------------------
-# Check the bivariate normal fit
+# ---------------------------------------------------------------------------
+#  Check the bivariate normal fit
 
 @pytest.mark.parametrize("alpha", np.linspace(-np.pi / 2, np.pi / 2, 7))
 def test_fit_bivariate_normal(alpha):
@@ -124,8 +124,8 @@ def test_fit_bivariate_normal(alpha):
     assert_allclose(sigma2_fit, sigma2, rtol=rtol)
 
 
-#------------------------------------------------------
-# Check truncated exponential and linear functions
+# ------------------------------------------------------
+#  Check truncated exponential and linear functions
 def test_trunc_exp():
     x = np.linspace(0, 10, 100)
     k = 0.25

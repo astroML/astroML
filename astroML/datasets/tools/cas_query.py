@@ -2,15 +2,16 @@ import numpy as np
 
 from . import sql_query
 
+
 # SDSS primtarget codes
 TARGET_QSO_HIZ            = int('0x00000001', 16)
 TARGET_QSO_CAP	          = int('0x00000002', 16)
-TARGET_QSO_SKIRT	  = int('0x00000004', 16)
+TARGET_QSO_SKIRT	      = int('0x00000004', 16)
 TARGET_QSO_FIRST_CAP	  = int('0x00000008', 16)
 TARGET_QSO_FIRST_SKIRT    = int('0x00000010', 16)
-TARGET_GALAXY_RED	  = int('0x00000020', 16)
+TARGET_GALAXY_RED	      = int('0x00000020', 16)
 TARGET_GALAXY	          = int('0x00000040', 16)
-TARGET_GALAXY_BIG	  = int('0x00000080', 16)
+TARGET_GALAXY_BIG	      = int('0x00000080', 16)
 TARGET_GALAXY_BRIGHT_CORE = int('0x00000100', 16)
 TARGET_ROSAT_A            = int('0x00000200', 16)
 TARGET_ROSAT_B            = int('0x00000400', 16)

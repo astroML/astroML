@@ -55,7 +55,7 @@ def plot_regressions(ksi, eta, x, y, sigma_x, sigma_y, add_regression_lines=Fals
         dX[:, 0, 0] = sigma_x
         dX[:, 1, 1] = sigma_y
 
-        min_func = lambda beta: -TLS_logL(beta, X, dX)
+        def min_func(beta): -TLS_logL(beta, X, dX)
         beta_fit = optimize.fmin(min_func, x0=[-1, 1])
         m_fit, b_fit = get_m_b(beta_fit)
         x_fit = np.linspace(-10, 10, 20)
@@ -103,7 +103,7 @@ def plot_regression_from_trace(fitted, observed, ax=None, chains=None, multidim_
         print("beta:", slope_best, "alpha:", intercept_best)
         y = intercept_best + slope_best * x
 
-        #y_pre = fitted.predict(x[:, None])
+        # y_pre = fitted.predict(x[:, None])
         ax.plot(x, y, ':', label='fitted')
 
         ax.legend()

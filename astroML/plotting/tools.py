@@ -129,8 +129,8 @@ def discretize_cmap(cmap, N):
     for key in ('red', 'green', 'blue'):
         # Find the N colors
         D = np.array(cdict[key])
-        I = interpolate.interp1d(D[:, 0], D[:, 1])
-        colors = I(colors_i)
+        interp = interpolate.interp1d(D[:, 0], D[:, 1])
+        colors = interp(colors_i)
         # Place these colors at the correct indices.
         A = np.zeros((N + 1, 3), float)
         A[:, 0] = indices
@@ -138,8 +138,8 @@ def discretize_cmap(cmap, N):
         A[:-1, 2] = colors
         # Create a tuple for the dictionary.
         L = []
-        for l in A:
-            L.append(tuple(l))
+        for c in A:
+            L.append(tuple(c))
         cdict[key] = tuple(L)
     # Return colormap object.
     return LinearSegmentedColormap('colormap', cdict, 1024)

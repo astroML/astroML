@@ -12,7 +12,9 @@ from astroML.utils.exceptions import AstroMLDeprecationWarning
 # added in v2.0.10 LTS and v3.1
 av = astropy.__version__
 ASTROPY_LT_31 = (LooseVersion(av) < LooseVersion("2.0.10") or
-                 (LooseVersion("3.0") <= LooseVersion(av) and LooseVersion(av) < LooseVersion("3.1")))
+                 (LooseVersion("3.0") <= LooseVersion(av) and
+                  LooseVersion(av) < LooseVersion("3.1")))
+
 
 __all__ = ['pickle_results', 'deprecated']
 
@@ -59,7 +61,7 @@ def pickle_results(filename=None, verbose=True):
             try:
                 D = pickle.load(open(filename, 'rb'))
                 cache_exists = True
-            except:
+            except Exception:
                 D = {}
                 cache_exists = False
 
@@ -67,15 +69,17 @@ def pickle_results(filename=None, verbose=True):
             Dargs = D.get('args')
             Dkwargs = D.get('kwargs')
 
+            # TODO: figure out what errors are raised here.
             try:
                 args_match = (args == Dargs)
-            except:
+            except:  # noqa: E722
                 args_match = np.all([np.all(a1 == a2)
                                      for (a1, a2) in zip(Dargs, args)])
 
+            # TODO: figure out what errors are raised here.
             try:
                 kwargs_match = (kwargs == Dkwargs)
-            except:
+            except:  # noqa: E722
                 kwargs_match = ((sorted(Dkwargs.keys())
                                  == sorted(kwargs.keys()))
                                 and (np.all([np.all(Dkwargs[key]

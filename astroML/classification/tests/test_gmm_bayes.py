@@ -2,7 +2,6 @@
 import numpy as np
 from numpy.testing import assert_allclose
 import pytest
-import warnings
 from astroML.classification import GMMBayes
 
 
@@ -60,7 +59,7 @@ def test_incompatible_number_of_components_exception():
         assert clf.fit(X, y)
 
     assert str(e.value) == ("n_components must be compatible with "
-                             "the number of classes")
+                            "the number of classes")
 
 
 def test_too_many_components_warning():
