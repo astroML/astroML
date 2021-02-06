@@ -138,8 +138,8 @@ def discretize_cmap(cmap, N):
         A[:-1, 2] = colors
         # Create a tuple for the dictionary.
         L = []
-        for c in A:
-            L.append(tuple(c))
+        for color in A:
+            L.append(tuple(color))
         cdict[key] = tuple(L)
     # Return colormap object.
     return LinearSegmentedColormap('colormap', cdict, 1024)

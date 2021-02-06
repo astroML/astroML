@@ -55,7 +55,7 @@ class Cosmology:
         if z == 0:
             return 0
         else:
-            def f(z): 1.0 / self._hinv(z)
+            def f(z): return 1.0 / self._hinv(z)
             integral = integrate.quad(f, 0, z)
             return self.Dh * integral[0]
 

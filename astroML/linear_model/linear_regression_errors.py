@@ -51,8 +51,8 @@ class LinearRegressionwithErrors(LinearRegression):
             eta = pm.Normal('eta', mu=(tt.dot(slope.T, ksi.T) + inter),
                             sigma=int_std, shape=y.shape)
 
-            # observed xi, yi - we don't need xi here though.
-            # x = pm.Normal('xi', mu=ksi.T, sigma=x_error, observed=X, shape=X.shape)
+            # observed xi, yi
+            x = pm.Normal('xi', mu=ksi.T, sigma=x_error, observed=X, shape=X.shape)  # noqa: F841
             y = pm.Normal('yi', mu=eta, sigma=y_error, observed=y, shape=y.shape)
 
             self.trace = pm.sample(**sample_kwargs)

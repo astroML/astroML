@@ -59,27 +59,27 @@ def pickle_results(filename=None, verbose=True):
 
         def new_f(*args, **kwargs):
             try:
-                D = pickle.load(open(filename, 'rb'))
-                cache_exists = True
-            except Exception:
+                pickledFile = open(filename, 'rb')
+            except FileNotFoundError:
                 D = {}
                 cache_exists = False
+            else:
+                D = pickle.load(pickledFile)
+                cache_exists = True
 
             # simple comparison doesn't work in the case of numpy arrays
             Dargs = D.get('args')
             Dkwargs = D.get('kwargs')
 
-            # TODO: figure out what errors are raised here.
             try:
                 args_match = (args == Dargs)
-            except:  # noqa: E722
+            except ValueError:
                 args_match = np.all([np.all(a1 == a2)
                                      for (a1, a2) in zip(Dargs, args)])
 
-            # TODO: figure out what errors are raised here.
             try:
                 kwargs_match = (kwargs == Dkwargs)
-            except:  # noqa: E722
+            except ValueError:
                 kwargs_match = ((sorted(Dkwargs.keys())
                                  == sorted(kwargs.keys()))
                                 and (np.all([np.all(Dkwargs[key]

@@ -87,7 +87,6 @@ def crossmatch_angular(X1, X2, max_distance=np.inf):
     # convert distances back to angles using the law of tangents
     not_inf = ~np.isinf(dist)
     x = 0.5 * dist[not_inf]
-    maximum = np.maximum(0, 1 - x ** 2)
-    dist[not_inf] = (180. / np.pi * 2 * np.arctan2(x, np.sqrt(maximum)))
+    dist[not_inf] = (180. / np.pi * 2 * np.arctan2(x, np.sqrt(np.maximum(0, 1 - x ** 2))))
 
     return dist, ind

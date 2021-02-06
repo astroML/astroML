@@ -55,7 +55,7 @@ def plot_regressions(ksi, eta, x, y, sigma_x, sigma_y, add_regression_lines=Fals
         dX[:, 0, 0] = sigma_x
         dX[:, 1, 1] = sigma_y
 
-        def min_func(beta): -TLS_logL(beta, X, dX)
+        def min_func(beta): return -TLS_logL(beta, X, dX)
         beta_fit = optimize.fmin(min_func, x0=[-1, 1])
         m_fit, b_fit = get_m_b(beta_fit)
         x_fit = np.linspace(-10, 10, 20)

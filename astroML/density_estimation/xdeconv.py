@@ -208,12 +208,8 @@ class XDGMM(BaseEstimator):
     def sample(self, size=1, random_state=None):
         if random_state is None:
             random_state = self.random_state
-        # I added a noqa here because I don't know if this function is
-        # statefull or not. It looks intentionally placed here given this
-        # functions signature. Remove if unneccessary.
         rng = check_random_state(random_state)  # noqa: F841
         shape = tuple(np.atleast_1d(size)) + (self.mu.shape[1],)
-        # Same here, maybe expectation is it will raise an error?
         npts = np.prod(size)  # noqa: F841
 
         alpha_cs = np.cumsum(self.alpha)
