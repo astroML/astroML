@@ -4,7 +4,6 @@ on:
   push:
     branches:
     - master
-    - gitActionsTest
     tags:
     - '*'
   pull_request:
@@ -19,7 +18,7 @@ jobs:
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         include:
 
@@ -28,7 +27,8 @@ jobs:
             python: 3.x
             toxenv: codestyle
 
-          - name: docs build
+          # Careful with the 
+          - name: Build docs
             os: ubuntu-latest
             python: 3.8
             toxenv: build_docs
@@ -47,13 +47,13 @@ jobs:
             python: 3.9
             toxenv: py39-test-devastropy-cov
             toxargs: -v
-
+          
           - name: Python 3.7 with all optional dependencies (MacOS X)
             os: macos-latest
             python: 3.7
             toxenv: py37-test
             toxargs: -v
-
+          
           - name: Python 3.8 with mandatory dependencies (Windows)
             os: windows-latest
             python: 3.8
@@ -71,6 +71,19 @@ jobs:
         python-version: ${{ matrix.python }}
     - name: Install Python dependencies
       run: python -m pip install --upgrade tox
+    - name: Install minimal TexLive
+      if: contains('Build docs', matrix.name)
+      # We need Tex package "type1ec" to compile docs. See: matplotlib/issues/16911
+      # It's a part of cm-super package fonts and allegedly
+      # that is a package of tex-extras. Contrary to these
+      # widely-spread oppinions docs will *not* compile without
+      # explicitly installing all 3 of them.
+      run: |
+        sudo apt install -y texlive-latex-recommended
+        sudo apt install -y texlive-latex-extra
+        sudo apt install -y cm-super
+        sudo apt install -y dvipng
+        latex --version
     - name: Run tests
       run: tox ${{ matrix.toxargs }} -e ${{ matrix.toxenv }} -- ${{ matrix.toxposargs }}
     # We do not upload to codecov currently
