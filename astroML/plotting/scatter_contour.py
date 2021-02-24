@@ -1,5 +1,8 @@
 import numpy as np
 
+class ShapeError(ValueError):
+    pass
+
 
 def scatter_contour(x, y,
                     levels=10,
@@ -9,6 +12,8 @@ def scatter_contour(x, y,
                     plot_args=None,
                     contour_args=None,
                     filled_contour=True,
+                    xerr=None,
+                    yerr=None,
                     ax=None):
     """Scatter plot with contour over dense regions
 
@@ -34,6 +39,21 @@ def scatter_contour(x, y,
         see doc string of pylab.contourf for more information
     filled_contour : bool
         If True (default) use filled contours. Otherwise, use contour outlines.
+    xerr, yerr : arrays pr values (optional)
+        errors in x and and y dimensions. shape(N,) or shape(2, N). From
+        matplotlib documentation 
+        (https://matplotlib.org/api/_as_gen/matplotlib.pyplot.errorbar.html):
+
+        "The errorbar sizes:
+
+            scalar: Symmetric +/- values for all data points.
+            shape(N,): Symmetric +/-values for each data point.
+            shape(2, N): Separate - and + values for each bar. z
+                First row contains the lower errors, the second 
+                row contains the upper errors.
+            None: No errorbar.
+            Note that all error arrays should have positive values."
+
     ax : pylab.Axes instance
         the axes on which to plot.  If not specified, the current
         axes will be used
@@ -44,11 +64,45 @@ def scatter_contour(x, y,
        points is the return value of ax.plot()
        contours is the return value of ax.contour or ax.contourf
     """
+
+    def coerce_error_array(arr):
+        """Ensures errorbar arrays are of the correct shape
+
+        Parameters
+        ----------
+        
+        arr : array or value
+            Errorbar object to be coerced into a form that 
+            can be passed to the hstack call.
+        
+        Returns
+        -------
+        coerced_arr : array
+            coerced array
+        """
+        if arr is None:  # if no errorbars are provided
+            coerced_arr = np.zeros((2, len(x)))
+
+        elif not np.shape(arr):   # if a scalar value has been provided
+            coerced_arr = arr * np.ones((2, len(x)))
+
+        elif len(np.shape(arr)) == 1:
+            coerced_arr = np.array([arr, arr])
+
+        elif np.shape(arr)[0] > 2 and len(np.shape(arr)) > 1:
+            raise ShapeError('Check shape of errorbars')
+
+        else:
+            coerced_arr = arr
+
+        return coerced_arr
+        
     x = np.asarray(x)
     y = np.asarray(y)
 
     default_contour_args = dict(zorder=2)
-    default_plot_args = dict(marker='.', linestyle='none', zorder=1)
+    default_plot_args = dict(marker='.', linestyle='none', zorder=1,
+                             capsize=0)
 
     if plot_args is not None:
         default_plot_args.update(plot_args)
@@ -97,14 +151,19 @@ def scatter_contour(x, y,
     else:
         contours = ax.contour(H.T, levels, extent=extent, **contour_args)
 
-    X = np.hstack([x[:, None], y[:, None]])
+
+    xerr, yerr = coerce_error_array(xerr), coerce_error_array(yerr)
+
+    X = np.hstack([x[:, None], y[:, None], xerr[0][:, None], 
+                   xerr[1][:, None], yerr[0][:, None],
+                  yerr[1][:, None]])
 
     if len(outline.allsegs[0]) > 0:
         outer_poly = outline.allsegs[0][0]
         try:
             # this works in newer matplotlib versions
             from matplotlib.path import Path
-            points_inside = Path(outer_poly).contains_points(X)
+            points_inside = Path(outer_poly).contains_points(X[:, :2])
         except:
             # this works in older matplotlib versions
             import matplotlib.nxutils as nx
@@ -113,7 +172,11 @@ def scatter_contour(x, y,
         Xplot = X[~points_inside]
     else:
         Xplot = X
-
-    points = ax.plot(Xplot[:, 0], Xplot[:, 1], **plot_args)
+    
+    
+    points = ax.errorbar(Xplot[:, 0], Xplot[:, 1], 
+                         xerr=[Xplot[:, 2], Xplot[:, 3]], 
+                         yerr=[Xplot[:, 4], Xplot[:, 5]], 
+                         **plot_args)
 
     return points, contours
