@@ -23,10 +23,10 @@ def compute_distances(data):
     """
     # extinction terms from Berry et al
     Ar = data['Ar']
-    Au = 1.810 * Ar
+    # Au = 1.810 * Ar
     Ag = 1.400 * Ar
     Ai = 0.759 * Ar
-    Az = 0.561 * Ar
+    # Az = 0.561 * Ar
 
     # compute corrected mags and colors
     gmag = data['gpsf'] - Ag

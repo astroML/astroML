@@ -1,5 +1,3 @@
-import warnings
-
 from .linear_regression import LinearRegression, PolynomialRegression, BasisFunctionRegression
 from .linear_regression_errors import LinearRegressionwithErrors
 

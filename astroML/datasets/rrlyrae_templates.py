@@ -45,5 +45,4 @@ def fetch_rrlyrae_templates(data_home=None, download_if_missing=True):
     data = tarfile.open(data_file)
 
     return {name.strip('.dat'):
-                  np.loadtxt(data.extractfile(name))
-                 for name in data.getnames()}
+            np.loadtxt(data.extractfile(name)) for name in data.getnames()}

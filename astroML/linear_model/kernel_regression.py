@@ -1,5 +1,4 @@
 import numpy as np
-from .linear_regression import gaussian_basis
 from sklearn.base import BaseEstimator
 from sklearn.metrics import pairwise_kernels
 

@@ -42,7 +42,7 @@ class XDGMM(BaseEstimator):
     This implementation follows Bovy et al. arXiv 0905.2979
     """
     def __init__(self, n_components, max_iter=100, tol=1E-5, verbose=False,
-                 random_state = None):
+                 random_state=None):
         self.n_components = n_components
         self.max_iter = max_iter
         self.tol = tol
@@ -164,8 +164,8 @@ class XDGMM(BaseEstimator):
 
         T = Xerr + self.V
 
-        #------------------------------------------------------------
-        # compute inverse of each covariance matrix T
+        # ------------------------------------------------------------
+        #  compute inverse of each covariance matrix T
         Tshape = T.shape
         T = T.reshape([n_samples * self.n_components,
                        n_features, n_features])
@@ -173,13 +173,13 @@ class XDGMM(BaseEstimator):
                          for i in range(T.shape[0])]).reshape(Tshape)
         T = T.reshape(Tshape)
 
-        #------------------------------------------------------------
-        # evaluate each mixture at each point
+        # ------------------------------------------------------------
+        #  evaluate each mixture at each point
         N = np.exp(log_multivariate_gaussian(X, self.mu, T, Vinv=Tinv))
 
-        #------------------------------------------------------------
-        # E-step:
-        #  compute q_ij, b_ij, and B_ij
+        # ------------------------------------------------------------
+        #  E-step:
+        #   compute q_ij, b_ij, and B_ij
         q = (N * self.alpha) / np.dot(N, self.alpha)[:, None]
 
         tmp = np.sum(Tinv * w_m[:, :, np.newaxis, :], -1)
@@ -190,9 +190,9 @@ class XDGMM(BaseEstimator):
         B = self.V - np.sum(self.V[:, :, :, np.newaxis]
                             * tmp[:, :, np.newaxis, :, :], -2)
 
-        #------------------------------------------------------------
-        # M-step:
-        #  compute alpha, m, V
+        # ------------------------------------------------------------
+        #  M-step:
+        #   compute alpha, m, V
         qj = q.sum(0)
 
         self.alpha = qj / n_samples
@@ -208,9 +208,9 @@ class XDGMM(BaseEstimator):
     def sample(self, size=1, random_state=None):
         if random_state is None:
             random_state = self.random_state
-        rng = check_random_state(random_state)
+        rng = check_random_state(random_state)  # noqa: F841
         shape = tuple(np.atleast_1d(size)) + (self.mu.shape[1],)
-        npts = np.prod(size)
+        npts = np.prod(size)  # noqa: F841
 
         alpha_cs = np.cumsum(self.alpha)
         r = np.atleast_1d(np.random.random(size))

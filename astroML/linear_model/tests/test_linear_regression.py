@@ -8,7 +8,7 @@ from astroML.linear_model import \
     LinearRegression, PolynomialRegression, BasisFunctionRegression
 
 try:
-    import pymc3 as pm
+    import pymc3 as pm  # noqa: F401
     HAS_PYMC3 = True
 except ImportError:
     HAS_PYMC3 = False
@@ -76,7 +76,6 @@ def test_LinearRegression_err():
 
     y = np.random.normal(y, dy)
 
-    X_fit = np.linspace(0, 1, 10)[:, None]
     clf1 = LinearRegression().fit(X, y, dy)
     clf2 = skLinearRegression().fit(X / dy, y / dy)
 

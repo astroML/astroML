@@ -12,7 +12,9 @@ from astroML.utils.exceptions import AstroMLDeprecationWarning
 # added in v2.0.10 LTS and v3.1
 av = astropy.__version__
 ASTROPY_LT_31 = (LooseVersion(av) < LooseVersion("2.0.10") or
-                 (LooseVersion("3.0") <= LooseVersion(av) and LooseVersion(av) < LooseVersion("3.1")))
+                 (LooseVersion("3.0") <= LooseVersion(av) and
+                  LooseVersion(av) < LooseVersion("3.1")))
+
 
 __all__ = ['pickle_results', 'deprecated']
 
@@ -56,10 +58,13 @@ def pickle_results(filename=None, verbose=True):
             filename = '%s_output.pkl' % f.__name__
 
         def new_f(*args, **kwargs):
+            # While loading, pickle, can raise any number of errors. Cover cases
+            # when FileNotFoundError or when when pickle raises an error as equivalent.
+            # In either case the data in the cache will have to be regenerated.
             try:
                 D = pickle.load(open(filename, 'rb'))
                 cache_exists = True
-            except:
+            except Exception:
                 D = {}
                 cache_exists = False
 
@@ -69,13 +74,13 @@ def pickle_results(filename=None, verbose=True):
 
             try:
                 args_match = (args == Dargs)
-            except:
+            except ValueError:
                 args_match = np.all([np.all(a1 == a2)
                                      for (a1, a2) in zip(Dargs, args)])
 
             try:
                 kwargs_match = (kwargs == Dkwargs)
-            except:
+            except ValueError:
                 kwargs_match = ((sorted(Dkwargs.keys())
                                  == sorted(kwargs.keys()))
                                 and (np.all([np.all(Dkwargs[key]

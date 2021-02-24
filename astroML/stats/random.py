@@ -64,8 +64,8 @@ def bivariate_normal(mu=[0, 0], sigma_1=1, sigma_2=1, alpha=0,
         return x
 
 
-#----------------------------------------------------------------------
-# Define some new distributions based on rv_continuous
+# ----------------------------------------------------------------------
+#  Define some new distributions based on rv_continuous
 class trunc_exp_gen(rv_continuous):
     """A truncated positive exponential continuous random variable.
 
@@ -93,6 +93,7 @@ class trunc_exp_gen(rv_continuous):
     def _rvs(self, a, b, k):
         y = np.random.random(self._size)
         return (1. / k) * np.log(1 + y * k / self._const)
+
 
 trunc_exp = trunc_exp_gen(name="trunc_exp", shapes='a, b, k')
 
@@ -129,5 +130,6 @@ class linear_gen(rv_continuous):
         r = np.random.random(self._size)
         return -x0 + np.sqrt(2. * r / c + a * a
                              + 2. * a * x0 + x0 * x0)
+
 
 linear = linear_gen(name="linear", shapes='a, b, c')

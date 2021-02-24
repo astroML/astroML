@@ -44,18 +44,16 @@ def test_X_invalid_shape_exception():
 
     # not valid Xfit.shape[1], should raise an exception
     Xfit = np.array([[4, 5, 6], [1, 2, 3]])
-    y_true = np.ravel(Xfit + 1)
 
     with pytest.raises(Exception) as e:
-        y_fit = clf.predict(Xfit)
+        clf.predict(Xfit)
 
     assert str(e.value) == "dimensions of X do not match training dimension"
 
     # not valid Xfit.shape[1], should raise an exception
     Xfit = np.array([4, 5, 6])
-    y_true = np.ravel(Xfit + 1)
 
     with pytest.raises(Exception) as e:
-        y_fit = clf.predict(Xfit)
+        clf.predict(Xfit)
 
     assert str(e.value) == "X must be two-dimensional"

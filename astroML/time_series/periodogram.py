@@ -156,8 +156,7 @@ def lomb_scargle_AIC(P, y, dy, n_harmonics=1):
     P, y, dy = map(np.asarray(P, y, dy))
     w = 1. / dy ** 2
     mu = np.dot(w, y) / w.sum()
-    N = len(y)
-    return np.sum(((y_obs - mu) / dy) ** 2) * P - (2 * n_harmonics + 1) * 2
+    return np.sum(((y - mu) / dy) ** 2) * P - (2 * n_harmonics + 1) * 2
 
 
 def lomb_scargle_BIC(P, y, dy, n_harmonics=1):

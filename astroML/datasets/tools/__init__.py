@@ -4,7 +4,7 @@ tools for the dataset loaders
 
 from .download import download_with_progress_bar
 from .sql_query import sql_query
-from .cas_query import *
+from .cas_query import *  # noqa: F403, F401
 from .sdss_fits import sdss_fits_url, sdss_fits_filename, SDSSfits
 
 

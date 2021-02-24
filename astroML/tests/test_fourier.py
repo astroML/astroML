@@ -1,8 +1,11 @@
 import pytest
 import numpy as np
 from numpy.testing import assert_allclose
-from astroML.fourier import\
-    FT_continuous, IFT_continuous, PSD_continuous, sinegauss, sinegauss_FT
+from astroML.fourier import (FT_continuous,
+                             IFT_continuous,
+                             PSD_continuous,
+                             sinegauss,
+                             sinegauss_FT)
 
 
 @pytest.mark.parametrize('t0', [-1, 0, 1])
@@ -16,15 +19,30 @@ def test_wavelets(t0, f0, Q):
     assert_allclose(H, H2, atol=1E-8)
 
 
-def sinegauss(t, t0, f0, a):
-    """Sine-gaussian wavelet"""
+def sinegauss_a(t, t0, f0, a):
+    """Sine-gaussian wavelet.
+
+    Differs from the ``astroML.fourier.sinegauss`` in that instead of taking a
+    coefficient ``Q`` and calculating the coefficient ``a``, it assumes the
+    given coefficient ``a`` is correct. The relationship between the two is
+    given as:
+
+        a = (f0 * 1. / Q) ** 2
+    """
     return (np.exp(-a * (t - t0) ** 2)
             * np.exp(2j * np.pi * f0 * (t - t0)))
 
 
-def sinegauss_FT(f, t0, f0, a):
+def sinegauss_FT_a(f, t0, f0, a):
     """Fourier transform of the sine-gaussian wavelet.
     This uses the convention H(f) = integral[ h(t) exp(-2pi i f t) dt]
+
+    Differs from the ``astroML.fourier.sinegauss`` in that instead of taking a
+    coefficient ``Q`` and calculating the coefficient ``a``, it assumes the
+    given coefficient ``a`` is correct. The relationship between the two is
+    given as:
+
+        a = (f0 * 1. / Q) ** 2
     """
     return (np.sqrt(np.pi / a)
             * np.exp(-2j * np.pi * f * t0)
@@ -46,9 +64,9 @@ def sinegauss_PSD(f, t0, f0, a):
 @pytest.mark.parametrize('method', [1, 2])
 def test_FT_continuous(a, t0, f0, method):
     t = np.linspace(-9, 10, 10000)
-    h = sinegauss(t, t0, f0, a)
+    h = sinegauss_a(t, t0, f0, a)
     f, H = FT_continuous(t, h, method=method)
-    assert_allclose(H, sinegauss_FT(f, t0, f0, a), atol=1E-12)
+    assert_allclose(H, sinegauss_FT_a(f, t0, f0, a), atol=1E-12)
 
 
 @pytest.mark.parametrize('a', [1, 2])
@@ -57,7 +75,7 @@ def test_FT_continuous(a, t0, f0, method):
 @pytest.mark.parametrize('method', [1, 2])
 def test_PSD_continuous(a, t0, f0, method):
     t = np.linspace(-9, 10, 10000)
-    h = sinegauss(t, t0, f0, a)
+    h = sinegauss_a(t, t0, f0, a)
     f, P = PSD_continuous(t, h, method=method)
     assert_allclose(P, sinegauss_PSD(f, t0, f0, a), atol=1E-12)
 
@@ -68,9 +86,9 @@ def test_PSD_continuous(a, t0, f0, method):
 @pytest.mark.parametrize('method', [1, 2])
 def check_IFT_continuous(a, t0, f0, method):
     f = np.linspace(-9, 10, 10000)
-    H = sinegauss_FT(f, t0, f0, a)
+    H = sinegauss_FT_a(f, t0, f0, a)
     t, h = IFT_continuous(f, H, method=method)
-    assert_allclose(h, sinegauss(t, t0, f0, a), atol=1E-12)
+    assert_allclose(h, sinegauss_a(t, t0, f0, a), atol=1E-12)
 
 
 def test_IFT_FT():

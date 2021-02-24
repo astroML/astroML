@@ -104,5 +104,3 @@ class KNeighborsDensity(BaseEstimator):
                     / (dist ** ndim).sum(1))
         else:
             raise ValueError("Unrecognized method '%s'" % self.method)
-
-        return dens

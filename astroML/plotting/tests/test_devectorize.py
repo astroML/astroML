@@ -1,13 +1,16 @@
-import matplotlib
-matplotlib.use('Agg')  # don't display plots
+from io import BytesIO
 
 import numpy as np
-from io import BytesIO
 from numpy.testing import assert_
+
+import matplotlib
 from matplotlib import image
 import matplotlib.pyplot as plt
 
 from astroML.plotting.tools import devectorize_axes
+
+
+matplotlib.use('Agg')  # don't display plots
 
 
 def test_devectorize_axes():
