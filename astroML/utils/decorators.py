@@ -58,14 +58,15 @@ def pickle_results(filename=None, verbose=True):
             filename = '%s_output.pkl' % f.__name__
 
         def new_f(*args, **kwargs):
+            # While loading, pickle, can raise any number of errors. Cover cases
+            # when FileNotFoundError or when when pickle raises an error as equivalent.
+            # In either case the data in the cache will have to be regenerated.
             try:
-                pickledFile = open(filename, 'rb')
-            except FileNotFoundError:
+                D = pickle.load(open(filename, 'rb'))
+                cache_exists = True
+            except Exception:
                 D = {}
                 cache_exists = False
-            else:
-                D = pickle.load(pickledFile)
-                cache_exists = True
 
             # simple comparison doesn't work in the case of numpy arrays
             Dargs = D.get('args')
