@@ -19,7 +19,8 @@ class LinearRegressionwithErrors(LinearRegression):
         super().__init__(fit_intercept, regularization, kwds)
 
     def fit(self, X, y, y_error=1, x_error=None, *,
-            sample_kwargs={'draws': 1000, 'target_accept': 0.9}):
+            sample_kwargs={'draws': 1000, 'target_accept': 0.9,
+                           'return_inferencedata': False}):
 
         kwds = {}
         if self.kwds is not None:

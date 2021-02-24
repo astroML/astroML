@@ -43,7 +43,7 @@ def fetch_and_shift_spectra(n_spectra,
     z = np.zeros(n_spectra, dtype=np.float32)
     zerr = np.zeros(n_spectra, dtype=np.float32)
     spectra = np.zeros((n_spectra, Nlam), dtype=np.float32)
-    mask = np.zeros((n_spectra, Nlam), dtype=np.bool)
+    mask = np.zeros((n_spectra, Nlam), dtype=bool)
 
     # Calculate new wavelength coefficients
     new_coeff0 = loglam_start

@@ -42,8 +42,8 @@ def iterative_pca(X, M, n_ev=5, n_iter=15, norm=None, full_output=False):
     coeffs: ndarray, size = (n_samples, n_ev)
         coefficients used to reconstruct X
     """
-    X = np.asarray(X, dtype=np.float)
-    M = np.asarray(M, dtype=np.bool)
+    X = np.asarray(X, dtype=float)
+    M = np.asarray(M, dtype=bool)
 
     if X.shape != M.shape:
         raise ValueError('X and M must have the same shape')

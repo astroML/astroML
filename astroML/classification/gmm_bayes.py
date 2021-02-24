@@ -8,12 +8,19 @@ to model the probability density of each class.
 import warnings
 import numpy as np
 
-from sklearn.naive_bayes import BaseNB
+try:
+    from sklearn.naive_bayes import _BaseNB
+except ImportError:
+    # work around for sklearn < 0.22
+    from sklearn.naive_bayes import BaseNB
+    class _BaseNB(BaseNB):
+        pass
+
 from sklearn.mixture import GaussianMixture
 from sklearn.utils import check_array
 
 
-class GMMBayes(BaseNB):
+class GMMBayes(_BaseNB):
     """GaussianMixture Bayes Classifier
 
     This is a generalization to the Naive Bayes classifier: rather than
@@ -66,7 +73,7 @@ class GMMBayes(BaseNB):
                 warnings.warn(warnstr.format(X[y == y_i].shape[0], n_comp[i]))
                 n_comp[i] = X[y == y_i].shape[0]
             self.gmms_[i] = GaussianMixture(n_comp[i], **self.kwargs).fit(X[y == y_i])
-            self.class_prior_[i] = np.float(np.sum(y == y_i)) / n_samples
+            self.class_prior_[i] = float(np.sum(y == y_i)) / n_samples
 
         return self
 
