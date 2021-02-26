@@ -1,12 +1,15 @@
 from setuptools import setup
+from setuptools.command.install import install
+from setuptools.command.egg_info import egg_info
+
 
 DESCRIPTION = "tools for machine learning and data mining in Astronomy"
 LONG_DESCRIPTION = open('README.rst').read()
 NAME = "astroML"
 AUTHOR = "Jake VanderPlas"
 AUTHOR_EMAIL = "vanderplas@astro.washington.edu"
-MAINTAINER = "Jake VanderPlas"
-MAINTAINER_EMAIL = "vanderplas@astro.washington.edu"
+MAINTAINER = "Brigitta Sipocz"
+MAINTAINER_EMAIL = "brigitta.sipocz@gmail.com"
 URL = 'http://astroML.github.com'
 DOWNLOAD_URL = 'https://github.com/astroML/astroML'
 LICENSE = 'BSD'
@@ -20,7 +23,40 @@ install_requires = ['scikit-learn>=0.18',
                     'matplotlib>=3.0',
                     'astropy>=3.0']
 
-setup(name=NAME,
+
+def trigger_theano():
+    try:
+        import pymc3 as pm
+        print("Run small regression example to trigger theano builds, if pymc3 is available.")
+        import numpy as np
+        from astroML.linear_model import LinearRegressionwithErrors
+        lr = LinearRegressionwithErrors()
+        x = np.arange(10)
+        y = np.arange(10) * 2 + 1
+        x_err = np.ones(10) * 0.01
+        y_err = np.ones(10) * 0.01
+        lr.fit(x, y, y_err, x_err)
+    except (ImportError, RuntimeError):
+        pass
+
+
+class CustomEggInfoCommand(egg_info):
+    """Customized setuptools egg_info command to trigger theano compilation."""
+    def run(self):
+        egg_info.run(self)
+#        trigger_theano()
+
+
+class CustomInstallCommand(install):
+    """Customized setuptools install command to trigger theano compilation."""
+    def run(self):
+        install.run(self)
+        trigger_theano()
+
+
+setup(cmdclass={'install': CustomInstallCommand,
+                'egg_info': CustomEggInfoCommand},
+      name=NAME,
       version=VERSION,
       description=DESCRIPTION,
       long_description=LONG_DESCRIPTION,
