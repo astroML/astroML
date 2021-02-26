@@ -13,6 +13,7 @@ try:
 except ImportError:
     # work around for sklearn < 0.22
     from sklearn.naive_bayes import BaseNB
+
     class _BaseNB(BaseNB):
         pass
 
