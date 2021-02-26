@@ -61,6 +61,8 @@ jobs:
         {"os": "ubuntu-latest",  "python": "3.7", "env": "py3.7-test"},
         {"os": "ubuntu-latest",  "python": "3.6", "env": "py3.6-test"},
         {"os": "ubuntu-latest",  "python": "3.9", "env": "py3.9-test-devastropy"},
+        {"os": "ubuntu-latest",  "python": "3.6", "env": "py3.6-test-oldestdeps"},
+        {"os": "ubuntu-latest",  "python": "3.9", "env": "build_docs"},
         ]
         include:
           - toxargs: -v
@@ -73,6 +75,18 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.target.python }}
+      - name: Install minimal TexLive
+        if: contains('build_docs', matrix.target.env)
+        # Tex package "type1ec" required (see: matplotlib/issues/16911).
+        # It's a part of cm-super package fonts and allegedly it's a part
+        # of tex-extras. Testing shows that docs will *not* compile without
+        # explicitly installing all 3 though.
+        run: |
+          sudo apt install -y texlive-latex-recommended
+          sudo apt install -y texlive-latex-extra
+          sudo apt install -y cm-super
+          sudo apt install -y dvipng
+          latex --version
       - name: Install Python dependencies
         run: python -m pip install --upgrade tox
       - name: Run tests
