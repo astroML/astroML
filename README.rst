@@ -13,7 +13,7 @@ AstroML: Machine Learning for Astronomy
 .. image:: https://img.shields.io/pypi/dm/astroML.svg?style=flat
         :target: https://pypi.python.org/pypi/astroML
 .. image:: https://img.shields.io/badge/license-BSD-blue.svg?style=flat
-        :target: https://github.com/astroml/astroml/blob/master/LICENSE
+        :target: https://github.com/astroml/astroml/blob/main/LICENSE.rst
 
 AstroML is a Python module for machine learning and data mining
 built on numpy, scipy, scikit-learn, and matplotlib,
