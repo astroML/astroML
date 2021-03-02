@@ -7,9 +7,9 @@ from astropy.table import Table, vstack
 from . import get_data_home
 
 # We store the data in two parts to comply with GitHub 100Mb file size limit
-DATA_URL1 = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+DATA_URL1 = ("https://github.com/astroML/astroML-data/raw/main/datasets/"
              "SDSSspecgalsDR8_1.fit.gz")
-DATA_URL2 = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+DATA_URL2 = ("https://github.com/astroML/astroML-data/raw/main/datasets/"
              "SDSSspecgalsDR8_2.fit.gz")
 
 

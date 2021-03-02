@@ -7,11 +7,11 @@ from astropy.table import Table
 from . import get_data_home
 from .tools import download_with_progress_bar
 
-TARGETLIST_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+TARGETLIST_URL = ("https://github.com/astroML/astroML-data/raw/main/datasets/"
                   "allLINEARfinal_targets.dat.gz")
-DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/main/datasets/"
             "allLINEARfinal_dat.tar.gz")
-GENEVA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+GENEVA_URL = ("https://github.com/astroML/astroML-data/raw/main/datasets/"
               "LINEARattributesFinalApr2013.dat.gz")
 GENEVA_ARCHIVE = 'LINEARattributesFinalApr2013.npy'
 ARCHIVE_DTYPE = ([(s, 'f8') for s in ('RA', 'Dec', 'ug', 'gi', 'iK',

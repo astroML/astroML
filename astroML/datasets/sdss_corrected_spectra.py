@@ -3,7 +3,7 @@ import numpy as np
 from . import get_data_home
 from .tools import download_with_progress_bar
 
-DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/main/datasets/"
             "spec4000.npz")
 
 

@@ -16,7 +16,7 @@ from .tools import download_with_progress_bar
 from . import get_data_home
 
 
-DATA_URL = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+DATA_URL = ('https://github.com/astroML/astroML-data/raw/main/datasets/'
             'nsa_v0_1_2_reduced.npy')
 
 ARCHIVE_FILE = os.path.basename(DATA_URL)

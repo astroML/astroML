@@ -9,7 +9,7 @@ import numpy as np
 from . import get_data_home
 from .tools import download_with_progress_bar
 
-DATA_URL_LARGE = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+DATA_URL_LARGE = ('https://github.com/astroML/astroML-data/raw/main/datasets/'
                   'hoft.968653908-968655956.H1.dat.gz')
 LOCAL_FILE_LARGE = 'LIGO_large.npy'
 

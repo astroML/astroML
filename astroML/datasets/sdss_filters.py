@@ -6,7 +6,7 @@ from urllib.request import urlopen
 from astroML.datasets import get_data_home
 
 # Info on vega spectrum: http://www.stsci.edu/hst/observatory/cdbs/calspec.html
-VEGA_URL = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+VEGA_URL = ('https://github.com/astroML/astroML-data/raw/main/datasets/'
             '1732526_nic_002.ascii')
 FILTER_URL = 'http://classic.sdss.org/dr7/instruments/imager/filters/%s.dat'
 

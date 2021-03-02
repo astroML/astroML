@@ -6,7 +6,7 @@ from . import get_data_home
 from . import fetch_sdss_S82standards
 from .tools import download_with_progress_bar
 
-DATA_URL = ("https://github.com/astroML/astroML-data/raw/master/datasets/"
+DATA_URL = ("https://github.com/astroML/astroML-data/raw/main/datasets/"
             "RRLyrae.fit")
 
 

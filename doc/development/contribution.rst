@@ -45,4 +45,4 @@ Some of these example scripts can be seen in the ``examples`` subdirectory
 of the main source repository: :ref:`examples_root`.
 
 
-.. _Numpy Documentation Guide: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
+.. _Numpy Documentation Guide: https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard

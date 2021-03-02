@@ -7,9 +7,9 @@ import numpy as np
 from .tools import download_with_progress_bar
 from . import get_data_home
 
-DATA_URL = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+DATA_URL = ('https://github.com/astroML/astroML-data/raw/main/datasets/'
             'stripe82calibStars_v2.6.dat.gz')
-DATA_URL_2MASS = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+DATA_URL_2MASS = ('https://github.com/astroML/astroML-data/raw/main/datasets/'
                   'stripe82calibStars_2MASS_v2.6.dat.gz')
 
 ARCHIVE_FILE = 'sdss_S82standards.npy'

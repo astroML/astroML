@@ -6,7 +6,7 @@ import numpy as np
 from .tools import download_with_progress_bar
 from . import get_data_home
 
-DATA_URL = ('https://github.com/astroML/astroML-data/raw/master/datasets/'
+DATA_URL = ('https://github.com/astroML/astroML-data/raw/main/datasets/'
             'ADR3.dat.gz')
 
 ARCHIVE_FILE = 'moving_objects.npy'
