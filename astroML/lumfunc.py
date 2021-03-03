@@ -71,10 +71,17 @@ def Cminus(x, y, xmax, ymax):
     ymax = ymax[i_sort]
 
     for j in range(1, Nall):
-        Ny[j] = np.sum(x[:j] < xmax[j])
+        # Making sure we don't divide with 0 later
+        objects = np.sum(x[:j] < xmax[j])
+        if objects:
+            Ny[j] = objects
+        else:
+            Ny[j] = np.inf
+
     Ny[0] = np.inf
     cuml_y = np.cumprod(1. + 1. / Ny)
-    Ny[0] = 0
+
+    Ny[np.isinf(Ny)] = 0
 
     # renormalize
     cuml_y *= Nall / cuml_y[-1]
@@ -87,10 +94,17 @@ def Cminus(x, y, xmax, ymax):
     ymax = ymax[i_sort]
 
     for i in range(1, Nall):
-        Nx[i] = np.sum(y[:i] < ymax[i])
+        # Making sure we don't divide with 0 later
+        objects = np.sum(y[:i] < ymax[i])
+        if objects:
+            Nx[i] = objects
+        else:
+            Nx[i] = np.inf
+
     Nx[0] = np.inf
     cuml_x = np.cumprod(1. + 1. / Nx)
-    Nx[0] = 0
+
+    Nx[np.isinf(Nx)] = 0
 
     # renormalize
     cuml_x *= Nall / cuml_x[-1]
