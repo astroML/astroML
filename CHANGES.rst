@@ -1,3 +1,9 @@
+1.0.2 (unreleased)
+==================
+
+- Fix bug in ``lumfunc.Cminus`` that lead to return NaN values. [#237]
+
+
 1.0.1 (2020-09-09)
 ==================
 
