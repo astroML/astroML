@@ -3,12 +3,12 @@ name: CI
 on:
   push:
     branches:
-    - master
+    - main
     tags:
     - '*'
   pull_request:
     branches:
-    - master
+    - main
   schedule:
     # run every Monday at 5am UTC
     - cron: '0 5 * * 1'
@@ -17,7 +17,7 @@ jobs:
   ##########
   # And when Guido had called all the people unto him, he said unto them,
   # Hearken unto me every one of you, behold PEP-8 and understand;
-  #         To obey is better than to sacrifice! 
+  #         To obey is better than to sacrifice!
   ##########
   linter:
     name: Code linter
@@ -43,7 +43,7 @@ jobs:
   # Until GA supports step reuse/inheritance or better conditional
   # exclusion of matrix targets, this is the shortest way of creating
   # our matrix. It's not best because of some duplication and manual
-  # cranking, but other options require much more duplication. 
+  # cranking, but other options require much more duplication.
   ##########
   tests:
     name: ${{ matrix.target.env }} (${{ matrix.target.os }})
