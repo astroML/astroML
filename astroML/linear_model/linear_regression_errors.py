@@ -4,8 +4,11 @@ import warnings
 try:
     import pymc3 as pm
     import theano.tensor as tt
+    from distutils.version import LooseVersion
+    PYMC_LT_39 = LooseVersion(pm.__version__) < LooseVersion("3.9")
 except ImportError:
     warnings.warn('LinearRegressionwithErrors requires PyMC3 to be installed')
+    PYMC_LT_39 = True
 
 from astroML.linear_model import LinearRegression
 
@@ -19,8 +22,9 @@ class LinearRegressionwithErrors(LinearRegression):
         super().__init__(fit_intercept, regularization, kwds)
 
     def fit(self, X, y, y_error=1, x_error=None, *,
-            sample_kwargs={'draws': 1000, 'target_accept': 0.9,
-                           'return_inferencedata': False}):
+            sample_kwargs={'draws': 1000, 'target_accept': 0.9}):
+        if not PYMC_LT_39:
+            sample_kwargs['return_inferencedata'] = False
 
         kwds = {}
         if self.kwds is not None:
