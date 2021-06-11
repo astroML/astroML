@@ -17,7 +17,7 @@ def fetch_sdss_galaxy_images(data_home=None, download_if_missing=True):
     """
     Loader for SDSS galaxy images.
 
-    A sample of coloured 1000 galaxy image stamps are loaded along with
+    A sample of 1000 coloured galaxy image stamps are loaded along with
     labels for their morphological classification.
 
     Parameters
@@ -40,7 +40,8 @@ def fetch_sdss_galaxy_images(data_home=None, download_if_missing=True):
 
     Notes
     -----
-    Data is from Nair & Abraham 2010 ApJS 186:427
+    The sample selection is courtesy of Marc Huertas-Company from the
+    full dataset of Nair & Abraham 2010 ApJS 186:427.
     """
 
     data_home = get_data_home(data_home)
