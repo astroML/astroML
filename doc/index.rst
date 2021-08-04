@@ -88,8 +88,6 @@ AstroML: Machine Learning and Data Mining for Astronomy
     * Bleeding-edge Source: `github <https://github.com/astroML/astroML>`_
 
 
-.. sectionauthor:: Jake Vanderplas <vanderplas@astro.washington.edu>
-
 AstroML is a Python module for machine learning and data mining built on
 `numpy <http://numpy.scipy.org>`_,
 `scipy <http://scipy.org>`_,
@@ -152,15 +150,16 @@ User Guide
 
    user_guide/index
 
-Example Plot Galleries
-======================
+Example Plot Gallery and Tutorials
+==================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    examples/index
-   book_figures/index
-   paper_figures/index
+
+   notebooks/index
+   book_figures_index
 
 Development
 ===========

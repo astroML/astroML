@@ -1,3 +1,6 @@
+Examples
+########
+
 General astroML Examples
 ------------------------
 
