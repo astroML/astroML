@@ -51,7 +51,7 @@ extensions = ['gen_rst', 'gen_figure_rst', 'gen_paper_rst',
               'sphinx.ext.autodoc', 'sphinx.ext.doctest',
               'sphinx.ext.imgmath', 'sphinx.ext.viewcode',
               'sphinx.ext.autosummary', 'sphinx.ext.mathjax',
-              'myst_nb',
+              'myst_nb', 'sphinx_reredirects',
               matplotlib.sphinxext.plot_directive.__name__]
 
 import numpy_ext.numpydoc
@@ -127,6 +127,13 @@ pygments_style = 'sphinx'
 #modindex_common_prefix = []
 
 
+# -- Extensions configuration --------------------------------------------------
+
+redirects = {
+    "notebooks/index.html": "https://astroml.org/astroML-notebooks",
+    "book_figures_index.html": "https://www.astroml.org/book_figures/"
+    }
+
 # -- Options for HTML output ---------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -142,6 +149,12 @@ html_theme_options = {
     "launch_buttons": {
         "binderhub_url": "https://mybinder.org"
     },
+# No need for external links if we do redirects, keep config commented while deciding
+#  "external_links": [
+#      {"name": "Notebooks", "url": "https://astroml.org/astroML-notebooks"},
+#      # To be updated once the figures are deployed with the new theme
+#      {"name": "Book Figures", "url": "http://www.astroml.org/book_figures/index.html"},
+#  ]
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
