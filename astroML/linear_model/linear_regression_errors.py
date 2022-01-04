@@ -4,8 +4,8 @@ import warnings
 try:
     import pymc3 as pm
     import theano.tensor as tt
-    from distutils.version import LooseVersion
-    PYMC_LT_39 = LooseVersion(pm.__version__) < LooseVersion("3.9")
+    from packaging.version import Version
+    PYMC_LT_39 = Version(pm.__version__) < Version("3.9")
 except ImportError:
     warnings.warn('LinearRegressionwithErrors requires PyMC3 to be installed')
     PYMC_LT_39 = True

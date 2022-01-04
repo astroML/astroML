@@ -40,8 +40,7 @@ Important Links
 Installation
 ============
 
-This package uses distutils, which is the default way of installing python
-modules.  **Before installation, make sure your system meets the prerequisites
+**Before installation, make sure your system meets the prerequisites
 listed in Dependencies, listed below.**
 
 Core
@@ -88,7 +87,7 @@ functionality might work with older versions):
 - Scikit-learn_ >= 0.18
 - Matplotlib_ >= 3.0
 - AstroPy_ >= 3.0
-    
+
 Optional Dependencies
 ---------------------
 Several of the example scripts require specialized or upgraded packages.

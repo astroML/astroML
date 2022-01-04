@@ -52,8 +52,7 @@ are filled: lacking some
 of these dependencies will not affect installation, but will affect the
 ability to execute the code and examples
 
-The astroML package is installed using python's
-distutils.  The generic commands for installation are as follows::
+The generic commands for installation are as follows::
 
   python setup.py build
   python setup.py install
