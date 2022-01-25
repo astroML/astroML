@@ -1,4 +1,4 @@
-1.0.2 (unreleased)
+1.0.2 (2022-01-25)
 ==================
 
 - Add ``fetch_sdss_galaxy_images`` to download sample of SDSS galaxy images
