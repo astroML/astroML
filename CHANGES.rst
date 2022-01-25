@@ -1,6 +1,8 @@
 1.0.2 (unreleased)
 ==================
 
+- Add ``fetch_sdss_galaxy_images`` to download sample of SDSS galaxy images
+  for CNN figure example. [#242]
 - Fix bug in ``lumfunc.Cminus`` that lead to return NaN values. [#237]
 
 
