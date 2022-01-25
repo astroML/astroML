@@ -78,12 +78,11 @@ def devectorize_axes(ax=None, dpi=None, transparent=True):
     im = image.imread(output)
 
     # clear everything on axis (but not text)
-    ax.lines = []
-    ax.patches = []
-    ax.tables = []
-    ax.artists = []
-    ax.images = []
-    ax.collections = []
+    ax.lines.clear()
+    ax.patches.clear()
+    ax.tables.clear()
+    ax.artists.clear()
+    ax.images.clear()
 
     # Show the image
     ax.imshow(im, extent=axlim, aspect='auto', interpolation='nearest')
