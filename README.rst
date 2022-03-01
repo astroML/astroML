@@ -6,14 +6,19 @@ AstroML: Machine Learning for Astronomy
 
 .. image:: https://img.shields.io/badge/arXiv-1411.5039-orange.svg?style=flat
         :target: https://arxiv.org/abs/1411.5039
-.. image:: https://img.shields.io/travis/astroML/astroML/master.svg?style=flat
-        :target: https://travis-ci.org/astroML/astroML/
+        :alt: Reference proceedings
+.. image:: https://github.com/astroML/astroML/workflows/CI/badge.svg
+        :target: https://github.com/astropy/astroquery/actions?query=workflow%3ACI
+        :alt: Github Actions CI Status
 .. image:: https://img.shields.io/pypi/v/astroML.svg?style=flat
         :target: https://pypi.python.org/pypi/astroML
+        :alt: Latest PyPI version
 .. image:: https://img.shields.io/pypi/dm/astroML.svg?style=flat
         :target: https://pypi.python.org/pypi/astroML
+        :alt: PyPI download stat
 .. image:: https://img.shields.io/badge/license-BSD-blue.svg?style=flat
         :target: https://github.com/astroml/astroml/blob/main/LICENSE.rst
+        :alt: License badge
 
 AstroML is a Python module for machine learning and data mining
 built on numpy, scipy, scikit-learn, and matplotlib,
