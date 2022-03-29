@@ -6,7 +6,7 @@ http://www.sdss.org/dr7/products/spectra/index.html
 """
 import gc  # garbage collection
 import numpy as np
-from scipy.ndimage.filters import gaussian_filter1d, uniform_filter1d
+from scipy.ndimage import gaussian_filter1d, uniform_filter1d
 from scipy import interpolate
 
 from . import download_with_progress_bar
