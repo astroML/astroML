@@ -13,6 +13,11 @@ on:
     # run every Monday at 5am UTC
     - cron: '0 5 * * 1'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
 jobs:
   ##########
   # And when Guido had called all the people unto him, he said unto them,
