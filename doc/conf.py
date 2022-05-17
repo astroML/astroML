@@ -1,3 +1,5 @@
+
+
 # -*- coding: utf-8 -*-
 #
 # astroML documentation build configuration file, created by
@@ -51,7 +53,7 @@ extensions = ['gen_rst', 'gen_figure_rst', 'gen_paper_rst',
               'sphinx.ext.autodoc', 'sphinx.ext.doctest',
               'sphinx.ext.imgmath', 'sphinx.ext.viewcode',
               'sphinx.ext.autosummary', 'sphinx.ext.mathjax',
-              'myst_nb', 'sphinx_reredirects',
+              'sphinx_reredirects',
               matplotlib.sphinxext.plot_directive.__name__]
 
 import numpy_ext.numpydoc
@@ -65,7 +67,7 @@ templates_path = ['_templates']
 autosummary_generate = True
 
 # The suffix of source filenames.
-source_suffix = ['.rst', '.ipynb', '.md']
+source_suffix = '.rst'
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
