@@ -59,7 +59,9 @@ jobs:
         {"os": "ubuntu-latest",  "python": "3.8", "env": "py3.8-test"},
         {"os": "ubuntu-latest",  "python": "3.7", "env": "py3.7-test"},
         {"os": "ubuntu-latest",  "python": "3.6", "env": "py3.6-test"},
-        {"os": "ubuntu-latest",  "python": "3.10", "env": "py3.10-test-alldeps-cov"},
+        {"os": "ubuntu-latest",  "python": "3.9", "env": "py3.9-test-alldeps-cov"},
+        # arviz/numpy combination incompatibility with 3.10, to-be-fixed
+        #{"os": "ubuntu-latest",  "python": "3.10", "env": "py3.10-test-alldeps-cov"},
         {"os": "ubuntu-latest",  "python": "3.10", "env": "py3.10-test-devastropy"},
         {"os": "ubuntu-latest",  "python": "3.6", "env": "py3.6-test-oldestdeps"},
         {"os": "ubuntu-latest",  "python": "3.9", "env": "build_docs"},
