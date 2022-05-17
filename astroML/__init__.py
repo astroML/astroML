@@ -1,4 +1,6 @@
-__version__ = '1.0.2'
+from pkg_resources import get_distribution
+
+__version__ = get_distribution('astroML').version
 
 __citation__ = """@INPROCEEDINGS{astroML,
  author={{Vanderplas}, J.T. and {Connolly}, A.J.
