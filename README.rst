@@ -8,7 +8,7 @@ AstroML: Machine Learning for Astronomy
         :target: https://arxiv.org/abs/1411.5039
         :alt: Reference proceedings
 .. image:: https://github.com/astroML/astroML/workflows/CI/badge.svg
-        :target: https://github.com/astropy/astroquery/actions?query=workflow%3ACI
+        :target: https://github.com/astroML/astroML/actions?query=workflow%3ACI
         :alt: Github Actions CI Status
 .. image:: https://img.shields.io/pypi/v/astroML.svg?style=flat
         :target: https://pypi.python.org/pypi/astroML
