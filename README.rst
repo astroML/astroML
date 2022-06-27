@@ -155,11 +155,39 @@ Maintainer
 ----------
 * Brigitta Sipocz https://github.com/bsipocz
 
-Code Contribution
------------------
-* Morgan Fouesneau https://github.com/mfouesneau
-* Julian Taylor http://github.com/juliantaylor
+Contributors
+------------
 
+* Alex Conley
+* Andreas Kopecky
+* Andrew Connolly
+* Asif Imran
+* Benjamin Alan Weaver
+* Brigitta Sipőcz
+* Chris Desira
+* Daniel Andreasen
+* Dino Bektešević
+* Edward Betts
+* Hans Moritz Günther
+* Hugo van Kemenade
+* Jake Vanderplas
+* Jeremy Blow
+* Jonathan Sick
+* Joris van Vugt
+* Juanjo Bazán
+* Julian Taylor
+* Lars Buitinck
+* Michael Radigan
+* Morgan Fouesneau
+* Nicholas Hunt-Walker
+* Ole Streicher
+* Pey Lian Lim
+* Rodrigo Nemmen
+* Ross Fadely
+* Vlad Skripniuk
+* Zlatan Vasović
+* Engineero
+* stonebig
 
 .. _Python: https://www.python.org
 .. _Numpy: https://www.numpy.org
