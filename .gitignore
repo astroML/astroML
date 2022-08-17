@@ -29,3 +29,5 @@ book_figures/*/*.pkl
 
 .coverage
 .pytest_cache
+.tox
+.hypothesis
