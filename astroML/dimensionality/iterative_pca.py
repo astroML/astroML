@@ -124,7 +124,7 @@ def iterative_pca(X, M, n_ev=5, n_iter=15, norm=None, full_output=False):
         VWx = np.dot(VT[:n_ev], (notM * X_centered).T)
         for i in range(n_samples):
             VWV = np.dot(VT[:n_ev], (notM[i] * VT[:n_ev]).T)
-            coeffs[i] = solve(VWV, VWx[:, i], sym_pos=True, overwrite_a=True)
+            coeffs[i] = solve(VWV, VWx[:, i], assume_a="pos", overwrite_a=True)
 
         X_fill = mu + np.dot(coeffs, VT[:n_ev])
         X_recons[M] = X_fill[M]
