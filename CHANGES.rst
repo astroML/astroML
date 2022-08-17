@@ -1,10 +1,15 @@
+1.0.3 (unreleased)
+==================
+
+- Minimum required scipy version is now 0.19. [#266]
+
+
 1.0.2 (2022-01-25)
 ==================
 
 - Add ``fetch_sdss_galaxy_images`` to download sample of SDSS galaxy images
   for CNN figure example. [#242]
 - Fix bug in ``lumfunc.Cminus`` that lead to return NaN values. [#237]
-
 
 1.0.1 (2020-09-09)
 ==================

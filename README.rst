@@ -88,7 +88,7 @@ functionality might work with older versions):
 
 - Python_ version 3.6+
 - Numpy_ >= 1.13
-- Scipy_ >= 0.18
+- Scipy_ >= 0.19
 - Scikit-learn_ >= 0.18
 - Matplotlib_ >= 3.0
 - AstroPy_ >= 3.0
