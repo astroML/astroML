@@ -89,6 +89,7 @@ jobs:
         # of tex-extras. Testing shows that docs will *not* compile without
         # explicitly installing all 3 though.
         run: |
+          sudo apt update
           sudo apt install -y texlive-latex-recommended
           sudo apt install -y texlive-latex-extra
           sudo apt install -y cm-super
