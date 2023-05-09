@@ -13,6 +13,7 @@
 
 import sys
 import os
+from datetime import date
 import matplotlib.sphinxext.plot_directive
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -74,7 +75,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'astroML'
-copyright = '2012-2020, Jake Vanderplas & AstroML Developers'
+copyright = f'2012-{date.today().year}, Jake Vanderplas & AstroML Developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
