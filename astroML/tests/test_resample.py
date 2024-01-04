@@ -1,5 +1,5 @@
 import numpy as np
-from numpy.testing import assert_allclose, run_module_suite
+from numpy.testing import assert_allclose
 
 from astroML.resample import bootstrap, jackknife
 from astroML.stats import mean_sigma
@@ -87,7 +87,3 @@ def test_jackknife_pass_indices():
                      pass_indices=True)
 
     assert_allclose(res1, res2)
-
-
-if __name__ == '__main__':
-    run_module_suite()
