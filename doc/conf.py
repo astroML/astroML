@@ -1,3 +1,5 @@
+
+
 # -*- coding: utf-8 -*-
 #
 # astroML documentation build configuration file, created by
@@ -51,6 +53,7 @@ extensions = ['gen_rst', 'gen_figure_rst', 'gen_paper_rst',
               'sphinx.ext.autodoc', 'sphinx.ext.doctest',
               'sphinx.ext.imgmath', 'sphinx.ext.viewcode',
               'sphinx.ext.autosummary', 'sphinx.ext.mathjax',
+              'sphinx_reredirects',
               matplotlib.sphinxext.plot_directive.__name__]
 
 import numpy_ext.numpydoc
@@ -70,11 +73,11 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+#master_doc = 'index'
 
 # General information about the project.
 project = 'astroML'
-copyright = '2012-2020, Jake Vanderplas & AstroML Developers'
+copyright = '2012-2021, Jake Vanderplas & AstroML Developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -126,16 +129,35 @@ pygments_style = 'sphinx'
 #modindex_common_prefix = []
 
 
+# -- Extensions configuration --------------------------------------------------
+
+redirects = {
+    "notebooks/index.html": "https://astroml.org/astroML-notebooks",
+    "book_figures_index.html": "https://www.astroml.org/book_figures/"
+    }
+
 # -- Options for HTML output ---------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'astroML'
+html_theme = 'pydata_sphinx_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+    "repository_url": "https://github.com/astroML/astroML",
+    "repository_branch": "main",
+    "launch_buttons": {
+        "binderhub_url": "https://mybinder.org"
+    },
+# No need for external links if we do redirects, keep config commented while deciding
+#  "external_links": [
+#      {"name": "Notebooks", "url": "https://astroml.org/astroML-notebooks"},
+#      # To be updated once the figures are deployed with the new theme
+#      {"name": "Book Figures", "url": "http://www.astroml.org/book_figures/index.html"},
+#  ]
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ['themes']
@@ -251,5 +273,5 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'astroML', 'astroML Documentation',
-     ['Jake Vanderplas'], 1)
+     ['Jake Vanderplas & astroML Developers'], 1)
 ]
