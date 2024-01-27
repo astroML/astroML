@@ -87,7 +87,7 @@ def pickle_results(filename=None, verbose=True):
                                                     == kwargs[key])
                                              for key in kwargs])))
 
-            if (type(D) == dict and D.get('funcname') == f.__name__
+            if (isinstance(D, dict) and D.get('funcname') == f.__name__
                     and args_match and kwargs_match):
                 if verbose:
                     print("@pickle_results: using precomputed "

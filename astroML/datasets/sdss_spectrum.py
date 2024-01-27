@@ -1,7 +1,7 @@
 import os
 
-from .tools import get_data_home, download_with_progress_bar,\
-    SDSSfits, sdss_fits_url, sdss_fits_filename
+from .tools import (get_data_home, download_with_progress_bar,
+                    SDSSfits, sdss_fits_url, sdss_fits_filename)
 
 
 def fetch_sdss_spectrum(plate, mjd, fiber, data_home=None,
