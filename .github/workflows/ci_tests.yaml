@@ -12,6 +12,7 @@ on:
   schedule:
     # run every Monday at 5am UTC
     - cron: '0 5 * * 1'
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -53,7 +54,6 @@ jobs:
   tests:
     name: ${{ matrix.target.env }} (${{ matrix.target.os }})
     runs-on: ${{ matrix.target.os }}
-    needs: linter
     strategy:
       fail-fast: false
       matrix:
