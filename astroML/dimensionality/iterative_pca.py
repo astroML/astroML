@@ -53,7 +53,7 @@ def iterative_pca(X, M, n_ev=5, n_iter=15, norm=None, full_output=False):
     if np.any(M.sum(0) == n_samples):
         raise ValueError('Some features are masked in all samples')
 
-    if type(norm) == str:
+    if isinstance(norm, str):
         norm = norm.upper()
 
     if norm not in (None, 'none', 'L1', 'L2'):

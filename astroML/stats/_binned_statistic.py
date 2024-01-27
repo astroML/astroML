@@ -228,7 +228,7 @@ def binned_statistic_dd(sample, values, statistic='mean',
     --------
     np.histogramdd, binned_statistic, binned_statistic_2d
     """
-    if type(statistic) == str:
+    if isinstance(statistic, str):
         if statistic not in ['mean', 'median', 'count', 'sum']:
             raise ValueError('unrecognized statistic "%s"' % statistic)
     elif callable(statistic):
