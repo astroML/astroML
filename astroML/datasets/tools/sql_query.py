@@ -2,8 +2,8 @@
 Tools to perform a SQL queries to an online server.
 Default values are provided for http://cas.sdss.org
 """
-from urllib.request import urlopen
-from urllib.parse import urlencode
+from urllib.request import Request, urlopen
+from urllib.parse import quote, urlencode
 
 PUBLIC_URL = 'https://skyserver.sdss.org/dr17/en/tools/search/sql.aspx'
 DEFAULT_FMT = 'csv'
@@ -34,5 +34,7 @@ def sql_query(sql_str, url=PUBLIC_URL, format='csv'):
         results of the query
     """
     sql_str = remove_sql_comments(sql_str)
-    params = urlencode(dict(cmd=sql_str, format=format))
-    return urlopen(url + '?%s' % params)
+    params = urlencode(dict(cmd=sql_str, format=format, searchtool='SQL'), quote_via=quote)
+    url_with_params = url + '?%s' % params
+    request = Request(url_with_params, method='POST')
+    return urlopen(request)
