@@ -5,7 +5,7 @@ Default values are provided for http://cas.sdss.org
 from urllib.request import Request, urlopen
 from urllib.parse import quote, urlencode
 
-PUBLIC_URL = 'https://skyserver.sdss.org/dr17/en/tools/search/sql.aspx'
+PUBLIC_URL = 'http://cas.sdss.org/dr18/SearchTools/sql'
 DEFAULT_FMT = 'csv'
 
 
