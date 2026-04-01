@@ -20,7 +20,7 @@ def bytes_to_string(nbytes):
 
 
 def url_content_length(fhandle):
-    length = dict(fhandle.info())['Content-Length']
+    length = fhandle.info()['Content-Length']
     return int(length.strip())
 
 

@@ -2,7 +2,7 @@
 Tools to download and process SDSS fits files.
 
 More information can be found at
-http://www.sdss.org/dr7/products/spectra/index.html
+https://www.sdss4.org/dr17/spectro/
 """
 import gc  # garbage collection
 import numpy as np
@@ -13,7 +13,7 @@ from . import download_with_progress_bar
 
 # This is the URL of the sdss fits spectra
 FITS_FILENAME = 'spSpec-%(mjd)05i-%(plate)04i-%(fiber)03i.fit'
-SDSS_URL = ('http://das.sdss.org/spectro/1d_26/%(plate)04i/'
+SDSS_URL = ('https://das.sdss.org/spectro/1d_26/%(plate)04i/'
             '1d/spSpec-%(mjd)05i-%(plate)04i-%(fiber)03i.fit')
 
 # lines used to generate line-index labeling
@@ -62,14 +62,14 @@ class SDSSfits:
     in the sdss spectra fits file.  The raw fits data can be accessed using
     the fits object directly.  This can be found in the attribute
     ``hdulist``.  For details, please refer to the data description:
-    http://www.sdss.org/dr7/dm/flatFiles/spSpec.html
+    https://classic.sdss.org/dr7/dm/flatFiles/spSpec.php
     """
 
     def __init__(self, source=None):
         if source is None:
             pass
         elif isinstance(source, str):
-            if source.startswith('http://'):
+            if source.startswith(('http://', 'https://')):
                 self._load_fits_url(source)
             else:
                 self._load_fits_file(source)
