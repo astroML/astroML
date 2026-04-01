@@ -16,8 +16,8 @@ import warnings
 import matplotlib
 matplotlib.use('Agg')  # don't display plots
 
-# set some font properties
-matplotlib.rc('text', usetex=True)
+# Use Matplotlib's built-in mathtext so docs builds do not depend on TeX.
+matplotlib.rc('text', usetex=False)
 matplotlib.rc('font', family='serif', style='normal', variant='normal',
               stretch='normal', weight='normal',)
 

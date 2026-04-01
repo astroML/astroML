@@ -20,11 +20,9 @@ from scipy.special import gammaln
 
 #----------------------------------------------------------------------
 # This function adjusts matplotlib settings for a uniform feel in the textbook.
-# Note that with usetex=True, fonts are rendered with LaTeX.  This may
-# result in an error if LaTeX is not installed on your system.  In that case,
-# you can set usetex to False.
+# Use Matplotlib's built-in mathtext so this example can run without LaTeX.
 from astroML.plotting import setup_text_plots
-setup_text_plots(fontsize=8, usetex=True)
+setup_text_plots(fontsize=8, usetex=False)
 
 dims = np.arange(1, 51)
 
