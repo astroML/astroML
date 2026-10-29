@@ -45,7 +45,9 @@ class LINEARdata:
         return str(id) + '.dat'
 
     def __init__(self, data_file, targetlist_file):
-        self.targets = np.recfromtxt(targetlist_file)
+        # np.recfromtxt() was removed in NumPy 2.0; this is its equivalent.
+        self.targets = np.genfromtxt(targetlist_file,
+                                     dtype=None).view(np.recarray)
         self.targets.dtype.names = target_names
 
         self.dataF = tarfile.open(data_file)

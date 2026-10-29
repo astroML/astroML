@@ -3,6 +3,9 @@
 
 - Minimum required scipy version is now 0.19. [#266]
 
+- Fix ``fetch_LINEAR_sample`` with NumPy 2.0, which removed
+  ``np.recfromtxt``.
+
 
 1.0.2 (2022-01-25)
 ==================
